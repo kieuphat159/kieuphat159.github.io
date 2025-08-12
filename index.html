@@ -257,26 +257,28 @@
         });
 
         // Swiper slider for Awards
-        const swiper = new Swiper('.swiper-awards', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
-            loop: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        });
+       const swiper = new Swiper('.swiper-awards', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 1, // fix chỉ hiển thị 1 ảnh
+    spaceBetween: 30, // khoảng cách giữa các ảnh
+    coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+    },
+    loop: true,
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false, // để autoplay tiếp tục sau khi người dùng tương tác
+    },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+});
+
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
