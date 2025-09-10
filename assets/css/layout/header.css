@@ -1,0 +1,97 @@
+/* CSS cho header, đã thêm tiền tố 'header' vào trước các selector */
+
+header {
+    background: var(--bg-primary);
+    padding: 18px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .logo-circle {
+    background: var(--button-orange-bg-color);
+    color: var(--bg-primary);
+    font-weight: bold;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+header .logo-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-black);
+}
+
+header .logo-text .dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: var(--button-orange-bg-color);
+    border-radius: 50%;
+    vertical-align: baseline;
+    content: "";
+}
+
+header .main-nav ul {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header .main-nav a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.2s;
+}
+
+header .main-nav li.active a,
+header .main-nav a:hover {
+    color: var(--text-black);
+}
+
+header .main-nav li.active a::after,
+header .main-nav a:hover::after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 2px;
+    background: var(--button-orange-bg-color);
+    border-radius: 2px;
+}
+
+header .contact-btn {
+    background: var(--button-blue-bg-color);
+    color: var(--bg-primary);
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;    
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(42, 203, 233, 0.08);
+}
+
+header .contact-btn:hover {
+    background: var(--button-blue-bg-color-hover);
+}
