@@ -1,37 +1,43 @@
+/* media queries cho responsive */
 /* `xxl` applies to x-large devices (large desktops, less than 1400px) */
 @media (max-width: 1399.98px) {
-        :root {
-                --screen-max-width: 1140px;
-        }
+    :root {
+        --screen-max-width: 1140px;
+    }
 }
 
 /* `xl` applies to large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
-        :root {
-                --screen-max-width: 960px;
-        }
+    :root {
+        --screen-max-width: 960px;
+    }
 }
 
 /* `lg` applies to medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
-        :root {
-                --screen-max-width: 720px;
-                --h1-fontSize: 48px;
-        }
+    :root {
+        --screen-max-width: 720px;
+        --h1-fontSize: 48px;
+    }
 }
 
 /* `md` applies to small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
-        :root {
-                --screen-max-width: 540px;
-                --h1-fontSize: 40px;
-        }
+    :root {
+        --screen-max-width: 540px;
+        --h1-fontSize: 40px;
+    }
 }
 
 /* `sm` applies to x-small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-        :root {
-                --screen-max-width: 100%;
-                --h1-fontSize: 32px;
-        }
+    :root {
+        --screen-max-width: 100%;
+        --h1-fontSize: 32px;
+    }
+
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
 }
