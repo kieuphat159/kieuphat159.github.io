@@ -4,12 +4,19 @@
     :root {
         --screen-max-width: 1140px;
     }
+
+    .container {
+        max-width: 1140px;
+    }
 }
 
 /* `xl` applies to large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
     :root {
         --screen-max-width: 960px;
+    }
+    .container {
+        max-width: 960px;
     }
 }
 
@@ -19,6 +26,9 @@
         --screen-max-width: 720px;
         --h1-fontSize: 48px;
     }
+    .container {
+        max-width: 720px;
+    }
 }
 
 /* `md` applies to small devices (landscape phones, less than 768px) */
@@ -26,6 +36,9 @@
     :root {
         --screen-max-width: 540px;
         --h1-fontSize: 40px;
+    }
+    .container {
+        max-width: 540px;
     }
 }
 
@@ -37,6 +50,7 @@
     }
 
     .container {
+        max-width: 100%;
         padding-left: 20px !important;
         padding-right: 20px !important;
     }

@@ -12,7 +12,7 @@ header .container {
     justify-content: space-between;
 }
 
-header .main-nav ul {
+.main-nav ul {
     display: flex;
     gap: 32px;
     list-style: none;
@@ -20,7 +20,7 @@ header .main-nav ul {
     padding: 0;
 }
 
-header .main-nav a {
+.main-nav a {
     text-decoration: none;
     color: var(--text-gray);
     font-weight: 600;
@@ -29,13 +29,13 @@ header .main-nav a {
     transition: color 0.2s;
 }
 
-header .main-nav li.active a,
-header .main-nav a:hover {
+.main-nav li.active a,
+.main-nav a:hover {
     color: var(--text-black);
 }
 
-header .main-nav li.active a::after,
-header .main-nav a:hover::after {
+.main-nav li.active a::after,
+.main-nav a:hover::after {
     content: "";
     display: block;
     width: 12px;
@@ -44,18 +44,116 @@ header .main-nav a:hover::after {
     border-radius: 2px;
 }
 
-header .contact-btn {
+.contact-btn {
     background: var(--button-blue-bg-color);
     color: var(--bg-primary);
     padding: 12px 28px;
     border-radius: 8px;
     font-weight: 700;
     text-decoration: none;
-    transition: background 0.2s;    
+    transition: background 0.2s;
     font-size: 1rem;
     box-shadow: 0 2px 8px rgba(42, 203, 233, 0.08);
 }
 
-header .contact-btn:hover {
+.contact-btn:hover {
     background: var(--button-blue-bg-color-hover);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #222;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    max-width: 90vw;
+    height: 100vh;
+    background: #fff;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.08);
+    z-index: 1001;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    border-top-right-radius: 32px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.side-menu.active {
+    transform: translateX(0);
+}
+
+.side-menu-back {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-menu li {
+    font-size: 1.2rem;
+    color: #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.side-menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+    display: none;
+}
+
+.side-menu-overlay.active {
+    display: block;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 991.98px) {
+    header .container {
+        justify-content: space-between;
+    }
+    header .menu-toggle {
+        display: flex;
+    }
+    header .main-nav {
+        display: none;
+    }
+    header .contact-btn {
+        display: none;
+    }
 }
