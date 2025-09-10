@@ -1,8 +1,11 @@
 <div class="container">
+    <!-- Logo -->
     <div class="logo">
         <span class="logo-circle">ST</span>
         <span class="logo-text">Safe Tour<span class="dot"></span></span>
     </div>
+
+    <!-- Desktop navbar -->
     <nav class="main-nav">
         <ul>
             <li class="active"><a href="#">Home</a></li>
@@ -12,5 +15,24 @@
             <li><a href="#">Pages</a></li>
         </ul>
     </nav>
+
+    <!-- Mobile menu toggle button -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <!-- Side menu for mobile -->
+    <div class="side-menu" id="sideMenu">
+        <button class="side-menu-back" id="sideMenuBack">&#8592;</button>
+        <ul>
+            <li>Departments <span>&#8250;</span></li>
+            <li>Grocery <span>&#8250;</span></li>
+            <li>Beauty <span>&#8250;</span></li>
+        </ul>
+    </div>
+    <div class="side-menu-overlay" id="sideMenuOverlay"></div>
+
+    <!-- Contact button -->
     <a href="#" class="contact-btn">Contact us</a>
 </div>
