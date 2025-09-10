@@ -1,74 +1,74 @@
 @import url("../layout/header.css");
 :root {
-    /* Background color*/
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8f9fa;
-    --button-blue-bg-color: #31c3e0;
-    --button-blue-bg-color-hover: #22b8d9;
-    --button-orange-bg-color: #ff7b29;
-    --button-black-bg-color: #132v742;
+        /* Background color*/
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8f9fa;
+        --button-blue-bg-color: #31c3e0;
+        --button-blue-bg-color-hover: #22b8d9;
+        --button-orange-bg-color: #ff7b29;
+        --button-black-bg-color: #132v742;
 
-    /* Font size */
-    --h1-fontSize: 62px;
-    --h2-fontSize: 40px;
-    --h3-fontSize: 24px;
-    --h4-fontSize: 18px;
-    --thumbnail-fontSize: 136px;
-    --description-fontSize: 16px;
-    --name-fontSize: 20px;
-    --location-fontSize: 20px;
-    --nav-text: 14px;
-    --button-text: 18px;
+        /* Font size */
+        --h1-fontSize: 62px;
+        --h2-fontSize: 40px;
+        --h3-fontSize: 24px;
+        --h4-fontSize: 18px;
+        --thumbnail-fontSize: 136px;
+        --description-fontSize: 16px;
+        --name-fontSize: 20px;
+        --location-fontSize: 20px;
+        --nav-text: 14px;
+        --button-text: 18px;
 
-    /* Text Color */
-    --text-black: #2d3134;
-    --text-gray: #676a6c;
+        /* Text Color */
+        --text-black: #2d3134;
+        --text-gray: #676a6c;
 
-    /* Maxwidth */
-    --screen-max-width: 1170px;
+        /* Maxwidth */
+        --screen-max-width: 1170px;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f8f9fa;
-    color: #222;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f8f9fa;
+        color: #222;
 }
 
 .container {
-    max-width: var(--screen-max-width);
-    margin: 0 auto;
-    padding: 0 16px;
+        max-width: var(--screen-max-width);
+        margin: 0 auto;
+        padding: 0 16px;
 }
 
 /* Thêm các style chung khác ở đây */
 h1 {
-    font-size: var(--h1-fontSize);
+        font-size: var(--h1-fontSize);
 }
 
 h2 {
-    font-size: var(--h2-fontSize);
+        font-size: var(--h2-fontSize);
 }
 
 h3 {
-    font-size: var(--h3-fontSize);
+        font-size: var(--h3-fontSize);
 }
 
 h4 {
-    font-size: var(--h4-fontSize);
+        font-size: var(--h4-fontSize);
 }
 
 .thumbnail {
-    font-size: var(--thumbnail-fontSize);
+        font-size: var(--thumbnail-fontSize);
 }
 
 .description {
-    font-size: var(--description-fontSize);
+        font-size: var(--description-fontSize);
 }
 
 .nav-text {
-    font-size: var(--nav-text);
+        font-size: var(--nav-text);
 }
 
 .btn-black {
