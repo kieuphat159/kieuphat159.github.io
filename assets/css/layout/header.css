@@ -76,7 +76,7 @@ header .container {
     display: block;
     height: 3px;
     width: 100%;
-    background: #222;
+    background: var(--text-black);
     border-radius: 2px;
     transition: 0.3s;
 }
@@ -84,14 +84,14 @@ header .container {
 .side-menu {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     width: 320px;
     max-width: 90vw;
     height: 100vh;
-    background: #fff;
+    background: var(--bg-primary);
     box-shadow: 2px 0 16px rgba(0, 0, 0, 0.08);
     z-index: 1001;
-    transform: translateX(-100%);
+    transform: translateX(100%);
     transition: transform 0.3s;
     border-top-right-radius: 32px;
     padding: 32px 24px;
@@ -108,7 +108,7 @@ header .container {
     background: none;
     border: none;
     font-size: 2rem;
-    color: #222;
+    color: var(--text-black);
     margin-bottom: 24px;
     cursor: pointer;
 }
