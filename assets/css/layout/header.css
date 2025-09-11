@@ -130,6 +130,7 @@ header .container {
     border-bottom: 1px solid #f0f0f0;
 }
 
+
 .side-menu-overlay {
     position: fixed;
     inset: 0;
@@ -157,3 +158,4 @@ header .container {
         display: none;
     }
 }
+
