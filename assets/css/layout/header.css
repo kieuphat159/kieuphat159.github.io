@@ -1,26 +1,57 @@
-/* CSS cho header, đã thêm tiền tố 'header' vào trước các selector */
-
 header {
     background: var(--bg-primary);
     padding: 18px 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
-
 header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.main-nav ul {
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-logo__circle {
+    background: var(--button-orange-bg-color);
+    color: var(--bg-primary);
+    font-weight: bold;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+.header-logo__text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-black);
+}
+.header-logo__dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: var(--button-orange-bg-color);
+    border-radius: 50%;
+    vertical-align: baseline;
+    content: "";
+}
+
+.header-main-nav__list {
     display: flex;
     gap: 32px;
     list-style: none;
     margin: 0;
     padding: 0;
 }
-
-.main-nav a {
+.header-main-nav__item {
+}
+.header-main-nav__link {
     text-decoration: none;
     color: var(--text-gray);
     font-weight: 600;
@@ -28,14 +59,12 @@ header .container {
     position: relative;
     transition: color 0.2s;
 }
-
-.main-nav li.active a,
-.main-nav a:hover {
+.header-main-nav__item.active .header-main-nav__link,
+.header-main-nav__link:hover {
     color: var(--text-black);
 }
-
-.main-nav li.active a::after,
-.main-nav a:hover::after {
+.header-main-nav__item.active .header-main-nav__link::after,
+.header-main-nav__link:hover::after {
     content: "";
     display: block;
     width: 12px;
@@ -44,7 +73,7 @@ header .container {
     border-radius: 2px;
 }
 
-.contact-btn {
+.header-contact-btn {
     background: var(--button-blue-bg-color);
     color: var(--bg-primary);
     padding: 12px 28px;
@@ -55,12 +84,11 @@ header .container {
     font-size: 1rem;
     box-shadow: 0 2px 8px rgba(42, 203, 233, 0.08);
 }
-
-.contact-btn:hover {
+.header-contact-btn:hover {
     background: var(--button-blue-bg-color-hover);
 }
 
-.menu-toggle {
+.header-menu-toggle {
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -71,8 +99,7 @@ header .container {
     border: none;
     cursor: pointer;
 }
-
-.menu-toggle span {
+.header-menu-toggle__bar {
     display: block;
     height: 3px;
     width: 100%;
@@ -81,7 +108,7 @@ header .container {
     transition: 0.3s;
 }
 
-.side-menu {
+.header-side-menu {
     position: fixed;
     top: 0;
     right: 0;
@@ -99,12 +126,10 @@ header .container {
     flex-direction: column;
     gap: 24px;
 }
-
-.side-menu.active {
+.header-side-menu.active {
     transform: translateX(0);
 }
-
-.side-menu-back {
+.header-side-menu__back {
     background: none;
     border: none;
     font-size: 2rem;
@@ -112,14 +137,12 @@ header .container {
     margin-bottom: 24px;
     cursor: pointer;
 }
-
-.side-menu ul {
+.header-side-menu__list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
-.side-menu li {
+.header-side-menu__item {
     font-size: 1.2rem;
     color: #222;
     display: flex;
@@ -129,33 +152,35 @@ header .container {
     cursor: pointer;
     border-bottom: 1px solid #f0f0f0;
 }
+.header-side-menu__link {
+    color: inherit;
+    text-decoration: none;
+    flex: 1;
+}
 
-
-.side-menu-overlay {
+.header-side-menu-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.12);
     z-index: 1000;
     display: none;
 }
-
-.side-menu-overlay.active {
+.header-side-menu-overlay.active {
     display: block;
 }
 
 /* Responsive cho mobile */
 @media (max-width: 991.98px) {
-    header .container {
+    .header-container {
         justify-content: space-between;
     }
-    header .menu-toggle {
+    .header-menu-toggle {
         display: flex;
     }
-    header .main-nav {
+    .header-main-nav {
         display: none;
     }
-    header .contact-btn {
+    .header-contact-btn {
         display: none;
     }
 }
-
