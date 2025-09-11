@@ -101,13 +101,6 @@
     opacity: 1;
 }
 
-.footer__copyright {
-    text-align: center;
-    color: var(--text-gray);
-    font-size: 0.9rem;
-    margin-bottom: 16px;
-}
-
 .footer__divider {
     border: none;
     border-top: 1px solid var(--footer-divider-color);
