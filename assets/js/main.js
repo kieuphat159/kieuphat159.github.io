@@ -31,7 +31,7 @@ function load(selector, path, callback) {
         .catch((error) => console.error("Error loading template:", error));
 }
 
-// Gắn logic menu mobile sau khi header load xong
+// Hàm dùng để thiết lập phần điều hướng cho bản mobile khi bấm vào nút 3 gạch
 function setupMobileMenu() {
     const menuToggle = $("#menuToggle");
     const sideMenu = $("#sideMenu");
@@ -52,3 +52,60 @@ function setupMobileMenu() {
         sideMenuOverlay.addEventListener("click", closeMenu);
     }
 }
+
+function loadPage(page) {
+    load("main", `./pages/${page}.html`);
+}
+
+function updateActiveNavLink(page) {
+    document.querySelectorAll(".main-nav li").forEach((li) => li.classList.remove("active"));
+    const activeLink = document.querySelector(`.main-nav a[data-page="${page}"]`);
+    if (activeLink) {
+        activeLink.parentElement.classList.add("active");
+    }
+}
+
+// Hàm kích hoạt liên kết điều hướng và thiết lập menu mobile
+function activateNavLink() {
+    setupMobileMenu();
+
+    $$("a[data-page]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            const page = link.getAttribute("data-page");
+            loadPage(page);
+            window.location.hash = page;
+
+            // Cập nhật active class
+            updateActiveNavLink(page);
+        });
+    });
+}
+
+function handleHashChange() {
+    const page = window.location.hash.replace("#", "") || "home";
+    loadPage(page);
+    updateActiveNavLink(page);
+}
+
+// Load trang chủ khi trang được tải lần đầu
+document.addEventListener("DOMContentLoaded", () => {
+    load("#header", "./templates/header.html", () => {
+        activateNavLink();
+        handleHashChange();
+    });
+    // Chỗ này lưu ý nếu đem hàm handlehashchange ra ngoài thì nó sẽ chạy trước khi header được load xong và có thể gây lỗi
+    load("#footer", "./templates/footer.html");
+    window.addEventListener("hashchange", handleHashChange);
+});
+
+// Đóng menu khi thay đổi kích thước trờ về bản desktop
+window.addEventListener("resize", function () {
+    if (window.innerWidth > 991.98) {
+        const sideMenu = document.getElementById("sideMenu");
+        const sideMenuOverlay = document.getElementById("sideMenuOverlay");
+        if (sideMenu) sideMenu.classList.remove("active");
+        if (sideMenuOverlay) sideMenuOverlay.classList.remove("active");
+    }
+});
