@@ -81,6 +81,7 @@ main {
     max-width: var(--screen-max-width);
     margin: 0 auto;
     padding: 0 16px;
+
 }
 
 /* Thêm các style chung khác ở đây */
