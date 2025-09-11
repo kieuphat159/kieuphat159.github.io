@@ -57,24 +57,22 @@ function loadPage(page) {
 }
 
 function updateActiveNavLink(page) {
-
-        document.querySelectorAll("header .header-main-nav__item").forEach((li) => li.classList.remove("active"));
-        const activeLink = document.querySelector(`header .header-main-nav__link[data-page="${page}"]`);
-        if (activeLink) {
-                activeLink.parentElement.classList.add("active");
-        }
+    document.querySelectorAll("header .header-main-nav__item").forEach((li) => li.classList.remove("active"));
+    const activeLink = document.querySelector(`header .header-main-nav__link[data-page="${page}"]`);
+    if (activeLink) {
+        activeLink.parentElement.classList.add("active");
+    }
 }
 
 function activateNavLink() {
-        setupMobileMenu();
+    setupMobileMenu();
 
-        $$(".header-main-nav__link[data-page], .header-side-menu__link[data-page]").forEach((link) => {
-                link.addEventListener("click", (event) => {
-                        event.preventDefault();
+    $$(".header-main-nav__link[data-page], .header-side-menu__link[data-page]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
 
-                        const page = link.getAttribute("data-page");
-                        window.location.hash = page;
-                });
+            const page = link.getAttribute("data-page");
+            window.location.hash = page;
         });
     });
 }
@@ -87,15 +85,14 @@ function handleHashChange() {
 
 // Load trang chủ khi trang được tải lần đầu
 document.addEventListener("DOMContentLoaded", () => {
+    load("#header", "./templates/header.html", () => {
+        activateNavLink();
+        handleHashChange();
+    });
 
-        load("#header", "./templates/header.html", () => {
-                activateNavLink();
-                handleHashChange();
-        });
-
-        // Chỗ này lưu ý nếu đem hàm handlehashchange ra ngoài thì nó sẽ chạy trước khi header được load xong và có thể gây lỗi
-        load("#footer", "./templates/footer.html");
-        window.addEventListener("hashchange", handleHashChange);
+    // Chỗ này lưu ý nếu đem hàm handlehashchange ra ngoài thì nó sẽ chạy trước khi header được load xong và có thể gây lỗi
+    load("#footer", "./templates/footer.html");
+    window.addEventListener("hashchange", handleHashChange);
 });
 
 // Đóng menu khi thay đổi kích thước trờ về bản desktop
