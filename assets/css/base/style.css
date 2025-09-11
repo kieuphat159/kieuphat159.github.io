@@ -74,7 +74,7 @@ main {
 }
 
 .container {
-        max-width: var(--screen-max-width);
+        width: var(--screen-max-width);
         margin: 0 auto;
         padding: 0 16px;
 }
