@@ -35,6 +35,78 @@
     --hero-secondary-text: var(--text-description);
     --hero-highlight-number: var(--stats-color);
 
+    /* Tour */
+    --tours-heading-color: var(--text-primary);
+    --tours-desc-color: var(--text-primary);
+    --tour-see-all-bg: var(--button-orange-bg-color);
+    --tour-see-all-bg-hover: #ff893f;
+    --tour-card-bg: var(--card-bg-color);
+    --tour-card-shadow: 0 4px 18px rgba(15, 34, 55, 0.08);
+    --tour-card-shadow-hover: 0 10px 30px rgba(15, 34, 55, 0.14);
+    --tour-price-color: var(--button-orange-bg-color);
+    --tour-meta-color: var(--text-primary);
+
+    /* Why Choose Us (light) */
+    --why-section-bg: transparent;
+    --why-media-radius: 40px;
+    --why-icon-bg: rgba(255, 123, 41, 0.1);
+    --why-icon-border: transparent;
+    --why-icon-shadow: 0 4px 12px rgba(255, 123, 41, 0.18);
+    --why-icon-size: 44px;
+    --why-item-title-color: var(--text-primary);
+    --why-item-text-color: var(--text-primary);
+
+    /* Trending Tour */
+    --trend-title-color: var(--text-primary);
+    --trend-desc-color: var(--text-primary);
+    --trend-card-bg: var(--card-bg-color);
+    --trend-card-border: #e6e8ea;
+    --trend-card-border-hover: #d4d7da;
+    --trend-card-shadow: 0 4px 14px rgba(15, 34, 55, 0.08);
+    --trend-card-shadow-hover: 0 10px 26px rgba(15, 34, 55, 0.14);
+    --trend-price-color: #ff7b29;
+    --trend-book-bg: var(--button-blue-bg-color);
+    --trend-book-bg-hover: var(--button-blue-bg-color-hover);
+    --trend-book-color: #fff;
+    --trend-agency-badge-bg: var(--button-orange-bg-color);
+    --trend-agency-badge-color: #fff;
+    --trend-nav-btn-bg: #fff;
+    --trend-nav-btn-border: #e6e8ea;
+    --trend-nav-btn-color: var(--text-primary);
+    --trend-nav-btn-bg-active: var(--button-orange-bg-color);
+    --trend-nav-btn-color-active: #fff;
+
+    /* Destination */
+    --dest-title-color: var(--text-primary);
+    --dest-desc-color: var(--text-primary);
+    --dest-btn-bg: var(--button-orange-bg-color);
+    --dest-btn-bg-hover: #ff893f;
+    --dest-card-radius: 14px;
+    --dest-card-overlay: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.05) 65%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    --dest-rating-bg: #ffffff;
+    --dest-rating-color: var(--button-orange-bg-color);
+    --dest-rating-shadow: 0 4px 12px rgba(15, 34, 55, 0.12);
+
+    /* Newsletter */
+    --newsletter-bg: #e3c300;
+    --newsletter-title-color: #ffffff;
+    --newsletter-desc-color: #ffffff;
+    --newsletter-shape-color: rgba(0, 0, 0, 0.18);
+    --newsletter-shape-color-right: rgba(0, 0, 0, 0.12);
+    --newsletter-input-bg: #ffffff;
+    --newsletter-input-border: #ffffff;
+    --newsletter-input-color: #2d3134;
+    --newsletter-input-placeholder: #6d7175;
+    --newsletter-input-shadow: 0 4px 14px rgba(15, 34, 55, 0.15);
+    --newsletter-btn-bg: #ff7b29;
+    --newsletter-btn-bg-hover: #ff8f48;
+    --newsletter-btn-color: #ffffff;
+
     /* Font size */
     --h1-fontSize: 62px;
     --h2-fontSize: 40px;
@@ -91,6 +163,58 @@
     --hero-brush-filter: saturate(1) brightness(1);
     --hero-secondary-text: var(--text-description);
     --hero-highlight-number: var(--stats-color);
+
+    /* Tour */
+    --tours-heading-color: var(--text-primary);
+    --tours-desc-color: var(--text-primary);
+    --tour-see-all-bg: var(--button-orange-bg-color);
+    --tour-see-all-bg-hover: #ff893f;
+    --tour-card-bg: #2c2f32;
+    --tour-card-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+    --tour-card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.65);
+    --tour-price-color: var(--button-orange-bg-color);
+    --tour-meta-color: #b3bcc5;
+
+    /* Why Choose Us (dark) */
+    --why-section-bg: #2d2f31;
+    --why-icon-bg: rgba(255, 123, 41, 0.16);
+    --why-icon-border: 1px solid rgba(255, 255, 255, 0.08);
+    --why-icon-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    --why-item-title-color: var(--text-primary);
+    --why-item-text-color: #b3bcc5;
+
+    /* Trending Tour */
+    --trend-card-bg: #2c2f32;
+    --trend-card-border: #414446;
+    --trend-card-border-hover: #4d5154;
+    --trend-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+    --trend-card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.65);
+    --trend-desc-color: #b3bcc5;
+    --trend-nav-btn-bg: #2c2f32;
+    --trend-nav-btn-border: #414446;
+    --trend-nav-btn-color: #e2e5e7;
+
+    /* Destination */
+    --dest-desc-color: #b3bcc5;
+    --dest-btn-bg: var(--button-orange-bg-color);
+    --dest-btn-bg-hover: #ff8f48;
+    --dest-rating-bg: #2c2f32;
+    --dest-rating-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+
+    /* Newsletter */
+    --newsletter-bg: #e3c300;
+    --newsletter-title-color: #ffffff;
+    --newsletter-desc-color: #ffffff;
+    --newsletter-shape-color: rgba(0, 0, 0, 0.35);
+    --newsletter-shape-color-right: rgba(0, 0, 0, 0.28);
+    --newsletter-input-bg: #2d2f31;
+    --newsletter-input-border: #2d2f31;
+    --newsletter-input-color: #ececec;
+    --newsletter-input-placeholder: #b3bcc5;
+    --newsletter-input-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+    --newsletter-btn-bg: #ff7b29;
+    --newsletter-btn-bg-hover: #ff8f48;
+    --newsletter-btn-color: #ffffff;
 
     /* Text Color */
     --text-primary: #ececec;
