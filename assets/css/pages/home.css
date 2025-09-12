@@ -983,7 +983,7 @@
     font-size: 1.9rem;
     font-weight: 800;
     margin: 0 0 34px;
-    color: #0f2237;
+    color: var(--text-primary);
 }
 
 .tour-types__grid {
