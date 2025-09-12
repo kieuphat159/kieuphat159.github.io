@@ -3,7 +3,7 @@
     display: flex;
     gap: 56px;
     align-items: flex-start;
-    margin-top: 34px;
+    margin-top: 50px;
 }
 .tour-details-hero__media {
     flex: 1 1 460px;
@@ -184,43 +184,55 @@ html.dark .tour-details-hero__badge {
 
 /* Responsive */
 @media (max-width: 991.98px) {
-    /* Hero */
     .tour-details-hero {
-        gap: 40px;
-    }
-    .tour-details-hero__cta-row {
         flex-direction: column;
-        align-items: flex-start;
-    }
-    .tour-details-hero__book-btn {
-        align-self: flex-start;
-    }
-}
-@media (max-width: 575.98px) {
-    /* Hero */
-    .tour-details-hero {
         gap: 32px;
         margin-top: 28px;
     }
-    .tour-details-hero__title {
-        font-size: 1.85rem;
+    .tour-details-hero__media,
+    .tour-details-hero__content {
+        max-width: 100%;
+        flex: 0 0 100%;
     }
     .tour-details-hero__thumb {
-        border-radius: 12px;
+        border-radius: 18px;
     }
-    .tour-details-hero__play {
-        width: 60px;
-        height: 60px;
+    .tour-details-hero__title {
+        font-size: 2rem;
+        line-height: 1.18;
+        max-width: 100%;
     }
     .tour-details-hero__meta-box {
         padding: 16px 18px 18px;
+        max-width: 100%;
     }
-    .tour-details-hero__facts {
-        font-size: 0.68rem;
-        gap: 10px;
+    .tour-details-hero__cta-row {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: nowrap;
+    }
+    .tour-details-hero__price-wrap {
+        gap: 8px;
     }
     .tour-details-hero__book-btn {
-        width: 100%;
-        text-align: center;
+        padding: 16px 38px;
+        font-size: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 14px 30px rgba(255, 123, 41, 0.3);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .tour-details-hero__title {
+        font-size: 1.85rem;
+    }
+    .tour-details-hero__cta-row {
+        flex-wrap: wrap;
+        gap: 18px 24px;
+    }
+    .tour-details-hero__book-btn {
+        margin-left: auto;
     }
 }
