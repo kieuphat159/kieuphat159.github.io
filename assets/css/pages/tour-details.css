@@ -476,8 +476,6 @@ html.dark .tour-details-hero__badge {
         gap: 24px;
         align-items: stretch;
         max-width: 100vw;
-        margin-left: 50%;
-        transform: translateX(-50%);
     }
     .review-summary,
     .review-form {
