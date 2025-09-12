@@ -191,6 +191,43 @@ h4 {
 }
 
 .btn-blue {
+        cursor: pointer;
+        padding: 20px 40px;
+        outline: none;
+        border: none;
+        background: var(--button-blue-bg-color);
+        border-radius: 12px;
+
+        /* Text */
+        color: #fff;
+        text-align: center;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px; /* 100% */
+        letter-spacing: 0.18px;
+
+        transition: all 0.3s ease;
+}
+
+.btn-black {
+        cursor: pointer;
+        padding: 20px 40px;
+        outline: none;
+        border: none;
+        background: var(--button-black-bg-color);
+        border-radius: 12px;
+
+        /* Text */
+        color: #fff;
+        text-align: center;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px; /* 100% */
+        letter-spacing: 0.18px;
+
+        transition: all 0.3s ease;
 }
 
 .newsletter {
