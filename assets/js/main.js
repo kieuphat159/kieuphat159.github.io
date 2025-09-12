@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     load("#header", "./templates/header.html", () => {
         activateNavLink();
         handleHashChange();
+        setupThemeToggle();
     });
 
     // Chỗ này lưu ý nếu đem hàm handlehashchange ra ngoài thì nó sẽ chạy trước khi header được load xong và có thể gây lỗi
@@ -104,3 +105,27 @@ window.addEventListener("resize", function () {
         if (sideMenuOverlay) sideMenuOverlay.classList.remove("active");
     }
 });
+
+// Dark mode toggle
+function setupThemeToggle() {
+    const btn = document.getElementById("themeToggle");
+    if (!btn) return;
+    const root = document.documentElement;
+
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+        root.classList.add("dark");
+        btn.setAttribute("data-mode", "dark");
+        btn.setAttribute("aria-pressed", "true");
+    } else {
+        btn.setAttribute("data-mode", "light");
+    }
+
+    btn.addEventListener("click", () => {
+        const isDark = root.classList.toggle("dark");
+        // Nếu trước đó chưa có class dark thì isDark sẽ là true vì nó sẽ thêm class dark và, ngược lại là false
+        btn.setAttribute("data-mode", isDark ? "dark" : "light");
+        btn.setAttribute("aria-pressed", isDark ? "true" : "false");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+}

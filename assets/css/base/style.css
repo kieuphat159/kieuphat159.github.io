@@ -9,6 +9,32 @@
     --footer-divider-color: rgba(210, 208, 192, 0.21);
     --social-icon-border-color: #333;
 
+    /* Hero */
+    --hero-gradient-orange-start: #ff8a3d;
+    --hero-gradient-orange-end: #ff7b29;
+    --hero-btn-primary-shadow: 0 12px 24px rgba(255, 123, 41, 0.28);
+    --hero-btn-icon-shadow: 0 8px 20px rgba(255, 123, 41, 0.25);
+    --hero-line-color: rgba(45, 49, 52, 0.18);
+    --hero-info-item-bg: #ffffff;
+    --hero-info-item-shadow: 0 6px 18px rgba(42, 203, 233, 0.1);
+    --hero-info-icon-bg: rgba(255, 123, 41, 0.1);
+    --hero-stat-track: #eef1f4;
+    --hero-stat-progress: #cfe66c;
+    --hero-stat-label: #9aa3ad;
+    --hero-stat-total-label: #93a0b2;
+    --hero-stat-inner-border: #eef1f4;
+    --hero-card-bg: #ffffff;
+    --hero-card-shadow: 0 20px 45px rgba(15, 34, 55, 0.12);
+    --hero-search-bg: #ffffff;
+    --hero-search-shadow: 0 8px 30px rgba(42, 203, 233, 0.12);
+    --hero-search-button-bg: #0f2237;
+    --hero-search-button-bg-hover: #102b4c;
+    --hero-search-button-color: #ffffff;
+    --hero-search-field-border: #ececec;
+    --hero-brush-filter: saturate(1.05) brightness(1.02);
+    --hero-secondary-text: var(--text-description);
+    --hero-highlight-number: var(--stats-color);
+
     /* Font size */
     --h1-fontSize: 62px;
     --h2-fontSize: 40px;
@@ -23,7 +49,6 @@
 
     /* Text Color */
     --text-primary: #2d3134;
-    --text-description: #676a6c;
     --text-orange: #ff7b29;
 
     /* Maxwidth */
@@ -41,9 +66,34 @@
     --footer-divider-color: #575551;
     --social-icon-border-color: #ececec;
 
+    /* Hero */
+    --hero-gradient-orange-start: #ff8a3d;
+    --hero-gradient-orange-end: #ff7b29;
+    --hero-btn-primary-shadow: 0 12px 24px rgba(255, 123, 41, 0.4);
+    --hero-btn-icon-shadow: 0 8px 20px rgba(255, 123, 41, 0.35);
+    --hero-line-color: rgba(255, 255, 255, 0.15);
+    --hero-info-item-bg: #2f3236;
+    --hero-info-item-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    --hero-info-icon-bg: rgba(255, 123, 41, 0.18);
+    --hero-stat-track: #3d4248;
+    --hero-stat-progress: #cfe66c;
+    --hero-stat-label: #a7b3c1;
+    --hero-stat-total-label: #b5c2d0;
+    --hero-stat-inner-border: #3d4248;
+    --hero-card-bg: #272a2d;
+    --hero-card-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+    --hero-search-bg: #2c2f32;
+    --hero-search-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+    --hero-search-button-bg: #0f2237;
+    --hero-search-button-bg-hover: #17304a;
+    --hero-search-button-color: #ffffff;
+    --hero-search-field-border: #44484d;
+    --hero-brush-filter: saturate(1) brightness(1);
+    --hero-secondary-text: var(--text-description);
+    --hero-highlight-number: var(--stats-color);
+
     /* Text Color */
     --text-primary: #ececec;
-    --text-description: #d9d9d9;
     --text-orange: #ff7b29;
 
     /* Maxwidth */
@@ -81,7 +131,6 @@ main {
     max-width: var(--screen-max-width);
     margin: 0 auto;
     padding: 0 16px;
-
 }
 
 /* Thêm các style chung khác ở đây */

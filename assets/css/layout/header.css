@@ -43,6 +43,37 @@ header .container {
     content: "";
 }
 
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    margin-left: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: var(--card-bg-color);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 18px;
+    transition: background 0.3s, border-color 0.3s, transform 0.25s;
+}
+.theme-toggle:hover {
+    transform: translateY(-2px);
+}
+html.dark .theme-toggle {
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.theme-toggle::before {
+    content: "☀";
+    transition: opacity 0.25s;
+    color: var(--button-orange-bg-color);
+}
+.theme-toggle[data-mode="dark"]::before {
+    content: "🌙";
+}
+
 .header-main-nav__list {
     display: flex;
     gap: 32px;
@@ -188,5 +219,13 @@ header .container {
 @media (max-width: 767.98px) {
     .header-contact-btn {
         display: none;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .theme-toggle {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
     }
 }
