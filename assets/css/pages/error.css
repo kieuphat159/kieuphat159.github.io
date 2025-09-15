@@ -1,0 +1,110 @@
+:root {
+    --error-title-fontSize: 55px;
+    --error-subtitle-fontSize: 56px;
+    --error-image-maxWidth: 700px;
+}
+
+@media (max-width: 1199.98px) {
+    :root {
+        --error-title-fontSize: 47px;
+        --error-subtitle-fontSize: 48px;
+        --error-image-maxWidth: 600px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    :root {
+        --error-title-fontSize: 39px;
+        --error-subtitle-fontSize: 40px;
+        --error-image-maxWidth: 540px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --error-title-fontSize: 31px;
+        --error-subtitle-fontSize: 32px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    :root {
+        --error-title-fontSize: 27px;
+        --error-subtitle-fontSize: 28px;
+        --error-image-maxWidth: 350px;
+    }
+}
+
+/* ==========================================================================
+   2. STYLE RIÊNG CHO BODY CỦA TRANG LỖI
+   ========================================================================== */
+
+/* Ghi đè style body chung để căn giữa nội dung */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   3. COMPONENT: PAGE NOT FOUND (PNF)
+   ========================================================================== */
+
+.pnf {
+    width: 100%;
+    /* Sử dụng biến --screen-max-width từ file style.css */
+    max-width: var(--screen-max-width);
+}
+
+.pnf__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(40px, 8vw, 100px); /* Khoảng cách linh hoạt */
+}
+
+.pnf__image img {
+    max-width: var(--error-image-maxWidth);
+    height: auto;
+}
+
+.pnf__content {
+    text-align: left;
+}
+
+.pnf__title {
+    font-size: var(--error-title-fontSize);
+    font-weight: 500;
+    /* Sử dụng biến màu từ file style.css */
+    color: var(--text-description);
+    margin-bottom: 5px;
+}
+
+.pnf__subtitle {
+    font-size: var(--error-subtitle-fontSize);
+    font-weight: 700;
+    /* Sử dụng biến màu từ file style.css */
+    color: var(--text-primary);
+}
+
+
+/* ==========================================================================
+   4. THAY ĐỔI LAYOUT CHO MÀN HÌNH NHỎ
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+    .pnf__container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pnf__content {
+        text-align: center;
+    }
+
+    .pnf__title {
+      text-align: left;
+    }
+}

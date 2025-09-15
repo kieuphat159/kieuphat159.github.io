@@ -4,8 +4,48 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Coming Soon</title>
+        <link rel="stylesheet" href="../assets/css/base/reset.css" />
+        <link rel="stylesheet" href="../assets/css/base/style.css" />
+        <link rel="stylesheet" href="../assets/css/pages/coming-soon.css" />
+        
     </head>
     <body>
-        <h1>Trang đang được phát triển</h1>
+        <main class="cs">
+            <div class="cs__container">
+                <div class="cs__image">
+                    <img src="../assets/images/coming-soon/rocket.png" alt="Rocket launching soon illustration">
+                </div>
+
+                <div class="cs__content">
+                    <h1 class="cs__title">Coming Soon</h1>
+
+                    <div id="countdown" class="cs__countdown">
+                        <div class="cs__time-unit">
+                            <span id="days" class="cs__time-number">00</span>
+                            <p class="cs__time-label">Days</p>
+                        </div>
+                        <div class="cs__time-unit">
+                            <span id="hours" class="cs__time-number">00</span>
+                            <p class="cs__time-label">Hours</p>
+                        </div>
+                        <div class="cs__time-unit">
+                            <span id="minutes" class="cs__time-number">00</span>
+                            <p class="cs__time-label">Min</p>
+                        </div>
+                        <div class="cs__time-unit">
+                            <span id="seconds" class="cs__time-number">00</span>
+                            <p class="cs__time-label">Sec</p>
+                        </div>
+                    </div>
+
+                    <p class="cs__subtitle">Please subscribe to newsletter to get updates from us.</p>
+
+                    <form class="cs__form">
+                        <input class="cs__input" type="email" placeholder="Email address" required>
+                        <button class="cs__button btn-orange" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
