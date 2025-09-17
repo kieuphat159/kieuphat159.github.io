@@ -2,6 +2,10 @@ header {
     background: var(--bg-primary);
     padding: 18px 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    position: sticky;
+    top: 0;
+    z-index: 950;
+    transition: box-shadow 0.25s, backdrop-filter 0.25s, background 0.25s, transform 0.35s;
 }
 header .container {
     display: flex;
