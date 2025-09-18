@@ -1,0 +1,193 @@
+/* ==========================================================================
+   1. BIẾN (VARIABLES) RIÊNG CHO TRANG COMING SOON
+   ========================================================================== */
+
+/* * Các biến này được định nghĩa riêng để kiểm soát kích thước trên trang.
+ * Chúng sẽ sử dụng các biến màu sắc và font chữ từ file style.css chung.
+*/
+:root {
+    /* Font Sizes */
+    --cs-title-fontSize: 3rem; /* 48px */
+    --cs-countdown-fontSize: 3rem; /* 48px */
+    --cs-label-fontSize: 0.875rem; /* 14px */
+    --cs-input-fontSize: 1rem; /* 16px */
+    --cs-button-fontSize: 1rem; /* 16px */
+
+    /* Image Sizes */
+    --cs-image-maxWidth: 450px;
+}
+
+/* Responsive Variables */
+@media (max-width: 992px) {
+    :root {
+        --cs-title-fontSize: 2.5rem; /* 40px */
+        --cs-countdown-fontSize: 2.5rem; /* 40px */
+        --cs-image-maxWidth: 350px;
+    }
+}
+
+
+/* ==========================================================================
+   2. GHI ĐÈ STYLE BODY
+   ========================================================================== */
+
+/* Ghi đè style body chung để căn giữa nội dung cho trang này */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+
+/* ==========================================================================
+   3. COMPONENT: COMING SOON (CS)
+   ========================================================================== */
+
+.cs__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8rem;
+    /* Sử dụng biến --screen-max-width từ file style.css */
+    max-width: var(--screen-max-width);
+    width: 100%;
+}
+
+.cs__image {
+    flex: 1;
+    text-align: center;
+}
+
+.cs__image img {
+    max-width: var(--cs-image-maxWidth);
+    width: 100%;
+    height: auto;
+}
+
+.cs__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ==========================================================================
+   4. ELEMENTS TRONG BLOCK CS
+   ========================================================================== */
+
+.cs__title {
+    font-size: var(--cs-title-fontSize);
+    font-weight: 700;
+    /* Sử dụng biến màu từ file style.css */
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.cs__countdown {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.cs__time-unit {
+    text-align: center;
+}
+
+.cs__time-number {
+    display: block;
+    font-size: var(--cs-countdown-fontSize);
+    font-weight: 700;
+    /* Sử dụng biến màu từ file style.css */
+    color: var(--text-orange);
+    line-height: 1.1;
+}
+
+.cs__time-label {
+    font-size: var(--cs-label-fontSize);
+    /* Sử dụng biến màu từ file style.css */
+    color: var(--text-description);
+    text-transform: uppercase;
+}
+
+.cs__subtitle {
+    /* Sử dụng biến màu từ file style.css */
+    color: var(--text-description);
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    max-width: 400px;
+}
+
+.cs__form {
+    display: flex;
+    gap: 1rem;
+    max-width: 450px;
+}
+
+.cs__input {
+    flex-grow: 1;
+    padding: 0.875rem 1rem;
+    font-size: var(--cs-input-fontSize);
+    /* Tận dụng biến có sẵn từ style.css */
+    border: 1px solid var(--trend-card-border); 
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border-color 0.3s;
+    background-color: var(--card-bg-color);
+    color: var(--text-primary);
+}
+
+.cs__input:focus {
+    border-color: var(--text-orange);
+}
+
+/* Nút đã có class .btn-orange từ file style.css */
+/* Class .cs__button dùng để ghi đè padding và font-size cho nhỏ hơn */
+.cs__button {
+    padding: 0.875rem 1.5rem;
+    font-size: var(--cs-button-fontSize);
+}
+
+
+/* ==========================================================================
+   5. RESPONSIVE CHO MOBILE
+   ========================================================================== */
+@media (max-width: 992px) {
+    body {
+        padding: 1.5rem;
+        /* THAY ĐỔI: Chuyển body về dạng block bình thường, không dùng flex nữa */
+        display: block;
+    }
+
+    .cs__container {
+        flex-direction: column; /* Chuyển thành layout cột */
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .cs__content {
+        order: -1; /* Đưa nội dung lên trên ảnh */
+        align-items: center; /* Căn giữa các item con */
+    }
+
+    .cs__image {
+        margin-top: 2rem;
+    }
+
+    .cs__countdown {
+        justify-content: center;
+    }
+
+    .cs__form {
+        width: 100%;
+        flex-direction: column; /* Xếp button xuống dưới */
+        gap: 1rem;
+    }
+
+    .cs__button {
+        align-self: flex-start; /* Căn lề trái button */
+        width: 60%;
+        max-width: 250px;
+    }
+}
