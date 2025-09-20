@@ -422,7 +422,7 @@ a {
 }
 
 /* Override header styling ONLY for Destinations page and ContactUs page */
-body:has(.banner) .header {
+body:has(.des-banner) .header {
     position: absolute !important;
     top: 0;
     left: 0;

@@ -1,5 +1,5 @@
 /* Destinations Hero Banner */
-.banner {
+.des-banner {
     position: relative;
     min-height: 100vh;
     width: 100vw;
@@ -14,7 +14,7 @@
     background-repeat: no-repeat;
 }
 
-.banner::before {
+.des-banner::before {
     content: '';
     position: absolute;
     top: 0;
