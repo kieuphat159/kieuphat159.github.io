@@ -420,3 +420,16 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+/* Override header styling ONLY for Destinations page and ContactUs page */
+body:has(.des-banner) .header {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    transition: none !important;
+}
