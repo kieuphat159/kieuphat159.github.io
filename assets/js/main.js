@@ -58,8 +58,8 @@ function loadPage(page) {
 }
 
 function updateActiveNavLink(page) {
-    document.querySelectorAll(".main-nav li").forEach((li) => li.classList.remove("active"));
-    const activeLink = document.querySelector(`.main-nav a[data-page="${page}"]`);
+    document.querySelectorAll(".header-main-nav li").forEach((li) => li.classList.remove("active"));
+    const activeLink = document.querySelector(`.header-main-nav a[data-page="${page}"]`);
     if (activeLink) {
         activeLink.parentElement.classList.add("active");
     }
