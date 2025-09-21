@@ -5,6 +5,7 @@
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: url("../../images/online-booking/onl-banner.png") center/cover
@@ -41,10 +42,10 @@
 
 .onl-banner__title {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(3.5rem, 8vw, 12rem);
+  font-size: clamp(3.5rem, 7vw, 12rem);
   font-weight: 800;
   color: #ff6b35;
-  margin-bottom: 2.5rem;
+  margin: 5.5rem 0px;
   text-transform: uppercase;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -66,8 +67,9 @@
 /* Booking Form */
 .booking-form {
   border-radius: 12px;
-  max-width: 1600px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  max-width: 1000px;
+  width: 100%;
   position: relative;
   z-index: 2;
   animation: fadeInUp 1s ease-out;
@@ -78,6 +80,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 2rem;
+  max-width: 100%;
 }
 
 .form-group {
