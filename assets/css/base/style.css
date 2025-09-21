@@ -421,8 +421,7 @@ a {
     text-decoration: none;
 }
 
-/* Override header styling ONLY for Destinations page and ContactUs page */
-body:has(.des-banner) .header {
+body:has(.onl-banner, .banner) .header {
     position: absolute !important;
     top: 0;
     left: 0;
