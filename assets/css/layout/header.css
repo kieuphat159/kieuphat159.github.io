@@ -12,6 +12,7 @@ header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 0;
 }
 
 .header-logo {
@@ -19,7 +20,10 @@ header .container {
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    z-index: 3;
 }
+
+
 .header-logo__circle {
     background: var(--button-orange-bg-color);
     color: var(--bg-primary);
@@ -87,6 +91,11 @@ html.dark .theme-toggle {
     padding: 0;
 }
 .header-main-nav__item {
+    z-index: 3;
+}
+
+.header-actions {
+    z-index: 3;
 }
 .header-main-nav__link {
     text-decoration: none;
