@@ -1,0 +1,351 @@
+#about .about-banner {
+        margin-left: calc(-50vw + 50%);
+        display: block;
+}
+.about-banner {
+        position: relative;
+        height: 590px;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url("../../images/contact-us/contact-us-hero.png") center/cover no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
+        margin-top: -120px;
+}
+
+.about-banner__title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: var(--thumbnail-fontSize);
+        font-weight: 700;
+        text-align: center;
+        color: var(--hero-gradient-orange-end);
+}
+
+/* About content */
+.about-content {
+        margin-top: 140px;
+}
+
+.about-who-we-are__container {
+        display: grid;
+        overflow: hidden;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 120px;
+        align-items: center;
+}
+.about-who-we-are__subtitle {
+        font-family: Inter;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px;
+        color: var(--text-orange);
+}
+.about-who-we-are__title {
+        margin-top: 10px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 70px;
+}
+.about-who-we-are__description {
+        max-width: 528px;
+        margin-top: 20px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+        color: var(--text-description);
+}
+
+.about-who-we-are__image {
+        max-width: 870px;
+        max-height: 482px;
+        object-fit: cover;
+}
+
+.about-who-we-are__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+}
+
+/* Why choose us */
+.about-why-choose-us {
+        margin-top: 140px;
+}
+
+.about-why-choose-us__container {
+        display: grid;
+        overflow: hidden;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 120px;
+        align-items: center;
+}
+
+.about-why-choose-us__image {
+        max-width: 436px;
+        max-height: 518px;
+        width: 100%;
+        height: 100%;
+}
+
+.about-why-choose-us__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+}
+.about-why-choose-us__title {
+        font-style: normal;
+        font-weight: 700;
+        line-height: 50px;
+}
+.about-why-choose-us__description {
+        margin-top: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+        color: var(--text-description);
+}
+
+.about-why-choose-us__list {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+}
+
+.about-why-choose-us__item {
+        background-color: var(--bg-primary);
+        padding: 20px;
+        box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        column-gap: 30px;
+}
+
+.about-why-choose-us__item-image {
+        max-width: 55px;
+        max-height: 55px;
+}
+
+.about-why-choose-us__item-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+}
+
+.about-why-choose-us__item-content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+}
+
+.about-why-choose-us__item-title {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 26px;
+}
+
+.about-why-choose-us__item-description {
+        max-width: 330px;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--text-description);
+}
+
+/* Tour guide */
+.about-tour-guide {
+        margin-top: 140px;
+}
+
+.about-tour-guide__title {
+        font-style: normal;
+        font-weight: 700;
+        line-height: 50px;
+        text-align: center;
+}
+
+.about-tour-guide__list {
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 30px;
+}
+
+.about-tour-guide__item {
+        width: 100%;
+}
+
+.about-tour-guide__item-image {
+        border-radius: 12px;
+        overflow: hidden;
+        width: 100%;
+        height: 306px;
+}
+.about-tour-guide__item-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+}
+
+.about-tour-guide__item-content {
+        margin-top: 20px;
+}
+
+.about-tour-guide__item-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+.about-tour-guide__item-name {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 30px;
+}
+
+.about-tour-guide__item-social-icon {
+        width: 18px;
+        height: 18px;
+        object-fit: cover;
+        transition: all 0.3s ease;
+}
+.about-tour-guide__item-social-icon:hover {
+        scale: 1.2;
+}
+
+.about-tour-guide__item-description {
+        margin-top: 10px;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+}
+
+/* `xxl` applies to x-large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {
+        .about-who-we-are__container,
+        .about-why-choose-us__container {
+                column-gap: 80px;
+        }
+}
+
+/* `xl` applies to large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+        .about-who-we-are__container,
+        .about-why-choose-us__container {
+                column-gap: 40px;
+        }
+
+        .about-who-we-are__title {
+                font-size: 48px;
+                line-height: 60px;
+        }
+}
+
+/* `lg` applies to medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+        .about-banner {
+                height: 450px;
+        }
+
+        .about-content,
+        .about-why-choose-us,
+        .about-tour-guide {
+                margin-top: 100px;
+        }
+
+        .about-who-we-are__container,
+        .about-why-choose-us__container {
+                grid-template-columns: 1fr;
+                row-gap: 50px;
+        }
+
+        .about-why-choose-us__image {
+                order: 2;
+        }
+        .about-why-choose-us__content {
+                order: 1;
+        }
+
+        .about-tour-guide__list {
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 30px;
+        }
+}
+
+/* `md` applies to small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+        .about-banner {
+                height: 350px;
+        }
+        .about-content,
+        .about-why-choose-us,
+        .about-tour-guide {
+                margin-top: 80px;
+        }
+
+        .about-who-we-are__title {
+                font-size: 36px;
+                line-height: 46px;
+        }
+        .about-why-choose-us__title,
+        .about-tour-guide__title {
+                font-size: 32px;
+                line-height: 42px;
+        }
+
+        .about-tour-guide__list {
+                grid-template-columns: 1fr;
+                row-gap: 40px;
+                justify-items: center;
+        }
+        .about-tour-guide__item {
+                max-width: 370px;
+        }
+
+        .about-who-we-are__content {
+                text-align: center;
+        }
+        .about-who-we-are__description {
+                margin-left: auto;
+                margin-right: auto;
+        }
+}
+
+/* `sm` applies to x-small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+        .about-banner {
+                height: 280px;
+                margin-top: -80px;
+        }
+
+        .about-content,
+        .about-why-choose-us,
+        .about-tour-guide {
+                margin-top: 60px;
+        }
+
+        .about-why-choose-us__item {
+                flex-direction: column;
+                text-align: center;
+                row-gap: 15px;
+                padding: 20px 15px;
+        }
+        .about-why-choose-us__item-description {
+                max-width: 100%;
+        }
+}
