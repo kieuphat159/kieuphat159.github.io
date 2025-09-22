@@ -148,7 +148,7 @@
 
 .btn-see-more {
   background: var(--button-orange-bg-color);
-  color: #ffffff;
+  color: var(--text-gray);
   border: none;
   padding: 16px 32px;
   border-radius: 8px;
