@@ -58,19 +58,11 @@ function loadPage(page) {
 }
 
 function updateActiveNavLink(page) {
-<<<<<<< HEAD
-        document.querySelectorAll(".main-nav li").forEach((li) => li.classList.remove("active"));
-        const activeLink = document.querySelector(`.main-nav a[data-page="${page}"]`);
+        document.querySelectorAll(".header-main-nav li").forEach((li) => li.classList.remove("active"));
+        const activeLink = document.querySelector(`.header-main-nav a[data-page="${page}"]`);
         if (activeLink) {
                 activeLink.parentElement.classList.add("active");
         }
-=======
-    document.querySelectorAll(".header-main-nav li").forEach((li) => li.classList.remove("active"));
-    const activeLink = document.querySelector(`.header-main-nav a[data-page="${page}"]`);
-    if (activeLink) {
-        activeLink.parentElement.classList.add("active");
-    }
->>>>>>> cca1e1a88e1394751f3a6a3a4555a10595160059
 }
 
 // Hàm kích hoạt liên kết điều hướng và thiết lập menu mobile
@@ -92,15 +84,9 @@ function activateNavLink() {
 }
 
 function handleHashChange() {
-<<<<<<< HEAD
-        const page = window.location.hash.replace("#", "") || "tour-details";
+        const page = window.location.hash.replace("#", "") || "blog";
         loadPage(page);
         updateActiveNavLink(page);
-=======
-    const page = window.location.hash.replace("#", "") || "contact-us";
-    loadPage(page);
-    updateActiveNavLink(page);
->>>>>>> cca1e1a88e1394751f3a6a3a4555a10595160059
 }
 
 // Load trang chủ khi trang được tải lần đầu
