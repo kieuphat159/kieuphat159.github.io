@@ -179,106 +179,66 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
+/* ===== Destinations Responsive theo global breakpoints ===== */
+
+/* Desktop lớn (<1400px) — đã có :root, chỉ cần co lưới nhẹ nếu muốn */
+@media (max-width: 1399.98px) {
   .destinations-grid__wrapper {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
   }
 }
 
-@media (max-width: 768px) {
-  .des-banner {
-    min-height: 80vh;
-    background-attachment: scroll;
-    padding-top: 80px;
-    width: 100%;
-    margin-left: 0;
+/* Desktop vừa (<1200px) */
+@media (max-width: 1199.98px) {
+  .destinations-grid__wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
   }
+}
 
-  .des-banner__title {
-    font-size: clamp(2.5rem, 10vw, 4rem);
-    margin-bottom: 1rem;
+/* Tablet (<992px) */
+@media (max-width: 991.98px) {
+  .destinations-grid {
+    padding: 4rem 0;
   }
-
-  .des-banner__subtitle {
-    font-size: clamp(1rem, 4vw, 1.25rem);
+  .destinations-grid__wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
+  .destination-card__image {
+    height: 200px;
+  }
+}
 
+/* Landscape phone (<768px) */
+@media (max-width: 767.98px) {
   .destinations-grid {
     padding: 3rem 0;
   }
-
-  .destinations-grid .container {
-    padding: 0 1rem;
-  }
-
   .destinations-grid__wrapper {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
-
   .destination-card__image {
     height: 180px;
   }
-
-  .destination-card__title {
-    font-size: 1.125rem;
-    padding: 1.25rem 1rem;
-  }
 }
 
-@media (max-width: 480px) {
-  .des-banner {
-    min-height: 70vh;
-    padding-top: 70px;
-  }
-
-  .des-banner__title {
-    font-size: clamp(2rem, 12vw, 3rem);
-  }
-
-  .des-banner__subtitle {
-    font-size: clamp(0.875rem, 5vw, 1.125rem);
-  }
-
+/* Portrait phone (<576px) */
+@media (max-width: 575.98px) {
   .destinations-grid {
     padding: 2rem 0;
   }
-
   .destinations-grid__wrapper {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(12, 1fr);
     gap: 1rem;
   }
-
   .destination-card__image {
     height: 160px;
   }
-
   .destination-card__title {
     font-size: 1rem;
     padding: 1rem;
-  }
-
-  .btn-see-more {
-    padding: 12px 24px;
-    font-size: 0.9rem;
-  }
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .destinations-grid {
-    background-color: #1a1a1a;
-  }
-
-  .destination-card {
-    background: transparent;
-  }
-
-  .destination-card__title {
-    color: #ffffff;
   }
 }
