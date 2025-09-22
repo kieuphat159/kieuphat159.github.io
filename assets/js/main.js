@@ -84,7 +84,7 @@ function activateNavLink() {
 }
 
 function handleHashChange() {
-        const page = window.location.hash.replace("#", "") || "blog";
+        const page = window.location.hash.replace("#", "") || "blog-detail";
         loadPage(page);
         updateActiveNavLink(page);
 }
