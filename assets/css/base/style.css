@@ -421,7 +421,7 @@ a {
     text-decoration: none;
 }
 
-body:has(.onl-banner, .banner) .header {
+body:has(.onl-banner, .des-banner) .header {
     position: absolute !important;
     top: 0;
     left: 0;
