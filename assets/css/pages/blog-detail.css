@@ -4,7 +4,7 @@
 
 .blog-detail-container {
         display: grid;
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-columns: 1.8fr 1fr;
         align-items: start;
         column-gap: 64px;
 }
