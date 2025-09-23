@@ -200,7 +200,7 @@
     color: var(--hero-stat-total-label);
 }
 
-/* Info list bên phải ảnh */
+/* Info list */
 .hero__info-list {
     position: absolute;
     top: 70px;
@@ -257,8 +257,9 @@
 }
 .hero-search__group label {
     font-size: 0.95rem;
-    color: #8a8d90;
+    color: var(--text-primary);
     margin-bottom: 6px;
+    font-weight: 600;
 }
 .hero-search__group select {
     height: 48px;
@@ -267,7 +268,8 @@
     font-size: 1rem;
     background: var(--hero-search-bg);
     border: 1px solid var(--hero-search-field-border);
-    color: var(--text-primary);
+    color: var(--text-description);
+    font-family: inherit;
 }
 .hero-search__btn {
     display: inline-flex;
@@ -519,7 +521,6 @@
 }
 
 /* ==== Trending Section ==== */
-
 .trending__head {
     display: flex;
     justify-content: space-between;
@@ -701,11 +702,11 @@
 }
 
 /* ==== Top Destination Section ==== */
-.destinations {
+.home-destinations {
     margin-top: 90px;
 }
 
-.destinations__head {
+.home-destinations__head {
     display: flex;
     justify-content: space-between;
     gap: 32px;
@@ -714,14 +715,14 @@
     margin-bottom: 34px;
 }
 
-.destinations__title {
+.home-destinations__title {
     margin: 0 0 10px;
     font-size: 1.9rem;
     font-weight: 800;
     color: var(--dest-title-color);
 }
 
-.destinations__desc {
+.home-destinations__desc {
     margin: 0;
     font-size: 0.85rem;
     line-height: 1.5;
@@ -729,7 +730,7 @@
     color: var(--dest-desc-color);
 }
 
-.destinations__btn {
+.home-destinations__btn {
     background: var(--dest-btn-bg);
     color: #fff;
     padding: 14px 30px;
@@ -743,12 +744,12 @@
     box-shadow: 0 10px 22px rgba(255, 123, 41, 0.25);
     white-space: nowrap;
 }
-.destinations__btn:hover {
+.home-destinations__btn:hover {
     background: var(--dest-btn-bg-hover);
     transform: translateY(-2px);
 }
 
-.destinations__grid {
+.home-destinations__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 26px;
@@ -845,7 +846,6 @@
     z-index: 0;
 }
 .newsletter::before {
-    /* hình tam giác / mũi tên bên trái */
     top: 18px;
     left: 44px;
     width: 74px;
@@ -854,7 +854,6 @@
     clip-path: polygon(0 50%, 100% 0, 100% 100%);
 }
 .newsletter::after {
-    /* nửa hình tròn bên phải */
     bottom: 46px;
     right: 110px;
     width: 54px;
@@ -1005,13 +1004,11 @@
     font-weight: 700;
 }
 
+/* Media Queries */
 @media (max-width: 1199.98px) {
-    /* Tour */
     .tours__list {
         grid-template-columns: repeat(2, minmax(230px, 1fr));
     }
-
-    /* Why Choose Us */
     .why__inner {
         flex-direction: column;
         align-items: center;
@@ -1024,28 +1021,21 @@
     .why__item-text {
         max-width: 100%;
     }
-
-    /* Tour Types */
     .tour-types__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 991.98px) {
-    /* Why Choose Us */
     .why {
         padding: 56px 32px;
     }
     .why__inner {
         gap: 48px;
     }
-
-    /* Trending Tour */
     .trend-card {
         flex: 0 0 280px;
     }
-
-    /* Hero section */
     .hero {
         flex-direction: column;
         align-items: flex-start;
@@ -1067,12 +1057,6 @@
         margin-left: auto;
         margin-right: auto;
     }
-    .hero__image-group::before {
-        right: 40px;
-        top: 20px;
-        width: 360px;
-        height: 220px;
-    }
     .hero__info-list {
         right: 0;
     }
@@ -1083,7 +1067,6 @@
 }
 
 @media (max-width: 767.98px) {
-    /* Hero section */
     .hero__title {
         font-size: clamp(2rem, 8vw, 2.6rem);
     }
@@ -1106,8 +1089,6 @@
         top: 8px;
         width: 72vw;
     }
-
-    /* Tour */
     .tours__list {
         grid-template-columns: 1fr;
     }
@@ -1118,8 +1099,6 @@
     .tours__see-all {
         align-self: flex-start;
     }
-
-    /* Why Choose Us */
     .why {
         padding: 48px 24px;
     }
@@ -1135,8 +1114,6 @@
         aspect-ratio: 16 / 11;
         border-radius: 28px;
     }
-
-    /* Trending Tour */
     .trend-card {
         flex: 0 0 100%;
         max-width: 100%;
@@ -1144,8 +1121,6 @@
     .trend-list {
         gap: 20px;
     }
-
-    /* Tour Types */
     .tour-type-card {
         padding: 28px 16px 26px;
         gap: 14px;
@@ -1158,20 +1133,14 @@
 }
 
 @media (max-width: 575.98px) {
-    /* Why Choose Us */
     .why__media {
         display: none;
     }
-
-    /* Trending Tour */
     .trending__head {
         flex-direction: column;
         align-items: flex-start;
     }
     .trending__controls {
-        align-self: flex-start;
-    }
-    .trend-card {
-        flex: 0 0 75%;
+        display: none;
     }
 }

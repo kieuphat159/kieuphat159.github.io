@@ -140,6 +140,12 @@
 
     /* Maxwidth */
     --screen-max-width: 1170px;
+
+    /* Font */
+    --font-body: "Inter", system-ui, sans-serif;
+    --font-heading: "Poppins", "Segoe UI", Arial, sans-serif;
+    --fw-body: 400;
+    --fw-heading: 800;
 }
 
 .dark {
@@ -266,7 +272,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-body);
+    font-weight: var(--fw-body);
     background: var(--bg-primary);
     color: var(--text-primary);
 }
@@ -282,6 +289,16 @@ main {
 }
 
 /* Thêm các style chung khác ở đây */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[class*="__title"] {
+    font-family: var(--font-heading);
+}
+
 h1 {
     font-size: var(--h1-fontSize);
 }
@@ -377,9 +394,6 @@ h4 {
     transition: all 0.3s ease;
 }
 
-.newsletter {
-}
-
 .logo {
     display: flex;
     align-items: center;
@@ -419,6 +433,16 @@ h4 {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+.hero__desc,
+.tours__desc,
+.trending__desc,
+.why__desc,
+.destination-card__type,
+.tour-card__meta,
+p {
+    font-weight: var(--fw-body);
 }
 
 body:has(.onl-banner, .des-banner) .header {
