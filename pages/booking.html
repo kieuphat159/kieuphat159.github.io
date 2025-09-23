@@ -1,61 +1,81 @@
 <section class="booking-hero">
-  <div class="booking-hero__overlay" aria-hidden="true"></div>
-  <div class="container booking-hero__inner">
-    <h1 class="booking__title">Online Booking</h1>
-    <p class="booking__subtitle">Book your tour.</p>
+        <div class="booking-hero__overlay" aria-hidden="true"></div>
+        <div class="container booking-hero__inner">
+                <h1 class="booking__title">Online Booking</h1>
+                <p class="booking__subtitle">Book your tour.</p>
 
-    <form class="booking-form" autocomplete="off">
-      <div class="booking-grid">
-        <!-- Row 1 -->
-        <label class="booking-field">
-          <input type="text" placeholder="Your name" name="name" />
-          <span class="booking-field__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="ic"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5Z"/></svg>
-          </span>
-        </label>
+                <form class="booking-form" autocomplete="off">
+                        <div class="booking-grid">
+                                <!-- Row 1 -->
+                                <label class="booking-field">
+                                        <input title="Name" type="text" placeholder="Your name" name="name" />
+                                        <span class="booking-field__icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" class="ic">
+                                                        <path
+                                                                d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5Z"
+                                                        />
+                                                </svg>
+                                        </span>
+                                </label>
 
-        <label class="booking-field">
-          <input type="tel" placeholder="Phone number" name="phone" />
-          <span class="booking-field__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="ic"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1v3.49a1 1 0 0 1-1 1A17.98 17.98 0 0 1 2 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.56 1 1 0 0 1-.24 1.01l-2.21 2.22Z"/></svg>
-          </span>
-        </label>
+                                <label class="booking-field">
+                                        <input title="Phone" type="tel" placeholder="Phone number" name="phone" />
+                                        <span class="booking-field__icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" class="ic">
+                                                        <path
+                                                                d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1v3.49a1 1 0 0 1-1 1A17.98 17.98 0 0 1 2 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.56 1 1 0 0 1-.24 1.01l-2.21 2.22Z"
+                                                        />
+                                                </svg>
+                                        </span>
+                                </label>
 
-        <label class="booking-field">
-          <input type="email" placeholder="email address" name="email" />
-          <span class="booking-field__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="ic"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z"/></svg>
-          </span>
-        </label>
+                                <label class="booking-field">
+                                        <input title="Email" type="email" placeholder="email address" name="email" />
+                                        <span class="booking-field__icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" class="ic">
+                                                        <path
+                                                                d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z"
+                                                        />
+                                                </svg>
+                                        </span>
+                                </label>
 
-        <!-- Row 2 -->
-        <label class="booking-field booking-field--select">
-          <select name="persons">
-            <option>1 Person</option>
-            <option>2 Persons</option>
-            <option>3 Persons</option>
-            <option>4 Persons</option>
-            <option>Group (5+)</option>
-          </select>
-          <span class="booking-field__icon" aria-hidden="true">▾</span>
-        </label>
+                                <!-- Row 2 -->
+                                <label class="booking-field booking-field--select">
+                                        <select title="Guest" name="persons">
+                                                <option>1 Person</option>
+                                                <option>2 Persons</option>
+                                                <option>3 Persons</option>
+                                                <option>4 Persons</option>
+                                                <option>Group (5+)</option>
+                                        </select>
+                                        <span class="booking-field__icon" aria-hidden="true">▾</span>
+                                </label>
 
-        <label class="booking-field">
-          <input type="date" name="date" placeholder="mm/dd/yyyy" />
-          <span class="booking-field__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="ic"><path d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2ZM3 10v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10Z"/></svg>
-          </span>
-        </label>
+                                <label class="booking-field">
+                                        <input title="Date" type="date" name="date" placeholder="mm/dd/yyyy" />
+                                        <span class="booking-field__icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" class="ic">
+                                                        <path
+                                                                d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2ZM3 10v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10Z"
+                                                        />
+                                                </svg>
+                                        </span>
+                                </label>
 
-        <label class="booking-field">
-          <input type="time" name="time" value="07:00" />
-          <span class="booking-field__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" class="ic"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 11h5v-2h-4V7h-2v6Z"/></svg>
-          </span>
-        </label>
-      </div>
+                                <label class="booking-field">
+                                        <input title="Time" type="time" name="time" value="07:00" />
+                                        <span class="booking-field__icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" class="ic">
+                                                        <path
+                                                                d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 11h5v-2h-4V7h-2v6Z"
+                                                        />
+                                                </svg>
+                                        </span>
+                                </label>
+                        </div>
 
-      <button class="booking-submit" type="submit">Book your tour now!</button>
-    </form>
-  </div>
+                        <button class="booking-submit" type="submit">Book your tour now!</button>
+                </form>
+        </div>
 </section>

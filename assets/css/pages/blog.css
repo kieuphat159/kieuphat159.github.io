@@ -1,37 +1,33 @@
-#blog {
-        margin-top: 136px;
-        position: relative;
-}
-
 .blog__header {
+        margin-top: -76px;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
 .blog__header__title {
-        position: relative;
-        z-index: 3;
-        font-size: 62px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 70px; /* 112.903% */
-        text-align: center;
-}
-
-.blog__header__icon {
         position: absolute;
-        z-index: 0;
-        top: -171px;
-        left: 350px;
+        font-size: 62px;
+        font-weight: 700;
+        text-align: center;
+        z-index: 2;
 }
 
+/* Blog icon responsive */
+.blog__header__icon {
+        max-width: 100%;
+        height: auto;
+        position: relative; /* bỏ absolute để tránh giật layout */
+}
 .blog__header__icon--small {
         display: none;
 }
 
 /* Blog content */
-.blog__content {
+/* .blog__content {
         margin-top: 140px;
-}
+} */
 
 .blog__content__container {
         display: grid;
