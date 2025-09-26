@@ -53,10 +53,26 @@ function setupMobileMenu() {
     }
 }
 
+// Hàm tải trang con vào trong thẻ <main>
 function loadPage(page) {
-    load("main", `./pages/${page}.html`);
+    load("main", `./pages/${page}.html`, () => {
+        // Xóa script cũ nếu có
+        const oldScript = document.getElementById("page-script");
+        if (oldScript) oldScript.remove();
+
+        // Tạo thẻ script mới
+        const script = document.createElement("script");
+        script.id = "page-script";
+        script.src = `./assets/js/pages/${page}.js`;
+        script.async = true;
+        script.onload = () => console.log(`Script for ${page} loaded.`);
+        script.onerror = (e) => console.log(e);
+
+        document.body.appendChild(script);
+    });
 }
 
+// Hàm cập nhật active class cho liên kết điều hướng
 function updateActiveNavLink(page) {
     document.querySelectorAll(".header-main-nav li").forEach((li) => li.classList.remove("active"));
     const activeLink = document.querySelector(`.header-main-nav a[data-page="${page}"]`);
@@ -88,19 +104,18 @@ function handleHashChange() {
     updateActiveNavLink(page);
 }
 
-// Load trang chủ khi trang được tải lần đầu
+// Page loaded event
 document.addEventListener("DOMContentLoaded", () => {
     load("#header", "./templates/header.html", () => {
         activateNavLink();
         handleHashChange();
         setupThemeToggle();
     });
-    // Chỗ này lưu ý nếu đem hàm handlehashchange ra ngoài thì nó sẽ chạy trước khi header được load xong và có thể gây lỗi
     load("#footer", "./templates/footer.html");
     window.addEventListener("hashchange", handleHashChange);
 });
 
-// Đóng menu khi thay đổi kích thước trờ về bản desktop
+// Close side menu khi thay đổi kích thước trở về bản desktop
 window.addEventListener("resize", function () {
     if (window.innerWidth > 991.98) {
         const sideMenu = document.getElementById("sideMenu");
@@ -127,7 +142,6 @@ function setupThemeToggle() {
 
     btn.addEventListener("click", () => {
         const isDark = root.classList.toggle("dark");
-        // Nếu trước đó chưa có class dark thì isDark sẽ là true vì nó sẽ thêm class dark và, ngược lại là false
         btn.setAttribute("data-mode", isDark ? "dark" : "light");
         btn.setAttribute("aria-pressed", isDark ? "true" : "false");
         localStorage.setItem("theme", isDark ? "dark" : "light");
