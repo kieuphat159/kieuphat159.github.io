@@ -238,27 +238,33 @@
 /* `xl` applies to large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
         #blog {
-                margin-top: 62px;
+                margin-top: 200px;
+        }
+        .blog__content {
+                margin-top: 200px;
         }
         .blog__header__icon {
                 position: absolute;
                 z-index: 0;
-                top: -170px;
+                top: -220px;
                 left: 200px;
         }
 }
 
 /* `lg` applies to medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
+        #blog {
+                margin-top: 200px;
+        }
         .blog__header__icon {
                 position: absolute;
                 z-index: 0;
-                top: -140px;
+                top: -220px;
                 left: 100px;
         }
 
         .blog__content {
-                margin-top: 100px;
+                margin-top: 150px;
         }
 
         .blog__content__container {
@@ -291,8 +297,8 @@
         .blog__header__icon {
                 position: absolute;
                 z-index: 0;
-                top: -140px;
-                left: 0px;
+                top: -200px;
+                left: 30px;
         }
 }
 
@@ -314,7 +320,7 @@
         .blog__header__icon {
                 position: absolute;
                 z-index: 0;
-                top: -100px;
-                left: -40px;
+                top: -240px;
+                left: 10px;
         }
 }
