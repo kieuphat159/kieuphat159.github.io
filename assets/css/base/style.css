@@ -460,3 +460,74 @@ body:has(.onl-banner, .des-banner) .header {
     backdrop-filter: none !important;
     transition: none !important;
 }
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading overlay styles - HIỆN MẶC ĐỊNH */
+#page-loading {
+    position: fixed;
+    inset: 0;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(2px);
+    z-index: 9999;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.loading-text {
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* ẨN TẤT CẢ CONTENT CHO ĐẾN KHI READY */
+body:not(.page-ready) #header,
+body:not(.page-ready) .container,
+body:not(.page-ready) #footer {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Hiện content khi ready */
+body.page-ready #header,
+body.page-ready .container,
+body.page-ready #footer {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Ẩn loading khi ready */
+body.page-ready #page-loading {
+    display: none;
+}
+
+/* Dark mode support cho loading */
+.dark #page-loading {
+    background: rgba(0, 0, 0, 0.95);
+    color: #fff;
+}
+
+.dark .loading-text {
+    color: #ccc;
+}
+
+.dark .spinner {
+    border-color: #333;
+    border-top-color: #3498db;
+}
