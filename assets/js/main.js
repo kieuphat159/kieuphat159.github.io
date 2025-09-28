@@ -19,16 +19,32 @@ function load(selector, path, callback) {
     if (cachedTemplates) {
         $(selector).innerHTML = cachedTemplates;
         if (typeof callback === "function") callback();
+        return;
     }
 
     fetch(path)
-        .then((response) => response.text())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then((data) => {
-            $(selector).innerHTML = data;
-            localStorage.setItem(path, data);
+            const element = $(selector);
+            if (element) {
+                element.innerHTML = data;
+                localStorage.setItem(path, data);
+            }
             if (typeof callback === "function") callback();
         })
-        .catch((error) => console.error("Error loading template:", error));
+        .catch((error) => {
+            console.error("Error loading template:", error);
+            const element = $(selector);
+            if (element) {
+                element.innerHTML = "<p>Không thể tải trang. Vui lòng thử lại sau.</p>";
+            }
+            if (typeof callback === "function") callback();
+        });
 }
 
 // Hàm dùng để thiết lập phần điều hướng cho bản mobile khi bấm vào nút 3 gạch
@@ -53,22 +69,110 @@ function setupMobileMenu() {
     }
 }
 
+// Hàm hiển thị và ẩn loading indicator khi tải trang
+function showLoading() {
+    const loading = document.getElementById("page-loading");
+    if (loading) {
+        loading.style.display = "flex";
+        // Ẩn content khi loading
+        document.body.classList.remove("page-ready");
+    }
+}
+
+function hideLoading() {
+    const loading = document.getElementById("page-loading");
+    if (loading) {
+        // Hiện content trước
+        document.body.classList.add("page-ready");
+
+        setTimeout(() => {
+            loading.style.display = "none";
+        }, 150);
+    }
+}
+
 // Hàm tải trang con vào trong thẻ <main>
 function loadPage(page) {
-    load("main", `./pages/${page}.html`, () => {
-        // Xóa script cũ nếu có
+    showLoading();
+
+    load("#main", `./pages/${page}.html`, () => {
+        // Xóa script và CSS cũ nếu có
         const oldScript = document.getElementById("page-script");
         if (oldScript) oldScript.remove();
+
+        const oldCss = document.getElementById("page-style");
+        if (oldCss) oldCss.remove();
+
+        // Tạo thẻ CSS mới
+        const link = document.createElement("link");
+        link.id = "page-style";
+        link.rel = "stylesheet";
+        link.href = `./assets/css/pages/${page}.css`;
 
         // Tạo thẻ script mới
         const script = document.createElement("script");
         script.id = "page-script";
         script.src = `./assets/js/pages/${page}.js`;
         script.async = true;
-        script.onload = () => console.log(`Script for ${page} loaded.`);
-        script.onerror = (e) => console.log(e);
 
+        // Biến theo dõi trạng thái loading
+        let jsLoaded = false;
+        let cssLoaded = false;
+        let jsError = false;
+        let cssError = false;
+
+        // Hàm kiểm tra và ẩn loading
+        function tryHideLoading() {
+            // Chỉ ẩn loading khi cả JS và CSS đều đã được xử lý (thành công hoặc lỗi)
+            if ((jsLoaded || jsError) && (cssLoaded || cssError)) {
+                hideLoading();
+
+                // Log thông tin nếu có lỗi
+                if (jsError) {
+                    console.warn(`Failed to load JavaScript file: ./assets/js/pages/${page}.js`);
+                }
+                if (cssError) {
+                    console.warn(`Failed to load CSS file: ./assets/css/pages/${page}.css`);
+                }
+            }
+        }
+
+        // Xử lý sự kiện cho CSS
+        link.onload = () => {
+            cssLoaded = true;
+            console.log(`CSS loaded successfully: ${page}.css`);
+            tryHideLoading();
+        };
+
+        link.onerror = () => {
+            cssError = true;
+            console.error(`Failed to load CSS: ${page}.css`);
+            tryHideLoading();
+        };
+
+        // Xử lý sự kiện cho JavaScript
+        script.onload = () => {
+            jsLoaded = true;
+            console.log(`JavaScript loaded successfully: ${page}.js`);
+            tryHideLoading();
+        };
+
+        script.onerror = () => {
+            jsError = true;
+            console.error(`Failed to load JavaScript: ${page}.js`);
+            tryHideLoading();
+        };
+
+        document.head.appendChild(link);
         document.body.appendChild(script);
+
+        // Timeout fallback - nếu sau 10 giây vẫn chưa load xong thì ẩn loading
+        setTimeout(() => {
+            if (!((jsLoaded || jsError) && (cssLoaded || cssError))) {
+                console.warn("Loading timeout - hiding loading indicator");
+                hideLoading();
+            }
+        }, 10000);
     });
 }
 
@@ -104,15 +208,19 @@ function handleHashChange() {
     updateActiveNavLink(page);
 }
 
-// Page loaded event
 document.addEventListener("DOMContentLoaded", () => {
+    // Load content
     load("#header", "./templates/header.html", () => {
         activateNavLink();
         handleHashChange();
         setupThemeToggle();
     });
     load("#footer", "./templates/footer.html");
+
     window.addEventListener("hashchange", handleHashChange);
+
+    // Hiện trang luôn
+    document.body.classList.add("page-ready");
 });
 
 // Close side menu khi thay đổi kích thước trở về bản desktop

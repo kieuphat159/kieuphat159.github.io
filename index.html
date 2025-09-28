@@ -1,38 +1,35 @@
 <!-- Trang chủ -->
 <!DOCTYPE html>
 <html lang="vi">
-        <head>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Trang chủ - Travel Company</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trang chủ - Travel Company</title>
 
-                <!-- Import CSS files -->
-                <link rel="stylesheet" href="assets/css/base/reset.css" />
-                <link rel="stylesheet" href="assets/css/base/style.css" />
-                <link rel="stylesheet" href="assets/css/base/responsive.css" />
-                <link rel="stylesheet" href="assets/css/layout/header.css" />
-                <link rel="stylesheet" href="assets/css/layout/footer.css" />
-                <link rel="stylesheet" href="assets/css/pages/home.css" />
-                <link rel="stylesheet" href="assets/css/pages/about.css" />
-                <link rel="stylesheet" href="assets/css/pages/blog.css" />
-                <link rel="stylesheet" href="assets/css/pages/blog-detail.css" />
-                <link rel="stylesheet" href="assets/css/pages/tour-details.css" />
-                <link rel="stylesheet" href="assets/css/pages/contact-us.css" />
-                <link rel="stylesheet" href="assets/css/pages/tour.css" />
-                <link rel="stylesheet" href="assets/css/pages/destinations.css" />
-                <link rel="stylesheet" href="assets/css/pages/online-booking.css" />
+        <!-- Import CSS files -->
+        <link rel="stylesheet" href="assets/css/base/reset.css" />
+        <link rel="stylesheet" href="assets/css/base/style.css" />
+        <link rel="stylesheet" href="assets/css/base/responsive.css" />
+        <link rel="stylesheet" href="assets/css/layout/header.css" />
+        <link rel="stylesheet" href="assets/css/layout/footer.css" />
 
-                <!-- Import JS files -->
-                <script src="assets/js/main.js"></script>
-        </head>
-        <body>
-                <!-- Header -->
-                <header id="header" class="header"></header>
+        <!-- Import JS files -->
+        <script src="assets/js/main.js"></script>
+    </head>
+    <body>
+        <!-- Page loading indicator -->
+        <div id="page-loading">
+            <div class="spinner"></div>
+            <div class="loading-text">Đang tải...</div>
+        </div>
 
-                <!-- Main content -->
-                <div class="container"><main></main></div>
+        <!-- Header -->
+        <header id="header" class="header"></header>
 
-                <!-- Footer -->
-                <footer id="footer" class="footer"></footer>
-        </body>
+        <!-- Main content -->
+        <div class="container"><main id="main"></main></div>
+
+        <!-- Footer -->
+        <footer id="footer" class="footer"></footer>
+    </body>
 </html>
