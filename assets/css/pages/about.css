@@ -312,7 +312,8 @@
 
 /* Newsletter */
 /* ===== Newsletter Section ===== */
-.newsletter {
+
+.about-newsletter {
         margin-top: 100px;
         background: var(--newsletter-bg);
         border-radius: 14px;
@@ -322,14 +323,14 @@
         text-align: center;
         isolation: isolate;
 }
-.newsletter::before,
-.newsletter::after {
+.about-newsletter::before,
+.about-newsletter::after {
         content: "";
         position: absolute;
         pointer-events: none;
         z-index: 0;
 }
-.newsletter::before {
+.about-newsletter::before {
         top: 18px;
         left: 44px;
         width: 74px;
@@ -337,7 +338,7 @@
         background: var(--newsletter-shape-color);
         clip-path: polygon(0 50%, 100% 0, 100% 100%);
 }
-.newsletter::after {
+.about-newsletter::after {
         bottom: 46px;
         right: 110px;
         width: 54px;
@@ -346,29 +347,29 @@
         border-radius: 50%;
         clip-path: inset(50% 0 0 0);
 }
-.newsletter__inner {
+.about-newsletter__inner {
         position: relative;
         z-index: 1;
         max-width: 720px;
         margin: 0 auto;
 }
-.newsletter__title {
+.about-newsletter__title {
         margin: 0 0 14px;
         font-size: 2rem;
         font-weight: 700;
         color: var(--newsletter-title-color);
 }
-.newsletter__desc {
+.about-newsletter__desc {
         margin: 0 0 36px;
         font-size: 0.85rem;
         line-height: 1.55;
         color: var(--newsletter-desc-color);
 }
-.newsletter__form {
+.about-newsletter__form {
         display: flex;
         justify-content: center;
 }
-.newsletter__field {
+.about-newsletter__field {
         display: flex;
         align-items: stretch;
         background: var(--newsletter-input-bg);
@@ -379,7 +380,7 @@
         max-width: 420px;
         width: 100%;
 }
-.newsletter__input {
+.about-newsletter__input {
         flex: 1;
         border: none;
         background: transparent;
@@ -390,10 +391,10 @@
         outline: none;
         min-width: 0;
 }
-.newsletter__input::placeholder {
+.about-newsletter__input::placeholder {
         color: var(--newsletter-input-placeholder);
 }
-.newsletter__submit {
+.about-newsletter__submit {
         border: none;
         background: var(--newsletter-btn-bg);
         color: var(--newsletter-btn-color);
@@ -405,11 +406,11 @@
         align-items: center;
         transition: background 0.25s, transform 0.25s;
 }
-.newsletter__submit:hover {
+.about-newsletter__submit:hover {
         background: var(--newsletter-btn-bg-hover);
         transform: translateY(-2px);
 }
-.newsletter__submit-icon {
+.about-newsletter__submit-icon {
         font-size: 0.85rem;
         line-height: 1;
 }
