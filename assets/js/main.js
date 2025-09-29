@@ -140,7 +140,6 @@ function loadPage(page) {
         // Xử lý sự kiện cho CSS
         link.onload = () => {
             cssLoaded = true;
-            console.log(`CSS loaded successfully: ${page}.css`);
             tryHideLoading();
         };
 
@@ -153,7 +152,6 @@ function loadPage(page) {
         // Xử lý sự kiện cho JavaScript
         script.onload = () => {
             jsLoaded = true;
-            console.log(`JavaScript loaded successfully: ${page}.js`);
             tryHideLoading();
         };
 
