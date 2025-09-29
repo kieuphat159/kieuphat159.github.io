@@ -182,6 +182,7 @@
 .blog__list__item {
         max-width: 100%;
         width: 100%;
+
         display: flex;
         flex-direction: column;
         cursor: pointer;
@@ -189,6 +190,7 @@
 .blog__list__item__image {
         max-width: 100%;
         width: 100%;
+        height: 267px;
         object-fit: cover;
 }
 
