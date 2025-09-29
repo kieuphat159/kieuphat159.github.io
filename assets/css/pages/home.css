@@ -1144,3 +1144,14 @@
         display: none;
     }
 }
+
+/* Lazy loading */
+img[data-src] {
+    background: #f0f0f0; 
+    opacity: 0.7;
+}
+
+img.loaded {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
