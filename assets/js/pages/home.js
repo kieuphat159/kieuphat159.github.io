@@ -5,8 +5,8 @@ class SkeletonLazyLoader {
             threshold: 0.1,
         });
 
-        this.init();
-    }
+                this.init();
+        }
 
     init() {
         setTimeout(() => {
@@ -64,8 +64,8 @@ class SkeletonLazyLoader {
 
         const wrapper = img.closest(".skeleton-wrapper");
 
-        // Preload image
-        const imageLoader = new Image();
+                // Preload image
+                const imageLoader = new Image();
 
         imageLoader.onload = () => {
             img.src = src;
@@ -87,18 +87,20 @@ class SkeletonLazyLoader {
             }
         };
 
-        imageLoader.src = src;
-    }
+                imageLoader.src = src;
+        }
 }
 
 // Khởi tạo
 if ("IntersectionObserver" in window) {
     new SkeletonLazyLoader();
 } else {
-    // Fallback cho browsers cũ
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll("img[data-src]").forEach((img) => {
-            img.src = img.dataset.src;
+        // Fallback cho browsers cũ
+        document.addEventListener("DOMContentLoaded", () => {
+                document.querySelectorAll("img[data-src]").forEach((img) => {
+                        img.src = img.dataset.src;
+                });
         });
-    });
 }
+
+console.log("Main JS");
