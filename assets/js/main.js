@@ -124,7 +124,7 @@ function loadPage(page) {
                         // Tạo thẻ script mới với type="module" để tạo scope riêng
                         const script = document.createElement("script");
                         script.id = "page-script";
-                        script.src = `./assets/js/pages/${page}.js`;
+                        script.src = `./assets/js/pages/${page}.js?v=${Date.now()}`;
                         script.type = "module"; // Quan trọng: tạo scope riêng
                         script.async = true;
 
