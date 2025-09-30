@@ -1,207 +1,267 @@
 /* Ensure box-sizing is applied globally */
-* {
-    box-sizing: border-box;
+.tour-hero {
+        max-width: var(--screen-max-width);
+        margin: 0 auto;
+        padding: 0 16px;
 }
 
 .tour-hero__logo {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
 .tour-hero__logo__icon {
-    max-width: 100%;
-    height: auto;
+        max-width: 100%;
+        height: auto;
 }
 
 .tour-hero__logo__title {
-    position: absolute;
-    font-size: 62px;
-    font-weight: 700;
-    text-align: center;
+        position: absolute;
+        font-size: 62px;
+        font-weight: 700;
+        text-align: center;
 }
 
 .tour-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto); 
-    gap: 30px; /* Reduced from 20px to fit within 1000px */
-    margin-top: 120px;
-    max-width: 1000px; /* Set to 1000px as requested */
-    margin-left: auto; /* Center container */
-    margin-right: auto; /* Center container */
-    padding: 0 15px; /* Prevent edge-to-edge content */
-    overflow-x: hidden; /* Prevent horizontal overflow */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 30px; /* Reduced from 20px to fit within 1000px */
+        max-width: var(--screen-max-width);
+        margin: 0 auto;
+        padding: 0 16px;
+        overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .tour-list__item {
-    display: block;
-    position: relative;
-    max-width: 100%; /* Ensure cards don’t exceed column width */
+        display: block;
+        position: relative;
+        max-width: 100%; /* Ensure cards don’t exceed column width */
 }
 
 .tour-list__item:hover {
-    cursor: pointer;
-    box-shadow: var(--tour-card-shadow-hover);
-    transform: translateY(-3px);
+        cursor: pointer;
+        box-shadow: var(--tour-card-shadow-hover);
+        transform: translateY(-3px);
 }
 
 .tour-list__item__img {
-    width: 100%;
-    height: 333px;
-    border-radius: 10px;
-    overflow: hidden; 
-    position: relative;
+        width: 100%;
+        height: 333px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
 }
 
 .tour-list__item__img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
 }
 
 .tour-list__item__info {
-    height: 110px;
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--hero-search-field-border);
-    align-items: center;
-    border-radius: 10px;
+        height: 110px;
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--hero-search-field-border);
+        align-items: center;
+        border-radius: 10px;
 }
 
 .info__name {
-    font-weight: 700;
-    font-size: var(--h2-fontSize);
-    color: var(--text-primary);
-    padding: 10px; /* Reduced from 30px to fit narrower columns */
+        font-weight: 700;
+        font-size: var(--h3-fontSize);
+        color: var(--text-primary);
+        padding: 10px; /* Reduced from 30px to fit narrower columns */
 }
 
 .info__detail {
-    display: flex;
-    flex-direction: column;
-    padding: 10px; /* Reduced from 30px */
+        display: flex;
+        flex-direction: column;
+        padding: 10px; /* Reduced from 30px */
 }
 
 .info__detail__time {
-    font-size: var(--h5-fontSize);
-    color: var(--text-description);
-    text-align: end;
+        font-size: var(--h5-fontSize);
+        color: var(--text-description);
+        text-align: end;
 }
 
 .info__detail__price {
-    font-size: var(--h3-fontSize);
-    color: var(--text-primary);
-    font-weight: 600;
+        font-size: var(--h3-fontSize);
+        color: var(--text-primary);
+        font-weight: 600;
 }
 
 @media (max-width: 1399.98px) {
-    .tour-list {
-        grid-template-columns: 1fr 1fr;
-        max-width: 1000px;
-        gap: 25px;
-    }
+        .tour-list {
+                grid-template-columns: 1fr 1fr;
+                gap: 25px;
+        }
 
-    .tour-list__item__img {
-        width: 100%;
-        height: 200px;         
-        aspect-ratio: 5 / 3;   
-        border-radius: 10px;
-        overflow: hidden;
-    }
+        .tour-list__item__img {
+                width: 100%;
+                height: 200px;
+                aspect-ratio: 5 / 3;
+                border-radius: 10px;
+                overflow: hidden;
+        }
 }
 
 @media (max-width: 1199.98px) {
-    .tour-list {
-        max-width: 950px;
-        gap: 10px;
-    }
+        .tour-list {
+                gap: 10px;
+        }
 }
 
 @media (max-width: 991.98px) {
-    .tour-list {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        margin-top: 60px;
-        max-width: 1000px;
-        padding: 0 15px;
-    }
+        .tour-list {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                margin-top: 60px;
+                padding: 0 15px;
+        }
 
-    .info__name, .info__detail {
-        padding: 15px;
-    }
+        .info__name,
+        .info__detail {
+                padding: 15px;
+        }
 
-    .tour-list__item__img {
-        width: 100%;
-        height: 170px;         
-        aspect-ratio: 5 / 3;   
-        border-radius: 10px;
-        overflow: hidden;
-    }
+        .tour-list__item__img {
+                width: 100%;
+                height: 170px;
+                aspect-ratio: 5 / 3;
+                border-radius: 10px;
+                overflow: hidden;
+        }
 }
 
 @media (max-width: 767.98px) {
-    .tour-list {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        margin-top: 60px;
-        max-width: 500px;
-        padding: 0 15px;
-    }
+        .tour-list {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 60px;
+                padding: 0 15px;
+        }
 
-    .info__name, .info__detail {
-        padding: 15px;
-    }
+        .info__name,
+        .info__detail {
+                padding: 15px;
+        }
 
-    .tour-list__item__img {
-        width: 100%;
-        height: 0;
-        padding-bottom: 100%; 
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-    }
+        .tour-list__item__img {
+                width: 100%;
+                height: 0;
+                padding-bottom: 100%;
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+        }
 
-    .tour-list__item__img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+        .tour-list__item__img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+        }
 }
 
 @media (max-width: 575.98px) {
-    .tour-list {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        margin-top: 60px;
-        max-width: 100%; /* Full width for small screens */
-        padding: 0 15px;
-    }
+        .tour-list {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 60px;
+                max-width: 100%; /* Full width for small screens */
+                padding: 0 15px;
+        }
 
-    .info__name, .info__detail {
-        padding: 15px;
-    }
+        .info__name,
+        .info__detail {
+                padding: 15px;
+        }
 
-    .tour-list__item__img {
-        width: 100%;
-        height: 0;
-        padding-bottom: 75%; 
-        overflow: hidden;
-        position: relative;
-    }
+        .tour-list__item__img {
+                width: 100%;
+                height: 0;
+                padding-bottom: 75%;
+                overflow: hidden;
+                position: relative;
+        }
 
-    .tour-list__item__img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+        .tour-list__item__img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+        }
+}
+
+.hero-search {
+        margin-top: 36px;
+        background: var(--hero-search-bg);
+        box-shadow: var(--hero-search-shadow);
+        border-radius: 16px;
+        padding: 22px 20px;
+        max-width: 980px;
+        margin-left: auto;
+        margin-right: auto;
+}
+.hero-search__form {
+        display: flex;
+        gap: 18px;
+        align-items: flex-end;
+        flex-wrap: wrap;
+}
+.hero-search__group {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-width: 160px;
+}
+.hero-search__group label {
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+        font-weight: 600;
+}
+.hero-search__group select {
+        height: 48px;
+        padding: 0 12px;
+        border-radius: 10px;
+        font-size: 1rem;
+        background: var(--hero-search-bg);
+        border: 1px solid var(--hero-search-field-border);
+        color: var(--text-description);
+        font-family: inherit;
+}
+.hero-search__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--hero-search-button-bg);
+        color: var(--hero-search-button-color);
+        border: none;
+        border-radius: 12px;
+        height: 52px;
+        padding: 0 26px;
+        font-size: 1.05rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s;
+}
+.hero-search__btn::before {
+        content: "🔍";
+        font-size: 1.05rem;
+}
+.hero-search__btn:hover {
+        background: var(--hero-search-button-bg-hover);
 }
