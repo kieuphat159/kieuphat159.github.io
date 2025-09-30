@@ -1,3 +1,5 @@
+fun;
+
 // --- FAKE DATA cho các bài blog ---
 const blogPosts = [
         {
@@ -178,10 +180,10 @@ function renderPagination() {
         for (let i = 1; i <= totalPages; i++) {
                 let activeClass = i === currentPage ? "pagination__link--active" : "";
                 paginationContainer.innerHTML += `
-            <li class="pagination__item">
-                <button class="pagination__link--${activeClass}" data-page="${i}">${i}</button>
-            </li>
-        `;
+                    <li class="pagination__item">
+                        <button class="pagination__link ${activeClass}" data-page="${i}">${i}</button>
+                    </li>
+                `;
         }
 
         // Nút "Next"
