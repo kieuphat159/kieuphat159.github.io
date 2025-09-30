@@ -95,7 +95,7 @@ const blogPosts = [
 
 // State
 let currentPage = 1;
-const postsPerPage = 5;
+const postsPerPage = 6;
 let currentPosts = [...blogPosts];
 
 // Lấy các phần tử DOM
@@ -113,7 +113,12 @@ function renderPosts() {
         const endIndex = startIndex + postsPerPage;
         const paginatedPosts = currentPosts.slice(startIndex, endIndex);
         if (paginatedPosts.length === 0) {
-                blogListContainer.innerHTML = "<p>No posts found</p>";
+                blogListContainer.innerHTML = `
+                    <div class="no-posts-found">
+                        <h3>No Posts Found</h3>
+                        <p>We couldn't find any blog posts matching your search. Try another keyword!</p>
+                    </div>
+                `;
                 return;
         }
 
@@ -196,6 +201,20 @@ function renderPagination() {
     `;
 }
 
+function renderSkeleton() {
+        blogListContainer.innerHTML = "";
+        for (let i = 0; i < postsPerPage; i++) {
+                const skeletonElement = document.createElement("div");
+                skeletonElement.innerHTML = `
+                <div class="skeleton skeleton-image"></div>
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text"></div>
+            `;
+                blogListContainer.appendChild(skeletonElement);
+        }
+}
+
 // Sự kiện
 
 // Sự kiện click cho các nút phân trang (sử dụng Event Delegation)
@@ -234,9 +253,15 @@ searchInput.addEventListener("input", (event) => {
 
 // Khởi tạo dữ liệu ban đầu
 function updateUI() {
-        renderPosts(currentPosts);
-        renderPagination();
-}
+        renderSkeleton(); // Hiển thị skeleton trước
+        renderPagination(); // Phân trang có thể render luôn
+        paginationContainer.classList.add("blog-fade-out"); // Nhưng tạm ẩn nó đi
 
+        // Giả lập thời gian tải dữ liệu (ví dụ 500ms)
+        setTimeout(() => {
+                renderPosts();
+                paginationContainer.classList.remove("blog-fade-out");
+        }, 500);
+}
 // --- KHỞI CHẠY LẦN ĐẦU ---
 updateUI();
