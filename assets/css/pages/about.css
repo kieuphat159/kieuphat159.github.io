@@ -7,7 +7,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url("../../images/destinations/Banner.png") center/cover no-repeat;
+        background: url("../../images/about/banner.png") center/cover no-repeat;
         background-attachment: fixed;
         background-size: cover;
         background-position: center;
