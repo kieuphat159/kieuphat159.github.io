@@ -1090,7 +1090,7 @@
 
 /* Lazy loading */
 img[data-src] {
-    background: #f0f0f0; 
+    background: #f0f0f0;
     opacity: 0.7;
 }
 
