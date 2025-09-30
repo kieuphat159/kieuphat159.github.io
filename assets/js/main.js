@@ -97,12 +97,11 @@ function updateActiveNavLink(page) {
 }
 
 function loadPage(page) {
-        if (isPageLoading || currentPage1 === page) {
+        if (isPageLoading) {
                 console.log("Page is already loading or loaded");
                 return;
         }
 
-        isPageLoading = true;
         currentPage1 = page;
         showLoading();
 
@@ -285,7 +284,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Load footer
         load("#footer", "./templates/footer.html");
-
         // Chỉ listen hashchange sau khi load xong
         window.addEventListener("hashchange", () => {
                 if (!initialLoad) {
