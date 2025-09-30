@@ -94,7 +94,7 @@ function hideLoading() {
 // Hàm tải trang con vào trong thẻ <main>
 function loadPage(page) {
     showLoading();
-
+    
     load("#main", `./pages/${page}.html`, () => {
         // Xóa script và CSS cũ nếu có
         const oldScript = document.getElementById("page-script");
