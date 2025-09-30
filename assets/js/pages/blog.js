@@ -1,5 +1,3 @@
-fun;
-
 // --- FAKE DATA cho các bài blog ---
 const blogPosts = [
         {
@@ -242,3 +240,5 @@ function updateUI() {
 
 // --- KHỞI CHẠY LẦN ĐẦU ---
 updateUI();
+
+console.log("Blog page script loaded");
