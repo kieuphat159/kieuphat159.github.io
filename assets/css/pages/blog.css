@@ -37,7 +37,7 @@
         font-family: "Poppins", sans-serif;
         font-size: clamp(3.5rem, 8vw, 7rem);
         font-weight: 700;
-        color: #ff6b35;
+        color: var(--text-orange);
         margin-bottom: 1.5rem;
         text-transform: uppercase;
         letter-spacing: -0.02em;
@@ -133,7 +133,7 @@
         padding: 10px 10px;
         border-radius: 8px;
 
-        background-color: #ececec;
+        background-color: var(--review-bar-bg);
 
         /* Text */
         font-family: Inter;
@@ -146,7 +146,7 @@
 }
 
 .blog__content__form__input:focus {
-        border: 1px solid #000000;
+        border: 1px solid var(--button-orange-bg-color);
 }
 
 .blog__content__form__button {
@@ -170,7 +170,7 @@
 }
 
 .blog__content__form__button:hover {
-        background-color: #e05a27;
+        background-color: var(--dest-btn-bg-hover);
         transform: scale(1.05);
 }
 
@@ -214,7 +214,7 @@
         font-style: normal;
         font-weight: 500;
         line-height: 30px; /* 150% */
-        color: #2d3134;
+        color: var(--text-description);
 }
 
 /* Blog list */
@@ -240,6 +240,8 @@
         cursor: pointer;
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
         /* Thêm animation */
         opacity: 0;
         transform: translateY(20px);
@@ -274,10 +276,11 @@
 
 .blog__list__item:hover {
         transform: translateY(-8px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 .blog__list__item__link {
         display: flex;
+        padding: 8px 10px;
         flex-direction: column;
         height: 100%;
 }
@@ -341,7 +344,7 @@
         grid-column: 1 / -1;
         text-align: center;
         padding: 50px 20px;
-        background-color: #f9f9f9;
+        background-color: var(--review-form-bg);
         border-radius: 10px;
 }
 .no-posts-found h3 {
@@ -376,9 +379,10 @@
         padding: 10px 15px;
         min-width: 40px;
         text-align: center;
-        border: 1px solid #ddd;
+
         border-radius: 6px;
-        background-color: #fff;
+        border: 1px solid var(--trend-nav-btn-border);
+        background-color: var(--card-bg-color);
         color: var(--text-primary);
         text-decoration: none;
         font-weight: 500;
@@ -387,7 +391,7 @@
 }
 
 .pagination__link:hover {
-        background-color: #f0f0f0;
+        background-color: var(--hero-stat-track);
 }
 
 /* Style cho nút đang được chọn */
@@ -407,20 +411,20 @@
 
 /* Skeleton */
 .skeleton {
-        background-color: #e0e0e0;
+        background-color: var(--review-bar-bg);
         border-radius: 4px;
         animation: pulse 1.5s infinite ease-in-out;
 }
 
 @keyframes pulse {
         0% {
-                background-color: #e0e0e0;
+                background-color: var(--review-bar-bg);
         }
         50% {
-                background-color: #f0f0f0;
+                background-color: var(--review-bar-bg);
         }
         100% {
-                background-color: #e0e0e0;
+                background-color: var(--review-bar-bg);
         }
 }
 
