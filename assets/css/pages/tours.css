@@ -1,3 +1,69 @@
+.tours-banner {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-top: -75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../../images/tour/tour-banner.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tours-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 1;
+}
+
+.tours-banner__content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.tours-banner__title {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 700;
+  color: #ff6b35;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out;
+}
+
+.tours-banner__subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+
 .tours-search {
     margin-top: 36px;
     background: var(--hero-search-bg);
@@ -34,7 +100,7 @@
     font-size: 1rem;
     background: var(--hero-search-bg);
     border: 1px solid var(--hero-search-field-border);
-    color: var(--text-description);
+    color: var(--text-tourscription);
     font-family: inherit;
 }
 .tours-search__btn {
@@ -135,7 +201,7 @@
 
 .tours-grid__duration {
     font-size: 16px;
-    color: var(--text-description);
+    color: var(--text-tourscription);
 }
 
 .tours-grid__price {
