@@ -1,5 +1,5 @@
 /* Destinations Hero Banner */
-.des-banner {
+.about-des-banner {
         position: relative;
         min-height: 100vh;
         width: 100vw;
@@ -14,7 +14,7 @@
         background-repeat: no-repeat;
 }
 
-.des-banner::before {
+.about-des-banner::before {
         content: "";
         position: absolute;
         top: 0;
@@ -25,7 +25,7 @@
         z-index: 1;
 }
 
-.des-banner__content {
+.about-des-banner__content {
         text-align: center;
         z-index: 2;
         position: relative;
@@ -34,7 +34,7 @@
         padding: 0 2rem;
 }
 
-.des-banner__title {
+.about-des-banner__title {
         font-family: "Poppins", sans-serif;
         font-size: clamp(3.5rem, 8vw, 7rem);
         font-weight: 700;
@@ -47,7 +47,7 @@
         animation: fadeInUp 1s ease-out;
 }
 
-.des-banner__subtitle {
+.about-des-banner__subtitle {
         font-family: "Poppins", sans-serif;
         font-size: clamp(1.25rem, 3vw, 1.75rem);
         font-weight: 400;
