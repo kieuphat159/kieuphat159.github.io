@@ -950,7 +950,10 @@
     font-weight: 700;
 }
 
-/* Responsive: đổi lại selector cho đúng BEM nếu có */
+/* ==============================================
+   RESPONSIVE STYLES
+   ============================================== */
+
 @media (max-width: 1199.98px) {
     .home-tours__list {
         grid-template-columns: repeat(2, minmax(230px, 1fr));
@@ -971,6 +974,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media (max-width: 991.98px) {
     .home-why {
         padding: 56px 32px;
@@ -1010,6 +1014,7 @@
         top: 48%;
     }
 }
+
 @media (max-width: 767.98px) {
     .home-hero__title {
         font-size: clamp(2rem, 8vw, 2.6rem);
@@ -1075,6 +1080,7 @@
         margin: 0 auto;
     }
 }
+
 @media (max-width: 575.98px) {
     .home-why__media {
         display: none;
@@ -1088,7 +1094,165 @@
     }
 }
 
-/* Lazy loading */
+/* ==============================================
+   SKELETON LAZY LOADING STYLES
+   ============================================== */
+
+/* Skeleton Wrapper - Base */
+.skeleton-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: #f0f0f0;
+    display: block;
+}
+
+/* Shimmer Effect khi đang loading */
+.skeleton-wrapper.skeleton-loading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+    z-index: 1;
+}
+
+/* Animation shimmer */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Image bên trong skeleton */
+.skeleton-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Khi đang loading - ẩn image */
+.skeleton-wrapper.skeleton-loading img {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Khi đã loaded - hiện image */
+.skeleton-wrapper.skeleton-loaded img,
+.skeleton-wrapper img.loaded {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Xóa shimmer effect khi đã load */
+.skeleton-wrapper.skeleton-loaded::before {
+    animation: none;
+    opacity: 0;
+}
+
+/* Trường hợp lỗi */
+.skeleton-wrapper.skeleton-error {
+    background: #e0e0e0;
+}
+
+.skeleton-wrapper.skeleton-error::before {
+    display: none;
+}
+
+.skeleton-wrapper.skeleton-error img {
+    opacity: 1;
+    visibility: visible;
+    object-fit: contain;
+}
+
+/* ==============================================
+   SKELETON VARIANTS - Các loại card khác nhau
+   ============================================== */
+
+/* Tour cards */
+.home-tour-card__media .skeleton-wrapper {
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+}
+
+/* Trending cards */
+.home-trend-card__media .skeleton-wrapper {
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+}
+
+/* Destination cards */
+.home-destination-card .skeleton-wrapper {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--dest-card-radius);
+}
+
+/* Tour type icons */
+.home-tour-type-card__icon .skeleton-wrapper {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+/* Why section image */
+.home-why__media .skeleton-wrapper {
+    aspect-ratio: 4 / 5;
+    border-radius: var(--why-media-radius);
+}
+
+/* Why section icons */
+.home-why__icon .skeleton-wrapper {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+}
+
+/* Hero main image */
+.home-hero__image-group .skeleton-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+}
+
+/* Hero brush (decorative) */
+.home-hero__brush.skeleton-wrapper {
+    aspect-ratio: 520 / 400;
+}
+
+/* ==============================================
+   RESPONSIVE - Mobile optimization
+   ============================================== */
+
+@media (max-width: 768px) {
+    /* Giảm intensity của shimmer trên mobile để tiết kiệm pin */
+    .skeleton-wrapper.skeleton-loading::before {
+        animation-duration: 2s;
+    }
+
+    /* Điều chỉnh aspect ratio cho mobile */
+    .home-why__media .skeleton-wrapper {
+        aspect-ratio: 16 / 11;
+        border-radius: 28px;
+    }
+}
+
+/* ==============================================
+   LAZY LOADING - Backward compatible styles
+   ============================================== */
+
+/* Fallback cho images không dùng skeleton wrapper */
 img[data-src] {
     background: #f0f0f0;
     opacity: 0.7;
@@ -1097,4 +1261,10 @@ img[data-src] {
 img.loaded {
     opacity: 1;
     transition: opacity 0.3s ease;
+}
+
+.home-destination-card .skeleton-wrapper {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: -2 !important;
 }
