@@ -66,44 +66,33 @@
 /* Destinations Grid Section */
 .destinations-grid {
   padding: 5rem 0;
-  /* background-color: #FFFFFF; */
 }
 
 .destinations-grid .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0; /* không cho padding 16px ảnh hưởng */
 }
 
 .destinations-grid__wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 3rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Destination Card */
 .destination-card {
-  /* position: absolute; */
   background: transparent;
   border-radius: 0;
-  overflow: visible;
   box-shadow: none;
   transition: all 0.3s ease;
   cursor: pointer;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
 .destination-card:hover {
   transform: translateY(-8px);
-  /* shadow handled on image */
 }
 
 .destination-card__image {
@@ -112,7 +101,7 @@
   height: 200px;
   overflow: hidden;
   border-radius: 12px;
-  aspect-ratio: 4 / 3; /* iữ tỉ lệ chiều cao nhất quán */
+  aspect-ratio: 4 / 3;
   box-shadow: 0 4px 18px rgba(15, 34, 55, 0.08);
 }
 
@@ -121,7 +110,6 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
-  display: block;
 }
 
 .destination-card:hover .destination-card__image img {
@@ -129,7 +117,6 @@
 }
 
 .destination-card__title {
-  position: static;
   font-family: "Poppins", sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
@@ -140,64 +127,54 @@
   line-height: 1.4;
 }
 
-/* See More Button */
-.destinations-grid__action {
-  text-align: center;
-  margin-top: 4rem;
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
 }
 
-.btn-see-more {
-  background: var(--button-orange-bg-color);
-  color: var(--text-gray);
+.pagination a,
+.pagination span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #333; /* fix: chữ tối, dễ đọc */
+  font-size: 14px;
+  border: 1px solid #ddd;
+  transition: all 0.2s ease;
+}
+
+.pagination a:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination a.active {
+  background-color: #1976d2;
+  color: #fff;
+  border-color: #1976d2;
+}
+
+.pagination .dots {
   border: none;
-  padding: 16px 32px;
-  border-radius: 8px;
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 123, 41, 0.28);
+  background: transparent;
+  cursor: default;
 }
 
-.btn-see-more:hover {
-  background: #ff893f;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 123, 41, 0.35);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive Design */
-/* ===== Destinations Responsive theo global breakpoints ===== */
-
-/* Desktop lớn (<1400px) — đã có :root, chỉ cần co lưới nhẹ nếu muốn */
-@media (max-width: 1399.98px) {
-  .destinations-grid__wrapper {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.8rem;
-  }
-}
-
-/* Desktop vừa (<1200px) */
+/* Responsive */
 @media (max-width: 1199.98px) {
   .destinations-grid__wrapper {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.8rem;
   }
 }
 
-/* Tablet (<992px) */
 @media (max-width: 991.98px) {
   .destinations-grid {
     padding: 4rem 0;
@@ -206,26 +183,8 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  .destination-card__image {
-    height: 200px;
-  }
 }
 
-/* Landscape phone (<768px) */
-@media (max-width: 767.98px) {
-  .destinations-grid {
-    padding: 3rem 0;
-  }
-  .destinations-grid__wrapper {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-  .destination-card__image {
-    height: 180px;
-  }
-}
-
-/* Portrait phone (<576px) */
 @media (max-width: 575.98px) {
   .destinations-grid {
     padding: 2rem 0;
