@@ -127,6 +127,20 @@
   line-height: 1.4;
 }
 
+/* See More Button */
+/* .destinations-grid__action {
+  text-align: center;
+  margin-top: 4rem;
+} */
+
+/* .btn-see-more {
+  background: var(--button-orange-bg-color);
+  color: var(--text-gray);
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
 /* Pagination */
 .pagination {
   display: flex;
@@ -170,6 +184,11 @@
   cursor: default;
 }
 
+.btn-see-more:hover {
+  background: #ff893f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 123, 41, 0.35);
+} */
 .pagination a i {
   font-size: 10px; /* giảm từ 12px xuống 10px */
   font-weight: 600;
