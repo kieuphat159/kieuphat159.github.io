@@ -406,94 +406,6 @@
     white-space: nowrap;
 }
 
-/* Why Choose Us Section */
-.home-why {
-    margin-top: 50px;
-    background: var(--why-section-bg);
-    border-radius: 24px;
-    padding: 64px 48px;
-}
-.home-why__inner {
-    display: flex;
-    align-items: center;
-    gap: 70px;
-    flex-wrap: wrap;
-}
-.home-why__media {
-    flex: 1 1 360px;
-    max-width: 420px;
-}
-.home-why__img {
-    width: 100%;
-    display: block;
-    border-radius: var(--why-media-radius);
-    object-fit: cover;
-    aspect-ratio: 4 / 5;
-}
-.home-why__content {
-    flex: 1 1 420px;
-    max-width: 540px;
-}
-.home-why__heading {
-    font-size: 2rem;
-    font-weight: 800;
-    margin: 0 0 14px;
-    color: var(--text-primary);
-}
-.home-why__desc {
-    margin: 0 0 28px;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--why-item-text-color);
-    max-width: 520px;
-}
-.home-why__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-.home-why__item {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-}
-.home-why__icon {
-    flex-shrink: 0;
-    width: var(--why-icon-size);
-    height: var(--why-icon-size);
-    border-radius: 12px;
-    background: var(--why-icon-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: var(--why-icon-border);
-    box-shadow: var(--why-icon-shadow);
-}
-.home-why__icon img {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-}
-.home-why__item-body {
-    flex: 1;
-}
-.home-why__item-title {
-    margin: 0 0 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--why-item-title-color);
-}
-.home-why__item-text {
-    margin: 0;
-    font-size: 0.7rem;
-    line-height: 1.5;
-    color: var(--why-item-text-color);
-    max-width: 330px;
-}
-
 /* Trending Tours Section */
 .home-trending__head {
     display: flex;
@@ -552,20 +464,38 @@
 .home-trending__viewport {
     overflow: hidden;
     position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 .home-trend-list {
     display: flex;
     gap: 28px;
-    overflow-x: auto;
+    /* overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding-bottom: 6px;
-    scrollbar-width: none;
+    scrollbar-width: none; */
+    /* Thêm 2 dòng này */
+    animation: marquee 40s linear infinite;
+}
+/* Dừng animation khi người dùng di chuột vào khu vực */
+.home-trending__viewport:hover .home-trend-list {
+    animation-play-state: paused;
+}
+
+/* Định nghĩa chuyển động của animation */
+@keyframes marquee {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 .home-trend-list::-webkit-scrollbar {
     display: none;
 }
 .home-trend-card {
-    flex: 0 0 310px;
+    flex: 0 0 calc(50% - 14px);
     background: var(--trend-card-bg);
     border: 1px solid var(--trend-card-border);
     border-radius: 14px;
@@ -958,30 +888,12 @@
     .home-tours__list {
         grid-template-columns: repeat(2, minmax(230px, 1fr));
     }
-    .home-why__inner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 56px;
-    }
-    .home-why__content {
-        max-width: 700px;
-    }
-    .home-why__item-text {
-        max-width: 100%;
-    }
     .home-tour-types__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 991.98px) {
-    .home-why {
-        padding: 56px 32px;
-    }
-    .home-why__inner {
-        gap: 48px;
-    }
     .home-trend-card {
         flex: 0 0 280px;
     }
@@ -1048,21 +960,6 @@
     .home-tours__see-all {
         align-self: flex-start;
     }
-    .home-why {
-        padding: 48px 24px;
-    }
-    .home-why__inner {
-        flex-direction: column;
-        gap: 40px;
-    }
-    .home-why__media,
-    .home-why__content {
-        max-width: 100%;
-    }
-    .home-why__img {
-        aspect-ratio: 16 / 11;
-        border-radius: 28px;
-    }
     .home-trend-card {
         flex: 0 0 100%;
         max-width: 100%;
@@ -1082,9 +979,6 @@
 }
 
 @media (max-width: 575.98px) {
-    .home-why__media {
-        display: none;
-    }
     .home-trending__head {
         flex-direction: column;
         align-items: flex-start;
@@ -1206,19 +1100,6 @@
     border-radius: 4px;
 }
 
-/* Why section image */
-.home-why__media .skeleton-wrapper {
-    aspect-ratio: 4 / 5;
-    border-radius: var(--why-media-radius);
-}
-
-/* Why section icons */
-.home-why__icon .skeleton-wrapper {
-    width: 22px;
-    height: 22px;
-    border-radius: 4px;
-}
-
 /* Hero main image */
 .home-hero__image-group .skeleton-wrapper {
     width: 100%;
@@ -1239,12 +1120,6 @@
     /* Giảm intensity của shimmer trên mobile để tiết kiệm pin */
     .skeleton-wrapper.skeleton-loading::before {
         animation-duration: 2s;
-    }
-
-    /* Điều chỉnh aspect ratio cho mobile */
-    .home-why__media .skeleton-wrapper {
-        aspect-ratio: 16 / 11;
-        border-radius: 28px;
     }
 }
 
