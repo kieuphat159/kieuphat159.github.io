@@ -87,7 +87,7 @@
   transition: all 0.3s ease;
   cursor: pointer;
   width: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 
@@ -120,7 +120,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--text-gray);
+  color: var(--text-primary);
   text-align: center;
   padding: 12px 0 0;
   margin: 0;
@@ -134,11 +134,15 @@
   align-items: center;
   gap: 8px;
   margin-top: 20px;
-  font-family: Arial, sans-serif;
+  font-family: var(--font-heading);
 }
 
-.pagination a,
-.pagination span {
+.page-numbers {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,20 +150,41 @@
   height: 36px;
   border-radius: 50%;
   text-decoration: none;
-  color: #333; /* fix: chữ tối, dễ đọc */
+  /* color: var(--text-white); */
   font-size: 14px;
-  border: 1px solid #ddd;
+  font-weight: 600;
+  border: 1px solid #ff6b35;
   transition: all 0.2s ease;
 }
 
+.pagination .dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  font-weight: 600;
+  color: #666;
+  border: none;
+  background: transparent;
+  cursor: default;
+}
+
+.pagination a i {
+  font-size: 10px; /* giảm từ 12px xuống 10px */
+  font-weight: 600;
+  color: inherit; /* lấy màu chữ từ cha */
+  line-height: 1;
+}
+
 .pagination a:hover {
-  background-color: #f0f0f0;
+  background-color: var(--bg-primary);
 }
 
 .pagination a.active {
-  background-color: #1976d2;
-  color: #fff;
-  border-color: #1976d2;
+  background-color: var(--button-orange-bg-color);
+  color: var(--bg-primary);
+  border-color: var(--button-orange-bg-color);
 }
 
 .pagination .dots {
