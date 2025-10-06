@@ -452,7 +452,7 @@ p {
         font-weight: var(--fw-body);
 }
 
-body:has(.onl-banner, .des-banner, .about-des-banner) .header {
+body:has(.onl-banner, .des-banner, .about-des-banner, .destination-detail-hero) .header {
         position: absolute;
         top: 0;
         left: 0;
@@ -465,7 +465,7 @@ body:has(.onl-banner, .des-banner, .about-des-banner) .header {
 }
 
 /* THÊM CSS mới - Khi cuộn qua banner, header có background */
-body:has(.onl-banner, .des-banner, .about-des-banner) .header.scrolled {
+body:has(.onl-banner, .des-banner, .about-des-banner, .destination-detail-hero) .header.scrolled {
         background: var(--bg-header);
         padding: 18px 0;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
