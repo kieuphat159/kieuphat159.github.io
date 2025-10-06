@@ -33,7 +33,7 @@ function renderPagination() {
     const a = document.createElement("a");
     a.href = "#";
     a.textContent = i;
-    a.classList.add("page");
+    // a.classList.add("page");
     if (i === currentPage) a.classList.add("active");
     a.addEventListener("click", (e) => {
       e.preventDefault();
