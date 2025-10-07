@@ -234,3 +234,103 @@
     white-space: normal; /* Cho phép xuống dòng khi màn nhỏ */
   }
 }
+
+/* ========== DESTINATION DETAIL READY ========== */
+.destination-detail-ready {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* Background image */
+.destination-detail-ready__background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(90%);
+}
+
+/* Overlay content box */
+.destination-detail-ready__overlay {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 300px;
+  padding: 2rem;
+  background: rgba(100, 100, 160, 0.3);
+  border-radius: 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Text content */
+.destination-detail-ready__content {
+  position: relative;
+  z-index: 2;
+  margin-top: 100px;
+  max-width: 200px;
+}
+
+.destination-detail-ready__title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.destination-detail-ready__text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Dashed path line */
+.destination-detail-ready__path {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.destination-detail-ready__image {
+  position: absolute;
+  top: 20px;
+  right: -7px;
+  height: calc(90%);
+  width: auto;
+  object-fit: contain;
+}
+
+/* Play button */
+.destination-detail-ready__play-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.destination-detail-ready__play-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
