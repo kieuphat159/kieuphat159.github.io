@@ -452,29 +452,28 @@ p {
   font-weight: var(--fw-body);
 }
 
-body:has(.onl-banner, .des-banner, .about-des-banner, .contact-banner) .header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 950;
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-  transition: all 0.3s ease;
+body:has(.onl-banner, .des-banner, .about-des-banner, .destination-detail-hero) .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 950;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+        transition: all 0.3s ease;
 }
 
 /* THÊM CSS mới - Khi cuộn qua banner, header có background */
-body:has(.onl-banner, .des-banner, .about-des-banner) .header.scrolled {
-  background: var(--bg-header);
-  padding: 18px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-  /* position: sticky; */
-  top: 0;
-  z-index: 950;
-  /* THÊM transition cho background và box-shadow */
-  transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease,
-    background 0.3s ease, transform 0.35s ease;
+body:has(.onl-banner, .des-banner, .about-des-banner, .destination-detail-hero) .header.scrolled {
+        background: var(--bg-header);
+        padding: 18px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        /* position: sticky; */
+        top: 0;
+        z-index: 950;
+        /* THÊM transition cho background và box-shadow */
+        transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease, background 0.3s ease, transform 0.35s ease;
 }
 
 .spinner {
