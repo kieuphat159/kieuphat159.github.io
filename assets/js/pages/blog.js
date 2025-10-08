@@ -116,20 +116,20 @@ function renderPosts() {
                 postElement.className = "blog-card";
                 postElement.style.animationDelay = `${index * 0.1}s`;
                 postElement.innerHTML = `
-                    <a href="blog-detail.html?id=${post.id}" class="blog-card__image-link">
+                    <a href="#blog-detail" class="blog-card__image-link">
                         <img src="${post.image}" alt="${post.title}" class="blog-card__image">
                     </a>
                     <div class="blog-card__content">
                         <span class="blog-card__category">${post.category}</span>
                         <h3 class="blog-card__title">
-                            <a href="blog-detail.html?id=${post.id}">${post.title}</a>
+                            <a href="#blog-detail">${post.title}</a>
                         </h3>
                         <div class="blog-card__meta">
                             <img src="${post.author.avatar}" alt="${post.author.name}" class="blog-card__author-avatar">
                             <span>${post.author.name} • ${post.date}</span>
                         </div>
                         <p class="blog-card__description">${post.description}</p>
-                        <a href="blog-detail.html?id=${post.id}" class="blog-card__readmore">
+                        <a href="#blog-detail" class="blog-card__readmore">
                             Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -177,7 +177,7 @@ function renderFeaturedPost() {
         const featured = blogPosts[1];
         if (!featured) return;
         featuredPostContainer.innerHTML = `
-                <a href="blog-detail.html?id=${featured.id}">
+                <a href="#blog-detail">
                     <img src="${featured.image}" alt="${featured.title}">
                     <h4>${featured.title}</h4>
                 </a>
