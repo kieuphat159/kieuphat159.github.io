@@ -1,292 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-        <head>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Our Travel Blog</title>
-                <link rel="stylesheet" href="blog.css" />
-                <link
-                        rel="stylesheet"
-                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-                />
-        </head>
-        <body>
-                <section id="blog" class="blog">
-                        <section class="des-banner">
-                                <div class="des-banner__content">
-                                        <h1 class="des-banner__title">Blog</h1>
-                                        <p class="des-banner__subtitle">Your favorite blog is here</p>
-                                </div>
-                        </section>
+<section id="blog" class="blog">
+        <section class="des-banner">
+                <div class="des-banner__content">
+                        <h1 class="des-banner__title">Blog</h1>
+                        <p class="des-banner__subtitle">Your favorite blog is here</p>
+                </div>
+        </section>
 
-                        <div class="blog__container">
-                                <div class="blog-layout">
-                                        <div class="blog-posts-column">
-                                                <div class="blog-grid">
-                                                        <article class="blog-card">
-                                                                <a
-                                                                        href="blog-detail.html?id=2"
-                                                                        class="blog-card__image-link"
-                                                                >
-                                                                        <img
-                                                                                src="../assets/images/blogs/argentina.png"
-                                                                                alt="Bus driving through mountains"
-                                                                                class="blog-card__image"
-                                                                        />
-                                                                </a>
-                                                                <div class="blog-card__content">
-                                                                        <span class="blog-card__category"
-                                                                                >Adventure</span
-                                                                        >
-                                                                        <h3 class="blog-card__title">
-                                                                                <a href="blog-detail.html?id=2"
-                                                                                        >Exploring Argentina and Chile
-                                                                                        by Bus</a
-                                                                                >
-                                                                        </h3>
-                                                                        <div class="blog-card__meta">
-                                                                                <img
-                                                                                        src="https://i.pravatar.cc/32?u=alex"
-                                                                                        alt="Author Alex"
-                                                                                        class="blog-card__author-avatar"
-                                                                                />
-                                                                                <span
-                                                                                        >Alex Wanderlust • Sep 28,
-                                                                                        2025</span
-                                                                                >
-                                                                        </div>
-                                                                        <p class="blog-card__description">
-                                                                                A comprehensive guide to backpacking
-                                                                                through Patagonia. Discover stunning
-                                                                                mountains, glaciers, and vibrant city
-                                                                                life.
-                                                                        </p>
-                                                                        <a
-                                                                                href="blog-detail.html?id=2"
-                                                                                class="blog-card__readmore"
-                                                                        >
-                                                                                Read More
-                                                                                <i class="fas fa-arrow-right"></i>
-                                                                        </a>
-                                                                </div>
-                                                        </article>
+        <div class="blog__container">
+                <div class="blog-layout">
+                        <div class="blog-posts-column">
+                                <div class="blog-grid"></div>
 
-                                                        <article class="blog-card">
-                                                                <a
-                                                                        href="blog-detail.html?id=1"
-                                                                        class="blog-card__image-link"
-                                                                >
-                                                                        <img
-                                                                                src="../assets/images/blogs/argentina.png"
-                                                                                alt="Pink lake in Australia"
-                                                                                class="blog-card__image"
-                                                                        />
-                                                                </a>
-                                                                <div class="blog-card__content">
-                                                                        <span class="blog-card__category">Nature</span>
-                                                                        <h3 class="blog-card__title">
-                                                                                <a href="blog-detail.html?id=1"
-                                                                                        >On the Shores of a Pink Lake in
-                                                                                        Australia</a
-                                                                                >
-                                                                        </h3>
-                                                                        <div class="blog-card__meta">
-                                                                                <img
-                                                                                        src="https://i.pravatar.cc/32?u=jane"
-                                                                                        alt="Author Jane"
-                                                                                        class="blog-card__author-avatar"
-                                                                                />
-                                                                                <span>Jane Doe • Oct 1, 2025</span>
-                                                                        </div>
-                                                                        <p class="blog-card__description">
-                                                                                Experience the surreal beauty of Lake
-                                                                                Hillier, a vibrant pink lake that defies
-                                                                                explanation. A must-see natural wonder.
-                                                                        </p>
-                                                                        <a
-                                                                                href="blog-detail.html?id=1"
-                                                                                class="blog-card__readmore"
-                                                                        >
-                                                                                Read More
-                                                                                <i class="fas fa-arrow-right"></i>
-                                                                        </a>
-                                                                </div>
-                                                        </article>
-
-                                                        <article class="blog-card">
-                                                                <a
-                                                                        href="blog-detail.html?id=4"
-                                                                        class="blog-card__image-link"
-                                                                >
-                                                                        <img
-                                                                                src="../assets/images/blogs/argentina.png"
-                                                                                alt="Street food in Vietnam"
-                                                                                class="blog-card__image"
-                                                                        />
-                                                                </a>
-                                                                <div class="blog-card__content">
-                                                                        <span class="blog-card__category">Food</span>
-                                                                        <h3 class="blog-card__title">
-                                                                                <a href="blog-detail.html?id=4"
-                                                                                        >A Culinary Tour of Ho Chi Minh
-                                                                                        City</a
-                                                                                >
-                                                                        </h3>
-                                                                        <div class="blog-card__meta">
-                                                                                <img
-                                                                                        src="https://i.pravatar.cc/32?u=linh"
-                                                                                        alt="Author Linh"
-                                                                                        class="blog-card__author-avatar"
-                                                                                />
-                                                                                <span>Linh Nguyen • Sep 20, 2025</span>
-                                                                        </div>
-                                                                        <p class="blog-card__description">
-                                                                                From street food stalls to high-end
-                                                                                restaurants, explore the vibrant and
-                                                                                delicious food scene of Vietnam's
-                                                                                southern hub.
-                                                                        </p>
-                                                                        <a
-                                                                                href="blog-detail.html?id=4"
-                                                                                class="blog-card__readmore"
-                                                                        >
-                                                                                Read More
-                                                                                <i class="fas fa-arrow-right"></i>
-                                                                        </a>
-                                                                </div>
-                                                        </article>
-
-                                                        <article class="blog-card">
-                                                                <a
-                                                                        href="blog-detail.html?id=3"
-                                                                        class="blog-card__image-link"
-                                                                >
-                                                                        <img
-                                                                                src="../assets/images/blogs/argentina.png"
-                                                                                alt="Temples in Kyoto"
-                                                                                class="blog-card__image"
-                                                                        />
-                                                                </a>
-                                                                <div class="blog-card__content">
-                                                                        <span class="blog-card__category">Culture</span>
-                                                                        <h3 class="blog-card__title">
-                                                                                <a href="blog-detail.html?id=3"
-                                                                                        >The Hidden Temples of Kyoto</a
-                                                                                >
-                                                                        </h3>
-                                                                        <div class="blog-card__meta">
-                                                                                <img
-                                                                                        src="https://i.pravatar.cc/32?u=kenji"
-                                                                                        alt="Author Kenji"
-                                                                                        class="blog-card__author-avatar"
-                                                                                />
-                                                                                <span>Kenji Tanaka • Sep 25, 2025</span>
-                                                                        </div>
-                                                                        <p class="blog-card__description">
-                                                                                Escape the crowds and find tranquility
-                                                                                in the lesser-known temples of Kyoto. A
-                                                                                spiritual journey awaits.
-                                                                        </p>
-                                                                        <a
-                                                                                href="blog-detail.html?id=3"
-                                                                                class="blog-card__readmore"
-                                                                        >
-                                                                                Read More
-                                                                                <i class="fas fa-arrow-right"></i>
-                                                                        </a>
-                                                                </div>
-                                                        </article>
-                                                </div>
-
-                                                <nav class="pagination" aria-label="Blog navigation">
-                                                        <ul class="pagination__list">
-                                                                <li>
-                                                                        <button
-                                                                                class="pagination__link pagination__link--disabled"
-                                                                                data-page="prev"
-                                                                        >
-                                                                                &laquo;
-                                                                        </button>
-                                                                </li>
-                                                                <li>
-                                                                        <button
-                                                                                class="pagination__link pagination__link--active"
-                                                                                data-page="1"
-                                                                        >
-                                                                                1
-                                                                        </button>
-                                                                </li>
-                                                                <li>
-                                                                        <button class="pagination__link" data-page="2">
-                                                                                2
-                                                                        </button>
-                                                                </li>
-                                                                <li>
-                                                                        <button
-                                                                                class="pagination__link"
-                                                                                data-page="next"
-                                                                        >
-                                                                                &raquo;
-                                                                        </button>
-                                                                </li>
-                                                        </ul>
-                                                </nav>
-                                        </div>
-
-                                        <aside class="blog-sidebar">
-                                                <div class="sidebar-widget">
-                                                        <h3 class="sidebar-widget__title">Search</h3>
-                                                        <form class="sidebar-widget__search-form">
-                                                                <input
-                                                                        type="text"
-                                                                        placeholder="Search articles..."
-                                                                        class="sidebar-widget__search-input"
-                                                                />
-                                                                <button type="submit" aria-label="Search">
-                                                                        <i class="fas fa-search"></i>
-                                                                </button>
-                                                        </form>
-                                                </div>
-
-                                                <div class="sidebar-widget">
-                                                        <h3 class="sidebar-widget__title">Categories</h3>
-                                                        <ul class="sidebar-widget__category-list">
-                                                                <li>
-                                                                        <a href="#" data-category="all" class="active"
-                                                                                >All Categories</a
-                                                                        >
-                                                                </li>
-                                                                <li>
-                                                                        <a href="#" data-category="Adventure"
-                                                                                >Adventure</a
-                                                                        >
-                                                                </li>
-                                                                <li><a href="#" data-category="Nature">Nature</a></li>
-                                                                <li><a href="#" data-category="Culture">Culture</a></li>
-                                                                <li><a href="#" data-category="Food">Food</a></li>
-                                                                <li>
-                                                                        <a href="#" data-category="City Guide"
-                                                                                >City Guide</a
-                                                                        >
-                                                                </li>
-                                                        </ul>
-                                                </div>
-
-                                                <div class="sidebar-widget">
-                                                        <h3 class="sidebar-widget__title">Featured Post</h3>
-                                                        <div class="sidebar-widget__featured-post">
-                                                                <a href="blog-detail.html?id=8">
-                                                                        <img
-                                                                                src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?q=80&w=800"
-                                                                                alt="Northern Lights in Iceland"
-                                                                        />
-                                                                        <h4>The Northern Lights in Iceland</h4>
-                                                                </a>
-                                                        </div>
-                                                </div>
-                                        </aside>
-                                </div>
+                                <nav class="pagination" aria-label="Blog navigation">
+                                        <ul class="pagination__list"></ul>
+                                </nav>
                         </div>
-                </section>
-        </body>
-</html>
+
+                        <aside class="blog-sidebar">
+                                <div class="sidebar-widget">
+                                        <h3 class="sidebar-widget__title">Search</h3>
+                                        <form class="sidebar-widget__search-form">
+                                                <input
+                                                        type="text"
+                                                        placeholder="Search articles..."
+                                                        class="sidebar-widget__search-input"
+                                                />
+                                                <button type="submit" aria-label="Search">
+                                                        <i class="fas fa-search"></i>
+                                                </button>
+                                        </form>
+                                </div>
+
+                                <div class="sidebar-widget">
+                                        <h3 class="sidebar-widget__title">Categories</h3>
+                                        <ul class="sidebar-widget__category-list"></ul>
+                                </div>
+
+                                <div class="sidebar-widget">
+                                        <h3 class="sidebar-widget__title">Featured Post</h3>
+                                        <div class="sidebar-widget__featured-post"></div>
+                                </div>
+                        </aside>
+                </div>
+        </div>
+</section>

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BIẾN CSS & CÀI ĐẶT CƠ BẢN (Nên đặt trong file style chung)
+   BIẾN CSS & CÀI ĐẶT CƠ BẢN
    ========================================================================== */
 :root {
         --brand-orange: #ff7b29;
@@ -53,7 +53,8 @@ ul {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url("../../images/destinations/Banner.png") center/cover no-repeat;
+        background: url("https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070") center/cover
+                no-repeat;
         background-attachment: fixed;
 }
 .des-banner::before {
@@ -101,7 +102,7 @@ ul {
 }
 
 /* ==========================================================================
-       KHU VỰC NỘI DUNG BLOG (PHẦN ĐƯỢC CẢI TIẾN)
+       KHU VỰC NỘI DUNG BLOG
        ========================================================================== */
 .blog__container {
         max-width: 1200px;
@@ -116,7 +117,7 @@ ul {
 }
 @media (min-width: 992px) {
         .blog-layout {
-                grid-template-columns: 2.5fr 1fr; /* Tỷ lệ cột ~70-30 */
+                grid-template-columns: 2.5fr 1fr;
         }
 }
 
@@ -126,6 +127,7 @@ ul {
         grid-template-columns: 1fr;
         gap: 40px;
 }
+
 @media (min-width: 768px) {
         .blog-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -141,6 +143,9 @@ ul {
         display: flex;
         flex-direction: column;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInItem 0.5s ease-out forwards;
 }
 .blog-card:hover {
         transform: translateY(-8px);
@@ -222,6 +227,13 @@ ul {
 }
 .blog-card:hover .blog-card__readmore i {
         transform: translateX(4px);
+}
+
+@keyframes fadeInItem {
+        to {
+                opacity: 1;
+                transform: translateY(0);
+        }
 }
 
 /* --- Sidebar bên phải --- */
@@ -345,7 +357,60 @@ ul {
         pointer-events: none;
 }
 
-/* --- Responsive --- */
+/* ==========================================================================
+       SKELETON LOADING EFFECT
+       ========================================================================== */
+.skeleton-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: var(--card-shadow);
+        overflow: hidden;
+}
+.skeleton {
+        background: #e0e0e0;
+        border-radius: 4px;
+        animation: pulse 1.5s infinite ease-in-out;
+}
+@keyframes pulse {
+        0% {
+                opacity: 1;
+        }
+        50% {
+                opacity: 0.6;
+        }
+        100% {
+                opacity: 1;
+        }
+}
+.skeleton-image {
+        height: 220px;
+        border-radius: 0;
+}
+.skeleton-content {
+        padding: 20px;
+}
+.skeleton-title {
+        height: 28px;
+        width: 80%;
+        margin: 12px 0;
+}
+.skeleton-text {
+        height: 16px;
+        width: 100%;
+        margin-bottom: 8px;
+}
+.skeleton-text:last-child {
+        width: 60%;
+}
+.no-posts-found {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 50px 20px;
+}
+
+/* ==========================================================================
+       RESPONSIVE
+       ========================================================================== */
 @media (max-width: 991.98px) {
         .blog-layout {
                 grid-template-columns: 1fr;
