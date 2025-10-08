@@ -1,96 +1,97 @@
-document.addEventListener("DOMContentLoaded", () => {
-        // --- FAKE DATA (Đã cập nhật cho giao diện mới) ---
-        const blogPosts = [
-                {
-                        id: 1,
-                        image: "https://images.unsplash.com/photo-1519922639102-1a2233602ee0?q=80&w=800",
-                        title: "On the Shores of a Pink Lake in Australia",
-                        description:
-                                "Experience the surreal beauty of Lake Hillier, a vibrant pink lake that defies explanation. A must-see natural wonder.",
-                        author: { name: "Jane Doe", avatar: "https://i.pravatar.cc/32?u=jane" },
-                        date: "October 1, 2025",
-                        category: "Nature",
-                },
-                {
-                        id: 2,
-                        image: "https://images.unsplash.com/photo-1518002583121-4a69a08e0b96?q=80&w=800",
-                        title: "Exploring Argentina and Chile by Bus",
-                        description:
-                                "A comprehensive guide to backpacking through Patagonia. Discover stunning mountains, glaciers, and vibrant city life.",
-                        author: { name: "Alex Wanderlust", avatar: "https://i.pravatar.cc/32?u=alex" },
-                        date: "September 28, 2025",
-                        category: "Adventure",
-                },
-                {
-                        id: 3,
-                        image: "https://images.unsplash.com/photo-1522613524332-CF5a278943f6?q=80&w=800",
-                        title: "The Hidden Temples of Kyoto",
-                        description:
-                                "Escape the crowds and find tranquility in the lesser-known temples of Kyoto. A spiritual journey awaits.",
-                        author: { name: "Kenji Tanaka", avatar: "https://i.pravatar.cc/32?u=kenji" },
-                        date: "September 25, 2025",
-                        category: "Culture",
-                },
-                {
-                        id: 4,
-                        image: "https://images.unsplash.com/photo-1528158320953-b4a3969a4c58?q=80&w=800",
-                        title: "A Culinary Tour of Ho Chi Minh City",
-                        description:
-                                "From street food stalls to high-end restaurants, explore the vibrant and delicious food scene of Vietnam's southern hub.",
-                        author: { name: "Linh Nguyen", avatar: "https://i.pravatar.cc/32?u=linh" },
-                        date: "September 20, 2025",
-                        category: "Food",
-                },
-                {
-                        id: 5,
-                        image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800",
-                        title: "Navigating the Grand Canal of Venice",
-                        description:
-                                "Tips and tricks for exploring the heart of Venice by gondola and vaporetto. Avoid the tourist traps!",
-                        author: { name: "Marco Rossi", avatar: "https://i.pravatar.cc/32?u=marco" },
-                        date: "September 18, 2025",
-                        category: "City Guide",
-                },
-                {
-                        id: 6,
-                        image: "https://images.unsplash.com/photo-1549492423-400259a5e5a9?q=80&w=800",
-                        title: "Sunrise over the Sahara Desert",
-                        description:
-                                "A breathtaking experience of watching the sun rise over the endless dunes of the Sahara. A memory that lasts a lifetime.",
-                        author: { name: "Aisha Bakar", avatar: "https://i.pravatar.cc/32?u=aisha" },
-                        date: "September 15, 2025",
-                        category: "Adventure",
-                },
-                {
-                        id: 7,
-                        image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=800",
-                        title: "Hiking the Inca Trail to Machu Picchu",
-                        description:
-                                "A four-day trek through the Andes, culminating in the stunning sunrise view of Machu Picchu.",
-                        author: { name: "Carlos Ruiz", avatar: "https://i.pravatar.cc/32?u=carlos" },
-                        date: "September 10, 2025",
-                        category: "Adventure",
-                },
-                {
-                        id: 8,
-                        image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?q=80&w=800",
-                        title: "The Northern Lights in Iceland",
-                        description: "A guide on when and where to see the Aurora Borealis in its full glory.",
-                        author: { name: "Bjorn Sigurdsson", avatar: "https://i.pravatar.cc/32?u=bjorn" },
-                        date: "September 5, 2025",
-                        category: "Nature",
-                },
-                {
-                        id: 9,
-                        image: "https://images.unsplash.com/photo-1561149792-12625218d613?q=80&w=800",
-                        title: "Street Art in Berlin",
-                        description:
-                                "Discover the vibrant and ever-changing street art scene in Germany's capital city.",
-                        author: { name: "Klaus Richter", avatar: "https://i.pravatar.cc/32?u=klaus" },
-                        date: "September 1, 2025",
-                        category: "Culture",
-                },
-        ];
+// --- FAKE DATA cho các bài blog ---
+const blogPosts = [
+        {
+                id: 1,
+                image: "../assets/images/blogs/demo.png",
+                title: "On the Shores of a Pink Lake in Australia",
+                description:
+                        "Experience the surreal beauty of Lake Hillier, a vibrant pink lake that defies explanation. A must-see natural wonder.",
+                link: "#blog-detail",
+        },
+        {
+                id: 2,
+                image: "../assets/images/blogs/argentina.png",
+                title: "Exploring Argentina and Chile by Bus",
+                description:
+                        "A comprehensive guide to backpacking through Patagonia. Discover stunning mountains, glaciers, and vibrant city life.",
+                link: "#blog-detail",
+        },
+        {
+                id: 3,
+                image: "../assets/images/blogs/demo.png",
+                title: "The Hidden Temples of Kyoto",
+                description:
+                        "Escape the crowds and find tranquility in the lesser-known temples of Kyoto. A spiritual journey awaits.",
+                link: "#blog-detail",
+        },
+        {
+                id: 4,
+                image: "../assets/images/blogs/demo.png",
+                title: "A Culinary Tour of Ho Chi Minh City",
+                description:
+                        "From street food stalls to high-end restaurants, explore the vibrant and delicious food scene of Vietnam's southern hub.",
+                link: "#blog-detail",
+        },
+        {
+                id: 5,
+                image: "../assets/images/blogs/demo.png",
+                title: "Navigating the Grand Canal of Venice",
+                description:
+                        "Tips and tricks for exploring the heart of Venice by gondola and vaporetto. Avoid the tourist traps!",
+                link: "#blog-detail",
+        },
+        {
+                id: 6,
+                image: "../assets/images/blogs/demo.png",
+                title: "Sunrise over the Sahara Desert",
+                description:
+                        "A breathtaking experience of watching the sun rise over the endless dunes of the Sahara. A memory that lasts a lifetime.",
+                link: "#blog-detail",
+        },
+        {
+                id: 7,
+                image: "../assets/images/blogs/demo.png",
+                title: "Hiking the Inca Trail to Machu Picchu",
+                description:
+                        "A four-day trek through the Andes, culminating in the stunning sunrise view of Machu Picchu.",
+                link: "#blog-detail",
+        },
+        {
+                id: 8,
+                image: "../assets/images/blogs/demo.png",
+                title: "The Northern Lights in Iceland",
+                description: "A guide on when and where to see the Aurora Borealis in its full glory.",
+                link: "#blog-detail",
+        },
+        {
+                id: 9,
+                image: "../assets/images/blogs/demo.png",
+                title: "Street Art in Berlin",
+                description: "Discover the vibrant and ever-changing street art scene in Germany's capital city.",
+                link: "#blog-detail",
+        },
+        {
+                id: 10,
+                image: "../assets/images/blogs/demo.png",
+                title: "Island Hopping in the Philippines",
+                description: "Find paradise in the crystal-clear waters and white sand beaches of Palawan.",
+                link: "#blog-detail",
+        },
+        {
+                id: 11,
+                image: "../assets/images/blogs/demo.png",
+                title: "Street Art in Berlin",
+                description: "Discover the vibrant and ever-changing street art scene in Germany's capital city.",
+                link: "#blog-detail",
+        },
+        {
+                id: 12,
+                image: "../assets/images/blogs/demo.png",
+                title: "Island Hopping in the Philippines",
+                description: "Find paradise in the crystal-clear waters and white sand beaches of Palawan.",
+                link: "#blog-detail",
+        },
+];
 
         // --- STATE MANAGEMENT ---
         let currentPage = 1;
