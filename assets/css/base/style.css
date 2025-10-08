@@ -138,6 +138,7 @@
     --text-primary: #2d3134;
     --text-orange: #ff7b29;
     --text-description: #676a6c;
+    --text-header: #2d3134;
 
     /* Maxwidth */
     --screen-max-width: 1170px;
@@ -252,6 +253,7 @@
     --text-primary: #ececec;
     --text-orange: #ff7b29;
     --text-description: #d9d9d9;
+    --text-header: #d9dee2;
 
     /* Maxwidth */
     --screen-max-width: 1170px;
@@ -452,7 +454,15 @@ p {
     font-weight: var(--fw-body);
 }
 
-body:has(.onl-banner, .des-banner, .about-des-banner, .destination-detail-hero, .tours-banner, .contact-banner)
+body:has(
+        .onl-banner,
+        .des-banner,
+        .about-des-banner,
+        .destination-detail-hero,
+        .tours-banner,
+        .contact-banner,
+        .tour-details-banner
+    )
     .header {
     position: absolute;
     top: 0;
@@ -465,8 +475,44 @@ body:has(.onl-banner, .des-banner, .about-des-banner, .destination-detail-hero, 
     transition: all 0.3s ease;
 }
 
+body:has(
+        .onl-banner,
+        .des-banner,
+        .about-des-banner,
+        .destination-detail-hero,
+        .tours-banner,
+        .contact-banner,
+        .tour-details-banner
+    )
+    .header-main-nav__link {
+    color: #fff;
+}
+
+body:has(
+        .onl-banner,
+        .des-banner,
+        .about-des-banner,
+        .destination-detail-hero,
+        .tours-banner,
+        .contact-banner,
+        .tour-details-banner
+    )
+    .header-main-nav__item.active
+    .header-main-nav__link,
+.header-main-nav__link:hover {
+    color: #fff;
+}
+
 /* THÊM CSS mới - Khi cuộn qua banner, header có background */
-body:has(.onl-banner, .des-banner, .about-des-banner, .destination-detail-hero, .tours-banner, .contact-banner)
+body:has(
+        .onl-banner,
+        .des-banner,
+        .about-des-banner,
+        .destination-detail-hero,
+        .tours-banner,
+        .contact-banner,
+        .tour-details-banner
+    )
     .header.scrolled {
     background: var(--bg-header);
     padding: 18px 0;
@@ -476,6 +522,20 @@ body:has(.onl-banner, .des-banner, .about-des-banner, .destination-detail-hero, 
     z-index: 950;
     /* THÊM transition cho background và box-shadow */
     transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease, background 0.3s ease, transform 0.35s ease;
+}
+
+body:has(
+        .onl-banner,
+        .des-banner,
+        .about-des-banner,
+        .destination-detail-hero,
+        .tours-banner,
+        .contact-banner,
+        .tour-details-banner
+    )
+    .header.scrolled
+    .header-main-nav__link {
+    color: var(--text-header);
 }
 
 .spinner {

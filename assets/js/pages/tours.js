@@ -56,7 +56,7 @@ function renderTours() {
         tourElement.classList.add("tours-grid__card");
 
         tourElement.innerHTML = `
-            <div class="tours-grid__image-wrapper">
+            <a href="/#tour-details" class="tours-grid__link"> <div class="tours-grid__image-wrapper">
                 <img src="${tour.image}" alt="${tour.name} tour" class="tours-grid__image" />
             </div>
             <div class="tours-grid__info">
@@ -65,7 +65,8 @@ function renderTours() {
                     <span class="tours-grid__duration">${tour.duration}</span>
                     <span class="tours-grid__price">${tour.price}</span>
                 </div>
-            </div>
+            </div></a>
+           
         `;
 
         toursGrid.appendChild(tourElement);
