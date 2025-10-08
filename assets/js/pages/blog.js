@@ -6,7 +6,7 @@ const blogPosts = [
                 title: "On the Shores of a Pink Lake in Australia",
                 description:
                         "Experience the surreal beauty of Lake Hillier, a vibrant pink lake that defies explanation. A must-see natural wonder.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 2,
@@ -14,7 +14,7 @@ const blogPosts = [
                 title: "Exploring Argentina and Chile by Bus",
                 description:
                         "A comprehensive guide to backpacking through Patagonia. Discover stunning mountains, glaciers, and vibrant city life.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 3,
@@ -22,7 +22,7 @@ const blogPosts = [
                 title: "The Hidden Temples of Kyoto",
                 description:
                         "Escape the crowds and find tranquility in the lesser-known temples of Kyoto. A spiritual journey awaits.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 4,
@@ -30,7 +30,7 @@ const blogPosts = [
                 title: "A Culinary Tour of Ho Chi Minh City",
                 description:
                         "From street food stalls to high-end restaurants, explore the vibrant and delicious food scene of Vietnam's southern hub.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 5,
@@ -38,7 +38,7 @@ const blogPosts = [
                 title: "Navigating the Grand Canal of Venice",
                 description:
                         "Tips and tricks for exploring the heart of Venice by gondola and vaporetto. Avoid the tourist traps!",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 6,
@@ -46,7 +46,7 @@ const blogPosts = [
                 title: "Sunrise over the Sahara Desert",
                 description:
                         "A breathtaking experience of watching the sun rise over the endless dunes of the Sahara. A memory that lasts a lifetime.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 7,
@@ -54,42 +54,42 @@ const blogPosts = [
                 title: "Hiking the Inca Trail to Machu Picchu",
                 description:
                         "A four-day trek through the Andes, culminating in the stunning sunrise view of Machu Picchu.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 8,
                 image: "../assets/images/blogs/demo.png",
                 title: "The Northern Lights in Iceland",
                 description: "A guide on when and where to see the Aurora Borealis in its full glory.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 9,
                 image: "../assets/images/blogs/demo.png",
                 title: "Street Art in Berlin",
                 description: "Discover the vibrant and ever-changing street art scene in Germany's capital city.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 10,
                 image: "../assets/images/blogs/demo.png",
                 title: "Island Hopping in the Philippines",
                 description: "Find paradise in the crystal-clear waters and white sand beaches of Palawan.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 11,
                 image: "../assets/images/blogs/demo.png",
                 title: "Street Art in Berlin",
                 description: "Discover the vibrant and ever-changing street art scene in Germany's capital city.",
-                link: "#",
+                link: "#blog-detail",
         },
         {
                 id: 12,
                 image: "../assets/images/blogs/demo.png",
                 title: "Island Hopping in the Philippines",
                 description: "Find paradise in the crystal-clear waters and white sand beaches of Palawan.",
-                link: "#",
+                link: "#blog-detail",
         },
 ];
 
