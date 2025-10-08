@@ -16,12 +16,8 @@
 }
 
 /* --- CSS Reset & Global Styles --- */
-*,
-*::before,
-*::after {
-        box-sizing: border-box;
-}
-body {
+
+#blog {
         font-family: var(--font-body);
         margin: 0;
         background-color: var(--page-bg);
@@ -43,7 +39,7 @@ ul {
 }
 
 /* ==========================================================================
-       BANNER (GIỮ NGUYÊN TỪ FILE CŨ CỦA BẠN)
+       BANNER
        ========================================================================== */
 .des-banner {
         position: relative;
@@ -72,7 +68,7 @@ ul {
         padding: 0 2rem;
 }
 .des-banner__title {
-        font-family: "Poppins", sans-serif;
+        font-family: var(--font-heading);
         font-size: clamp(3.5rem, 8vw, 7rem);
         font-weight: 700;
         color: var(--brand-orange);
@@ -82,7 +78,7 @@ ul {
         animation: fadeInUp 1s ease-out;
 }
 .des-banner__subtitle {
-        font-family: "Poppins", sans-serif;
+        font-family: var(--font-heading);
         font-size: clamp(1.25rem, 3vw, 1.75rem);
         font-weight: 400;
         color: #ffffff;
@@ -127,7 +123,6 @@ ul {
         grid-template-columns: 1fr;
         gap: 40px;
 }
-
 @media (min-width: 768px) {
         .blog-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -157,7 +152,7 @@ ul {
 }
 .blog-card__image {
         width: 100%;
-        height: 220px;
+        aspect-ratio: 16 / 10;
         object-fit: cover;
         transition: transform 0.4s ease;
 }
@@ -302,7 +297,7 @@ ul {
 }
 .sidebar-widget__featured-post img {
         width: 100%;
-        height: 150px;
+        aspect-ratio: 16 / 10;
         object-fit: cover;
         border-radius: 8px;
         margin-bottom: 12px;
@@ -358,7 +353,7 @@ ul {
 }
 
 /* ==========================================================================
-       SKELETON LOADING EFFECT
+       SKELETON LOADING EFFECT (Responsive)
        ========================================================================== */
 .skeleton-card {
         background-color: var(--card-bg);
@@ -367,7 +362,7 @@ ul {
         overflow: hidden;
 }
 .skeleton {
-        background: #e0e0e0;
+        background: #e9ecef;
         border-radius: 4px;
         animation: pulse 1.5s infinite ease-in-out;
 }
@@ -383,24 +378,34 @@ ul {
         }
 }
 .skeleton-image {
-        height: 220px;
+        aspect-ratio: 16 / 10;
         border-radius: 0;
 }
 .skeleton-content {
         padding: 20px;
 }
+.skeleton-category {
+        height: 22px;
+        width: 30%;
+        margin-bottom: 12px;
+}
 .skeleton-title {
-        height: 28px;
+        height: 1.25rem;
         width: 80%;
-        margin: 12px 0;
+        margin-bottom: 1rem;
+}
+.skeleton-meta {
+        height: 0.8rem;
+        width: 60%;
+        margin-bottom: 16px;
 }
 .skeleton-text {
-        height: 16px;
+        height: 0.9rem;
         width: 100%;
-        margin-bottom: 8px;
+        margin-bottom: 0.75rem;
 }
-.skeleton-text:last-child {
-        width: 60%;
+.skeleton-text:last-of-type {
+        width: 70%;
 }
 .no-posts-found {
         grid-column: 1 / -1;
@@ -416,7 +421,7 @@ ul {
                 grid-template-columns: 1fr;
         }
         .blog-sidebar {
-                grid-row: 1; /* Đẩy sidebar lên đầu trên tablet/mobile */
+                grid-row: 1;
         }
 }
 @media (max-width: 767.98px) {

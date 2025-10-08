@@ -31,24 +31,13 @@
 }
 
 /* --- CSS Reset & Global Styles --- */
-*,
-*::before,
-*::after {
-        box-sizing: border-box;
-}
 
-body {
+#blog-detail {
         font-family: var(--font-body);
         margin: 0;
         background-color: #fcfcfc;
         color: var(--text-primary);
         line-height: 1.7;
-}
-
-.container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
 }
 
 /* ==========================================================================
