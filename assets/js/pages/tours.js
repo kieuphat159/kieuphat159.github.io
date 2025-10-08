@@ -32,7 +32,7 @@ const toursData = [
         },
         {
                 id: 4,
-                name: "Maldives Overwater Bungalow",
+                name: "Maldives Overwater Bungalow Experience",
                 location: "Maldives",
                 type: "Beach",
                 duration: 5,
@@ -62,7 +62,7 @@ const toursData = [
         },
         {
                 id: 7,
-                name: "Swiss Alps Scenic Train",
+                name: "Swiss Alps Scenic Train Journey",
                 location: "Switzerland",
                 type: "Adventure",
                 duration: 8,
@@ -114,28 +114,30 @@ function renderTours() {
         }
 
         toursToRender.forEach((tour) => {
-                const tourCard = document.createElement("article");
+                // ✨ THAY ĐỔI 1: Tạo thẻ <a> thay vì <article>
+                const tourCard = document.createElement("a");
                 tourCard.className = "tour-card";
+                tourCard.href = `#tour-details`; // Đặt link cho thẻ
 
-                // ✨ FIX: Bỏ đi phần description để giống với mẫu
+                // ✨ THAY ĐỔI 2: Cập nhật lại cấu trúc innerHTML (bỏ thẻ <a> con bên trong)
                 tourCard.innerHTML = `
-                    <a href="#tour-details" class="tour-card__image-link">
-                        <img src="${tour.image}" alt="${tour.name}" class="tour-card__image">
-                    </a>
-                    <div class="tour-card__content">
-                        <p class="tour-card__location">${tour.location}</p>
-                        <h3 class="tour-card__title">${tour.name}</h3>
-                        <div class="tour-card__rating">
-                            ${'<i class="fas fa-star"></i>'.repeat(Math.floor(tour.rating))}
-                            ${tour.rating % 1 !== 0 ? '<i class="fas fa-star-half-alt"></i>' : ""}
-                            <span>${tour.rating.toFixed(1)}</span>
-                        </div>
-                        <div class="tour-card__footer">
-                            <p class="tour-card__price">$${tour.price} <span>/ person</span></p>
-                            <p class="tour-card__duration"><i class="far fa-clock"></i> ${tour.duration} days</p>
-                        </div>
+                <div class="tour-card__image-wrapper">
+                    <img src="${tour.image}" alt="${tour.name}" class="tour-card__image">
+                </div>
+                <div class="tour-card__content">
+                    <p class="tour-card__location">${tour.location}</p>
+                    <h3 class="tour-card__title">${tour.name}</h3>
+                    <div class="tour-card__rating">
+                        ${'<i class="fas fa-star"></i>'.repeat(Math.floor(tour.rating))}
+                        ${tour.rating % 1 !== 0 ? '<i class="fas fa-star-half-alt"></i>' : ""}
+                        <span>${tour.rating.toFixed(1)}</span>
                     </div>
-                `;
+                    <div class="tour-card__footer">
+                        <p class="tour-card__price">$${tour.price} <span>/ person</span></p>
+                        <p class="tour-card__duration"><i class="far fa-clock"></i> ${tour.duration} days</p>
+                    </div>
+                </div>
+            `;
                 tourGrid.appendChild(tourCard);
         });
 }
@@ -187,7 +189,7 @@ function renderSkeletonCards() {
 }
 
 function applyFiltersAndSort() {
-        let tempTours = [...toursData]; // Bắt đầu với dữ liệu gốc
+        let tempTours = [...toursData];
 
         if (searchForm) {
                 const formData = new FormData(searchForm);
