@@ -407,76 +407,76 @@
 /* Explore the world video */
 
 .home-video {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;          /* full chiều ngang */
-  height: 70vh;          /* video thấp hơn full màn hình */
-  margin-left: calc(-50vw + 50%); /* kéo sang trái để lấp đầy */
-  overflow: hidden;
-  background: #000;
-  overflow: hidden;
-  margin-bottom: 64px;
-  margin-top: 64px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* full chiều ngang */
+    height: 70vh; /* video thấp hơn full màn hình */
+    margin-left: calc(-50vw + 50%); /* kéo sang trái để lấp đầy */
+    overflow: hidden;
+    background: #000;
+    overflow: hidden;
+    margin-bottom: 64px;
+    margin-top: 64px;
 }
 
 .home-video__background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  filter: brightness(70%);
-  transition: transform 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(70%);
+    transition: transform 0.5s ease-in-out;
 }
 
 .home-video__overlay {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: #fff;
-  animation: fadeIn 1.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .home-video__overlay h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 .home-video__overlay p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
 }
 
 .btn-primary {
-  background: #00b4d8;
-  padding: 12px 30px;
-  border-radius: 30px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+    background: #00b4d8;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background: #0077b6;
-  transform: scale(1.05);
+    background: #0077b6;
+    transform: scale(1.05);
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Trending Tours Section */
@@ -904,17 +904,19 @@
     height: 54px;
     margin: 0 auto;
     border-radius: 16px;
-    background: rgba(255, 123, 41, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
 }
+
 .home-tour-type-card__icon img {
-    width: 30px;
-    height: 30px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     display: block;
 }
+
 .home-tour-type-card__title {
     margin: 0;
     font-size: 0.95rem;
