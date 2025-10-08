@@ -511,51 +511,54 @@
 
 /* Gallery */
 .destination-detail-gallery {
-  display: grid;
-  grid-template-columns: 65% 35%; /* đảm bảo cột phải rộng hơn để chia 2 cột con */
-  gap: 20px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 8px 0 15px -8px rgba(0, 0, 0, 0.15),  /* bóng bên phải */
+              0 8px 15px -8px rgba(0, 0, 0, 0.15); /* bóng bên dưới */
+  
+  padding: 20px;
 }
-/* Ảnh lớn bên trái */
+
+/* Khối chứa 2 phần trái phải */
+.destination-detail-gallery__content {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+/* Bên trái ảnh lớn */
 .destination-detail-gallery__left {
-  width: 100%;
+  flex: 2;
 }
 
 .destination-detail-gallery__main-image {
   width: 100%;
   height: 500px;
   object-fit: cover;
-  border-radius: 12px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* 4 ảnh nhỏ bên phải */
+/* Bên phải 4 ảnh nhỏ chia 2 hàng × 2 cột */
 .destination-detail-gallery__right {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 15px;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
 }
 
 .destination-detail-gallery__thumb {
-  width: 100%;
+  width: calc(50% - 5px);
   height: 240px;
   object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  cursor: pointer;
-}
-
-.destination-detail-gallery__thumb:hover {
-  transform: scale(1.04);
-  opacity: 0.9;
 }
 
 .destination-detail-gallery__info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  flex-direction: row;
 }
 
 .destination-detail-gallery__status {
@@ -585,4 +588,694 @@
 .destination-detail-gallery__price small {
   font-size: 13px;
   color: #999;
+}
+
+.destination-detail-itinerary {
+  margin-top: 20px;
+}
+
+/* Header info */
+.destination-detail-itinerary__header {
+  text-align: left;
+  margin-bottom: 35px;
+}
+
+.destination-detail-itinerary__date {
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: #555;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.destination-detail-itinerary__title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.destination-detail-itinerary__countries {
+  font-size: 15px;
+  margin: 10px 0px 20px 0px;
+  font-weight: 500;
+}
+
+.destination-detail-itinerary__subtitle {
+  font-size: 16px;
+  color: #444;
+  font-weight: 500;
+}
+
+/* Itinerary list */
+.destination-detail-itinerary__list-header {
+  display: flex;
+  align-items: center;
+  margin: 15px 0px;
+  gap: 20px;
+}
+
+.destination-detail-itinerary__list-header h3 {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.destination-detail-itinerary__list-header span {
+  font-size: 14px;
+  color: #666;
+}
+
+.destination-detail-itinerary__days {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+.destination-detail-itinerary__days li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eaeaf6;
+  font-size: 15px;
+  color: #333;
+}
+
+.destination-detail-itinerary__days strong {
+  width: 80px;
+  color: #000;
+}
+
+/* Button */
+.destination-detail-itinerary__button {
+  background: #3E86F5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.destination-detail-itinerary__button:hover {
+  transform: translateY(-2px);
+}
+
+/* cta */
+.destination-detail-cta {
+  position: relative;
+  min-height: 70vh;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: url("/assets/images/destination-detail/discount\ cta.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 100px;
+}
+.destination-detail-cta__overlay {
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  position: relative;
+}
+
+.destination-detail-cta__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.destination-detail-cta__btn {
+  display: inline-block;
+  padding: 20px 30px;
+  background: #fff;
+  color: #3E86F5;
+  font-weight: 600;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.destination-detail-cta__btn:hover {
+  background: #3E86F5;
+  color: #fff;
+}
+
+
+/* ========== DESTINATION DETAIL - FEATURED INSIGHTS ========== */
+.destination-detail-insights {
+  padding: 80px 0;
+  text-align: center;
+  background: #fff;
+}
+
+.destination-detail-insights__header {
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+.destination-detail-insights__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.destination-detail-insights__subtitle {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.destination-detail-insights__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.destination-detail-insights__card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.destination-detail-insights__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.destination-detail-insights__card:hover .destination-detail-insights__image {
+  transform: scale(1.05);
+}
+
+.destination-detail-insights__load-btn {
+  background: none;
+  border: none;
+  color: #666;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  margin-top: 50px;
+}
+
+.destination-detail-insights__load-btn i {
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.destination-detail-insights__load-btn:hover {
+  color: #3E86F5;
+}
+
+.destination-detail-insights__load-btn:hover i {
+  transform: translateY(3px);
+}
+
+/* ========== DESTINATION DETAIL TESTIMONIALS ========== */
+.destination-detail-testimonials {
+  text-align: center;
+  padding: 80px 10%;
+  background-color: #fff;
+}
+
+.destination-detail-testimonials__header {
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+.destination-detail-testimonials__title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.destination-detail-testimonials__subtitle {
+  color: #777;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.destination-detail-testimonials__list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.destination-detail-testimonials__item {
+  position: relative;
+  background: #fff;
+  width: 300px;
+  padding: 50px 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 8px 0 15px -8px rgba(0, 0, 0, 0.2),  /* bóng bên phải */
+              0 8px 15px -8px rgba(0, 0, 0, 0.2); /* bóng bên dưới */
+}
+
+.destination-detail-testimonials__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* quote mark nằm chìm phía sau text */
+.destination-detail-testimonial__quote {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 50px;
+  opacity: 0.15;
+  color: rgba(0, 0, 0, 0.25);
+  z-index: 0;
+}
+
+.destination-detail-testimonials__text {
+  position: relative;
+  z-index: 1;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.destination-detail-testimonials__name {
+  color: #3E86F5;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.destination-detail-testimonials__role {
+  color: #999;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.destination-detail-testimonials__rating {
+  background: #f4f4f4;
+  border-radius: 30px;
+  padding: 5px 12px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+.destination-detail-testimonials__rating i {
+  color: #f6c90e;
+}
+
+.destination-detail-testimonials__avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* NAV BUTTONS */
+.destination-detail-testimonials__nav {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.destination-detail-testimonials__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #3E86F5;
+  background: transparent;
+  color: #3E86F5;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.destination-detail-testimonials__btn:hover {
+  background: #3E86F5;
+  color: #fff;
+}
+
+/* ========== RESPONSIVE ========== */
+/* ========== TABLET (≤ 1199px) ========== */
+@media (max-width: 1199px) {
+  .destination-detail-hero {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+
+  .destination-detail-mission {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .destination-detail-mission__content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .destination-detail-gallery__content {
+    flex-direction: column;
+  }
+
+  .destination-detail-gallery__left,
+  .destination-detail-gallery__right {
+    width: 100%;
+  }
+
+  .destination-detail-ready__overlay {
+    width: 350px;
+    right: 5%;
+  }
+
+  .destination-detail-ready__content {
+    margin-top: 60px;
+  }
+
+  .destination-detail-pilgrimages__cards {
+    gap: 1.5rem;
+  }
+
+  .destination-detail-pilgrimages__card {
+    width: 260px;
+  }
+
+  .destination-detail-cta__title {
+    font-size: 1.8rem;
+  }
+
+  .destination-detail-testimonials {
+    padding: 70px 8%;
+  }
+
+  .destination-detail-testimonials__list {
+    gap: 30px;
+  }
+
+  .destination-detail-testimonials__item {
+    width: 280px;
+    padding: 45px 25px 35px;
+  }
+
+  .destination-detail-testimonials__title {
+    font-size: 2rem;
+  }
+
+  .destination-detail-testimonials__subtitle,
+  .destination-detail-testimonials__text {
+    font-size: 0.95rem;
+  }
+}
+
+/* ========== MOBILE (≤ 768px) ========== */
+@media (max-width: 768px) {
+  /* HERO */
+  .destination-detail-hero {
+    padding-top: 120px;
+    padding-bottom: 100px;
+  }
+
+  .destination-detail-hero__title {
+    font-size: 2rem;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .destination-detail-hero__subtitle {
+    font-size: 1rem;
+  }
+
+  /* FILTER */
+  .destination-detail-filter {
+    padding: 1rem;
+    width: 95%;
+  }
+
+  .destination-detail-filter__form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* POPULAR */
+  .destination-detail-popular__container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .destination-detail-card {
+    width: 100%;
+  }
+
+  /* MISSION */
+  .destination-detail-mission {
+    flex-direction: column;
+    padding: 60px 5%;
+  }
+
+  .destination-detail-mission__stats {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .destination-detail-mission__stat h3 {
+    font-size: 1.5rem;
+  }
+
+  /* VIDEO */
+  .home-video {
+    height: 40vh;
+  }
+
+  .home-video__overlay {
+    bottom: 10%;
+    right: 5%;
+    padding: 15px 20px;
+  }
+
+  /* READY */
+  .destination-detail-ready__overlay {
+    width: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .destination-detail-ready__content {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .destination-detail-ready__title {
+    font-size: 1.4rem;
+  }
+
+  /* PILGRIMAGES */
+  .destination-detail-pilgrimages__cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .destination-detail-pilgrimages__card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .destination-detail-pilgrimages__tabs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* GALLERY */
+  .destination-detail-gallery__content {
+    flex-direction: column;
+  }
+
+  .destination-detail-gallery__main-image {
+    height: 300px;
+  }
+
+  .destination-detail-gallery__thumb {
+    height: 150px;
+  }
+
+  /* ITINERARY */
+  .destination-detail-itinerary__list-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .destination-detail-itinerary__days li strong {
+    width: 60px;
+  }
+
+  .destination-detail-itinerary__button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* CTA */
+  .destination-detail-cta {
+    min-height: 50vh;
+    background-position: center;
+    padding: 40px 20px;
+  }
+
+  .destination-detail-cta__title {
+    font-size: 1.5rem;
+  }
+
+  .destination-detail-cta__btn {
+    padding: 15px 25px;
+  }
+
+  /* INSIGHTS */
+  .destination-detail-insights {
+    padding: 60px 0;
+  }
+
+  .destination-detail-insights__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-detail-insights__load-btn {
+    margin-top: 30px;
+  }
+
+  /* TESTIMONIALS */
+  .destination-detail-testimonials {
+    padding: 60px 6%;
+  }
+
+  .destination-detail-testimonials__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .destination-detail-testimonials__item {
+    width: 90%;
+    max-width: 380px;
+  }
+
+  .destination-detail-testimonials__quote {
+    height: 45px;
+  }
+
+  .destination-detail-testimonials__title {
+    font-size: 1.8rem;
+  }
+
+  .destination-detail-testimonials__subtitle,
+  .destination-detail-testimonials__text {
+    font-size: 0.95rem;
+  }
+
+  .destination-detail-testimonials__btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+}
+
+/* ========== SMALL MOBILE (≤ 480px) ========== */
+@media (max-width: 480px) {
+  .destination-detail-hero__title {
+    font-size: 1.8rem;
+  }
+
+  .destination-detail-hero__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .destination-detail-ready__overlay {
+    border-radius: 20px;
+  }
+
+  .destination-detail-pilgrimages__card {
+    width: 100%;
+  }
+
+  .destination-detail-cta__btn {
+    padding: 12px 20px;
+  }
+
+  /* TESTIMONIALS */
+  .destination-detail-testimonials {
+    padding: 50px 5%;
+  }
+
+  .destination-detail-testimonials__header {
+    margin-bottom: 35px;
+  }
+
+  .destination-detail-testimonials__title {
+    font-size: 1.6rem;
+  }
+
+  .destination-detail-testimonials__subtitle {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .destination-detail-testimonials__item {
+    width: 100%;
+    padding: 40px 20px 30px;
+  }
+
+  .destination-detail-testimonials__text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .destination-detail-testimonials__quote {
+    top: 25px;
+    height: 40px;
+  }
+
+  .destination-detail-testimonials__name {
+    font-size: 0.95rem;
+  }
+
+  .destination-detail-testimonials__role {
+    font-size: 0.85rem;
+  }
+
+  .destination-detail-testimonials__rating {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+
+  .destination-detail-testimonials__avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .destination-detail-testimonials__nav {
+    margin-top: 30px;
+    gap: 10px;
+  }
+
+  .destination-detail-testimonials__btn {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
 }
