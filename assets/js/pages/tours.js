@@ -1,77 +1,265 @@
-// --- FAKE DATA cho các tour ---
+// --- FAKE DATA ---
 const toursData = [
-    {
-        id: 1,
-        image: "../assets/images/tour/Indonesia.png",
-        name: "Indonesia",
-        duration: "9 days",
-        price: "$6,500",
-    },
-    {
-        id: 2,
-        image: "../assets/images/tour/Thailand.png",
-        name: "Thailand",
-        duration: "9 days",
-        price: "$6,500",
-    },
-    {
-        id: 3,
-        image: "../assets/images/tour/Dubai.png",
-        name: "Dubai",
-        duration: "9 days",
-        price: "$6,500",
-    },
-    {
-        id: 4,
-        image: "../assets/images/tour/Maldives.png",
-        name: "Maldives",
-        duration: "9 days",
-        price: "$6,500",
-    },
-    {
-        id: 5,
-        image: "../assets/images/tour/Dubai1.png",
-        name: "Dubai",
-        duration: "9 days",
-        price: "$6,500",
-    },
-    {
-        id: 6,
-        image: "../assets/images/tour/Bangladesh.png",
-        name: "Banglatoursh",
-        duration: "9 days",
-        price: "$6,500",
-    },
+        {
+                id: 1,
+                name: "Bali Paradise Getaway",
+                location: "Indonesia",
+                type: "Beach",
+                duration: 7,
+                price: 1200,
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800",
+        },
+        {
+                id: 2,
+                name: "Bangkok City & Temples",
+                location: "Thailand",
+                type: "City Tour",
+                duration: 4,
+                price: 850,
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800",
+        },
+        {
+                id: 3,
+                name: "Dubai Desert Safari",
+                location: "UAE",
+                type: "Adventure",
+                duration: 1,
+                price: 350,
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800",
+        },
+        {
+                id: 4,
+                name: "Maldives Overwater Bungalow",
+                location: "Maldives",
+                type: "Beach",
+                duration: 5,
+                price: 2500,
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800",
+        },
+        {
+                id: 5,
+                name: "Chiang Mai Mountain Trek",
+                location: "Thailand",
+                type: "Adventure",
+                duration: 3,
+                price: 600,
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800",
+        },
+        {
+                id: 6,
+                name: "Ancient Rome Discovery",
+                location: "Italy",
+                type: "City Tour",
+                duration: 3,
+                price: 950,
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800",
+        },
+        {
+                id: 7,
+                name: "Swiss Alps Scenic Train",
+                location: "Switzerland",
+                type: "Adventure",
+                duration: 8,
+                price: 3200,
+                rating: 5.0,
+                image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800",
+        },
+        {
+                id: 8,
+                name: "Santorini Sunset Cruise",
+                location: "Greece",
+                type: "Beach",
+                duration: 1,
+                price: 250,
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800",
+        },
+        {
+                id: 9,
+                name: "Kyoto Cherry Blossom Tour",
+                location: "Japan",
+                type: "City Tour",
+                duration: 5,
+                price: 1800,
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=800",
+        },
 ];
 
-// Lấy container
-const toursGrid = document.querySelector(".tours-grid");
+let currentPage = 1;
+const toursPerPage = 6;
+let filteredTours = [...toursData];
 
-// Hàm render tours
+const tourGrid = document.querySelector(".tour-grid");
+const paginationList = document.querySelector(".pagination__list");
+const searchForm = document.querySelector(".tours-search__form");
+const sortSelect = document.getElementById("sort-by");
+const resultCount = document.querySelector(".result-controls__count");
+
 function renderTours() {
-    toursGrid.innerHTML = "";
+        if (!tourGrid) return;
+        tourGrid.innerHTML = "";
+        const startIndex = (currentPage - 1) * toursPerPage;
+        const toursToRender = filteredTours.slice(startIndex, startIndex + toursPerPage);
 
-    toursData.forEach((tour) => {
-        const tourElement = document.createElement("article");
-        tourElement.classList.add("tours-grid__card");
+        if (toursToRender.length === 0) {
+                tourGrid.innerHTML = `<div class="no-tours-found"><h3>No Tours Found</h3><p>Try adjusting your search filters.</p></div>`;
+                return;
+        }
 
-        tourElement.innerHTML = `
-            <a href="/#tour-details" class="tours-grid__link"> <div class="tours-grid__image-wrapper">
-                <img src="${tour.image}" alt="${tour.name} tour" class="tours-grid__image" />
-            </div>
-            <div class="tours-grid__info">
-                <h2 class="tours-grid__name">${tour.name}</h2>
-                <div class="tours-grid__details">
-                    <span class="tours-grid__duration">${tour.duration}</span>
-                    <span class="tours-grid__price">${tour.price}</span>
-                </div>
-            </div></a>
-           
-        `;
+        toursToRender.forEach((tour) => {
+                const tourCard = document.createElement("article");
+                tourCard.className = "tour-card";
 
-        toursGrid.appendChild(tourElement);
-    });
+                // ✨ FIX: Bỏ đi phần description để giống với mẫu
+                tourCard.innerHTML = `
+                    <a href="#tour-details" class="tour-card__image-link">
+                        <img src="${tour.image}" alt="${tour.name}" class="tour-card__image">
+                    </a>
+                    <div class="tour-card__content">
+                        <p class="tour-card__location">${tour.location}</p>
+                        <h3 class="tour-card__title">${tour.name}</h3>
+                        <div class="tour-card__rating">
+                            ${'<i class="fas fa-star"></i>'.repeat(Math.floor(tour.rating))}
+                            ${tour.rating % 1 !== 0 ? '<i class="fas fa-star-half-alt"></i>' : ""}
+                            <span>${tour.rating.toFixed(1)}</span>
+                        </div>
+                        <div class="tour-card__footer">
+                            <p class="tour-card__price">$${tour.price} <span>/ person</span></p>
+                            <p class="tour-card__duration"><i class="far fa-clock"></i> ${tour.duration} days</p>
+                        </div>
+                    </div>
+                `;
+                tourGrid.appendChild(tourCard);
+        });
 }
 
-// --- Khởi chạy ---
-renderTours();
+function renderPagination() {
+        if (!paginationList) return;
+        paginationList.innerHTML = "";
+        const totalPages = Math.ceil(filteredTours.length / toursPerPage);
+        if (totalPages <= 1) return;
+
+        paginationList.insertAdjacentHTML(
+                "beforeend",
+                `<li><button class="pagination__link ${
+                        currentPage === 1 ? "pagination__link--disabled" : ""
+                }" data-page="prev">&laquo;</button></li>`
+        );
+        for (let i = 1; i <= totalPages; i++) {
+                paginationList.insertAdjacentHTML(
+                        "beforeend",
+                        `<li><button class="pagination__link ${
+                                i === currentPage ? "pagination__link--active" : ""
+                        }" data-page="${i}">${i}</button></li>`
+                );
+        }
+        paginationList.insertAdjacentHTML(
+                "beforeend",
+                `<li><button class="pagination__link ${
+                        currentPage === totalPages ? "pagination__link--disabled" : ""
+                }" data-page="next">&raquo;</button></li>`
+        );
+}
+
+function renderSkeletonCards() {
+        if (!tourGrid) return;
+        tourGrid.innerHTML = "";
+        for (let i = 0; i < toursPerPage; i++) {
+                const skeletonCard = document.createElement("div");
+                skeletonCard.className = "skeleton-card";
+                skeletonCard.innerHTML = `
+                    <div class="skeleton skeleton-image"></div>
+                    <div class="skeleton-content">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-text"></div>
+                        <div class="skeleton skeleton-text"></div>
+                    </div>
+                `;
+                tourGrid.appendChild(skeletonCard);
+        }
+}
+
+function applyFiltersAndSort() {
+        let tempTours = [...toursData]; // Bắt đầu với dữ liệu gốc
+
+        if (searchForm) {
+                const formData = new FormData(searchForm);
+                const location = formData.get("location");
+                const type = formData.get("type");
+                const durationValue = formData.get("duration");
+
+                tempTours = tempTours.filter((tour) => {
+                        const matchesLocation = location === "all" || tour.location === location;
+                        const matchesType = type === "all" || tour.type === type;
+                        let matchesDuration = true;
+                        if (durationValue && durationValue !== "all") {
+                                const duration = parseInt(durationValue, 10);
+                                matchesDuration = duration === 11 ? tour.duration > 10 : tour.duration <= duration;
+                        }
+                        return matchesLocation && matchesType && matchesDuration;
+                });
+        }
+
+        if (sortSelect) {
+                const sortValue = sortSelect.value;
+                if (sortValue === "price-asc") tempTours.sort((a, b) => a.price - b.price);
+                else if (sortValue === "price-desc") tempTours.sort((a, b) => b.price - a.price);
+                else if (sortValue === "rating-desc") tempTours.sort((a, b) => b.rating - a.rating);
+        }
+
+        filteredTours = tempTours;
+        currentPage = 1;
+        updateUI();
+}
+
+function updateUI() {
+        renderSkeletonCards();
+        setTimeout(() => {
+                const startIndex = (currentPage - 1) * toursPerPage;
+                const endIndex = Math.min(startIndex + toursPerPage, filteredTours.length);
+                if (resultCount) {
+                        resultCount.textContent = `Showing ${
+                                filteredTours.length > 0 ? startIndex + 1 : 0
+                        }-${endIndex} of ${filteredTours.length} tours`;
+                }
+                renderTours();
+                renderPagination();
+        }, 500);
+}
+
+if (searchForm) {
+        searchForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                applyFiltersAndSort();
+        });
+}
+
+if (sortSelect) {
+        sortSelect.addEventListener("change", applyFiltersAndSort);
+}
+
+if (paginationList) {
+        paginationList.addEventListener("click", (e) => {
+                if (e.target.tagName === "BUTTON" && !e.target.classList.contains("pagination__link--disabled")) {
+                        const page = e.target.dataset.page;
+                        if (page === "prev") currentPage--;
+                        else if (page === "next") currentPage++;
+                        else currentPage = parseInt(page);
+
+                        const gridSection = document.querySelector(".tours-grid-section");
+                        if (gridSection) {
+                                gridSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }
+                        updateUI();
+                }
+        });
+}
+
+applyFiltersAndSort();
