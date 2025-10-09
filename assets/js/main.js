@@ -321,7 +321,7 @@ function handleHeaderScroll() {
     const header = document.querySelector("header");
     // Kiểm tra tất cả các loại banner
     const banner = document.querySelector(
-        ".about-des-banner, .des-banner, .onl-banner, .destination-detail-hero, .tours-banner, .contact-banner"
+        ".about-des-banner, .des-banner, .onl-banner, .destination-detail-hero, .tours-banner, .contact-banner, .tour-details-banner"
     );
 
     if (!header) return;

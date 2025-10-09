@@ -1,4 +1,3 @@
-// --- FAKE DATA ---
 const blogPosts = [
         {
                 id: 1,
@@ -102,6 +101,7 @@ const categoryList = document.querySelector(".sidebar-widget__category-list");
 const featuredPostContainer = document.querySelector(".sidebar-widget__featured-post");
 
 function renderPosts() {
+        if (!blogGrid) return;
         blogGrid.innerHTML = "";
         const startIndex = (currentPage - 1) * postsPerPage;
         const postsToRender = filteredPosts.slice(startIndex, startIndex + postsPerPage);
@@ -116,20 +116,20 @@ function renderPosts() {
                 postElement.className = "blog-card";
                 postElement.style.animationDelay = `${index * 0.1}s`;
                 postElement.innerHTML = `
-                    <a href="#blog-detail" class="blog-card__image-link">
+                    <a href="blog-detail.html?id=${post.id}" class="blog-card__image-link">
                         <img src="${post.image}" alt="${post.title}" class="blog-card__image">
                     </a>
                     <div class="blog-card__content">
                         <span class="blog-card__category">${post.category}</span>
                         <h3 class="blog-card__title">
-                            <a href="#blog-detail">${post.title}</a>
+                            <a href="blog-detail.html?id=${post.id}">${post.title}</a>
                         </h3>
                         <div class="blog-card__meta">
                             <img src="${post.author.avatar}" alt="${post.author.name}" class="blog-card__author-avatar">
                             <span>${post.author.name} • ${post.date}</span>
                         </div>
                         <p class="blog-card__description">${post.description}</p>
-                        <a href="#blog-detail" class="blog-card__readmore">
+                        <a href="blog-detail.html?id=${post.id}" class="blog-card__readmore">
                             Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -139,10 +139,10 @@ function renderPosts() {
 }
 
 function renderPagination() {
+        if (!paginationList) return;
         paginationList.innerHTML = "";
         const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
         if (totalPages <= 1) return;
-
         paginationList.insertAdjacentHTML(
                 "beforeend",
                 `<li><button class="pagination__link ${
@@ -166,6 +166,7 @@ function renderPagination() {
 }
 
 function renderCategories() {
+        if (!categoryList) return;
         const categories = [...new Set(blogPosts.map((p) => p.category))];
         categoryList.innerHTML = `<li><a href="#" data-category="all" class="active">All Categories</a></li>`;
         categories.forEach((cat) => {
@@ -174,10 +175,11 @@ function renderCategories() {
 }
 
 function renderFeaturedPost() {
+        if (!featuredPostContainer) return;
         const featured = blogPosts[1];
         if (!featured) return;
         featuredPostContainer.innerHTML = `
-                <a href="#blog-detail">
+                <a href="blog-detail.html?id=${featured.id}">
                     <img src="${featured.image}" alt="${featured.title}">
                     <h4>${featured.title}</h4>
                 </a>
@@ -185,6 +187,7 @@ function renderFeaturedPost() {
 }
 
 function renderSkeletonCards() {
+        if (!blogGrid) return;
         blogGrid.innerHTML = "";
         const itemsToRender = Math.min(postsPerPage, filteredPosts.length || postsPerPage);
         for (let i = 0; i < itemsToRender; i++) {
@@ -193,7 +196,9 @@ function renderSkeletonCards() {
                 skeletonCard.innerHTML = `
                     <div class="skeleton skeleton-image"></div>
                     <div class="skeleton-content">
+                        <div class="skeleton skeleton-category"></div>
                         <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-meta"></div>
                         <div class="skeleton skeleton-text"></div>
                         <div class="skeleton skeleton-text"></div>
                     </div>
@@ -203,8 +208,8 @@ function renderSkeletonCards() {
 }
 
 function handleSearchAndFilter() {
-        const searchTerm = searchInput.value.trim().toLowerCase();
-        const activeCategoryLink = categoryList.querySelector("a.active");
+        const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : "";
+        const activeCategoryLink = categoryList ? categoryList.querySelector("a.active") : null;
         const activeCategory = activeCategoryLink ? activeCategoryLink.dataset.category : "all";
 
         filteredPosts = blogPosts.filter((post) => {
@@ -229,57 +234,59 @@ function debounce(func, delay = 300) {
         };
 }
 
-// Hàm update chính, được gọi khi tải trang, tìm kiếm, hoặc lọc
 function updateUI() {
         renderSkeletonCards();
-        renderPagination(); // Cập nhật phân trang ngay lập tức
-
-        // Giả lập độ trễ tải dữ liệu, sau đó render bài viết thật
+        renderPagination();
         setTimeout(() => {
                 renderPosts();
         }, 500);
 }
 
-// --- EVENT LISTENERS ---
-
-searchForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        handleSearchAndFilter();
-});
-
-searchInput.addEventListener("input", debounce(handleSearchAndFilter));
-
-categoryList.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (e.target.tagName === "A") {
-                categoryList.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
-                e.target.classList.add("active");
+if (searchForm) {
+        searchForm.addEventListener("submit", (e) => {
+                e.preventDefault();
                 handleSearchAndFilter();
-        }
-});
+        });
+}
 
-paginationList.addEventListener("click", (e) => {
-        if (e.target.tagName === "BUTTON" && !e.target.classList.contains("pagination__link--disabled")) {
-                const page = e.target.dataset.page;
-                const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+if (searchInput) {
+        searchInput.addEventListener("input", debounce(handleSearchAndFilter));
+}
 
-                if (page === "prev" && currentPage > 1) currentPage--;
-                else if (page === "next" && currentPage < totalPages) currentPage++;
-                else if (!isNaN(page)) currentPage = parseInt(page);
-                else return;
+if (categoryList) {
+        categoryList.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (e.target.tagName === "A") {
+                        categoryList.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+                        e.target.classList.add("active");
+                        handleSearchAndFilter();
+                }
+        });
+}
 
-                blogGrid.scrollIntoView({ behavior: "smooth", block: "start" });
+if (paginationList) {
+        paginationList.addEventListener("click", (e) => {
+                if (e.target.tagName === "BUTTON" && !e.target.classList.contains("pagination__link--disabled")) {
+                        const page = e.target.dataset.page;
+                        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
-                // Gọi hàm updateUI để hiển thị skeleton và tải trang mới
-                updateUI();
-        }
-});
+                        if (page === "prev" && currentPage > 1) currentPage--;
+                        else if (page === "next" && currentPage < totalPages) currentPage++;
+                        else if (!isNaN(page)) currentPage = parseInt(page);
+                        else return;
 
-// --- INITIALIZATION ---
+                        if (blogGrid) {
+                                blogGrid.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }
+                        updateUI();
+                }
+        });
+}
+
 function initialLoad() {
         renderCategories();
         renderFeaturedPost();
-        updateUI(); // Gọi hàm update chính khi tải trang lần đầu
+        updateUI();
 }
 
 initialLoad();
