@@ -27,12 +27,12 @@ let currentPage1 = null;
  * Sau đó trang từ đường dẫn trên sẽ được load vào trong div có id="parent"
  */
 function load(selector, path, callback) {
-    const cachedTemplates = localStorage.getItem(path);
-    if (cachedTemplates) {
-        $(selector).innerHTML = cachedTemplates;
-        if (typeof callback === "function") callback();
-        return;
-    }
+    // const cachedTemplates = localStorage.getItem(path);
+    // if (cachedTemplates) {
+    //     $(selector).innerHTML = cachedTemplates;
+    //     if (typeof callback === "function") callback();
+    //     return;
+    // }
 
     fetch(path)
         .then((response) => {
