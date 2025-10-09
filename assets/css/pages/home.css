@@ -1025,10 +1025,26 @@
         padding: 10px 25px;
     }
     .home-trend-card {
-        flex: 0 0 100%;
+        /* Đặt chiều rộng là 100% của viewport và thêm padding để tạo khoảng cách */
+        flex-shrink: 0;
+        padding: 0;
+        border: none; /* Bỏ border để không bị tính vào chiều rộng */
+        box-shadow: none; /* Bỏ shadow để không bị cắt */
+    }
+    .home-trend-card > a {
+        /* Áp dụng style vào thẻ a bên trong để có border và shadow */
+        display: block;
+        border: 1px solid var(--trend-card-border);
+        box-shadow: var(--trend-card-shadow);
+        border-radius: 14px;
+        overflow: hidden;
+        height: 100%;
     }
     .home-trend-list {
-        gap: 20px;
+        gap: 5px;
+    }
+    .home-trend-list.no-transition {
+        transition: none !important;
     }
     .home-tour-type-card {
         padding: 28px 16px 26px;
