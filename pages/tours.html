@@ -1,45 +1,64 @@
-<section class="tours-banner">
-  <div class="tours-banner__content">
-    <h1 class="tours-banner__title">Tour</h1>
-    <p class="tours-banner__subtitle">Explore Tours</p>
-  </div>
-</section>
+<main id="tours'">
+        <section class="tours-banner">
+                <div class="tours-banner__content">
+                        <h1 class="tours-banner__title">Tour</h1>
+                        <p class="tours-banner__subtitle">Explore Tours</p>
+                </div>
+        </section>
 
-<section class="tours-search">
-    <form class="tours-search__form">
-        <div class="tours-search__group">
-            <label>Location</label>
-            <select title="Location">
-                <option>Bali, Indonesia</option>
-                <option>Hanoi, Vietnam</option>
-            </select>
-        </div>
-        <div class="tours-search__group">
-            <label>Type</label>
-            <select title="Type">
-                <option>City Tours</option>
-                <option>Adventure</option>
-            </select>
-        </div>
-        <div class="tours-search__group">
-            <label>City</label>
-            <select title="City">
-                <option>Prambanan</option>
-                <option>Jakarta</option>
-            </select>
-        </div>
-        <div class="tours-search__group">
-            <label>Guest</label>
-            <select title="Guest">
-                <option>8 Persons</option>
-                <option>4 Persons</option>
-            </select>
-        </div>
-        <button class="tours-search__btn" type="submit">Search</button>
-    </form>
-</section>
+        <section class="tours-search">
+                <form class="tours-search__form">
+                        <div class="tours-search__group">
+                                <label for="location">Location</label>
+                                <select id="location" name="location">
+                                        <option value="all">All Locations</option>
+                                        <option value="Indonesia">Indonesia</option>
+                                        <option value="Thailand">Thailand</option>
+                                        <option value="UAE">UAE</option>
+                                        <option value="Maldives">Maldives</option>
+                                        <option value="Italy">Italy</option>
+                                </select>
+                        </div>
+                        <div class="tours-search__group">
+                                <label for="type">Type</label>
+                                <select id="type" name="type">
+                                        <option value="all">All Types</option>
+                                        <option value="Adventure">Adventure</option>
+                                        <option value="City Tour">City Tour</option>
+                                        <option value="Beach">Beach</option>
+                                </select>
+                        </div>
+                        <div class="tours-search__group">
+                                <label for="duration">Duration</label>
+                                <select id="duration" name="duration">
+                                        <option value="all">Any Duration</option>
+                                        <option value="5">Up to 5 days</option>
+                                        <option value="10">Up to 10 days</option>
+                                        <option value="11">More than 10 days</option>
+                                </select>
+                        </div>
+                        <button class="tours-search__btn" type="submit">Search</button>
+                </form>
+        </section>
 
-<section class="tours-grid">
-    
-</section>
-<script src="../js/tours.js"></script>
+        <section class="tours-grid-section">
+                <div class="tour-container">
+                        <div class="result-controls">
+                                <p class="result-controls__count">Showing 1-6 of 9 tours</p>
+                                <div class="result-controls__sort">
+                                        <label for="sort-by">Sort by:</label>
+                                        <select id="sort-by" name="sort-by">
+                                                <option value="default">Default</option>
+                                                <option value="price-asc">Price: Low to High</option>
+                                                <option value="price-desc">Price: High to Low</option>
+                                                <option value="rating-desc">Rating: High to Low</option>
+                                        </select>
+                                </div>
+                        </div>
+                        <div class="tour-grid"></div>
+                        <nav class="pagination">
+                                <ul class="pagination__list"></ul>
+                        </nav>
+                </div>
+        </section>
+</main>
