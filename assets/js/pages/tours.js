@@ -174,16 +174,21 @@ function renderSkeletonCards() {
         if (!tourGrid) return;
         tourGrid.innerHTML = "";
         for (let i = 0; i < toursPerPage; i++) {
-                const skeletonCard = document.createElement("div");
+                const skeletonCard = document.createElement("article");
                 skeletonCard.className = "skeleton-card";
+
                 skeletonCard.innerHTML = `
-                    <div class="skeleton skeleton-image"></div>
-                    <div class="skeleton-content">
-                        <div class="skeleton skeleton-title"></div>
-                        <div class="skeleton skeleton-text"></div>
-                        <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-image"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton skeleton-location"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-rating"></div>
+                    <div class="skeleton-footer">
+                        <div class="skeleton skeleton-price"></div>
+                        <div class="skeleton skeleton-duration"></div>
                     </div>
-                `;
+                </div>
+            `;
                 tourGrid.appendChild(skeletonCard);
         }
 }
