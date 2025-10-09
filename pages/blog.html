@@ -1,5 +1,4 @@
 <section id="blog" class="blog">
-        <!-- Banner -->
         <section class="des-banner">
                 <div class="des-banner__content">
                         <h1 class="des-banner__title">Blog</h1>
@@ -8,91 +7,40 @@
         </section>
 
         <div class="blog__container">
-                <!-- Blog Content And Search -->
-                <div class="blog__content">
-                        <div class="blog__content__container">
-                                <div class="blog__content__top-content">
-                                        <img
-                                                src="../assets/images/blogs/argentina.png"
-                                                alt="Blog Top Content"
-                                                class="blog__content__top-content__image"
-                                        />
-                                        <h2 class="blog__content__top-content__title">
-                                                Exploring Argentina and Chile by Bus
-                                        </h2>
-                                </div>
+                <div class="blog-layout">
+                        <div class="blog-posts-column">
+                                <div class="blog-grid"></div>
 
-                                <div class="blog__content__form__container">
-                                        <!-- Form -->
-                                        <form class="blog__content__form">
+                                <nav class="pagination" aria-label="Blog navigation">
+                                        <ul class="pagination__list"></ul>
+                                </nav>
+                        </div>
+
+                        <aside class="blog-sidebar">
+                                <div class="sidebar-widget">
+                                        <h3 class="sidebar-widget__title">Search</h3>
+                                        <form class="sidebar-widget__search-form">
                                                 <input
                                                         type="text"
-                                                        placeholder="Search Blog"
-                                                        class="blog__content__form__input"
+                                                        placeholder="Search articles..."
+                                                        class="sidebar-widget__search-input"
                                                 />
-                                                <button type="submit" class="blog__content__form__button">
-                                                        Search
+                                                <button type="submit" aria-label="Search">
+                                                        <i class="fas fa-search"></i>
                                                 </button>
                                         </form>
-
-                                        <!-- Recent Blog -->
-                                        <h3 class="blog__content__recent-blog">Recent Blog</h3>
-
-                                        <div class="blog__content__recent-blog__container">
-                                                <!-- Recent Blog 1 -->
-                                                <article class="blog__content__recent-blog__article">
-                                                        <div class="blog__content__recent-blog__image">
-                                                                <img
-                                                                        src="../assets/images//blog-detail/ParkHyatt.png"
-                                                                        alt="Recent Blog Image"
-                                                                        class="blog__content__recent-blog__img"
-                                                                />
-                                                        </div>
-                                                        <p class="blog__content__recent-blog__description">
-                                                                Lorem ipsum dolor sit amet
-                                                        </p>
-                                                </article>
-
-                                                <!-- Recent Blog 2 -->
-                                                <article class="blog__content__recent-blog__article">
-                                                        <div class="blog__content__recent-blog__image">
-                                                                <img
-                                                                        src="../assets/images//blog-detail/ParkHyatt.png"
-                                                                        alt="Recent Blog Image"
-                                                                        class="blog__content__recent-blog__img"
-                                                                />
-                                                        </div>
-                                                        <p class="blog__content__recent-blog__description">
-                                                                Lorem ipsum dolor sit amet
-                                                        </p>
-                                                </article>
-
-                                                <!-- Recent Blog 3 -->
-                                                <article class="blog__content__recent-blog__article">
-                                                        <div class="blog__content__recent-blog__image">
-                                                                <img
-                                                                        src="../assets/images//blog-detail/ParkHyatt.png"
-                                                                        alt="Recent Blog Image"
-                                                                        class="blog__content__recent-blog__img"
-                                                                />
-                                                        </div>
-                                                        <p class="blog__content__recent-blog__description">
-                                                                Lorem ipsum dolor sit amet
-                                                        </p>
-                                                </article>
-                                        </div>
                                 </div>
-                        </div>
-                </div>
 
-                <!-- Blog List -->
-                <div class="blog__list">
-                        <div class="blog__list__container"></div>
-                </div>
+                                <div class="sidebar-widget">
+                                        <h3 class="sidebar-widget__title">Categories</h3>
+                                        <ul class="sidebar-widget__category-list"></ul>
+                                </div>
 
-                <!-- Blog Pagination-->
-                <nav class="pagination" aria-label="Blog navigation">
-                        <ul class="pagination__list"></ul>
-                </nav>
+                                <div class="sidebar-widget">
+                                        <h3 class="sidebar-widget__title">Featured Post</h3>
+                                        <div class="sidebar-widget__featured-post"></div>
+                                </div>
+                        </aside>
+                </div>
         </div>
 </section>
