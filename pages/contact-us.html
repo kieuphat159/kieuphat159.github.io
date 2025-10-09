@@ -22,19 +22,49 @@
 
         <div class="contact-info__right">
                 <form class="contact-form">
-                        <div class="contact-form__form-group">
-                                <input type="text" class="contact-form__form-input" placeholder="Name" required />
+                        <h2 class="contact-form__title">Send Us a Message</h2>
+
+                        <div class="form-group floating-label">
+                                <input type="text" id="name" name="name" class="form-input" placeholder=" " required />
+                                <label for="name">Your Name</label>
                         </div>
-                        <div class="contact-form__form-group">
-                                <input type="email" class="contact-form__form-input" placeholder="Email" required />
+
+                        <div class="form-group floating-label">
+                                <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        class="form-input"
+                                        placeholder=" "
+                                        required
+                                />
+                                <label for="email">Email Address</label>
                         </div>
-                        <div class="contact-form__form-group">
-                                <input type="text" class="contact-form__form-input" placeholder="Subject" required />
+
+                        <div class="form-group floating-label">
+                                <input
+                                        type="text"
+                                        id="subject"
+                                        name="subject"
+                                        class="form-input"
+                                        placeholder=" "
+                                        required
+                                />
+                                <label for="subject">Subject</label>
                         </div>
-                        <div class="contact-form__form-group">
-                                <textarea class="contact-form__form-textarea" placeholder="Message" required></textarea>
+
+                        <div class="form-group floating-label">
+                                <textarea
+                                        id="message"
+                                        name="message"
+                                        class="form-input"
+                                        placeholder=" "
+                                        required
+                                ></textarea>
+                                <label for="message">Your Message</label>
                         </div>
-                        <button type="submit" class="contact-form__btn">Subscribe</button>
+
+                        <button type="submit" class="contact-btn">Send Message</button>
                 </form>
         </div>
 </section>

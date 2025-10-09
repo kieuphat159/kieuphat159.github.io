@@ -56,79 +56,96 @@
         gap: 20px;
 }
 
+/* --- Cột form bên phải (Cải tiến với Border) --- */
+.contact-form__title {
+        margin-bottom: 20pxgi;
+}
 .contact-info__right {
-        background-color: var(--card-bg-color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
         padding: 40px;
 }
+.contact-info__right h2 {
+        margin-top: 0;
+}
 
-.contact-form {
+.form-group {
+        position: relative;
+        margin-bottom: 35px;
+}
+
+.form-input {
         width: 100%;
-        max-width: 400px;
-}
-
-.contact-form__form-group {
-        margin-bottom: 20px;
-}
-
-.contact-form__form-input {
-        width: 100%;
-        padding: 15px 20px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        font-size: 16px;
-        background-color: #f8f9fa;
-        transition: border-color 0.3s ease;
-        box-sizing: border-box;
-}
-
-.contact-form__form-input:focus {
-        outline: none;
-        border-color: var(--hero-gradient-orange-end, #ff6b35);
-}
-
-.contact-form__form-textarea {
-        width: 100%;
-        min-height: 120px;
-        padding: 15px 20px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        font-size: 16px;
-        background-color: #f8f9fa;
-        resize: vertical;
+        padding: 15px;
+        font-size: 1rem;
         font-family: inherit;
-        transition: border-color 0.3s ease;
-        box-sizing: border-box;
-}
+        color: var(--text-primary, #2d3134);
 
-.form-textarea:focus {
+        border: 1px solid var(--border-color, #e0e0e0);
+        border-radius: 8px;
+
         outline: none;
-        border-color: var(--hero-gradient-orange-end, #ff6b35);
+        background-color: var(--card-bg, #ffffff);
+        transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.contact-form__btn {
-        width: 100%;
-        padding: 15px 20px;
-        background-color: var(--hero-gradient-orange-end, #ff6b35);
+/* Hiệu ứng khi focus vào ô input */
+.form-input:focus {
+        border-color: var(--brand-orange, #ff6b35);
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+}
+
+.form-group label {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        font-size: 1rem;
+        color: var(--text-description, #676a6c);
+        pointer-events: none;
+        transition: all 0.3s ease;
+}
+
+.form-input:focus + label,
+.form-input:valid + label {
+        top: -10px;
+        left: 10px;
+        font-size: 0.8rem;
+        color: var(--brand-orange, #ff6b35);
+
+        /* Thêm nền để chữ không bị đè lên viền */
+        background-color: var(--card-bg, #ffffff);
+        padding: 0 5px;
+}
+
+textarea.form-input {
+        min-height: 120px;
+        resize: vertical;
+}
+
+.contact-btn {
+        padding: 12px 30px;
+        background-color: var(--brand-orange, #ff6b35);
         color: white;
         border: none;
         border-radius: 8px;
-        font-size: 16px;
+        font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: background-color 0.3s ease;
-        margin-top: 10px;
-        width: 191px;
+        transition: background-color 0.3s, transform 0.2s;
 }
 
-.contact-form__btn:hover {
-        background-color: #e55a2b;
+.contact-btn:hover {
+        background-color: var(--brand-orange-hover, #e05a2d);
+        transform: translateY(-2px);
 }
 
-.contact-form__btn:active {
-        transform: translateY(1px);
+.contact-btn:active {
+        transform: translateY(0);
+}
+
+/* Responsive cho form */
+@media (max-width: 767.98px) {
+        .contact-info__right {
+                padding: 40px 20px; /* Giảm padding trên mobile */
+        }
 }
 
 .contact-us__map {
