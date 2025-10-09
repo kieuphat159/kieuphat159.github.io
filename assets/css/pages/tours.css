@@ -181,7 +181,6 @@ body {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
-        min-height: 500px;
 }
 
 .tour-card {
@@ -192,6 +191,9 @@ body {
         display: flex;
         flex-direction: column;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        color: inherit;
+        text-decoration: none;
 }
 .tour-card:hover {
         transform: translateY(-8px);
@@ -199,7 +201,7 @@ body {
 }
 .tour-card__image-wrapper {
         position: relative;
-        height: 220px;
+        aspect-ratio: 4 / 3;
         overflow: hidden;
 }
 .tour-card__image {
@@ -211,6 +213,8 @@ body {
 .tour-card:hover .tour-card__image {
         transform: scale(1.05);
 }
+
+/* --- ✨✨✨ PHẦN SỬA LỖI QUAN TRỌNG ✨✨✨ --- */
 .tour-card__content {
         padding: 20px;
         flex-grow: 1;
@@ -228,13 +232,13 @@ body {
         font-weight: 600;
         margin: 0 0 12px;
         line-height: 1.4;
+        /* Không có flex-grow ở đây */
 }
 .tour-card__rating {
         display: flex;
         align-items: center;
         gap: 5px;
-        margin-bottom: auto; /* Đẩy footer xuống dưới */
-        padding-bottom: 16px;
+        margin-bottom: 16px;
         color: var(--star-color);
 }
 .tour-card__rating span {
@@ -247,7 +251,10 @@ body {
         align-items: center;
         border-top: 1px solid var(--border-color);
         padding-top: 16px;
+        margin-top: auto; /* Dòng này đẩy footer xuống đáy */
 }
+/* --- ✨✨✨ KẾT THÚC PHẦN SỬA LỖI ✨✨✨ --- */
+
 .tour-card__price {
         font-size: 1.5rem;
         font-weight: 700;
@@ -306,45 +313,92 @@ body {
         pointer-events: none;
 }
 
+/* ==========================================================================
+   SKELETON LOADING EFFECT 
+   ========================================================================== */
+
 .skeleton-card {
         background-color: var(--card-bg);
-        border-radius: 12px;
+        border-radius: 16px;
         box-shadow: var(--card-shadow);
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        width: 345px;
+        height: 100%;
 }
+
+@media (max-width: 991.98px) {
+        .skeleton-card {
+                width: 100%;
+        }
+}
+
 .skeleton {
-        background: #e0e0e0;
+        background: #e9ecef;
         border-radius: 4px;
         animation: pulse 1.5s infinite ease-in-out;
 }
+
 @keyframes pulse {
-        0%,
-        100% {
+        0% {
                 opacity: 1;
         }
         50% {
                 opacity: 0.6;
         }
+        100% {
+                opacity: 1;
+        }
 }
+
 .skeleton-image {
-        height: 220px;
+        aspect-ratio: 16 / 10;
         border-radius: 0;
 }
+
 .skeleton-content {
         padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
 }
+
+.skeleton-location {
+        height: 0.85rem;
+        width: 50%;
+        margin-bottom: 12px;
+}
+
 .skeleton-title {
-        height: 28px;
-        width: 80%;
-        margin: 12px 0;
+        height: 1.25rem;
+        width: 90%;
+        margin-bottom: 16px;
 }
-.skeleton-text {
-        height: 16px;
-        width: 100%;
-        margin-bottom: 8px;
+
+.skeleton-rating {
+        height: 1rem;
+        width: 70%;
+        margin-bottom: 16px;
 }
-.skeleton-text:last-child {
-        width: 60%;
+
+.skeleton-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--border-color);
+        padding-top: 16px;
+        margin-top: auto;
+}
+
+.skeleton-price {
+        height: 1.5rem;
+        width: 45%;
+}
+
+.skeleton-duration {
+        height: 0.9rem;
+        width: 35%;
 }
 .no-tours-found {
         text-align: center;
@@ -352,7 +406,15 @@ body {
         grid-column: 1 / -1;
 }
 
+@media (max-width: 991.98px) {
+        .tour-grid {
+                grid-template-columns: repeat(2, 1fr);
+        }
+}
 @media (max-width: 767px) {
+        .tour-grid {
+                grid-template-columns: 1fr;
+        }
         .tours-search__form {
                 grid-template-columns: 1fr 1fr;
         }
