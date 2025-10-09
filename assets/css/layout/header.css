@@ -98,7 +98,7 @@ html.dark .theme-toggle {
 }
 .header-main-nav__link {
     text-decoration: none;
-    color: var(--text-gray);
+    color: var(--text-header);
     font-weight: 600;
     font-size: 1rem;
     position: relative;
