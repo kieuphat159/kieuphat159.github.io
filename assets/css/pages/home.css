@@ -1055,6 +1055,22 @@
         max-width: 380px;
         margin: 0 auto;
     }
+    .home-video__overlay h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .home-video__overlay p {
+        font-size: 0.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .home-video__overlay a {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 575.98px) {
