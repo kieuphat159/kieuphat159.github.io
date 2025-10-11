@@ -1,132 +1,301 @@
-<!-- Hero Banner -->
+<!-- ✅ 1. Hero Banner with Video Background -->
 <section class="des-banner">
+  <video class="des-banner__video" autoplay muted loop playsinline>
+    <source src="../assets/videos/travel-hero.mp4" type="video/mp4" />
+    <img src="../assets/images/banner-destination.jpg" alt="banner" />
+  </video>
+  <div class="des-banner__overlay"></div>
   <div class="des-banner__content">
     <h1 class="des-banner__title">Destinations</h1>
     <p class="des-banner__subtitle">Explore Tours By Destinations</p>
+    <div class="des-banner__cta">
+      <button id="ctaExplore">Explore Now</button>
+    </div>
   </div>
 </section>
 
-<!-- Destinations Grid -->
-<section class="destinations-grid">
+<!-- ✅ 2. Top Trending Destinations -->
+<section class="trending-section">
   <div class="container">
-    <div class="destinations-grid__wrapper">
-      <!-- Row 1 -->
-      <div class="destination-card">
-        <div class="destination-card__image">
+    <h2 class="section-title">🔥 Top Trending Destinations</h2>
+    <div class="swiper trendingSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../assets/images/trending/bali.jpg" alt="Bali" />
+          <div class="trending-info">
+            <h3>Bali, Indonesia</h3>
+            <p>⭐ 4.9 | 12.3K check-ins</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="../assets/images/trending/paris.jpg" alt="Paris" />
+          <div class="trending-info">
+            <h3>Paris, France</h3>
+            <p>⭐ 4.8 | 9.1K check-ins</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="../assets/images/trending/kyoto.jpg" alt="Kyoto" />
+          <div class="trending-info">
+            <h3>Kyoto, Japan</h3>
+            <p>⭐ 4.7 | 8.7K check-ins</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
           <img
-            src="../assets/images/destinations/Switzerland.png"
-            alt="Switzerland"
+            src="../assets/images/trending/cappadocia.jpg"
+            alt="Cappadocia"
           />
+          <div class="trending-info">
+            <h3>Cappadocia, Turkey</h3>
+            <p>⭐ 4.9 | 6.4K check-ins</p>
+          </div>
         </div>
-        <h3 class="destination-card__title">Switzerland</h3>
       </div>
-
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img
-            src="../assets/images/destinations/Maldives.png"
-            alt="Maldives"
-          />
-        </div>
-        <h3 class="destination-card__title">Maldives</h3>
-      </div>
-
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img
-            src="../assets/images/destinations/Indonesia.png"
-            alt="Indonesia"
-          />
-        </div>
-        <h3 class="destination-card__title">Indonesia</h3>
-      </div>
-
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img
-            src="../assets/images/destinations/Bangladesh.png"
-            alt="Bangladesh"
-          />
-        </div>
-        <h3 class="destination-card__title">Bangladesh</h3>
-      </div>
-
-      <!-- Row 2 -->
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img
-            src="../assets/images/destinations/Thailand.png"
-            alt="Thailand"
-          />
-        </div>
-        <h3 class="destination-card__title">Thailand</h3>
-      </div>
-
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img src="../assets/images/destinations/Turkey.png" alt="Turkey" />
-        </div>
-        <h3 class="destination-card__title">Turkey</h3>
-      </div>
-
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img
-            src="../assets/images/destinations/Agentina.png"
-            alt="Argentina"
-          />
-        </div>
-        <h3 class="destination-card__title">Argentina</h3>
-      </div>
-
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img src="../assets/images/destinations/Brazil.png" alt="Brazil" />
-        </div>
-        <h3 class="destination-card__title">Brazil</h3>
-      </div>
-
-      <!-- Row 3 -->
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img src="../assets/images/destinations/Marocco.png" alt="Morocco" />
-        </div>
-        <h3 class="destination-card__title">Morocco</h3>
-      </div>
-
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img src="../assets/images/destinations/Dubai.png" alt="Dubai" />
-        </div>
-        <h3 class="destination-card__title">Dubai</h3>
-      </div>
-
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img src="../assets/images/destinations/Ecuador.png" alt="Ecuador" />
-        </div>
-        <h3 class="destination-card__title">Ecuador</h3>
-      </div>
-
-      <div class="destination-card">
-        <div class="destination-card__image">
-          <img
-            src="../assets/images/destinations/Colombia.png"
-            alt="Colombia"
-          />
-        </div>
-        <h3 class="destination-card__title">Colombia</h3>
-      </div>
-    </div>
-
-    <!-- Pagination -->
-    <div class="pagination">
-      <a href="#" class="first"><i class="fas fa-angle-double-left"></i></a>
-      <a href="#" class="prev"><i class="fas fa-chevron-left"></i></a>
-      <!-- Nơi JS sẽ tạo số trang -->
-      <span class="page-numbers"></span>
-      <a href="#" class="next"><i class="fas fa-chevron-right"></i></a>
-      <a href="#" class="last"><i class="fas fa-angle-double-right"></i></a>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </section>
+
+<!-- ✅ 3. Filter + Sort + Search -->
+<section class="filter-section">
+  <div class="container">
+    <div class="filter-left">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search destinations..."
+      />
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-region="all">All</button>
+        <button class="filter-btn" data-region="Asia">Asia</button>
+        <button class="filter-btn" data-region="Europe">Europe</button>
+        <button class="filter-btn" data-region="America">America</button>
+        <button class="filter-btn" data-region="Africa">Africa</button>
+      </div>
+    </div>
+    <div class="filter-right">
+      <label for="sortSelect">Sort:</label>
+      <select id="sortSelect">
+        <option value="default">Default</option>
+        <option value="rating-desc">Rating: High → Low</option>
+        <option value="rating-asc">Rating: Low → High</option>
+        <option value="tours-desc">Tours: High → Low</option>
+        <option value="visited-desc">Most visited</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ 4. Main Grid + Sidebar -->
+<section class="destinations-grid">
+  <div class="container grid-with-sidebar">
+    <div class="destinations-grid__wrapper"></div>
+    <aside class="sidebar">
+      <div class="top5-widget card">
+        <h4>Top 5 Most Visited (this month)</h4>
+        <div id="top5List"></div>
+      </div>
+      <div class="subscribe card">
+        <h4>Subscribe</h4>
+        <input id="emailSub" placeholder="Your email" />
+        <button id="btnSub">Subscribe</button>
+      </div>
+    </aside>
+  </div>
+  <div class="load-more-container">
+    <button id="loadMoreBtn">Load More</button>
+  </div>
+</section>
+
+<!-- ✅ 5. Plan Your Trip Tool -->
+<section class="trip-planner">
+  <div class="container">
+    <h2 class="section-title">🧭 Plan Your Trip</h2>
+    <form id="tripForm">
+      <div class="form-group">
+        <label>Budget ($)</label>
+        <input
+          type="number"
+          id="budget"
+          placeholder="Enter your budget"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Days</label>
+        <input type="number" id="days" placeholder="Number of days" required />
+      </div>
+      <div class="form-group">
+        <label>Interest</label>
+        <select id="interest">
+          <option value="beach">Beach</option>
+          <option value="mountain">Mountain</option>
+          <option value="city">City</option>
+          <option value="culture">Culture</option>
+          <option value="food">Food</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary">Find Destinations</button>
+    </form>
+    <div id="tripResults" class="trip-results"></div>
+  </div>
+</section>
+
+<!-- ✅ 6. Special Offers -->
+<section class="special-offers">
+  <div class="container">
+    <h2 class="section-title">💥 Special Offers</h2>
+    <div class="offers-grid">
+      <div class="offer-card">
+        <img src="../assets/images/offers/europe.jpg" alt="Europe Offer" />
+        <div class="offer-content">
+          <h3>Europe Adventure</h3>
+          <p>Save up to 20% when booking this month.</p>
+          <button class="btn-primary">View Deals</button>
+        </div>
+      </div>
+      <div class="offer-card">
+        <img src="../assets/images/offers/asia.jpg" alt="Asia Offer" />
+        <div class="offer-content">
+          <h3>Asia Discovery</h3>
+          <p>Exclusive group tours at special rates.</p>
+          <button class="btn-primary">View Deals</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ 7. Travel Vlogs / Reels -->
+<section class="travel-vlogs">
+  <div class="container">
+    <h2 class="section-title">🎥 Travel Vlogs & Reels</h2>
+    <div class="vlog-grid">
+      <video src="../assets/videos/vlog1.mp4" muted loop></video>
+      <video src="../assets/videos/vlog2.mp4" muted loop></video>
+      <video src="../assets/videos/vlog3.mp4" muted loop></video>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ 8. Best Time to Visit -->
+<section class="best-time">
+  <div class="container">
+    <h2 class="section-title">📅 Best Time To Visit</h2>
+    <div class="season-bars">
+      <div class="season">
+        <span>❄️ Jan–Mar</span>
+        <div class="bar cold"></div>
+      </div>
+      <div class="season">
+        <span>🌸 Apr–Jun</span>
+        <div class="bar warm"></div>
+      </div>
+      <div class="season">
+        <span>☀️ Jul–Sep</span>
+        <div class="bar hot"></div>
+      </div>
+      <div class="season">
+        <span>🍂 Oct–Dec</span>
+        <div class="bar mild"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ 9. Local Guides & Experiences -->
+<section class="local-guides">
+  <div class="container">
+    <h2 class="section-title">🧑‍🤝‍🧑 Local Guides & Experiences</h2>
+    <div class="guides-grid">
+      <div class="guide-card">
+        <img src="../assets/images/guides/guide1.jpg" alt="Guide 1" />
+        <h3>Anna Nguyen</h3>
+        <p>⭐ 4.9 | 120 tours</p>
+        <button class="btn-primary">Book Guide</button>
+      </div>
+      <div class="guide-card">
+        <img src="../assets/images/guides/guide2.jpg" alt="Guide 2" />
+        <h3>John Lee</h3>
+        <p>⭐ 4.8 | 98 tours</p>
+        <button class="btn-primary">Book Guide</button>
+      </div>
+      <div class="guide-card">
+        <img src="../assets/images/guides/guide3.jpg" alt="Guide 3" />
+        <h3>Maria Rossi</h3>
+        <p>⭐ 4.7 | 110 tours</p>
+        <button class="btn-primary">Book Guide</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ 10. Mini Stats -->
+<section class="mini-stats">
+  <div class="container stats-grid">
+    <div class="stat">
+      <span class="count" data-target="120">0</span>
+      <p>Destinations</p>
+    </div>
+    <div class="stat">
+      <span class="count" data-target="350">0</span>
+      <p>Tours Organized</p>
+    </div>
+    <div class="stat">
+      <span class="count" data-target="4.9">0</span>
+      <p>Average Rating ⭐</p>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ JS: Swiper + Trip Planner + Counters -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  // Swiper init
+  const swiper = new Swiper(".trendingSwiper", {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    autoplay: { delay: 3000 },
+    loop: true,
+  });
+
+  // Trip planner logic
+  const data = [
+    { name: "Bali", type: "beach", minBudget: 500, minDays: 3 },
+    { name: "Hanoi", type: "culture", minBudget: 300, minDays: 2 },
+    { name: "Tokyo", type: "city", minBudget: 1000, minDays: 4 },
+    { name: "Swiss Alps", type: "mountain", minBudget: 1200, minDays: 5 },
+    { name: "Bangkok", type: "food", minBudget: 400, minDays: 2 },
+  ];
+  document.getElementById("tripForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const budget = +document.getElementById("budget").value;
+    const days = +document.getElementById("days").value;
+    const interest = document.getElementById("interest").value;
+    const results = data.filter(
+      (d) => d.type === interest && budget >= d.minBudget && days >= d.minDays
+    );
+    document.getElementById("tripResults").innerHTML = results.length
+      ? results
+          .map((r) => `<p>✅ ${r.name} is a perfect fit for you!</p>`)
+          .join("")
+      : "<p>No matching destinations found 😅</p>";
+  });
+
+  // Counter animation
+  const counters = document.querySelectorAll(".count");
+  counters.forEach((counter) => {
+    const update = () => {
+      const target = +counter.getAttribute("data-target");
+      const current = +counter.innerText;
+      const increment = target / 100;
+      if (current < target) {
+        counter.innerText = Math.ceil(current + increment);
+        setTimeout(update, 30);
+      } else counter.innerText = target;
+    };
+    update();
+  });
+</script>
