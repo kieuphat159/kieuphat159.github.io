@@ -289,8 +289,6 @@
     flex-wrap: wrap;
     margin-bottom: 32px;
 }
-.home-tours__header-left {
-}
 .home-tours__heading {
     font-size: 1.9rem;
     font-weight: 800;
@@ -406,92 +404,79 @@
     white-space: nowrap;
 }
 
-/* Why Choose Us Section */
-.home-why {
-    margin-top: 50px;
-    background: var(--why-section-bg);
-    border-radius: 24px;
-    padding: 64px 48px;
-}
-.home-why__inner {
+/* Explore the world video */
+
+.home-video {
+    position: relative;
+    overflow: hidden;
     display: flex;
-    align-items: center;
-    gap: 70px;
-    flex-wrap: wrap;
-}
-.home-why__media {
-    flex: 1 1 360px;
-    max-width: 420px;
-}
-.home-why__img {
-    width: 100%;
-    display: block;
-    border-radius: var(--why-media-radius);
-    object-fit: cover;
-    aspect-ratio: 4 / 5;
-}
-.home-why__content {
-    flex: 1 1 420px;
-    max-width: 540px;
-}
-.home-why__heading {
-    font-size: 2rem;
-    font-weight: 800;
-    margin: 0 0 14px;
-    color: var(--text-primary);
-}
-.home-why__desc {
-    margin: 0 0 28px;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--why-item-text-color);
-    max-width: 520px;
-}
-.home-why__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-.home-why__item {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-}
-.home-why__icon {
-    flex-shrink: 0;
-    width: var(--why-icon-size);
-    height: var(--why-icon-size);
-    border-radius: 12px;
-    background: var(--why-icon-bg);
-    display: flex;
-    align-items: center;
     justify-content: center;
-    border: var(--why-icon-border);
-    box-shadow: var(--why-icon-shadow);
+    align-items: center;
+    width: 100vw; /* full chiều ngang */
+    height: 70vh; /* video thấp hơn full màn hình */
+    margin-left: calc(-50vw + 50%); /* kéo sang trái để lấp đầy */
+    overflow: hidden;
+    background: #000;
+    overflow: hidden;
+    margin-bottom: 64px;
+    margin-top: 64px;
 }
-.home-why__icon img {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
+
+.home-video__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(70%);
+    transition: transform 0.5s ease-in-out;
 }
-.home-why__item-body {
-    flex: 1;
+
+.home-video__overlay {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    animation: fadeIn 1.5s ease-in-out;
 }
-.home-why__item-title {
-    margin: 0 0 6px;
-    font-size: 0.9rem;
+
+.home-video__overlay h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.home-video__overlay p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    background: #00b4d8;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
     font-weight: 600;
-    color: var(--why-item-title-color);
+    transition: all 0.3s ease;
 }
-.home-why__item-text {
-    margin: 0;
-    font-size: 0.7rem;
-    line-height: 1.5;
-    color: var(--why-item-text-color);
-    max-width: 330px;
+
+.btn-primary:hover {
+    background: #0077b6;
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Trending Tours Section */
@@ -502,8 +487,6 @@
     flex-wrap: wrap;
     align-items: flex-start;
     margin-bottom: 32px;
-}
-.home-trending__head-left {
 }
 .home-trending__title {
     margin: 0 0 10px;
@@ -556,8 +539,6 @@
 .home-trend-list {
     display: flex;
     gap: 28px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
     padding-bottom: 6px;
     scrollbar-width: none;
 }
@@ -565,7 +546,9 @@
     display: none;
 }
 .home-trend-card {
-    flex: 0 0 310px;
+    flex: 0 0 calc(50% - 14px); /* (100% - 28px gap) / 2 */
+    box-sizing: border-box;
+    min-width: 300px;
     background: var(--trend-card-bg);
     border: 1px solid var(--trend-card-border);
     border-radius: 14px;
@@ -921,17 +904,19 @@
     height: 54px;
     margin: 0 auto;
     border-radius: 16px;
-    background: rgba(255, 123, 41, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
 }
+
 .home-tour-type-card__icon img {
-    width: 30px;
-    height: 30px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     display: block;
 }
+
 .home-tour-type-card__title {
     margin: 0;
     font-size: 0.95rem;
@@ -958,33 +943,12 @@
     .home-tours__list {
         grid-template-columns: repeat(2, minmax(230px, 1fr));
     }
-    .home-why__inner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 56px;
-    }
-    .home-why__content {
-        max-width: 700px;
-    }
-    .home-why__item-text {
-        max-width: 100%;
-    }
     .home-tour-types__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 991.98px) {
-    .home-why {
-        padding: 56px 32px;
-    }
-    .home-why__inner {
-        gap: 48px;
-    }
-    .home-trend-card {
-        flex: 0 0 280px;
-    }
     .home-hero {
         flex-direction: column;
         align-items: flex-start;
@@ -1048,27 +1012,39 @@
     .home-tours__see-all {
         align-self: flex-start;
     }
-    .home-why {
-        padding: 48px 24px;
+    .home-video {
+        height: 40vh;
     }
-    .home-why__inner {
-        flex-direction: column;
-        gap: 40px;
+    .home-video__overlay h1 {
+        font-size: 2rem;
     }
-    .home-why__media,
-    .home-why__content {
-        max-width: 100%;
+    .home-video__overlay p {
+        font-size: 1rem;
     }
-    .home-why__img {
-        aspect-ratio: 16 / 11;
-        border-radius: 28px;
+    .btn-primary {
+        padding: 10px 25px;
     }
     .home-trend-card {
-        flex: 0 0 100%;
-        max-width: 100%;
+        /* Đặt chiều rộng là 100% của viewport và thêm padding để tạo khoảng cách */
+        flex-shrink: 0;
+        padding: 0;
+        border: none; /* Bỏ border để không bị tính vào chiều rộng */
+        box-shadow: none; /* Bỏ shadow để không bị cắt */
+    }
+    .home-trend-card > a {
+        /* Áp dụng style vào thẻ a bên trong để có border và shadow */
+        display: block;
+        border: 1px solid var(--trend-card-border);
+        box-shadow: var(--trend-card-shadow);
+        border-radius: 14px;
+        overflow: hidden;
+        height: 100%;
     }
     .home-trend-list {
-        gap: 20px;
+        gap: 5px;
+    }
+    .home-trend-list.no-transition {
+        transition: none !important;
     }
     .home-tour-type-card {
         padding: 28px 16px 26px;
@@ -1079,12 +1055,25 @@
         max-width: 380px;
         margin: 0 auto;
     }
+    .home-video__overlay h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .home-video__overlay p {
+        font-size: 0.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .home-video__overlay a {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 575.98px) {
-    .home-why__media {
-        display: none;
-    }
     .home-trending__head {
         flex-direction: column;
         align-items: flex-start;
@@ -1206,19 +1195,6 @@
     border-radius: 4px;
 }
 
-/* Why section image */
-.home-why__media .skeleton-wrapper {
-    aspect-ratio: 4 / 5;
-    border-radius: var(--why-media-radius);
-}
-
-/* Why section icons */
-.home-why__icon .skeleton-wrapper {
-    width: 22px;
-    height: 22px;
-    border-radius: 4px;
-}
-
 /* Hero main image */
 .home-hero__image-group .skeleton-wrapper {
     width: 100%;
@@ -1239,12 +1215,6 @@
     /* Giảm intensity của shimmer trên mobile để tiết kiệm pin */
     .skeleton-wrapper.skeleton-loading::before {
         animation-duration: 2s;
-    }
-
-    /* Điều chỉnh aspect ratio cho mobile */
-    .home-why__media .skeleton-wrapper {
-        aspect-ratio: 16 / 11;
-        border-radius: 28px;
     }
 }
 
