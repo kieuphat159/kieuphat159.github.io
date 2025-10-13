@@ -619,3 +619,39 @@ function initMap(lat, lon, name) {
 renderDestinations();
 renderTop5();
 persistVisits(); // save initial state
+
+// 🌍 Explore by Region
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".region-track");
+  const prevBtn = document.querySelector(".slide-btn.prev");
+  const nextBtn = document.querySelector(".slide-btn.next");
+  const cards = document.querySelectorAll(".region-card");
+
+  let index = 0;
+
+  const cardStyle = getComputedStyle(cards[0]);
+  const cardWidth =
+    cards[0].offsetWidth +
+    parseInt(cardStyle.marginRight || 0) +
+    parseInt(cardStyle.gap || 20);
+
+  const visibleCount = Math.floor(
+    document.querySelector(".region-window").offsetWidth / cardWidth
+  );
+
+  const maxIndex = cards.length - visibleCount;
+
+  nextBtn.addEventListener("click", () => {
+    if (index < maxIndex) {
+      index++;
+      track.style.transform = `translateX(-${index * cardWidth}px)`;
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (index > 0) {
+      index--;
+      track.style.transform = `translateX(-${index * cardWidth}px)`;
+    }
+  });
+});

@@ -1,8 +1,8 @@
 <!-- ✅ 1. Hero Banner with Video Background -->
 <section class="des-banner">
   <video class="des-banner__video" autoplay muted loop playsinline>
-    <source src="../assets/videos/travel-hero.mp4" type="video/mp4" />
-    <img src="../assets/images/banner-destination.jpg" alt="banner" />
+    <!-- <source src="../assets/videos/travel-hero.mp4" type="video/mp4" /> -->
+    <img src="../assets/images/destinations/Banner.png" alt="banner" />
   </video>
   <div class="des-banner__overlay"></div>
   <div class="des-banner__content">
@@ -14,45 +14,71 @@
   </div>
 </section>
 
-<!-- ✅ 2. Top Trending Destinations -->
-<section class="trending-section">
+<!-- ✅ 2. Explore by Region -->
+<section class="region-section">
   <div class="container">
-    <h2 class="section-title">🔥 Top Trending Destinations</h2>
-    <div class="swiper trendingSwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="../assets/images/trending/bali.jpg" alt="Bali" />
-          <div class="trending-info">
-            <h3>Bali, Indonesia</h3>
-            <p>⭐ 4.9 | 12.3K check-ins</p>
+    <h2 class="section-title">🌍 Explore by Region</h2>
+
+    <div class="region-slider">
+      <button class="slide-btn prev">&#10094;</button>
+
+      <div class="region-window">
+        <div class="region-track">
+          <div class="region-card">
+            <img src="../assets/images/destinations/Agentina.png" alt="Asia" />
+            <div class="region-overlay">
+              <h3>Asia</h3>
+              <p>Vibrant cultures, beaches & street food</p>
+            </div>
           </div>
-        </div>
-        <div class="swiper-slide">
-          <img src="../assets/images/trending/paris.jpg" alt="Paris" />
-          <div class="trending-info">
-            <h3>Paris, France</h3>
-            <p>⭐ 4.8 | 9.1K check-ins</p>
+
+          <div class="region-card">
+            <img
+              src="../assets/images/destinations/Agentina.png"
+              alt="Europe"
+            />
+            <div class="region-overlay">
+              <h3>Europe</h3>
+              <p>Historic cities & romantic getaways</p>
+            </div>
           </div>
-        </div>
-        <div class="swiper-slide">
-          <img src="../assets/images/trending/kyoto.jpg" alt="Kyoto" />
-          <div class="trending-info">
-            <h3>Kyoto, Japan</h3>
-            <p>⭐ 4.7 | 8.7K check-ins</p>
+
+          <div class="region-card">
+            <img
+              src="../assets/images/destinations/Agentina.png"
+              alt="America"
+            />
+            <div class="region-overlay">
+              <h3>America</h3>
+              <p>Adventure, culture & endless diversity</p>
+            </div>
           </div>
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="../assets/images/trending/cappadocia.jpg"
-            alt="Cappadocia"
-          />
-          <div class="trending-info">
-            <h3>Cappadocia, Turkey</h3>
-            <p>⭐ 4.9 | 6.4K check-ins</p>
+
+          <div class="region-card">
+            <img
+              src="../assets/images/destinations/Agentina.png"
+              alt="Africa"
+            />
+            <div class="region-overlay">
+              <h3>Africa</h3>
+              <p>Wildlife, safaris & natural wonders</p>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <img
+              src="../assets/images/destinations/Agentina.png"
+              alt="Oceania"
+            />
+            <div class="region-overlay">
+              <h3>Oceania</h3>
+              <p>Islands, reefs & tropical escapes</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
+
+      <button class="slide-btn next">&#10095;</button>
     </div>
   </div>
 </section>
