@@ -360,7 +360,7 @@ section {
   gap: 24px;
 }
 
-/* Destination Card */
+/* ======== Destination Card ======== */
 .destination-card {
   background: white;
   border-radius: var(--radius-lg);
@@ -376,6 +376,7 @@ section {
   box-shadow: var(--shadow-lg);
 }
 
+/* ======== Image ======== */
 .destination-card__image {
   position: relative;
   overflow: hidden;
@@ -394,49 +395,7 @@ section {
   transform: scale(1.1);
 }
 
-.destination-card__image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 50%,
-    rgba(0, 0, 0, 0.75) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.destination-card:hover .destination-card__image::after {
-  opacity: 1;
-}
-
-.destination-card__body {
-  padding: 16px 20px;
-}
-
-.destination-card__title {
-  font-size: 18px;
-  margin-bottom: 12px;
-  font-weight: 700;
-  color: var(--text-dark);
-}
-
-.meta-small {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.meta-small span {
-  color: var(--text-gray);
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
+/* ======== Wishlist Button ======== */
 .wishlist-btn {
   position: absolute;
   top: 16px;
@@ -466,6 +425,37 @@ section {
   color: white;
 }
 
+/* ======== Card Body ======== */
+.destination-card__body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-body-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.destination-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+/* ======== Meta Info ======== */
+.meta-small {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
 .pill {
   background: #fff4f0;
   border-radius: 50px;
@@ -473,6 +463,22 @@ section {
   font-size: 13px;
   font-weight: 600;
   color: var(--primary);
+}
+
+/* ======== View Details Button ======== */
+.view-details {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.view-details:hover {
+  background: #d35400;
 }
 
 /* Sidebar */
@@ -629,44 +635,67 @@ section {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease;
-  height: 280px;
 }
 
 .offer-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
 }
 
+/* ✅ Dải 20% OFF dạng ribbon */
+.offer-badge {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  background-color: #c64b45; /* đỏ cam */
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 22px 6px 16px;
+  z-index: 3;
+  line-height: 1.2;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 10px) 0,
+    100% 50%,
+    calc(100% - 10px) 100%,
+    0 100%
+  );
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ✅ Ảnh nền */
 .offer-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   transition: transform 0.5s ease;
 }
 
 .offer-card:hover img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
+/* ✅ Overlay nội dung */
 .offer-content {
   position: absolute;
   bottom: 0;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.85));
-  color: white;
+  left: 0;
   width: 100%;
+  color: white;
   padding: 24px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.85));
 }
 
 .offer-content h3 {
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 8px;
   font-weight: 700;
 }
 
 .offer-content p {
-  margin-bottom: 16px;
-  font-size: 15px;
-  opacity: 0.95;
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 12px;
 }
 
 /* === 9. TRAVEL VLOGS === */
@@ -823,7 +852,176 @@ section {
 }
 
 /* === 13. MODAL (Chưa có trong HTML) === */
-/* Styles for modal if it were implemented */
+/* ===== MODAL OVERLAY ===== */
+.modal {
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  transition: opacity 0.3s ease;
+}
+
+.modal.open {
+  display: flex;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== MODAL CONTAINER ===== */
+.modal-content {
+  background-color: var(--card-bg, #fff);
+  margin: 4% auto;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 1000px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.4s ease;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== CLOSE BUTTON ===== */
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: var(--primary-color, #0077cc);
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #ff4b4b;
+  transform: rotate(90deg);
+}
+
+/* ===== BODY LAYOUT ===== */
+.modal-body {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.left-column {
+  flex: 2;
+  min-width: 60%;
+}
+
+.right-column {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* ===== IMAGE / GALLERY ===== */
+.gallery-swiper {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.gallery-swiper img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ===== TEXT INFO ===== */
+.modal-content h2 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.modal-content p {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+#detailRating,
+#detailTours {
+  display: inline-block;
+  background: #f1f5f9;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin: 4px 6px 12px 0;
+  font-weight: 500;
+  color: #333;
+}
+
+/* ===== WEATHER BOX ===== */
+#weatherContent {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  color: #333;
+  margin-top: 8px;
+}
+
+/* ===== MAP ===== */
+#map {
+  height: 280px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+/* ===== SCROLLBAR ===== */
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 8px;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .modal-body {
+    flex-direction: column;
+  }
+  .left-column,
+  .right-column {
+    min-width: 100%;
+  }
+  .gallery-swiper img {
+    height: 240px;
+  }
+}
 
 /* === 14. RESPONSIVE STYLES === */
 @media (max-width: 1100px) {
