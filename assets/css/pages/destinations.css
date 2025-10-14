@@ -91,7 +91,7 @@ section {
 }
 
 /* === 3. HERO BANNER === */
-/* .des-banner {
+.des-banner {
   position: relative;
   height: 480px;
   overflow: hidden;
@@ -114,11 +114,11 @@ section {
 .des-banner__overlay {
   position: absolute;
   inset: 0;
-   /* background: linear-gradient(
+  background: linear-gradient(
     135deg,
-    rgba(255, 107, 53, 0.7),
-    rgba(229, 90, 40, 0.8)
-  );/
+    rgba(8, 2, 0, 0.701),
+    rgba(0, 0, 0, 0.064)
+  );
   z-index: 2;
 }
 
@@ -160,10 +160,10 @@ section {
 .des-banner__cta button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-} */
+}
 
 /* Destinations Hero Banner */
-.des-banner {
+/* .des-banner {
   position: relative;
   min-height: 100vh;
   width: 100vw;
@@ -228,7 +228,7 @@ section {
 }
 
 /* Animations */
-@keyframes fadeInUp {
+/* @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -237,89 +237,120 @@ section {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
-/* === 4. TRENDING SECTION === */
+/* === EXPLORE BY REGION SECTION === */
 .region-section {
-  margin-top: 50px;
+  margin: 100px auto;
+  padding: 60px 0;
   text-align: center;
+  background: #fafafa;
 }
 
+.region-section .section-title {
+  font-size: 2.4rem;
+  margin-bottom: 60px;
+  font-weight: 700;
+  color: #1e1e1e;
+  letter-spacing: 0.5px;
+}
+
+/* === SLIDER === */
 .region-slider {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 40px;
 }
 
 .region-window {
   overflow: hidden;
-  width: 90%;
-  max-width: 1000px;
+  width: 92%;
+  max-width: 2000px;
+  margin: 0 auto;
 }
 
 .region-track {
   display: flex;
-  gap: 20px;
-  transition: transform 0.5s ease-in-out;
+  gap: 25px;
+  transition: transform 0.6s ease;
 }
 
-.region-card {
-  min-width: 250px;
-  border-radius: 16px;
+/* === CARD === */
+.region-track-card {
+  flex: 0 0 calc((100% - 4 * 25px) / 3); /* 5 card vừa khít, 25px là gap */
+  border-radius: 24px;
   overflow: hidden;
   position: relative;
-  flex-shrink: 0;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.region-card img {
+.region-track-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.region-track-card img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.region-card:hover img {
-  transform: scale(1.1);
+  display: block;
 }
 
 .region-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 25px 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
   color: #fff;
-  padding: 15px;
   text-align: left;
 }
 
+.region-overlay h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.region-overlay p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+}
+
+/* === SLIDE BUTTONS === */
 .slide-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
   border: none;
-  font-size: 24px;
-  padding: 8px 12px;
-  cursor: pointer;
+  padding: 12px 18px;
   border-radius: 50%;
-  transition: 0.3s;
-  z-index: 10;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 0.3s ease;
+  z-index: 2;
 }
 
 .slide-btn:hover {
-  background: #fff;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .slide-btn.prev {
-  left: 0;
+  left: 5px;
 }
 
 .slide-btn.next {
-  right: 0;
+  right: 5px;
 }
 
 /* === 5. FILTER SECTION === */
@@ -991,8 +1022,8 @@ section {
 }
 
 .region-card {
-  width: 180px;
-  height: 160px;
+  width: 240px;
+  height: 200px;
   border-radius: var(--radius-md);
   overflow: hidden;
   position: relative;
@@ -1107,8 +1138,6 @@ section {
 .cons {
   color: #ef4444;
 }
-
-/* ... (Các quy tắc progress bar và media query như ở câu trả lời trước) */
 
 /* Responsive Design */
 @media (max-width: 1200px) {

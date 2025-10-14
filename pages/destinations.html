@@ -1,5 +1,5 @@
 <!-- 1. Hero Banner with Video Background -->
-<!-- <section class="des-banner">
+<section class="des-banner">
   <video class="des-banner__video" autoplay muted loop playsinline>
     <source
       src="../assets/images/destinations/reels/asia.mov"
@@ -15,15 +15,15 @@
       <button id="ctaExplore">Explore Now</button>
     </div>
   </div>
-</section> -->
+</section>
 
 <!-- Hero Banner -->
-<section class="des-banner">
+<!-- <section class="des-banner">
   <div class="des-banner__content">
     <h1 class="des-banner__title">Destinations</h1>
     <p class="des-banner__subtitle">Explore Tours By Destinations</p>
   </div>
-</section>
+</section> -->
 
 <!-- 2. Explore by Region -->
 <section class="region-section">
@@ -35,7 +35,7 @@
 
       <div class="region-window">
         <div class="region-track">
-          <div class="region-card">
+          <div class="region-track-card">
             <img src="../assets/images/destinations/Agentina.png" alt="Asia" />
             <div class="region-overlay">
               <h3>Asia</h3>
@@ -43,7 +43,7 @@
             </div>
           </div>
 
-          <div class="region-card">
+          <div class="region-track-card">
             <img
               src="../assets/images/destinations/Agentina.png"
               alt="Europe"
@@ -54,7 +54,7 @@
             </div>
           </div>
 
-          <div class="region-card">
+          <div class="region-track-card">
             <img
               src="../assets/images/destinations/Agentina.png"
               alt="America"
@@ -65,7 +65,7 @@
             </div>
           </div>
 
-          <div class="region-card">
+          <div class="region-track-card">
             <img
               src="../assets/images/destinations/Agentina.png"
               alt="Africa"
@@ -76,7 +76,7 @@
             </div>
           </div>
 
-          <div class="region-card">
+          <div class="region-track-card">
             <img
               src="../assets/images/destinations/Agentina.png"
               alt="Oceania"
@@ -294,7 +294,6 @@
   <div class="best-time-hero">
     <div class="best-time-video-bg-wrapper">
       <video
-        src="../assets/images/destinations/reels/asia.mov"
         class="best-time-video-bg"
         autoplay
         muted
@@ -424,54 +423,3 @@
     </div>
   </div>
 </div>
-
-<!-- JS: Swiper + Trip Planner + Counters -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script>
-  // Swiper init
-  const swiper = new Swiper(".trendingSwiper", {
-    slidesPerView: 3,
-    spaceBetween: 20,
-    pagination: { el: ".swiper-pagination", clickable: true },
-    autoplay: { delay: 3000 },
-    loop: true,
-  });
-
-  // Trip planner logic
-  const data = [
-    { name: "Bali", type: "beach", minBudget: 500, minDays: 3 },
-    { name: "Hanoi", type: "culture", minBudget: 300, minDays: 2 },
-    { name: "Tokyo", type: "city", minBudget: 1000, minDays: 4 },
-    { name: "Swiss Alps", type: "mountain", minBudget: 1200, minDays: 5 },
-    { name: "Bangkok", type: "food", minBudget: 400, minDays: 2 },
-  ];
-  document.getElementById("tripForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const budget = +document.getElementById("budget").value;
-    const days = +document.getElementById("days").value;
-    const interest = document.getElementById("interest").value;
-    const results = data.filter(
-      (d) => d.type === interest && budget >= d.minBudget && days >= d.minDays
-    );
-    document.getElementById("tripResults").innerHTML = results.length
-      ? results
-          .map((r) => `<p>✅ ${r.name} is a perfect fit for you!</p>`)
-          .join("")
-      : "<p>No matching destinations found 😅</p>";
-  });
-
-  // Counter animation
-  const counters = document.querySelectorAll(".count");
-  counters.forEach((counter) => {
-    const update = () => {
-      const target = +counter.getAttribute("data-target");
-      const current = +counter.innerText;
-      const increment = target / 100;
-      if (current < target) {
-        counter.innerText = Math.ceil(current + increment);
-        setTimeout(update, 30);
-      } else counter.innerText = target;
-    };
-    update();
-  });
-</script>

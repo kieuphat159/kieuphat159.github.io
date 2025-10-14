@@ -287,7 +287,7 @@ const destinations = [
 // Data: thời gian du lịch tốt nhất cho từng region
 const bestTimeData = {
   Asia: {
-    video: "../assets/videos/asia-best-time.mp4",
+    video: "../assets/images/destinations/reels/asia.mov",
     seasons: [
       {
         icon: "❄️",
@@ -328,7 +328,8 @@ const bestTimeData = {
     ],
   },
   Europe: {
-    video: "../assets/videos/europe-best-time.mp4",
+    video:
+      "../assets/images/destinations/reels/AdobeStock_403594168_Video_HD_Preview.mov",
     seasons: [
       {
         icon: "❄️",
@@ -369,7 +370,7 @@ const bestTimeData = {
     ],
   },
   America: {
-    video: "../assets/videos/america-best-time.mp4",
+    video: "../assets/images/destinations/reels/asia.mov",
     seasons: [
       {
         icon: "❄️",
@@ -410,7 +411,8 @@ const bestTimeData = {
     ],
   },
   Africa: {
-    video: "../assets/videos/africa-best-time.mp4",
+    video:
+      "../assets/images/destinations/reels/AdobeStock_403594168_Video_HD_Preview.mov",
     seasons: [
       {
         icon: "🦁",
@@ -755,6 +757,44 @@ async function fetchWeather(item) {
   }
 }
 
+// Trip planner logic
+const data = [
+  { name: "Bali", type: "beach", minBudget: 500, minDays: 3 },
+  { name: "Hanoi", type: "culture", minBudget: 300, minDays: 2 },
+  { name: "Tokyo", type: "city", minBudget: 1000, minDays: 4 },
+  { name: "Swiss Alps", type: "mountain", minBudget: 1200, minDays: 5 },
+  { name: "Bangkok", type: "food", minBudget: 400, minDays: 2 },
+];
+document.getElementById("tripForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const budget = +document.getElementById("budget").value;
+  const days = +document.getElementById("days").value;
+  const interest = document.getElementById("interest").value;
+  const results = data.filter(
+    (d) => d.type === interest && budget >= d.minBudget && days >= d.minDays
+  );
+  document.getElementById("tripResults").innerHTML = results.length
+    ? results
+        .map((r) => `<p>✅ ${r.name} is a perfect fit for you!</p>`)
+        .join("")
+    : "<p>No matching destinations found 😅</p>";
+});
+
+// Counter animation
+const counters = document.querySelectorAll(".count");
+counters.forEach((counter) => {
+  const update = () => {
+    const target = +counter.getAttribute("data-target");
+    const current = +counter.innerText;
+    const increment = target / 100;
+    if (current < target) {
+      counter.innerText = Math.ceil(current + increment);
+      setTimeout(update, 30);
+    } else counter.innerText = target;
+  };
+  update();
+});
+
 /* init leaflet map */
 function initMap(lat, lon, name) {
   if (mapInstance) {
@@ -778,82 +818,56 @@ function initMap(lat, lon, name) {
   mapInstance.invalidateSize();
 }
 
-const regionNameEl = document.getElementById("regionName");
-const seasonContainer = document.getElementById("seasonContainer");
-const bestTimeVideoBg = document.getElementById("bestTimeVideoBg");
 const regionFilterBtns = document.querySelectorAll(".best-time-filter-btn");
+const seasonContainer = document.getElementById("seasonContainer");
+const regionNameEl = document.getElementById("regionName");
+const bestTimeVideoBg = document.getElementById("bestTimeVideoBg");
 
-// Hàm render dữ liệu ra UI (Tối ưu hóa video)
 function renderBestTime(region) {
   const regionData = bestTimeData[region];
-  const newVideoSrc = regionData.video;
+  if (!regionData) return;
 
-  // 1. Cập nhật tiêu đề khu vực
   regionNameEl.textContent = region;
-
-  // 2. Cập nhật video nền
-  // Mờ dần video hiện tại
   bestTimeVideoBg.style.opacity = "0";
 
-  // Sử dụng sự kiện 'ended' hoặc 'load' để đảm bảo chuyển đổi mượt mà
-  // Thay vì dùng setTimeout cố định 500ms
-  const transitionDuration = 500; // 0.5s CSS transition
-
+  const transitionDuration = 500;
   setTimeout(() => {
-    // Tải video mới vào <source> và chạy lại
-    // Lưu ý: Nếu <source> đã có, bạn chỉ cần thay đổi thuộc tính 'src' của nó.
     const sourceElement = bestTimeVideoBg.querySelector("source");
     if (sourceElement) {
-      sourceElement.src = newVideoSrc;
+      sourceElement.src = regionData.video;
     } else {
-      // Nếu không có, thêm source mới
-      bestTimeVideoBg.innerHTML = `<source src="${newVideoSrc}" type="video/mp4" />`;
+      bestTimeVideoBg.innerHTML = `<source src="${regionData.video}" type="video/mp4" />`;
     }
 
     bestTimeVideoBg.load();
-    bestTimeVideoBg.play().catch((error) => {
-      // Xử lý lỗi play nếu trình duyệt chặn (thường là trên mobile)
-      console.warn(
-        "Video playback failed (often due to browser restrictions).",
-        error
-      );
-    });
-
-    // Hiện video mới lên
+    bestTimeVideoBg.play().catch(console.warn);
     bestTimeVideoBg.style.opacity = "1";
   }, transitionDuration);
 
-  // 3. Render các card mùa
   seasonContainer.innerHTML = regionData.seasons
     .map((s, index) => {
-      // Gán class màu cho bar và border card
       const colorClass = ["cold", "warm", "hot", "mild"][index % 4];
-
       return `
-              <div class="season-item card-${colorClass}">
-                <div class="card-icon">${s.icon}</div>
-                <div class="season-header">
-                  <span class="season-title">${s.season}</span>
-                  <div class="season-rating">
-                    <span class="rating-label">Suitability:</span>
-                    <span class="rating-stars">${s.rating.toFixed(1)}/5</span>
-                  </div>
-                </div>
-                <div class="season-chart-area">
-                  <p class="chart-label">Crowd Level: <strong>${
-                    s.crowd
-                  }</strong></p>
-                  <div class="season-progress-wrapper">
-                    <div class="bar ${colorClass}" style="width:${
-        s.bar
-      }%"></div>
-                  </div>
-                </div>
-                <div class="season-details">
-                  <p class="pros"><strong>Best for:</strong> ${s.pros}</p>
-                  <p class="cons"><strong>Consider:</strong> ${s.cons}</p>
-                </div>
-              </div>`;
+        <div class="season-item card-${colorClass}">
+          <div class="card-icon">${s.icon}</div>
+          <div class="season-header">
+            <span class="season-title">${s.season}</span>
+            <div class="season-rating">
+              <span class="rating-label">Suitability:</span>
+              <span class="rating-stars">${s.rating.toFixed(1)}/5</span>
+            </div>
+          </div>
+          <div class="season-chart-area">
+            <p class="chart-label">Crowd Level: <strong>${s.crowd}</strong></p>
+            <div class="season-progress-wrapper">
+              <div class="bar ${colorClass}" style="width:${s.bar}%"></div>
+            </div>
+          </div>
+          <div class="season-details">
+            <p class="pros"><strong>Best for:</strong> ${s.pros}</p>
+            <p class="cons"><strong>Consider:</strong> ${s.cons}</p>
+          </div>
+        </div>`;
     })
     .join("");
 }
@@ -877,3 +891,63 @@ renderBestTime("Asia");
 renderDestinations();
 renderTop5();
 persistVisits(); // save initial state
+
+/* ========= EXPLORE BY REGION SLIDER ========= */
+const regionTrack = document.querySelector(".region-track");
+const regionCards = document.querySelectorAll(".region-track-card");
+const prevBtn = document.querySelector(".slide-btn.prev");
+const nextBtn = document.querySelector(".slide-btn.next");
+
+if (regionTrack && regionCards.length && prevBtn && nextBtn) {
+  let currentIndex = 0;
+
+  // Hàm tính chiều rộng thực tế của 1 card (gồm cả gap)
+  function getCardWidth() {
+    const card = regionCards[0];
+    const style = window.getComputedStyle(regionTrack);
+    const gap = parseFloat(style.gap) || 0;
+    return card.offsetWidth + gap;
+  }
+
+  // Hàm cập nhật transform
+  function updateSlide() {
+    const cardWidth = getCardWidth();
+    regionTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+  }
+
+  // Cập nhật số lượng card có thể hiển thị trong 1 khung
+  function getVisibleCards() {
+    const windowWidth = regionTrack.parentElement.offsetWidth;
+    const cardWidth = getCardWidth();
+    return Math.floor(windowWidth / cardWidth);
+  }
+
+  // Số lượng card tối đa có thể trượt
+  function getMaxIndex() {
+    const visibleCards = getVisibleCards();
+    return Math.max(0, regionCards.length - visibleCards);
+  }
+
+  // Nút Next
+  nextBtn.addEventListener("click", () => {
+    const maxIndex = getMaxIndex();
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateSlide();
+    }
+  });
+
+  // Nút Prev
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlide();
+    }
+  });
+
+  // Khi resize thì reset lại
+  window.addEventListener("resize", () => {
+    currentIndex = 0;
+    updateSlide();
+  });
+}
