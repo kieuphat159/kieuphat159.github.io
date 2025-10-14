@@ -1,6 +1,6 @@
 :root {
     /* Background color*/
-    --bg-primary: #f8f9fa;
+    --bg-primary: #faf8ed;
     --button-blue-bg-color: #31c3e0;
     --button-blue-bg-color-hover: #22b8d9;
     --button-orange-bg-color: #ff7b29;
@@ -8,7 +8,7 @@
     --card-bg-color: #ffffff;
     --footer-divider-color: rgba(210, 208, 192, 0.21);
     --social-icon-border-color: #333;
-    --bg-header: #e6e8ea;
+    --bg-header: #faf8ed;
 
     /* Hero */
     --hero-gradient-orange-start: #ff8a3d;
@@ -140,7 +140,7 @@
     --text-primary: #2d3134;
     --text-description: #676a6c;
     --card-bg: #ffffff;
-    --page-bg: #f8f9fa;
+    --page-bg: #faf8ed;
     --border-color: #e6e8ea;
     --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
