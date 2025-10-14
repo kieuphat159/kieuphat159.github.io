@@ -91,7 +91,7 @@ section {
 }
 
 /* === 3. HERO BANNER === */
-.des-banner {
+/* .des-banner {
   position: relative;
   height: 480px;
   overflow: hidden;
@@ -114,11 +114,11 @@ section {
 .des-banner__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
+   /* background: linear-gradient(
     135deg,
     rgba(255, 107, 53, 0.7),
     rgba(229, 90, 40, 0.8)
-  );
+  );/
   z-index: 2;
 }
 
@@ -160,6 +160,83 @@ section {
 .des-banner__cta button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+} */
+
+/* Destinations Hero Banner */
+.des-banner {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../../images/destinations/Banner.png") center/cover no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.des-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 1;
+}
+
+.des-banner__content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.des-banner__title {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 700;
+  color: #ff6b35;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out;
+}
+
+.des-banner__subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* === 4. TRENDING SECTION === */
@@ -251,7 +328,7 @@ section {
   padding: 24px 0;
   box-shadow: var(--shadow-sm);
   position: sticky;
-  top: 0;
+  /* top: 0; */
   z-index: 100;
   border-bottom: 1px solid var(--border-color);
 }
@@ -524,22 +601,39 @@ section {
   transition: width 0.5s ease;
 }
 
+/* Subscribe widget */
 .subscribe input {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-sm);
+  border: 2px solid var(--border-color, #ddd);
+  border-radius: var(--radius-sm, 8px);
   margin-bottom: 12px;
   font-size: 14px;
+  color: var(--text-dark, #222);
+  transition: border-color 0.3s ease;
 }
 
 .subscribe input:focus {
   outline: none;
-  border-color: var(--primary);
+  border-color: var(--primary, #4f46e5);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
 
 .subscribe button {
   width: 100%;
+  background: var(--primary, #4f46e5);
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  border-radius: var(--radius-sm, 8px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.subscribe button:hover {
+  background: var(--primary-dark, #4338ca);
+  transform: translateY(-1px);
 }
 
 /* Load More */
@@ -568,56 +662,142 @@ section {
 }
 
 /* === 7. TRIP PLANNER === */
+/* === PLAN YOUR TRIP (Video Background) === */
 .trip-planner {
-  background: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 70vh;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  background: #000;
+  overflow: hidden;
+  margin-bottom: 64px;
+  margin-top: 64px;
 }
 
-#tripForm {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) auto;
-  gap: 20px;
+.trip-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(70%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.trip-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.trip-content {
+  position: relative;
+  z-index: 2;
   max-width: 900px;
-  margin: 0 auto 30px;
-  align-items: end;
+  margin: 0 auto;
+}
+
+.trip-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.trip-subtitle {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.trip-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+  text-align: left;
+}
+
+.trip-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  margin-bottom: 30px;
 }
 
 .form-group {
+  flex: 1;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+  color: white;
+}
+
+.form-group select option {
+  color: white;
+  background: rgba(14, 13, 13, 0.523);
 }
 
 .form-group label {
   font-weight: 600;
-  font-size: 14px;
 }
 
 .form-group input,
 .form-group select {
   padding: 12px 16px;
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
   font-size: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .form-group input:focus,
 .form-group select:focus {
-  outline: none;
-  border-color: var(--primary);
+  border-color: var(--primary, #ff6b3d);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.btn-primary {
+  background: var(--primary, #ff6b3d);
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 14px 24px;
+  cursor: pointer;
+  transition: 0.3s;
+  height: fit-content;
+}
+
+.btn-primary:hover {
+  background: #ff845c;
+  transform: translateY(-2px);
 }
 
 .trip-results {
-  max-width: 900px;
-  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
   padding: 20px;
-  background: var(--secondary);
-  border-radius: var(--radius-md);
-  min-height: 60px;
-  border: 1px solid var(--border-color);
-}
-
-.trip-results p {
-  font-size: 16px;
+  color: white;
+  font-size: 1rem;
 }
 
 /* === 8. SPECIAL OFFERS === */
@@ -663,7 +843,7 @@ section {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* ✅ Ảnh nền */
+/* Ảnh nền */
 .offer-card img {
   width: 100%;
   height: 100%;
@@ -675,7 +855,7 @@ section {
   transform: scale(1.05);
 }
 
-/* ✅ Overlay nội dung */
+/* Overlay nội dung */
 .offer-content {
   position: absolute;
   bottom: 0;
@@ -701,6 +881,7 @@ section {
 /* === 9. TRAVEL VLOGS === */
 .travel-vlogs {
   background: white;
+  margin-bottom: 10px;
 }
 
 .vlog-grid {
@@ -711,7 +892,7 @@ section {
 
 .vlog-grid video {
   width: 100%;
-  height: 320px;
+  height: 450px;
   object-fit: cover;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
@@ -723,56 +904,240 @@ section {
   transform: scale(1.02);
 }
 
-/* === 10. BEST TIME TO VISIT === */
-.season-bars {
-  max-width: 800px;
+/* 8. BEST TIME TO VISIT  */
+.best-time {
+  padding: 0;
+  background: var(--secondary, #f9f9f9); /* Nền tổng thể nhẹ nhàng */
+}
+
+.best-time-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cột đều nhau */
+  gap: 20px; /* khoảng cách giữa các cột */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* --- Hero Section & Video/Image Background --- */
+.best-time-hero {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Chiều cao cố định cho hero section */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0;
+}
+
+.best-time-video-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.best-time-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.best-time-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.best-time-hero-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.best-time-hero-content .section-title {
+  font-size: 44px;
+  margin-bottom: 0;
+  color: white !important;
+}
+
+.best-time-hero-content .section-subtitle {
+  font-size: 18px;
+  max-width: 700px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 20px;
+}
+
+/* --- Region Selector Cards --- */
+.region-selector-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.region-card {
+  width: 180px;
+  height: 160px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid transparent;
+}
+
+.region-card.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.3);
+}
+
+.region-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.region-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.region-card .region-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
+  color: white;
+  text-align: left;
+  z-index: 2;
+}
+
+.region-card .region-info h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.region-card .region-info p {
+  font-size: 13px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* --- Chi tiết các card mùa (Best Time Details Section) --- */
+.best-time-details-section {
+  padding: 60px 0;
+  margin-top: -80px;
+  position: relative;
+  z-index: 4;
+}
+
+/* Dùng lại CSS bạn đã cung cấp nhưng áp dụng màu nền trắng cho card */
+.season-bars-redesign {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.season {
-  margin-bottom: 24px;
+.season-item {
+  background: white; /* Nền card trắng */
+  border-radius: var(--radius-lg);
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid transparent;
 }
 
-.season:last-child {
-  margin-bottom: 0;
+.season-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-.season span {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  font-size: 16px;
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+  line-height: 1;
 }
 
-.season .bar {
-  height: 40px;
-  border-radius: var(--radius-sm);
-  transition: transform 0.3s ease;
+.season-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
 }
 
-.season .bar:hover {
-  transform: scaleX(1.02);
-  transform-origin: left;
+.season-title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #333; /* Chữ đen trên nền trắng */
 }
 
-.bar.cold {
-  background: linear-gradient(90deg, #3b82f6, #60a5fa);
-  width: 60%;
+/* Tùy chỉnh màu rating và chi tiết */
+.rating-stars {
+  color: var(--primary);
+}
+.pros {
+  color: #10b981;
+}
+.cons {
+  color: #ef4444;
 }
 
-.bar.warm {
-  background: linear-gradient(90deg, #10b981, #34d399);
-  width: 85%;
-}
+/* ... (Các quy tắc progress bar và media query như ở câu trả lời trước) */
 
-.bar.hot {
-  background: linear-gradient(90deg, #f59e0b, #fbbf24);
-  width: 95%;
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .season-bars-redesign {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
-
-.bar.mild {
-  background: linear-gradient(90deg, #8b5cf6, #a78bfa);
-  width: 75%;
+@media (max-width: 992px) {
+  .season-bars-redesign {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .region-card {
+    width: 45%; /* Rộng hơn trên tablet */
+    height: 140px;
+  }
+  .best-time-hero {
+    height: 500px;
+  }
+  .best-time-details-section {
+    margin-top: -50px;
+  }
+}
+@media (max-width: 650px) {
+  .region-card {
+    width: 100%;
+  }
+  .best-time-hero {
+    height: 450px;
+  }
 }
 
 /* === 11. LOCAL GUIDES === */

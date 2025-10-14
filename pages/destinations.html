@@ -1,7 +1,10 @@
 <!-- 1. Hero Banner with Video Background -->
-<section class="des-banner">
+<!-- <section class="des-banner">
   <video class="des-banner__video" autoplay muted loop playsinline>
-    <!-- <source src="../assets/videos/travel-hero.mp4" type="video/mp4" /> -->
+    <source
+      src="../assets/images/destinations/reels/asia.mov"
+      type="video/mp4"
+    />
     <img src="../assets/images/destinations/Banner.png" alt="banner" />
   </video>
   <div class="des-banner__overlay"></div>
@@ -11,6 +14,14 @@
     <div class="des-banner__cta">
       <button id="ctaExplore">Explore Now</button>
     </div>
+  </div>
+</section> -->
+
+<!-- Hero Banner -->
+<section class="des-banner">
+  <div class="des-banner__content">
+    <h1 class="des-banner__title">Destinations</h1>
+    <p class="des-banner__subtitle">Explore Tours By Destinations</p>
   </div>
 </section>
 
@@ -136,35 +147,61 @@
 
 <!-- 5. Plan Your Trip Tool -->
 <section class="trip-planner">
-  <div class="container">
-    <h2 class="section-title">Plan Your Trip</h2>
-    <form id="tripForm">
-      <div class="form-group">
-        <label>Budget ($)</label>
-        <input
-          type="number"
-          id="budget"
-          placeholder="Enter your budget"
-          required
-        />
+  <video class="trip-video" autoplay muted loop playsinline>
+    <source src="../assets/images/destinations/wave.mp4" type="video/mp4" />
+    <!-- fallback image -->
+    <img src="../assets/images/travel-bg.jpg" alt="Travel background" />
+  </video>
+
+  <div class="trip-overlay"></div>
+
+  <div class="container trip-content">
+    <h2 class="trip-title">Plan Your Trip</h2>
+    <p class="trip-subtitle">
+      Tell us your budget, time, and interests — we’ll suggest perfect
+      destinations for you!
+    </p>
+
+    <div class="trip-card">
+      <form id="tripForm" class="trip-form">
+        <div class="form-group">
+          <label for="budget">Budget ($)</label>
+          <input
+            type="number"
+            id="budget"
+            placeholder="Enter your budget"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="days">Days</label>
+          <input
+            type="number"
+            id="days"
+            placeholder="Number of days"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="interest">Interest</label>
+          <select id="interest" required>
+            <option value="beach">Beach</option>
+            <option value="mountain">Mountain</option>
+            <option value="city">City</option>
+            <option value="culture">Culture</option>
+            <option value="food">Food</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary">Find Destinations</button>
+      </form>
+
+      <div id="tripResults" class="trip-results">
+        <p>Start planning your trip</p>
       </div>
-      <div class="form-group">
-        <label>Days</label>
-        <input type="number" id="days" placeholder="Number of days" required />
-      </div>
-      <div class="form-group">
-        <label>Interest</label>
-        <select id="interest">
-          <option value="beach">Beach</option>
-          <option value="mountain">Mountain</option>
-          <option value="city">City</option>
-          <option value="culture">Culture</option>
-          <option value="food">Food</option>
-        </select>
-      </div>
-      <button type="submit" class="btn-primary">Find Destinations</button>
-    </form>
-    <div id="tripResults" class="trip-results"></div>
+    </div>
   </div>
 </section>
 
@@ -197,6 +234,30 @@
           <button class="btn-primary">View Deals</button>
         </div>
       </div>
+      <div class="offer-card">
+        <div class="offer-badge">20% OFF</div>
+        <img
+          src="../assets/images/destinations/Agentina.png"
+          alt="Europe Offer"
+        />
+        <div class="offer-content">
+          <h3>Asia Discovery</h3>
+          <p>Exclusive group tours at special rates.</p>
+          <button class="btn-primary">View Deals</button>
+        </div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-badge">20% OFF</div>
+        <img
+          src="../assets/images/destinations/Agentina.png"
+          alt="Europe Offer"
+        />
+        <div class="offer-content">
+          <h3>Asia Discovery</h3>
+          <p>Exclusive group tours at special rates.</p>
+          <button class="btn-primary">View Deals</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -204,90 +265,90 @@
 <!-- 7. Travel Vlogs / Reels -->
 <section class="travel-vlogs">
   <div class="container">
-    <h2 class="section-title">🎥 Travel Vlogs & Reels</h2>
+    <h2 class="section-title">Travel Vlogs & Reels</h2>
     <div class="vlog-grid">
-      <!-- <video src="../assets/videos/vlog1.mp4" muted loop></video> -->
-      <blockquote
-        class="tiktok-embed"
-        cite="https://www.tiktok.com/@countingcountries/video/7529664974898072887"
-        data-video-id="7529664974898072887"
-        style="max-width: 605px; min-width: 325px"
-      >
-        <section>
-          <a
-            target="_blank"
-            title="@countingcountries"
-            href="https://www.tiktok.com/@countingcountries?refer=embed"
-            >@countingcountries</a
-          >
-          Which country in Europe is your favorite?
-          <a
-            title="europe"
-            target="_blank"
-            href="https://www.tiktok.com/tag/europe?refer=embed"
-            >#europe</a
-          >
-          <a
-            title="europetravel"
-            target="_blank"
-            href="https://www.tiktok.com/tag/europetravel?refer=embed"
-            >#europetravel</a
-          >
-          <a
-            title="iceland"
-            target="_blank"
-            href="https://www.tiktok.com/tag/iceland?refer=embed"
-            >#iceland</a
-          >
-          <a
-            title="austria"
-            target="_blank"
-            href="https://www.tiktok.com/tag/austria?refer=embed"
-            >#austria</a
-          >
-          <a
-            title="croatia"
-            target="_blank"
-            href="https://www.tiktok.com/tag/croatia?refer=embed"
-            >#croatia</a
-          >
-          <a
-            target="_blank"
-            title="♬ Tropical Haze - ALEKSANDAR KIPROV"
-            href="https://www.tiktok.com/music/Tropical-Haze-7273980440590501900?refer=embed"
-            >♬ Tropical Haze - ALEKSANDAR KIPROV</a
-          >
-        </section>
-      </blockquote>
-      <script async src="https://www.tiktok.com/embed.js"></script>
-      <video src="../assets/videos/vlog2.mp4" muted loop></video>
-      <video src="../assets/videos/vlog3.mp4" muted loop></video>
+      <video
+        src="../assets/images/destinations/reels/AdobeStock_142811791_Video_4K_Preview.mov"
+        muted
+        autoplay
+        loop
+      ></video>
+      <video
+        src="../assets/images/destinations/reels/AdobeStock_209990013_Video_HD_Preview.mov"
+        muted
+        autoplay
+        loop
+      ></video>
+      <video
+        src="../assets/images/destinations/reels/AdobeStock_403594168_Video_HD_Preview.mov"
+        muted
+        autoplay
+        loop
+      ></video>
     </div>
   </div>
 </section>
 
 <!-- 8. Best Time to Visit -->
 <section class="best-time">
-  <div class="container">
-    <h2 class="section-title">📅 Best Time To Visit</h2>
-    <div class="season-bars">
-      <div class="season">
-        <span>❄️ Jan–Mar</span>
-        <div class="bar cold"></div>
-      </div>
-      <div class="season">
-        <span>🌸 Apr–Jun</span>
-        <div class="bar warm"></div>
-      </div>
-      <div class="season">
-        <span>☀️ Jul–Sep</span>
-        <div class="bar hot"></div>
-      </div>
-      <div class="season">
-        <span>🍂 Oct–Dec</span>
-        <div class="bar mild"></div>
+  <div class="best-time-hero">
+    <div class="best-time-video-bg-wrapper">
+      <video
+        src="../assets/images/destinations/reels/asia.mov"
+        class="best-time-video-bg"
+        autoplay
+        muted
+        loop
+        playsinline
+        id="bestTimeVideoBg"
+      ></video>
+      <div class="best-time-overlay"></div>
+    </div>
+
+    <div class="best-time-container best-time-hero-content">
+      <h2 class="section-title white-text">
+        Best Time To Visit <span id="regionName">Asia</span>
+      </h2>
+      <p class="section-subtitle white-text">
+        Find the ideal season for your perfect vacation based on crowds,
+        weather, and unique events.
+      </p>
+
+      <div class="region-selector-cards">
+        <div class="region-card best-time-filter-btn active" data-region="Asia">
+          <img src="../assets/images/destinations/Agentina.png" alt="Asia" />
+          <div class="region-info">
+            <h3>Asia</h3>
+            <p>Diverse cultures & stunning landscapes</p>
+          </div>
+        </div>
+        <div class="region-card best-time-filter-btn" data-region="Europe">
+          <img src="../assets/images/destinations/Agentina.png" alt="Europe" />
+          <div class="region-info">
+            <h3>Europe</h3>
+            <p>Historic cities & romantic getaways</p>
+          </div>
+        </div>
+        <div class="region-card best-time-filter-btn" data-region="America">
+          <img src="../assets/images/destinations/Agentina.png" alt="America" />
+          <div class="region-info">
+            <h3>America</h3>
+            <p>Adventure, culture & endless diversity</p>
+          </div>
+        </div>
+        <div class="region-card best-time-filter-btn" data-region="Africa">
+          <img src="../assets/images/destinations/Agentina.png" alt="Africa" />
+          <div class="region-info">
+            <h3>Africa</h3>
+            <p>Wildlife safaris & natural wonders</p>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="best-time-container best-time-details-section">
+    <div class="season-bars-redesign" id="seasonContainer"></div>
   </div>
 </section>
 

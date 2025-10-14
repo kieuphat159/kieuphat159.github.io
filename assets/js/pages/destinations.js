@@ -284,6 +284,174 @@ const destinations = [
   },
 ];
 
+// Data: thời gian du lịch tốt nhất cho từng region
+const bestTimeData = {
+  Asia: {
+    video: "../assets/videos/asia-best-time.mp4",
+    seasons: [
+      {
+        icon: "❄️",
+        season: "Winter (Dec – Feb)",
+        rating: 4.5,
+        crowd: "Low",
+        bar: 50,
+        pros: "Cool weather, great for tropical destinations like Thailand or Vietnam.",
+        cons: "Some northern areas can be cold.",
+      },
+      {
+        icon: "🌸",
+        season: "Spring (Mar – May)",
+        rating: 5.0,
+        crowd: "Medium",
+        bar: 80,
+        pros: "Perfect weather, festivals in Japan & Korea.",
+        cons: "Prices rise during cherry blossom season.",
+      },
+      {
+        icon: "☀️",
+        season: "Summer (Jun – Aug)",
+        rating: 3.5,
+        crowd: "High",
+        bar: 95,
+        pros: "Beach season, school holidays.",
+        cons: "Very hot & humid in many areas.",
+      },
+      {
+        icon: "🍂",
+        season: "Autumn (Sep – Nov)",
+        rating: 4.8,
+        crowd: "Medium-Low",
+        bar: 70,
+        pros: "Pleasant temps, colorful scenery, good value.",
+        cons: "Typhoons possible in some regions.",
+      },
+    ],
+  },
+  Europe: {
+    video: "../assets/videos/europe-best-time.mp4",
+    seasons: [
+      {
+        icon: "❄️",
+        season: "Winter (Dec – Feb)",
+        rating: 3.5,
+        crowd: "Low",
+        bar: 40,
+        pros: "Christmas markets, fewer tourists.",
+        cons: "Cold, shorter days.",
+      },
+      {
+        icon: "🌸",
+        season: "Spring (Mar – May)",
+        rating: 5.0,
+        crowd: "Medium",
+        bar: 70,
+        pros: "Best weather, blooming gardens, great deals.",
+        cons: "Rain possible in early spring.",
+      },
+      {
+        icon: "☀️",
+        season: "Summer (Jun – Aug)",
+        rating: 4.0,
+        crowd: "High",
+        bar: 95,
+        pros: "Festivals, beaches, long days.",
+        cons: "Crowded & expensive.",
+      },
+      {
+        icon: "🍂",
+        season: "Autumn (Sep – Nov)",
+        rating: 4.7,
+        crowd: "Medium-Low",
+        bar: 65,
+        pros: "Ideal weather, fall colors, good prices.",
+        cons: "Shorter daylight.",
+      },
+    ],
+  },
+  America: {
+    video: "../assets/videos/america-best-time.mp4",
+    seasons: [
+      {
+        icon: "❄️",
+        season: "Winter (Dec – Feb)",
+        rating: 4.0,
+        crowd: "Low",
+        bar: 50,
+        pros: "Great for South America & ski resorts.",
+        cons: "Cold in northern regions.",
+      },
+      {
+        icon: "🌸",
+        season: "Spring (Mar – May)",
+        rating: 4.8,
+        crowd: "Medium",
+        bar: 70,
+        pros: "Ideal weather across continents.",
+        cons: "Tourist season starts in some cities.",
+      },
+      {
+        icon: "☀️",
+        season: "Summer (Jun – Aug)",
+        rating: 3.8,
+        crowd: "High",
+        bar: 90,
+        pros: "Good for beaches & national parks.",
+        cons: "Hot & crowded in cities.",
+      },
+      {
+        icon: "🍂",
+        season: "Autumn (Sep – Nov)",
+        rating: 5.0,
+        crowd: "Medium-Low",
+        bar: 65,
+        pros: "Perfect climate, fall foliage.",
+        cons: "Hurricane risk in some areas.",
+      },
+    ],
+  },
+  Africa: {
+    video: "../assets/videos/africa-best-time.mp4",
+    seasons: [
+      {
+        icon: "🦁",
+        season: "Dry (Jun – Aug)",
+        rating: 4.5,
+        crowd: "Medium",
+        bar: 70,
+        pros: "Best time for safaris (migration).",
+        cons: "Cooler mornings and evenings.",
+      },
+      {
+        icon: "🐘",
+        season: "Shoulder (Sep – Nov)",
+        rating: 5.0,
+        crowd: "Medium-Low",
+        bar: 60,
+        pros: "Perfect for wildlife & landscapes.",
+        cons: "Some rains begin.",
+      },
+      {
+        icon: "🔥",
+        season: "Wet (Dec – Feb)",
+        rating: 4.0,
+        crowd: "High",
+        bar: 90,
+        pros: "Holiday season, warm weather.",
+        cons: "Hot inland temperatures.",
+      },
+      {
+        icon: "🦓",
+        season: "Rainy (Mar – May)",
+        rating: 4.2,
+        crowd: "Low",
+        bar: 50,
+        pros: "Good prices, calm weather.",
+        cons: "Less wildlife movement.",
+      },
+    ],
+  },
+};
+
 /* ========= STATE ========= */
 let visibleCount = 6;
 let activeRegion = "all";
@@ -609,6 +777,101 @@ function initMap(lat, lon, name) {
     .openPopup();
   mapInstance.invalidateSize();
 }
+
+const regionNameEl = document.getElementById("regionName");
+const seasonContainer = document.getElementById("seasonContainer");
+const bestTimeVideoBg = document.getElementById("bestTimeVideoBg");
+const regionFilterBtns = document.querySelectorAll(".best-time-filter-btn");
+
+// Hàm render dữ liệu ra UI (Tối ưu hóa video)
+function renderBestTime(region) {
+  const regionData = bestTimeData[region];
+  const newVideoSrc = regionData.video;
+
+  // 1. Cập nhật tiêu đề khu vực
+  regionNameEl.textContent = region;
+
+  // 2. Cập nhật video nền
+  // Mờ dần video hiện tại
+  bestTimeVideoBg.style.opacity = "0";
+
+  // Sử dụng sự kiện 'ended' hoặc 'load' để đảm bảo chuyển đổi mượt mà
+  // Thay vì dùng setTimeout cố định 500ms
+  const transitionDuration = 500; // 0.5s CSS transition
+
+  setTimeout(() => {
+    // Tải video mới vào <source> và chạy lại
+    // Lưu ý: Nếu <source> đã có, bạn chỉ cần thay đổi thuộc tính 'src' của nó.
+    const sourceElement = bestTimeVideoBg.querySelector("source");
+    if (sourceElement) {
+      sourceElement.src = newVideoSrc;
+    } else {
+      // Nếu không có, thêm source mới
+      bestTimeVideoBg.innerHTML = `<source src="${newVideoSrc}" type="video/mp4" />`;
+    }
+
+    bestTimeVideoBg.load();
+    bestTimeVideoBg.play().catch((error) => {
+      // Xử lý lỗi play nếu trình duyệt chặn (thường là trên mobile)
+      console.warn(
+        "Video playback failed (often due to browser restrictions).",
+        error
+      );
+    });
+
+    // Hiện video mới lên
+    bestTimeVideoBg.style.opacity = "1";
+  }, transitionDuration);
+
+  // 3. Render các card mùa
+  seasonContainer.innerHTML = regionData.seasons
+    .map((s, index) => {
+      // Gán class màu cho bar và border card
+      const colorClass = ["cold", "warm", "hot", "mild"][index % 4];
+
+      return `
+              <div class="season-item card-${colorClass}">
+                <div class="card-icon">${s.icon}</div>
+                <div class="season-header">
+                  <span class="season-title">${s.season}</span>
+                  <div class="season-rating">
+                    <span class="rating-label">Suitability:</span>
+                    <span class="rating-stars">${s.rating.toFixed(1)}/5</span>
+                  </div>
+                </div>
+                <div class="season-chart-area">
+                  <p class="chart-label">Crowd Level: <strong>${
+                    s.crowd
+                  }</strong></p>
+                  <div class="season-progress-wrapper">
+                    <div class="bar ${colorClass}" style="width:${
+        s.bar
+      }%"></div>
+                  </div>
+                </div>
+                <div class="season-details">
+                  <p class="pros"><strong>Best for:</strong> ${s.pros}</p>
+                  <p class="cons"><strong>Consider:</strong> ${s.cons}</p>
+                </div>
+              </div>`;
+    })
+    .join("");
+}
+
+// 4. BẮT SỰ KIỆN & GỌI MẶC ĐỊNH
+regionFilterBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const region = btn.dataset.region;
+
+    regionFilterBtns.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    renderBestTime(region);
+  });
+});
+
+// Gọi mặc định khi tải trang
+renderBestTime("Asia");
 
 /* ===== INIT ===== */
 renderDestinations();
