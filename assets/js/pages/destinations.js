@@ -951,3 +951,25 @@ if (regionTrack && regionCards.length && prevBtn && nextBtn) {
     updateSlide();
   });
 }
+
+/* ========= TRAVEL VLOGS ========= */
+const track = document.querySelector(".vlog-track");
+const prevBtn_vlog = document.querySelector(".vlog-slider .prev");
+const nextBtn_vlog = document.querySelector(".vlog-slider .next");
+
+const itemWidth = track.querySelector(".vlog-item").offsetWidth + 20; // width + gap
+let currentPosition = 0;
+
+nextBtn_vlog.addEventListener("click", () => {
+  if (currentPosition > -(track.scrollWidth - itemWidth * 3)) {
+    currentPosition -= itemWidth;
+    track.style.transform = `translateX(${currentPosition}px)`;
+  }
+});
+
+prevBtn_vlog.addEventListener("click", () => {
+  if (currentPosition < 0) {
+    currentPosition += itemWidth;
+    track.style.transform = `translateX(${currentPosition}px)`;
+  }
+});
