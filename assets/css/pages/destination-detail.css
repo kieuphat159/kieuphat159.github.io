@@ -82,6 +82,8 @@
   background: #10559C;
   width: 305px;
   height: 34px;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 2px 8px rgba(16, 85, 156, 0.2);
 }
 
 .destination-detail-filter__tab {
@@ -95,6 +97,17 @@
   cursor: pointer;
   transition: all 0.3s ease;
   height: 34px;
+  position: relative;
+}
+
+.destination-detail-filter__tab:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.destination-detail-filter__tab:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
 }
 
 /* Form inputs */
@@ -104,17 +117,34 @@
   width: 100%;
   height: 55px;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.95);
+  opacity: 0.95;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .destination-detail-filter__input {
   flex: 1 1 180px;
   padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #e0e0e0;
   font-size: 12px;
   color: #333;
   text-align: center;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.destination-detail-filter__input:hover {
+  border-color: #10559C;
+  background-color: rgba(16, 85, 156, 0.05);
+}
+
+.destination-detail-filter__input:focus {
+  outline: none;
+  border-color: #10559C;
+  background-color: rgba(16, 85, 156, 0.08);
+  box-shadow: inset 0 0 0 1px #10559C;
 }
 
 /* ========== POPULAR destination-detailS ========== */
@@ -146,19 +176,45 @@
   background: #fff;
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   height: 290px;
   width: 230px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.destination-detail-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(16, 85, 156, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: 12px;
 }
 
 .destination-detail-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(16, 85, 156, 0.25);
+}
+
+.destination-detail-card:hover::before {
+  opacity: 1;
 }
 
 .destination-detail-card__img {
   width: 100%;
   height: 212px;
   object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.destination-detail-card:hover .destination-detail-card__img {
+  transform: scale(1.08);
 }
 
 .destination-detail-card__content {
@@ -278,19 +334,41 @@
 
 .btn.btn--primary {
   display: inline-block;
-  background: linear-gradient(90deg, #4466ff, #5f80ff);
+  background: linear-gradient(135deg, #4466ff, #5f80ff);
   color: #fff;
   padding: 14px 30px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
   box-shadow: 0 6px 15px rgba(68, 102, 255, 0.3);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
 .btn.btn--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(68, 102, 255, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(68, 102, 255, 0.4);
+}
+
+.btn.btn--primary:hover::before {
+  left: 100%;
+}
+
+.btn.btn--primary:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(68, 102, 255, 0.35);
 }
 
 /* ========== VIDEO ========== */
@@ -420,18 +498,26 @@
   height: 50px;
   border-radius: 50%;
   border: 2px solid #fff;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   color: #fff;
   font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .destination-detail-ready__play-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.destination-detail-ready__play-btn:active {
+  transform: scale(1.05);
 }
 
 
@@ -439,7 +525,7 @@
 .destination-detail-pilgrimages {
   text-align: center;
   padding: 80px 5%;
-  background: #fff;
+  background: var(--bg-primary);
   color: #222;
   font-family: "Poppins", sans-serif;
 }
@@ -457,6 +543,7 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   padding: 0.5rem;
   margin-bottom: 40px;
+  border-radius: 12px;
 }
 
 .destination-detail-pilgrimages__tab {
@@ -466,13 +553,20 @@
   font-weight: 500;
   cursor: pointer;
   color: #444;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+}
+
+.destination-detail-pilgrimages__tab:hover {
+  background: rgba(62, 134, 245, 0.1);
+  color: #3E86F5;
 }
 
 .destination-detail-pilgrimages__tab--active {
-  background: #3E86F5;
+  background: linear-gradient(135deg, #3E86F5, #5a9df7);
   color: #fff;
-  box-shadow: 0 3px 8px rgba(106,99,246,0.3);
+  box-shadow: 0 4px 12px rgba(62, 134, 245, 0.35);
+  transform: translateY(-2px);
 }
 
 .destination-detail-pilgrimages__cards {
@@ -490,7 +584,9 @@
   overflow: hidden;
   text-align: left;
   position: relative;
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .destination-detail-pilgrimages__card-title {
@@ -499,17 +595,24 @@
 }
 
 .destination-detail-pilgrimages__card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(62, 134, 245, 0.2);
 }
 
 .destination-detail-pilgrimages__image-wrapper {
   position: relative;
+  overflow: hidden;
 }
 
 .destination-detail-pilgrimages__image {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.destination-detail-pilgrimages__card:hover .destination-detail-pilgrimages__image {
+  transform: scale(1.05);
 }
 
 .destination-detail-pilgrimages__date {
@@ -525,6 +628,9 @@
 
 .destination-detail-pilgrimages__content {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .destination-detail-pilgrimages__status {
@@ -580,6 +686,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: auto;
+  padding-top: 10px;
 }
 
 .destination-detail-pilgrimages__price {
@@ -600,12 +708,18 @@
   border-radius: 6px;
   font-weight: 500;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .destination-detail-pilgrimages__btn:hover {
-  background: #3E86F5;
+  background: linear-gradient(135deg, #3E86F5, #5a9df7);
   color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(62, 134, 245, 0.3);
+}
+
+.destination-detail-pilgrimages__btn:active {
+  transform: translateY(0);
 }
 
 
@@ -637,6 +751,12 @@
   height: 500px;
   object-fit: cover;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.destination-detail-gallery__main-image:hover {
+  transform: scale(1.02);
 }
 
 /* Bên phải 4 ảnh nhỏ chia 2 hàng × 2 cột */
@@ -652,6 +772,15 @@
   width: calc(50% - 5px);
   height: 240px;
   object-fit: cover;
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.destination-detail-gallery__thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1;
 }
 
 .destination-detail-gallery__info {
@@ -817,12 +946,20 @@
   color: #3E86F5;
   font-weight: 600;
   border-radius: 15px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
 }
 
 .destination-detail-cta__btn:hover {
-  background: #3E86F5;
+  background: linear-gradient(135deg, #3E86F5, #5a9df7);
   color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(62, 134, 245, 0.4);
+}
+
+.destination-detail-cta__btn:active {
+  transform: translateY(-1px);
 }
 
 
@@ -830,7 +967,7 @@
 .destination-detail-insights {
   padding: 80px 0;
   text-align: center;
-  background: #fff;
+  background: var(--bg-primary);
 }
 
 .destination-detail-insights__header {
@@ -861,37 +998,51 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.destination-detail-insights__card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
 }
 
 .destination-detail-insights__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .destination-detail-insights__card:hover .destination-detail-insights__image {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .destination-detail-insights__load-btn {
   background: none;
-  border: none;
+  border: 2px solid #e0e0e0;
   color: #666;
   font-weight: 500;
   cursor: pointer;
   font-size: 1rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-top: 50px;
+  padding: 12px 28px;
+  border-radius: 8px;
 }
 
 .destination-detail-insights__load-btn i {
   font-size: 0.85rem;
   transition: transform 0.3s ease;
+  margin-left: 6px;
 }
 
 .destination-detail-insights__load-btn:hover {
   color: #3E86F5;
+  border-color: #3E86F5;
+  background: rgba(62, 134, 245, 0.05);
+  transform: translateY(-2px);
 }
 
 .destination-detail-insights__load-btn:hover i {
@@ -902,7 +1053,7 @@
 .destination-detail-testimonials {
   text-align: center;
   padding: 80px 10%;
-  background-color: #fff;
+  background-color: var(--bg-primary);
 }
 
 .destination-detail-testimonials__header {
@@ -938,14 +1089,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 8px 0 15px -8px rgba(0, 0, 0, 0.2),  /* bóng bên phải */
               0 8px 15px -8px rgba(0, 0, 0, 0.2); /* bóng bên dưới */
+  border-radius: 16px;
 }
 
 .destination-detail-testimonials__item:hover {
-  transform: translateY(-5px);
-  box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(62, 134, 245, 0.15);
 }
 
 /* quote mark nằm chìm phía sau text */
@@ -1021,15 +1173,21 @@
   color: #3E86F5;
   cursor: pointer;
   font-size: 1.2rem;
-  transition: 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .destination-detail-testimonials__btn:hover {
-  background: #3E86F5;
+  background: linear-gradient(135deg, #3E86F5, #5a9df7);
   color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(62, 134, 245, 0.3);
+}
+
+.destination-detail-testimonials__btn:active {
+  transform: scale(1.05);
 }
 
 /* ========== RESPONSIVE ========== */
@@ -1377,5 +1535,547 @@
     width: 34px;
     height: 34px;
     font-size: 0.95rem;
+  }
+}
+
+/* ========== LARGE DESKTOP (≥ 1920px) ========== */
+@media (min-width: 1920px) {
+  .destination-detail-hero {
+    min-height: 110vh;
+  }
+
+  .destination-detail-hero__title {
+    font-size: 5rem;
+  }
+
+  .destination-detail-hero__subtitle {
+    font-size: 1.5rem;
+  }
+
+  .destination-detail-filter {
+    max-width: 1200px;
+  }
+
+  .destination-detail-popular__container {
+    gap: 35px;
+  }
+
+  .destination-detail-card {
+    width: 260px;
+    height: 320px;
+  }
+
+  .destination-detail-mission {
+    padding: 100px 8%;
+  }
+
+  .destination-detail-mission__title {
+    font-size: 2.5rem;
+  }
+
+  .destination-detail-pilgrimages__cards {
+    gap: 2.5rem;
+  }
+
+  .destination-detail-pilgrimages__card {
+    width: 340px;
+  }
+
+  .destination-detail-insights__grid {
+    max-width: 1400px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .destination-detail-testimonials__item {
+    width: 350px;
+  }
+}
+
+/* ========== DESKTOP (1200px - 1439px) ========== */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .destination-detail-hero {
+    padding-top: 180px;
+    padding-bottom: 180px;
+  }
+
+  .destination-detail-popular__container {
+    gap: 22px;
+  }
+
+  .destination-detail-card {
+    width: 220px;
+  }
+
+  .destination-detail-pilgrimages__card {
+    width: 290px;
+  }
+
+  .destination-detail-mission__stat:nth-child(3) {
+    bottom: -420px;
+    left: 280px;
+  }
+}
+
+/* ========== MEDIUM DESKTOP (992px - 1199px) ========== */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .destination-detail-filter {
+    width: 92%;
+  }
+
+  .destination-detail-popular__container {
+    gap: 18px;
+  }
+
+  .destination-detail-card {
+    width: 200px;
+    height: 270px;
+  }
+
+  .destination-detail-mission__stat:nth-child(3) {
+    bottom: -380px;
+    left: 250px;
+  }
+
+  .destination-detail-pilgrimages__title {
+    font-size: 1.8rem;
+  }
+
+  .destination-detail-insights__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========== TABLET LANDSCAPE (769px - 991px) ========== */
+@media (min-width: 769px) and (max-width: 991px) {
+  .destination-detail-hero {
+    padding-top: 140px;
+    padding-bottom: 120px;
+  }
+
+  .destination-detail-filter__tabs {
+    width: 280px;
+  }
+
+  .destination-detail-filter__form {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .destination-detail-filter__input {
+    flex: 1 1 45%;
+    min-width: 150px;
+  }
+
+  .destination-detail-popular__container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .destination-detail-card {
+    width: 220px;
+  }
+
+  .destination-detail-mission {
+    padding: 70px 5%;
+    height: auto !important;
+  }
+
+  .destination-detail-mission__content {
+    gap: 40px;
+  }
+
+  .destination-detail-mission__image {
+    max-width: 400px;
+  }
+
+  .destination-detail-mission__stat {
+    width: 160px;
+    height: 110px;
+    padding: 18px 25px;
+  }
+
+  .destination-detail-mission__stat:nth-child(1) {
+    top: 150px;
+    left: -30px;
+  }
+
+  .destination-detail-mission__stat:nth-child(2) {
+    top: -30px;
+    right: -30px;
+  }
+
+  .destination-detail-mission__stat:nth-child(3) {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 20px;
+  }
+
+  .destination-detail-ready__overlay {
+    width: 360px;
+  }
+
+  .destination-detail-pilgrimages__cards {
+    justify-content: center;
+  }
+
+  .destination-detail-pilgrimages__card {
+    width: 280px;
+  }
+
+  .destination-detail-gallery__main-image {
+    height: 400px;
+  }
+
+  .destination-detail-gallery__thumb {
+    height: 190px;
+  }
+
+  .destination-detail-insights__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .destination-detail-testimonials__list {
+    gap: 28px;
+  }
+}
+
+/* ========== TABLET PORTRAIT (481px - 768px) ========== */
+@media (min-width: 481px) and (max-width: 768px) {
+  .destination-detail-hero {
+    padding-top: 130px;
+    padding-bottom: 110px;
+  }
+
+  .destination-detail-hero__title {
+    font-size: 2.2rem;
+  }
+
+  .destination-detail-filter {
+    margin-top: 40px;
+  }
+
+  .destination-detail-filter__tabs {
+    width: 260px;
+  }
+
+  .destination-detail-filter__input {
+    padding: 0.7rem 0.9rem;
+  }
+
+  .destination-detail-popular {
+    padding: 70px 0 140px 0;
+  }
+
+  .destination-detail-popular__title {
+    font-size: 1.8rem;
+  }
+
+  .destination-detail-card {
+    width: 280px;
+    max-width: 90%;
+  }
+
+  .destination-detail-mission {
+    height: auto !important;
+  }
+
+  .destination-detail-mission__image {
+    max-width: 100%;
+    height: 400px;
+  }
+
+  .destination-detail-mission__stat {
+    width: 150px;
+    height: 100px;
+  }
+
+  .destination-detail-mission__stat:nth-child(1),
+  .destination-detail-mission__stat:nth-child(2),
+  .destination-detail-mission__stat:nth-child(3) {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: 10px;
+  }
+
+  .destination-detail-mission__stats {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .destination-detail-mission__title {
+    font-size: 1.8rem;
+  }
+
+  .destination-detail-ready__play-btn {
+    width: 45px;
+    height: 45px;
+    bottom: 30px;
+    left: 30px;
+  }
+
+  .destination-detail-pilgrimages {
+    padding: 70px 5%;
+  }
+
+  .destination-detail-pilgrimages__card {
+    width: 320px;
+    max-width: 100%;
+  }
+
+  .destination-detail-gallery {
+    padding: 15px;
+  }
+
+  .destination-detail-itinerary {
+    padding: 0 15px;
+  }
+
+  .destination-detail-itinerary__title {
+    font-size: 1.8rem;
+  }
+
+  .destination-detail-insights__title {
+    font-size: 1.8rem;
+  }
+
+  .destination-detail-insights__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* ========== EXTRA SMALL MOBILE (≤ 375px) ========== */
+@media (max-width: 375px) {
+  .destination-detail-hero {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+
+  .destination-detail-hero__title {
+    font-size: 1.6rem;
+  }
+
+  .destination-detail-hero__subtitle {
+    font-size: 0.85rem;
+  }
+
+  .destination-detail-filter {
+    padding: 0.8rem;
+    margin-top: 30px;
+  }
+
+  .destination-detail-filter__tabs {
+    width: 240px;
+    height: 32px;
+  }
+
+  .destination-detail-filter__tab {
+    padding: 0.4rem 1rem;
+    font-size: 11px;
+  }
+
+  .destination-detail-filter__input {
+    padding: 0.6rem 0.8rem;
+    font-size: 11px;
+  }
+
+  .destination-detail-popular {
+    padding: 60px 0 120px 0;
+    margin-top: 100px;
+  }
+
+  .destination-detail-popular__title {
+    font-size: 1.6rem;
+  }
+
+  .destination-detail-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .destination-detail-mission {
+    padding: 50px 4%;
+  }
+
+  .destination-detail-mission__title {
+    font-size: 1.5rem;
+  }
+
+  .destination-detail-mission__desc {
+    font-size: 0.9rem;
+  }
+
+  .destination-detail-mission__stat {
+    width: 140px;
+    height: 95px;
+  }
+
+  .destination-detail-mission__stat h3 {
+    font-size: 1.4rem;
+  }
+
+  .destination-detail-ready__overlay {
+    width: 95%;
+    padding: 1.2rem;
+  }
+
+  .destination-detail-ready__title {
+    font-size: 1.2rem;
+  }
+
+  .destination-detail-ready__text {
+    font-size: 1rem;
+  }
+
+  .destination-detail-ready__play-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+    bottom: 25px;
+    left: 25px;
+  }
+
+  .destination-detail-pilgrimages {
+    padding: 60px 4%;
+  }
+
+  .destination-detail-pilgrimages__title {
+    font-size: 1.6rem;
+  }
+
+  .destination-detail-pilgrimages__tabs {
+    padding: 0.4rem;
+  }
+
+  .destination-detail-pilgrimages__tab {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+
+  .destination-detail-pilgrimages__card {
+    width: 100%;
+  }
+
+  .destination-detail-cta__title {
+    font-size: 1.3rem;
+  }
+
+  .destination-detail-cta__btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  .destination-detail-insights {
+    padding: 50px 0;
+  }
+
+  .destination-detail-insights__title {
+    font-size: 1.5rem;
+  }
+
+  .destination-detail-insights__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .destination-detail-insights__load-btn {
+    font-size: 0.9rem;
+    padding: 10px 22px;
+  }
+
+  .destination-detail-testimonials__title {
+    font-size: 1.5rem;
+  }
+
+  .destination-detail-testimonials__item {
+    padding: 35px 18px 28px;
+  }
+
+  .btn.btn--primary {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
+
+/* ========== LANDSCAPE ORIENTATION ========== */
+@media (max-height: 600px) and (orientation: landscape) {
+  .destination-detail-hero {
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .destination-detail-ready {
+    min-height: 100vh;
+  }
+
+  .destination-detail-ready__overlay {
+    width: 320px;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .destination-detail-mission__stats {
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .destination-detail-mission__stat {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+}
+
+/* ========== HIGH DPI DISPLAYS (Retina) ========== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .destination-detail-hero__title {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .destination-detail-card__img,
+  .destination-detail-pilgrimages__image,
+  .destination-detail-gallery__main-image,
+  .destination-detail-gallery__thumb,
+  .destination-detail-insights__image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  .destination-detail-filter,
+  .destination-detail-testimonials__nav,
+  .destination-detail-pilgrimages__btn,
+  .destination-detail-insights__load-btn,
+  .destination-detail-ready__play-btn,
+  .btn.btn--primary {
+    display: none;
+  }
+
+  .destination-detail-hero,
+  .destination-detail-ready,
+  .destination-detail-cta {
+    page-break-inside: avoid;
+    min-height: auto;
+  }
+
+  .destination-detail-pilgrimages__card,
+  .destination-detail-testimonials__item,
+  .destination-detail-insights__card {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
   }
 }
