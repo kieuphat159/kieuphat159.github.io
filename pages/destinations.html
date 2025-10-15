@@ -25,65 +25,59 @@
   </div>
 </section> -->
 
-<!-- 2. Explore by Region -->
-<section class="region-section">
+<!-- 2. Top Destinations -->
+<section class="topdest-section">
   <div class="container">
-    <h2 class="section-title">Explore by Region</h2>
+    <h2 class="section-title">Top Destinations</h2>
 
-    <div class="region-slider">
+    <div class="topdest-slider">
       <button class="slide-btn prev">&#10094;</button>
 
-      <div class="region-window">
-        <div class="region-track">
-          <div class="region-track-card">
-            <img src="../assets/images/destinations/Agentina.png" alt="Asia" />
-            <div class="region-overlay">
-              <h3>Asia</h3>
-              <p>Vibrant cultures, beaches & street food</p>
+      <div class="topdest-window">
+        <div class="topdest-track">
+          <div class="topdest-card">
+            <img src="../assets/images/destinations/Agentina.png" alt="Paris" />
+            <div class="topdest-overlay">
+              <h3>Paris, France</h3>
+              <p>The City of Lights and Romance</p>
             </div>
           </div>
 
-          <div class="region-track-card">
-            <img
-              src="../assets/images/destinations/Agentina.png"
-              alt="Europe"
-            />
-            <div class="region-overlay">
-              <h3>Europe</h3>
-              <p>Historic cities & romantic getaways</p>
+          <div class="topdest-card">
+            <img src="../assets/images/destinations/Thailand.png" alt="Tokyo" />
+            <div class="topdest-overlay">
+              <h3>Tokyo, Japan</h3>
+              <p>Modern wonders meet ancient culture</p>
             </div>
           </div>
 
-          <div class="region-track-card">
+          <div class="topdest-card">
             <img
-              src="../assets/images/destinations/Agentina.png"
-              alt="America"
+              src="../assets/images/destinations/Bangladesh.png"
+              alt="Bali"
             />
-            <div class="region-overlay">
-              <h3>America</h3>
-              <p>Adventure, culture & endless diversity</p>
+            <div class="topdest-overlay">
+              <h3>Bali, Indonesia</h3>
+              <p>Tropical paradise & serene beaches</p>
             </div>
           </div>
 
-          <div class="region-track-card">
-            <img
-              src="../assets/images/destinations/Agentina.png"
-              alt="Africa"
-            />
-            <div class="region-overlay">
-              <h3>Africa</h3>
-              <p>Wildlife, safaris & natural wonders</p>
+          <div class="topdest-card">
+            <img src="../assets/images/destinations/Maldives.png" alt="Rome" />
+            <div class="topdest-overlay">
+              <h3>Rome, Italy</h3>
+              <p>Historic ruins & timeless art</p>
             </div>
           </div>
 
-          <div class="region-track-card">
+          <div class="topdest-card">
             <img
-              src="../assets/images/destinations/Agentina.png"
-              alt="Oceania"
+              src="../assets/images/destinations/Brazil.png"
+              alt="New York"
             />
-            <div class="region-overlay">
-              <h3>Oceania</h3>
-              <p>Islands, reefs & tropical escapes</p>
+            <div class="topdest-overlay">
+              <h3>New York, USA</h3>
+              <p>The city that never sleeps</p>
             </div>
           </div>
         </div>
@@ -149,7 +143,6 @@
 <section class="trip-planner">
   <video class="trip-video" autoplay muted loop playsinline>
     <source src="../assets/images/destinations/wave.mp4" type="video/mp4" />
-    <!-- fallback image -->
     <img src="../assets/images/travel-bg.jpg" alt="Travel background" />
   </video>
 
@@ -164,6 +157,17 @@
 
     <div class="trip-card">
       <form id="tripForm" class="trip-form">
+        <div class="form-group">
+          <label for="region">Region</label>
+          <select id="region" required>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="america">America</option>
+            <option value="africa">Africa</option>
+            <option value="oceania">Oceania</option>
+          </select>
+        </div>
+
         <div class="form-group">
           <label for="budget">Budget ($)</label>
           <input
@@ -316,7 +320,7 @@
           </div>
           <div class="vlog-item">
             <video
-              src="../assets/images/destinations/reels/AdobeStock_403594168_Video_HD_Preview.mov"
+              src="../assets/images/destinations/reels/AdobeStock_322350578_Video_4K_Preview.mov"
               muted
               autoplay
               loop
@@ -331,7 +335,7 @@
           </div>
           <div class="vlog-item">
             <video
-              src="../assets/images/destinations/reels/AdobeStock_142811791_Video_4K_Preview.mov"
+              src="../assets/images/destinations/reels/AdobeStock_222417788_Video_HD_Preview.mov"
               muted
               autoplay
               loop
@@ -358,89 +362,88 @@
 
 <!-- 8. Best Time to Visit -->
 <section class="best-time">
+  <!-- Video Background -->
+  <video
+    class="best-time-video-bg"
+    autoplay
+    muted
+    loop
+    playsinline
+    id="bestTimeVideoBg"
+  >
+    <source
+      src="../assets/images/destinations/reels/asia.mov"
+      type="video/mp4"
+    />
+  </video>
+  <div class="best-time-overlay"></div>
+
+  <!-- HERO -->
   <div class="best-time-hero">
-    <div class="best-time-video-bg-wrapper">
-      <video
-        class="best-time-video-bg"
-        autoplay
-        muted
-        loop
-        playsinline
-        id="bestTimeVideoBg"
-      ></video>
-      <div class="best-time-overlay"></div>
-    </div>
-
-    <div class="best-time-container best-time-hero-content">
-      <h2 class="section-title white-text">
-        Best Time To Visit <span id="regionName">Asia</span>
-      </h2>
-      <p class="section-subtitle white-text">
-        Find the ideal season for your perfect vacation based on crowds,
-        weather, and unique events.
+    <div class="best-time-hero-content">
+      <h2>Best Time To Visit <span id="regionName">Asia</span></h2>
+      <p>
+        Discover the ideal season for your next adventure — tailored by crowd
+        level, weather, and unforgettable experiences.
       </p>
-
-      <div class="region-selector-cards">
-        <div class="region-card best-time-filter-btn active" data-region="Asia">
-          <img src="../assets/images/destinations/Agentina.png" alt="Asia" />
-          <div class="region-info">
-            <h3>Asia</h3>
-            <p>Diverse cultures & stunning landscapes</p>
-          </div>
-        </div>
-        <div class="region-card best-time-filter-btn" data-region="Europe">
-          <img src="../assets/images/destinations/Agentina.png" alt="Europe" />
-          <div class="region-info">
-            <h3>Europe</h3>
-            <p>Historic cities & romantic getaways</p>
-          </div>
-        </div>
-        <div class="region-card best-time-filter-btn" data-region="America">
-          <img src="../assets/images/destinations/Agentina.png" alt="America" />
-          <div class="region-info">
-            <h3>America</h3>
-            <p>Adventure, culture & endless diversity</p>
-          </div>
-        </div>
-        <div class="region-card best-time-filter-btn" data-region="Africa">
-          <img src="../assets/images/destinations/Agentina.png" alt="Africa" />
-          <div class="region-info">
-            <h3>Africa</h3>
-            <p>Wildlife safaris & natural wonders</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
-  <div class="best-time-container best-time-details-section">
-    <div class="season-bars-redesign" id="seasonContainer"></div>
-  </div>
-</section>
+  <!-- MAIN -->
+  <div class="best-time-container">
+    <!-- LEFT: Regions -->
+    <div class="region-list">
+      <h3>Choose a Region</h3>
 
-<!-- 9. Local Guides & Experiences -->
-<section class="local-guides">
-  <div class="container">
-    <h2 class="section-title">Local Guides & Experiences</h2>
-    <div class="guides-grid">
-      <div class="guide-card">
-        <img src="../assets/images/guides/guide1.jpg" alt="Guide 1" />
-        <h3>Anna Nguyen</h3>
-        <p>⭐ 4.9 | 120 tours</p>
-        <button class="btn-primary">Book Guide</button>
+      <!-- Asia -->
+      <div class="region-card active" data-region="Asia">
+        <img src="../assets/images/destinations/Dubai.png" alt="Asia" />
+        <div class="region-overlay">
+          <h4>Asia</h4>
+          <p>Vibrant cultures, beaches & street food</p>
+        </div>
       </div>
-      <div class="guide-card">
-        <img src="../assets/images/guides/guide2.jpg" alt="Guide 2" />
-        <h3>John Lee</h3>
-        <p>⭐ 4.8 | 98 tours</p>
-        <button class="btn-primary">Book Guide</button>
+
+      <!-- Europe -->
+      <div class="region-card" data-region="Europe">
+        <img src="../assets/images/destinations/Dubai.png" alt="Europe" />
+        <div class="region-overlay">
+          <h4>Europe</h4>
+          <p>Historic cities & romantic getaways</p>
+        </div>
       </div>
-      <div class="guide-card">
-        <img src="../assets/images/guides/guide3.jpg" alt="Guide 3" />
-        <h3>Maria Rossi</h3>
-        <p>⭐ 4.7 | 110 tours</p>
-        <button class="btn-primary">Book Guide</button>
+
+      <!-- America -->
+      <div class="region-card" data-region="America">
+        <img src="../assets/images/destinations/Dubai.png" alt="America" />
+        <div class="region-overlay">
+          <h4>America</h4>
+          <p>Vast landscapes & urban adventures</p>
+        </div>
       </div>
+
+      <!-- Africa -->
+      <div class="region-card" data-region="Africa">
+        <img src="../assets/images/destinations/Dubai.png" alt="Africa" />
+        <div class="region-overlay">
+          <h4>Africa</h4>
+          <p>Wildlife safaris & desert wonders</p>
+        </div>
+      </div>
+
+      <!-- Oceania -->
+      <div class="region-card" data-region="Oceania">
+        <img src="../assets/images/destinations/Dubai.png" alt="Oceania" />
+        <div class="region-overlay">
+          <h4>Oceania</h4>
+          <p>Islands, reefs & laid-back vibes</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Seasons -->
+    <div class="season-container" id="seasonContainer">
+      <!-- Nội dung mùa sẽ được render bằng JS -->
     </div>
   </div>
 </section>

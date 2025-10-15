@@ -1,116 +1,3 @@
-// const cards = document.querySelectorAll(".destination-card");
-// const itemsPerPage = 7;
-// const totalPages = Math.ceil(cards.length / itemsPerPage);
-// let currentPage = 1;
-
-// const pageNumbersContainer = document.querySelector(".page-numbers");
-
-// function showPage(page) {
-//   currentPage = page;
-
-//   // Hiển thị cards
-//   cards.forEach((card, index) => {
-//     card.style.display =
-//       index >= (page - 1) * itemsPerPage && index < page * itemsPerPage
-//         ? "block"
-//         : "none";
-//   });
-
-//   // Nếu chỉ có 1 trang, ẩn pagination
-//   if (totalPages <= 1) {
-//     document.querySelector(".pagination").style.display = "none";
-//   } else {
-//     document.querySelector(".pagination").style.display = "flex";
-//     renderPagination();
-//   }
-// }
-
-// // Render số trang với ...
-// function renderPagination() {
-//   pageNumbersContainer.innerHTML = "";
-
-//   const createPageLink = (i) => {
-//     const a = document.createElement("a");
-//     a.href = "#";
-//     a.textContent = i;
-//     // a.classList.add("page");
-//     if (i === currentPage) a.classList.add("active");
-//     a.addEventListener("click", (e) => {
-//       e.preventDefault();
-//       showPage(i);
-//     });
-//     return a;
-//   };
-
-//   const createDots = () => {
-//     const span = document.createElement("span");
-//     span.textContent = "...";
-//     span.classList.add("dots");
-//     return span;
-//   };
-
-//   if (totalPages <= 7) {
-//     // Hiển thị tất cả nếu < 8 trang
-//     for (let i = 1; i <= totalPages; i++) {
-//       pageNumbersContainer.appendChild(createPageLink(i));
-//     }
-//   } else {
-//     if (currentPage <= 4) {
-//       // Trang đầu
-//       for (let i = 1; i <= 5; i++)
-//         pageNumbersContainer.appendChild(createPageLink(i));
-//       pageNumbersContainer.appendChild(createDots());
-//       pageNumbersContainer.appendChild(createPageLink(totalPages));
-//     } else if (currentPage >= totalPages - 3) {
-//       // Trang cuối
-//       pageNumbersContainer.appendChild(createPageLink(1));
-//       pageNumbersContainer.appendChild(createDots());
-//       for (let i = totalPages - 4; i <= totalPages; i++)
-//         pageNumbersContainer.appendChild(createPageLink(i));
-//     } else {
-//       // Trang giữa
-//       pageNumbersContainer.appendChild(createPageLink(1));
-//       pageNumbersContainer.appendChild(createDots());
-//       for (let i = currentPage - 1; i <= currentPage + 1; i++)
-//         pageNumbersContainer.appendChild(createPageLink(i));
-//       pageNumbersContainer.appendChild(createDots());
-//       pageNumbersContainer.appendChild(createPageLink(totalPages));
-//     }
-//   }
-// }
-
-// // Nút điều hướng
-// document.querySelector(".pagination .prev").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   if (currentPage > 1) showPage(currentPage - 1);
-// });
-
-// document.querySelector(".pagination .next").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   if (currentPage < totalPages) showPage(currentPage + 1);
-// });
-
-// document.querySelector(".pagination .first").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   showPage(1);
-// });
-
-// document.querySelector(".pagination .last").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   showPage(totalPages);
-// });
-
-// // Load trang đầu tiên
-// showPage(1);
-
-/* ========= CONFIG ========= */
-/*
-  NOTE:
-  - For live weather, put your OpenWeather API key below.
-    Sign up: https://openweathermap.org/api
-  - Leaflet is used for map (no API key).
-  - Swiper is used for gallery slider (CDN included).
-*/
 const OPENWEATHER_API_KEY = ""; // <-- đặt API key ở đây nếu có (ví dụ "abcd1234...")
 
 /* ========= DATA ========= */
@@ -291,164 +178,187 @@ const bestTimeData = {
     seasons: [
       {
         icon: "❄️",
-        season: "Winter (Dec – Feb)",
-        rating: 4.5,
+        title: "Winter (Dec – Feb)",
+        suitability: "4.5/5",
         crowd: "Low",
-        bar: 50,
-        pros: "Cool weather, great for tropical destinations like Thailand or Vietnam.",
-        cons: "Some northern areas can be cold.",
+        best: "Cool weather, tropical spots like Thailand.",
+        consider: "Some northern areas can be cold.",
       },
       {
         icon: "🌸",
-        season: "Spring (Mar – May)",
-        rating: 5.0,
+        title: "Spring (Mar – May)",
+        suitability: "5.0/5",
         crowd: "Medium",
-        bar: 80,
-        pros: "Perfect weather, festivals in Japan & Korea.",
-        cons: "Prices rise during cherry blossom season.",
+        best: "Perfect weather, cherry blossom festivals.",
+        consider: "Prices rise in Japan & Korea.",
       },
       {
         icon: "☀️",
-        season: "Summer (Jun – Aug)",
-        rating: 3.5,
+        title: "Summer (Jun – Aug)",
+        suitability: "3.5/5",
         crowd: "High",
-        bar: 95,
-        pros: "Beach season, school holidays.",
-        cons: "Very hot & humid in many areas.",
+        best: "Beach season, school holidays.",
+        consider: "Very hot & humid in many regions.",
       },
       {
-        icon: "🍂",
-        season: "Autumn (Sep – Nov)",
-        rating: 4.8,
+        icon: "🍁",
+        title: "Autumn (Sep – Nov)",
+        suitability: "4.8/5",
         crowd: "Medium-Low",
-        bar: 70,
-        pros: "Pleasant temps, colorful scenery, good value.",
-        cons: "Typhoons possible in some regions.",
+        best: "Pleasant temps, colorful scenery.",
+        consider: "Typhoons possible in some regions.",
       },
     ],
   },
+
   Europe: {
-    video:
-      "../assets/images/destinations/reels/AdobeStock_403594168_Video_HD_Preview.mov",
+    video: "../assets/images/destinations/reels/europe.mov",
     seasons: [
       {
         icon: "❄️",
-        season: "Winter (Dec – Feb)",
-        rating: 3.5,
+        title: "Winter (Dec – Feb)",
+        suitability: "3.8/5",
         crowd: "Low",
-        bar: 40,
-        pros: "Christmas markets, fewer tourists.",
-        cons: "Cold, shorter days.",
+        best: "Christmas markets & snowy adventures.",
+        consider: "Cold weather limits some outdoor trips.",
       },
       {
         icon: "🌸",
-        season: "Spring (Mar – May)",
-        rating: 5.0,
+        title: "Spring (Mar – May)",
+        suitability: "4.9/5",
         crowd: "Medium",
-        bar: 70,
-        pros: "Best weather, blooming gardens, great deals.",
-        cons: "Rain possible in early spring.",
+        best: "Mild weather & fewer crowds.",
+        consider: "Some northern areas still chilly.",
       },
       {
         icon: "☀️",
-        season: "Summer (Jun – Aug)",
-        rating: 4.0,
+        title: "Summer (Jun – Aug)",
+        suitability: "4.2/5",
         crowd: "High",
-        bar: 95,
-        pros: "Festivals, beaches, long days.",
-        cons: "Crowded & expensive.",
+        best: "Festivals & long sunny days.",
+        consider: "Tourist season, higher prices.",
       },
       {
-        icon: "🍂",
-        season: "Autumn (Sep – Nov)",
-        rating: 4.7,
+        icon: "🍁",
+        title: "Autumn (Sep – Nov)",
+        suitability: "4.7/5",
         crowd: "Medium-Low",
-        bar: 65,
-        pros: "Ideal weather, fall colors, good prices.",
-        cons: "Shorter daylight.",
+        best: "Golden scenery & wine festivals.",
+        consider: "Shorter days approaching winter.",
       },
     ],
   },
+
   America: {
-    video: "../assets/images/destinations/reels/asia.mov",
+    video: "../assets/images/destinations/reels/america.mov",
     seasons: [
       {
         icon: "❄️",
-        season: "Winter (Dec – Feb)",
-        rating: 4.0,
+        title: "Winter (Dec – Feb)",
+        suitability: "4.0/5",
         crowd: "Low",
-        bar: 50,
-        pros: "Great for South America & ski resorts.",
-        cons: "Cold in northern regions.",
+        best: "Warm destinations like Florida or Mexico.",
+        consider: "Snow in the north; avoid blizzards.",
       },
       {
         icon: "🌸",
-        season: "Spring (Mar – May)",
-        rating: 4.8,
+        title: "Spring (Mar – May)",
+        suitability: "4.7/5",
         crowd: "Medium",
-        bar: 70,
-        pros: "Ideal weather across continents.",
-        cons: "Tourist season starts in some cities.",
+        best: "National parks & city blooms.",
+        consider: "Allergies during pollen season.",
       },
       {
         icon: "☀️",
-        season: "Summer (Jun – Aug)",
-        rating: 3.8,
+        title: "Summer (Jun – Aug)",
+        suitability: "4.3/5",
         crowd: "High",
-        bar: 90,
-        pros: "Good for beaches & national parks.",
-        cons: "Hot & crowded in cities.",
+        best: "Road trips, beaches, festivals.",
+        consider: "Tourist crowds, high temps in deserts.",
       },
       {
-        icon: "🍂",
-        season: "Autumn (Sep – Nov)",
-        rating: 5.0,
+        icon: "🍁",
+        title: "Autumn (Sep – Nov)",
+        suitability: "5.0/5",
         crowd: "Medium-Low",
-        bar: 65,
-        pros: "Perfect climate, fall foliage.",
-        cons: "Hurricane risk in some areas.",
+        best: "Fall foliage & cozy weather.",
+        consider: "Hurricane season on east coast.",
       },
     ],
   },
+
   Africa: {
-    video:
-      "../assets/images/destinations/reels/AdobeStock_403594168_Video_HD_Preview.mov",
+    video: "../assets/images/destinations/reels/africa.mov",
     seasons: [
       {
-        icon: "🦁",
-        season: "Dry (Jun – Aug)",
-        rating: 4.5,
+        icon: "❄️",
+        title: "Winter (Jun – Aug)",
+        suitability: "4.6/5",
         crowd: "Medium",
-        bar: 70,
-        pros: "Best time for safaris (migration).",
-        cons: "Cooler mornings and evenings.",
+        best: "Cooler weather for safaris in East Africa.",
+        consider: "Southern regions can be cold at night.",
       },
       {
-        icon: "🐘",
-        season: "Shoulder (Sep – Nov)",
-        rating: 5.0,
-        crowd: "Medium-Low",
-        bar: 60,
-        pros: "Perfect for wildlife & landscapes.",
-        cons: "Some rains begin.",
+        icon: "🌸",
+        title: "Spring (Sep – Nov)",
+        suitability: "4.9/5",
+        crowd: "Low-Medium",
+        best: "Perfect for wildlife & coastal escapes.",
+        consider: "Some rains in tropical regions.",
       },
       {
-        icon: "🔥",
-        season: "Wet (Dec – Feb)",
-        rating: 4.0,
+        icon: "☀️",
+        title: "Summer (Dec – Feb)",
+        suitability: "4.0/5",
         crowd: "High",
-        bar: 90,
-        pros: "Holiday season, warm weather.",
-        cons: "Hot inland temperatures.",
+        best: "Beach holidays & Cape Town vineyards.",
+        consider: "Hot inland & safari lodges busy.",
       },
       {
-        icon: "🦓",
-        season: "Rainy (Mar – May)",
-        rating: 4.2,
-        crowd: "Low",
-        bar: 50,
-        pros: "Good prices, calm weather.",
-        cons: "Less wildlife movement.",
+        icon: "🍁",
+        title: "Autumn (Mar – May)",
+        suitability: "4.4/5",
+        crowd: "Medium",
+        best: "Dry season starts — great for safaris.",
+        consider: "Variable weather in north regions.",
+      },
+    ],
+  },
+
+  Oceania: {
+    video: "../assets/images/destinations/reels/oceania.mov",
+    seasons: [
+      {
+        icon: "❄️",
+        title: "Winter (Jun – Aug)",
+        suitability: "4.3/5",
+        crowd: "Medium-Low",
+        best: "Mild temps, great surfing & whale watching.",
+        consider: "Snow in New Zealand’s south.",
+      },
+      {
+        icon: "🌸",
+        title: "Spring (Sep – Nov)",
+        suitability: "5.0/5",
+        crowd: "Medium",
+        best: "Ideal for beaches, nature & road trips.",
+        consider: "Allergy season in some areas.",
+      },
+      {
+        icon: "☀️",
+        title: "Summer (Dec – Feb)",
+        suitability: "4.6/5",
+        crowd: "High",
+        best: "Beach season, outdoor festivals.",
+        consider: "Can be very hot in inland Australia.",
+      },
+      {
+        icon: "🍁",
+        title: "Autumn (Mar – May)",
+        suitability: "4.8/5",
+        crowd: "Low-Medium",
+        best: "Comfortable temps & fewer tourists.",
+        consider: "Some rain in tropical areas.",
       },
     ],
   },
@@ -758,26 +668,114 @@ async function fetchWeather(item) {
 }
 
 // Trip planner logic
-const data = [
-  { name: "Bali", type: "beach", minBudget: 500, minDays: 3 },
-  { name: "Hanoi", type: "culture", minBudget: 300, minDays: 2 },
-  { name: "Tokyo", type: "city", minBudget: 1000, minDays: 4 },
-  { name: "Swiss Alps", type: "mountain", minBudget: 1200, minDays: 5 },
-  { name: "Bangkok", type: "food", minBudget: 400, minDays: 2 },
+const tripForm = document.getElementById("tripForm");
+const tripResults = document.getElementById("tripResults");
+
+const tripData = [
+  {
+    name: "Bali, Indonesia",
+    region: "asia",
+    interest: "beach",
+    costPerDay: 150,
+    description:
+      "Relax on pristine beaches, explore temples, and enjoy tropical vibes.",
+    image: "../assets/images/destinations/Bali.png",
+  },
+  {
+    name: "Tokyo, Japan",
+    region: "asia",
+    interest: "city",
+    costPerDay: 200,
+    description:
+      "Discover neon streets, culture, and incredible food experiences.",
+    image: "../assets/images/destinations/Tokyo.png",
+  },
+  {
+    name: "Rome, Italy",
+    region: "europe",
+    interest: "culture",
+    costPerDay: 180,
+    description:
+      "Walk through ancient ruins and taste authentic Italian cuisine.",
+    image: "../assets/images/destinations/Rome.png",
+  },
+  {
+    name: "Swiss Alps, Switzerland",
+    region: "europe",
+    interest: "mountain",
+    costPerDay: 250,
+    description: "Breathtaking peaks, skiing, and scenic mountain villages.",
+    image: "../assets/images/destinations/SwissAlps.png",
+  },
+  {
+    name: "Bangkok, Thailand",
+    region: "asia",
+    interest: "food",
+    costPerDay: 100,
+    description:
+      "Street food heaven with a mix of temples, markets, and nightlife.",
+    image: "../assets/images/destinations/Bangkok.png",
+  },
+  {
+    name: "New York, USA",
+    region: "america",
+    interest: "city",
+    costPerDay: 220,
+    description:
+      "The city that never sleeps — iconic skyline and diverse experiences.",
+    image: "../assets/images/destinations/NewYork.png",
+  },
+  {
+    name: "Cape Town, South Africa",
+    region: "africa",
+    interest: "beach",
+    costPerDay: 140,
+    description: "Stunning beaches, Table Mountain, and a blend of cultures.",
+    image: "../assets/images/destinations/CapeTown.png",
+  },
 ];
-document.getElementById("tripForm").addEventListener("submit", (e) => {
+
+tripForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const budget = +document.getElementById("budget").value;
-  const days = +document.getElementById("days").value;
+
+  const region = document.getElementById("region").value;
+  const budget = parseInt(document.getElementById("budget").value);
+  const days = parseInt(document.getElementById("days").value);
   const interest = document.getElementById("interest").value;
-  const results = data.filter(
-    (d) => d.type === interest && budget >= d.minBudget && days >= d.minDays
-  );
-  document.getElementById("tripResults").innerHTML = results.length
-    ? results
-        .map((r) => `<p>✅ ${r.name} is a perfect fit for you!</p>`)
-        .join("")
-    : "<p>No matching destinations found 😅</p>";
+
+  const totalBudget = budget / days;
+  const matches = tripData.filter((trip) => {
+    return (
+      trip.region === region &&
+      trip.interest === interest &&
+      totalBudget >= trip.costPerDay * 0.7
+    );
+  });
+
+  tripResults.innerHTML = ""; // clear previous
+
+  if (matches.length === 0) {
+    tripResults.innerHTML = `<p>No matching destinations found 😢 — try changing your options.</p>`;
+    return;
+  }
+
+  matches.forEach((trip) => {
+    const totalCost = trip.costPerDay * days;
+    const suggestion = document.createElement("div");
+    suggestion.classList.add("trip-suggestion");
+    suggestion.innerHTML = `
+      <img src="${trip.image}" alt="${trip.name}" />
+      <div class="trip-info">
+        <h3>${trip.name}</h3>
+        <p>${trip.description}</p>
+        <p>Estimated cost: <span class="price">$${totalCost.toLocaleString()}</span></p>
+        <p>Region: ${
+          trip.region.charAt(0).toUpperCase() + trip.region.slice(1)
+        }</p>
+      </div>
+    `;
+    tripResults.appendChild(suggestion);
+  });
 });
 
 // Counter animation
@@ -818,117 +816,93 @@ function initMap(lat, lon, name) {
   mapInstance.invalidateSize();
 }
 
-const regionFilterBtns = document.querySelectorAll(".best-time-filter-btn");
-const seasonContainer = document.getElementById("seasonContainer");
+// ========================================
+// Best time to visit
+// ========================================
+const regionCards = document.querySelectorAll(".region-card");
 const regionNameEl = document.getElementById("regionName");
 const bestTimeVideoBg = document.getElementById("bestTimeVideoBg");
+const seasonContainer = document.getElementById("seasonContainer");
 
+// Hàm render nội dung theo region
 function renderBestTime(region) {
   const regionData = bestTimeData[region];
   if (!regionData) return;
 
+  // Cập nhật tên vùng
   regionNameEl.textContent = region;
-  bestTimeVideoBg.style.opacity = "0";
 
-  const transitionDuration = 500;
-  setTimeout(() => {
-    const sourceElement = bestTimeVideoBg.querySelector("source");
-    if (sourceElement) {
-      sourceElement.src = regionData.video;
-    } else {
-      bestTimeVideoBg.innerHTML = `<source src="${regionData.video}" type="video/mp4" />`;
-    }
+  // Đổi video
+  bestTimeVideoBg.querySelector("source").src = regionData.video;
+  bestTimeVideoBg.load();
 
-    bestTimeVideoBg.load();
-    bestTimeVideoBg.play().catch(console.warn);
-    bestTimeVideoBg.style.opacity = "1";
-  }, transitionDuration);
-
+  // Render danh sách mùa
   seasonContainer.innerHTML = regionData.seasons
-    .map((s, index) => {
-      const colorClass = ["cold", "warm", "hot", "mild"][index % 4];
-      return `
-        <div class="season-item card-${colorClass}">
-          <div class="card-icon">${s.icon}</div>
-          <div class="season-header">
-            <span class="season-title">${s.season}</span>
-            <div class="season-rating">
-              <span class="rating-label">Suitability:</span>
-              <span class="rating-stars">${s.rating.toFixed(1)}/5</span>
-            </div>
-          </div>
-          <div class="season-chart-area">
-            <p class="chart-label">Crowd Level: <strong>${s.crowd}</strong></p>
-            <div class="season-progress-wrapper">
-              <div class="bar ${colorClass}" style="width:${s.bar}%"></div>
-            </div>
-          </div>
-          <div class="season-details">
-            <p class="pros"><strong>Best for:</strong> ${s.pros}</p>
-            <p class="cons"><strong>Consider:</strong> ${s.cons}</p>
-          </div>
-        </div>`;
-    })
+    .map(
+      (s) => `
+      <div class="season-card">
+        <div class="icon">${s.icon}</div>
+        <h3>${s.title}</h3>
+        <p>Suitability: <span>${s.suitability}</span></p>
+        <p>Crowd Level: ${s.crowd}</p>
+        <p><strong>Best for:</strong> ${s.best}</p>
+        <p><strong>Consider:</strong> ${s.consider}</p>
+      </div>`
+    )
     .join("");
 }
 
-// 4. BẮT SỰ KIỆN & GỌI MẶC ĐỊNH
-regionFilterBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const region = btn.dataset.region;
-
-    regionFilterBtns.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-
+// Khi click vào region
+regionCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    regionCards.forEach((c) => c.classList.remove("active"));
+    card.classList.add("active");
+    const region = card.dataset.region;
     renderBestTime(region);
   });
 });
 
-// Gọi mặc định khi tải trang
-renderBestTime("Asia");
+window.addEventListener("DOMContentLoaded", () => {
+  renderBestTime("Asia");
+});
 
 /* ===== INIT ===== */
 renderDestinations();
 renderTop5();
 persistVisits(); // save initial state
 
-/* ========= EXPLORE BY REGION SLIDER ========= */
-const regionTrack = document.querySelector(".region-track");
-const regionCards = document.querySelectorAll(".region-track-card");
+/* === TOP DESTINATIONS SECTION === */
+const topdestTrack = document.querySelector(".topdest-track");
+const topdestCards = document.querySelectorAll(".topdest-card");
 const prevBtn = document.querySelector(".slide-btn.prev");
 const nextBtn = document.querySelector(".slide-btn.next");
 
-if (regionTrack && regionCards.length && prevBtn && nextBtn) {
+if (topdestTrack && topdestCards.length && prevBtn && nextBtn) {
   let currentIndex = 0;
 
-  // Hàm tính chiều rộng thực tế của 1 card (gồm cả gap)
   function getCardWidth() {
-    const card = regionCards[0];
-    const style = window.getComputedStyle(regionTrack);
+    const card = topdestCards[0];
+    const style = window.getComputedStyle(topdestTrack);
     const gap = parseFloat(style.gap) || 0;
     return card.offsetWidth + gap;
   }
 
-  // Hàm cập nhật transform
   function updateSlide() {
     const cardWidth = getCardWidth();
-    regionTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    topdestTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
   }
 
-  // Cập nhật số lượng card có thể hiển thị trong 1 khung
   function getVisibleCards() {
-    const windowWidth = regionTrack.parentElement.offsetWidth;
+    const windowWidth = topdestTrack.parentElement.offsetWidth;
     const cardWidth = getCardWidth();
     return Math.floor(windowWidth / cardWidth);
   }
 
-  // Số lượng card tối đa có thể trượt
   function getMaxIndex() {
     const visibleCards = getVisibleCards();
-    return Math.max(0, regionCards.length - visibleCards);
+    return Math.max(0, topdestCards.length - visibleCards);
   }
 
-  // Nút Next
   nextBtn.addEventListener("click", () => {
     const maxIndex = getMaxIndex();
     if (currentIndex < maxIndex) {
@@ -937,7 +911,6 @@ if (regionTrack && regionCards.length && prevBtn && nextBtn) {
     }
   });
 
-  // Nút Prev
   prevBtn.addEventListener("click", () => {
     if (currentIndex > 0) {
       currentIndex--;
@@ -945,7 +918,6 @@ if (regionTrack && regionCards.length && prevBtn && nextBtn) {
     }
   });
 
-  // Khi resize thì reset lại
   window.addEventListener("resize", () => {
     currentIndex = 0;
     updateSlide();
@@ -957,19 +929,35 @@ const track = document.querySelector(".vlog-track");
 const prevBtn_vlog = document.querySelector(".vlog-slider .prev");
 const nextBtn_vlog = document.querySelector(".vlog-slider .next");
 
-const itemWidth = track.querySelector(".vlog-item").offsetWidth + 20; // width + gap
 let currentPosition = 0;
 
-nextBtn_vlog.addEventListener("click", () => {
-  if (currentPosition > -(track.scrollWidth - itemWidth * 3)) {
-    currentPosition -= itemWidth;
-    track.style.transform = `translateX(${currentPosition}px)`;
-  }
-});
+function updateVlogSlider() {
+  const item = track.querySelector(".vlog-item");
+  const itemStyle = window.getComputedStyle(item);
+  const gap = parseInt(itemStyle.marginRight) || 24; // lấy gap nếu có
+  const itemWidth = item.offsetWidth + gap;
 
-prevBtn_vlog.addEventListener("click", () => {
-  if (currentPosition < 0) {
-    currentPosition += itemWidth;
-    track.style.transform = `translateX(${currentPosition}px)`;
-  }
-});
+  const windowWidth = document.querySelector(".vlog-window").offsetWidth;
+  const visibleCount = Math.floor(windowWidth / itemWidth); // số video hiển thị
+  const maxScroll = track.scrollWidth - itemWidth * visibleCount;
+
+  nextBtn_vlog.onclick = () => {
+    if (Math.abs(currentPosition) < maxScroll) {
+      currentPosition -= itemWidth;
+      if (Math.abs(currentPosition) > maxScroll) currentPosition = -maxScroll;
+      track.style.transform = `translateX(${currentPosition}px)`;
+    }
+  };
+
+  prevBtn_vlog.onclick = () => {
+    if (currentPosition < 0) {
+      currentPosition += itemWidth;
+      if (currentPosition > 0) currentPosition = 0;
+      track.style.transform = `translateX(${currentPosition}px)`;
+    }
+  };
+}
+
+// Gọi khi load & khi resize
+updateVlogSlider();
+window.addEventListener("resize", updateVlogSlider);
