@@ -96,11 +96,18 @@ let currentPage = 1;
 const toursPerPage = 6;
 let filteredTours = [...toursData];
 
+// --- DOM Elements ---
 const tourGrid = document.querySelector(".tour-grid");
-const paginationList = document.querySelector(".pagination__list");
 const searchForm = document.querySelector(".tours-search__form");
 const sortSelect = document.getElementById("sort-by");
 const resultCount = document.querySelector(".result-controls__count");
+
+const paginationContainer = document.querySelector(".pagination");
+const pageNumbersSpan = document.querySelector(".page-numbers");
+const firstBtn = document.querySelector(".pagination .first");
+const prevBtn = document.querySelector(".pagination .prev");
+const nextBtn = document.querySelector(".pagination .next");
+const lastBtn = document.querySelector(".pagination .last");
 
 function renderTours() {
         if (!tourGrid) return;
@@ -114,12 +121,10 @@ function renderTours() {
         }
 
         toursToRender.forEach((tour) => {
-                // ✨ THAY ĐỔI 1: Tạo thẻ <a> thay vì <article>
                 const tourCard = document.createElement("a");
                 tourCard.className = "tour-card";
-                tourCard.href = `#tour-details`; // Đặt link cho thẻ
+                tourCard.href = `#tour-details`;
 
-                // ✨ THAY ĐỔI 2: Cập nhật lại cấu trúc innerHTML (bỏ thẻ <a> con bên trong)
                 tourCard.innerHTML = `
                 <div class="tour-card__image-wrapper">
                     <img src="${tour.image}" alt="${tour.name}" class="tour-card__image">
@@ -143,38 +148,44 @@ function renderTours() {
 }
 
 function renderPagination() {
-        if (!paginationList) return;
-        paginationList.innerHTML = "";
+        if (!paginationContainer) return;
         const totalPages = Math.ceil(filteredTours.length / toursPerPage);
-        if (totalPages <= 1) return;
 
-        paginationList.insertAdjacentHTML(
-                "beforeend",
-                `<li><button class="pagination__link ${
-                        currentPage === 1 ? "pagination__link--disabled" : ""
-                }" data-page="prev">&laquo;</button></li>`
-        );
-        for (let i = 1; i <= totalPages; i++) {
-                paginationList.insertAdjacentHTML(
-                        "beforeend",
-                        `<li><button class="pagination__link ${
-                                i === currentPage ? "pagination__link--active" : ""
-                        }" data-page="${i}">${i}</button></li>`
-                );
+        if (totalPages <= 1) {
+                paginationContainer.style.display = "none";
+                return;
         }
-        paginationList.insertAdjacentHTML(
-                "beforeend",
-                `<li><button class="pagination__link ${
-                        currentPage === totalPages ? "pagination__link--disabled" : ""
-                }" data-page="next">&raquo;</button></li>`
-        );
+        paginationContainer.style.display = "flex";
+
+        if (currentPage === 1) {
+                firstBtn.classList.add("disabled");
+                prevBtn.classList.add("disabled");
+        } else {
+                firstBtn.classList.remove("disabled");
+                prevBtn.classList.remove("disabled");
+        }
+
+        if (currentPage === totalPages) {
+                nextBtn.classList.add("disabled");
+                lastBtn.classList.add("disabled");
+        } else {
+                nextBtn.classList.remove("disabled");
+                lastBtn.classList.remove("disabled");
+        }
+
+        pageNumbersSpan.innerHTML = "";
+        let pageLinksHTML = "";
+        for (let i = 1; i <= totalPages; i++) {
+                pageLinksHTML += `<a href="#" data-page="${i}" class="${i === currentPage ? "active" : ""}">${i}</a>`;
+        }
+        pageNumbersSpan.innerHTML = pageLinksHTML;
 }
 
 function renderSkeletonCards() {
         if (!tourGrid) return;
         tourGrid.innerHTML = "";
         for (let i = 0; i < toursPerPage; i++) {
-                const skeletonCard = document.createElement("article");
+                const skeletonCard = document.createElement("div"); // Dùng div cho skeleton
                 skeletonCard.className = "skeleton-card";
 
                 skeletonCard.innerHTML = `
@@ -208,7 +219,11 @@ function applyFiltersAndSort() {
                         let matchesDuration = true;
                         if (durationValue && durationValue !== "all") {
                                 const duration = parseInt(durationValue, 10);
-                                matchesDuration = duration === 11 ? tour.duration > 10 : tour.duration <= duration;
+                                if (duration === 11) {
+                                        matchesDuration = tour.duration > 10;
+                                } else {
+                                        matchesDuration = tour.duration <= duration;
+                                }
                         }
                         return matchesLocation && matchesType && matchesDuration;
                 });
@@ -237,9 +252,11 @@ function updateUI() {
                         }-${endIndex} of ${filteredTours.length} tours`;
                 }
                 renderTours();
-                renderPagination();
+                renderPagination(); // Luôn gọi renderPagination để cập nhật
         }, 500);
 }
+
+// --- Event Listeners ---
 
 if (searchForm) {
         searchForm.addEventListener("submit", (e) => {
@@ -252,21 +269,59 @@ if (sortSelect) {
         sortSelect.addEventListener("change", applyFiltersAndSort);
 }
 
-if (paginationList) {
-        paginationList.addEventListener("click", (e) => {
-                if (e.target.tagName === "BUTTON" && !e.target.classList.contains("pagination__link--disabled")) {
-                        const page = e.target.dataset.page;
-                        if (page === "prev") currentPage--;
-                        else if (page === "next") currentPage++;
-                        else currentPage = parseInt(page);
+function handlePageChange(newPage) {
+        const totalPages = Math.ceil(filteredTours.length / toursPerPage);
+        if (newPage < 1 || newPage > totalPages || newPage === currentPage) {
+                return;
+        }
+        currentPage = newPage;
 
-                        const gridSection = document.querySelector(".tours-grid-section");
-                        if (gridSection) {
-                                gridSection.scrollIntoView({ behavior: "smooth", block: "start" });
-                        }
-                        updateUI();
+        // Cuộn lên đầu danh sách tour
+        const gridSection = document.querySelector(".tours-grid-section");
+        if (gridSection) {
+                gridSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        updateUI();
+}
+
+if (firstBtn) {
+        firstBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                handlePageChange(1);
+        });
+}
+
+if (prevBtn) {
+        prevBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                handlePageChange(currentPage - 1);
+        });
+}
+
+if (nextBtn) {
+        nextBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                handlePageChange(currentPage + 1);
+        });
+}
+
+if (lastBtn) {
+        lastBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const totalPages = Math.ceil(filteredTours.length / toursPerPage);
+                handlePageChange(totalPages);
+        });
+}
+
+if (pageNumbersSpan) {
+        pageNumbersSpan.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (e.target.tagName === "A" && e.target.dataset.page) {
+                        const page = parseInt(e.target.dataset.page, 10);
+                        handlePageChange(page);
                 }
         });
 }
+// --- KẾT THÚC PHẦN SỬA ---
 
 applyFiltersAndSort();
