@@ -93,12 +93,26 @@ let currentPage = 1;
 const postsPerPage = 4;
 let filteredPosts = [...blogPosts];
 
+// =========================================================================
+// CÁC BIẾN DOM ELEMENT
+// =========================================================================
 const blogGrid = document.querySelector(".blog-grid");
-const paginationList = document.querySelector(".pagination__list");
 const searchForm = document.querySelector(".sidebar-widget__search-form");
 const searchInput = document.querySelector(".sidebar-widget__search-input");
 const categoryList = document.querySelector(".sidebar-widget__category-list");
 const featuredPostContainer = document.querySelector(".sidebar-widget__featured-post");
+
+// Các biến cho phân trang
+const paginationContainer = document.querySelector(".pagination");
+const pageNumbersSpan = document.querySelector(".page-numbers");
+const firstBtn = document.querySelector(".pagination .first");
+const prevBtn = document.querySelector(".pagination .prev");
+const nextBtn = document.querySelector(".pagination .next");
+const lastBtn = document.querySelector(".pagination .last");
+
+// =========================================================================
+// CÁC HÀM RENDER
+// =========================================================================
 
 function renderPosts() {
         if (!blogGrid) return;
@@ -116,53 +130,65 @@ function renderPosts() {
                 postElement.className = "blog-card";
                 postElement.style.animationDelay = `${index * 0.1}s`;
                 postElement.innerHTML = `
-                    <a href="#blog-detail" class="blog-card__image-link">
-                        <img src="${post.image}" alt="${post.title}" class="blog-card__image">
-                    </a>
-                    <div class="blog-card__content">
-                        <span class="blog-card__category">${post.category}</span>
-                        <h3 class="blog-card__title">
-                            <a href="#blog-detail">${post.title}</a>
-                        </h3>
-                        <div class="blog-card__meta">
-                            <img src="${post.author.avatar}" alt="${post.author.name}" class="blog-card__author-avatar">
-                            <span>${post.author.name} • ${post.date}</span>
-                        </div>
-                        <p class="blog-card__description">${post.description}</p>
-                        <a href="#blog-detail" class="blog-card__readmore">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
+                <a href="#blog-detail" class="blog-card__image-link">
+                    <img src="${post.image}" alt="${post.title}" class="blog-card__image">
+                </a>
+                <div class="blog-card__content">
+                    <span class="blog-card__category">${post.category}</span>
+                    <h3 class="blog-card__title">
+                        <a href="#blog-detail">${post.title}</a>
+                    </h3>
+                    <div class="blog-card__meta">
+                        <img src="${post.author.avatar}" alt="${post.author.name}" class="blog-card__author-avatar">
+                        <span>${post.author.name} • ${post.date}</span>
                     </div>
-                `;
+                    <p class="blog-card__description">${post.description}</p>
+                    <a href="#blog-detail" class="blog-card__readmore">
+                        Read More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            `;
                 blogGrid.appendChild(postElement);
         });
 }
 
 function renderPagination() {
-        if (!paginationList) return;
-        paginationList.innerHTML = "";
         const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-        if (totalPages <= 1) return;
-        paginationList.insertAdjacentHTML(
-                "beforeend",
-                `<li><button class="pagination__link ${
-                        currentPage === 1 ? "pagination__link--disabled" : ""
-                }" data-page="prev">&laquo;</button></li>`
-        );
-        for (let i = 1; i <= totalPages; i++) {
-                paginationList.insertAdjacentHTML(
-                        "beforeend",
-                        `<li><button class="pagination__link ${
-                                i === currentPage ? "pagination__link--active" : ""
-                        }" data-page="${i}">${i}</button></li>`
-                );
+
+        if (!paginationContainer) return;
+
+        // Ẩn/hiện toàn bộ thanh phân trang nếu cần
+        if (totalPages <= 1) {
+                paginationContainer.style.display = "none";
+                return;
         }
-        paginationList.insertAdjacentHTML(
-                "beforeend",
-                `<li><button class="pagination__link ${
-                        currentPage === totalPages ? "pagination__link--disabled" : ""
-                }" data-page="next">&raquo;</button></li>`
-        );
+        paginationContainer.style.display = "flex";
+
+        // 1. Quản lý trạng thái của các nút First/Prev
+        if (currentPage === 1) {
+                firstBtn.classList.add("disabled");
+                prevBtn.classList.add("disabled");
+        } else {
+                firstBtn.classList.remove("disabled");
+                prevBtn.classList.remove("disabled");
+        }
+
+        // 2. Quản lý trạng thái của các nút Next/Last
+        if (currentPage === totalPages) {
+                nextBtn.classList.add("disabled");
+                lastBtn.classList.add("disabled");
+        } else {
+                nextBtn.classList.remove("disabled");
+                lastBtn.classList.remove("disabled");
+        }
+
+        // 3. Tạo và chèn các nút số trang vào <span>
+        pageNumbersSpan.innerHTML = "";
+        let pageLinksHTML = "";
+        for (let i = 1; i <= totalPages; i++) {
+                pageLinksHTML += `<a href="#" data-page="${i}" class="${i === currentPage ? "active" : ""}">${i}</a>`;
+        }
+        pageNumbersSpan.innerHTML = pageLinksHTML;
 }
 
 function renderCategories() {
@@ -179,11 +205,11 @@ function renderFeaturedPost() {
         const featured = blogPosts[1];
         if (!featured) return;
         featuredPostContainer.innerHTML = `
-                        <a href="#blog-detail">
-                    <img src="${featured.image}" alt="${featured.title}">
-                    <h4>${featured.title}</h4>
-                </a>
-            `;
+            <a href="#blog-detail">
+                <img src="${featured.image}" alt="${featured.title}">
+                <h4>${featured.title}</h4>
+            </a>
+        `;
 }
 
 function renderSkeletonCards() {
@@ -194,18 +220,22 @@ function renderSkeletonCards() {
                 const skeletonCard = document.createElement("div");
                 skeletonCard.className = "skeleton-card";
                 skeletonCard.innerHTML = `
-                    <div class="skeleton skeleton-image"></div>
-                    <div class="skeleton-content">
-                        <div class="skeleton skeleton-category"></div>
-                        <div class="skeleton skeleton-title"></div>
-                        <div class="skeleton skeleton-meta"></div>
-                        <div class="skeleton skeleton-text"></div>
-                        <div class="skeleton skeleton-text"></div>
-                    </div>
-                `;
+                <div class="skeleton skeleton-image"></div>
+                <div class="skeleton-content">
+                    <div class="skeleton skeleton-category"></div>
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-meta"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                </div>
+            `;
                 blogGrid.appendChild(skeletonCard);
         }
 }
+
+// =========================================================================
+// CÁC HÀM LOGIC
+// =========================================================================
 
 function handleSearchAndFilter() {
         const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : "";
@@ -236,11 +266,15 @@ function debounce(func, delay = 300) {
 
 function updateUI() {
         renderSkeletonCards();
-        renderPagination();
         setTimeout(() => {
                 renderPosts();
+                renderPagination(); // Gọi renderPagination sau khi đã có bài viết
         }, 500);
 }
+
+// =========================================================================
+// EVENT LISTENERS
+// =========================================================================
 
 if (searchForm) {
         searchForm.addEventListener("submit", (e) => {
@@ -264,25 +298,65 @@ if (categoryList) {
         });
 }
 
-if (paginationList) {
-        paginationList.addEventListener("click", (e) => {
-                if (e.target.tagName === "BUTTON" && !e.target.classList.contains("pagination__link--disabled")) {
-                        const page = e.target.dataset.page;
-                        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+// --- Logic xử lý sự kiện phân trang ---
+function handlePageChange(newPage) {
+        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
-                        if (page === "prev" && currentPage > 1) currentPage--;
-                        else if (page === "next" && currentPage < totalPages) currentPage++;
-                        else if (!isNaN(page)) currentPage = parseInt(page);
-                        else return;
+        // Đảm bảo trang mới nằm trong giới hạn hợp lệ và khác trang hiện tại
+        if (newPage < 1 || newPage > totalPages || newPage === currentPage) {
+                return;
+        }
 
-                        if (blogGrid) {
-                                blogGrid.scrollIntoView({ behavior: "smooth", block: "start" });
-                        }
-                        updateUI();
+        currentPage = newPage;
+
+        if (blogGrid) {
+                blogGrid.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        updateUI();
+}
+
+if (firstBtn) {
+        firstBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                handlePageChange(1);
+        });
+}
+
+if (prevBtn) {
+        prevBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                handlePageChange(currentPage - 1);
+        });
+}
+
+if (nextBtn) {
+        nextBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                handlePageChange(currentPage + 1);
+        });
+}
+
+if (lastBtn) {
+        lastBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+                handlePageChange(totalPages);
+        });
+}
+
+if (pageNumbersSpan) {
+        pageNumbersSpan.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (e.target.tagName === "A" && e.target.dataset.page) {
+                        const page = parseInt(e.target.dataset.page, 10);
+                        handlePageChange(page);
                 }
         });
 }
 
+// =========================================================================
+// KHỞI TẠO BAN ĐẦU
+// =========================================================================
 function initialLoad() {
         renderCategories();
         renderFeaturedPost();
