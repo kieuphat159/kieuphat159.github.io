@@ -1,26 +1,8 @@
-/* === 1. ROOT VARIABLES & GENERAL STYLES === */
-:root {
-  --primary: #ff6b35;
-  --primary-dark: #e55a28;
-  --secondary: #f7f7f7;
-  --text-dark: #1a1a1a;
-  --text-gray: #666666;
-  --border-color: #e0e0e0;
-  --card-bg: #ffffff;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --transition-fast: all 0.3s ease;
-}
-
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  color: var(--text-dark);
-  background: #fafafa;
+  color: var(--text-primary);
+  background: var(--bg-primary);
   line-height: 1.6;
 }
 
@@ -28,47 +10,47 @@ section {
   padding: 80px 0;
 }
 
-.container {
+.des-container {
   width: 90%;
   max-width: 1240px;
   margin: 0 auto;
 }
 
 .section-title {
-  font-size: clamp(28px, 3.5vw, 36px);
+  font-size: clamp(2.5rem, 4vw, 3.5rem); /* Tự động co giãn theo viewport */
   font-weight: 700;
   margin-bottom: 40px;
   text-align: center;
-  color: var(--text-dark);
+  color: var(--text-primary);
 }
 
 /* === 2. REUSABLE COMPONENTS === */
 .btn-primary {
-  background: var(--primary);
+  background: var(--dest-primary);
   color: white;
   border: none;
   padding: 12px 28px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--dest-radius-sm);
   cursor: pointer;
   font-weight: 600;
   font-size: 15px;
-  transition: var(--transition-fast);
+  transition: var(--dest-transition-fast);
   text-align: center;
   display: inline-block;
 }
 
 .btn-primary:hover {
-  background: var(--primary-dark);
+  background: var(--dest-primary-dark);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--dest-shadow-md);
 }
 
 .card {
-  background: var(--card-bg);
+  background: var(--dest-card-bg);
   padding: 24px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
+  border-radius: var(--dest-radius-lg);
+  box-shadow: var(--dest-shadow-sm);
+  border: 1px solid var(--dest-border-color);
 }
 
 .card h4 {
@@ -148,7 +130,7 @@ section {
 
 .des-banner__cta button {
   background: white;
-  color: var(--primary);
+  color: var(--dest-primary);
   border: none;
   padding: 14px 32px;
   border-radius: 50px;
@@ -182,14 +164,14 @@ section {
   margin: 60px auto;
   padding: 40px 0;
   text-align: center;
-  background: #fafafa;
+  background: var(--bg-primary);
 }
 
 .topdest-section .section-title {
   font-size: 2.4rem;
   margin-bottom: 60px;
   font-weight: 700;
-  color: #1e1e1e;
+  color: var(--text-primary);
   letter-spacing: 0.5px;
 }
 
@@ -293,16 +275,17 @@ section {
 
 /* === 5. FILTER SECTION === */
 .filter-section {
-  background: white;
+  background: var(--dest-secondary);
   padding: 24px 0;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--dest-shadow-sm);
   position: sticky;
   /* top: 0; */
   z-index: 100;
-  border-bottom: 1px solid var(--border-color);
+  border: 1px solid var(--dest-border-color);
+  border-radius: 16px;
 }
 
-.filter-section .container {
+.filter-section .des-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -323,14 +306,14 @@ section {
   max-width: 320px;
   padding: 12px 20px;
   border-radius: 50px;
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--dest-border-color);
   font-size: 15px;
   transition: var(--transition-fast);
 }
 
 #searchInput:focus {
   outline: none;
-  border-color: var(--primary);
+  border-color: var(--dest-primary);
   box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
 }
 
@@ -343,12 +326,12 @@ section {
 .filter-btn {
   padding: 10px 24px;
   border-radius: 50px;
-  background: var(--secondary);
+  background: var(--dest-secondary);
   border: 2px solid transparent;
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-gray);
+  color: var(--dest-text-gray);
   transition: var(--transition-fast);
 }
 
@@ -358,9 +341,9 @@ section {
 }
 
 .filter-btn.active {
-  background: var(--primary);
+  background: var(--dest-primary);
   color: white;
-  border-color: var(--primary);
+  border-color: var(--dest-primary);
 }
 
 .filter-right {
@@ -375,8 +358,8 @@ section {
 
 #sortSelect {
   padding: 10px 16px;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--border-color);
+  border-radius: var(--dest-radius-sm);
+  border: 2px solid var(--dest-border-color);
   font-size: 14px;
   cursor: pointer;
   background: white;
@@ -385,7 +368,7 @@ section {
 
 #sortSelect:focus {
   outline: none;
-  border-color: var(--primary);
+  border-color: var(--dest-primary);
 }
 
 /* === 6. DESTINATIONS GRID & SIDEBAR === */
@@ -408,13 +391,13 @@ section {
 
 /* ======== Destination Card ======== */
 .destination-card {
-  background: white;
-  border-radius: var(--radius-lg);
+  background: var(--dest-card-bg);
+  border-radius: var(--dest-radius-md);
   overflow: hidden;
   position: relative;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--dest-shadow-sm);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--dest-border-color);
 }
 
 .destination-card:hover {
@@ -456,7 +439,7 @@ section {
   position: absolute;
   top: 16px;
   right: 16px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-primary);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -467,17 +450,17 @@ section {
   z-index: 5;
   transition: var(--transition-fast);
   border: none;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--dest-shadow-md);
 }
 
 .wishlist-btn:hover {
-  background: var(--primary);
+  background: var(--dest-primary);
   color: white;
   transform: scale(1.1);
 }
 
 .wishlist-btn.active {
-  background: var(--primary);
+  background: var(--dest-primary);
   color: white;
 }
 
@@ -509,21 +492,27 @@ section {
   align-items: center;
   flex-wrap: wrap;
   font-size: 14px;
-  color: var(--text-gray);
+  color: var(--dest-text-gray);
 }
 
 .pill {
+  display: inline-flex;
+  align-items: center; /* căn giữa dọc */
+  justify-content: center; /* căn giữa ngang */
   background: #fff4f0;
   border-radius: 50px;
   padding: 6px 14px;
+  min-height: 28px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--dest-primary);
+  text-align: center;
+  line-height: 0.6; /* giúp cân giữa chuẩn hơn */
 }
 
 /* ======== View Details Button ======== */
 .view-details {
-  background: var(--primary);
+  background: var(--dest-primary);
   border: none;
   color: white;
   padding: 8px 14px;
@@ -561,15 +550,19 @@ section {
   flex: 0 0 100px;
   font-weight: 600;
   font-size: 14px;
-  color: var(--text-dark);
+  color: var(--text-primary);
 }
 
 .top-item .bar {
   flex: 1;
   height: 12px;
-  background: var(--secondary);
+  background: var(--dest-secondary);
   border-radius: 50px;
   overflow: hidden;
+}
+
+.top-item .num {
+  color: var(--text-primary);
 }
 
 .top-item .bar i {
@@ -583,7 +576,11 @@ section {
 .top-item .bar > i {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  background: linear-gradient(
+    90deg,
+    var(--dest-primary),
+    var(--dest-primary-dark)
+  );
   border-radius: 50px;
   transition: width 0.5s ease;
 }
@@ -592,7 +589,7 @@ section {
 .subscribe input {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid var(--border-color, #ddd);
+  border: 2px solid var(--dest-border-color, #ddd);
   border-radius: var(--radius-sm, 8px);
   margin-bottom: 12px;
   font-size: 14px;
@@ -602,13 +599,13 @@ section {
 
 .subscribe input:focus {
   outline: none;
-  border-color: var(--primary, #4f46e5);
+  border-color: var(--dest-primary, #4f46e5);
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
 }
 
 .subscribe button {
   width: 100%;
-  background: var(--primary, #4f46e5);
+  background: var(--dest-primary, #4f46e5);
   color: #fff;
   padding: 12px 0;
   border: none;
@@ -619,7 +616,7 @@ section {
 }
 
 .subscribe button:hover {
-  background: var(--primary-dark, #4338ca);
+  background: var(--dest-primary-dark, #4338ca);
   transform: translateY(-1px);
 }
 
@@ -631,18 +628,18 @@ section {
 
 #loadMoreBtn {
   background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: var(--dest-primary);
+  border: 2px solid var(--dest-primary);
   padding: 12px 38px;
   border-radius: 50px;
   cursor: pointer;
   font-weight: 600;
   font-size: 15px;
-  transition: var(--transition-fast);
+  transition: var(--dest-transition-fast);
 }
 
 #loadMoreBtn:hover {
-  background: var(--primary);
+  background: var(--dest-primary);
   color: white;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
@@ -693,7 +690,7 @@ section {
 }
 
 .trip-title {
-  font-size: 3.6rem;
+  font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 10px;
   color: #fff;
@@ -758,12 +755,12 @@ section {
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: var(--primary, #ff6b3d);
+  border-color: var(--dest-primary, #ff6b3d);
   background: rgba(255, 255, 255, 0.25);
 }
 
 .btn-primary {
-  background: var(--primary, #ff6b3d);
+  background: var(--dest-primary, #ff6b3d);
   border: none;
   color: white;
   font-weight: 600;
@@ -791,7 +788,7 @@ section {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  background: #fff;
+  background: var(--bg-primary);
   border-radius: 16px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -819,13 +816,13 @@ section {
 
 .trip-info h3 {
   font-size: 1.5rem;
-  color: #1e1e1e;
+  color: var(--dest-text-dark);
   margin-bottom: 10px;
 }
 
 .trip-info p {
   margin-bottom: 8px;
-  color: #555;
+  color: var(--dest-text-gray);
 }
 
 .trip-info .price {
@@ -845,7 +842,7 @@ section {
 .offer-card {
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--dest-radius-md);
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease;
 }
@@ -913,16 +910,9 @@ section {
 
 /* === 9. TRAVEL VLOGS === */
 .travel-vlogs {
-  background: #fff;
+  background: var(--bg-primary);
   padding: 60px 0;
   margin-bottom: 30px;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 40px;
-  font-weight: 700;
 }
 
 /* Slider kiểu track giống region slider */
@@ -1031,8 +1021,8 @@ section {
 
 .view-all-btn {
   background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: var(--dest-primary);
+  border: 2px solid var(--dest-primary);
   padding: 12px 38px;
   border-radius: 50px;
   cursor: pointer;
@@ -1042,7 +1032,7 @@ section {
 }
 
 .view-all-btn:hover {
-  background: var(--primary);
+  background: var(--dest-primary);
   color: white;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
@@ -1324,55 +1314,6 @@ section {
   transform: translateY(0);
 }
 
-/* === 11. LOCAL GUIDES === */
-.local-guides {
-  background: white;
-}
-
-.guides-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.guide-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
-  transition: var(--transition-fast);
-}
-
-.guide-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-}
-
-.guide-card img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 16px;
-  border: 4px solid var(--secondary);
-}
-
-.guide-card h3 {
-  font-size: 20px;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.guide-card p {
-  margin-bottom: 16px;
-  color: var(--text-gray);
-  font-size: 14px;
-}
-
 /* ===== MODAL OVERLAY ===== */
 .modal {
   display: none;
@@ -1383,6 +1324,7 @@ section {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  color: var(--text-primary);
 }
 
 .modal.open {
@@ -1400,7 +1342,7 @@ section {
 }
 
 .modal-content {
-  background: #fff;
+  background: var(--bg-primary);
   border-radius: 16px;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -1459,11 +1401,12 @@ section {
   margin-bottom: 8px;
   font-size: 1.7rem;
   font-weight: 700;
+  color: var(--text-primary);
 }
 
 .modal-desc p {
   line-height: 1.5;
-  color: #444;
+  color: var(--text-primary);
 }
 
 /* ===== BÊN PHẢI ===== */
@@ -1474,16 +1417,18 @@ section {
 }
 
 .detail-stats span {
-  background: #f7f8fa;
-  /* padding: 12px; */
+  background: var(--dest-secondary);
+  padding: 2px;
   border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 16px;
   /* margin-top: 12px; */
 }
 
 .weather-box,
 .map-box,
 .blog-box {
-  background: #f7f8fa;
+  background: var(--dest-secondary);
   padding: 12px;
   border-radius: 10px;
   margin-top: 12px;
@@ -1491,13 +1436,13 @@ section {
 
 .map-box {
   text-align: center;
-  color: #555;
+  color: var(--text-primary);
 }
 
 .blog-box h3 {
   margin-bottom: 6px;
   font-size: 1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 /* Ẩn thanh cuộn mặc định của toàn modal */
