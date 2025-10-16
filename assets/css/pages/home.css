@@ -812,10 +812,15 @@
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 10px;
 }
 
 .home-articles__main-text {
   padding: 20px;
+  display: flex;
+  justify-content: space-between; /* chia trái - phải */
+  align-items: flex-start;
+  gap: 15px;
 }
 
 .home-articles__main-title {
@@ -830,9 +835,14 @@
   margin-bottom: 10px;
 }
 
+.home-articles__main-info {
+  flex: 1;
+}
+
 .home-articles__date {
   font-size: 0.85rem;
   color: #999;
+  white-space: nowrap; /* tránh xuống dòng */
 }
 
 .home-articles__list {
@@ -855,6 +865,7 @@
   width: 140px;
   height: 150px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .home-articles__item-content {
@@ -1115,6 +1126,7 @@
 
   .home-articles__main-text {
     padding: 15px 0;
+    display: block;
   }
 
   .home-articles__title {
