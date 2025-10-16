@@ -16,18 +16,6 @@
   --transition-fast: all 0.3s ease;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -246,7 +234,7 @@ section {
 
 .topdest-card img {
   width: 100%;
-  height: 220px;
+  height: 250px;
   object-fit: cover;
   display: block;
 }
@@ -434,6 +422,16 @@ section {
   box-shadow: var(--shadow-lg);
 }
 
+.destination-card__desc {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 6px 0 10px;
+  line-height: 1.4;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ======== Image ======== */
 .destination-card__image {
   position: relative;
@@ -574,6 +572,14 @@ section {
   overflow: hidden;
 }
 
+.top-item .bar i {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  transition: width 0.5s ease;
+}
+
 .top-item .bar > i {
   display: block;
   height: 100%;
@@ -651,7 +657,7 @@ section {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
   margin-left: calc(-50vw + 50%);
   overflow: hidden;
   background: #000;
@@ -675,7 +681,7 @@ section {
 .trip-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
 
@@ -830,7 +836,7 @@ section {
 /* === 8. SPECIAL OFFERS === */
 .offers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
   max-width: 900px;
   margin: 0 auto;
@@ -909,6 +915,7 @@ section {
 .travel-vlogs {
   background: #fff;
   padding: 60px 0;
+  margin-bottom: 30px;
 }
 
 .section-title {
@@ -1017,7 +1024,7 @@ section {
 }
 
 /* Nút view all */
-.view-all-container {
+/* .view-all-container {
   text-align: center;
   padding: 40px 0 20px;
 }
@@ -1039,7 +1046,7 @@ section {
   color: white;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
-}
+} */
 
 /* 8. BEST TIME TO VISIT  */
 .best-time {
@@ -1066,7 +1073,7 @@ section {
 .best-time-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.1);
   z-index: 2;
   backdrop-filter: blur(2px);
 }
@@ -1189,60 +1196,121 @@ section {
 }
 
 /* Seasons */
+/* ========== SEASON CONTAINER ========== */
 .season-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 cột */
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
   justify-items: center;
-  margin-top: 50px;
-  padding: 20px;
+  margin-top: 60px;
+  padding: 30px;
+  animation: fadeInUp 0.6s ease-in-out;
 }
 
+.season-container p {
+  font-size: 1.1rem;
+}
+
+/* ========== SEASON CARD ========== */
 .season-card {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  padding: 28px 24px;
   width: 100%;
-  max-width: 400px;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 420px;
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: all 0.35s ease;
+  transform: translateY(0);
+  opacity: 0;
+  animation: slideUp 0.5s forwards;
 }
 
 .season-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.1)
+  );
 }
 
-/* Icon + header */
+/* ========== ICON + HEADER ========== */
 .season-card .icon {
-  font-size: 32px;
-  margin-bottom: 10px;
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
 .season-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
-/* Text */
+/* ========== TEXT ========== */
 .season-card p {
   font-size: 0.95rem;
-  margin: 3px 0;
+  color: #f0f0f0;
+  margin: 5px 0;
+  line-height: 1.5;
 }
 
-/* Color accents */
+.season-card strong {
+  color: #fff;
+}
+
+.season-card em {
+  color: #d1d5db;
+  font-style: italic;
+}
+
+/* ========== COLOR VARIANTS ========== */
 .winter {
-  border-color: #60a5fa;
+  border-left: 5px solid #60a5fa;
+  box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
 }
+
 .spring {
-  border-color: #f472b6;
+  border-left: 5px solid #f472b6;
+  box-shadow: 0 0 15px rgba(244, 114, 182, 0.4);
 }
+
 .summer {
-  border-color: #facc15;
+  border-left: 5px solid #facc15;
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
 }
+
 .autumn {
-  border-color: #fb923c;
+  border-left: 5px solid #fb923c;
+  box-shadow: 0 0 15px rgba(251, 146, 60, 0.4);
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Animation */
@@ -1307,20 +1375,19 @@ section {
 
 /* ===== MODAL OVERLAY ===== */
 .modal {
-  position: fixed;
-  z-index: 2000;
-  inset: 0;
   display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
-  transition: opacity 0.3s ease;
+  z-index: 1000;
 }
 
 .modal.open {
   display: flex;
-  animation: fadeIn 0.3s ease forwards;
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -1332,33 +1399,33 @@ section {
   }
 }
 
-/* ===== MODAL CONTAINER ===== */
 .modal-content {
-  background-color: var(--card-bg, #fff);
-  margin: 4% auto;
-  border-radius: 14px;
-  width: 90%;
+  background: #fff;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+  padding: 24px;
   max-width: 1000px;
-  padding: 28px;
+  width: 90%;
   position: relative;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-  animation: slideUp 0.4s ease;
-  overflow-y: auto;
-  max-height: 90vh;
+  animation: slideUp 0.3s ease;
+  max-height: 85vh; /* giới hạn chiều cao modal */
+  overflow-y: auto; /* bật cuộn dọc */
 }
 
 @keyframes slideUp {
   from {
-    opacity: 0;
     transform: translateY(40px);
+    opacity: 0;
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-/* ===== CLOSE BUTTON ===== */
+/* ===== NÚT ĐÓNG ===== */
 .modal-close {
   position: absolute;
   top: 14px;
@@ -1376,152 +1443,191 @@ section {
   transform: rotate(90deg);
 }
 
-/* ===== BODY LAYOUT ===== */
-.modal-body {
-  display: flex;
-  gap: 32px;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.left-column {
-  flex: 2;
-  min-width: 60%;
-}
-
-.right-column {
-  flex: 1;
-  min-width: 300px;
-}
-
-/* ===== IMAGE / GALLERY ===== */
-.gallery-swiper {
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.gallery-swiper img {
+/* ===== BÊN TRÁI ===== */
+.modal-gallery img {
   width: 100%;
-  height: 320px;
+  height: 360px;
   object-fit: cover;
   border-radius: 12px;
 }
 
-/* ===== TEXT INFO ===== */
-.modal-content h2 {
-  font-size: 1.8rem;
-  color: #222;
-  margin-bottom: 8px;
-}
-
-.modal-content p {
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-#detailRating,
-#detailTours {
-  display: inline-block;
-  background: #f1f5f9;
-  border-radius: 6px;
-  padding: 6px 10px;
-  margin: 4px 6px 12px 0;
-  font-weight: 500;
-  color: #333;
-}
-
-/* ===== WEATHER BOX ===== */
-#weatherContent {
-  background: #f8fafc;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 12px;
-  color: #333;
-  margin-top: 8px;
-}
-
-/* ===== MAP ===== */
-#map {
-  height: 280px;
-  border-radius: 10px;
-  overflow: hidden;
+.modal-desc {
   margin-top: 16px;
 }
 
-/* ===== SCROLLBAR ===== */
+.modal-desc h2 {
+  margin-bottom: 8px;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.modal-desc p {
+  line-height: 1.5;
+  color: #444;
+}
+
+/* ===== BÊN PHẢI ===== */
+.detail-stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.detail-stats span {
+  background: #f7f8fa;
+  /* padding: 12px; */
+  border-radius: 10px;
+  /* margin-top: 12px; */
+}
+
+.weather-box,
+.map-box,
+.blog-box {
+  background: #f7f8fa;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 12px;
+}
+
+.map-box {
+  text-align: center;
+  color: #555;
+}
+
+.blog-box h3 {
+  margin-bottom: 6px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Ẩn thanh cuộn mặc định của toàn modal */
 .modal-content::-webkit-scrollbar {
   width: 8px;
 }
 .modal-content::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 8px;
+  background: #bbb;
+  border-radius: 10px;
 }
 .modal-content::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+  background: #999;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .modal-body {
-    flex-direction: column;
+/* ===================== RESPONSIVE ===================== */
+
+/* Large desktops / laptops */
+@media (max-width: 1399.98px) {
+  .topdest-card {
+    flex: 0 0 calc((100% - 3 * 20px) / 3);
   }
-  .left-column,
-  .right-column {
-    min-width: 100%;
+  .vlog-item {
+    flex: 0 0 300px;
+    height: 450px;
   }
-  .gallery-swiper img {
-    height: 240px;
+  .season-card {
+    max-width: 380px;
   }
 }
 
-/* === 14. RESPONSIVE STYLES === */
-@media (max-width: 1100px) {
+/* Desktops / medium devices */
+@media (max-width: 1199.98px) {
+  .topdest-card {
+    flex: 0 0 calc((100% - 3 * 20px) / 2.5);
+  }
+  .vlog-item {
+    flex: 0 0 280px;
+    height: 420px;
+  }
+  .season-card {
+    max-width: 360px;
+  }
+}
+
+/* Tablets / small devices */
+@media (max-width: 991.98px) {
   .grid-with-sidebar {
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .topdest-card {
+    flex: 0 0 calc((100% - 2 * 15px) / 2);
+  }
+  .vlog-item {
+    flex: 0 0 220px;
+    height: 350px;
+  }
+  .season-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 20px;
+  }
+  .trip-card {
+    padding: 30px;
   }
 }
 
-@media (max-width: 992px) {
-  #tripForm {
-    grid-template-columns: 1fr 1fr;
+/* Landscape phones / md */
+@media (max-width: 767.98px) {
+  .topdest-card {
+    flex: 0 0 100%;
   }
-  #tripForm .btn-primary {
-    grid-column: 1 / -1; /* Button spans full width */
+  .vlog-item {
+    flex: 0 0 100%;
+    height: 300px;
   }
-}
-
-@media (max-width: 768px) {
-  section {
-    padding: 60px 0;
+  .season-container {
+    gap: 20px;
+    padding: 15px;
   }
-  .des-banner {
-    height: 400px;
+  .grid-with-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .filter-section .container,
-  .filter-left {
+  .trip-card {
+    padding: 20px;
+  }
+  .filter-section .container {
     flex-direction: column;
     align-items: stretch;
   }
-  #searchInput {
-    max-width: 100%;
-  }
-  .sidebar {
-    position: static;
-  }
 }
 
-@media (max-width: 576px) {
-  #tripForm {
-    grid-template-columns: 1fr;
+/* Portrait phones / sm */
+@media (max-width: 575.98px) {
+  .season-card {
+    padding: 20px;
+    border-radius: 12px;
   }
-  .destinations-grid__wrapper {
-    grid-template-columns: 1fr;
+  .trip-card {
+    padding: 15px;
   }
-  .offers-grid,
-  .guides-grid,
-  .vlog-grid {
+  .topdest-slider,
+  .vlog-slider {
+    padding: 0 10px;
+  }
+  .filter-left,
+  .filter-right {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .region-card {
+    width: 100%;
+    height: 90px;
+  }
+  .best-time-container {
     grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  .destination-card__image {
+    height: 180px;
+  }
+  .grid-with-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 }

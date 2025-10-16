@@ -1,4 +1,7 @@
-const OPENWEATHER_API_KEY = ""; // <-- đặt API key ở đây nếu có (ví dụ "abcd1234...")
+const OPENWEATHER_API_KEY = "1a9ed9c72e3e2b12073d5915c0d80536";
+// const YOUR_GOOGLE_API_KEY = "";
+
+// https://api.openweathermap.org/data/2.5/weather?q=Tokyo&units=metric&appid=1a9ed9c72e3e2b12073d5915c0d80536
 
 /* ========= DATA ========= */
 /* mỗi destination có: name, region, img, short, long, lat, lon, tours, rating, gallery[], visits */
@@ -7,16 +10,14 @@ const destinations = [
     name: "Switzerland",
     region: "Europe",
     img: "../assets/images/destinations/Switzerland.png",
-    short: "Alpine vistas, lakes and cozy villages.",
-    long: "Switzerland offers dramatic mountain scenery, pristine lakes and charming towns — ideal for outdoor lovers and culture seekers.",
+    short:
+      "A breathtaking land of snow-capped Alps, crystal-clear lakes, and timeless Swiss charm — where every turn feels like stepping into a postcard.",
+    long: "Switzerland captivates travelers with its extraordinary mix of natural beauty and refined culture. Towering peaks like the Matterhorn and Jungfrau dominate the horizon, while tranquil lakes such as Geneva, Lucerne, and Zurich shimmer with pristine clarity. The air feels crisp and pure, perfect for mountain hikes, scenic train rides, or cozy evenings in wooden chalets. Beyond its alpine landscapes, Switzerland is also a country of precision and sophistication — from world-class chocolate and luxury watches to multilingual cities brimming with art, music, and history. Whether you’re skiing in Zermatt, cruising on Lake Lucerne, exploring medieval castles, or simply enjoying fondue in a lakeside café, Switzerland promises a serene escape filled with unforgettable moments.",
     lat: 46.8182,
     lon: 8.2275,
     tours: 12,
     rating: 4.8,
-    gallery: [
-      "../assets/images/destinations/Switzerland.png",
-      "../assets/images/destinations/Switzerland-2.jpg",
-    ],
+    gallery: ["../assets/images/destinations/Switzerland.png"],
     visits: 120,
   },
   {
@@ -29,10 +30,7 @@ const destinations = [
     lon: 73.2207,
     tours: 8,
     rating: 4.9,
-    gallery: [
-      "../assets/images/destinations/Maldives.png",
-      "../assets/images/destinations/Maldives-2.jpg",
-    ],
+    gallery: ["../assets/images/destinations/Maldives.png"],
     visits: 210,
   },
   {
@@ -45,10 +43,7 @@ const destinations = [
     lon: 113.9213,
     tours: 25,
     rating: 4.6,
-    gallery: [
-      "../assets/images/destinations/Indonesia.png",
-      "../assets/images/destinations/Indonesia-2.jpg",
-    ],
+    gallery: ["../assets/images/destinations/Indonesia.png"],
     visits: 95,
   },
   // ... phần còn lại (Bangladesh, Thailand, Turkey, Argentina, Brazil, Morocco, Dubai, Ecuador, Colombia)
@@ -174,7 +169,7 @@ const destinations = [
 // Data: thời gian du lịch tốt nhất cho từng region
 const bestTimeData = {
   Asia: {
-    video: "../assets/images/destinations/reels/asia.mov",
+    video: "../assets/images/destinations/1.mp4",
     seasons: [
       {
         icon: "❄️",
@@ -212,7 +207,7 @@ const bestTimeData = {
   },
 
   Europe: {
-    video: "../assets/images/destinations/reels/europe.mov",
+    video: "../assets/images/destinations/2.mp4",
     seasons: [
       {
         icon: "❄️",
@@ -250,7 +245,7 @@ const bestTimeData = {
   },
 
   America: {
-    video: "../assets/images/destinations/reels/america.mov",
+    video: "../assets/images/destinations/3.mp4",
     seasons: [
       {
         icon: "❄️",
@@ -288,7 +283,7 @@ const bestTimeData = {
   },
 
   Africa: {
-    video: "../assets/images/destinations/reels/africa.mov",
+    video: "../assets/images/destinations/4.mp4",
     seasons: [
       {
         icon: "❄️",
@@ -326,7 +321,7 @@ const bestTimeData = {
   },
 
   Oceania: {
-    video: "../assets/images/destinations/reels/oceania.mov",
+    video: "../assets/images/destinations/5.mp4",
     seasons: [
       {
         icon: "❄️",
@@ -364,9 +359,56 @@ const bestTimeData = {
   },
 };
 
+const tripData = [
+  {
+    name: "Bali, Indonesia",
+    interest: "beach",
+    region: "Asia",
+    costPerDay: 150,
+    description:
+      "Relax on pristine beaches, explore temples, and enjoy tropical vibes.",
+    image: "../assets/images/destinations/Indonesia.png",
+  },
+  {
+    name: "Tokyo, Japan",
+    interest: "city",
+    region: "Asia",
+    costPerDay: 200,
+    description:
+      "Discover neon streets, culture, and incredible food experiences.",
+    image: "../assets/images/destinations/Turkey.png",
+  },
+  {
+    name: "Swiss Alps, Switzerland",
+    interest: "mountain",
+    region: "Europe",
+    costPerDay: 250,
+    description: "Breathtaking peaks, skiing, and scenic mountain villages.",
+    image: "../assets/images/destinations/Switzerland.png",
+  },
+  {
+    name: "Rome, Italy",
+    interest: "culture",
+    region: "Europe",
+    costPerDay: 180,
+    description:
+      "Walk through ancient ruins and taste authentic Italian cuisine.",
+    image: "../assets/images/destinations/Marocco.png",
+  },
+  {
+    name: "Bangkok, Thailand",
+    interest: "food",
+    region: "Asia",
+    costPerDay: 100,
+    description:
+      "Street food heaven with a mix of temples, markets, and nightlife.",
+    image: "../assets/images/destinations/Thailand.png",
+  },
+];
+
 /* ========= STATE ========= */
 let visibleCount = 6;
-let activeRegion = "all";
+let activeRegion = "All";
 let searchQuery = "";
 let sortMode = "default";
 
@@ -389,13 +431,15 @@ const detailModal = document.getElementById("detailModal");
 const modalClose = document.getElementById("modalClose");
 
 /* Modal elements */
+const weatherContent = document.getElementById("weatherContent");
+const swiperWrapper = document.getElementById("swiperWrapper");
 const detailName = document.getElementById("detailName");
 const detailShort = document.getElementById("detailShort");
 const detailLong = document.getElementById("detailLong");
 const detailRating = document.getElementById("detailRating");
 const detailTours = document.getElementById("detailTours");
-const swiperWrapper = document.getElementById("swiperWrapper");
-const weatherContent = document.getElementById("weatherContent");
+
+let currentSlide = 0;
 
 /* for leaflet map instance (to reuse) */
 let mapInstance = null;
@@ -412,7 +456,7 @@ function persistWishlist() {
 /* filter + sort + search pipeline */
 function getFilteredSorted() {
   const filtered = destinations.filter((item) => {
-    const matchRegion = activeRegion === "all" || item.region === activeRegion;
+    const matchRegion = activeRegion === "All" || item.region === activeRegion;
     const matchSearch = item.name
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -430,21 +474,57 @@ function getFilteredSorted() {
 }
 
 /* render top5 widget */
-function renderTop5() {
-  const arr = [...destinations]
-    .sort((a, b) => (visitsStore[b.name] || 0) - (visitsStore[a.name] || 0))
-    .slice(0, 5);
+function renderTop5(region = "All") {
+  // Sao chép danh sách gốc
+  let filtered = [];
+
+  // Nếu là "All" → gộp tất cả region
+  if (region === "All") {
+    filtered = [...destinations];
+  } else {
+    // Lọc theo vùng cụ thể
+    filtered = destinations.filter(
+      (d) => d.region.toLowerCase() === region.toLowerCase()
+    );
+  }
+
+  // Nếu không có dữ liệu, hiển thị thông báo sớm
+  if (filtered.length === 0) {
+    top5List.innerHTML = `
+      <div class="empty">
+        <p>No destinations found for this region yet.</p>
+        <small>Try exploring a different region!</small>
+      </div>`;
+    return;
+  }
+
+  // Sắp xếp theo lượt xem (giảm dần)
+  const sorted = filtered.sort(
+    (a, b) => (visitsStore[b.name] || 0) - (visitsStore[a.name] || 0)
+  );
+
+  // Lấy Top 5
+  const arr = sorted.slice(0, 5);
+
+  // Xóa nội dung cũ
   top5List.innerHTML = "";
+
+  // Lấy giá trị cao nhất để tính phần trăm thanh bar
   const max = Math.max(...arr.map((d) => visitsStore[d.name] || 0), 1);
+
+  // Render từng item
   arr.forEach((d) => {
+    const visits = visitsStore[d.name] || 0;
+    const percent = Math.round((visits / max) * 100);
+
     const wrapper = document.createElement("div");
     wrapper.className = "top-item";
     wrapper.innerHTML = `
       <div class="name">${d.name}</div>
-      <div class="bar"><i style="width:${Math.round(
-        ((visitsStore[d.name] || 0) / max) * 100
-      )}%"></i></div>
-      <div class="num">${visitsStore[d.name] || 0}</div>
+      <div class="bar">
+        <i style="width:${percent}%;"></i>
+      </div>
+      <div class="num">${visits}</div>
     `;
     top5List.appendChild(wrapper);
   });
@@ -517,6 +597,7 @@ filterBtns.forEach((btn) => {
     activeRegion = btn.dataset.region;
     visibleCount = 6;
     renderDestinations();
+    renderTop5(activeRegion);
   });
 });
 
@@ -576,50 +657,29 @@ document.getElementById("btnSub").addEventListener("click", () => {
 });
 
 /* ========== DETAILS MODAL ========== */
-let swiperInstance = null;
 function openDetailModal(name) {
   const item = destinations.find((d) => d.name === name);
   if (!item) return;
 
-  // increment visit count and persist
-  visitsStore[name] = (visitsStore[name] || 0) + 1;
-  persistVisits();
-  renderTop5();
-
-  // fill modal info
   detailName.textContent = item.name;
   detailShort.textContent = item.short;
   detailLong.textContent = item.long;
   detailRating.textContent = `⭐ ${item.rating}`;
   detailTours.textContent = `${item.tours} tours`;
 
-  // prepare gallery slides
-  swiperWrapper.innerHTML = "";
-  (item.gallery && item.gallery.length ? item.gallery : [item.img]).forEach(
-    (src) => {
-      const slide = document.createElement("div");
-      slide.className = "swiper-slide";
-      slide.innerHTML = `<img src="${src}" alt="${item.name}">`;
-      swiperWrapper.appendChild(slide);
-    }
-  );
+  const images =
+    item.gallery && item.gallery.length ? item.gallery : [item.img];
+  swiperWrapper.innerHTML = images
+    .map(
+      (src, i) =>
+        `<div class="slide" style="display:${i === 0 ? "block" : "none"};">
+          <img src="${src}" alt="${item.name}" />
+        </div>`
+    )
+    .join("");
 
-  // open modal
+  currentSlide = 0;
   detailModal.classList.add("open");
-
-  // init or update swiper
-  setTimeout(() => {
-    // allow DOM paint
-    if (swiperInstance) swiperInstance.destroy(true, true);
-    swiperInstance = new Swiper(".gallery-swiper", {
-      loop: true,
-      pagination: { el: ".swiper-pagination", clickable: true },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  }, 50);
 
   // fetch weather
   fetchWeather(item);
@@ -628,37 +688,54 @@ function openDetailModal(name) {
   setTimeout(() => initMap(item.lat, item.lon, item.name), 100);
 }
 
-/* close modal */
+// đóng modal
+modalClose.addEventListener("click", closeModal);
+detailModal.addEventListener("click", (e) => {
+  if (e.target === detailModal) closeModal();
+});
+
 function closeModal() {
   detailModal.classList.remove("open");
-  if (mapInstance) {
-    mapInstance.remove();
-    mapInstance = null;
-    mapMarker = null;
-  }
 }
 
 /* weather fetching */
 async function fetchWeather(item) {
   if (!OPENWEATHER_API_KEY) {
-    weatherContent.innerHTML = `<div style="color:#666">No API key set. Provide OPENWEATHER_API_KEY in js/destinations.js to fetch live weather.</div>
-      <div style="margin-top:8px"><strong>Approx:</strong> Best season shown in description.</div>`;
+    weatherContent.innerHTML = `
+      <div style="color:#666">
+        No API key set. Provide OPENWEATHER_API_KEY in js/destinations.js to fetch live weather.
+      </div>
+      <div style="margin-top:8px"><strong>Approx:</strong> Best season shown in description.</div>
+    `;
     return;
   }
 
   try {
     weatherContent.innerHTML = "Fetching weather...";
+    console.log(item.lat, item.lon, OPENWEATHER_API_KEY);
+
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${item.lat}&lon=${item.lon}&units=metric&appid=${OPENWEATHER_API_KEY}`;
     const resp = await fetch(url);
     if (!resp.ok) throw new Error("Weather fetch failed");
     const data = await resp.json();
+
+    // Lấy icon
+    const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
     const html = `
-      <div><strong>${data.name || item.name}</strong></div>
-      <div style="font-size:18px; margin:6px 0">${Math.round(
-        data.main.temp
-      )}°C — ${data.weather[0].description}</div>
-      <div>Humidity: ${data.main.humidity}%</div>
-      <div>Wind: ${Math.round(data.wind.speed)} m/s</div>
+      <div style="display:flex; align-items:center; gap:10px">
+        <img src="${iconUrl}" alt="${
+      data.weather[0].description
+    }" style="width:50px; height:50px">
+        <div>
+          <div><strong>${data.name || item.name}</strong></div>
+          <div style="font-size:18px; margin:4px 0">
+            ${Math.round(data.main.temp)}°C — ${data.weather[0].description}
+          </div>
+          <div>Humidity: ${data.main.humidity}%</div>
+          <div>Wind: ${Math.round(data.wind.speed)} m/s</div>
+        </div>
+      </div>
     `;
     weatherContent.innerHTML = html;
   } catch (err) {
@@ -671,91 +748,34 @@ async function fetchWeather(item) {
 const tripForm = document.getElementById("tripForm");
 const tripResults = document.getElementById("tripResults");
 
-const tripData = [
-  {
-    name: "Bali, Indonesia",
-    region: "asia",
-    interest: "beach",
-    costPerDay: 150,
-    description:
-      "Relax on pristine beaches, explore temples, and enjoy tropical vibes.",
-    image: "../assets/images/destinations/Bali.png",
-  },
-  {
-    name: "Tokyo, Japan",
-    region: "asia",
-    interest: "city",
-    costPerDay: 200,
-    description:
-      "Discover neon streets, culture, and incredible food experiences.",
-    image: "../assets/images/destinations/Tokyo.png",
-  },
-  {
-    name: "Rome, Italy",
-    region: "europe",
-    interest: "culture",
-    costPerDay: 180,
-    description:
-      "Walk through ancient ruins and taste authentic Italian cuisine.",
-    image: "../assets/images/destinations/Rome.png",
-  },
-  {
-    name: "Swiss Alps, Switzerland",
-    region: "europe",
-    interest: "mountain",
-    costPerDay: 250,
-    description: "Breathtaking peaks, skiing, and scenic mountain villages.",
-    image: "../assets/images/destinations/SwissAlps.png",
-  },
-  {
-    name: "Bangkok, Thailand",
-    region: "asia",
-    interest: "food",
-    costPerDay: 100,
-    description:
-      "Street food heaven with a mix of temples, markets, and nightlife.",
-    image: "../assets/images/destinations/Bangkok.png",
-  },
-  {
-    name: "New York, USA",
-    region: "america",
-    interest: "city",
-    costPerDay: 220,
-    description:
-      "The city that never sleeps — iconic skyline and diverse experiences.",
-    image: "../assets/images/destinations/NewYork.png",
-  },
-  {
-    name: "Cape Town, South Africa",
-    region: "africa",
-    interest: "beach",
-    costPerDay: 140,
-    description: "Stunning beaches, Table Mountain, and a blend of cultures.",
-    image: "../assets/images/destinations/CapeTown.png",
-  },
-];
-
 tripForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const region = document.getElementById("region").value;
   const budget = parseInt(document.getElementById("budget").value);
   const days = parseInt(document.getElementById("days").value);
   const interest = document.getElementById("interest").value;
+  const region = document.getElementById("region").value;
+
+  if (isNaN(budget) || isNaN(days) || days <= 0) {
+    tripResults.innerHTML = `<p>Please enter a valid budget and number of days.</p>`;
+    return;
+  }
 
   const totalBudget = budget / days;
+
   const matches = tripData.filter((trip) => {
-    return (
-      trip.region === region &&
-      trip.interest === interest &&
-      totalBudget >= trip.costPerDay * 0.7
-    );
+    const matchInterest = trip.interest === interest;
+    const matchBudget = totalBudget >= trip.costPerDay * 0.7;
+    const matchRegion =
+      region.toLowerCase() === "all" ||
+      trip.region.toLowerCase() === region.toLowerCase();
+    return matchInterest && matchBudget && matchRegion;
   });
 
-  tripResults.innerHTML = ""; // clear previous
+  tripResults.innerHTML = ""; // clear previous results
 
   if (matches.length === 0) {
-    tripResults.innerHTML = `<p>No matching destinations found 😢 — try changing your options.</p>`;
+    tripResults.innerHTML = `<p>No matching destinations found — try increasing your budget or changing interest.</p>`;
     return;
   }
 
@@ -769,9 +789,7 @@ tripForm.addEventListener("submit", (e) => {
         <h3>${trip.name}</h3>
         <p>${trip.description}</p>
         <p>Estimated cost: <span class="price">$${totalCost.toLocaleString()}</span></p>
-        <p>Region: ${
-          trip.region.charAt(0).toUpperCase() + trip.region.slice(1)
-        }</p>
+        <p>Best for: ${trip.interest}</p>
       </div>
     `;
     tripResults.appendChild(suggestion);
@@ -795,25 +813,18 @@ counters.forEach((counter) => {
 
 /* init leaflet map */
 function initMap(lat, lon, name) {
-  if (mapInstance) {
-    mapInstance.remove();
-    mapInstance = null;
-    mapMarker = null;
-  }
-  mapInstance = L.map("map", {
-    center: [lat, lon],
-    zoom: 5,
-    scrollWheelZoom: false,
-  });
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution: "&copy; OpenStreetMap",
-  }).addTo(mapInstance);
-  mapMarker = L.marker([lat, lon])
-    .addTo(mapInstance)
-    .bindPopup(name)
-    .openPopup();
-  mapInstance.invalidateSize();
+  const mapDiv = document.getElementById("map");
+  mapDiv.innerHTML = `
+    <iframe
+      width="100%"
+      height="300"
+      frameborder="0"
+      style="border-radius:10px"
+      src="https://www.google.com/maps?q=${lat},${lon}&hl=en&z=6&output=embed"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  `;
 }
 
 // ========================================
@@ -863,7 +874,14 @@ regionCards.forEach((card) => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  renderBestTime("Asia");
+  const defaultRegion = "Asia";
+  renderBestTime(defaultRegion);
+
+  // Đặt class active cho Asia
+  const defaultCard = document.querySelector(
+    `[data-region="${defaultRegion}"]`
+  );
+  if (defaultCard) defaultCard.classList.add("active");
 });
 
 /* ===== INIT ===== */

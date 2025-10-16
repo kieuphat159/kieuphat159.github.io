@@ -1,10 +1,7 @@
 <!-- 1. Hero Banner with Video Background -->
 <section class="des-banner">
   <video class="des-banner__video" autoplay muted loop playsinline>
-    <source
-      src="../assets/images/destinations/reels/asia.mov"
-      type="video/mp4"
-    />
+    <source src="../assets/images/destinations/4.mp4" type="video/mp4" />
     <img src="../assets/images/destinations/Banner.png" alt="banner" />
   </video>
   <div class="des-banner__overlay"></div>
@@ -98,7 +95,7 @@
         placeholder="Search destinations..."
       />
       <div class="filter-buttons">
-        <button class="filter-btn active" data-region="all">All</button>
+        <button class="filter-btn active" data-region="All">All</button>
         <button class="filter-btn" data-region="Asia">Asia</button>
         <button class="filter-btn" data-region="Europe">Europe</button>
         <button class="filter-btn" data-region="America">America</button>
@@ -160,11 +157,12 @@
         <div class="form-group">
           <label for="region">Region</label>
           <select id="region" required>
-            <option value="asia">Asia</option>
-            <option value="europe">Europe</option>
-            <option value="america">America</option>
-            <option value="africa">Africa</option>
-            <option value="oceania">Oceania</option>
+            <option value="All">All</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="America">America</option>
+            <option value="Africa">Africa</option>
+            <option value="Oceania">Oceania</option>
           </select>
         </div>
 
@@ -229,7 +227,7 @@
       <div class="offer-card">
         <div class="offer-badge">20% OFF</div>
         <img
-          src="../assets/images/destinations/Agentina.png"
+          src="../assets/images/destinations/Ecuador.png"
           alt="Europe Offer"
         />
         <div class="offer-content">
@@ -241,7 +239,7 @@
       <div class="offer-card">
         <div class="offer-badge">20% OFF</div>
         <img
-          src="../assets/images/destinations/Agentina.png"
+          src="../assets/images/destinations/Maldives.png"
           alt="Europe Offer"
         />
         <div class="offer-content">
@@ -253,7 +251,7 @@
       <div class="offer-card">
         <div class="offer-badge">20% OFF</div>
         <img
-          src="../assets/images/destinations/Agentina.png"
+          src="../assets/images/destinations/Switzerland.png"
           alt="Europe Offer"
         />
         <div class="offer-content">
@@ -278,7 +276,7 @@
         <div class="vlog-track">
           <div class="vlog-item">
             <video
-              src="../assets/images/destinations/reels/AdobeStock_142811791_Video_4K_Preview.mov"
+              src="../assets/images/destinations/blogs/3002391-hd_1920_1080_25fps.mp4"
               muted
               autoplay
               loop
@@ -293,8 +291,7 @@
           </div>
           <div class="vlog-item">
             <video
-              src="../assets/images/destinations/reels/AdobeStock_209990013_Video_HD_Preview.mov"
-              muted
+              src="../assets/images/destinations/blogs/3018542-hd_1920_1080_24fps.mp4"
               autoplay
               loop
             ></video>
@@ -305,7 +302,7 @@
           </div>
           <div class="vlog-item">
             <video
-              src="../assets/images/destinations/reels/AdobeStock_403594168_Video_HD_Preview.mov"
+              src="../assets/images/destinations/blogs/3018669-hd_1920_1080_24fps.mp4"
               muted
               autoplay
               loop
@@ -320,7 +317,7 @@
           </div>
           <div class="vlog-item">
             <video
-              src="../assets/images/destinations/reels/AdobeStock_322350578_Video_4K_Preview.mov"
+              src="../assets/images/destinations/blogs/3064204-hd_1920_1080_24fps.mp4"
               muted
               autoplay
               loop
@@ -335,7 +332,22 @@
           </div>
           <div class="vlog-item">
             <video
-              src="../assets/images/destinations/reels/AdobeStock_222417788_Video_HD_Preview.mov"
+              src="../assets/images/destinations/blogs/3141319-uhd_3840_2160_25fps.mp4"
+              muted
+              autoplay
+              loop
+            ></video>
+            <div class="vlog-overlay">
+              <h3>Beautiful Beach Escape</h3>
+              <p>
+                Discover pristine beaches and turquoise waters in this relaxing
+                vlog.
+              </p>
+            </div>
+          </div>
+          <div class="vlog-item">
+            <video
+              src="../assets/images/destinations/blogs/3192303-uhd_3840_2160_25fps.mp4"
               muted
               autoplay
               loop
@@ -354,9 +366,9 @@
       <button class="slide-vlog-btn next">&#10095;</button>
     </div>
 
-    <div class="view-all-container">
+    <!-- <div class="view-all-container">
       <button class="view-all-btn">View All</button>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -371,10 +383,7 @@
     playsinline
     id="bestTimeVideoBg"
   >
-    <source
-      src="../assets/images/destinations/reels/asia.mov"
-      type="video/mp4"
-    />
+    <source src="../assets/images/destinations/1.mp4" type="video/mp4" />
   </video>
   <div class="best-time-overlay"></div>
 
@@ -397,7 +406,7 @@
 
       <!-- Asia -->
       <div class="region-card active" data-region="Asia">
-        <img src="../assets/images/destinations/Dubai.png" alt="Asia" />
+        <!-- <img src="../assets/images/destinations/Dubai.png" alt="Asia" /> -->
         <div class="region-overlay">
           <h4>Asia</h4>
           <p>Vibrant cultures, beaches & street food</p>
@@ -406,7 +415,7 @@
 
       <!-- Europe -->
       <div class="region-card" data-region="Europe">
-        <img src="../assets/images/destinations/Dubai.png" alt="Europe" />
+        <!-- <img src="../assets/images/destinations/Brazil.png" alt="Europe" /> -->
         <div class="region-overlay">
           <h4>Europe</h4>
           <p>Historic cities & romantic getaways</p>
@@ -415,7 +424,7 @@
 
       <!-- America -->
       <div class="region-card" data-region="America">
-        <img src="../assets/images/destinations/Dubai.png" alt="America" />
+        <!-- <img src="../assets/images/destinations/Bangladesh.png" alt="America" /> -->
         <div class="region-overlay">
           <h4>America</h4>
           <p>Vast landscapes & urban adventures</p>
@@ -424,7 +433,7 @@
 
       <!-- Africa -->
       <div class="region-card" data-region="Africa">
-        <img src="../assets/images/destinations/Dubai.png" alt="Africa" />
+        <!-- <img src="../assets/images/destinations/Switzerland.png" alt="Africa" /> -->
         <div class="region-overlay">
           <h4>Africa</h4>
           <p>Wildlife safaris & desert wonders</p>
@@ -433,7 +442,7 @@
 
       <!-- Oceania -->
       <div class="region-card" data-region="Oceania">
-        <img src="../assets/images/destinations/Dubai.png" alt="Oceania" />
+        <!-- <img src="../assets/images/destinations/Indonesia.png" alt="Oceania" /> -->
         <div class="region-overlay">
           <h4>Oceania</h4>
           <p>Islands, reefs & laid-back vibes</p>
@@ -444,6 +453,7 @@
     <!-- RIGHT: Seasons -->
     <div class="season-container" id="seasonContainer">
       <!-- Nội dung mùa sẽ được render bằng JS -->
+      <p>Select a region to explore the best travel seasons</p>
     </div>
   </div>
 </section>
@@ -452,25 +462,34 @@
 <div id="detailModal" class="modal">
   <div class="modal-content">
     <button id="modalClose" class="modal-close">×</button>
-    <div class="modal-body">
-      <div class="left-column">
-        <div class="gallery-swiper swiper">
-          <div class="swiper-wrapper" id="swiperWrapper"></div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-        </div>
+
+    <div class="modal-left">
+      <div class="modal-gallery">
+        <div id="swiperWrapper" class="gallery-wrapper"></div>
       </div>
 
-      <div class="right-column">
+      <div class="modal-desc">
         <h2 id="detailName"></h2>
         <p id="detailShort"></p>
         <p id="detailLong"></p>
-        <div id="detailRating"></div>
-        <div id="detailTours"></div>
+      </div>
+    </div>
 
-        <div id="weatherContent"></div>
-        <div id="map"></div>
+    <div class="modal-right">
+      <div class="detail-stats">
+        <span id="detailRating">⭐ 0</span>
+        <span id="detailTours">0 tours</span>
+      </div>
+
+      <div id="weatherContent" class="weather-box"></div>
+      <div id="map" class="map-box">🗺 Map preview...</div>
+
+      <div id="blogContent" class="blog-box">
+        <h3>Travel Blog</h3>
+        <p id="blogText">
+          Discover the hidden charm of this destination — from local culture to
+          natural wonders, every corner offers something unforgettable.
+        </p>
       </div>
     </div>
   </div>
