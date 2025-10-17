@@ -127,7 +127,7 @@ function renderPosts() {
                 postElement.className = "blog-card";
                 postElement.style.animationDelay = `${index * 0.1}s`; // Stagger animation
                 postElement.innerHTML = `
-                <a href="#blog-detail-${post.id}" class="blog-card__image-link">
+                <a href="#blog-detail" class="blog-card__image-link">
                     <img src="${post.image}" alt="${post.title}" class="blog-card__image">
                     <span class="blog-card__category">${post.category}</span>
                 </a>
