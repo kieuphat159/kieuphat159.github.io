@@ -12,7 +12,16 @@
                                 <aside class="tour-filters">
                                         <form id="filter-form">
                                                 <div class="filter-widget">
-                                                        <h3 class="filter-widget__title">Search Tours</h3>
+                                                        <div class="filter-widget__header">
+                                                                <h3 class="filter-widget__title">Search & Filter</h3>
+                                                                <button
+                                                                        type="button"
+                                                                        class="filter-widget__reset-btn"
+                                                                        id="reset-filters-btn"
+                                                                >
+                                                                        Reset
+                                                                </button>
+                                                        </div>
                                                         <div class="filter-widget__search-box">
                                                                 <input
                                                                         type="text"
@@ -100,7 +109,7 @@
 
                                         <div class="tour-grid" id="tour-grid"></div>
 
-                                        <div class="pagination"></div>
+                                        <div class="pagination" id="pagination-container"></div>
                                 </div>
                         </div>
                 </div>
