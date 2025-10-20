@@ -391,6 +391,12 @@ html {
   margin-bottom: 5px;
 }
 
+.destination-detail-card__location {
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.4;
+}
+
 /* ========== INSIGHTS (fallbacks for data-src) ========== */
 .destination-detail-insights__grid {
   display: grid;
@@ -640,10 +646,11 @@ img[data-src] {
 /* ========== DESTINATION DETAIL READY ========== */
 .destination-detail-ready {
   position: relative;
-  overflow: hidden;
-  min-height: 100vh;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio, adjust based on your image */
+  overflow: hidden;
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
   animation-timeline: view();
@@ -652,6 +659,9 @@ img[data-src] {
 
 /* Background image */
 .destination-detail-ready__background {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -662,10 +672,11 @@ img[data-src] {
 .destination-detail-ready__overlay {
   position: absolute;
   top: 50%;
-  right: 10%;
+  right: 8%;
   transform: translateY(-50%);
-  width: 400px;
-  height: 300px;
+  width: min(400px, 35%);
+  height: auto;
+  max-height: 70%;
   padding: 2rem;
   background: rgba(100, 100, 160, 0.3);
   border-radius: 30px;
@@ -707,23 +718,24 @@ img[data-src] {
   height: 100%;
   z-index: 1;
   pointer-events: none;
-  overflow: visible;
+  overflow: hidden; /* Changed from visible to hidden to keep within bounds */
 }
 
 .destination-detail-ready__image {
   position: absolute;
-  top: 20px;
-  right: -7px;
-  height: calc(90%);
+  top: 5%;
+  right: 0;
+  height: 85%;
   width: auto;
+  max-width: 50%;
   object-fit: contain;
 }
 
 /* Play button */
 .destination-detail-ready__play-btn {
   position: absolute;
-  bottom: 40px;
-  left: 40px;
+  bottom: 5%;
+  left: 5%;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -1511,11 +1523,45 @@ img[data-src] {
   .destination-detail-mission {
     flex-direction: column;
     text-align: center;
+    height: auto !important;
   }
 
   .destination-detail-mission__content {
     flex-direction: column;
     align-items: center;
+    gap: 40px;
+  }
+
+  /* Fix mission stats to stack properly on tablet instead of absolute positioning */
+  .destination-detail-mission__image {
+    position: relative;
+    max-width: 450px;
+  }
+
+  .destination-detail-mission__stats {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .destination-detail-mission__stat {
+    position: relative !important; /* override absolute */
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: auto;
+    height: auto;
+    min-width: 150px;
+    padding: 20px 28px;
+    margin: 0;
+    transform: none !important;
   }
 
   .destination-detail-gallery__content {
@@ -1527,13 +1573,31 @@ img[data-src] {
     width: 100%;
   }
 
+  /* Fix ready overlay to stay within background on tablet */
+  .destination-detail-ready {
+    padding-bottom: 60%; /* Adjust aspect ratio for tablet */
+  }
+
   .destination-detail-ready__overlay {
-    width: 350px;
-    right: 5%;
+    width: min(340px, 40%);
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1.5rem;
+    max-height: 65%;
   }
 
   .destination-detail-ready__content {
-    margin-top: 60px;
+    margin-top: 30px;
+    max-width: 100%;
+  }
+
+  .destination-detail-ready__title {
+    font-size: 1.5rem;
+  }
+
+  .destination-detail-ready__text {
+    font-size: 1rem;
   }
 
   .destination-detail-pilgrimages__cards {
@@ -1591,23 +1655,83 @@ img[data-src] {
 
   /* FILTER */
   .destination-detail-filter {
-    padding: 1rem;
+    padding: 0.75rem;
     width: 95%;
+    margin-top: 30px;
+  }
+
+  .destination-detail-filter__tabs {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    padding: 0.25rem;
+    gap: 0.25rem;
+  }
+
+  .destination-detail-filter__tab {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+    height: auto;
+    flex: 1 1 auto;
+    min-width: fit-content;
   }
 
   .destination-detail-filter__form {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    height: auto;
+    padding: 0.75rem;
+  }
+
+  .destination-detail-filter__input {
+    width: 100%;
+    flex: 1 1 auto;
+    padding: 0.65rem;
+    font-size: 0.9rem;
+    text-align: left;
   }
 
   /* POPULAR */
+  .destination-detail-popular {
+    padding: 60px 0 120px 0;
+    margin-top: 100px;
+  }
+
   .destination-detail-popular__container {
     flex-direction: column;
     gap: 20px;
+    padding: 0 5%;
   }
 
   .destination-detail-card {
     width: 100%;
+    max-width: 100%;
+    min-width: auto;
+    height: auto;
+  }
+
+  .destination-detail-card__img {
+    height: 200px;
+    width: 100%;
+  }
+
+  .destination-detail-card__content {
+    padding: 15px;
+    text-align: left;
+  }
+
+  .destination-detail-card__name {
+    white-space: normal;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+
+  .destination-detail-card__location {
+    font-size: 0.9rem;
+    color: #666;
   }
 
   /* MISSION */
@@ -1616,10 +1740,34 @@ img[data-src] {
     padding: 60px 5%;
   }
 
+  /* On tablet we remove absolute positioning of the stat boxes and let them flow */
   .destination-detail-mission__stats {
+    position: relative;
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    margin-top: 20px;
+  }
+
+  .destination-detail-mission__stat {
+    position: relative; /* override absolute */
+    width: auto;
+    height: auto;
+    min-width: 140px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    margin: 0;
+    transform: none;
+    opacity: 1;
   }
 
   .destination-detail-mission__stat h3 {
@@ -1638,21 +1786,34 @@ img[data-src] {
   }
 
   /* READY */
+  .destination-detail-ready {
+    padding-bottom: 75%; /* Taller aspect ratio for mobile */
+  }
+
+  /* Center overlay on mobile but keep it within bounds */
   .destination-detail-ready__overlay {
-    width: 90%;
-    left: 50%;
+    width: min(320px, 85%);
+    left: 40%;
+    right: auto;
+    top: 50%;
     transform: translate(-50%, -50%);
     height: auto;
+    max-height: 60%;
     padding: 1.5rem;
+    z-index: 3;
   }
 
   .destination-detail-ready__content {
-    margin-top: 20px;
+    margin-top: 15px;
     max-width: 100%;
   }
 
   .destination-detail-ready__title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+  }
+
+  .destination-detail-ready__text {
+    font-size: 0.95rem;
   }
 
   /* PILGRIMAGES */
@@ -1771,6 +1932,38 @@ img[data-src] {
 
   .destination-detail-hero__subtitle {
     font-size: 0.9rem;
+  }
+
+  /* FILTER */
+  .destination-detail-filter__tabs {
+    width: 100%;
+  }
+
+  .destination-detail-filter__tab {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .destination-detail-filter__input {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  /* POPULAR CARDS */
+  .destination-detail-card {
+    width: 100%;
+  }
+
+  .destination-detail-card__img {
+    height: 180px;
+  }
+
+  .destination-detail-card__name {
+    font-size: 1rem;
+  }
+
+  .destination-detail-card__location {
+    font-size: 0.85rem;
   }
 
   .destination-detail-ready__overlay {
