@@ -1,7 +1,6 @@
 header {
     background: var(--bg-header);
     padding: 18px 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     position: sticky;
     top: 0;
     z-index: 950;
@@ -165,7 +164,7 @@ html.dark .theme-toggle {
     z-index: 1001;
     transform: translateX(100%);
     transition: transform 0.3s;
-    border-top-right-radius: 32px;
+    border-top-left-radius: 32px;
     padding: 32px 24px;
     display: flex;
     flex-direction: column;

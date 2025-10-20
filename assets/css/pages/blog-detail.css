@@ -66,6 +66,7 @@
        ========================================================================== */
 
 #blog-detail {
+        background-color: var(--bg-primary);
         margin-top: 50px;
         margin-bottom: 50px;
         opacity: 0;
@@ -336,7 +337,7 @@ blockquote cite {
 }
 
 .blog-detail-content__right-container {
-        background-color: var(--card-bg-color);
+        background-color: #f1f1f1;
         border-radius: var(--card-radius);
         border: 1px solid var(--border-color);
         box-shadow: var(--card-shadow);
@@ -440,6 +441,7 @@ blockquote cite {
 
 .sidebar-widget {
         margin-top: 40px;
+        background-color: #f1f1f1;
 }
 .sidebar-widget__tags {
         display: flex;

@@ -537,11 +537,12 @@
    ============================================ */
 
 .tour-details-booking__card {
-    background: #ededed;
+    background: var(--bg-primary);
     padding: 2rem;
     border-radius: 8px;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 18px rgba(15, 34, 55, 0.08);
+    box-shadow: 0 2px 8px rgba(180, 160, 100, 0.15);
+    border: 1px solid var(--dest-border-color);
 }
 
 .booking-title {
@@ -588,7 +589,7 @@
 .booking-form__textarea {
     width: 100%;
     padding: 0.875rem 1rem 0.875rem 2.75rem;
-    border: 1px solid var(--footer-divider-color);
+    border: 2px solid var(--dest-border-color);
     border-radius: 4px;
     font-size: 0.95rem;
     background: var(--bg-primary);
