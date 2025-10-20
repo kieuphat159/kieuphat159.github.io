@@ -908,111 +908,6 @@ section {
   margin-bottom: 12px;
 }
 
-/* === 9. TRAVEL VLOGS === */
-.travel-vlogs {
-  background: var(--bg-primary);
-  padding: 60px 0;
-  margin-bottom: 30px;
-}
-
-/* Slider kiểu track giống region slider */
-.vlog-slider {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.vlog-window {
-  overflow: hidden;
-  flex: 1;
-}
-
-.vlog-track {
-  display: flex;
-  gap: 24px; /* khoảng cách giữa các video */
-  transition: transform 0.5s ease;
-}
-
-/* Item video lớn */
-.vlog-item {
-  flex: 0 0 350px;
-  height: 500px;
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.vlog-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.vlog-item:hover video {
-  transform: scale(1.05);
-}
-
-.vlog-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-  color: #fff;
-}
-
-.vlog-overlay h3 {
-  margin: 0;
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-
-.vlog-overlay p {
-  margin-top: 8px;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-/* Nút prev / next */
-.slide-vlog-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(0, 0, 0, 0.4); /* bóng mờ nhẹ */
-  color: #fff;
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.slide-vlog-btn.prev {
-  left: 10px;
-}
-
-.slide-vlog-btn.next {
-  right: 10px;
-}
-
-.slide-vlog-btn:hover {
-  background: rgba(0, 0, 0, 0.7);
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
 /* Nút view all */
 /* .view-all-container {
   text-align: center;
@@ -1464,10 +1359,6 @@ section {
   .topdest-card {
     flex: 0 0 calc((100% - 3 * 20px) / 3);
   }
-  .vlog-item {
-    flex: 0 0 300px;
-    height: 450px;
-  }
   .season-card {
     max-width: 380px;
   }
@@ -1477,10 +1368,6 @@ section {
 @media (max-width: 1199.98px) {
   .topdest-card {
     flex: 0 0 calc((100% - 3 * 20px) / 2.5);
-  }
-  .vlog-item {
-    flex: 0 0 280px;
-    height: 420px;
   }
   .season-card {
     max-width: 360px;
@@ -1498,10 +1385,6 @@ section {
   .topdest-card {
     flex: 0 0 calc((100% - 2 * 15px) / 2);
   }
-  .vlog-item {
-    flex: 0 0 220px;
-    height: 350px;
-  }
   .season-container {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -1516,10 +1399,6 @@ section {
 @media (max-width: 767.98px) {
   .topdest-card {
     flex: 0 0 100%;
-  }
-  .vlog-item {
-    flex: 0 0 100%;
-    height: 300px;
   }
   .season-container {
     gap: 20px;
@@ -1548,8 +1427,7 @@ section {
   .trip-card {
     padding: 15px;
   }
-  .topdest-slider,
-  .vlog-slider {
+  .topdest-slider {
     padding: 0 10px;
   }
   .filter-left,
