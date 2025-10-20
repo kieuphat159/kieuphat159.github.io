@@ -231,3 +231,40 @@ if (document.readyState === "loading") {
 } else {
         lazyLoading();
 }
+
+const track = document.querySelector(".vlog-track");
+const prevBtn_vlog = document.querySelector(".vlog-slider .prev");
+const nextBtn_vlog = document.querySelector(".vlog-slider .next");
+
+let currentPosition = 0;
+
+function updateVlogSlider() {
+  const item = track.querySelector(".vlog-item");
+  const itemStyle = window.getComputedStyle(item);
+  const gap = parseInt(itemStyle.marginRight) || 24; // lấy gap nếu có
+  const itemWidth = item.offsetWidth + gap;
+
+  const windowWidth = document.querySelector(".vlog-window").offsetWidth;
+  const visibleCount = Math.floor(windowWidth / itemWidth); // số video hiển thị
+  const maxScroll = track.scrollWidth - itemWidth * visibleCount;
+
+  nextBtn_vlog.onclick = () => {
+    if (Math.abs(currentPosition) < maxScroll) {
+      currentPosition -= itemWidth;
+      if (Math.abs(currentPosition) > maxScroll) currentPosition = -maxScroll;
+      track.style.transform = `translateX(${currentPosition}px)`;
+    }
+  };
+
+  prevBtn_vlog.onclick = () => {
+    if (currentPosition < 0) {
+      currentPosition += itemWidth;
+      if (currentPosition > 0) currentPosition = 0;
+      track.style.transform = `translateX(${currentPosition}px)`;
+    }
+  };
+}
+
+// Gọi khi load & khi resize
+updateVlogSlider();
+window.addEventListener("resize", updateVlogSlider);
