@@ -1,3 +1,142 @@
+/* ========== KEYFRAMES ANIMATIONS ========== */
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ========== RIPPLE EFFECT ========== */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  animation: ripple 0.6s ease-out;
+  pointer-events: none;
+}
+
+/* Make buttons position relative for ripple effect */
+.destination-detail-pilgrimages__btn,
+.btn--primary,
+.destination-detail-cta__btn,
+.destination-detail-itinerary__button {
+  position: relative;
+  overflow: hidden;
+}
+
 /* ========== HERO ========== */
 .destination-detail-hero {
   position: relative;
@@ -18,6 +157,7 @@
   align-items: center; /* 👈 căn giữa ngang */
   padding-top: 200px; /* tạo khoảng trống trên cho tiêu đề */
   padding-bottom: 200px;
+  animation: fadeIn 1.5s ease-out;
 }
 
 .destination-detail-hero::before {
@@ -37,6 +177,7 @@
   margin: 0 auto;
   padding: 0 2rem;
   white-space: nowrap; /* Ngăn xuống dòng */
+  animation: fadeInDown 1.2s ease-out 0.3s both;
 }
 
 .destination-detail-hero__title {
@@ -73,6 +214,7 @@
   max-width: 1000px;
   background-color: transparent;
   margin-top: 50px;
+  animation: fadeInUp 1s ease-out 0.6s both;
 }
 
 /* Tabs */
@@ -155,6 +297,8 @@
   width: 100%;
   background-color: #dddddd3f;
   margin-bottom: -201px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.5s forwards;
 }
 
 .destination-detail-popular__title {
@@ -162,6 +306,7 @@
   margin-bottom: 40px;
   color: #FFF6F6;
   font-weight: 600;
+  animation: fadeInDown 0.8s ease-out 0.7s both;
 }
 
 .destination-detail-popular__container {
@@ -181,6 +326,23 @@
   width: 230px;
   border-radius: 12px;
   position: relative;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.destination-detail-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.destination-detail-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.destination-detail-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.destination-detail-card:nth-child(4) {
+  animation-delay: 0.8s;
 }
 
 .destination-detail-card::before {
@@ -229,21 +391,63 @@
   margin-bottom: 5px;
 }
 
+/* ========== INSIGHTS (fallbacks for data-src) ========== */
+.destination-detail-insights__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.destination-detail-insights__card {
+  background: #fff;
+  overflow: hidden;
+  border-radius: 8px;
+  display: block;
+  /* Reserve a reasonable height so cards don't collapse when img has no src */
+  aspect-ratio: 4 / 3;
+  min-height: 140px;
+}
+
+.destination-detail-insights__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ensure images with data-src still reserve space before JS runs */
+img[data-src].destination-detail-insights__image,
+img[data-src] {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 /* ========== MISSION ========== */
 .destination-detail-mission {
   padding: 80px 5%;
   display: flex;
   height: 690px !important;
   justify-content: center;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 .destination-detail-mission__content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 690x;
+  /* Align inner blocks to the left so the image block sits at the left of the content area */
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1100px;
   height: 100%;
   gap: 60px;
+  margin: 0 auto; /* keep the content centered on the page */
 }
 
 .destination-detail-mission__image {
@@ -251,6 +455,15 @@
   flex: 1;
   height: 100%;
   max-width: 500px;
+  animation: slideInLeft 1s ease-out forwards;
+  opacity: 0;
+}
+
+.destination-detail-mission__text {
+  flex: 1 1 480px; /* allow text to take remaining space */
+  max-width: 560px;
+  animation: slideInRight 1s ease-out 0.3s forwards;
+  opacity: 0;
 }
 
 .destination-detail-mission__img {
@@ -280,21 +493,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  animation: scaleIn 0.6s ease-out forwards;
+  transition: transform 0.3s ease;
+}
+
+.destination-detail-mission__stat:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .destination-detail-mission__stat:nth-child(1) {
   top: 180px;
   left: -40px;
+  animation-delay: 0.8s;
 }
 
 .destination-detail-mission__stat:nth-child(2) {
   top: -40px;
   right: -40px;
+  animation-delay: 1s;
 }
 
 .destination-detail-mission__stat:nth-child(3) {
   bottom: -460px;
   left: 330px;
+  animation-delay: 1.2s;
 }
 
 .destination-detail-mission__stat h3 {
@@ -420,6 +644,10 @@
   min-height: 100vh;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 /* Background image */
@@ -445,6 +673,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  opacity: 0;
+  animation: slideInRight 1s ease-out 0.5s forwards;
   overflow: hidden;
 }
 
@@ -514,6 +744,7 @@
   background: rgba(255, 255, 255, 0.25);
   transform: scale(1.1);
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .destination-detail-ready__play-btn:active {
@@ -528,6 +759,10 @@
   background: var(--bg-primary);
   color: #222;
   font-family: "Poppins", sans-serif;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 .destination-detail-pilgrimages__title {
@@ -587,6 +822,20 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.destination-detail-pilgrimages__card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.destination-detail-pilgrimages__card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.destination-detail-pilgrimages__card:nth-child(3) {
+  animation-delay: 0.6s;
 }
 
 .destination-detail-pilgrimages__card-title {
@@ -602,6 +851,7 @@
 .destination-detail-pilgrimages__image-wrapper {
   position: relative;
   overflow: hidden;
+  border-radius: 12px 12px 0 0;
 }
 
 .destination-detail-pilgrimages__image {
@@ -609,9 +859,12 @@
   height: 200px;
   object-fit: cover;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
 }
 
-.destination-detail-pilgrimages__card:hover .destination-detail-pilgrimages__image {
+/* Hover vẫn hoạt động dù có skeleton-wrapper hay không */
+.destination-detail-pilgrimages__card:hover .destination-detail-pilgrimages__image,
+.destination-detail-pilgrimages__card:hover .destination-detail-pilgrimages__image-wrapper img {
   transform: scale(1.05);
 }
 
@@ -732,6 +985,10 @@
               0 8px 15px -8px rgba(0, 0, 0, 0.15); /* bóng bên dưới */
   
   padding: 20px;
+  opacity: 0;
+  animation: scaleIn 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 /* Khối chứa 2 phần trái phải */
@@ -753,9 +1010,12 @@
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   transition: transform 0.3s ease;
+  display: block;
 }
 
-.destination-detail-gallery__main-image:hover {
+/* Hover cho cả image trực tiếp và skeleton-wrapper */
+.destination-detail-gallery__main-image:hover,
+.destination-detail-gallery__main-image.skeleton-wrapper:hover {
   transform: scale(1.02);
 }
 
@@ -775,9 +1035,12 @@
   border-radius: 6px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  display: block;
 }
 
-.destination-detail-gallery__thumb:hover {
+/* Hover cho cả thumbnail trực tiếp và skeleton-wrapper */
+.destination-detail-gallery__thumb:hover,
+.destination-detail-gallery__thumb.skeleton-wrapper:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1;
@@ -821,6 +1084,10 @@
 
 .destination-detail-itinerary {
   margin-top: 20px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 /* Header info */
@@ -888,6 +1155,13 @@
   border-bottom: 1px solid #eaeaf6;
   font-size: 15px;
   color: #333;
+  transition: all 0.3s ease;
+}
+
+.destination-detail-itinerary__days li:hover {
+  background: rgba(62, 134, 245, 0.05);
+  padding-left: 10px;
+  border-left: 3px solid #3E86F5;
 }
 
 .destination-detail-itinerary__days strong {
@@ -924,12 +1198,18 @@
   border-radius: 8px;
   overflow: hidden;
   margin-top: 100px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 .destination-detail-cta__overlay {
   text-align: center;
   color: #fff;
   z-index: 2;
   position: relative;
+  opacity: 0;
+  animation: scaleIn 1s ease-out 0.3s forwards;
 }
 
 .destination-detail-cta__title {
@@ -968,6 +1248,10 @@
   padding: 80px 0;
   text-align: center;
   background: var(--bg-primary);
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 .destination-detail-insights__header {
@@ -1001,7 +1285,16 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
+
+.destination-detail-insights__card:nth-child(1) { animation-delay: 0.1s; }
+.destination-detail-insights__card:nth-child(2) { animation-delay: 0.2s; }
+.destination-detail-insights__card:nth-child(3) { animation-delay: 0.3s; }
+.destination-detail-insights__card:nth-child(4) { animation-delay: 0.4s; }
+.destination-detail-insights__card:nth-child(5) { animation-delay: 0.5s; }
+.destination-detail-insights__card:nth-child(6) { animation-delay: 0.6s; }
 
 .destination-detail-insights__card:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -1013,9 +1306,12 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
 }
 
-.destination-detail-insights__card:hover .destination-detail-insights__image {
+/* Hover cho cả image trực tiếp và image trong skeleton-wrapper */
+.destination-detail-insights__card:hover .destination-detail-insights__image,
+.destination-detail-insights__card:hover .skeleton-wrapper img {
   transform: scale(1.08);
 }
 
@@ -1054,6 +1350,10 @@
   text-align: center;
   padding: 80px 10%;
   background-color: var(--bg-primary);
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
 
 .destination-detail-testimonials__header {
@@ -1093,6 +1393,16 @@
   box-shadow: 8px 0 15px -8px rgba(0, 0, 0, 0.2),  /* bóng bên phải */
               0 8px 15px -8px rgba(0, 0, 0, 0.2); /* bóng bên dưới */
   border-radius: 16px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.destination-detail-testimonials__item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.destination-detail-testimonials__item:nth-child(2) {
+  animation-delay: 0.4s;
 }
 
 .destination-detail-testimonials__item:hover {
@@ -2078,4 +2388,375 @@
     box-shadow: none;
     border: 1px solid #ddd;
   }
+}
+
+/* ==============================================
+   SKELETON LAZY LOADING STYLES
+   ============================================== */
+
+/* Skeleton Wrapper - Base */
+.skeleton-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: #f0f0f0;
+  display: block;
+  /* Đảm bảo không chặn hover events của parent */
+  pointer-events: none;
+}
+
+/* Nhưng cho phép click vào image */
+.skeleton-wrapper img {
+  pointer-events: auto;
+}
+
+/* Wrapper đã loaded có thể interact */
+.skeleton-wrapper.skeleton-loaded {
+  pointer-events: auto;
+}
+
+/* Shimmer Effect khi đang loading */
+.skeleton-wrapper.skeleton-loading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s linear infinite;
+    z-index: 1;
+}
+
+/* Animation shimmer */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Image bên trong skeleton */
+.skeleton-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Giữ nguyên object-fit của ảnh background trong ready section */
+.destination-detail-ready__background.skeleton-wrapper img {
+    object-fit: cover;
+    filter: brightness(90%);
+}
+
+/* Giữ display block cho mission và gallery images */
+.destination-detail-mission__img.skeleton-wrapper img,
+.destination-detail-gallery__main-image.skeleton-wrapper img {
+    display: block;
+}
+
+/* Khi đang loading - ẩn image */
+.skeleton-wrapper.skeleton-loading img {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Khi đã loaded - hiện image */
+.skeleton-wrapper.skeleton-loaded img,
+.skeleton-wrapper img.loaded {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Xóa shimmer effect khi đã load */
+.skeleton-wrapper.skeleton-loaded::before {
+    animation: none;
+    opacity: 0;
+}
+
+/* Trường hợp lỗi */
+.skeleton-wrapper.skeleton-error {
+    background: #e0e0e0;
+}
+
+.skeleton-wrapper.skeleton-error::before {
+    display: none;
+}
+
+.skeleton-wrapper.skeleton-error img {
+    opacity: 1;
+    visibility: visible;
+    object-fit: contain;
+}
+
+/* ==============================================
+   SKELETON VARIANTS - Các loại card khác nhau
+   ============================================== */
+
+/* Popular destination cards */
+.destination-detail-card .skeleton-wrapper {
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  height: 212px;
+  display: block;
+  position: relative;
+}
+
+.destination-detail-card .skeleton-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Giữ hiệu ứng hover cho card images */
+.destination-detail-card:hover .skeleton-wrapper img {
+  transform: scale(1.08);
+}
+
+/* Mission section image - Giữ nguyên kích thước ban đầu */
+.destination-detail-mission__img.skeleton-wrapper,
+.destination-detail-mission__image .skeleton-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ready section images - Giữ nguyên kích thước ban đầu */
+.destination-detail-ready__background.skeleton-wrapper,
+.destination-detail-ready .skeleton-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.destination-detail-ready__image.skeleton-wrapper {
+    width: auto;
+    height: auto;
+}
+
+/* Pilgrimage cards */
+.destination-detail-pilgrimages__image-wrapper .skeleton-wrapper {
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.destination-detail-pilgrimages__image-wrapper .skeleton-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Giữ hiệu ứng hover cho pilgrimage card images */
+.destination-detail-pilgrimages__card:hover .skeleton-wrapper img {
+  transform: scale(1.1);
+}
+
+/* Gallery images - Giữ nguyên kích thước ban đầu */
+.destination-detail-gallery__main-image.skeleton-wrapper,
+.destination-detail-gallery__left .skeleton-wrapper {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.destination-detail-gallery__main-image.skeleton-wrapper img,
+.destination-detail-gallery__left .skeleton-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect cho main gallery image */
+.destination-detail-gallery__main-image.skeleton-wrapper:hover img,
+.destination-detail-gallery__left .skeleton-wrapper:hover img {
+  transform: scale(1.02);
+}
+
+.destination-detail-gallery__thumb.skeleton-wrapper {
+  width: calc(50% - 5px);
+  height: 240px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.destination-detail-gallery__thumb.skeleton-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effect cho gallery thumbnails */
+.destination-detail-gallery__thumb.skeleton-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+/* Insight cards */
+.destination-detail-insights__card .skeleton-wrapper {
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.destination-detail-insights__card .skeleton-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effect cho insight card images */
+.destination-detail-insights__card:hover .skeleton-wrapper img {
+  transform: scale(1.05);
+}
+
+/* Testimonial images */
+.destination-detail-testimonials__avatar.skeleton-wrapper {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+
+.destination-detail-testimonial__quote.skeleton-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+/* ==============================================
+   RESPONSIVE - Mobile optimization
+   ============================================== */
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .destination-detail-gallery__main-image.skeleton-wrapper,
+    .destination-detail-gallery__left .skeleton-wrapper {
+        height: 400px;
+    }
+
+    .destination-detail-gallery__thumb.skeleton-wrapper {
+        height: 190px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    /* Giảm intensity của shimmer trên mobile để tiết kiệm pin */
+    .skeleton-wrapper.skeleton-loading::before {
+        animation-duration: 2s;
+    }
+
+    /* Điều chỉnh kích thước gallery cho mobile */
+    .destination-detail-gallery__main-image.skeleton-wrapper,
+    .destination-detail-gallery__left .skeleton-wrapper {
+        height: 300px;
+    }
+
+    .destination-detail-gallery__thumb.skeleton-wrapper {
+        height: 150px;
+    }
+}
+
+/* ==============================================
+   LAZY LOADING - Backward compatible styles
+   ============================================== */
+
+/* Fallback cho images không dùng skeleton wrapper */
+img[data-src] {
+    background: #f0f0f0;
+    opacity: 0.7;
+}
+
+img.loaded {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* ========== UTILITY ANIMATION CLASSES ========== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for list items */
+.stagger-item {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+.stagger-item:nth-child(6) { animation-delay: 0.6s; }
+.stagger-item:nth-child(7) { animation-delay: 0.7s; }
+.stagger-item:nth-child(8) { animation-delay: 0.8s; }
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input, select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add subtle entrance animation to page */
+body {
+  animation: fadeIn 0.5s ease-out;
 }
