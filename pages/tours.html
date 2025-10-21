@@ -1,64 +1,117 @@
-<main id="tours'">
+<section class="tours" id="tours">
         <section class="tours-banner">
                 <div class="tours-banner__content">
-                        <h1 class="tours-banner__title">Tour</h1>
-                        <p class="tours-banner__subtitle">Explore Tours</p>
+                        <h1 class="tours-banner__title">Our Tours</h1>
+                        <p class="tours-banner__subtitle">Find Your Next Adventure</p>
                 </div>
         </section>
 
-        <section class="tours-search">
-                <form class="tours-search__form">
-                        <div class="tours-search__group">
-                                <label for="location">Location</label>
-                                <select id="location" name="location">
-                                        <option value="all">All Locations</option>
-                                        <option value="Indonesia">Indonesia</option>
-                                        <option value="Thailand">Thailand</option>
-                                        <option value="UAE">UAE</option>
-                                        <option value="Maldives">Maldives</option>
-                                        <option value="Italy">Italy</option>
-                                </select>
-                        </div>
-                        <div class="tours-search__group">
-                                <label for="type">Type</label>
-                                <select id="type" name="type">
-                                        <option value="all">All Types</option>
-                                        <option value="Adventure">Adventure</option>
-                                        <option value="City Tour">City Tour</option>
-                                        <option value="Beach">Beach</option>
-                                </select>
-                        </div>
-                        <div class="tours-search__group">
-                                <label for="duration">Duration</label>
-                                <select id="duration" name="duration">
-                                        <option value="all">Any Duration</option>
-                                        <option value="5">Up to 5 days</option>
-                                        <option value="10">Up to 10 days</option>
-                                        <option value="11">More than 10 days</option>
-                                </select>
-                        </div>
-                        <button class="tours-search__btn" type="submit">Search</button>
-                </form>
-        </section>
-
-        <section class="tours-grid-section">
+        <section class="tour-listing-section">
                 <div class="tour-container">
-                        <div class="result-controls">
-                                <p class="result-controls__count">Showing 1-6 of 9 tours</p>
-                                <div class="result-controls__sort">
-                                        <label for="sort-by">Sort by:</label>
-                                        <select id="sort-by" name="sort-by">
-                                                <option value="default">Default</option>
-                                                <option value="price-asc">Price: Low to High</option>
-                                                <option value="price-desc">Price: High to Low</option>
-                                                <option value="rating-desc">Rating: High to Low</option>
-                                        </select>
+                        <div class="tour-layout">
+                                <aside class="tour-filters">
+                                        <form id="filter-form">
+                                                <div class="filter-widget">
+                                                        <div class="filter-widget__header">
+                                                                <h3 class="filter-widget__title">Search & Filter</h3>
+                                                                <button
+                                                                        type="button"
+                                                                        class="filter-widget__reset-btn"
+                                                                        id="reset-filters-btn"
+                                                                >
+                                                                        Reset
+                                                                </button>
+                                                        </div>
+                                                        <div class="filter-widget__search-box">
+                                                                <input
+                                                                        type="text"
+                                                                        id="keyword-search"
+                                                                        placeholder="E.g., 'Paris', 'beach'..."
+                                                                />
+                                                                <i class="fas fa-search"></i>
+                                                        </div>
+                                                </div>
+
+                                                <div class="filter-widget">
+                                                        <h3 class="filter-widget__title">Price Range</h3>
+                                                        <div class="filter-widget__price-slider">
+                                                                <input
+                                                                        title="Price Range"
+                                                                        type="range"
+                                                                        id="price-range"
+                                                                        min="100"
+                                                                        max="5000"
+                                                                        value="5000"
+                                                                        step="50"
+                                                                />
+                                                                <div class="price-label">
+                                                                        <span>$100</span>
+                                                                        <span id="price-value">$5000</span>
+                                                                </div>
+                                                        </div>
+                                                </div>
+
+                                                <div class="filter-widget">
+                                                        <h3 class="filter-widget__title">Tour Type</h3>
+                                                        <div
+                                                                id="type-filter"
+                                                                class="filter-widget__checkbox-group"
+                                                        ></div>
+                                                </div>
+
+                                                <div class="filter-widget">
+                                                        <h3 class="filter-widget__title">Duration</h3>
+                                                        <div
+                                                                id="duration-filter"
+                                                                class="filter-widget__radio-group"
+                                                        ></div>
+                                                </div>
+                                        </form>
+                                </aside>
+
+                                <div class="tour-results">
+                                        <div class="result-controls">
+                                                <p class="result-controls__count">Showing 1-6 of 12 tours</p>
+                                                <div class="result-controls__right">
+                                                        <div class="result-controls__view-toggle">
+                                                                <button
+                                                                        class="view-btn active"
+                                                                        id="grid-view-btn"
+                                                                        aria-label="Grid View"
+                                                                >
+                                                                        <i class="fas fa-th-large"></i>
+                                                                </button>
+                                                                <button
+                                                                        class="view-btn"
+                                                                        id="list-view-btn"
+                                                                        aria-label="List View"
+                                                                >
+                                                                        <i class="fas fa-list"></i>
+                                                                </button>
+                                                        </div>
+                                                        <div class="result-controls__sort">
+                                                                <label for="sort-by">Sort by:</label>
+                                                                <select id="sort-by" name="sort-by">
+                                                                        <option value="default">Popularity</option>
+                                                                        <option value="price-asc">
+                                                                                Price: Low to High
+                                                                        </option>
+                                                                        <option value="price-desc">
+                                                                                Price: High to Low
+                                                                        </option>
+                                                                        <option value="rating-desc">
+                                                                                Rating: High to Low
+                                                                        </option>
+                                                                </select>
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="tour-grid" id="tour-grid"></div>
+
+                                        <div class="pagination" id="pagination-container"></div>
                                 </div>
                         </div>
-                        <div class="tour-grid"></div>
-                        <nav class="pagination">
-                                <ul class="pagination__list"></ul>
-                        </nav>
                 </div>
         </section>
-</main>
+</section>

@@ -1,0 +1,137 @@
+[33m4a65005[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdestinations-v2[m[33m)[m update responsive
+[33mf0d361f[m Update responsive
+[33m3b85aae[m hoan thien js
+[33m98d1648[m Add large video files via Git LFS
+[33mad6ffa4[m Add large video files via Git LFS
+[33md41e58e[m Track mp4 files with Git LFS
+[33me21ca5c[m hoan thien js trang destination
+[33mefecefe[m hoan thien js trang destination
+[33m9801f5e[m[33m ([m[1;31morigin/destinations-v2[m[33m)[m Update trip planner
+[33m9b4c335[m Fix travel vlogs/ reels
+[33m2e075cf[m Update explore
+[33m3af11e4[m Merge remote-tracking branch 'origin/main' into destinations-v2
+[33m91b4019[m Fix lỗi filter va blog
+[33meadbae0[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Sửa lại màu nền đúng
+[33m4ce84c5[m fix view detail trong destination-card
+[33ma9ec142[m Update destinations page
+[33m8d4b142[m Merge pull request #57 from duynhan935/destination-detail
+[33m9ccbf56[m Merge pull request #56 from duynhan935/home-animation
+[33mdc81f92[m Update destiantions
+[33m4ab44e4[m[33m ([m[1;31morigin/home-animation[m[33m)[m fix video responsive
+[33m68a0dcf[m Sửa lỗi hiển thị card khi resize màn hình
+[33ma164835[m[33m ([m[1;31morigin/destination-detail[m[33m)[m fix (destination-detail): re-styling
+[33me1d44e7[m[33m ([m[1;32mmain[m[33m)[m Merge pull request #55 from duynhan935/blog
+[33mebe96ca[m[33m ([m[1;31morigin/blog[m[33m)[m Contact Page Design Improved
+[33mb464ce6[m Sửa lỗi phần icon tour type, bỏ phần lấy cache cũ để dễ debug
+[33m4367b58[m Contact fix Form Input
+[33mb9891ef[m Merge pull request #54 from duynhan935/home-animation
+[33m0491bd4[m Merge branch 'main' into home-animation
+[33m7f142f0[m Sửa lỗi mất hiệu ứng header của trang tour details
+[33ma19bc2f[m GG Map Iframe in Contact Page
+[33m4529393[m Merge pull request #53 from duynhan935/navigation
+[33m4eb9650[m[33m ([m[1;31morigin/navigation[m[33m)[m thêm logic navigation qua các trang cho trang home
+[33me4bff4c[m Merge pull request #52 from duynhan935/blog
+[33m440e9cd[m Tours Design
+[33mc86ce36[m Merge branch 'main' of https://github.com/duynhan935/IE104-InternetCongNgheWeb into blog
+[33m4b498e0[m Merge pull request #48 from duynhan935/tour-details
+[33m3ec3681[m[33m ([m[1;31morigin/tour-details[m[33m)[m Merge branch 'main' into tour-details
+[33m5533ad5[m finish destination-detail base code
+[33mc256050[m Tour Design Improved
+[33mc4fb171[m Blog And BlogDetail Page
+[33m6b26c6c[m Merge pull request #51 from duynhan935/blog
+[33m54d0606[m Fix skeleton Not Responsive
+[33m50e83b6[m Sửa phần icon của section tour type
+[33m7c743e3[m Thêm hiệu ứng, chỉnh lại phần responsive cho trang
+[33m139f73d[m Fix merge with BlogPage
+[33m18030e0[m Merge pull request #49 from duynhan935/blog
+[33m32c48ae[m Blog Page Change Design
+[33mc06194f[m Fix merge
+[33m9a789e1[m Merge pull request #47 from duynhan935/blogdetail
+[33m5ea78b5[m[33m ([m[1;31morigin/blogdetail[m[33m)[m Add link from blog to blog-detail
+[33m52f2f65[m Delete Wrong Css Imported in Main
+[33m10d1b60[m Blog Page Improve Design
+[33me4e54b3[m Trang thông tin chi tiết tour và chỉnh màu text cho header ở mấy trang có banner
+[33m3db40e3[m add new code
+[33ma688eed[m BlogDetail Page Design Improvement
+[33mbf30fd6[m thêm logic chuyển màu header cho trang tour và contact
+[33m4b1b94e[m Merge pull request #46 from duynhan935/kp/tours.js
+[33m0686cda[m[33m ([m[1;31morigin/kp/tours.js[m[33m)[m Merge branch 'main' into kp/tours.js
+[33m5ef10f0[m Fix banner css
+[33ma5c933b[m added ready
+[33mdac9fd3[m Merge pull request #44 from duynhan935/data
+[33mdad7e31[m Merge branch 'main' into data
+[33m7b3d0df[m add data
+[33m39e6f10[m Merge pull request #43 from duynhan935/destinations
+[33m245aaae[m[33m ([m[1;31morigin/destinations[m[33m, [m[1;32mdestinations[m[33m)[m Add animation
+[33meed1916[m init code
+[33m695eb1c[m Merge pull request #41 from duynhan935/contact-us
+[33m5a8ce37[m[33m ([m[1;31morigin/contact-us[m[33m)[m Merge branch 'main' into contact-us
+[33m109af71[m[33m ([m[1;32mcontact-us[m[33m)[m Them animation cho banner
+[33m8bde58e[m Merge pull request #40 from duynhan935/destinations
+[33ma5fa73e[m Update pagination for destinations page
+[33maa7f365[m added video section
+[33mcdfbf9f[m fix destinations grid section
+[33mf86185e[m added animation to home-trending
+[33m8d2b5f1[m delete why choose us part
+[33me5dce3b[m Fix banner va responsive
+[33m1cb6f5e[m Merge pull request #38 from duynhan935/blogdetail
+[33m08d3d24[m Fix Image bug
+[33m15ccfc6[m Fix small bug in Js
+[33m27499f9[m Merge pull request #39 from duynhan935/header-fix
+[33md628772[m[33m ([m[1;31morigin/header-fix[m[33m)[m Thêm tính năng chuyển màu background khi cuộn xuống quá chiều dài banner của các trang có banner
+[33m8307f13[m Merge branch 'main' of https://github.com/duynhan935/IE104-InternetCongNgheWeb into header-fix
+[33mf4232cd[m them keyframe
+[33m11e7942[m them tours.js
+[33ma0f9334[m BlogDetail Improve Style
+[33m5f11d07[m Sửa lỗi cuộn trang
+[33m69aeee6[m Merge pull request #35 from duynhan935/about
+[33m4c8987e[m Merge pull request #37 from duynhan935/home-animation
+[33m274fe29[m Fix CSS variable for darkMode and LightMode
+[33m0be8dc8[m Merge branch 'main' of https://github.com/duynhan935/IE104-InternetCongNgheWeb into blog
+[33mc345aad[m Fix lỗi ảnh không hiển thị của phần destination card
+[33mc15706d[m Animation for Blog Page
+[33ma96fc4b[m[33m ([m[1;31morigin/about[m[33m)[m About Page change CSS Name to Prevent Duplicate CSS Name
+[33md225d7a[m JS for Blog
+[33mab96ac9[m Merge branch 'main' of https://github.com/duynhan935/IE104-InternetCongNgheWeb into home-animation
+[33mafd3f7e[m Xử lý skeleton lazy loading
+[33m67e512f[m Merge pull request #34 from duynhan935/blog
+[33m1bcf5c6[m Fix Bug Render Two Times JS in Main.js
+[33mca8028b[m Fix bug In main.js
+[33mbea7c80[m Fix merge
+[33me2d6974[m Fix merge
+[33m95507a3[m Merge pull request #33 from duynhan935/home-animation
+[33m244332e[m sửa lỗi trùng tên biến khi remove file script cũ mà không setTimeout
+[33m0c84e6c[m thêm màu cho header
+[33m4c48e0f[m container
+[33m121d207[m Tours bug
+[33mdc4c87a[m About Newsletters CSS
+[33m4274578[m Merge pull request #32 from duynhan935/home-animation
+[33mec451b2[m Cập nhật data-src cho file home
+[33m198b6b1[m Merge pull request #31 from duynhan935/home-animation
+[33m6cebba3[m Cập nhật bem class file home
+[33mc9bb73d[m Merge branch 'main' of https://github.com/duynhan935/IE104-InternetCongNgheWeb
+[33m5f2c98e[m Merge remote-tracking branch 'origin/about'
+[33m3c765a0[m Merge pull request #28 from duynhan935/blogdetail
+[33m4d9adc2[m Merge branch 'main' of https://github.com/duynhan935/IE104-InternetCongNgheWeb
+[33mec6eded[m Merge branch 'home-animation'
+[33m94cdbd7[m Merge pull request #29 from duynhan935/duynhanhehe
+[33m325d723[m[33m ([m[1;31morigin/duynhanhehe[m[33m)[m Cập nhật classname của trang home theo bem
+[33m9673ba8[m Lazy load trang home
+[33mcffa801[m Blog Detail Js
+[33m089643a[m Blog Pagination and CSS
+[33m3100415[m Change NewSletter ClassName
+[33m9b00eb9[m Add new CSS newsletter for about page
+[33m1df2e85[m Fix Merge in About Page
+[33me163ddd[m Merge pull request #26 from duynhan935/home-animation
+[33mdae81de[m Sửa lại logic khi load trang(load trang nào thì load luôn file css và js của trang đó thôi), thêm spinner khi đang load
+[33m9353d91[m About Page Lazy Loading
+[33m6462d22[m Merge branch 'main' of https://github.com/duynhan935/IE104-InternetCongNgheWeb
+[33m67bd833[m Thêm logic load phần js cho từng trang
+[33m64026d0[m kp fix
+[33m0a62c8d[m Fix responsive blog
+[33mb28b92c[m Correct handleHashChange function
+[33m2960a87[m Fix Bug in Blog Page
+[33m617ad06[m Fix about Page
+[33m527f50c[m Merging
+[33mcefd70c[m Fix Conflict
+[33m8458a32[m Comple

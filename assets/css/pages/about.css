@@ -1,3 +1,44 @@
+/* General Body & Variables */
+:root {
+        --text-orange: #ff6b35;
+        --text-description: #555;
+        --bg-primary: #faf8ed;
+        --about-mission-stats: #f6e58cdb;
+        --newsletter-bg: #f4bda0;
+        --newsletter-shape-color: #ff6b35;
+        --newsletter-shape-color-right: #ff6b35;
+        --newsletter-title-color: #333;
+        --newsletter-desc-color: #555;
+        --newsletter-input-bg: #fff;
+        --newsletter-input-border: #ddd;
+        --newsletter-input-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        --newsletter-input-color: #333;
+        --newsletter-input-placeholder: #999;
+        --newsletter-btn-bg: #ff6b35;
+        --newsletter-btn-bg-hover: #e65c2e;
+        --newsletter-btn-color: #fff;
+}
+
+body {
+        font-family: "Inter", sans-serif;
+        color: #333;
+        margin: 0;
+        line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.2;
+}
+
+.about-content__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+}
+
 /* Destinations Hero Banner */
 .about-des-banner {
         position: relative;
@@ -7,20 +48,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url("../../images/about/banner.png") center/cover no-repeat;
+        background: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop")
+                center/cover no-repeat;
         background-attachment: fixed;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
 }
 
 .about-des-banner::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
         z-index: 1;
 }
@@ -42,7 +78,6 @@
         margin-bottom: 1.5rem;
         text-transform: uppercase;
         letter-spacing: -0.02em;
-        line-height: 1.1;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         animation: fadeInUp 1s ease-out;
 }
@@ -54,9 +89,31 @@
         color: #ffffff;
         margin: 0;
         letter-spacing: 0.02em;
-        line-height: 1.4;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.about-des-banner__cta {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 1rem 2.5rem;
+        background-color: #ff6b35;
+        color: #ffffff;
+        border: none;
+        border-radius: 50px;
+        font-family: "Poppins", sans-serif;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.about-des-banner__cta:hover {
+        background-color: #e65c2e;
+        transform: translateY(-3px);
 }
 
 /* Animations */
@@ -71,51 +128,103 @@
         }
 }
 
+/* General Section Title Styles */
+.section-title {
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: #333;
+}
+
+.section-description {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        text-align: center;
+}
+
 /* About content */
 .about-content {
-        margin-top: 140px;
+        padding-top: 140px;
 }
 
 .about-who-we-are__container {
         display: grid;
         overflow: hidden;
         grid-template-columns: 1fr 1fr;
-        column-gap: 120px;
+        gap: 120px;
         align-items: center;
 }
+
 .about-who-we-are__subtitle {
-        font-family: Inter;
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 600;
-        line-height: 32px;
         color: var(--text-orange);
 }
+
 .about-who-we-are__title {
         margin-top: 10px;
-        font-style: normal;
+        font-size: 3rem;
         font-weight: 700;
-        line-height: 70px;
 }
+
 .about-who-we-are__description {
         max-width: 528px;
         margin-top: 20px;
-        font-size: 16px;
-        font-style: normal;
+        font-size: 1rem;
         font-weight: 400;
-        line-height: 26px;
         color: var(--text-description);
 }
 
 .about-who-we-are__image {
         max-width: 870px;
         max-height: 482px;
-        object-fit: cover;
+        border-radius: 12px;
+        overflow: hidden;
 }
 
 .about-who-we-are__img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+}
+
+/* Mission & Stats Section */
+.about-mission-stats {
+        margin-left: calc(-50vw + 50%);
+        width: 100vw;
+        margin-top: 140px;
+        padding: 60px 0;
+        background-color: var(--about-mission-stats);
+}
+
+.about-stats {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 40px;
+}
+
+.about-stats__item {
+        text-align: center;
+}
+
+.about-stats__number {
+        font-family: "Poppins", sans-serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        color: #ff6b35;
+        margin: 0;
+}
+
+.about-stats__text {
+        font-size: 1rem;
+        color: #666;
+        margin-top: 0.5rem;
 }
 
 /* Why choose us */
@@ -127,7 +236,7 @@
         display: grid;
         overflow: hidden;
         grid-template-columns: 1fr 1fr;
-        column-gap: 120px;
+        gap: 120px;
         align-items: center;
 }
 
@@ -136,6 +245,8 @@
         max-height: 518px;
         width: 100%;
         height: 100%;
+        border-radius: 12px;
+        overflow: hidden;
 }
 
 .about-why-choose-us__img {
@@ -143,16 +254,15 @@
         height: 100%;
         object-fit: cover;
 }
+
 .about-why-choose-us__title {
-        font-style: normal;
         font-weight: 700;
-        line-height: 50px;
+        font-size: 2.5rem;
 }
+
 .about-why-choose-us__description {
         margin-top: 16px;
-        font-style: normal;
         font-weight: 400;
-        line-height: 26px;
         color: var(--text-description);
 }
 
@@ -160,50 +270,51 @@
         margin-top: 40px;
         display: flex;
         flex-direction: column;
-        row-gap: 40px;
+        gap: 20px;
 }
 
 .about-why-choose-us__item {
         background-color: var(--bg-primary);
         padding: 20px;
-        box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
         border-radius: 8px;
         display: flex;
         align-items: center;
-        column-gap: 30px;
+        gap: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-why-choose-us__item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .about-why-choose-us__item-image {
-        max-width: 55px;
-        max-height: 55px;
+        min-width: 55px;
+        height: 55px;
 }
 
 .about-why-choose-us__item-img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
 }
 
 .about-why-choose-us__item-content {
         display: flex;
         flex-direction: column;
-        row-gap: 10px;
+        gap: 5px;
 }
 
 .about-why-choose-us__item-title {
-        font-size: 16px;
-        font-style: normal;
+        font-size: 1.1rem;
         font-weight: 600;
-        line-height: 26px;
 }
 
 .about-why-choose-us__item-description {
         max-width: 330px;
-        font-family: Inter;
-        font-size: 14px;
-        font-style: normal;
+        font-size: 0.9rem;
         font-weight: 500;
-        line-height: 20px;
         color: var(--text-description);
 }
 
@@ -213,9 +324,8 @@
 }
 
 .about-tour-guide__title {
-        font-style: normal;
         font-weight: 700;
-        line-height: 50px;
+        font-size: 2.5rem;
         text-align: center;
 }
 
@@ -223,11 +333,12 @@
         margin-top: 60px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        column-gap: 30px;
+        gap: 30px;
 }
 
 .about-tour-guide__item {
         width: 100%;
+        text-align: center;
 }
 
 .about-tour-guide__item-image {
@@ -235,47 +346,13 @@
         overflow: hidden;
         width: 100%;
         height: 306px;
+        position: relative;
 }
+
 .about-tour-guide__item-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-}
-
-.about-tour-guide__item-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 12px;
-        /* Dùng Flexbox để căn giữa nội dung */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-
-        /* Mặc định ẩn đi và chuẩn bị cho hiệu ứng fade-in */
-        opacity: 0;
-        transition: opacity 0.4s ease;
-}
-
-.about-tour-guide__item-bio {
-        color: white;
-        font-size: 14px;
-        line-height: 1.6;
-        text-align: center;
-        margin: 0;
-}
-
-.about-tour-guide__item:hover .about-tour-guide__item-overlay {
-        opacity: 1;
-        cursor: pointer;
-}
-
-.about-tour-guide__item .about-tour-guide__item-img {
         transition: transform 0.4s ease;
 }
 
@@ -283,38 +360,109 @@
         transform: scale(1.1);
 }
 
+.about-tour-guide__item-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+}
+
+.about-tour-guide__item:hover .about-tour-guide__item-overlay {
+        opacity: 1;
+}
+
+.about-tour-guide__item-bio {
+        color: white;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        text-align: center;
+        margin: 0;
+}
+
 .about-tour-guide__item-content {
         margin-top: 20px;
 }
 
-.about-tour-guide__item-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-}
-
 .about-tour-guide__item-name {
-        font-size: 20px;
-        font-style: normal;
+        font-size: 1.25rem;
         font-weight: 600;
-        line-height: 30px;
 }
 
 .about-tour-guide__item-description {
-        margin-top: 10px;
-        font-family: Inter;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 26px;
+        margin-top: 5px;
+        font-size: 1rem;
         color: var(--text-description);
 }
 
-/* Newsletter */
-/* ===== Newsletter Section ===== */
+.about-tour-guide__item-socials {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+}
 
+.about-tour-guide__item-socials a {
+        color: #555;
+        font-size: 1.2rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.about-tour-guide__item-socials a:hover {
+        color: #ff6b35;
+        transform: scale(1.1);
+}
+
+/* Testimonials Section */
+.about-testimonials {
+        margin-top: 140px;
+        padding: 60px 0;
+}
+
+.testimonials-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+}
+
+.testimonial-card {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-top: 4px solid #ff6b35;
+}
+
+.testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.testimonial-quote {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #555;
+        margin: 0 0 20px;
+        font-style: italic;
+}
+
+.testimonial-author {
+        font-weight: 600;
+        color: #333;
+        text-align: right;
+}
+
+/* Newsletter Section */
 .about-newsletter {
         margin-top: 100px;
+        margin-bottom: 100px;
         background: var(--newsletter-bg);
         border-radius: 14px;
         position: relative;
@@ -323,13 +471,15 @@
         text-align: center;
         isolation: isolate;
 }
+
 .about-newsletter::before,
 .about-newsletter::after {
         content: "";
         position: absolute;
         pointer-events: none;
-        z-index: 0;
+        z-index: -1;
 }
+
 .about-newsletter::before {
         top: 18px;
         left: 44px;
@@ -338,6 +488,7 @@
         background: var(--newsletter-shape-color);
         clip-path: polygon(0 50%, 100% 0, 100% 100%);
 }
+
 .about-newsletter::after {
         bottom: 46px;
         right: 110px;
@@ -347,28 +498,32 @@
         border-radius: 50%;
         clip-path: inset(50% 0 0 0);
 }
+
 .about-newsletter__inner {
         position: relative;
         z-index: 1;
         max-width: 720px;
         margin: 0 auto;
 }
+
 .about-newsletter__title {
         margin: 0 0 14px;
         font-size: 2rem;
         font-weight: 700;
         color: var(--newsletter-title-color);
 }
+
 .about-newsletter__desc {
         margin: 0 0 36px;
-        font-size: 0.85rem;
-        line-height: 1.55;
+        font-size: 1rem;
         color: var(--newsletter-desc-color);
 }
+
 .about-newsletter__form {
         display: flex;
         justify-content: center;
 }
+
 .about-newsletter__field {
         display: flex;
         align-items: stretch;
@@ -380,38 +535,43 @@
         max-width: 420px;
         width: 100%;
 }
+
 .about-newsletter__input {
         flex: 1;
         border: none;
         background: transparent;
         padding: 14px 16px;
-        font-size: 0.78rem;
+        font-size: 1rem;
         font-family: inherit;
         color: var(--newsletter-input-color);
         outline: none;
         min-width: 0;
 }
+
 .about-newsletter__input::placeholder {
         color: var(--newsletter-input-placeholder);
 }
+
 .about-newsletter__submit {
         border: none;
         background: var(--newsletter-btn-bg);
         color: var(--newsletter-btn-color);
-        padding: 0 14px;
-        font-size: 0.78rem;
+        padding: 0 18px;
+        font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
         display: flex;
         align-items: center;
-        transition: background 0.25s, transform 0.25s;
+        transition: background-color 0.25s, transform 0.25s;
 }
+
 .about-newsletter__submit:hover {
         background: var(--newsletter-btn-bg-hover);
         transform: translateY(-2px);
 }
+
 .about-newsletter__submit-icon {
-        font-size: 0.85rem;
+        font-size: 1.2rem;
         line-height: 1;
 }
 
@@ -427,117 +587,100 @@
         transform: translateY(0);
 }
 
-/* `xxl` applies to x-large devices (large desktops, less than 1400px) */
-@media (max-width: 1399.98px) {
-        .about-who-we-are__container,
-        .about-why-choose-us__container {
-                column-gap: 80px;
-        }
-}
+/* Responsive Media Queries */
 
-/* `xl` applies to large devices (desktops, less than 1200px) */
+/* Desktops, < 1200px */
 @media (max-width: 1199.98px) {
         .about-who-we-are__container,
         .about-why-choose-us__container {
-                column-gap: 40px;
+                gap: 60px;
         }
-
         .about-who-we-are__title {
-                font-size: 48px;
-                line-height: 60px;
+                font-size: 2.5rem;
         }
 }
 
-/* `lg` applies to medium devices (tablets, less than 992px) */
+/* Tablets, < 992px */
 @media (max-width: 991.98px) {
-        .about-banner {
-                height: 450px;
-        }
-
         .about-content,
         .about-why-choose-us,
-        .about-tour-guide {
+        .about-tour-guide,
+        .about-mission-stats,
+        .about-testimonials {
                 margin-top: 100px;
+                padding-top: 0;
         }
 
         .about-who-we-are__container,
         .about-why-choose-us__container {
                 grid-template-columns: 1fr;
-                row-gap: 50px;
+                gap: 50px;
+                text-align: center;
+        }
+
+        .about-who-we-are__description {
+                margin: 20px auto 0;
         }
 
         .about-why-choose-us__image {
-                order: 2;
-        }
-        .about-why-choose-us__content {
-                order: 1;
+                order: -1; /* Image appears first on tablets */
+                margin: 0 auto;
         }
 
         .about-tour-guide__list {
                 grid-template-columns: repeat(2, 1fr);
-                row-gap: 30px;
+                gap: 30px;
         }
 }
 
-/* `md` applies to small devices (landscape phones, less than 768px) */
+/* Landscape Phones, < 768px */
 @media (max-width: 767.98px) {
-        .about-banner {
-                height: 350px;
-        }
         .about-content,
         .about-why-choose-us,
-        .about-tour-guide {
+        .about-tour-guide,
+        .about-mission-stats,
+        .about-testimonials {
                 margin-top: 80px;
         }
 
-        .about-who-we-are__title {
-                font-size: 36px;
-                line-height: 46px;
-        }
+        .about-who-we-are__title,
         .about-why-choose-us__title,
         .about-tour-guide__title {
-                font-size: 32px;
-                line-height: 42px;
+                font-size: 2rem;
         }
 
         .about-tour-guide__list {
                 grid-template-columns: 1fr;
-                row-gap: 40px;
+                gap: 40px;
                 justify-items: center;
         }
         .about-tour-guide__item {
                 max-width: 370px;
         }
-
-        .about-who-we-are__content {
-                text-align: center;
-        }
-        .about-who-we-are__description {
-                margin-left: auto;
-                margin-right: auto;
-        }
 }
 
-/* `sm` applies to x-small devices (portrait phones, less than 576px) */
+/* Portrait Phones, < 576px */
 @media (max-width: 575.98px) {
-        .about-banner {
-                height: 280px;
-                margin-top: -80px;
-        }
-
         .about-content,
         .about-why-choose-us,
-        .about-tour-guide {
+        .about-tour-guide,
+        .about-mission-stats,
+        .about-testimonials {
                 margin-top: 60px;
         }
 
         .about-why-choose-us__item {
                 flex-direction: column;
                 text-align: center;
-                row-gap: 15px;
+                gap: 15px;
                 padding: 20px 15px;
         }
+
         .about-why-choose-us__item-description {
                 max-width: 100%;
+        }
+
+        .about-newsletter {
+                padding: 50px 20px;
         }
 }
