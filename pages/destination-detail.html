@@ -5,17 +5,17 @@
   </div>
   <!-- filter -->
   <div class="destination-detail-filter">
-      <div class="destination-detail-filter__tabs">
-        <button class="destination-detail-filter__tab">PILGRIMAGE</button>
-        <button class="destination-detail-filter__tab">TRAVEL</button>
-        <button class="destination-detail-filter__tab">TOURS</button>
+      <div class="destination-detail-filter__tabs" role="tablist" aria-label="Filter categories">
+        <button class="destination-detail-filter__tab" role="tab" aria-selected="false" aria-label="Filter by pilgrimage">PILGRIMAGE</button>
+        <button class="destination-detail-filter__tab" role="tab" aria-selected="false" aria-label="Filter by travel">TRAVEL</button>
+        <button class="destination-detail-filter__tab" role="tab" aria-selected="false" aria-label="Filter by tours">TOURS</button>
       </div>
-      <div class="destination-detail-filter__form">
-      <input type="text" placeholder="From" class="destination-detail-filter__input" />
-      <input type="text" placeholder="To" class="destination-detail-filter__input" />
-      <input type="date" placeholder="Departure Date" class="destination-detail-filter__input" />
-      <input type="date" placeholder="Return Date" class="destination-detail-filter__input" />
-      <select class="destination-detail-filter__input">
+      <div class="destination-detail-filter__form" role="search" aria-label="Search form">
+      <input type="text" placeholder="Departure City" class="destination-detail-filter__input" aria-label="Enter departure city" />
+      <input type="text" placeholder="Destination" class="destination-detail-filter__input" aria-label="Enter destination" />
+      <input type="date" placeholder="Departure Date" class="destination-detail-filter__input" aria-label="Select departure date" />
+      <input type="date" placeholder="Return Date" class="destination-detail-filter__input" aria-label="Select return date" />
+      <select class="destination-detail-filter__input" aria-label="Select traveller count and class">
         <option>Traveller & Class</option>
         <option>1 Adult, Economy</option>
         <option>2 Adults, Business</option>
@@ -26,30 +26,30 @@
   <!-- popular destinations -->
   <div class="destination-detail-popular">
     <h2 class="destination-detail-popular__title">Popular Destinations</h2>
-    <div class="destination-detail-popular__container">
-      <div class="destination-detail-card">
-        <img src="../assets/images/destination-detail/card1.jpg" alt="Card 1" class="destination-detail-card__img" />
+    <div class="destination-detail-popular__container" role="list" aria-label="Popular destinations">
+      <div class="destination-detail-card" role="listitem">
+        <img data-src="../assets/images/destination-detail/card1.jpg" alt="Saint Catherine's Monastery in South Sinai, Egypt" class="destination-detail-card__img" width="230" height="212" />
         <div class="destination-detail-card__content">
           <h3 class="destination-detail-card__name">Saint Catherine’s Monastery</h3>
           <p class="destination-detail-card__location">South Sinai, Egypt</p>
         </div>
       </div>
-      <div class="destination-detail-card">
-        <img src="../assets/images/destination-detail/card2.jpg" alt="Card 2" class="destination-detail-card__img" />
+      <div class="destination-detail-card" role="listitem">
+  <img data-src="../assets/images/destination-detail/card2.jpg" alt="Church Of Transfiguration in South Sinai, Egypt" class="destination-detail-card__img" width="230" height="212" />
         <div class="destination-detail-card__content">
           <h3 class="destination-detail-card__name">Church Of Transifiguration</h3>
           <p class="destination-detail-card__location">South Sinai, Egypt</p>
         </div>
       </div>
-      <div class="destination-detail-card">
-        <img src="../assets/images/destination-detail/card3.jpg" alt="Card 3" class="destination-detail-card__img" />
+      <div class="destination-detail-card" role="listitem">
+  <img data-src="../assets/images/destination-detail/card3.jpg" alt="Taba Border Crossing in Taba, Egypt" class="destination-detail-card__img" width="230" height="212" />
         <div class="destination-detail-card__content">
           <h3 class="destination-detail-card__name">Taba Border Crossing</h3>
           <p class="destination-detail-card__location">Taba, Egypt</p>
         </div>
       </div>
-      <div class="destination-detail-card">
-        <img src="../assets/images/destination-detail/card4.jpg" alt="Card 4" class="destination-detail-card__img" />
+      <div class="destination-detail-card" role="listitem">
+  <img data-src="../assets/images/destination-detail/card4.jpg" alt="Jerusalem, Capital of Israel" class="destination-detail-card__img" width="230" height="212" />
         <div class="destination-detail-card__content">
           <h3 class="destination-detail-card__name">Jerusalem</h3>
           <p class="destination-detail-card__location">Capital of Israel</p>
@@ -63,7 +63,7 @@
 <section class="destination-detail-mission">
   <div class="destination-detail-mission__content">
     <div class="destination-detail-mission__image">
-      <img src="../assets/images/destination-detail/mission.jpg" alt="Kaaba" class="destination-detail-mission__img" />
+    <img data-src="../assets/images/destination-detail/mission.jpg" alt="Kaaba" class="destination-detail-mission__img" width="500" height="690" />
       <div class="destination-detail-mission__stats">
         <div class="destination-detail-mission__stat">
           <div class="stat-wraper"></div>
@@ -92,20 +92,8 @@
       <p class="destination-detail-mission__desc">
         Curabitur tempus urna at turpis condimentum lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </p>
-      <a href="#" class="btn btn--primary">Join Now</a>
+      <a href="#" class="btn btn--primary" aria-label="Join our pilgrimage community">Join Now</a>
     </div>
-  </div>
-</section>
-
-<section class="home-video">
-  <video autoplay muted loop playsinline class="home-video__media">
-    <source src="videos/sea-waves.mp4" type="video/mp4" />
-  </video>
-  <div class="home-video__overlay">
-    <h2 class="home-video__title">Get ready to</h2>
-    <p class="home-video__text">
-      experience a new and fulfilling moment in life
-    </p>
   </div>
 </section>
 
@@ -114,11 +102,12 @@
     src="../assets/images/destination-detail/getready.png"
     alt="City view"
     class="destination-detail-ready__background"
+    loading="lazy"
   />
 
   <div class="destination-detail-ready__overlay">
     <div class="destination-detail-ready__path">
-      <img src="../assets/images/destination-detail/Group 45.png" class="destination-detail-ready__image" alt="">
+      <img src="../assets/images/destination-detail/Group 45.png" class="destination-detail-ready__image" alt="" loading="lazy">
     </div>
 
     <div class="destination-detail-ready__content">
@@ -129,8 +118,8 @@
     </div>
   </div>
 
-  <button class="destination-detail-ready__play-btn">
-    <span>&#9658;</span>
+  <button class="destination-detail-ready__play-btn" aria-label="Play video">
+    <span aria-hidden="true">&#9658;</span>
   </button>
 </section>
 
@@ -138,12 +127,12 @@
 <section class="destination-detail-pilgrimages">
   <h2 class="destination-detail-pilgrimages__title">Our Pilgrimages</h2>
 
-  <div class="destination-detail-pilgrimages__tabs">
-    <button class="destination-detail-pilgrimages__tab destination-detail-pilgrimages__tab--active">
+  <div class="destination-detail-pilgrimages__tabs" role="tablist" aria-label="Pilgrimage package types">
+    <button class="destination-detail-pilgrimages__tab destination-detail-pilgrimages__tab--active" role="tab" aria-selected="true">
       Single
     </button>
-    <button class="destination-detail-pilgrimages__tab">Couple</button>
-    <button class="destination-detail-pilgrimages__tab">Group</button>
+    <button class="destination-detail-pilgrimages__tab" role="tab" aria-selected="false">Couple</button>
+    <button class="destination-detail-pilgrimages__tab" role="tab" aria-selected="false">Group</button>
   </div>
 
   <div class="destination-detail-pilgrimages__cards">
@@ -151,9 +140,10 @@
     <div class="destination-detail-pilgrimages__card">
       <div class="destination-detail-pilgrimages__image-wrapper">
         <img
-          src="../assets/images/destination-detail/card-detail1.jpg"
-          alt="Holy Land"
+          data-src="../assets/images/destination-detail/card-detail1.jpg"
+          alt="Holy Land pilgrimage destination"
           class="destination-detail-pilgrimages__image"
+          loading="lazy"
         />
         <span class="destination-detail-pilgrimages__date">14 FEB 2023</span>
       </div>
@@ -180,7 +170,7 @@
           <span class="destination-detail-pilgrimages__price">
             3,148$<small>/Person</small>
           </span>
-          <button class="destination-detail-pilgrimages__btn">View Details</button>
+          <button class="destination-detail-pilgrimages__btn" aria-label="View details for A Life Changing Journey pilgrimage">View Details</button>
         </div>
       </div>
     </div>
@@ -189,9 +179,10 @@
     <div class="destination-detail-pilgrimages__card">
       <div class="destination-detail-pilgrimages__image-wrapper">
         <img
-          src="../assets/images/destination-detail/card-detail2.jpg"
-          alt="Italy"
+          data-src="../assets/images/destination-detail/card-detail2.jpg"
+          alt="Holy Week in Italy pilgrimage destination"
           class="destination-detail-pilgrimages__image"
+          loading="lazy"
         />
         <span class="destination-detail-pilgrimages__date">14 FEB 2023</span>
       </div>
@@ -218,7 +209,7 @@
           <span class="destination-detail-pilgrimages__price">
             3,148$<small>/Person</small>
           </span>
-          <button class="destination-detail-pilgrimages__btn">View Details</button>
+          <button class="destination-detail-pilgrimages__btn" aria-label="View details for Holy Week in Italy pilgrimage">View Details</button>
         </div>
       </div>
     </div>
@@ -227,9 +218,10 @@
     <div class="destination-detail-pilgrimages__card">
       <div class="destination-detail-pilgrimages__image-wrapper">
         <img
-          src="../assets/images/destination-detail/card-detail3.jpg"
-          alt="Portugal"
+          data-src="../assets/images/destination-detail/card-detail3.jpg"
+          alt="Marian Shrine of Portugal pilgrimage destination"
           class="destination-detail-pilgrimages__image"
+          loading="lazy"
         />
         <span class="destination-detail-pilgrimages__date">14 FEB 2023</span>
       </div>
@@ -256,7 +248,7 @@
           <span class="destination-detail-pilgrimages__price">
             3,148$<small>/Person</small>
           </span>
-          <button class="destination-detail-pilgrimages__btn">View Details</button>
+          <button class="destination-detail-pilgrimages__btn" aria-label="View details for Marian Shrine of Portugal pilgrimage">View Details</button>
         </div>
       </div>
     </div>
@@ -268,17 +260,18 @@
   <div class="destination-detail-gallery__content">
     <div class="destination-detail-gallery__left">
       <img
-        src="../assets/images/destination-detail/gallery-main.jpg"
-        alt="Main Image"
+        data-src="../assets/images/destination-detail/gallery-main.jpg"
+        alt="Main gallery image showcasing pilgrimage destination"
         class="destination-detail-gallery__main-image"
+        loading="lazy"
       />
     </div>
 
     <div class="destination-detail-gallery__right">
-      <img src="../assets/images/destination-detail/gallery-1.jpg" alt="Thumb 1" class="destination-detail-gallery__thumb" />
-      <img src="../assets/images/destination-detail/gallery-2.jpg" alt="Thumb 2" class="destination-detail-gallery__thumb" />
-      <img src="../assets/images/destination-detail/gallery-3.jpg" alt="Thumb 3" class="destination-detail-gallery__thumb" />
-      <img src="../assets/images/destination-detail/gallery-4.jpg" alt="Thumb 4" class="destination-detail-gallery__thumb" />
+      <img src="../assets/images/destination-detail/gallery-1.jpg" alt="Gallery image 1" class="destination-detail-gallery__thumb" loading="lazy" />
+      <img src="../assets/images/destination-detail/gallery-2.jpg" alt="Gallery image 2" class="destination-detail-gallery__thumb" loading="lazy" />
+      <img src="../assets/images/destination-detail/gallery-3.jpg" alt="Gallery image 3" class="destination-detail-gallery__thumb" loading="lazy" />
+      <img src="../assets/images/destination-detail/gallery-4.jpg" alt="Gallery image 4" class="destination-detail-gallery__thumb" loading="lazy" />
     </div>
   </div>
 
@@ -310,7 +303,7 @@
       </div>
 
       <ul class="destination-detail-itinerary__days">
-        <li><strong>Day 1</strong>Manila, Philippines - Cairo, Egypt</li>
+        <li><strong>Day 1</strong> Manila, Philippines - Cairo, Egypt</li>
         <li><strong>Day 2</strong> Cairo, Egypt</li>
         <li><strong>Day 3</strong> Saint Catherine's Monastery</li>
         <li><strong>Day 4</strong> Taba Border Crossing - Bethlehem</li>
@@ -326,7 +319,7 @@
         <li><strong>Day 14</strong> Manila</li>
       </ul>
 
-      <button class="destination-detail-itinerary__button">Join Now</button>
+      <button class="destination-detail-itinerary__button" aria-label="Join this pilgrimage journey">Join Now</button>
     </div>
   </div>
 </section>
@@ -335,10 +328,10 @@
 <section class="destination-detail-cta">
   <div class="destination-detail-cta__overlay">
     <h2 class="destination-detail-cta__title">
-      Don’t Miss The 10% Discount if<br>
+      Don't Miss The 10% Discount if<br>
       You Book Today
     </h2>
-    <a href="#" class="destination-detail-cta__btn">Contact Us</a>
+    <a href="#" class="destination-detail-cta__btn" aria-label="Contact us to book your pilgrimage">Contact Us</a>
   </div>
 </section>
 
@@ -355,37 +348,37 @@
   <div class="destination-detail-insights__grid">
     <!-- Card 1 -->
     <article class="destination-detail-insights__card">
-      <img src="../assets/images/destination-detail/Insight_card1.png" alt="Day Trips From Rome" class="destination-detail-insights__image" />
+      <img src="../assets/images/destination-detail/Insight_card1.png" alt="Day Trips From Rome - Featured insight" class="destination-detail-insights__image" loading="lazy" />
     </article>
 
     <!-- Card 2 -->
     <article class="destination-detail-insights__card">
-      <img src="../assets/images/destination-detail/insight_card2.png" alt="The Pilgrims’ Center at PTAA" class="destination-detail-insights__image" />
+      <img src="../assets/images/destination-detail/insight_card2.png" alt="The Pilgrims' Center at PTAA - Featured insight" class="destination-detail-insights__image" loading="lazy" />
     </article>
 
     <!-- Card 3 -->
     <article class="destination-detail-insights__card">
-      <img src="../assets/images/destination-detail/insight_card3.png" alt="Pope Benedict XVI – Easter Mass" class="destination-detail-insights__image" />
+      <img src="../assets/images/destination-detail/insight_card3.png" alt="Pope Benedict XVI – Easter Mass - Featured insight" class="destination-detail-insights__image" loading="lazy" />
     </article>
 
     <!-- Card 4 -->
     <article class="destination-detail-insights__card">
-      <img src="../assets/images/destination-detail/insight_card4.png" alt="Jordan River" class="destination-detail-insights__image" />
+      <img src="../assets/images/destination-detail/insight_card4.png" alt="Jordan River - Featured insight" class="destination-detail-insights__image" loading="lazy" />
     </article>
 
     <!-- Card 5 -->
     <article class="destination-detail-insights__card">
-      <img src="../assets/images/destination-detail/Insight_card5.png" alt="Your Spiritual Journey" class="destination-detail-insights__image" />
+      <img src="../assets/images/destination-detail/Insight_card5.png" alt="Your Spiritual Journey - Featured insight" class="destination-detail-insights__image" loading="lazy" />
     </article>
 
     <!-- Card 6 -->
     <article class="destination-detail-insights__card">
-      <img src="../assets/images/destination-detail/Insight_card6.png" alt="The Church of Transfiguration" class="destination-detail-insights__image" />
+      <img src="../assets/images/destination-detail/Insight_card6.png" alt="The Church of Transfiguration - Featured insight" class="destination-detail-insights__image" loading="lazy" />
     </article>
   </div>
 
   <div class="destination-detail-insights__load">
-    <button class="destination-detail-insights__load-btn">Load more <i class="fa fa-chevron-down"></i></button>
+    <button class="destination-detail-insights__load-btn" aria-label="Load more featured insights">Load more <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
   </div>
 </section>
 
@@ -403,54 +396,58 @@
     <div class="destination-detail-testimonials__item">
       <img
       src="../assets/images/destination-detail/quote.png"
-      alt="quote"
+      alt="Quotation mark"
       class="destination-detail-testimonial__quote"
+      loading="lazy"
       />
       <p class="destination-detail-testimonials__text">
         Our trip to Jerusalem was truly a once in a lifetime experience and we are so grateful to everyone that made it happen seamlessly.
       </p>
       <h4 class="destination-detail-testimonials__name">- John D.</h4>
       <p class="destination-detail-testimonials__role">Blessed Pilgrim</p>
-      <div class="destination-detail-testimonials__rating">
-        <i class="fa-solid fa-star"></i>
+      <div class="destination-detail-testimonials__rating" aria-label="Rating: 4.5 out of 5 stars">
+        <i class="fa-solid fa-star" aria-hidden="true"></i>
         <span>4.5</span>
       </div>
       <img
         src="../assets/images/destination-detail/ava1.jpg"
-        alt="John D."
+        alt="Portrait of John D."
         class="destination-detail-testimonials__avatar"
+        loading="lazy"
       />
     </div>
 
     <div class="destination-detail-testimonials__item">
       <img
         src="../assets/images/destination-detail/quote.png"
-        alt="quote"
+        alt="Quotation mark"
         class="destination-detail-testimonial__quote"
+        loading="lazy"
       />
       <p class="destination-detail-testimonials__text">
         Our trip to Jerusalem was truly a once in a lifetime experience and we are so grateful to everyone that made it happen seamlessly.
       </p>
       <h4 class="destination-detail-testimonials__name">- Mary Ann D.</h4>
       <p class="destination-detail-testimonials__role">Blessed Pilgrim</p>
-      <div class="destination-detail-testimonials__rating">
-        <i class="fa-solid fa-star"></i>
+      <div class="destination-detail-testimonials__rating" aria-label="Rating: 4.5 out of 5 stars">
+        <i class="fa-solid fa-star" aria-hidden="true"></i>
         <span>4.5</span>
       </div>
       <img
         src="../assets/images/destination-detail/ava2.jpg"
-        alt="Mary Ann D."
+        alt="Portrait of Mary Ann D."
         class="destination-detail-testimonials__avatar"
+        loading="lazy"
       />
     </div>
   </div>
 
   <div class="destination-detail-testimonials__nav">
-    <button class="destination-detail-testimonials__btn">
-      <i class="fa-solid fa-angle-left"></i>
+    <button class="destination-detail-testimonials__btn" aria-label="Previous testimonial">
+      <i class="fa-solid fa-angle-left" aria-hidden="true"></i>
     </button>
-    <button class="destination-detail-testimonials__btn">
-      <i class="fa-solid fa-angle-right"></i>
+    <button class="destination-detail-testimonials__btn" aria-label="Next testimonial">
+      <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
     </button>
   </div>
 </section>
