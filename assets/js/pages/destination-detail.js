@@ -12,39 +12,7 @@ class SkeletonLazyLoader {
     init() {
         setTimeout(() => {
             this.setupLazy();
-            this.setupScrollAnimations();
         }, 300);
-    }
-
-    setupScrollAnimations() {
-        // Check if browser supports animation-timeline
-        const supportsAnimationTimeline = CSS.supports('animation-timeline: view()');
-        
-        if (!supportsAnimationTimeline) {
-            // Fallback for browsers that don't support animation-timeline
-            const animatedSections = document.querySelectorAll(
-                '.destination-detail-mission, .destination-detail-pilgrimages, ' +
-                '.destination-detail-gallery, .destination-detail-insights, ' +
-                '.destination-detail-testimonials'
-            );
-
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
-                        scrollObserver.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            });
-
-            animatedSections.forEach(section => {
-                scrollObserver.observe(section);
-            });
-        }
     }
 
     setupLazy() {
@@ -162,35 +130,51 @@ class SkeletonLazyLoader {
     }
 }
 
-// Smooth scroll reveal for elements
+// Smooth scroll reveal for elements using scroll-animate system
 class ScrollReveal {
     constructor() {
         this.init();
     }
 
     init() {
-        // Add stagger animation to cards on scroll
+        // Options for the Intersection Observer
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,  // Trigger when 15% of element is visible
+            rootMargin: '0px 0px -80px 0px'  // Trigger slightly before element is fully in view
         };
 
+        // Create the observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    // Add animate-in class when element enters viewport
+                    entry.target.classList.add('animate-in');
+                    // Optional: unobserve after animation to improve performance
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe all animated elements
-        const elements = document.querySelectorAll(
+        // Select all elements that need scroll-triggered animations
+        const animatedElements = document.querySelectorAll(
+            // Sections
+            '.destination-detail-popular, .destination-detail-mission, ' +
+            '.destination-detail-mission__image, .destination-detail-mission__text, ' +
+            '.destination-detail-mission__stat, .destination-detail-ready, ' +
+            '.destination-detail-ready__overlay, .destination-detail-pilgrimages, ' +
+            '.destination-detail-gallery, .destination-detail-itinerary, ' +
+            '.destination-detail-cta, .destination-detail-cta__overlay, ' +
+            '.destination-detail-insights, .destination-detail-testimonials, ' +
+            // Cards and items
             '.destination-detail-card, .destination-detail-pilgrimages__card, ' +
-            '.destination-detail-insights__card, .destination-detail-testimonials__item'
+            '.destination-detail-insights__card, .destination-detail-testimonials__item, ' +
+            // Generic stagger items
+            '.stagger-item'
         );
 
-        elements.forEach(el => {
+        // Add scroll-animate class to all elements and observe them
+        animatedElements.forEach(el => {
+            el.classList.add('scroll-animate');
             observer.observe(el);
         });
     }

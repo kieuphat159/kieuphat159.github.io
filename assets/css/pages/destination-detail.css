@@ -137,6 +137,34 @@ html {
   overflow: hidden;
 }
 
+/* ========== ACCESSIBILITY - Respect user motion preferences ========== */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate,
+  .scroll-animate.animate-in {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ========== SCROLL ANIMATION SYSTEM ========== */
+/* Elements start hidden and animate when scrolled into view */
+.scroll-animate {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-animate.animate-in {
+  opacity: 1;
+}
+
 /* ========== HERO ========== */
 .destination-detail-hero {
   position: relative;
@@ -214,7 +242,7 @@ html {
   max-width: 1000px;
   background-color: transparent;
   margin-top: 50px;
-  animation: fadeInUp 1s ease-out 0.6s both;
+  /* Filter visible in hero - no animation needed */
 }
 
 /* Tabs */
@@ -297,8 +325,14 @@ html {
   width: 100%;
   background-color: #dddddd3f;
   margin-bottom: -201px;
-  opacity: 0;
-  animation: fadeIn 1s ease-out 0.5s forwards;
+}
+
+.destination-detail-popular.scroll-animate {
+  transform: translateY(30px);
+}
+
+.destination-detail-popular.scroll-animate.animate-in {
+  transform: translateY(0);
 }
 
 .destination-detail-popular__title {
@@ -306,7 +340,6 @@ html {
   margin-bottom: 40px;
   color: #FFF6F6;
   font-weight: 600;
-  animation: fadeInDown 0.8s ease-out 0.7s both;
 }
 
 .destination-detail-popular__container {
@@ -326,23 +359,32 @@ html {
   width: 230px;
   border-radius: 12px;
   position: relative;
-  animation: fadeInUp 0.8s ease-out both;
 }
 
-.destination-detail-card:nth-child(1) {
-  animation-delay: 0.2s;
+/* Scroll-triggered animations for cards */
+.destination-detail-card.scroll-animate {
+  transform: translateY(40px);
 }
 
-.destination-detail-card:nth-child(2) {
-  animation-delay: 0.4s;
+.destination-detail-card.scroll-animate.animate-in {
+  transform: translateY(0);
 }
 
-.destination-detail-card:nth-child(3) {
-  animation-delay: 0.6s;
+/* Staggered animation delays */
+.destination-detail-card.scroll-animate:nth-child(1) {
+  transition-delay: 0.1s;
 }
 
-.destination-detail-card:nth-child(4) {
-  animation-delay: 0.8s;
+.destination-detail-card.scroll-animate:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.destination-detail-card.scroll-animate:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.destination-detail-card.scroll-animate:nth-child(4) {
+  transition-delay: 0.4s;
 }
 
 .destination-detail-card::before {
@@ -438,10 +480,15 @@ img[data-src] {
   display: flex;
   height: 690px !important;
   justify-content: center;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+}
+
+/* Scroll-triggered animation for mission section */
+.destination-detail-mission.scroll-animate {
+  transform: translateY(30px);
+}
+
+.destination-detail-mission.scroll-animate.animate-in {
+  transform: translateY(0);
 }
 
 .destination-detail-mission__content {
@@ -461,15 +508,30 @@ img[data-src] {
   flex: 1;
   height: 100%;
   max-width: 500px;
-  animation: slideInLeft 1s ease-out forwards;
-  opacity: 0;
+}
+
+/* Scroll-triggered animation for mission image */
+.destination-detail-mission__image.scroll-animate {
+  transform: translateX(-40px);
+}
+
+.destination-detail-mission__image.scroll-animate.animate-in {
+  transform: translateX(0);
 }
 
 .destination-detail-mission__text {
   flex: 1 1 480px; /* allow text to take remaining space */
   max-width: 560px;
-  animation: slideInRight 1s ease-out 0.3s forwards;
-  opacity: 0;
+}
+
+/* Scroll-triggered animation for mission text */
+.destination-detail-mission__text.scroll-animate {
+  transform: translateX(40px);
+  transition-delay: 0.15s;
+}
+
+.destination-detail-mission__text.scroll-animate.animate-in {
+  transform: translateX(0);
 }
 
 .destination-detail-mission__img {
@@ -499,9 +561,16 @@ img[data-src] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0;
-  animation: scaleIn 0.6s ease-out forwards;
   transition: transform 0.3s ease;
+}
+
+/* Scroll-triggered animation for stats */
+.destination-detail-mission__stat.scroll-animate {
+  transform: scale(0.8);
+}
+
+.destination-detail-mission__stat.scroll-animate.animate-in {
+  transform: scale(1);
 }
 
 .destination-detail-mission__stat:hover {
@@ -509,22 +578,23 @@ img[data-src] {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
+/* Position and stagger animations */
 .destination-detail-mission__stat:nth-child(1) {
   top: 180px;
   left: -40px;
-  animation-delay: 0.8s;
+  transition-delay: 0.4s;
 }
 
 .destination-detail-mission__stat:nth-child(2) {
   top: -40px;
   right: -40px;
-  animation-delay: 1s;
+  transition-delay: 0.5s;
 }
 
 .destination-detail-mission__stat:nth-child(3) {
   bottom: -460px;
   left: 330px;
-  animation-delay: 1.2s;
+  transition-delay: 0.6s;
 }
 
 .destination-detail-mission__stat h3 {
@@ -651,10 +721,15 @@ img[data-src] {
   height: 0;
   padding-bottom: 56.25%; /* 16:9 aspect ratio, adjust based on your image */
   overflow: hidden;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+}
+
+/* Scroll-triggered animation for ready section */
+.destination-detail-ready.scroll-animate {
+  transform: scale(0.95);
+}
+
+.destination-detail-ready.scroll-animate.animate-in {
+  transform: scale(1);
 }
 
 /* Background image */
@@ -684,9 +759,17 @@ img[data-src] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  opacity: 0;
-  animation: slideInRight 1s ease-out 0.5s forwards;
   overflow: hidden;
+}
+
+/* Scroll-triggered animation for ready overlay */
+.destination-detail-ready__overlay.scroll-animate {
+  transform: translateY(-50%) translateX(40px);
+  transition-delay: 0.2s;
+}
+
+.destination-detail-ready__overlay.scroll-animate.animate-in {
+  transform: translateY(-50%) translateX(0);
 }
 
 /* Text content */
@@ -771,10 +854,14 @@ img[data-src] {
   background: var(--bg-primary);
   color: #222;
   font-family: "Poppins", sans-serif;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+}
+
+.destination-detail-pilgrimages.scroll-animate {
+  transform: translateY(30px);
+}
+
+.destination-detail-pilgrimages.scroll-animate.animate-in {
+  transform: translateY(0);
 }
 
 .destination-detail-pilgrimages__title {
@@ -834,20 +921,28 @@ img[data-src] {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.destination-detail-pilgrimages__card:nth-child(1) {
-  animation-delay: 0.2s;
+/* Scroll-triggered animation for pilgrimage cards */
+.destination-detail-pilgrimages__card.scroll-animate {
+  transform: translateY(40px);
 }
 
-.destination-detail-pilgrimages__card:nth-child(2) {
-  animation-delay: 0.4s;
+.destination-detail-pilgrimages__card.scroll-animate.animate-in {
+  transform: translateY(0);
 }
 
-.destination-detail-pilgrimages__card:nth-child(3) {
-  animation-delay: 0.6s;
+/* Staggered delays for cards */
+.destination-detail-pilgrimages__card.scroll-animate:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.destination-detail-pilgrimages__card.scroll-animate:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.destination-detail-pilgrimages__card.scroll-animate:nth-child(3) {
+  transition-delay: 0.3s;
 }
 
 .destination-detail-pilgrimages__card-title {
@@ -993,14 +1088,19 @@ img[data-src] {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  box-shadow: 8px 0 15px -8px rgba(0, 0, 0, 0.15),  /* bóng bên phải */
-              0 8px 15px -8px rgba(0, 0, 0, 0.15); /* bóng bên dưới */
+  box-shadow: 8px 0 15px -8px rgba(0, 0, 0, 0.15),
+              0 8px 15px -8px rgba(0, 0, 0, 0.15); 
   
   padding: 20px;
-  opacity: 0;
-  animation: scaleIn 1s ease-out forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+}
+
+/* Scroll-triggered animation for gallery */
+.destination-detail-gallery.scroll-animate {
+  transform: scale(0.95);
+}
+
+.destination-detail-gallery.scroll-animate.animate-in {
+  transform: scale(1);
 }
 
 /* Khối chứa 2 phần trái phải */
@@ -1096,10 +1196,15 @@ img[data-src] {
 
 .destination-detail-itinerary {
   margin-top: 20px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+}
+
+/* Scroll-triggered animation for itinerary */
+.destination-detail-itinerary.scroll-animate {
+  transform: translateY(30px);
+}
+
+.destination-detail-itinerary.scroll-animate.animate-in {
+  transform: translateY(0);
 }
 
 /* Header info */
@@ -1210,18 +1315,32 @@ img[data-src] {
   border-radius: 8px;
   overflow: hidden;
   margin-top: 100px;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%;
 }
+
+/* Scroll-triggered animation for CTA */
+.destination-detail-cta.scroll-animate {
+  transform: scale(0.95);
+}
+
+.destination-detail-cta.scroll-animate.animate-in {
+  transform: scale(1);
+}
+
 .destination-detail-cta__overlay {
   text-align: center;
   color: #fff;
   z-index: 2;
   position: relative;
-  opacity: 0;
-  animation: scaleIn 1s ease-out 0.3s forwards;
+}
+
+/* Scroll-triggered animation for CTA overlay */
+.destination-detail-cta__overlay.scroll-animate {
+  transform: scale(0.9);
+  transition-delay: 0.15s;
+}
+
+.destination-detail-cta__overlay.scroll-animate.animate-in {
+  transform: scale(1);
 }
 
 .destination-detail-cta__title {
@@ -1260,10 +1379,15 @@ img[data-src] {
   padding: 80px 0;
   text-align: center;
   background: var(--bg-primary);
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+}
+
+/* Scroll-triggered animation for insights section */
+.destination-detail-insights.scroll-animate {
+  transform: translateY(30px);
+}
+
+.destination-detail-insights.scroll-animate.animate-in {
+  transform: translateY(0);
 }
 
 .destination-detail-insights__header {
@@ -1297,16 +1421,23 @@ img[data-src] {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.destination-detail-insights__card:nth-child(1) { animation-delay: 0.1s; }
-.destination-detail-insights__card:nth-child(2) { animation-delay: 0.2s; }
-.destination-detail-insights__card:nth-child(3) { animation-delay: 0.3s; }
-.destination-detail-insights__card:nth-child(4) { animation-delay: 0.4s; }
-.destination-detail-insights__card:nth-child(5) { animation-delay: 0.5s; }
-.destination-detail-insights__card:nth-child(6) { animation-delay: 0.6s; }
+.destination-detail-insights__card.scroll-animate {
+  transform: translateY(30px);
+}
+
+.destination-detail-insights__card.scroll-animate.animate-in {
+  transform: translateY(0);
+}
+
+/* Staggered delays for insights cards */
+.destination-detail-insights__card.scroll-animate:nth-child(1) { transition-delay: 0.05s; }
+.destination-detail-insights__card.scroll-animate:nth-child(2) { transition-delay: 0.1s; }
+.destination-detail-insights__card.scroll-animate:nth-child(3) { transition-delay: 0.15s; }
+.destination-detail-insights__card.scroll-animate:nth-child(4) { transition-delay: 0.2s; }
+.destination-detail-insights__card.scroll-animate:nth-child(5) { transition-delay: 0.25s; }
+.destination-detail-insights__card.scroll-animate:nth-child(6) { transition-delay: 0.3s; }
 
 .destination-detail-insights__card:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -1362,10 +1493,15 @@ img[data-src] {
   text-align: center;
   padding: 80px 10%;
   background-color: var(--bg-primary);
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
-  animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+}
+
+/* Scroll-triggered animation for testimonials section */
+.destination-detail-testimonials.scroll-animate {
+  transform: translateY(30px);
+}
+
+.destination-detail-testimonials.scroll-animate.animate-in {
+  transform: translateY(0);
 }
 
 .destination-detail-testimonials__header {
@@ -1405,16 +1541,24 @@ img[data-src] {
   box-shadow: 8px 0 15px -8px rgba(0, 0, 0, 0.2),  /* bóng bên phải */
               0 8px 15px -8px rgba(0, 0, 0, 0.2); /* bóng bên dưới */
   border-radius: 16px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.destination-detail-testimonials__item:nth-child(1) {
-  animation-delay: 0.2s;
+/* Scroll-triggered animation for testimonial items */
+.destination-detail-testimonials__item.scroll-animate {
+  transform: translateY(40px);
 }
 
-.destination-detail-testimonials__item:nth-child(2) {
-  animation-delay: 0.4s;
+.destination-detail-testimonials__item.scroll-animate.animate-in {
+  transform: translateY(0);
+}
+
+/* Staggered delays */
+.destination-detail-testimonials__item.scroll-animate:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.destination-detail-testimonials__item.scroll-animate:nth-child(2) {
+  transition-delay: 0.2s;
 }
 
 .destination-detail-testimonials__item:hover {
@@ -2911,19 +3055,22 @@ img.loaded {
   transform: translateY(0);
 }
 
-/* Stagger delays for list items */
-.stagger-item {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
+/* Stagger delays for list items - using scroll-animate system */
+.stagger-item.scroll-animate {
+  transform: translateY(30px);
 }
 
-.stagger-item:nth-child(1) { animation-delay: 0.1s; }
-.stagger-item:nth-child(2) { animation-delay: 0.2s; }
-.stagger-item:nth-child(3) { animation-delay: 0.3s; }
-.stagger-item:nth-child(4) { animation-delay: 0.4s; }
-.stagger-item:nth-child(5) { animation-delay: 0.5s; }
-.stagger-item:nth-child(6) { animation-delay: 0.6s; }
-.stagger-item:nth-child(7) { animation-delay: 0.7s; }
+.stagger-item.scroll-animate.animate-in {
+  transform: translateY(0);
+}
+
+.stagger-item.scroll-animate:nth-child(1) { transition-delay: 0.05s; }
+.stagger-item.scroll-animate:nth-child(2) { transition-delay: 0.1s; }
+.stagger-item.scroll-animate:nth-child(3) { transition-delay: 0.15s; }
+.stagger-item.scroll-animate:nth-child(4) { transition-delay: 0.2s; }
+.stagger-item.scroll-animate:nth-child(5) { transition-delay: 0.25s; }
+.stagger-item.scroll-animate:nth-child(6) { transition-delay: 0.3s; }
+.stagger-item.scroll-animate:nth-child(7) { transition-delay: 0.35s; }
 .stagger-item:nth-child(8) { animation-delay: 0.8s; }
 
 /* Enhanced hover effects */
