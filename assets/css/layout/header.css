@@ -129,7 +129,8 @@ html.dark .theme-toggle {
     box-shadow: 0 2px 8px rgba(42, 203, 233, 0.08);
 }
 .header-contact-btn:hover {
-    background: var(--button-blue-bg-color-hover);
+    background-color: var(--button-blue-bg-hover, #2563eb);
+    transform: translateY(-2px);
 }
 
 .header-menu-toggle {

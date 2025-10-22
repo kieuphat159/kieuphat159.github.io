@@ -7,10 +7,10 @@
             from us.
         </p>
         <div class="home-hero__actions">
-            <a href="#about" class="home-hero__btn home-hero__btn--primary">Discover Now</a>
+            <a href="#destinations" class="home-hero__btn home-hero__btn--primary">Discover Now</a>
             <a href="#blog" class="home-hero__btn home-hero__btn--secondary">
-                <span class="home-hero__btn-icon">&#9654;</span>
-                Read Blogs
+                <img class="home-hero__btn-icon" src="../assets/icons/home/play-video.svg" alt="Play Video" />
+                Learn More
             </a>
         </div>
     </div>
@@ -18,7 +18,7 @@
     <div class="home-hero__image-group">
         <img src="../assets/images/home/Shapes.svg" alt="" class="home-hero__brush" loading="lazy" aria-hidden="true" />
 
-        <img src="../assets/images/home/Girl.svg" alt="Travel Girl" class="home-hero__image" />
+        <img src="../assets/images/home/Girl.png" alt="Travel Girl" class="home-hero__image" />
 
         <!-- Stat card floating on image -->
         <div class="home-hero__stat-card">
@@ -35,25 +35,33 @@
         <!-- Info list on the right side -->
         <ul class="home-hero__info-list">
             <li class="home-hero__info-item">
-                <span class="home-hero__info-icon">🎉</span>
-                <span>
-                    <b>12</b><br />
-                    Years Experiences
-                </span>
+                <div class="home-hero__info-icon">
+                    <img src="../assets/images/home/exp.svg" alt="Experience Icon" />
+                </div>
+                <div class="home-hero__info-text">
+                    <b>12</b>
+                    <span>Years Experiences</span>
+                </div>
             </li>
+
             <li class="home-hero__info-item">
-                <span class="home-hero__info-icon">🏆</span>
-                <span>
-                    <b>29</b><br />
-                    Awards Gained
-                </span>
+                <div class="home-hero__info-icon">
+                    <img src="../assets/images/home/cup.svg" alt="Award Icon" />
+                </div>
+                <div class="home-hero__info-text">
+                    <b>29</b>
+                    <span>Awards Gained</span>
+                </div>
             </li>
+
             <li class="home-hero__info-item">
-                <span class="home-hero__info-icon">🏢</span>
-                <span>
-                    <b>725+</b><br />
-                    Property Build
-                </span>
+                <div class="home-hero__info-icon">
+                    <img src="../assets/images/home/build.svg" alt="Building Icon" />
+                </div>
+                <div class="home-hero__info-text">
+                    <b>725+</b>
+                    <span>Property Build</span>
+                </div>
             </li>
         </ul>
     </div>
@@ -77,10 +85,10 @@
             </select>
         </div>
         <div class="home-search__group">
-            <label>City</label>
-            <select title="City">
-                <option>Prambanan</option>
-                <option>Jakarta</option>
+            <label>Duration</label>
+            <select title="Any">
+                <option>1-5 Days</option>
+                <option>6-10 Days</option>
             </select>
         </div>
         <div class="home-search__group">
@@ -117,12 +125,13 @@
                 <h3 class="home-tour-card__title"><a href="#">Cairns Travel</a></h3>
                 <ul class="home-tour-card__meta">
                     <li class="home-tour-card__meta-item">📍 Cairns QLD, Australia</li>
-                    <li class="home-tour-card__meta-item">🗓 Oct 25, 2023</li>
                     <li class="home-tour-card__meta-item">⏱ 6 Days</li>
                 </ul>
+                <a href="#tour-details" class="home-tour-card__btn">Book Now</a>
             </div>
         </article>
 
+        <!-- Các thẻ khác giữ nguyên, chỉ thêm nút tương tự -->
         <article class="home-tour-card">
             <a href="#tour-details" class="home-tour-card__media">
                 <img data-src="../assets/images/home/pexels-amine-m'siouri-2245436 1.svg" alt="Cairns Travel" />
@@ -132,9 +141,9 @@
                 <h3 class="home-tour-card__title"><a href="#">Cairns Travel</a></h3>
                 <ul class="home-tour-card__meta">
                     <li class="home-tour-card__meta-item">📍 Cairns QLD, Australia</li>
-                    <li class="home-tour-card__meta-item">🗓 Oct 25, 2023</li>
                     <li class="home-tour-card__meta-item">⏱ 6 Days</li>
                 </ul>
+                <a href="#tour-details" class="home-tour-card__btn">Book Now</a>
             </div>
         </article>
 
@@ -147,9 +156,9 @@
                 <h3 class="home-tour-card__title"><a href="#">Orlando Travel</a></h3>
                 <ul class="home-tour-card__meta">
                     <li class="home-tour-card__meta-item">📍 Orlando, U.S.</li>
-                    <li class="home-tour-card__meta-item">🗓 Jul 20, 2023</li>
                     <li class="home-tour-card__meta-item">⏱ 3 Days</li>
                 </ul>
+                <a href="#tour-details" class="home-tour-card__btn">Book Now</a>
             </div>
         </article>
 
@@ -162,9 +171,9 @@
                 <h3 class="home-tour-card__title"><a href="#">Malaysia</a></h3>
                 <ul class="home-tour-card__meta">
                     <li class="home-tour-card__meta-item">📍 Malaysia</li>
-                    <li class="home-tour-card__meta-item">🗓 Aug 14, 2023</li>
                     <li class="home-tour-card__meta-item">⏱ 5 Days</li>
                 </ul>
+                <a href="#tour-details" class="home-tour-card__btn">Book Now</a>
             </div>
         </article>
     </div>
@@ -185,110 +194,95 @@
 
 <!-- 7. Travel Vlogs / Reels -->
 <section class="travel-vlogs lazy-load">
-  <div class="des-container">
-    <h2 class="section-title">Travel Vlogs & Reels</h2>
+    <div class="des-container">
+        <h2 class="section-title">Travel Vlogs & Reels</h2>
 
-    <div class="vlog-slider">
-      <button class="slide-vlog-btn prev">&#10094;</button>
+        <div class="vlog-slider">
+            <button class="slide-vlog-btn prev">&#10094;</button>
 
-      <div class="vlog-window">
-        <div class="vlog-track">
-          <div class="vlog-item">
-            <video
-              src="../assets/images/destinations/blogs/3002391-hd_1920_1080_25fps.mp4"
-              muted
-              autoplay
-              loop
-            ></video>
-            <div class="vlog-overlay">
-              <h3>Beautiful Beach Escape</h3>
-              <p>
-                Discover pristine beaches and turquoise waters in this relaxing
-                vlog.
-              </p>
+            <div class="vlog-window">
+                <div class="vlog-track">
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3002391-hd_1920_1080_25fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>Beautiful Beach Escape</h3>
+                            <p>Discover pristine beaches and turquoise waters in this relaxing vlog.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3018542-hd_1920_1080_24fps.mp4"
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>Mountain Adventure</h3>
+                            <p>Experience thrilling mountain hikes and breathtaking views.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3018669-hd_1920_1080_24fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>City Life Highlights</h3>
+                            <p>Explore bustling city streets, iconic landmarks, and night vibes.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3064204-hd_1920_1080_24fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>City Life Highlights</h3>
+                            <p>Explore bustling city streets, iconic landmarks, and night vibes.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3141319-uhd_3840_2160_25fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>Beautiful Beach Escape</h3>
+                            <p>Discover pristine beaches and turquoise waters in this relaxing vlog.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3192303-uhd_3840_2160_25fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>Beautiful Beach Escape</h3>
+                            <p>Discover pristine beaches and turquoise waters in this relaxing vlog.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="vlog-item">
-            <video
-              src="../assets/images/destinations/blogs/3018542-hd_1920_1080_24fps.mp4"
-              autoplay
-              loop
-            ></video>
-            <div class="vlog-overlay">
-              <h3>Mountain Adventure</h3>
-              <p>Experience thrilling mountain hikes and breathtaking views.</p>
-            </div>
-          </div>
-          <div class="vlog-item">
-            <video
-              src="../assets/images/destinations/blogs/3018669-hd_1920_1080_24fps.mp4"
-              muted
-              autoplay
-              loop
-            ></video>
-            <div class="vlog-overlay">
-              <h3>City Life Highlights</h3>
-              <p>
-                Explore bustling city streets, iconic landmarks, and night
-                vibes.
-              </p>
-            </div>
-          </div>
-          <div class="vlog-item">
-            <video
-              src="../assets/images/destinations/blogs/3064204-hd_1920_1080_24fps.mp4"
-              muted
-              autoplay
-              loop
-            ></video>
-            <div class="vlog-overlay">
-              <h3>City Life Highlights</h3>
-              <p>
-                Explore bustling city streets, iconic landmarks, and night
-                vibes.
-              </p>
-            </div>
-          </div>
-          <div class="vlog-item">
-            <video
-              src="../assets/images/destinations/blogs/3141319-uhd_3840_2160_25fps.mp4"
-              muted
-              autoplay
-              loop
-            ></video>
-            <div class="vlog-overlay">
-              <h3>Beautiful Beach Escape</h3>
-              <p>
-                Discover pristine beaches and turquoise waters in this relaxing
-                vlog.
-              </p>
-            </div>
-          </div>
-          <div class="vlog-item">
-            <video
-              src="../assets/images/destinations/blogs/3192303-uhd_3840_2160_25fps.mp4"
-              muted
-              autoplay
-              loop
-            ></video>
-            <div class="vlog-overlay">
-              <h3>Beautiful Beach Escape</h3>
-              <p>
-                Discover pristine beaches and turquoise waters in this relaxing
-                vlog.
-              </p>
-            </div>
-          </div>
+
+            <button class="slide-vlog-btn next">&#10095;</button>
         </div>
-      </div>
 
-      <button class="slide-vlog-btn next">&#10095;</button>
-    </div>
-
-    <!-- <div class="view-all-container">
+        <!-- <div class="view-all-container">
       <button class="view-all-btn">View All</button>
     </div> -->
-  </div>
+    </div>
 </section>
 
 <!-- Top Destination Section -->
@@ -435,95 +429,95 @@
 </section>
 
 <section class="home-testimonial lazy-load">
-  <div class="home-testimonial__container">
-    <div class="home-testimonial__image">
-      <img src="../assets/images/home/Girl Images.png" alt="Happy traveler" />
-    </div>
-
-    <div class="home-testimonial__content">
-      <h2 class="home-testimonial__title">What our user say</h2>
-      <p class="home-testimonial__quote">
-        “Adding live social proof was the #1 driver of increased revenue in all my experiments while at Airkey.”
-        and the brand must survive at least 1 year.
-      </p>
-
-      <div class="home-testimonial__author">
-        <img src="../assets/images/home/raul van.png" alt="User avatar" class="home-testimonial__avatar" />
-        <div>
-          <h4 class="home-testimonial__name">Raul van Sutoyo</h4>
-          <p class="home-testimonial__role">UI Designer</p>
-          <div class="home-testimonial__stars">★★★★★</div>
+    <div class="home-testimonial__container">
+        <div class="home-testimonial__image">
+            <img src="../assets/images/home/Girl Images.png" alt="Happy traveler" />
         </div>
-      </div>
+
+        <div class="home-testimonial__content">
+            <h2 class="home-testimonial__title">What our user say</h2>
+            <p class="home-testimonial__quote">
+                “Adding live social proof was the #1 driver of increased revenue in all my experiments while at Airkey.”
+                and the brand must survive at least 1 year.
+            </p>
+
+            <div class="home-testimonial__author">
+                <img src="../assets/images/home/raul van.png" alt="User avatar" class="home-testimonial__avatar" />
+                <div>
+                    <h4 class="home-testimonial__name">Raul van Sutoyo</h4>
+                    <p class="home-testimonial__role">UI Designer</p>
+                    <div class="home-testimonial__stars">★★★★★</div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- Articles section -->
 
 <section class="home-articles lazy-load">
-  <div class="home-articles__header">
-    <h2 class="home-articles__title">Articles & Travel Guidings</h2>
-    <p class="home-articles__subtitle">
-      Travel has helped us to understand the meaning of life and it has helped us become better people. 
-      Each time we travel, we see the world with new eyes.
-    </p>
-    <div class="home-articles__divider"></div>
-  </div>
-
-  <div class="home-articles__content">
-    <!-- Bài viết lớn bên trái -->
-    <div class="home-articles__main">
-      <img src="../assets/images/home/main_pic.jpg" alt="Hot air balloons" class="home-articles__main-img" />
-      <div class="home-articles__main-text">
-       <div class="home-articles__main-info">
-        <h3 class="home-articles__main-title">
-        The real voyage does not consist in seeking new
-        </h3>
-        <p class="home-articles__main-desc">
-        Excited him now natural saw passage offices you minuter. By at asked being court hopes.
+    <div class="home-articles__header">
+        <h2 class="home-articles__title">Articles & Travel Guidings</h2>
+        <p class="home-articles__subtitle">
+            Travel has helped us to understand the meaning of life and it has helped us become better people. Each time
+            we travel, we see the world with new eyes.
         </p>
-        </div>
-        <span class="home-articles__date">Jun 1, 2021</span>
-      </div>
+        <div class="home-articles__divider"></div>
     </div>
 
-    <!-- Danh sách bài viết nhỏ bên phải -->
-    <div class="home-articles__list">
-      <article class="home-articles__item">
-        <img src="../assets/images/home/first_pic.jpg" alt="Desert dunes" class="home-articles__item-img" />
-        <div class="home-articles__item-content">
-          <h4 class="home-articles__item-title">Mountains is always right destination.</h4>
-          <p class="home-articles__item-desc">
-            Farther so friends am to detract forbade
-          </p>
-          <span class="home-articles__date">Jun 1, 2021</span>
+    <div class="home-articles__content">
+        <!-- Bài viết lớn bên trái -->
+        <div class="home-articles__main">
+            <img src="../assets/images/home/main_pic.jpg" alt="Hot air balloons" class="home-articles__main-img" />
+            <div class="home-articles__main-text">
+                <div class="home-articles__main-info">
+                    <h3 class="home-articles__main-title">The real voyage does not consist in seeking new</h3>
+                    <p class="home-articles__main-desc">
+                        Excited him now natural saw passage offices you minuter. By at asked being court hopes.
+                    </p>
+                </div>
+                <span class="home-articles__date">Jun 1, 2021</span>
+            </div>
         </div>
-      </article>
 
-      <article class="home-articles__item">
-        <img src="../assets/images/home/second_pic.png" alt="Tent in mountains" class="home-articles__item-img" />
-        <div class="home-articles__item-content">
-          <h4 class="home-articles__item-title">Here Our’s Life is either a daring adventure.</h4>
-          <p class="home-articles__item-desc">
-            One of the programs is Save Our Have personally.
-          </p>
-          <span class="home-articles__date">Jun 1, 2021</span>
-        </div>
-      </article>
+        <!-- Danh sách bài viết nhỏ bên phải -->
+        <div class="home-articles__list">
+            <article class="home-articles__item">
+                <img src="../assets/images/home/first_pic.jpg" alt="Desert dunes" class="home-articles__item-img" />
+                <div class="home-articles__item-content">
+                    <h4 class="home-articles__item-title">Mountains is always right destination.</h4>
+                    <p class="home-articles__item-desc">Farther so friends am to detract forbade</p>
+                    <span class="home-articles__date">Jun 1, 2021</span>
+                </div>
+            </article>
 
-      <article class="home-articles__item">
-        <img src="../assets/images/home/third_pic.png" alt="Motorbike adventure" class="home-articles__item-img" />
-        <div class="home-articles__item-content">
-          <h4 class="home-articles__item-title">Here Our’s Life is either a daring adventure.</h4>
-          <p class="home-articles__item-desc">
-            Life is either a daring adventure or it’s nothing.
-          </p>
-          <span class="home-articles__date">Jun 1, 2021</span>
+            <article class="home-articles__item">
+                <img
+                    src="../assets/images/home/second_pic.png"
+                    alt="Tent in mountains"
+                    class="home-articles__item-img"
+                />
+                <div class="home-articles__item-content">
+                    <h4 class="home-articles__item-title">Here Our’s Life is either a daring adventure.</h4>
+                    <p class="home-articles__item-desc">One of the programs is Save Our Have personally.</p>
+                    <span class="home-articles__date">Jun 1, 2021</span>
+                </div>
+            </article>
+
+            <article class="home-articles__item">
+                <img
+                    src="../assets/images/home/third_pic.png"
+                    alt="Motorbike adventure"
+                    class="home-articles__item-img"
+                />
+                <div class="home-articles__item-content">
+                    <h4 class="home-articles__item-title">Here Our’s Life is either a daring adventure.</h4>
+                    <p class="home-articles__item-desc">Life is either a daring adventure or it’s nothing.</p>
+                    <span class="home-articles__date">Jun 1, 2021</span>
+                </div>
+            </article>
         </div>
-      </article>
     </div>
-  </div>
 </section>
 
 <!-- Newsletter Section -->
