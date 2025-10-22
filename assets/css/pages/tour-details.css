@@ -144,7 +144,7 @@
     font-weight: bold;
     font-size: var(--name-fontSize);
     color: var(--button-orange-bg-color);
-    min-width: 150px;
+    min-width: 188px;
 }
 
 .tour-details-list__item .value {
