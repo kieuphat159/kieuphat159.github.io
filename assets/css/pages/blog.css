@@ -1,19 +1,7 @@
 /* ==========================================================================
    CSS VARIABLES & BASIC SETUP
    ========================================================================== */
-:root {
-        --brand-orange: #ff7b29;
-        --brand-orange-hover: #e66a1f;
-        --text-primary: #2d3134;
-        --text-secondary: #676a6c;
-        --card-bg: #ffffff;
-        --page-bg: #faf8ed;
-        --border-color: #e6e8ea;
-        --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-        --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
-        --font-body: "Inter", system-ui, sans-serif;
-        --font-heading: "Poppins", "Segoe UI", Arial, sans-serif;
-}
+/* Note: All color variables are now centralized in style.css */
 
 /* --- CSS Reset & Global Styles --- */
 *,
@@ -23,10 +11,10 @@
 }
 
 body {
-        font-family: var(--font-body);
+        font-family: var(--font-primary);
         margin: 0;
-        background-color: var(--page-bg);
-        color: var(--text-primary);
+        background-color: var(--color-bg-primary);
+        color: var(--color-text-primary);
         line-height: 1.6;
 }
 
@@ -79,8 +67,8 @@ ul {
 .des-banner__title {
         font-family: var(--font-heading);
         font-size: clamp(3rem, 7vw, 5rem);
-        font-weight: 700;
-        color: var(--brand-orange);
+        font-weight: var(--font-weight-bold);
+        color: var(--color-primary);
         margin-bottom: 1rem;
         text-transform: uppercase;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -150,9 +138,9 @@ ul {
 
 /* --- Blog Card --- */
 .blog-card {
-        background-color: var(--card-bg);
-        border-radius: 16px;
-        box-shadow: var(--card-shadow);
+        background-color: var(--blog-card-bg);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--blog-card-shadow);
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -160,7 +148,7 @@ ul {
 }
 .blog-card:hover {
         transform: translateY(-8px);
-        box-shadow: var(--card-shadow-hover);
+        box-shadow: var(--blog-card-shadow-hover);
 }
 .blog-card__image-link {
         display: block;
@@ -180,12 +168,12 @@ ul {
         position: absolute;
         top: 15px;
         left: 15px;
-        background-color: var(--brand-orange);
-        color: #fff;
+        background-color: var(--blog-tag-bg);
+        color: var(--blog-tag-text);
         padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
+        border-radius: var(--radius-full);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-semibold);
         text-transform: uppercase;
 }
 .blog-card__content {
@@ -203,17 +191,17 @@ ul {
         flex-grow: 1;
 }
 .blog-card__title a:hover {
-        color: var(--brand-orange);
+        color: var(--color-primary);
 }
 .blog-card__footer {
         margin-top: auto;
         padding-top: 15px;
-        border-top: 1px solid var(--border-color);
+        border-top: 1px solid var(--color-border-primary);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 0.85rem;
-        color: var(--text-secondary);
+        font-size: var(--font-size-sm);
+        color: var(--color-text-secondary);
 }
 .blog-card__author {
         display: flex;
@@ -234,10 +222,10 @@ ul {
         gap: 30px;
 }
 .sidebar-widget {
-        background-color: var(--card-bg);
+        background-color: var(--blog-card-bg);
         padding: 25px;
-        border-radius: 12px;
-        box-shadow: var(--card-shadow);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--blog-card-shadow);
 }
 .sidebar-widget__title {
         font-family: var(--font-heading);
@@ -245,12 +233,12 @@ ul {
         font-weight: 600;
         margin: 0 0 20px;
         padding-bottom: 10px;
-        border-bottom: 2px solid var(--border-color);
+        border-bottom: 2px solid var(--color-border-primary);
 }
 .sidebar-widget__search-form {
         display: flex;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
+        border: 1px solid var(--color-border-primary);
+        border-radius: var(--radius-md);
         overflow: hidden;
 }
 .sidebar-widget__search-input {
@@ -262,14 +250,14 @@ ul {
 }
 .sidebar-widget__search-form button {
         border: none;
-        background-color: var(--brand-orange);
-        color: #fff;
+        background-color: var(--color-primary);
+        color: var(--color-text-inverse);
         padding: 0 15px;
         cursor: pointer;
         transition: background-color 0.3s ease;
 }
 .sidebar-widget__search-form button:hover {
-        background-color: var(--brand-orange-hover);
+        background-color: var(--color-primary-hover);
 }
 
 .sidebar-widget__tag-list {
@@ -281,22 +269,22 @@ ul {
         gap: 10px;
 }
 .sidebar-widget__tag-list a {
-        background-color: #f1f3f5;
-        color: var(--text-secondary);
+        background-color: var(--color-bg-tertiary);
+        color: var(--color-text-secondary);
         padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
+        border-radius: var(--radius-full);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-medium);
         transition: all 0.3s ease;
 }
 .sidebar-widget__tag-list a:hover {
-        background-color: var(--brand-orange-hover);
-        color: #fff;
+        background-color: var(--color-primary-hover);
+        color: var(--color-text-inverse);
 }
 .sidebar-widget__tag-list a.active {
-        background-color: var(--brand-orange);
-        color: #fff;
-        font-weight: 600;
+        background-color: var(--color-primary);
+        color: var(--color-text-inverse);
+        font-weight: var(--font-weight-semibold);
 }
 
 .sidebar-widget__featured-post a,
@@ -317,7 +305,7 @@ ul {
         margin: 0;
 }
 .sidebar-widget__featured-post a:hover h4 {
-        color: var(--brand-orange);
+        color: var(--color-primary);
 }
 
 .sidebar-widget__recent-posts {
@@ -344,7 +332,7 @@ ul {
         line-height: 1.5;
 }
 .sidebar-widget__recent-post-item a:hover h5 {
-        color: var(--brand-orange);
+        color: var(--color-primary);
 }
 
 .sidebar-widget__social-links {
@@ -357,14 +345,14 @@ ul {
         align-items: center;
         width: 40px;
         height: 40px;
-        border-radius: 50%;
-        background-color: #f1f3f5;
-        color: var(--text-secondary);
-        font-size: 1rem;
+        border-radius: var(--radius-full);
+        background-color: var(--color-bg-tertiary);
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-base);
 }
 .sidebar-widget__social-links a:hover {
-        background-color: var(--brand-orange);
-        color: #fff;
+        background-color: var(--color-primary);
+        color: var(--color-text-inverse);
 }
 
 /* --- Pagination --- */
@@ -388,26 +376,27 @@ ul {
         align-items: center;
         width: 40px;
         height: 40px;
-        border-radius: 8px;
+        border-radius: var(--radius-md);
         text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 600;
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-semibold);
         transition: all 0.3s ease;
-        color: var(--text-secondary);
-        border: 1px solid var(--border-color);
+        color: var(--pagination-text);
+        border: 1px solid var(--pagination-border);
+        background-color: var(--pagination-bg);
 }
 
 .pagination a:hover {
-        background-color: var(--brand-orange-hover);
-        color: var(--card-bg);
-        border-color: var(--brand-orange-hover);
+        background-color: var(--color-primary-hover);
+        color: var(--color-text-inverse);
+        border-color: var(--color-primary-hover);
 }
 
 .pagination a.active {
-        background-color: var(--brand-orange);
-        color: var(--card-bg);
-        border-color: var(--brand-orange);
-        box-shadow: 0 4px 10px rgba(255, 123, 41, 0.3);
+        background-color: var(--pagination-bg-active);
+        color: var(--pagination-text-active);
+        border-color: var(--pagination-bg-active);
+        box-shadow: var(--color-shadow-primary);
 }
 
 .pagination a.disabled {
@@ -418,9 +407,9 @@ ul {
 
 /* --- Skeleton Loading --- */
 .skeleton-card {
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        box-shadow: var(--card-shadow);
+        background-color: var(--blog-card-bg);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--blog-card-shadow);
         overflow: hidden;
 }
 .skeleton {
@@ -454,7 +443,7 @@ ul {
 .skeleton-footer {
         margin-top: 20px;
         padding-top: 15px;
-        border-top: 1px solid var(--border-color);
+        border-top: 1px solid var(--color-border-primary);
         display: flex;
         align-items: center;
         gap: 10px;
@@ -472,6 +461,6 @@ ul {
         grid-column: 1 / -1;
         text-align: center;
         padding: 50px 20px;
-        background-color: var(--card-bg);
-        border-radius: 12px;
+        background-color: var(--blog-card-bg);
+        border-radius: var(--radius-lg);
 }

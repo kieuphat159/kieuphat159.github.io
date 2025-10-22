@@ -25,7 +25,7 @@
         font-size: var(--thumbnail-fontSize);
         font-weight: 700;
         text-align: center;
-        color: var(--hero-gradient-orange-end);
+        color: var(--color-primary);
         animation: fadeInUp 1s ease-out 0.3s both;
 }
 
@@ -40,15 +40,15 @@
 /* --- Cột thông tin bên trái --- */
 .contact-info__left {
         padding: 80px;
-        background: var(--button-black-bg-color, #132742); /* Sử dụng màu nền tối */
-        color: rgba(255, 255, 255, 0.8);
+        background: var(--color-accent); /* Sử dụng màu nền tối */
+        color: var(--color-text-inverse);
         display: flex;
         flex-direction: column;
         justify-content: center;
 }
 
 .contact-info__left h2 {
-        color: #fff;
+        color: var(--color-text-inverse);
         margin-top: 0;
         font-family: var(--font-heading);
 }
@@ -73,7 +73,7 @@
 
 .contact-details-list i {
         font-size: 1.2rem;
-        color: var(--brand-orange, #ff6b35);
+        color: var(--color-primary);
         margin-top: 5px;
         width: 20px;
         text-align: center;
@@ -85,20 +85,20 @@
 }
 
 .contact-detail-text strong {
-        color: #fff;
+        color: var(--color-text-inverse);
         font-weight: 600;
         margin-bottom: 5px;
         font-family: var(--font-heading);
 }
 
 .contact-detail-text a {
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--color-text-inverse);
         text-decoration: none;
         transition: color 0.3s;
 }
 
 .contact-detail-text a:hover {
-        color: var(--brand-orange, #ff6b35);
+        color: var(--color-primary);
 }
 
 .social-links {
@@ -110,7 +110,7 @@
 }
 
 .social-links a {
-        color: #fff;
+        color: var(--color-text-inverse);
         font-size: 1rem;
         border: 1px solid rgba(255, 255, 255, 0.3);
         width: 40px;
@@ -124,8 +124,8 @@
 }
 
 .social-links a:hover {
-        background-color: var(--brand-orange, #ff6b35);
-        border-color: var(--brand-orange, #ff6b35);
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
 }
 /* --- Cột form bên phải --- */
 .contact-form__title {
@@ -148,19 +148,19 @@
         padding: 15px;
         font-size: 1rem;
         font-family: inherit;
-        color: var(--text-primary, #2d3134);
+        color: var(--color-text-primary);
 
-        border: 1px solid var(--border-color, #e0e0e0);
+        border: 1px solid var(--color-border-primary);
         border-radius: 8px;
 
         outline: none;
-        background-color: var(--card-bg, #ffffff);
+        background-color: var(--color-card-bg);
         transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 /* Hiệu ứng khi focus vào ô input */
 .form-input:focus {
-        border-color: var(--brand-orange, #ff6b35);
+        border-color: var(--color-primary);
         box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
 }
 
@@ -169,7 +169,7 @@
         top: 15px;
         left: 15px;
         font-size: 1rem;
-        color: var(--text-description, #676a6c);
+        color: var(--color-text-secondary);
         pointer-events: none;
         transition: all 0.3s ease;
 }
@@ -179,10 +179,10 @@
         top: -10px;
         left: 10px;
         font-size: 0.8rem;
-        color: var(--brand-orange, #ff6b35);
+        color: var(--color-primary);
 
         /* Thêm nền để chữ không bị đè lên viền */
-        background-color: var(--card-bg, #ffffff);
+        background-color: var(--color-card-bg);
         padding: 0 5px;
 }
 
@@ -193,7 +193,7 @@ textarea.form-input {
 
 .contact-btn {
         padding: 12px 30px;
-        background-color: var(--brand-orange, #ff6b35);
+        background-color: var(--color-primary);
         color: white;
         border: none;
         border-radius: 8px;

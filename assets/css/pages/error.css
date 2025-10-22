@@ -78,7 +78,7 @@ body {
     font-size: var(--error-title-fontSize);
     font-weight: 500;
     /* Sử dụng biến màu từ file style.css */
-    color: var(--text-description);
+    color: var(--color-text-secondary);
     margin-bottom: 5px;
 }
 
@@ -86,7 +86,7 @@ body {
     font-size: var(--error-subtitle-fontSize);
     font-weight: 700;
     /* Sử dụng biến màu từ file style.css */
-    color: var(--text-primary);
+    color: var(--color-text-primary);
 }
 
 
