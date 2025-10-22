@@ -3,29 +3,10 @@
     <h1 class="destination-detail-hero__title">A Life Changing Journey</h1>
     <p class="destination-detail-hero__subtitle">14 Days Pilgrimage & Leisure</p>
   </div>
-  <!-- filter -->
-  <div class="destination-detail-filter">
-      <div class="destination-detail-filter__tabs" role="tablist" aria-label="Filter categories">
-        <button class="destination-detail-filter__tab" role="tab" aria-selected="false" aria-label="Filter by pilgrimage">PILGRIMAGE</button>
-        <button class="destination-detail-filter__tab" role="tab" aria-selected="false" aria-label="Filter by travel">TRAVEL</button>
-        <button class="destination-detail-filter__tab" role="tab" aria-selected="false" aria-label="Filter by tours">TOURS</button>
-      </div>
-      <div class="destination-detail-filter__form" role="search" aria-label="Search form">
-      <input type="text" placeholder="Departure City" class="destination-detail-filter__input" aria-label="Enter departure city" />
-      <input type="text" placeholder="Destination" class="destination-detail-filter__input" aria-label="Enter destination" />
-      <input type="date" placeholder="Departure Date" class="destination-detail-filter__input" aria-label="Select departure date" />
-      <input type="date" placeholder="Return Date" class="destination-detail-filter__input" aria-label="Select return date" />
-      <select class="destination-detail-filter__input" aria-label="Select traveller count and class">
-        <option>Traveller & Class</option>
-        <option>1 Adult, Economy</option>
-        <option>2 Adults, Business</option>
-      </select>
-    </div>
-    </div>
-  </div>
-  <!-- popular destinations -->
+
+  <!-- popular tours -->
   <div class="destination-detail-popular">
-    <h2 class="destination-detail-popular__title">Popular Destinations</h2>
+    <h2 class="destination-detail-popular__title">Popular Tours</h2>
     <div class="destination-detail-popular__container" role="list" aria-label="Popular destinations">
       <div class="destination-detail-card" role="listitem">
         <img data-src="../assets/images/destination-detail/card1.jpg" alt="Saint Catherine's Monastery in South Sinai, Egypt" class="destination-detail-card__img" width="230" height="212" />
@@ -104,6 +85,16 @@
     class="destination-detail-ready__background"
     loading="lazy"
   />
+
+  <!-- Video element preloaded behind the image -->
+  <video
+    class="destination-detail-ready__video"
+    preload="auto"
+    controls
+  >
+    <source src="../assets/images/destination-detail/getready.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <div class="destination-detail-ready__overlay">
     <div class="destination-detail-ready__path">
@@ -251,75 +242,6 @@
           <button class="destination-detail-pilgrimages__btn" aria-label="View details for Marian Shrine of Portugal pilgrimage">View Details</button>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Gallery -->
-<section class="destination-detail-gallery">
-  <div class="destination-detail-gallery__content">
-    <div class="destination-detail-gallery__left">
-      <img
-        data-src="../assets/images/destination-detail/gallery-main.jpg"
-        alt="Main gallery image showcasing pilgrimage destination"
-        class="destination-detail-gallery__main-image"
-        loading="lazy"
-      />
-    </div>
-
-    <div class="destination-detail-gallery__right">
-      <img src="../assets/images/destination-detail/gallery-1.jpg" alt="Gallery image 1" class="destination-detail-gallery__thumb" loading="lazy" />
-      <img src="../assets/images/destination-detail/gallery-2.jpg" alt="Gallery image 2" class="destination-detail-gallery__thumb" loading="lazy" />
-      <img src="../assets/images/destination-detail/gallery-3.jpg" alt="Gallery image 3" class="destination-detail-gallery__thumb" loading="lazy" />
-      <img src="../assets/images/destination-detail/gallery-4.jpg" alt="Gallery image 4" class="destination-detail-gallery__thumb" loading="lazy" />
-    </div>
-  </div>
-
-  <div class="destination-detail-gallery__info">
-    <div class="destination-detail-gallery__status">
-      <span class="destination-detail-gallery__badge">Available</span>
-      <span class="destination-detail-gallery__days">14 Days</span>
-    </div>
-    <div class="destination-detail-gallery__price">
-      <strong>3,148$</strong><small>/Person</small>
-    </div>
-  </div>
-
-  <!-- Itinerary -->
-  <div class="destination-detail-itinerary">
-    <div class="destination-detail-itinerary__header">
-      <div class="destination-detail-itinerary__date">14 FEB 2023</div>
-      <h2 class="destination-detail-itinerary__title">A Life Changing Journey</h2>
-      <p class="destination-detail-itinerary__countries">Egypt • Israel • Jordan</p>
-      <p class="destination-detail-itinerary__subtitle">
-        14 Days Pilgrimage and Leisure to the Holy Land
-      </p>
-    </div>
-
-    <div class="destination-detail-itinerary__list">
-      <div class="destination-detail-itinerary__list-header">
-        <h3>The Itinerary</h3>
-        <span>Feb 14–28, 2023</span>
-      </div>
-
-      <ul class="destination-detail-itinerary__days">
-        <li><strong>Day 1</strong> Manila, Philippines - Cairo, Egypt</li>
-        <li><strong>Day 2</strong> Cairo, Egypt</li>
-        <li><strong>Day 3</strong> Saint Catherine's Monastery</li>
-        <li><strong>Day 4</strong> Taba Border Crossing - Bethlehem</li>
-        <li><strong>Day 5</strong> Jerusalem</li>
-        <li><strong>Day 6</strong> Jerusalem</li>
-        <li><strong>Day 7</strong> Jericho - Dead Sea</li>
-        <li><strong>Day 8</strong> Jaffa - Haifa - Tiberias</li>
-        <li><strong>Day 9</strong> Nazareth - Cana - Mt. Tabor</li>
-        <li><strong>Day 10</strong> Sea of Galilee</li>
-        <li><strong>Day 11</strong> Tiberias - Sheik Hussein Border Crossing - Mt. Nebo</li>
-        <li><strong>Day 12</strong> Amman - Petra Excursion</li>
-        <li><strong>Day 13</strong> Amman - Madaba - Departure</li>
-        <li><strong>Day 14</strong> Manila</li>
-      </ul>
-
-      <button class="destination-detail-itinerary__button" aria-label="Join this pilgrimage journey">Join Now</button>
     </div>
   </div>
 </section>

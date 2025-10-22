@@ -203,8 +203,52 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Video play functionality - Initialize immediately (no DOMContentLoaded needed since script loads after HTML)
+function initVideoPlayer() {
+    const playBtn = document.querySelector('.destination-detail-ready__play-btn');
+    const videoSection = document.querySelector('.destination-detail-ready');
+    const video = document.querySelector('.destination-detail-ready__video');
+    
+    console.log('Initializing video player...', { playBtn, video, videoSection }); // Debug log
+    
+    if (playBtn && video && videoSection) {
+        // Click play button to show and play video
+        playBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Play button clicked!'); // Debug log
+            videoSection.classList.add('video-active');
+            video.play();
+            playBtn.style.display = 'none';
+        });
+        
+        // Hide video when it ends
+        video.addEventListener('ended', function() {
+            console.log('Video ended'); // Debug log
+            videoSection.classList.remove('video-active');
+            playBtn.style.display = 'flex';
+        });
+        
+        // Also hide video if user pauses it
+        video.addEventListener('pause', function() {
+            if (!video.ended) {
+                // Optional: keep video visible when paused, or hide it
+                // Uncomment below to hide on pause
+                // videoSection.classList.remove('video-active');
+                // playBtn.style.display = 'flex';
+            }
+        });
+        
+        console.log('Video player initialized successfully!'); // Debug log
+    } else {
+        console.error('Video player initialization failed - missing elements'); // Debug log
+    }
+}
+
+// Initialize video player
+setTimeout(initVideoPlayer, 100);
+
 // Add hover effect to filter tabs
-document.addEventListener('DOMContentLoaded', () => {
+(function() {
     const tabs = document.querySelectorAll('.destination-detail-filter__tab');
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
@@ -237,4 +281,4 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => ripple.remove(), 600);
         });
     });
-});
+})();

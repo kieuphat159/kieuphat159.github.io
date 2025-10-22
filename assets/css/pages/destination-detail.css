@@ -232,94 +232,8 @@ html {
   animation: fadeInUp 1s ease-out 0.3s both;
 }
 
-.destination-detail-filter {
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  max-width: 1000px;
-  background-color: transparent;
-  margin-top: 50px;
-  /* Filter visible in hero - no animation needed */
-}
-
-/* Tabs */
-.destination-detail-filter__tabs {
-  display: flex;
-  justify-content: center;
-  background: #10559C;
-  width: 305px;
-  height: 34px;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 0 2px 8px rgba(16, 85, 156, 0.2);
-}
-
-.destination-detail-filter__tab {
-  z-index: 2;
-  background: transparent;
-  border: none;
-  font-weight: 300;
-  padding: 0.5rem 1.25rem;
-  color: #FFFFFF;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  height: 34px;
-  position: relative;
-}
-
-.destination-detail-filter__tab:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
-}
-
-.destination-detail-filter__tab:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
-  outline-offset: 2px;
-}
-
-/* Form inputs */
-.destination-detail-filter__form {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 55px;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.95);
-  opacity: 0.95;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.destination-detail-filter__input {
-  flex: 1 1 180px;
-  padding: 0.75rem 1rem;
-  border: 1px solid #e0e0e0;
-  font-size: 12px;
-  color: #333;
-  text-align: center;
-  transition: all 0.3s ease;
-  background: transparent;
-}
-
-.destination-detail-filter__input:hover {
-  border-color: #10559C;
-  background-color: rgba(16, 85, 156, 0.05);
-}
-
-.destination-detail-filter__input:focus {
-  outline: none;
-  border-color: #10559C;
-  background-color: rgba(16, 85, 156, 0.08);
-  box-shadow: inset 0 0 0 1px #10559C;
-}
-
 /* ========== POPULAR destination-detailS ========== */
 .destination-detail-popular {
-  margin-top: 136px;
   text-align: center;
   padding: 90px 0 161px 0;
   width: 100%;
@@ -741,6 +655,55 @@ img[data-src] {
   height: 100%;
   object-fit: cover;
   filter: brightness(90%);
+  z-index: 0;
+}
+
+/* Preloaded video placed behind the poster image; hidden by default */
+.destination-detail-ready__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none; /* shown when playing */
+  z-index: 1;
+  background: #000;
+}
+
+/* When active, show video and lower poster image opacity */
+.destination-detail-ready.video-active .destination-detail-ready__video {
+  display: block;
+  z-index: 2;
+}
+.destination-detail-ready.video-active .destination-detail-ready__background {
+  opacity: 0; /* hide poster image when video is shown */
+  z-index: 0;
+}
+
+/* Close button to dismiss the video */
+.destination-detail-ready__close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 4;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Play button should be above poster */
+.destination-detail-ready__play-btn {
+  z-index: 3;
 }
 
 /* Overlay content box */
@@ -1080,118 +1043,6 @@ img[data-src] {
 
 .destination-detail-pilgrimages__btn:active {
   transform: translateY(0);
-}
-
-
-/* Gallery */
-.destination-detail-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  box-shadow: 8px 0 15px -8px rgba(0, 0, 0, 0.15),
-              0 8px 15px -8px rgba(0, 0, 0, 0.15); 
-  
-  padding: 20px;
-}
-
-/* Scroll-triggered animation for gallery */
-.destination-detail-gallery.scroll-animate {
-  transform: scale(0.95);
-}
-
-.destination-detail-gallery.scroll-animate.animate-in {
-  transform: scale(1);
-}
-
-/* Khối chứa 2 phần trái phải */
-.destination-detail-gallery__content {
-  display: flex;
-  gap: 10px;
-  align-items: stretch;
-}
-
-/* Bên trái ảnh lớn */
-.destination-detail-gallery__left {
-  flex: 2;
-}
-
-.destination-detail-gallery__main-image {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-  display: block;
-}
-
-/* Hover cho cả image trực tiếp và skeleton-wrapper */
-.destination-detail-gallery__main-image:hover,
-.destination-detail-gallery__main-image.skeleton-wrapper:hover {
-  transform: scale(1.02);
-}
-
-/* Bên phải 4 ảnh nhỏ chia 2 hàng × 2 cột */
-.destination-detail-gallery__right {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
-}
-
-.destination-detail-gallery__thumb {
-  width: calc(50% - 5px);
-  height: 240px;
-  object-fit: cover;
-  border-radius: 6px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  display: block;
-}
-
-/* Hover cho cả thumbnail trực tiếp và skeleton-wrapper */
-.destination-detail-gallery__thumb:hover,
-.destination-detail-gallery__thumb.skeleton-wrapper:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1;
-}
-
-.destination-detail-gallery__info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-}
-
-.destination-detail-gallery__status {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-}
-
-.destination-detail-gallery__badge {
-  background: #e0e7ff;
-  color: #3b3bbf;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-weight: 500;
-}
-
-.destination-detail-gallery__days {
-  color: #666;
-}
-
-.destination-detail-gallery__price {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.destination-detail-gallery__price small {
-  font-size: 13px;
-  color: #999;
 }
 
 .destination-detail-itinerary {
@@ -1708,15 +1559,6 @@ img[data-src] {
     transform: none !important;
   }
 
-  .destination-detail-gallery__content {
-    flex-direction: column;
-  }
-
-  .destination-detail-gallery__left,
-  .destination-detail-gallery__right {
-    width: 100%;
-  }
-
   /* Fix ready overlay to stay within background on tablet */
   .destination-detail-ready {
     padding-bottom: 60%; /* Adjust aspect ratio for tablet */
@@ -1795,45 +1637,6 @@ img[data-src] {
 
   .destination-detail-hero__subtitle {
     font-size: 1rem;
-  }
-
-  /* FILTER */
-  .destination-detail-filter {
-    padding: 0.75rem;
-    width: 95%;
-    margin-top: 30px;
-  }
-
-  .destination-detail-filter__tabs {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    flex-wrap: wrap;
-    padding: 0.25rem;
-    gap: 0.25rem;
-  }
-
-  .destination-detail-filter__tab {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.75rem;
-    height: auto;
-    flex: 1 1 auto;
-    min-width: fit-content;
-  }
-
-  .destination-detail-filter__form {
-    flex-direction: column;
-    gap: 8px;
-    height: auto;
-    padding: 0.75rem;
-  }
-
-  .destination-detail-filter__input {
-    width: 100%;
-    flex: 1 1 auto;
-    padding: 0.65rem;
-    font-size: 0.9rem;
-    text-align: left;
   }
 
   /* POPULAR */
@@ -1976,19 +1779,6 @@ img[data-src] {
     gap: 0.5rem;
   }
 
-  /* GALLERY */
-  .destination-detail-gallery__content {
-    flex-direction: column;
-  }
-
-  .destination-detail-gallery__main-image {
-    height: 300px;
-  }
-
-  .destination-detail-gallery__thumb {
-    height: 150px;
-  }
-
   /* ITINERARY */
   .destination-detail-itinerary__list-header {
     flex-direction: column;
@@ -2076,21 +1866,6 @@ img[data-src] {
 
   .destination-detail-hero__subtitle {
     font-size: 0.9rem;
-  }
-
-  /* FILTER */
-  .destination-detail-filter__tabs {
-    width: 100%;
-  }
-
-  .destination-detail-filter__tab {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.7rem;
-  }
-
-  .destination-detail-filter__input {
-    font-size: 0.85rem;
-    padding: 0.6rem;
   }
 
   /* POPULAR CARDS */
@@ -2199,10 +1974,6 @@ img[data-src] {
     font-size: 1.5rem;
   }
 
-  .destination-detail-filter {
-    max-width: 1200px;
-  }
-
   .destination-detail-popular__container {
     gap: 35px;
   }
@@ -2265,10 +2036,6 @@ img[data-src] {
 
 /* ========== MEDIUM DESKTOP (992px - 1199px) ========== */
 @media (min-width: 992px) and (max-width: 1199px) {
-  .destination-detail-filter {
-    width: 92%;
-  }
-
   .destination-detail-popular__container {
     gap: 18px;
   }
@@ -2297,20 +2064,6 @@ img[data-src] {
   .destination-detail-hero {
     padding-top: 140px;
     padding-bottom: 120px;
-  }
-
-  .destination-detail-filter__tabs {
-    width: 280px;
-  }
-
-  .destination-detail-filter__form {
-    flex-wrap: wrap;
-    height: auto;
-  }
-
-  .destination-detail-filter__input {
-    flex: 1 1 45%;
-    min-width: 150px;
   }
 
   .destination-detail-popular__container {
@@ -2370,14 +2123,6 @@ img[data-src] {
     width: 280px;
   }
 
-  .destination-detail-gallery__main-image {
-    height: 400px;
-  }
-
-  .destination-detail-gallery__thumb {
-    height: 190px;
-  }
-
   .destination-detail-insights__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2396,18 +2141,6 @@ img[data-src] {
 
   .destination-detail-hero__title {
     font-size: 2.2rem;
-  }
-
-  .destination-detail-filter {
-    margin-top: 40px;
-  }
-
-  .destination-detail-filter__tabs {
-    width: 260px;
-  }
-
-  .destination-detail-filter__input {
-    padding: 0.7rem 0.9rem;
   }
 
   .destination-detail-popular {
@@ -2476,9 +2209,6 @@ img[data-src] {
     max-width: 100%;
   }
 
-  .destination-detail-gallery {
-    padding: 15px;
-  }
 
   .destination-detail-itinerary {
     padding: 0 15px;
@@ -2512,26 +2242,6 @@ img[data-src] {
 
   .destination-detail-hero__subtitle {
     font-size: 0.85rem;
-  }
-
-  .destination-detail-filter {
-    padding: 0.8rem;
-    margin-top: 30px;
-  }
-
-  .destination-detail-filter__tabs {
-    width: 240px;
-    height: 32px;
-  }
-
-  .destination-detail-filter__tab {
-    padding: 0.4rem 1rem;
-    font-size: 11px;
-  }
-
-  .destination-detail-filter__input {
-    padding: 0.6rem 0.8rem;
-    font-size: 11px;
   }
 
   .destination-detail-popular {
@@ -2692,8 +2402,6 @@ img[data-src] {
 
   .destination-detail-card__img,
   .destination-detail-pilgrimages__image,
-  .destination-detail-gallery__main-image,
-  .destination-detail-gallery__thumb,
   .destination-detail-insights__image {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
@@ -2702,15 +2410,6 @@ img[data-src] {
 
 /* ========== PRINT STYLES ========== */
 @media print {
-  .destination-detail-filter,
-  .destination-detail-testimonials__nav,
-  .destination-detail-pilgrimages__btn,
-  .destination-detail-insights__load-btn,
-  .destination-detail-ready__play-btn,
-  .btn.btn--primary {
-    display: none;
-  }
-
   .destination-detail-hero,
   .destination-detail-ready,
   .destination-detail-cta {
@@ -2791,12 +2490,6 @@ img[data-src] {
 .destination-detail-ready__background.skeleton-wrapper img {
     object-fit: cover;
     filter: brightness(90%);
-}
-
-/* Giữ display block cho mission và gallery images */
-.destination-detail-mission__img.skeleton-wrapper img,
-.destination-detail-gallery__main-image.skeleton-wrapper img {
-    display: block;
 }
 
 /* Khi đang loading - ẩn image */
@@ -2906,58 +2599,6 @@ img[data-src] {
   transform: scale(1.1);
 }
 
-/* Gallery images - Giữ nguyên kích thước ban đầu */
-.destination-detail-gallery__main-image.skeleton-wrapper,
-.destination-detail-gallery__left .skeleton-wrapper {
-  width: 100%;
-  height: 500px;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-}
-
-.destination-detail-gallery__main-image.skeleton-wrapper img,
-.destination-detail-gallery__left .skeleton-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.3s ease;
-}
-
-/* Hover effect cho main gallery image */
-.destination-detail-gallery__main-image.skeleton-wrapper:hover img,
-.destination-detail-gallery__left .skeleton-wrapper:hover img {
-  transform: scale(1.02);
-}
-
-.destination-detail-gallery__thumb.skeleton-wrapper {
-  width: calc(50% - 5px);
-  height: 240px;
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-}
-
-.destination-detail-gallery__thumb.skeleton-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Hover effect cho gallery thumbnails */
-.destination-detail-gallery__thumb.skeleton-wrapper:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1;
-}
-
 /* Insight cards */
 .destination-detail-insights__card .skeleton-wrapper {
   aspect-ratio: 16 / 10;
@@ -3000,14 +2641,6 @@ img[data-src] {
 
 /* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .destination-detail-gallery__main-image.skeleton-wrapper,
-    .destination-detail-gallery__left .skeleton-wrapper {
-        height: 400px;
-    }
-
-    .destination-detail-gallery__thumb.skeleton-wrapper {
-        height: 190px;
-    }
 }
 
 /* Mobile */
@@ -3015,16 +2648,6 @@ img[data-src] {
     /* Giảm intensity của shimmer trên mobile để tiết kiệm pin */
     .skeleton-wrapper.skeleton-loading::before {
         animation-duration: 2s;
-    }
-
-    /* Điều chỉnh kích thước gallery cho mobile */
-    .destination-detail-gallery__main-image.skeleton-wrapper,
-    .destination-detail-gallery__left .skeleton-wrapper {
-        height: 300px;
-    }
-
-    .destination-detail-gallery__thumb.skeleton-wrapper {
-        height: 150px;
     }
 }
 
