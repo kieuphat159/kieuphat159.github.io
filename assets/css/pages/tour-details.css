@@ -536,6 +536,39 @@
    BOOKING SIDEBAR
    ============================================ */
 
+.tour-details-booking {
+    position: sticky;
+    top: 40px;
+    align-self: flex-start;
+}
+
+.tour-details-booking__card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(180, 160, 100, 0.15);
+    border: 1px solid var(--dest-border-color);
+}
+
+.booking-title {
+    font-size: var(--h3-fontSize);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.booking-subtitle {
+    text-align: center;
+    color: var(--text-description);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   BOOKING SIDEBAR
+============================================ */
 .tour-details-booking__card {
         background: var(--color-bg-primary);
         padding: 2rem;
@@ -563,11 +596,25 @@
 
 /* ============================================
    BOOKING FORM
-   ============================================ */
-
+============================================ */
 .booking-form__group {
         position: relative;
         margin-bottom: 1rem;
+}
+
+.booking-form__field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--bg-primary);
+    border: 2px solid var(--dest-border-color);
+    border-radius: 4px;
+    padding: 0.875rem 1rem;
+}
+
+.booking-form__field--textarea {
+    align-items: flex-start;
 }
 
 .booking-form__icon {
@@ -623,6 +670,7 @@
         transform: translateY(-1px);
 }
 
+/* Nút gửi */
 .booking-form__submit-btn {
         width: 100%;
         padding: 0.875rem;
