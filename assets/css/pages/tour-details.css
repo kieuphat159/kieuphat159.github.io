@@ -462,11 +462,16 @@
    BOOKING SIDEBAR
    ============================================ */
 
+.tour-details-booking {
+    position: sticky;
+    top: 40px;
+    align-self: flex-start;
+}
+
 .tour-details-booking__card {
     background: var(--bg-primary);
     padding: 2rem;
     border-radius: 8px;
-    margin-bottom: 2rem;
     box-shadow: 0 2px 8px rgba(180, 160, 100, 0.15);
     border: 1px solid var(--dest-border-color);
 }
