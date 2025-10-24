@@ -472,6 +472,7 @@
 }
 
 .home-video__overlay h1 {
+        color: #fff;
         font-size: 3rem;
         font-weight: 700;
         margin-bottom: 1rem;
@@ -575,6 +576,7 @@
 }
 
 .vlog-overlay h3 {
+        color: #fff;
         margin: 0;
         font-size: 1.3rem;
         font-weight: 700;
@@ -673,7 +675,6 @@
 }
 .home-destinations__btn {
         background: var(--dest-btn-bg);
-        color: #fff;
         padding: 14px 30px;
         font-size: 0.88rem;
         font-weight: 600;
@@ -756,6 +757,7 @@
         font-size: 0.95rem;
         font-weight: 600;
         letter-spacing: 0.2px;
+        color: #fff;
 }
 .home-destination-card__type {
         font-size: 0.63rem;
@@ -1048,7 +1050,6 @@
         margin: 0;
         font-size: 0.62rem;
         letter-spacing: 0.4px;
-        color: #5d636b;
 }
 .home-tour-type-card__price {
         color: var(--button-orange-bg-color, #ff7b29);
