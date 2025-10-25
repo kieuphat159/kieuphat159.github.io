@@ -7,9 +7,9 @@
             from us.
         </p>
         <div class="home-hero__actions">
-            <a href="#" class="home-hero__btn home-hero__btn--primary">Discover Now</a>
-            <a href="#" class="home-hero__btn home-hero__btn--secondary">
-                <span class="home-hero__btn-icon">&#9654;</span>
+            <a href="#destinations" class="home-hero__btn home-hero__btn--primary">Discover Now</a>
+            <a href="#blog" class="home-hero__btn home-hero__btn--secondary">
+                <img class="home-hero__btn-icon" src="../assets/icons/home/play-video.svg" alt="Play Video" />
                 Learn More
             </a>
         </div>
@@ -18,7 +18,7 @@
     <div class="home-hero__image-group">
         <img src="../assets/images/home/Shapes.svg" alt="" class="home-hero__brush" loading="lazy" aria-hidden="true" />
 
-        <img src="../assets/images/home/Girl.svg" alt="Travel Girl" class="home-hero__image" />
+        <img src="../assets/images/home/Girl.png" alt="Travel Girl" class="home-hero__image" />
 
         <!-- Stat card floating on image -->
         <div class="home-hero__stat-card">
@@ -35,32 +35,40 @@
         <!-- Info list on the right side -->
         <ul class="home-hero__info-list">
             <li class="home-hero__info-item">
-                <span class="home-hero__info-icon">🎉</span>
-                <span>
-                    <b>12</b><br />
-                    Years Experiences
-                </span>
+                <div class="home-hero__info-icon">
+                    <img src="../assets/images/home/exp.svg" alt="Experience Icon" />
+                </div>
+                <div class="home-hero__info-text">
+                    <b>12</b>
+                    <span>Years Experiences</span>
+                </div>
             </li>
+
             <li class="home-hero__info-item">
-                <span class="home-hero__info-icon">🏆</span>
-                <span>
-                    <b>29</b><br />
-                    Awards Gained
-                </span>
+                <div class="home-hero__info-icon">
+                    <img src="../assets/images/home/cup.svg" alt="Award Icon" />
+                </div>
+                <div class="home-hero__info-text">
+                    <b>29</b>
+                    <span>Awards Gained</span>
+                </div>
             </li>
+
             <li class="home-hero__info-item">
-                <span class="home-hero__info-icon">🏢</span>
-                <span>
-                    <b>725+</b><br />
-                    Property Build
-                </span>
+                <div class="home-hero__info-icon">
+                    <img src="../assets/images/home/build.svg" alt="Building Icon" />
+                </div>
+                <div class="home-hero__info-text">
+                    <b>725+</b>
+                    <span>Property Build</span>
+                </div>
             </li>
         </ul>
     </div>
 </section>
 
 <!-- Search Box -->
-<section class="home-search">
+<section class="home-search lazy-load">
     <form class="home-search__form">
         <div class="home-search__group">
             <label>Location</label>
@@ -77,10 +85,10 @@
             </select>
         </div>
         <div class="home-search__group">
-            <label>City</label>
-            <select title="City">
-                <option>Prambanan</option>
-                <option>Jakarta</option>
+            <label>Duration</label>
+            <select title="Any">
+                <option>1-5 Days</option>
+                <option>6-10 Days</option>
             </select>
         </div>
         <div class="home-search__group">
@@ -90,12 +98,12 @@
                 <option>4 Persons</option>
             </select>
         </div>
-        <button class="home-search__btn" type="submit">Search</button>
+        <a href="#tours" class="home-search__btn" type="submit">Search</a>
     </form>
 </section>
 
 <!-- Tour Section -->
-<section class="home-tours">
+<section class="home-tours lazy-load">
     <div class="home-tours__header">
         <div class="home-tours__header-left">
             <h2 class="home-tours__heading">Our Best Tour</h2>
@@ -109,7 +117,7 @@
 
     <div class="home-tours__list">
         <article class="home-tour-card">
-            <a href="#" class="home-tour-card__media">
+            <a href="#tour-details" class="home-tour-card__media">
                 <img data-src="../assets/images/home/pexels-amine-m'siouri-2245436 1.svg" alt="Cairns Travel" />
             </a>
             <div class="home-tour-card__body">
@@ -117,14 +125,15 @@
                 <h3 class="home-tour-card__title"><a href="#">Cairns Travel</a></h3>
                 <ul class="home-tour-card__meta">
                     <li class="home-tour-card__meta-item">📍 Cairns QLD, Australia</li>
-                    <li class="home-tour-card__meta-item">🗓 Oct 25, 2023</li>
                     <li class="home-tour-card__meta-item">⏱ 6 Days</li>
                 </ul>
+                <a href="#tour-details" class="home-tour-card__btn">Book Now</a>
             </div>
         </article>
 
+        <!-- Các thẻ khác giữ nguyên, chỉ thêm nút tương tự -->
         <article class="home-tour-card">
-            <a href="#" class="home-tour-card__media">
+            <a href="#tour-details" class="home-tour-card__media">
                 <img data-src="../assets/images/home/pexels-amine-m'siouri-2245436 1.svg" alt="Cairns Travel" />
             </a>
             <div class="home-tour-card__body">
@@ -132,14 +141,14 @@
                 <h3 class="home-tour-card__title"><a href="#">Cairns Travel</a></h3>
                 <ul class="home-tour-card__meta">
                     <li class="home-tour-card__meta-item">📍 Cairns QLD, Australia</li>
-                    <li class="home-tour-card__meta-item">🗓 Oct 25, 2023</li>
                     <li class="home-tour-card__meta-item">⏱ 6 Days</li>
                 </ul>
+                <a href="#tour-details" class="home-tour-card__btn">Book Now</a>
             </div>
         </article>
 
         <article class="home-tour-card">
-            <a href="#" class="home-tour-card__media">
+            <a href="#tour-details" class="home-tour-card__media">
                 <img data-src="../assets/images/home/pexels-amine-m'siouri-2245436 1.svg" alt="Orlando Travel" />
             </a>
             <div class="home-tour-card__body">
@@ -147,14 +156,14 @@
                 <h3 class="home-tour-card__title"><a href="#">Orlando Travel</a></h3>
                 <ul class="home-tour-card__meta">
                     <li class="home-tour-card__meta-item">📍 Orlando, U.S.</li>
-                    <li class="home-tour-card__meta-item">🗓 Jul 20, 2023</li>
                     <li class="home-tour-card__meta-item">⏱ 3 Days</li>
                 </ul>
+                <a href="#tour-details" class="home-tour-card__btn">Book Now</a>
             </div>
         </article>
 
         <article class="home-tour-card">
-            <a href="#" class="home-tour-card__media">
+            <a href="#tour-details" class="home-tour-card__media">
                 <img data-src="../assets/images/home/pexels-amine-m'siouri-2245436 1.svg" alt="Malaysia" />
             </a>
             <div class="home-tour-card__body">
@@ -162,291 +171,357 @@
                 <h3 class="home-tour-card__title"><a href="#">Malaysia</a></h3>
                 <ul class="home-tour-card__meta">
                     <li class="home-tour-card__meta-item">📍 Malaysia</li>
-                    <li class="home-tour-card__meta-item">🗓 Aug 14, 2023</li>
                     <li class="home-tour-card__meta-item">⏱ 5 Days</li>
                 </ul>
+                <a href="#tour-details" class="home-tour-card__btn">Book Now</a>
             </div>
         </article>
     </div>
 </section>
 
-<!-- Why Choose Us Section -->
-<section class="home-why">
-    <div class="home-why__inner">
-        <div class="home-why__media">
-            <img data-src="../assets/images/home/image 874.svg" alt="Traveler" class="home-why__img" loading="lazy" />
-        </div>
-        <div class="home-why__content">
-            <h2 class="home-why__heading">Why Choose Us?</h2>
-            <p class="home-why__desc">
-                We make all the process easy. Dummy text ever since the is, when an unknown printer took.
-            </p>
-            <ul class="home-why__list">
-                <li class="home-why__item">
-                    <span class="home-why__icon">
-                        <img data-src="../assets/images/home/Group 86.svg" alt="" />
-                    </span>
-                    <div class="home-why__item-body">
-                        <h3 class="home-why__item-title">We make all the process easy</h3>
-                        <p class="home-why__item-text">
-                            A galley of type and scrambled it to make a type when an unknown printer took
-                        </p>
-                    </div>
-                </li>
-                <li class="home-why__item">
-                    <span class="home-why__icon">
-                        <img data-src="../assets/images/home/Group 85.svg" alt="" />
-                    </span>
-                    <div class="home-why__item-body">
-                        <h3 class="home-why__item-title">Private & Customized Tours</h3>
-                        <p class="home-why__item-text">
-                            A galley of type and scrambled it to make a type when an unknown printer took
-                        </p>
-                    </div>
-                </li>
-                <li class="home-why__item">
-                    <span class="home-why__icon">
-                        <img data-src="../assets/images/home/Subtract.svg" alt="" />
-                    </span>
-                    <div class="home-why__item-body">
-                        <h3 class="home-why__item-title">Immigration & Passport Help</h3>
-                        <p class="home-why__item-text">
-                            A galley of type and scrambled it to make a type when an unknown printer took
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div>
+<!-- Explore the world -->
+<section class="home-video lazy-load">
+    <video autoplay muted loop playsinline class="home-video__background">
+        <source src="../assets/images/home/wave.mp4" type="video/mp4" />
+        Trình duyệt của bạn không hỗ trợ video nền.
+    </video>
+    <div class="home-video__overlay">
+        <h1>Explore The World With Us</h1>
+        <p>Discover amazing places and adventures</p>
+        <a href="#tours" class="btn-primary">Book Now</a>
     </div>
 </section>
 
-<!-- Trending Tours Section -->
-<section class="home-trending">
-    <div class="home-trending__head">
-        <div class="home-trending__head-left">
-            <h2 class="home-trending__title">Trending 2022</h2>
-            <p class="home-trending__desc">Sost Brilliant reasons Entrada should be your one‑stop‑shop!</p>
+<!-- 7. Travel Vlogs / Reels -->
+<section class="travel-vlogs lazy-load">
+    <div class="des-container">
+        <h2 class="section-title">Travel Vlogs & Reels</h2>
+
+        <div class="vlog-slider">
+            <button class="slide-vlog-btn prev">&#10094;</button>
+
+            <div class="vlog-window">
+                <div class="vlog-track">
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3002391-hd_1920_1080_25fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>Beautiful Beach Escape</h3>
+                            <p>Discover pristine beaches and turquoise waters in this relaxing vlog.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3018542-hd_1920_1080_24fps.mp4"
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>Mountain Adventure</h3>
+                            <p>Experience thrilling mountain hikes and breathtaking views.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3018669-hd_1920_1080_24fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>City Life Highlights</h3>
+                            <p>Explore bustling city streets, iconic landmarks, and night vibes.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3064204-hd_1920_1080_24fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>City Life Highlights</h3>
+                            <p>Explore bustling city streets, iconic landmarks, and night vibes.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3141319-uhd_3840_2160_25fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>Beautiful Beach Escape</h3>
+                            <p>Discover pristine beaches and turquoise waters in this relaxing vlog.</p>
+                        </div>
+                    </div>
+                    <div class="vlog-item">
+                        <video
+                            src="../assets/images/destinations/blogs/3192303-uhd_3840_2160_25fps.mp4"
+                            muted
+                            autoplay
+                            loop
+                        ></video>
+                        <div class="vlog-overlay">
+                            <h3>Beautiful Beach Escape</h3>
+                            <p>Discover pristine beaches and turquoise waters in this relaxing vlog.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slide-vlog-btn next">&#10095;</button>
         </div>
-        <div class="home-trending__controls">
-            <button class="home-trend-nav-btn home-trend-nav-btn--prev" type="button" aria-label="Previous">
-                <span>&larr;</span>
-            </button>
-            <button class="home-trend-nav-btn home-trend-nav-btn--next" type="button" aria-label="Next">
-                <span>&rarr;</span>
-            </button>
-        </div>
-    </div>
 
-    <div class="home-trending__viewport" id="trendingViewport">
-        <div class="home-trend-list">
-            <!-- Card 1 -->
-            <article class="home-trend-card">
-                <div class="home-trend-card__media">
-                    <img data-src="../assets/images/home/Images.svg" alt="Mountain Hiking Tour" />
-                </div>
-                <div class="home-trend-card__body">
-                    <h3 class="home-trend-card__name">Mountain Hiking Tour</h3>
-                    <div class="home-trend-card__meta">12 Places | 3 Activities</div>
-                    <div class="home-trend-card__row">
-                        <div class="home-trend-card__price">$895.50</div>
-                        <button class="home-trend-card__book" type="button">Book Now</button>
-                    </div>
-                    <div class="home-trend-card__agency">
-                        <span class="home-trend-card__agency-badge">ST</span>
-                        <span class="home-trend-card__agency-name">Safe Tour Agency</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="home-trend-card">
-                <div class="home-trend-card__media">
-                    <img data-src="../assets/images/home/Images.svg" alt="Tran Skyline" />
-                </div>
-                <div class="home-trend-card__body">
-                    <h3 class="home-trend-card__name">Tran Skyline</h3>
-                    <div class="home-trend-card__meta">10 Places | 3 Activities</div>
-                    <div class="home-trend-card__row">
-                        <div class="home-trend-card__price">$769.99</div>
-                        <button class="home-trend-card__book" type="button">Book Now</button>
-                    </div>
-                    <div class="home-trend-card__agency">
-                        <span class="home-trend-card__agency-badge">ST</span>
-                        <span class="home-trend-card__agency-name">Safe Tour Agency</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="home-trend-card">
-                <div class="home-trend-card__media">
-                    <img data-src="../assets/images/home/Images.svg" alt="Forest Wild Life" />
-                </div>
-                <div class="home-trend-card__body">
-                    <h3 class="home-trend-card__name">Forest Wild Life</h3>
-                    <div class="home-trend-card__meta">11 Places | 3 Activities</div>
-                    <div class="home-trend-card__row">
-                        <div class="home-trend-card__price">$939.80</div>
-                        <button class="home-trend-card__book" type="button">Book Now</button>
-                    </div>
-                    <div class="home-trend-card__agency">
-                        <span class="home-trend-card__agency-badge">ST</span>
-                        <span class="home-trend-card__agency-name">Safe Tour Agency</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 4 -->
-            <article class="home-trend-card">
-                <div class="home-trend-card__media">
-                    <img data-src="../assets/images/home/Images.svg" alt="Desert Adventure" />
-                </div>
-                <div class="home-trend-card__body">
-                    <h3 class="home-trend-card__name">Desert Adventure</h3>
-                    <div class="home-trend-card__meta">9 Places | 2 Activities</div>
-                    <div class="home-trend-card__row">
-                        <div class="home-trend-card__price">$812.40</div>
-                        <button class="home-trend-card__book" type="button">Book Now</button>
-                    </div>
-                    <div class="home-trend-card__agency">
-                        <span class="home-trend-card__agency-badge">ST</span>
-                        <span class="home-trend-card__agency-name">Safe Tour Agency</span>
-                    </div>
-                </div>
-            </article>
-        </div>
+        <!-- <div class="view-all-container">
+      <button class="view-all-btn">View All</button>
+    </div> -->
     </div>
 </section>
 
 <!-- Top Destination Section -->
-<section class="home-destinations">
+<section class="home-destinations lazy-load">
     <div class="home-destinations__head">
         <div>
             <h2 class="home-destinations__title">Top Destination</h2>
             <p class="home-destinations__desc">Sost Brilliant reasons Entrada should be your one-stop-shop!</p>
         </div>
-        <a href="#home-destinations" class="home-destinations__btn">See all destination</a>
+        <a href="#destinations" class="home-destinations__btn">See all destination</a>
     </div>
 
     <div class="home-destinations__grid">
         <!-- 1 -->
         <article class="home-destination-card">
-            <div class="home-destination-card__rating">3.5</div>
-            <img
-                data-src="../assets/images/home/dest-1.svg"
-                alt="Vietnam Waterfall"
-                class="home-destination-card__img"
-            />
-            <div class="home-destination-card__info">
-                <h3 class="home-destination-card__name">Vietnam</h3>
-                <span class="home-destination-card__type">Waterfall</span>
-            </div>
+            <a href="#destination-detail">
+                <div class="home-destination-card__rating">3.5</div>
+                <img
+                    src="../assets/images/home/dest-1.svg"
+                    alt="Vietnam Waterfall"
+                    class="home-destination-card__img"
+                />
+                <div class="home-destination-card__info">
+                    <h3 class="home-destination-card__name">Vietnam</h3>
+                    <span class="home-destination-card__type">Waterfall</span>
+                </div>
+            </a>
         </article>
 
         <!-- 2 (Tall) -->
         <article class="home-destination-card home-destination-card--tall">
-            <div class="home-destination-card__rating">3.5</div>
-            <img
-                data-src="../assets/images/home/dest-2.svg"
-                alt="Vietnam Roadtrip"
-                class="home-destination-card__img"
-            />
-            <div class="home-destination-card__info">
-                <h3 class="home-destination-card__name">Vietnam</h3>
-                <span class="home-destination-card__type">Waterfall</span>
-            </div>
+            <a href="#destination-detail">
+                <div class="home-destination-card__rating">3.5</div>
+                <img src="../assets/images/home/dest-2.svg" alt="Vietnam Roadtrip" class="home-destination-card__img" />
+                <div class="home-destination-card__info">
+                    <h3 class="home-destination-card__name">Vietnam</h3>
+                    <span class="home-destination-card__type">Roadtrip</span>
+                </div>
+            </a>
         </article>
 
         <!-- 3 (Wide) -->
         <article class="home-destination-card home-destination-card--wide">
-            <div class="home-destination-card__rating">3.5</div>
-            <img data-src="../assets/images/home/dest-3.svg" alt="Vietnam Beach" class="home-destination-card__img" />
-            <div class="home-destination-card__info">
-                <h3 class="home-destination-card__name">Vietnam</h3>
-                <span class="home-destination-card__type">Waterfall</span>
-            </div>
+            <a href="#destination-detail">
+                <div class="home-destination-card__rating">3.5</div>
+                <img src="../assets/images/home/dest-3.svg" alt="Vietnam Beach" class="home-destination-card__img" />
+                <div class="home-destination-card__info">
+                    <h3 class="home-destination-card__name">Vietnam</h3>
+                    <span class="home-destination-card__type">Beach</span>
+                </div>
+            </a>
         </article>
 
         <!-- 4 -->
         <article class="home-destination-card">
-            <div class="home-destination-card__rating">3.5</div>
-            <img data-src="../assets/images/home/dest-4.svg" alt="Vietnam Sky" class="home-destination-card__img" />
-            <div class="home-destination-card__info">
-                <h3 class="home-destination-card__name">Vietnam</h3>
-                <span class="home-destination-card__type">Waterfall</span>
-            </div>
+            <a href="#destination-detail">
+                <div class="home-destination-card__rating">3.5</div>
+                <img src="../assets/images/home/dest-4.svg" alt="Vietnam Sky" class="home-destination-card__img" />
+                <div class="home-destination-card__info">
+                    <h3 class="home-destination-card__name">Vietnam</h3>
+                    <span class="home-destination-card__type">Sky</span>
+                </div>
+            </a>
         </article>
 
         <!-- 5 -->
         <article class="home-destination-card">
-            <div class="home-destination-card__rating">3.5</div>
-            <img data-src="../assets/images/home/dest-5.svg" alt="Vietnam City" class="home-destination-card__img" />
-            <div class="home-destination-card__info">
-                <h3 class="home-destination-card__name">Vietnam</h3>
-                <span class="home-destination-card__type">Waterfall</span>
-            </div>
+            <a href="#destination-detail">
+                <div class="home-destination-card__rating">3.5</div>
+                <img src="../assets/images/home/dest-5.svg" alt="Vietnam City" class="home-destination-card__img" />
+                <div class="home-destination-card__info">
+                    <h3 class="home-destination-card__name">Vietnam</h3>
+                    <span class="home-destination-card__type">City</span>
+                </div>
+            </a>
         </article>
 
         <!-- 6 -->
         <article class="home-destination-card">
-            <div class="home-destination-card__rating">3.5</div>
-            <img data-src="../assets/images/home/dest-6.svg" alt="Vietnam Desert" class="home-destination-card__img" />
-            <div class="home-destination-card__info">
-                <h3 class="home-destination-card__name">Vietnam</h3>
-                <span class="home-destination-card__type">Waterfall</span>
-            </div>
+            <a href="#destination-detail">
+                <div class="home-destination-card__rating">3.5</div>
+                <img src="../assets/images/home/dest-6.svg" alt="Vietnam Desert" class="home-destination-card__img" />
+                <div class="home-destination-card__info">
+                    <h3 class="home-destination-card__name">Vietnam</h3>
+                    <span class="home-destination-card__type">Desert</span>
+                </div>
+            </a>
         </article>
     </div>
 </section>
 
 <!-- Tour Type Section -->
-<section class="home-tour-types">
+<section class="home-tour-types lazy-load">
     <h2 class="home-tour-types__heading">Tour Type</h2>
     <div class="home-tour-types__grid">
         <article class="home-tour-type-card">
-            <div class="home-tour-type-card__icon">
-                <img data-src="../assets/images/home/Icon1.svg" alt="" />
-            </div>
-            <h3 class="home-tour-type-card__title">City Tours</h3>
-            <p class="home-tour-type-card__meta">
-                <span>5 Tours</span> · From <span class="home-tour-type-card__price">$505</span>
-            </p>
+            <a href="#tours"
+                ><div class="home-tour-type-card__icon">
+                    <img src="../assets/images/home/Icon1.svg" alt="City Tours Icon" />
+                </div>
+                <h3 class="home-tour-type-card__title">City Tours</h3>
+                <p class="home-tour-type-card__meta">
+                    <span>5 Tours</span> · From <span class="home-tour-type-card__price">$505</span>
+                </p>
+            </a>
         </article>
 
         <article class="home-tour-type-card">
-            <div class="home-tour-type-card__icon">
-                <img data-src="../assets/images/home/Icon2.svg" alt="" />
-            </div>
-            <h3 class="home-tour-type-card__title">Beaches</h3>
-            <p class="home-tour-type-card__meta">
-                <span>10 Tours</span> · From <span class="home-tour-type-card__price">$265</span>
-            </p>
+            <a href="#tours">
+                <div class="home-tour-type-card__icon">
+                    <img src="../assets/images/home/Icon2.svg" alt="Beaches Icon" />
+                </div>
+                <h3 class="home-tour-type-card__title">Beaches</h3>
+                <p class="home-tour-type-card__meta">
+                    <span>10 Tours</span> · From <span class="home-tour-type-card__price">$265</span>
+                </p>
+            </a>
         </article>
 
         <article class="home-tour-type-card">
-            <div class="home-tour-type-card__icon">
-                <img data-src="../assets/images/home/Icon3.svg" alt="" />
-            </div>
-            <h3 class="home-tour-type-card__title">Museum Tours</h3>
-            <p class="home-tour-type-card__meta">
-                <span>5 Tours</span> · From <span class="home-tour-type-card__price">$395</span>
-            </p>
+            <a href="#tours">
+                <div class="home-tour-type-card__icon">
+                    <img src="../assets/images/home/Icon3.svg" alt="Museum Tours Icon" />
+                </div>
+                <h3 class="home-tour-type-card__title">Museum Tours</h3>
+                <p class="home-tour-type-card__meta">
+                    <span>5 Tours</span> · From <span class="home-tour-type-card__price">$395</span>
+                </p>
+            </a>
         </article>
 
         <article class="home-tour-type-card">
-            <div class="home-tour-type-card__icon">
-                <img data-src="../assets/images/home/Icon4.svg" alt="" />
-            </div>
-            <h3 class="home-tour-type-card__title">Cruises</h3>
-            <p class="home-tour-type-card__meta">
-                <span>8 Tours</span> · From <span class="home-tour-type-card__price">$805</span>
-            </p>
+            <a href="#tours">
+                <div class="home-tour-type-card__icon">
+                    <img src="../assets/images/home/Icon4.svg" alt="Cruises Icon" />
+                </div>
+                <h3 class="home-tour-type-card__title">Cruises</h3>
+                <p class="home-tour-type-card__meta">
+                    <span>8 Tours</span> · From <span class="home-tour-type-card__price">$805</span>
+                </p>
+            </a>
         </article>
     </div>
 </section>
 
+<section class="home-testimonial lazy-load">
+    <div class="home-testimonial__container">
+        <div class="home-testimonial__image">
+            <img src="../assets/images/home/Girl Images.png" alt="Happy traveler" />
+        </div>
+
+        <div class="home-testimonial__content">
+            <h2 class="home-testimonial__title">What our user say</h2>
+            <p class="home-testimonial__quote">
+                “Adding live social proof was the #1 driver of increased revenue in all my experiments while at Airkey.”
+                and the brand must survive at least 1 year.
+            </p>
+
+            <div class="home-testimonial__author">
+                <img src="../assets/images/home/raul van.png" alt="User avatar" class="home-testimonial__avatar" />
+                <div>
+                    <h4 class="home-testimonial__name">Raul van Sutoyo</h4>
+                    <p class="home-testimonial__role">UI Designer</p>
+                    <div class="home-testimonial__stars">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Articles section -->
+
+<section class="home-articles lazy-load">
+    <div class="home-articles__header">
+        <h2 class="home-articles__title">Articles & Travel Guidings</h2>
+        <p class="home-articles__subtitle">
+            Travel has helped us to understand the meaning of life and it has helped us become better people. Each time
+            we travel, we see the world with new eyes.
+        </p>
+        <div class="home-articles__divider"></div>
+    </div>
+
+    <div class="home-articles__content">
+        <!-- Bài viết lớn bên trái -->
+        <div class="home-articles__main">
+            <img src="../assets/images/home/main_pic.jpg" alt="Hot air balloons" class="home-articles__main-img" />
+            <div class="home-articles__main-text">
+                <div class="home-articles__main-info">
+                    <h3 class="home-articles__main-title">The real voyage does not consist in seeking new</h3>
+                    <p class="home-articles__main-desc">
+                        Excited him now natural saw passage offices you minuter. By at asked being court hopes.
+                    </p>
+                </div>
+                <span class="home-articles__date">Jun 1, 2021</span>
+            </div>
+        </div>
+
+        <!-- Danh sách bài viết nhỏ bên phải -->
+        <div class="home-articles__list">
+            <article class="home-articles__item">
+                <img src="../assets/images/home/first_pic.jpg" alt="Desert dunes" class="home-articles__item-img" />
+                <div class="home-articles__item-content">
+                    <h4 class="home-articles__item-title">Mountains is always right destination.</h4>
+                    <p class="home-articles__item-desc">Farther so friends am to detract forbade</p>
+                    <span class="home-articles__date">Jun 1, 2021</span>
+                </div>
+            </article>
+
+            <article class="home-articles__item">
+                <img
+                    src="../assets/images/home/second_pic.png"
+                    alt="Tent in mountains"
+                    class="home-articles__item-img"
+                />
+                <div class="home-articles__item-content">
+                    <h4 class="home-articles__item-title">Here Our’s Life is either a daring adventure.</h4>
+                    <p class="home-articles__item-desc">One of the programs is Save Our Have personally.</p>
+                    <span class="home-articles__date">Jun 1, 2021</span>
+                </div>
+            </article>
+
+            <article class="home-articles__item">
+                <img
+                    src="../assets/images/home/third_pic.png"
+                    alt="Motorbike adventure"
+                    class="home-articles__item-img"
+                />
+                <div class="home-articles__item-content">
+                    <h4 class="home-articles__item-title">Here Our’s Life is either a daring adventure.</h4>
+                    <p class="home-articles__item-desc">Life is either a daring adventure or it’s nothing.</p>
+                    <span class="home-articles__date">Jun 1, 2021</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
 <!-- Newsletter Section -->
-<section class="home-newsletter">
+<section class="home-newsletter lazy-load">
     <div class="home-newsletter__inner">
         <h2 class="home-newsletter__title">Subscribe our newsletter</h2>
         <p class="home-newsletter__desc">

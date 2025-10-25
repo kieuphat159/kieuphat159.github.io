@@ -27,12 +27,12 @@ let currentPage1 = null;
  * Sau đó trang từ đường dẫn trên sẽ được load vào trong div có id="parent"
  */
 function load(selector, path, callback) {
-    const cachedTemplates = localStorage.getItem(path);
-    if (cachedTemplates) {
-        $(selector).innerHTML = cachedTemplates;
-        if (typeof callback === "function") callback();
-        return;
-    }
+    // const cachedTemplates = localStorage.getItem(path);
+    // if (cachedTemplates) {
+    //     $(selector).innerHTML = cachedTemplates;
+    //     if (typeof callback === "function") callback();
+    //     return;
+    // }
 
     fetch(path)
         .then((response) => {
@@ -320,7 +320,9 @@ let scrollHandler = null;
 function handleHeaderScroll() {
     const header = document.querySelector("header");
     // Kiểm tra tất cả các loại banner
-    const banner = document.querySelector(".about-des-banner, .des-banner, .onl-banner, .destination-detail-hero");
+    const banner = document.querySelector(
+        ".about-des-banner, .des-banner, .onl-banner, .destination-detail-hero, .tours-banner, .contact-banner, .tour-details-banner"
+    );
 
     if (!header) return;
 

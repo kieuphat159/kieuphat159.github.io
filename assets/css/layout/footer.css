@@ -1,8 +1,7 @@
 .footer {
         margin-top: 76px;
-        background: var(--bg-primary);
+        background: var(--footer-bg);
         padding: 32px 0 16px 0;
-        border-top: 1px solid var(--social-icon-border-color);
 }
 
 .footer__top {
@@ -22,7 +21,7 @@
         font-size: 1rem;
         font-weight: 700;
         margin-bottom: 16px;
-        color: var(--text-black);
+        color: var(--footer-text);
 }
 
 .footer__list {
@@ -36,24 +35,24 @@
 }
 
 .footer__link {
-        color: var(--text-gray);
         text-decoration: none;
         font-size: 0.97rem;
+        color: var(--footer-text);
         transition: color 0.2s;
 }
 
 .footer__link:hover {
-        color: var(--button-orange-bg-color);
+        color: var(--color-primary);
 }
 
 .footer__desc {
-        color: var(--text-gray);
+        color: var(--footer-text);
         font-size: 0.97rem;
         margin-bottom: 8px;
 }
 
 .footer__email {
-        color: var(--button-blue-bg-color);
+        color: var(--color-secondary);
         font-weight: 600;
         text-decoration: none;
         font-size: 1rem;
@@ -79,7 +78,7 @@
         height: 36px;
         border-radius: 50%;
         border: 1px solid var(--social-icon-border-color);
-        background: var(--bg-secondary);
+        background: var(--color-bg-secondary);
         transition: box-shadow 0.2s, border 0.2s;
 }
 
@@ -91,7 +90,7 @@
 
 .footer__social-icon:hover {
         box-shadow: 0 2px 8px rgba(42, 203, 233, 0.08);
-        border: 1px solid var(--button-orange-bg-color);
+        border: 1px solid var(--color-primary);
 }
 
 .footer__social-icon:hover img {
@@ -125,14 +124,14 @@
         padding: 0;
 }
 .footer__menu-link {
-        color: var(--text-gray);
+        color: var(--footer-text);
         text-decoration: none;
         font-size: 1rem;
         font-weight: 500;
         transition: color 0.2s;
 }
 .footer__menu-link:hover {
-        color: var(--button-orange-bg-color);
+        color: var(--color-primary);
 }
 .footer__bottom-right {
         display: flex;
@@ -163,7 +162,7 @@
         .footer__menu-link {
                 font-size: 1.1rem;
                 font-weight: 600;
-                color: var(--text-black);
+                color: var(--footer-text);
         }
 
         .footer__bottom-right {

@@ -1,113 +1,117 @@
-<section class="tours-search">
-    <form class="tours-search__form">
-        <div class="tours-search__group">
-            <label>Location</label>
-            <select title="Location">
-                <option>Bali, Indonesia</option>
-                <option>Hanoi, Vietnam</option>
-            </select>
-        </div>
-        <div class="tours-search__group">
-            <label>Type</label>
-            <select title="Type">
-                <option>City Tours</option>
-                <option>Adventure</option>
-            </select>
-        </div>
-        <div class="tours-search__group">
-            <label>City</label>
-            <select title="City">
-                <option>Prambanan</option>
-                <option>Jakarta</option>
-            </select>
-        </div>
-        <div class="tours-search__group">
-            <label>Guest</label>
-            <select title="Guest">
-                <option>8 Persons</option>
-                <option>4 Persons</option>
-            </select>
-        </div>
-        <button class="tours-search__btn" type="submit">Search</button>
-    </form>
-</section>
+<section class="tours" id="tours">
+        <section class="tours-banner">
+                <div class="tours-banner__content">
+                        <h1 class="tours-banner__title">Our Tours</h1>
+                        <p class="tours-banner__subtitle">Find Your Next Adventure</p>
+                </div>
+        </section>
 
-<section class="tours-grid">
-    <article class="tours-grid__card">
-        <div class="tours-grid__image-wrapper">
-            <img src="../assets/images/tour/Indonesia.png" alt="Indonesia tour" class="tours-grid__image" />
-        </div>
-        <div class="tours-grid__info">
-            <h2 class="tours-grid__name">Indonesia</h2>
-            <div class="tours-grid__details">
-                <span class="tours-grid__duration">9 days</span>
-                <span class="tours-grid__price">$6,500</span>
-            </div>
-        </div>
-    </article>
+        <section class="tour-listing-section">
+                <div class="tour-container">
+                        <div class="tour-layout">
+                                <aside class="tour-filters">
+                                        <form id="filter-form">
+                                                <div class="filter-widget">
+                                                        <div class="filter-widget__header">
+                                                                <h3 class="filter-widget__title">Search & Filter</h3>
+                                                                <button
+                                                                        type="button"
+                                                                        class="filter-widget__reset-btn"
+                                                                        id="reset-filters-btn"
+                                                                >
+                                                                        Reset
+                                                                </button>
+                                                        </div>
+                                                        <div class="filter-widget__search-box">
+                                                                <input
+                                                                        type="text"
+                                                                        id="keyword-search"
+                                                                        placeholder="E.g., 'Paris', 'beach'..."
+                                                                />
+                                                                <i class="fas fa-search"></i>
+                                                        </div>
+                                                </div>
 
-    <article class="tours-grid__card">
-        <div class="tours-grid__image-wrapper">
-            <img src="../assets/images/tour/Thailand.png" alt="Thailand tour" class="tours-grid__image" />
-        </div>
-        <div class="tours-grid__info">
-            <h2 class="tours-grid__name">Thailand</h2>
-            <div class="tours-grid__details">
-                <span class="tours-grid__duration">9 days</span>
-                <span class="tours-grid__price">$6,500</span>
-            </div>
-        </div>
-    </article>
+                                                <div class="filter-widget">
+                                                        <h3 class="filter-widget__title">Price Range</h3>
+                                                        <div class="filter-widget__price-slider">
+                                                                <input
+                                                                        title="Price Range"
+                                                                        type="range"
+                                                                        id="price-range"
+                                                                        min="100"
+                                                                        max="5000"
+                                                                        value="5000"
+                                                                        step="50"
+                                                                />
+                                                                <div class="price-label">
+                                                                        <span>$100</span>
+                                                                        <span id="price-value">$5000</span>
+                                                                </div>
+                                                        </div>
+                                                </div>
 
-    <article class="tours-grid__card">
-        <div class="tours-grid__image-wrapper">
-            <img src="../assets/images/tour/Dubai.png" alt="Dubai tour" class="tours-grid__image" />
-        </div>
-        <div class="tours-grid__info">
-            <h2 class="tours-grid__name">Dubai</h2>
-            <div class="tours-grid__details">
-                <span class="tours-grid__duration">9 days</span>
-                <span class="tours-grid__price">$6,500</span>
-            </div>
-        </div>
-    </article>
+                                                <div class="filter-widget">
+                                                        <h3 class="filter-widget__title">Tour Type</h3>
+                                                        <div
+                                                                id="type-filter"
+                                                                class="filter-widget__checkbox-group"
+                                                        ></div>
+                                                </div>
 
-    <article class="tours-grid__card">
-        <div class="tours-grid__image-wrapper">
-            <img src="../assets/images/tour/Maldives.png" alt="Maldives tour" class="tours-grid__image" />
-        </div>
-        <div class="tours-grid__info">
-            <h2 class="tours-grid__name">Maldives</h2>
-            <div class="tours-grid__details">
-                <span class="tours-grid__duration">9 days</span>
-                <span class="tours-grid__price">$6,500</span>
-            </div>
-        </div>
-    </article>
+                                                <div class="filter-widget">
+                                                        <h3 class="filter-widget__title">Duration</h3>
+                                                        <div
+                                                                id="duration-filter"
+                                                                class="filter-widget__radio-group"
+                                                        ></div>
+                                                </div>
+                                        </form>
+                                </aside>
 
-    <article class="tours-grid__card">
-        <div class="tours-grid__image-wrapper">
-            <img src="../assets/images/tour/Dubai1.png" alt="Dubai tour" class="tours-grid__image" />
-        </div>
-        <div class="tours-grid__info">
-            <h2 class="tours-grid__name">Dubai</h2>
-            <div class="tours-grid__details">
-                <span class="tours-grid__duration">9 days</span>
-                <span class="tours-grid__price">$6,500</span>
-            </div>
-        </div>
-    </article>
+                                <div class="tour-results">
+                                        <div class="result-controls">
+                                                <p class="result-controls__count">Showing 1-6 of 12 tours</p>
+                                                <div class="result-controls__right">
+                                                        <div class="result-controls__view-toggle">
+                                                                <button
+                                                                        class="view-btn active"
+                                                                        id="grid-view-btn"
+                                                                        aria-label="Grid View"
+                                                                >
+                                                                        <i class="fas fa-th-large"></i>
+                                                                </button>
+                                                                <button
+                                                                        class="view-btn"
+                                                                        id="list-view-btn"
+                                                                        aria-label="List View"
+                                                                >
+                                                                        <i class="fas fa-list"></i>
+                                                                </button>
+                                                        </div>
+                                                        <div class="result-controls__sort">
+                                                                <label for="sort-by">Sort by:</label>
+                                                                <select id="sort-by" name="sort-by">
+                                                                        <option value="default">Popularity</option>
+                                                                        <option value="price-asc">
+                                                                                Price: Low to High
+                                                                        </option>
+                                                                        <option value="price-desc">
+                                                                                Price: High to Low
+                                                                        </option>
+                                                                        <option value="rating-desc">
+                                                                                Rating: High to Low
+                                                                        </option>
+                                                                </select>
+                                                        </div>
+                                                </div>
+                                        </div>
 
-    <article class="tours-grid__card">
-        <div class="tours-grid__image-wrapper">
-            <img src="../assets/images/tour/Bangladesh.png" alt="Bangladesh tour" class="tours-grid__image" />
-        </div>
-        <div class="tours-grid__info">
-            <h2 class="tours-grid__name">Bangladesh</h2>
-            <div class="tours-grid__details">
-                <span class="tours-grid__duration">9 days</span>
-                <span class="tours-grid__price">$6,500</span>
-            </div>
-        </div>
-    </article>
+                                        <div class="tour-grid" id="tour-grid"></div>
+
+                                        <div class="pagination" id="pagination-container"></div>
+                                </div>
+                        </div>
+                </div>
+        </section>
 </section>
