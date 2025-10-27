@@ -94,7 +94,7 @@
 
 .footer__social-icon:hover {
         box-shadow: 0 2px 8px rgba(42, 203, 233, 0.08);
-        border: 1px solid var(--color-primary);
+        background-color: var(--color-primary);
 }
 
 .footer__social-icon:hover img {
