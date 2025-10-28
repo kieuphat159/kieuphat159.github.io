@@ -1,103 +1,258 @@
-<section class="contact-banner">
-        <section class="contact-banner__container">
-                <h1 class="contact-banner__title">Contact us</h1>
-        </section>
-</section>
-
-<section class="contact-info">
-        <div class="contact-info__left">
-                <h2 class="contact-info__title">Get In Touch</h2>
-                <p class="contact-info__subtitle">Have a question or a comment? We'd love to hear from you.</p>
-
-                <ul class="contact-details-list">
-                        <li>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div class="contact-detail-text">
-                                        <strong>Address</strong>
-                                        <span>2369 Robinson Lane, Jackson, OH 45640</span>
-                                </div>
-                        </li>
-                        <li>
-                                <i class="fas fa-phone-alt"></i>
-                                <div class="contact-detail-text">
-                                        <strong>Let's Talk</strong>
-                                        <a href="tel:+8801700000000">(+88) 017 000 00000</a>
-                                </div>
-                        </li>
-                        <li>
-                                <i class="fas fa-envelope"></i>
-                                <div class="contact-detail-text">
-                                        <strong>General Support</strong>
-                                        <a href="mailto:info@example.com">info@example.com</a>
-                                </div>
-                        </li>
-                </ul>
-
-                <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+<!-- Hero Section with Animated Background -->
+<section class="contact-hero">
+        <div class="contact-hero__bg">
+                <div class="animated-gradient"></div>
+                <div class="floating-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                        <div class="shape shape-4"></div>
                 </div>
         </div>
-
-        <div class="contact-info__right">
-                <form class="contact-form">
-                        <h2 class="contact-form__title">Send Us a Message</h2>
-
-                        <div class="form-group floating-label">
-                                <input type="text" id="name" name="name" class="form-input" placeholder=" " required />
-                                <label for="name">Your Name</label>
-                        </div>
-
-                        <div class="form-group floating-label">
-                                <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        class="form-input"
-                                        placeholder=" "
-                                        required
-                                />
-                                <label for="email">Email Address</label>
-                        </div>
-
-                        <div class="form-group floating-label">
-                                <input
-                                        type="text"
-                                        id="subject"
-                                        name="subject"
-                                        class="form-input"
-                                        placeholder=" "
-                                        required
-                                />
-                                <label for="subject">Subject</label>
-                        </div>
-
-                        <div class="form-group floating-label">
-                                <textarea
-                                        id="message"
-                                        name="message"
-                                        class="form-input"
-                                        placeholder=" "
-                                        required
-                                ></textarea>
-                                <label for="message">Your Message</label>
-                        </div>
-
-                        <button type="submit" class="contact-btn">Send Message</button>
-                </form>
+        <div class="contact-hero__content">
+                <span class="contact-hero__subtitle" data-aos="fade-up">Let's Connect</span>
+                <h1 class="contact-hero__title" data-aos="fade-up" data-aos-delay="100">Get In Touch</h1>
+                <p class="contact-hero__description" data-aos="fade-up" data-aos-delay="200">
+                        Have a question or want to work together? We'd love to hear from you.
+                </p>
         </div>
 </section>
-<section class="contact-us__map">
-        <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.272097061732!2d-122.4214227846816!3d37.78318897975815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858099e02c686f%3A0x2d31b262a05f0b17!2sSan%20Francisco%20City%20Hall!5e0!3m2!1sen!2sus!4v1633544391332!5m2!1sen!2sus"
-                width="100%"
-                height="450"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                title="Our Location on Google Maps"
-                referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+
+<!-- Contact Information Cards -->
+<section class="contact-cards">
+        <div class="contact-cards__container">
+                <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="contact-card__icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="contact-card__title">Visit Us</h3>
+                        <p class="contact-card__text">2369 Robinson Lane<br>Jackson, OH 45640</p>
+                        <a href="#map" class="contact-card__link">Get Directions <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="contact-card__icon">
+                                <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3 class="contact-card__title">Call Us</h3>
+                        <p class="contact-card__text">Available Mon-Fri<br>9:00 AM - 6:00 PM</p>
+                        <a href="tel:+8801700000000" class="contact-card__link">(+88) 017 000 00000 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="contact-card__icon">
+                                <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="contact-card__title">Email Us</h3>
+                        <p class="contact-card__text">We'll respond within<br>24 hours</p>
+                        <a href="mailto:info@example.com" class="contact-card__link">info@example.com <i class="fas fa-arrow-right"></i></a>
+                </div>
+        </div>
+</section>
+
+<!-- Main Contact Section -->
+<section class="contact-main">
+        <div class="contact-main__container">
+                <div class="contact-main__left" data-aos="fade-right">
+                        <div class="contact-info-box">
+                                <span class="section-tag">Contact Information</span>
+                                <h2 class="contact-info-box__title">Let's Start a Conversation</h2>
+                                <p class="contact-info-box__description">
+                                        Whether you have a question about our tours, pricing, or anything else, 
+                                        our team is ready to answer all your questions.
+                                </p>
+
+                                <div class="contact-features">
+                                        <div class="contact-feature">
+                                                <div class="contact-feature__icon">
+                                                        <i class="fas fa-check-circle"></i>
+                                                </div>
+                                                <div class="contact-feature__content">
+                                                        <h4>Quick Response</h4>
+                                                        <p>We respond to all inquiries within 24 hours</p>
+                                                </div>
+                                        </div>
+
+                                        <div class="contact-feature">
+                                                <div class="contact-feature__icon">
+                                                        <i class="fas fa-headset"></i>
+                                                </div>
+                                                <div class="contact-feature__content">
+                                                        <h4>24/7 Support</h4>
+                                                        <p>Our support team is always available to help</p>
+                                                </div>
+                                        </div>
+
+                                        <div class="contact-feature">
+                                                <div class="contact-feature__icon">
+                                                        <i class="fas fa-shield-alt"></i>
+                                                </div>
+                                                <div class="contact-feature__content">
+                                                        <h4>Secure & Private</h4>
+                                                        <p>Your information is safe and confidential</p>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="social-connect">
+                                        <h4>Connect With Us</h4>
+                                        <div class="social-links">
+                                                <a href="#" class="social-link" aria-label="Facebook">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                </a>
+                                                <a href="#" class="social-link" aria-label="Twitter">
+                                                        <i class="fab fa-twitter"></i>
+                                                </a>
+                                                <a href="#" class="social-link" aria-label="Instagram">
+                                                        <i class="fab fa-instagram"></i>
+                                                </a>
+                                                <a href="#" class="social-link" aria-label="LinkedIn">
+                                                        <i class="fab fa-linkedin-in"></i>
+                                                </a>
+                                                <a href="#" class="social-link" aria-label="YouTube">
+                                                        <i class="fab fa-youtube"></i>
+                                                </a>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+
+                <div class="contact-main__right" data-aos="fade-left">
+                        <form class="modern-contact-form">
+                                <div class="form-header">
+                                        <h3>Send Us a Message</h3>
+                                        <p>Fill out the form below and we'll get back to you soon</p>
+                                </div>
+
+                                <div class="form-row">
+                                        <div class="form-group">
+                                                <label for="firstName" class="form-label">First Name *</label>
+                                                <div class="input-wrapper">
+                                                        <i class="fas fa-user input-icon"></i>
+                                                        <input type="text" id="firstName" name="firstName" class="form-input" required />
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                                <label for="lastName" class="form-label">Last Name *</label>
+                                                <div class="input-wrapper">
+                                                        <i class="fas fa-user input-icon"></i>
+                                                        <input type="text" id="lastName" name="lastName" class="form-input" required />
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="form-row">
+                                        <div class="form-group">
+                                                <label for="email" class="form-label">Email Address *</label>
+                                                <div class="input-wrapper">
+                                                        <i class="fas fa-envelope input-icon"></i>
+                                                        <input type="email" id="email" name="email" class="form-input" required />
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                                <label for="phone" class="form-label">Phone Number</label>
+                                                <div class="input-wrapper">
+                                                        <i class="fas fa-phone input-icon"></i>
+                                                        <input type="tel" id="phone" name="phone" class="form-input" />
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="subject" class="form-label">Subject *</label>
+                                        <div class="input-wrapper">
+                                                <i class="fas fa-tag input-icon"></i>
+                                                <input type="text" id="subject" name="subject" class="form-input" required />
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="message" class="form-label">Your Message *</label>
+                                        <div class="input-wrapper">
+                                                <i class="fas fa-comment-dots input-icon"></i>
+                                                <textarea id="message" name="message" class="form-input form-textarea" rows="5" required></textarea>
+                                        </div>
+                                </div>
+
+                                <div class="form-group checkbox-group">
+                                        <input type="checkbox" id="newsletter" name="newsletter" class="form-checkbox" />
+                                        <label for="newsletter" class="checkbox-label">
+                                                I'd like to receive travel tips and exclusive offers
+                                        </label>
+                                </div>
+
+                                <button type="submit" class="modern-submit-btn">
+                                        <span>Send Message</span>
+                                        <i class="fas fa-paper-plane"></i>
+                                </button>
+                        </form>
+                </div>
+        </div>
+</section>
+
+<!-- Interactive Map Section -->
+<section class="contact-map" id="map">
+        <div class="map-header" data-aos="fade-up">
+                <h2 class="map-title">Find Us Here</h2>
+                <p class="map-description">Visit our office or drop by for a chat over coffee</p>
+        </div>
+        <div class="map-container" data-aos="zoom-in">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.272097061732!2d-122.4214227846816!3d37.78318897975815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858099e02c686f%3A0x2d31b262a05f0b17!2sSan%20Francisco%20City%20Hall!5e0!3m2!1sen!2sus!4v1633544391332!5m2!1sen!2sus"
+                        width="100%"
+                        height="500"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        title="Our Location on Google Maps"
+                        referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+        </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="contact-faq">
+        <div class="contact-faq__container">
+                <div class="faq-header" data-aos="fade-up">
+                        <span class="section-tag">FAQ</span>
+                        <h2 class="faq-title">Frequently Asked Questions</h2>
+                        <p class="faq-description">Quick answers to questions you may have</p>
+                </div>
+
+                <div class="faq-grid">
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                                <div class="faq-question">
+                                        <i class="fas fa-clock"></i>
+                                        <h4>What are your business hours?</h4>
+                                </div>
+                                <p class="faq-answer">We're open Monday to Friday, 9:00 AM to 6:00 PM. Weekend support available via email.</p>
+                        </div>
+
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                                <div class="faq-question">
+                                        <i class="fas fa-reply"></i>
+                                        <h4>How quickly will you respond?</h4>
+                                </div>
+                                <p class="faq-answer">We aim to respond to all inquiries within 24 hours during business days.</p>
+                        </div>
+
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                                <div class="faq-question">
+                                        <i class="fas fa-globe"></i>
+                                        <h4>Do you offer international support?</h4>
+                                </div>
+                                <p class="faq-answer">Yes, we provide support for travelers worldwide in multiple languages.</p>
+                        </div>
+
+                        <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                                <div class="faq-question">
+                                        <i class="fas fa-phone-volume"></i>
+                                        <h4>Is phone support available?</h4>
+                                </div>
+                                <p class="faq-answer">Absolutely! Our phone lines are open during business hours for immediate assistance.</p>
+                        </div>
+                </div>
+        </div>
 </section>
