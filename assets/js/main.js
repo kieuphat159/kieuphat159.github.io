@@ -4,9 +4,7 @@
 // 1. KHAI BÁO BIẾN VÀ HẰNG SỐ TOÀN CỤC
 // ============================================
 const $ = document.querySelector.bind(document);
-// chọn phần tử đầu tiên phù hợp với selector
 const $$ = document.querySelectorAll.bind(document);
-// chọn tất cả phần tử phù hợp với selector
 
 let initialLoad = true;
 let isPageLoading = false;
@@ -16,24 +14,7 @@ let currentPage1 = null;
 // 2. CÁC HÀM TIỆN ÍCH (UTILITY FUNCTIONS)
 // ============================================
 
-/**
- * Hàm tải template
- *
- * Cách dùng:
- * <div id="parent"></div>
- * <script>
- *  load("#parent", "./path-to-template.html", callback);
- * </script>
- * Sau đó trang từ đường dẫn trên sẽ được load vào trong div có id="parent"
- */
 function load(selector, path, callback) {
-    // const cachedTemplates = localStorage.getItem(path);
-    // if (cachedTemplates) {
-    //     $(selector).innerHTML = cachedTemplates;
-    //     if (typeof callback === "function") callback();
-    //     return;
-    // }
-
     fetch(path)
         .then((response) => {
             if (!response.ok) {
@@ -67,7 +48,6 @@ function showLoading() {
     const loading = document.getElementById("page-loading");
     if (loading) {
         loading.style.display = "flex";
-        // Ẩn content khi loading
         document.body.classList.remove("page-ready");
     }
 }
@@ -75,9 +55,7 @@ function showLoading() {
 function hideLoading() {
     const loading = document.getElementById("page-loading");
     if (loading) {
-        // Hiện content trước
         document.body.classList.add("page-ready");
-
         setTimeout(() => {
             loading.style.display = "none";
         }, 150);
@@ -89,10 +67,18 @@ function hideLoading() {
 // ============================================
 
 function updateActiveNavLink(page) {
+    // Cập nhật desktop nav
     document.querySelectorAll(".header-main-nav li").forEach((li) => li.classList.remove("active"));
     const activeLink = document.querySelector(`.header-main-nav a[data-page="${page}"]`);
     if (activeLink) {
         activeLink.parentElement.classList.add("active");
+    }
+
+    // Cập nhật side menu nav
+    document.querySelectorAll(".header-side-menu__link").forEach((link) => link.classList.remove("active"));
+    const activeSideLink = document.querySelector(`.header-side-menu a[data-page="${page}"]`);
+    if (activeSideLink) {
+        activeSideLink.classList.add("active");
     }
 }
 
@@ -106,35 +92,29 @@ function loadPage(page) {
     showLoading();
 
     load("#main", `./pages/${page}.html`, () => {
-        // Xóa script và CSS cũ nếu có
         const oldScript = document.getElementById("page-script");
         const oldCss = document.getElementById("page-style");
 
         if (oldScript) oldScript.remove();
         if (oldCss) oldCss.remove();
 
-        // ĐỢI một chút để trình duyệt cleanup
         setTimeout(() => {
-            // Tạo thẻ CSS mới
             const link = document.createElement("link");
             link.id = "page-style";
             link.rel = "stylesheet";
             link.href = `./assets/css/pages/${page}.css`;
 
-            // Tạo thẻ script mới với type="module" để tạo scope riêng
             const script = document.createElement("script");
             script.id = "page-script";
             script.src = `./assets/js/pages/${page}.js?v=${Date.now()}`;
-            script.type = "module"; // Quan trọng: tạo scope riêng
+            script.type = "module";
             script.async = true;
 
-            // Biến theo dõi trạng thái loading
             let jsLoaded = false;
             let cssLoaded = false;
             let jsError = false;
             let cssError = false;
 
-            // Hàm kiểm tra và ẩn loading
             function tryHideLoading() {
                 if ((jsLoaded || jsError) && (cssLoaded || cssError)) {
                     hideLoading();
@@ -149,7 +129,6 @@ function loadPage(page) {
                 }
             }
 
-            // Xử lý sự kiện cho CSS
             link.onload = () => {
                 cssLoaded = true;
                 tryHideLoading();
@@ -161,7 +140,6 @@ function loadPage(page) {
                 tryHideLoading();
             };
 
-            // Xử lý sự kiện cho JavaScript
             script.onload = () => {
                 jsLoaded = true;
                 tryHideLoading();
@@ -173,11 +151,9 @@ function loadPage(page) {
                 tryHideLoading();
             };
 
-            // Thêm vào DOM
             document.head.appendChild(link);
             document.body.appendChild(script);
 
-            // Timeout fallback
             setTimeout(() => {
                 if (!((jsLoaded || jsError) && (cssLoaded || cssError))) {
                     console.warn("Loading timeout - hiding loading indicator");
@@ -189,15 +165,13 @@ function loadPage(page) {
             setTimeout(() => {
                 handleHeaderScroll();
             }, 200);
-        }, 100); // Delay 100ms để đảm bảo cleanup hoàn tất
+        }, 100);
     });
 }
 
 function handleHashChange() {
     const page = window.location.hash.replace("#", "") || "home";
-
     document.body.scrollTop = 0;
-
     loadPage(page);
     updateActiveNavLink(page);
 }
@@ -222,8 +196,18 @@ function setupMobileMenu() {
             sideMenu.classList.remove("active");
             sideMenuOverlay.classList.remove("active");
         }
+
         sideMenuBack.addEventListener("click", closeMenu);
         sideMenuOverlay.addEventListener("click", closeMenu);
+
+        // Xử lý click vào link trong side menu
+        const sideMenuLinks = sideMenu.querySelectorAll(".header-side-menu__link");
+        sideMenuLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                // Đóng menu sau khi click
+                closeMenu();
+            });
+        });
     }
 }
 
@@ -266,8 +250,6 @@ function activateNavLink() {
             const page = link.getAttribute("data-page");
             loadPage(page);
             window.location.hash = page;
-
-            // Cập nhật active class
             updateActiveNavLink(page);
         });
     });
@@ -277,9 +259,7 @@ function activateNavLink() {
 // 8. EVENT LISTENERS - KHỞI ĐỘNG KHI VÀO WEB
 // ============================================
 
-// Sự kiện chính khi DOM load xong
 document.addEventListener("DOMContentLoaded", () => {
-    // Load header (chứa navigation)
     load("#header", "./templates/header.html", () => {
         activateNavLink();
         handleHashChange();
@@ -287,20 +267,17 @@ document.addEventListener("DOMContentLoaded", () => {
         setupThemeToggle();
     });
 
-    // Load footer
     load("#footer", "./templates/footer.html");
-    // Chỉ listen hashchange sau khi load xong
+
     window.addEventListener("hashchange", () => {
         if (!initialLoad) {
             handleHashChange();
         }
     });
 
-    // Hiện trang luôn
     document.body.classList.add("page-ready");
 });
 
-// Đóng side menu khi resize về desktop
 window.addEventListener("resize", function () {
     if (window.innerWidth > 991.98) {
         const sideMenu = document.getElementById("sideMenu");
@@ -314,29 +291,24 @@ window.addEventListener("resize", function () {
 // 9. XỬ LÝ HEADER KHI CUỘN QUA BANNER
 // ============================================
 
-// Biến toàn cục để lưu scroll handler
 let scrollHandler = null;
 
 function handleHeaderScroll() {
     const header = document.querySelector("header");
-    // Kiểm tra tất cả các loại banner
     const banner = document.querySelector(
         ".about-des-banner, .des-banner, .onl-banner, .destination-detail-hero, .tours-banner, .contact-banner, .tour-details-banner"
     );
 
     if (!header) return;
 
-    // XÓA event listener cũ nếu có
     if (scrollHandler) {
         document.removeEventListener("scroll", scrollHandler);
         scrollHandler = null;
     }
 
-    // Nếu trang có banner
     if (banner) {
         const bannerHeight = banner.offsetHeight;
 
-        // Tạo handler mới
         scrollHandler = () => {
             const scrollY = document.body.scrollTop;
 
@@ -348,7 +320,6 @@ function handleHeaderScroll() {
         };
 
         document.addEventListener("scroll", scrollHandler, true);
-
         scrollHandler();
     } else {
         header.classList.add("scrolled");

@@ -30,27 +30,72 @@
 img.lazy-image {
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+    min-height: 100px; /* Đảm bảo có chiều cao tối thiểu */
+}
+
+img.lazy-image:not(.loaded) {
+    animation: shimmer 1.5s linear infinite;
 }
 
 img.lazy-image.loaded {
     opacity: 1;
+    background: none;
+    animation: none;
 }
 
-/* Lazy video loading */
+/* Lazy video loading - Placeholder cho TẤT CẢ video */
 video.lazy-video {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    background-size: 200% 100%;
+}
+
+video.lazy-video:not(.loaded) {
+    animation: shimmer 1.5s linear infinite;
 }
 
 video.lazy-video.loaded {
     opacity: 1;
+    background: none;
+    animation: none;
 }
 
-/* Loading state for images */
-img.lazy-image:not(.loaded) {
-    background: linear-gradient(110deg, #f0f0f0 0%, #f8f8f8 50%, #f0f0f0 100%);
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Container cho ảnh cần có kích thước cố định */
+.home-tour-card__media,
+.home-destination-card,
+.home-testimonial__image,
+.home-articles__main,
+.home-articles__item,
+.vlog-item {
+    background: var(--color-primary-bg); /* Fallback nếu ảnh không load */
+}
+
+/* Dark mode support */
+.dark img.lazy-image:not(.loaded),
+.dark video.lazy-video:not(.loaded) {
+    background: linear-gradient(110deg, #2c2c2c 8%, #3a3a3a 18%, #2c2c2c 33%);
     background-size: 200% 100%;
-    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.dark .home-tour-card__media,
+.dark .home-destination-card,
+.dark .home-testimonial__image,
+.dark .home-articles__main,
+.dark .home-articles__item,
+.dark .vlog-item {
+    background: #2c2c2c;
 }
 
 @keyframes shimmer {
