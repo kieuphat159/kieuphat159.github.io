@@ -689,6 +689,12 @@ body:not(.page-ready) header .container {
         opacity: 1;
 }
 
+body:not(.page-ready) header {
+        background-color: rgba(252, 252, 252, 0.9) !important;
+        backdrop-filter: blur(10px) !important;
+        transition: none !important;
+}
+
 /* Make header nav links black during loading */
 body:not(.page-ready) .header-main-nav__link {
         color: var(--nav-text) !important;
