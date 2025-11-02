@@ -737,6 +737,13 @@ img.lazy-image:not(.loaded) {
     line-height: 1.4;
 }
 
+.vlog-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
 .slide-vlog-btn {
     position: absolute;
     top: 50%;
@@ -901,6 +908,7 @@ img.lazy-image:not(.loaded) {
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 0.2px;
+    color: white;
 }
 
 .home-destination-card__type {
