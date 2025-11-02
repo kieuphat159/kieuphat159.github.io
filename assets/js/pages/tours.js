@@ -1,179 +1,75 @@
-// --- FAKE DATA ---
-const toursData = [
-        {
-                id: 1,
-                name: "Bali Paradise Getaway",
-                location: "Indonesia",
-                type: "Beach",
-                duration: 7,
-                price: 1200,
-                rating: 4.8,
-                reviewsCount: 120,
-                image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=400",
-                tags: ["Bestseller"],
-                inclusions: ["Flights", "Hotel", "Breakfast"],
-                popularity: 120,
-        },
-        {
-                id: 2,
-                name: "Bangkok's Grand Palace & Temples",
-                location: "Thailand",
-                type: "Cultural",
-                duration: 4,
-                price: 850,
-                rating: 4.6,
-                reviewsCount: 95,
-                image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=400",
-                tags: [],
-                inclusions: ["Hotel", "Guide"],
-                popularity: 95,
-        },
-        {
-                id: 3,
-                name: "Dubai Desert Safari Adventure",
-                location: "UAE",
-                type: "Adventure",
-                duration: 1,
-                price: 350,
-                rating: 4.9,
-                reviewsCount: 250,
-                image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=400",
-                tags: ["Bestseller"],
-                inclusions: ["4x4 Ride", "Dinner"],
-                popularity: 250,
-        },
-        {
-                id: 4,
-                name: "Maldives Overwater Bungalow Dream",
-                location: "Maldives",
-                type: "Luxury",
-                duration: 5,
-                price: 3500,
-                rating: 4.9,
-                reviewsCount: 180,
-                image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=400",
-                tags: ["Luxury"],
-                inclusions: ["Flights", "All-inclusive"],
-                popularity: 180,
-        },
-        {
-                id: 5,
-                name: "Chiang Mai Elephant Sanctuary",
-                location: "Thailand",
-                type: "Family",
-                duration: 3,
-                price: 600,
-                rating: 4.7,
-                reviewsCount: 150,
-                image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=400",
-                tags: ["Eco-friendly"],
-                inclusions: ["Hotel", "Guide", "Entry Fees"],
-                popularity: 150,
-        },
-        {
-                id: 6,
-                name: "Ancient Rome & Colosseum Tour",
-                location: "Italy",
-                type: "Cultural",
-                duration: 3,
-                price: 950,
-                rating: 4.8,
-                reviewsCount: 300,
-                image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=400",
-                tags: [],
-                inclusions: ["Hotel", "Guide"],
-                popularity: 300,
-        },
-        {
-                id: 7,
-                name: "Swiss Alps Scenic Train Journey",
-                location: "Switzerland",
-                type: "Adventure",
-                duration: 8,
-                price: 3200,
-                rating: 5.0,
-                reviewsCount: 190,
-                image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=400",
-                tags: ["Bestseller", "Luxury"],
-                inclusions: ["Train Tix", "Hotel"],
-                popularity: 190,
-        },
-        {
-                id: 8,
-                name: "Santorini Sunset & Volcano Cruise",
-                location: "Greece",
-                type: "Beach",
-                duration: 1,
-                price: 250,
-                rating: 4.9,
-                reviewsCount: 450,
-                image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=400",
-                tags: [],
-                inclusions: ["Boat Trip", "Dinner"],
-                popularity: 450,
-        },
-        {
-                id: 9,
-                name: "Kyoto Cherry Blossom Discovery",
-                location: "Japan",
-                type: "Cultural",
-                duration: 5,
-                price: 1800,
-                rating: 4.9,
-                reviewsCount: 220,
-                image: "https://images.unsplash.com/photo-1522383225653-ed111181a951?q=80&w=400",
-                tags: ["Seasonal"],
-                inclusions: ["Hotel", "Guide"],
-                popularity: 220,
-        },
-        {
-                id: 10,
-                name: "NYC Broadway & City Lights",
-                location: "USA",
-                type: "City Tour",
-                duration: 4,
-                price: 1500,
-                rating: 4.7,
-                reviewsCount: 110,
-                image: "https://images.unsplash.com/photo-1522383225653-ed111181a951?q=80&w=400",
-                tags: [],
-                inclusions: ["Hotel", "Show Tickets"],
-                popularity: 110,
-        },
-        {
-                id: 11,
-                name: "Grand Canyon Helicopter Tour",
-                location: "USA",
-                type: "Adventure",
-                duration: 1,
-                price: 450,
-                rating: 4.9,
-                reviewsCount: 320,
-                image: "https://images.unsplash.com/photo-1522383225653-ed111181a951?q=80&w=400",
-                tags: [],
-                inclusions: ["Helicopter Ride"],
-                popularity: 320,
-        },
-        {
-                id: 12,
-                name: "Pyramids of Giza & Nile Cruise",
-                location: "Egypt",
-                type: "Cultural",
-                duration: 10,
-                price: 2800,
-                rating: 4.8,
-                reviewsCount: 160,
-                image: "https://images.unsplash.com/photo-1522383225653-ed111181a951?q=80&w=400",
-                tags: ["Bestseller"],
-                inclusions: ["Flights", "Cruise", "Guide"],
-                popularity: 160,
-        },
-];
+// --- DATA LOADING ---
+let toursData = [];
+let destinationsMap = {};
+
+// Load tours and destinations data
+async function loadToursData() {
+        try {
+                // Load tours data
+                const toursResponse = await fetch("./tours.json");
+                const toursJson = await toursResponse.json();
+
+                // Load destinations data for country mapping
+                const dataResponse = await fetch("./data.json");
+                const dataJson = await dataResponse.json();
+
+                // Create destination map for quick lookup
+                dataJson.data.forEach((dest) => {
+                        destinationsMap[dest.id] = dest.country;
+                });
+
+                // Transform tours data to match expected format
+                toursData = toursJson.tours.map((tour) => {
+                        // Get location from destination map
+                        const location = destinationsMap[tour.destination_id] || tour.destination_id;
+
+                        // Generate inclusions from services and transport
+                        const inclusions = [];
+                        if (tour.transport && tour.transport.includes("Máy bay")) inclusions.push("Flights");
+                        if (tour.services.hotel) inclusions.push("Hotel");
+                        if (
+                                tour.services.meals &&
+                                (tour.services.meals.includes("Ăn sáng") || tour.services.meals.includes("3 bữa"))
+                        )
+                                inclusions.push("Breakfast");
+                        if (tour.services.guide) inclusions.push("Guide");
+                        if (tour.transport && (tour.transport.includes("Tàu") || tour.transport.includes("Shinkansen")))
+                                inclusions.push("Train Tix");
+                        if (tour.transport && tour.transport.includes("Xe du lịch")) inclusions.push("4x4 Ride");
+
+                        // Generate tags based on discount
+                        const tags = [];
+                        if (tour.discount_percent >= 10) tags.push("Bestseller");
+                        if (tour.rating >= 4.9) tags.push("Luxury");
+
+                        // Calculate popularity (dummy based on rating and duration)
+                        const popularity = Math.round(tour.rating * 50 + tour.duration_days * 10);
+
+                        return {
+                                id: tour.id,
+                                name: tour.title,
+                                location: location,
+                                type: tour.type,
+                                duration: tour.duration_days,
+                                price: Math.round(tour.price / 25000), // Convert VND to USD (approx rate)
+                                rating: tour.rating,
+                                reviewsCount: popularity, // Use popularity as reviews count
+                                image: tour.main_image,
+                                tags: tags,
+                                inclusions: inclusions,
+                                popularity: popularity,
+                        };
+                });
+        } catch (error) {
+                console.error("Error loading tours data:", error);
+                toursData = []; // Set empty array on error
+        }
+}
 
 // --- STATE VARIABLES ---
 let currentPage = 1;
 const toursPerPage = 6;
-let filteredTours = [...toursData];
+let filteredTours = [];
 let wishlist = new Set(JSON.parse(localStorage.getItem("tourWishlist")) || []);
 let debounceTimer;
 
@@ -183,7 +79,7 @@ const filterForm = document.getElementById("filter-form");
 const keywordInput = document.getElementById("keyword-search");
 const priceRange = document.getElementById("price-range");
 const priceValue = document.getElementById("price-value");
-const typeFilterContainer = document.getElementById("type-filter");
+const typeFilterGroup = document.getElementById("type-filter-group");
 const durationFilterContainer = document.getElementById("duration-filter");
 const sortSelect = document.getElementById("sort-by");
 const resultCount = document.querySelector(".result-controls__count");
@@ -308,9 +204,9 @@ function renderTours() {
                         tour.duration > 1 ? "s" : ""
                 }</span>
                         </div>
-                        <a href="#tour-details" class="tour-card__title-link"><h3 class="tour-card__title">${
-                                tour.name
-                        }</h3></a>
+                        <a href="#tour-details?id=${
+                                tour.id
+                        }" class="tour-card__title-link"><h3 class="tour-card__title">${tour.name}</h3></a>
                         <div class="tour-card__rating">${starsHTML} <span class="tour-card__rating-count">(${
                         tour.reviewsCount
                 })</span></div>
@@ -320,7 +216,7 @@ function renderTours() {
                                 <p class="tour-card__price-from">From</p>
                                 <p class="tour-card__price-value">$${tour.price.toLocaleString()}</p>
                             </div>
-                            <a href="#tour-details" class="tour-card__details-btn">View Details</a>
+                            <a href="#tour-details?id=${tour.id}" class="tour-card__details-btn">View Details</a>
                         </div>
                     </div>
                 `;
@@ -385,10 +281,21 @@ function applyFiltersAndSort() {
                 const maxPrice = parseInt(priceRange.value);
                 tempTours = tempTours.filter((tour) => tour.price <= maxPrice);
 
-                // Type filter (checkboxes)
-                const checkedTypes = [...typeFilterContainer.querySelectorAll("input:checked")].map((cb) => cb.value);
+                // Type filter - check all checked inputs
+                const allCheckedInputs = [...typeFilterGroup.querySelectorAll("input:checked")];
+                const checkedTypes = allCheckedInputs
+                        .filter((cb) => cb.name === "type-filter") // Only process type-filter checkboxes
+                        .map((cb) => cb.value);
+
                 if (checkedTypes.length > 0) {
-                        tempTours = tempTours.filter((tour) => checkedTypes.includes(tour.type));
+                        // Check if any of the checked types is a main category or a full type
+                        tempTours = tempTours.filter((tour) => {
+                                const tourMainCategory = tour.type.split(" - ")[0];
+                                // Match if the checked type is the full tour type OR is the main category
+                                return checkedTypes.some((checkedType) => {
+                                        return checkedType === tour.type || checkedType === tourMainCategory;
+                                });
+                        });
                 }
 
                 // Duration filter (radios)
@@ -428,16 +335,85 @@ function applyFiltersAndSort() {
 
 // --- POPULATE FILTERS ---
 function populateFilters() {
-        const types = [...new Set(toursData.map((t) => t.type))];
-        typeFilterContainer.innerHTML = types
-                .map(
-                        (type) => `
-                <label>
-                    <input type="checkbox" name="type" value="${type}"> ${type}
-                </label>
-            `
-                )
-                .join("");
+        // Group types by main category
+        const typeGroups = {};
+        toursData.forEach((tour) => {
+                const parts = tour.type.split(" - ");
+                const mainCategory = parts[0];
+                const hasSubtype = parts.length > 1;
+
+                if (!typeGroups[mainCategory]) {
+                        typeGroups[mainCategory] = [];
+                }
+
+                // Add full type string to the group
+                if (!typeGroups[mainCategory].includes(tour.type)) {
+                        typeGroups[mainCategory].push(tour.type);
+                }
+        });
+
+        // Populate type filters with nested structure
+        typeFilterGroup.innerHTML = "";
+
+        Object.keys(typeGroups).forEach((mainType) => {
+                const mainLabel = document.createElement("label");
+                mainLabel.innerHTML = `
+                        <input type="checkbox" name="type-filter" value="${mainType}"> ${mainType}
+                `;
+                typeFilterGroup.appendChild(mainLabel);
+
+                // Check if this main type has subtypes (types with " - " separator)
+                const hasSubtypes = typeGroups[mainType].some((type) => type.includes(" - "));
+
+                if (hasSubtypes) {
+                        // Create a container for subtypes
+                        const subtypeContainer = document.createElement("div");
+                        subtypeContainer.className = "filter-widget__subtype";
+                        subtypeContainer.style.display = "none";
+
+                        // Create subtypes for this main category
+                        typeGroups[mainType].forEach((fullType) => {
+                                if (fullType.includes(" - ")) {
+                                        const parts = fullType.split(" - ");
+                                        const subcategory = parts.slice(1).join(" - ");
+                                        const subtypeLabel = document.createElement("label");
+                                        subtypeLabel.innerHTML = `
+                                                <input type="checkbox" name="type-filter" value="${fullType}"> ${subcategory}
+                                        `;
+                                        subtypeContainer.appendChild(subtypeLabel);
+
+                                        // Add event listener for subtype
+                                        const subCheckbox = subtypeLabel.querySelector("input");
+                                        subCheckbox.addEventListener("change", () => {
+                                                applyFiltersAndSort();
+                                        });
+                                }
+                        });
+
+                        typeFilterGroup.appendChild(subtypeContainer);
+
+                        // Add event listener to toggle subtypes
+                        const mainCheckbox = mainLabel.querySelector("input");
+                        mainCheckbox.addEventListener("change", function () {
+                                if (this.checked) {
+                                        subtypeContainer.style.display = "block";
+                                } else {
+                                        subtypeContainer.style.display = "none";
+                                        // Also uncheck all subtypes
+                                        subtypeContainer.querySelectorAll("input").forEach((subInput) => {
+                                                subInput.checked = false;
+                                        });
+                                }
+                                applyFiltersAndSort();
+                        });
+                } else {
+                        // Add event listener for main type checkbox if no subtypes
+                        const mainCheckbox = mainLabel.querySelector("input");
+                        mainCheckbox.addEventListener("change", () => {
+                                applyFiltersAndSort();
+                        });
+                }
+        });
 
         const durations = [
                 { label: "Any", value: "all" },
@@ -476,13 +452,17 @@ sortSelect.addEventListener("change", applyFiltersAndSort);
 resetFiltersBtn.addEventListener("click", () => {
         filterForm.reset();
         priceValue.textContent = `$${priceRange.max}`; // Reset price label
+        // Hide all subtype containers
+        document.querySelectorAll(".filter-widget__subtype").forEach((subtypeContainer) => {
+                subtypeContainer.style.display = "none";
+        });
         applyFiltersAndSort();
 });
 
 tourGrid.addEventListener("click", (e) => {
         const btn = e.target.closest(".tour-card__wishlist-btn");
         if (btn) {
-                const tourId = parseInt(btn.dataset.tourId);
+                const tourId = btn.dataset.tourId; // Keep as string
                 btn.classList.toggle("active");
                 if (wishlist.has(tourId)) {
                         wishlist.delete(tourId);
@@ -506,7 +486,9 @@ listViewBtn.addEventListener("click", () => {
 });
 
 // --- INITIAL LOAD ---
-function initialLoad() {
+async function initialLoad() {
+        await loadToursData(); // Load data first
+        filteredTours = [...toursData]; // Initialize filtered tours
         populateFilters();
         applyFiltersAndSort(); // Use the main function for initial render
 }
