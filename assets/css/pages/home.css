@@ -512,6 +512,7 @@ img.lazy-image:not(.loaded) {
     object-fit: cover;
     display: block;
     transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+    position: relative;
 }
 
 .home-tour-card:hover .home-tour-card__media img {
