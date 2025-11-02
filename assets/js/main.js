@@ -4,7 +4,9 @@
 // 1. KHAI BÁO BIẾN VÀ HẰNG SỐ TOÀN CỤC
 // ============================================
 const $ = document.querySelector.bind(document);
+// chọn phần tử đầu tiên phù hợp với selector
 const $$ = document.querySelectorAll.bind(document);
+// chọn tất cả phần tử phù hợp với selector
 
 let initialLoad = true;
 let isPageLoading = false;
@@ -14,6 +16,16 @@ let currentPage1 = null;
 // 2. CÁC HÀM TIỆN ÍCH (UTILITY FUNCTIONS)
 // ============================================
 
+/**
+ * Hàm tải template
+ *
+ * Cách dùng:
+ * <div id="parent"></div>
+ * <script>
+ *  load("#parent", "./path-to-template.html", callback);
+ * </script>
+ * Sau đó trang từ đường dẫn trên sẽ được load vào trong div có id="parent"
+ */
 function load(selector, path, callback) {
         // const cachedTemplates = localStorage.getItem(path);
         // if (cachedTemplates) {
@@ -229,22 +241,6 @@ function setupMobileMenu() {
                 sideMenuBack.addEventListener("click", closeMenu);
                 sideMenuOverlay.addEventListener("click", closeMenu);
         }
-<<<<<<< HEAD
-
-        sideMenuBack.addEventListener("click", closeMenu);
-        sideMenuOverlay.addEventListener("click", closeMenu);
-
-        // Xử lý click vào link trong side menu
-        const sideMenuLinks = sideMenu.querySelectorAll(".header-side-menu__link");
-        sideMenuLinks.forEach((link) => {
-            link.addEventListener("click", () => {
-                // Đóng menu sau khi click
-                closeMenu();
-            });
-        });
-    }
-=======
->>>>>>> 9b067e4479a633e95dad7884b87488ad2eeb058d
 }
 
 // ============================================
@@ -280,15 +276,6 @@ function setupThemeToggle() {
 function activateNavLink() {
         setupMobileMenu();
 
-<<<<<<< HEAD
-    $$("a[data-page]").forEach((link) => {
-        link.addEventListener("click", (event) => {
-            event.preventDefault();
-            const page = link.getAttribute("data-page");
-            loadPage(page);
-            window.location.hash = page;
-            updateActiveNavLink(page);
-=======
         $$("a[data-page]").forEach((link) => {
                 link.addEventListener("click", (event) => {
                         event.preventDefault();
@@ -299,7 +286,6 @@ function activateNavLink() {
                         // Cập nhật active class
                         updateActiveNavLink(page);
                 });
->>>>>>> 9b067e4479a633e95dad7884b87488ad2eeb058d
         });
 }
 
@@ -307,25 +293,8 @@ function activateNavLink() {
 // 8. EVENT LISTENERS - KHỞI ĐỘNG KHI VÀO WEB
 // ============================================
 
+// Sự kiện chính khi DOM load xong
 document.addEventListener("DOMContentLoaded", () => {
-<<<<<<< HEAD
-    load("#header", "./templates/header.html", () => {
-        activateNavLink();
-        handleHashChange();
-        initialLoad = false;
-        setupThemeToggle();
-    });
-
-    load("#footer", "./templates/footer.html");
-
-    window.addEventListener("hashchange", () => {
-        if (!initialLoad) {
-            handleHashChange();
-        }
-    });
-
-    document.body.classList.add("page-ready");
-=======
         // Load header (chứa navigation)
         load("#header", "./templates/header.html", () => {
                 activateNavLink();
@@ -345,9 +314,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Hiện trang luôn
         document.body.classList.add("page-ready");
->>>>>>> 9b067e4479a633e95dad7884b87488ad2eeb058d
 });
 
+// Đóng side menu khi resize về desktop
 window.addEventListener("resize", function () {
         if (window.innerWidth > 991.98) {
                 const sideMenu = document.getElementById("sideMenu");
@@ -361,36 +330,18 @@ window.addEventListener("resize", function () {
 // 9. XỬ LÝ HEADER KHI CUỘN QUA BANNER
 // ============================================
 
+// Biến toàn cục để lưu scroll handler
 let scrollHandler = null;
 
 function handleHeaderScroll() {
-<<<<<<< HEAD
-    const header = document.querySelector("header");
-    const banner = document.querySelector(
-        ".about-des-banner, .des-banner, .onl-banner, .destination-detail-hero, .tours-banner, .contact-banner, .tour-details-banner"
-    );
-=======
         const header = document.querySelector("header");
         // Kiểm tra tất cả các loại banner
         const banner = document.querySelector(
                 ".about-des-banner, .des-banner, .onl-banner, .destination-detail-hero, .tours-banner, .contact-banner, .tour-details-banner"
         );
->>>>>>> 9b067e4479a633e95dad7884b87488ad2eeb058d
 
         if (!header) return;
 
-<<<<<<< HEAD
-    if (scrollHandler) {
-        document.removeEventListener("scroll", scrollHandler);
-        scrollHandler = null;
-    }
-
-    if (banner) {
-        const bannerHeight = banner.offsetHeight;
-
-        scrollHandler = () => {
-            const scrollY = document.body.scrollTop;
-=======
         // XÓA event listener cũ nếu có
         if (scrollHandler) {
                 document.removeEventListener("scroll", scrollHandler);
@@ -404,7 +355,6 @@ function handleHeaderScroll() {
                 // Tạo handler mới
                 scrollHandler = () => {
                         const scrollY = document.body.scrollTop;
->>>>>>> 9b067e4479a633e95dad7884b87488ad2eeb058d
 
                         if (scrollY > bannerHeight) {
                                 header.classList.add("scrolled");
@@ -418,18 +368,5 @@ function handleHeaderScroll() {
                 scrollHandler();
         } else {
                 header.classList.add("scrolled");
-<<<<<<< HEAD
-            } else {
-                header.classList.remove("scrolled");
-            }
-        };
-
-        document.addEventListener("scroll", scrollHandler, true);
-        scrollHandler();
-    } else {
-        header.classList.add("scrolled");
-    }
-=======
         }
->>>>>>> 9b067e4479a633e95dad7884b87488ad2eeb058d
 }
