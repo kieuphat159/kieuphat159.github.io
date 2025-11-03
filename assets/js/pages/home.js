@@ -490,3 +490,46 @@
     });
 
     console.log("Home page scripts loaded successfully!");
+
+
+
+  // Lấy dữ liệu từ file JSON
+  fetch('../tours.json')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('tours-container');
+      container.innerHTML = ''; // Xóa phần cũ
+
+      const topTours = data.tours.slice(0, 4);
+
+      topTours.forEach(tour => {
+        // Tính giá sau giảm
+        const discountedPrice = tour.price * (1 - tour.discount_percent / 100);
+
+        // Tạo HTML cho mỗi tour
+        const card = `
+          <article class="home-tour-card">
+            <a href="#tour-details?id=${tour.id}" class="home-tour-card__media">
+              <img src="${tour.main_image}" alt="${tour.title}" class="lazy-image" />
+            </a>
+            <div class="home-tour-card__body">
+              <div class="home-tour-card__price">
+                <span>${discountedPrice.toLocaleString('vi-VN')}đ</span> / tour
+              </div>
+              <h3 class="home-tour-card__title">
+                <a href="#tour-details?id=${tour.id}">${tour.title}</a>
+              </h3>
+              <ul class="home-tour-card__meta">
+                <li class="home-tour-card__meta-item">⭐ ${tour.rating} / 5</li>
+                <li class="home-tour-card__meta-item">⏱ ${tour.duration_days} ngày</li>
+              </ul>
+              <a href="#tour-details?id=${tour.id}" class="home-tour-card__btn">Đặt ngay</a>
+            </div>
+          </article>
+        `;
+
+        container.insertAdjacentHTML('beforeend', card);
+
+      });
+    })
+    .catch(error => console.error('Lỗi tải dữ liệu JSON:', error));
