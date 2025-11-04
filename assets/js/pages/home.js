@@ -1,189 +1,492 @@
-class SkeletonLazyLoader {
-    constructor() {
-        this.observer = new IntersectionObserver(this.handleIntersection.bind(this), {
-            rootMargin: "50px",
-            threshold: 0.1,
-        });
-        this.init();
-    }
+    // ============================================
+    // LAZY LOADING CHO ẢNH VÀ VIDEO - FIXED
+    // ============================================
 
-    init() {
-        setTimeout(() => {
-            this.setupLazy();
-        }, 300);
-    }
-
-    setupLazy() {
-        const lazyImages = document.querySelectorAll("img[data-src]");
-        lazyImages.forEach((img) => {
-            this.wrapImageWithSkeleton(img);
-            this.observer.observe(img);
-        });
-    }
-
-    wrapImageWithSkeleton(img) {
-        if (img.parentElement.classList.contains("skeleton-wrapper")) {
-            return;
-        }
-        const wrapper = document.createElement("div");
-        wrapper.className = "skeleton-wrapper";
-        wrapper.classList.add("skeleton-loading");
-        img.parentNode.insertBefore(wrapper, img);
-        wrapper.appendChild(img);
-        if (img.width && img.height) {
-            const aspectRatio = (img.height / img.width) * 100;
-            wrapper.style.paddingBottom = aspectRatio + "%";
-        }
-    }
-
-    handleIntersection(entries) {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                this.loadImage(entry.target);
-                this.observer.unobserve(entry.target);
-            }
-        });
-    }
-
-    loadImage(img) {
-        const src = img.dataset.src;
-        if (!src) return;
-        const wrapper = img.closest(".skeleton-wrapper");
-        const imageLoader = new Image();
-        imageLoader.onload = function () {
-            img.src = src;
-            img.classList.add("loaded");
-            if (wrapper) {
-                wrapper.classList.remove("skeleton-loading");
-                wrapper.classList.add("skeleton-loaded");
-            }
-        };
-        imageLoader.onerror = function () {
-            img.alt = "Image not available";
-            if (wrapper) {
-                wrapper.classList.remove("skeleton-loading");
-                wrapper.classList.add("skeleton-error");
-            }
-        };
-        imageLoader.src = src;
-    }
-}
-
-if ("IntersectionObserver" in window) {
-    new SkeletonLazyLoader();
-}
-
-// CAROUSEL
-(function () {
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", init);
-    } else {
-        init();
-    }
-
-    function init() {
-        var viewport = document.getElementById("trendingViewport");
-        if (!viewport) return console.error("No viewport");
-
-        var track = viewport.querySelector(".home-trend-list");
-        if (!track) return console.error("No track");
-
-        var cards = Array.from(track.querySelectorAll(".home-trend-card"));
-        if (cards.length === 0) return;
-
-        var index = 0;
-        var timer = null;
-        var moving = false;
-
-        // Clone
-        cards.forEach(function (c) {
-            track.appendChild(c.cloneNode(true));
-        });
-        cards.forEach(function (c) {
-            track.insertBefore(c.cloneNode(true), track.firstChild);
-        });
-
-        index = cards.length;
-
-        function move(animate) {
-            var w = cards[0].offsetWidth + 28;
-            track.style.transition = animate ? "transform 0.6s ease" : "none";
-            track.style.transform = "translateX(-" + index * w + "px)";
+    class MediaLazyLoader {
+        constructor() {
+            this.imageObserver = null;
+            this.videoObserver = null;
+            this.init();
         }
 
-        function next() {
-            if (moving) return;
-            moving = true;
-            index++;
-            move(true);
-            setTimeout(function () {
-                if (index >= cards.length * 2) {
-                    index = cards.length;
-                    move(false);
+        init() {
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", () => this.setupObservers());
+            } else {
+                this.setupObservers();
+            }
+        }
+
+        setupObservers() {
+            // Kiểm tra hỗ trợ IntersectionObserver
+            if (!("IntersectionObserver" in window)) {
+                this.loadAllMedia();
+                return;
+            }
+
+            // Observer cho ảnh
+            this.imageObserver = new IntersectionObserver((entries) => this.handleImageIntersection(entries), {
+                rootMargin: "100px",
+                threshold: 0.01,
+            });
+
+            // Observer cho video
+            this.videoObserver = new IntersectionObserver((entries) => this.handleVideoIntersection(entries), {
+                rootMargin: "200px",
+                threshold: 0.01,
+            });
+
+            this.setupLazyImages();
+            this.setupLazyVideos();
+        }
+
+        // ============================================
+        // LAZY LOADING CHO ẢNH
+        // ============================================
+        setupLazyImages() {
+            const lazyImages = document.querySelectorAll("img.lazy-image[data-src]");
+            lazyImages.forEach((img) => {
+                this.imageObserver.observe(img);
+            });
+        }
+
+        handleImageIntersection(entries) {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    this.loadImage(entry.target);
+                    this.imageObserver.unobserve(entry.target);
                 }
-                moving = false;
-            }, 600);
+            });
         }
 
-        function start() {
-            if (timer) clearInterval(timer);
-            timer = setInterval(next, 5000);
-        }
+        loadImage(img) {
+            const src = img.dataset.src;
+            if (!src) return;
 
-        function stop() {
-            if (timer) clearInterval(timer);
-        }
+            // Load ảnh
+            const tempImg = new Image();
 
-        move(false);
-
-        var nextBtn = document.querySelector(".home-trend-nav-btn--next");
-        var prevBtn = document.querySelector(".home-trend-nav-btn--prev");
-
-        if (nextBtn)
-            nextBtn.onclick = function () {
-                stop();
-                next();
-                start();
+            tempImg.onload = () => {
+                img.src = src;
+                img.classList.add("loaded");
+                img.removeAttribute("data-src");
             };
-        if (prevBtn)
-            prevBtn.onclick = function () {
-                if (moving) return;
-                moving = true;
-                index--;
-                move(true);
-                setTimeout(function () {
-                    if (index < cards.length) {
-                        index = cards.length * 2 - 1;
-                        move(false);
+
+            tempImg.onerror = () => {
+                console.error("Failed to load image:", src);
+                img.alt = "Không thể tải ảnh";
+                img.classList.add("error");
+            };
+
+            tempImg.src = src;
+        }
+
+        // ============================================
+        // LAZY LOADING CHO VIDEO
+        // ============================================
+        setupLazyVideos() {
+            const lazyVideos = document.querySelectorAll("video.lazy-video[data-src]");
+            lazyVideos.forEach((video) => {
+                this.videoObserver.observe(video);
+            });
+        }
+
+        handleVideoIntersection(entries) {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    this.loadVideo(entry.target);
+                    this.videoObserver.unobserve(entry.target);
+                }
+            });
+        }
+
+        loadVideo(video) {
+            const src = video.dataset.src;
+            if (!src) return;
+
+            // Tạo source element
+            const source = document.createElement("source");
+            source.src = src;
+            source.type = "video/mp4";
+
+            source.onerror = () => {
+                console.error("Failed to load video:", src);
+                video.classList.add("error");
+            };
+
+            // Append source vào video
+            video.appendChild(source);
+            video.removeAttribute("data-src");
+
+            // Load video
+            video.load();
+
+            // Đợi video có thể play
+            video.addEventListener(
+                "loadeddata",
+                () => {
+                    video.classList.add("loaded");
+                    // Auto play nếu trong viewport
+                    if (video.hasAttribute("autoplay") || video.loop) {
+                        video.play().catch((err) => {
+                            console.log("Video autoplay prevented:", err);
+                        });
                     }
-                    moving = false;
-                }, 600);
-                stop();
-                start();
+                },
+                { once: true }
+            );
+        }
+
+        // Fallback cho trình duyệt cũ
+        loadAllMedia() {
+            document.querySelectorAll("img.lazy-image[data-src]").forEach((img) => {
+                img.src = img.dataset.src;
+                img.classList.add("loaded");
+                img.removeAttribute("data-src");
+            });
+
+            document.querySelectorAll("video.lazy-video[data-src]").forEach((video) => {
+                const source = document.createElement("source");
+                source.src = video.dataset.src;
+                source.type = "video/mp4";
+                video.appendChild(source);
+                video.classList.add("loaded");
+                video.removeAttribute("data-src");
+                video.load();
+            });
+        }
+    }
+
+    // Khởi tạo lazy loader
+    new MediaLazyLoader();
+
+    // ============================================
+    // LAZY LOADING CHO SECTIONS
+    // ============================================
+    function lazyLoadSections() {
+        const lazyElements = document.querySelectorAll(".lazy-load");
+
+        if ("IntersectionObserver" in window) {
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1,
             };
 
-        viewport.onmouseenter = stop;
-        viewport.onmouseleave = start;
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
 
-        start();
-        var resizeTimer = null;
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            lazyElements.forEach((el) => observer.observe(el));
+        } else {
+            lazyElements.forEach((el) => el.classList.add("visible"));
+        }
+    }
 
-        window.addEventListener("resize", function () {
-            // 1. Ngay lập tức thêm class để vô hiệu hóa transition
-            //    Điều này ngăn chặn mọi cú "giật" hoặc trượt hoạt ảnh.
-            track.classList.add("no-transition");
+    // Khởi tạo lazy loading cho sections
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", lazyLoadSections);
+    } else {
+        lazyLoadSections();
+    }
 
-            // 2. Cập nhật vị trí của carousel ngay tức thì.
-            //    Vì transition đã bị tắt, vị trí sẽ được "snap" vào đúng chỗ.
-            move(false);
+    // ============================================
+    // VLOG SLIDER
+    // ============================================
+    function initVlogSlider() {
+        const track = document.querySelector(".vlog-track");
+        const prevBtn = document.querySelector(".vlog-slider .prev");
+        const nextBtn = document.querySelector(".vlog-slider .next");
 
-            // 3. Sử dụng debounce để phát hiện khi người dùng đã resize xong
+        if (!track || !prevBtn || !nextBtn) return;
+
+        let currentPosition = 0;
+        let isTransitioning = false;
+
+        function updateVlogSlider() {
+            const items = track.querySelectorAll(".vlog-item");
+            if (items.length === 0) return;
+
+            const item = items[0];
+            const itemStyle = window.getComputedStyle(item);
+            const gap = parseInt(itemStyle.marginRight) || 24;
+            const itemWidth = item.offsetWidth + gap;
+
+            const windowWidth = document.querySelector(".vlog-window").offsetWidth;
+            const visibleCount = Math.floor(windowWidth / itemWidth);
+            const totalItems = items.length;
+            const maxScroll = (totalItems - visibleCount) * itemWidth;
+
+            // Disable buttons khi đang transition
+            function updateButtonStates() {
+                prevBtn.disabled = currentPosition >= 0;
+                nextBtn.disabled = Math.abs(currentPosition) >= maxScroll;
+            }
+
+            nextBtn.onclick = () => {
+                if (isTransitioning || Math.abs(currentPosition) >= maxScroll) return;
+
+                isTransitioning = true;
+                currentPosition -= itemWidth;
+
+                if (Math.abs(currentPosition) > maxScroll) {
+                    currentPosition = -maxScroll;
+                }
+
+                track.style.transform = `translateX(${currentPosition}px)`;
+
+                setTimeout(() => {
+                    isTransitioning = false;
+                    updateButtonStates();
+                }, 500);
+            };
+
+            prevBtn.onclick = () => {
+                if (isTransitioning || currentPosition >= 0) return;
+
+                isTransitioning = true;
+                currentPosition += itemWidth;
+
+                if (currentPosition > 0) {
+                    currentPosition = 0;
+                }
+
+                track.style.transform = `translateX(${currentPosition}px)`;
+
+                setTimeout(() => {
+                    isTransitioning = false;
+                    updateButtonStates();
+                }, 500);
+            };
+
+            updateButtonStates();
+        }
+
+        updateVlogSlider();
+
+        // Update on resize với debounce
+        let resizeTimer;
+        window.addEventListener("resize", () => {
             clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function () {
-                // 4. Xóa class đi để các hiệu ứng transition hoạt động lại
-                //    bình thường cho các lần click next/prev sau đó.
-                track.classList.remove("no-transition");
-            }, 100); // Đợi 100ms sau lần resize cuối cùng
+            resizeTimer = setTimeout(() => {
+                currentPosition = 0;
+                track.style.transition = "none";
+                track.style.transform = "translateX(0)";
+                setTimeout(() => {
+                    track.style.transition = "";
+                    updateVlogSlider();
+                }, 50);
+            }, 250);
         });
     }
-})();
+
+    // Khởi tạo vlog slider
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initVlogSlider);
+    } else {
+        initVlogSlider();
+    }
+
+    // ============================================
+    // AUTO PLAY VIDEO KHI TRONG VIEWPORT
+    // ============================================
+    function initVideoAutoPlay() {
+        const videos = document.querySelectorAll("video[loop]");
+
+        if (!("IntersectionObserver" in window)) return;
+
+        const videoObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const video = entry.target;
+
+                    if (entry.isIntersecting) {
+                        // Play video khi vào viewport
+                        if (video.paused && video.readyState >= 2) {
+                            video.play().catch((err) => {
+                                console.log("Video autoplay prevented:", err);
+                            });
+                        }
+                    } else {
+                        // Pause video khi ra khỏi viewport
+                        if (!video.paused) {
+                            video.pause();
+                        }
+                    }
+                });
+            },
+            {
+                threshold: 0.5, // 50% video hiển thị
+            }
+        );
+
+        videos.forEach((video) => {
+            videoObserver.observe(video);
+
+            // Play khi video đã loaded và trong viewport
+            video.addEventListener("loadeddata", () => {
+                const rect = video.getBoundingClientRect();
+                const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+
+                if (isInViewport && video.paused) {
+                    video.play().catch((err) => {
+                        console.log("Video autoplay prevented:", err);
+                    });
+                }
+            });
+        });
+    }
+
+    // Khởi tạo video autoplay
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initVideoAutoPlay);
+    } else {
+        initVideoAutoPlay();
+    }
+
+    // ============================================
+    // NEWSLETTER FORM
+    // ============================================
+    function initNewsletterForm() {
+        const form = document.querySelector(".home-newsletter__form");
+
+        if (!form) return;
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const input = form.querySelector(".home-newsletter__input");
+            const email = input.value.trim();
+
+            if (!email) {
+                alert("Vui lòng nhập địa chỉ email");
+                return;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Vui lòng nhập địa chỉ email hợp lệ");
+                return;
+            }
+
+            // Simulate submission
+            const submitBtn = form.querySelector(".home-newsletter__submit");
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = "<span>✓</span>";
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                alert("Đăng ký thành công! Cảm ơn bạn đã đăng ký nhận bản tin.");
+                input.value = "";
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+            }, 1000);
+        });
+    }
+
+    // Khởi tạo newsletter form
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initNewsletterForm);
+    } else {
+        initNewsletterForm();
+    }
+
+    // ============================================
+    // SMOOTH SCROLL FOR ANCHOR LINKS
+    // ============================================
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                const href = this.getAttribute("href");
+
+                // Bỏ qua các anchor không có target hoặc chỉ là #
+                if (!href || href === "#") return;
+
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            });
+        });
+    }
+
+    // Khởi tạo smooth scroll
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initSmoothScroll);
+    } else {
+        initSmoothScroll();
+    }
+
+    // ============================================
+    // PERFORMANCE: PRELOAD CRITICAL IMAGES
+    // ============================================
+    function preloadCriticalImages() {
+        // Preload hero image
+        const heroImg = document.querySelector(".home-hero__image[data-src]");
+        if (heroImg && heroImg.dataset.src) {
+            const link = document.createElement("link");
+            link.rel = "preload";
+            link.as = "image";
+            link.href = heroImg.dataset.src;
+            document.head.appendChild(link);
+        }
+    }
+
+    // Preload critical images
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", preloadCriticalImages);
+    } else {
+        preloadCriticalImages();
+    }
+
+    // ============================================
+    // ERROR HANDLING
+    // ============================================
+    window.addEventListener(
+        "error",
+        (e) => {
+            // Log errors cho debugging
+            if (e.target.tagName === "IMG" || e.target.tagName === "VIDEO") {
+                console.error("Media failed to load:", e.target.src || e.target.currentSrc);
+            }
+        },
+        true
+    );
+
+    // ============================================
+    // PAGE VISIBILITY API - PAUSE VIDEOS WHEN TAB HIDDEN
+    // ============================================
+    document.addEventListener("visibilitychange", () => {
+        const videos = document.querySelectorAll("video");
+
+        if (document.hidden) {
+            // Pause all videos when tab is hidden
+            videos.forEach((video) => {
+                if (!video.paused) {
+                    video.pause();
+                    video.dataset.wasPlaying = "true";
+                }
+            });
+        } else {
+            // Resume videos that were playing
+            videos.forEach((video) => {
+                if (video.dataset.wasPlaying === "true") {
+                    video.play().catch(() => {});
+                    delete video.dataset.wasPlaying;
+                }
+            });
+        }
+    });
+
+    console.log("Home page scripts loaded successfully!");
