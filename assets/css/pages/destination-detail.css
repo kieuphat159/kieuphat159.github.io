@@ -275,6 +275,15 @@ html {
   position: relative;
 }
 
+.destination-detail-card--interactive {
+  cursor: pointer;
+}
+
+.destination-detail-card--inactive {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
 /* Scroll-triggered animations for cards */
 .destination-detail-card.scroll-animate {
   transform: translateY(40px);
