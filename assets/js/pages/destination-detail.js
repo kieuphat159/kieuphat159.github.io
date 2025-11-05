@@ -31,6 +31,9 @@ const state = {
 	visibleInsights: 0,
 };
 
+const INSIGHT_STORAGE_KEY = "destinationDetail:selectedInsightArticle";
+const INSIGHT_STORAGE_ID_KEY = "destinationDetail:selectedInsightArticleId";
+
 let skeletonLoaderInstance = null;
 let scrollRevealInstance = null;
 
@@ -455,6 +458,12 @@ function renderMission(destination) {
 		}
 	});
 
+	const joinButton = document.querySelector(".btn.btn--primary");
+	if (joinButton && destination.country) {
+		joinButton.dataset.country = destination.country;
+		joinButton.setAttribute("aria-label", `Xem tất cả tour ${destination.country}`);
+	}
+
 	triggerLazyRefresh();
 }
 
@@ -630,13 +639,52 @@ function updateInsightsGrid() {
 		const article = document.createElement("article");
 		article.className = "destination-detail-insights__card";
 
+		const link = document.createElement("a");
+		link.className = "destination-detail-insights__link";
+		link.href = item.articleUrl || "#blog";
+		link.setAttribute("data-insight-id", item.id);
+		link.setAttribute("aria-label", `Đọc bài viết ${item.title}`);
+
+		link.addEventListener("click", () => {
+			handleInsightNavigation(item);
+		});
+
 		const img = document.createElement("img");
 		img.className = "destination-detail-insights__image";
 		img.dataset.src = item.image || FALLBACKS.cardImage;
-		img.alt = `${item.title} - ${item.city}`;
+		img.alt = `${item.title}${item.city ? ` - ${item.city}` : ""}`;
 		img.setAttribute("loading", "lazy");
 
-		article.appendChild(img);
+		const content = document.createElement("div");
+		content.className = "destination-detail-insights__content";
+
+		const title = document.createElement("h3");
+		title.className = "destination-detail-insights__title";
+		title.textContent = item.title;
+		content.appendChild(title);
+
+		if (item.city) {
+			const location = document.createElement("p");
+			location.className = "destination-detail-insights__location";
+			location.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${item.city}`;
+			content.appendChild(location);
+		}
+
+		if (item.excerpt) {
+			const excerpt = document.createElement("p");
+			excerpt.className = "destination-detail-insights__excerpt";
+			excerpt.textContent = item.excerpt;
+			content.appendChild(excerpt);
+		}
+
+		const readMore = document.createElement("span");
+		readMore.className = "destination-detail-insights__read-more";
+		readMore.innerHTML = 'Đọc bài viết <i class="fa fa-arrow-right" aria-hidden="true"></i>';
+		content.appendChild(readMore);
+
+		link.appendChild(img);
+		link.appendChild(content);
+		article.appendChild(link);
 		grid.appendChild(article);
 	});
 
@@ -822,6 +870,7 @@ function initializeEnhancements() {
 	initRippleEffects();
 	initFilterTabs();
 	initTestimonialsNavigation();
+	initJoinButton();
 }
 
 function refreshScrollReveal() {
@@ -865,6 +914,23 @@ function initVideoPlayer() {
 	video.addEventListener("ended", () => {
 		videoSection.classList.remove("video-active");
 		playBtn.style.display = "flex";
+	});
+}
+
+function initJoinButton() {
+	const joinButton = document.querySelector(".btn.btn--primary");
+	if (!joinButton) return;
+
+	joinButton.addEventListener("click", (event) => {
+		event.preventDefault();
+		const country = joinButton.dataset.country;
+		if (country) {
+			// Navigate to tours page with country filter
+			window.location.hash = `tours?location=${encodeURIComponent(country)}`;
+		} else {
+			// Fallback to tours page without filter
+			window.location.hash = "tours";
+		}
 	});
 }
 
