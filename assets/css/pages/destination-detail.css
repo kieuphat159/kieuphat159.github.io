@@ -840,40 +840,6 @@ img[data-src] {
         font-weight: 600;
         margin-bottom: 30px;
 }
-
-.destination-detail-pilgrimages__tabs {
-  display: inline-flex;
-  gap: 1rem;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 0.5rem;
-  margin-bottom: 40px;
-  border-radius: 12px;
-}
-
-.destination-detail-pilgrimages__tab {
-  border: none;
-  background: transparent;
-  padding: 10px 25px;
-  font-weight: 500;
-  cursor: pointer;
-  color: #444;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 8px;
-}
-
-.destination-detail-pilgrimages__tab:hover {
-  background: rgba(62, 134, 245, 0.1);
-  color: #3E86F5;
-}
-
-.destination-detail-pilgrimages__tab--active {
-  background: linear-gradient(135deg, #3E86F5, #5a9df7);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(62, 134, 245, 0.35);
-  transform: translateY(-2px);
-}
-
 .destination-detail-pilgrimages__cards {
         display: flex;
         justify-content: center;
@@ -1772,21 +1738,16 @@ img[data-src] {
     font-size: 0.95rem;
   }
 
-        /* PILGRIMAGES */
-        .destination-detail-pilgrimages__cards {
-                flex-direction: column;
-                align-items: center;
-        }
+  /* PILGRIMAGES */
+  .destination-detail-pilgrimages__cards {
+          flex-direction: column;
+          align-items: center;
+  }
 
-        .destination-detail-pilgrimages__card {
-                width: 100%;
-                max-width: 320px;
-        }
-
-        .destination-detail-pilgrimages__tabs {
-                flex-wrap: wrap;
-                gap: 0.5rem;
-        }
+  .destination-detail-pilgrimages__card {
+          width: 100%;
+          max-width: 320px;
+  }
 
   /* ITINERARY */
   .destination-detail-itinerary__list-header {
@@ -2306,15 +2267,6 @@ img[data-src] {
 
   .destination-detail-pilgrimages__title {
     font-size: 1.6rem;
-  }
-
-  .destination-detail-pilgrimages__tabs {
-    padding: 0.4rem;
-  }
-
-  .destination-detail-pilgrimages__tab {
-    padding: 8px 18px;
-    font-size: 13px;
   }
 
   .destination-detail-pilgrimages__card {
