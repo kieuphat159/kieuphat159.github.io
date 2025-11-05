@@ -246,12 +246,66 @@
             .catch((error) => console.error("Lỗi tải dữ liệu JSON:", error));
     }
 
+    function loadDestinations() {
+        const grid = document.querySelector(".home-destinations__grid");
+        if (!grid) return;
+
+        fetch("/data.json")
+            .then(res => res.json())
+            .then(json => {
+                const indices = [0, 2, 7, 4, 6, 5];
+                const destinations = json.data.filter((_, i) => indices.includes(i));
+
+                destinations.forEach((item, index) => {
+                    const country = item.country;
+                    const rating = item.rating;
+                    const firstPlace = item.places[0];
+                    const image = firstPlace.famous_locations[0].image_url;
+                    const type = firstPlace.city;
+
+                    const extraClass = index === 1
+                        ? "home-destination-card--tall"
+                        : index === 2
+                        ? "home-destination-card--wide"
+                        : "";
+
+                    const card = document.createElement("article");
+                    card.className = `home-destination-card ${extraClass}`;
+                    card.innerHTML = `
+                        <a href="#destination-detail?id=${item.id}">
+                            <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
+                            <img
+                                data-src="${image}"
+                                alt="${type} ${country}"
+                                class="home-destination-card__img lazy-image"
+                            />
+                            <div class="home-destination-card__info">
+                                <h3 class="home-destination-card__name">${country}</h3>
+                                <span class="home-destination-card__type">${type}</span>
+                            </div>
+                        </a>
+                    `;
+
+                    grid.appendChild(card);
+                });
+
+                // Setup lazy loading cho ảnh mới thêm vào
+                setupDynamicLazyImages();
+            })
+            .catch(err => console.error("Lỗi khi load dữ liệu:", err));
+    }
+
     // Setup lazy loading cho ảnh được thêm động
     function setupDynamicLazyImages() {
         const lazyImages = document.querySelectorAll("#tours-container img.lazy-image[data-src]");
-
+        const lazyimage = document.querySelectorAll("#destinationsGrid img.lazy-image[data-src]")
         if (!("IntersectionObserver" in window)) {
             lazyImages.forEach((img) => {
+                img.src = img.dataset.src;
+                img.classList.add("loaded");
+            });
+
+            lazyimage.forEach((img) => {
                 img.src = img.dataset.src;
                 img.classList.add("loaded");
             });
@@ -288,13 +342,16 @@
         );
 
         lazyImages.forEach((img) => imageObserver.observe(img));
+        lazyimage.forEach((img) => imageObserver.observe(img));
     }
 
     // Load tours khi DOM ready
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", loadTours);
+        document.addEventListener("DOMContentLoaded", loadDestinations);
     } else {
         loadTours();
+        loadDestinations();
     }
 
     // ============================================
