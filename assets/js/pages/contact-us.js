@@ -23,7 +23,7 @@ function initContactForm() {
         submitBtn.innerHTML = '<span>Đang gửi...</span>';
         
         // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        await new Promise(resolve => setTimeout(resolve, 800));
         
         showNotification('success', 'Tin nhắn đã được gửi thành công! 🎉');
         form.reset();
@@ -100,7 +100,7 @@ function showNotification(type, message) {
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => notification.remove(), 300);
-    }, 5000);
+    }, 3500);
 }
 
 // ============================================
@@ -183,7 +183,7 @@ function initScrollAnimations() {
     elements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = `all 0.3s ease ${index * 0.1}s`;
+        el.style.transition = `all 0.3s ease ${index * 0.05}s`;
         observer.observe(el);
     });
 }
@@ -202,7 +202,7 @@ function initSocialAnimations() {
             link.style.transition = 'all 0.2s ease';
             link.style.opacity = '1';
             link.style.transform = 'translateY(0)';
-        }, 2000 + (index * 100));
+        }, 500 + (index * 50));
     });
 }
 
