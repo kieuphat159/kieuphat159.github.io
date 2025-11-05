@@ -114,67 +114,7 @@
         <a href="#tours" class="home-tours__see-all">Xem tất cả</a>
     </div>
 
-    <div class="home-tours__list">
-        <article class="home-tour-card">
-            <a href="#tour-details" class="home-tour-card__media">
-                <img data-src="../assets/images/home/tour.svg" alt="Du lịch Cairns" class="lazy-image" />
-            </a>
-            <div class="home-tour-card__body">
-                <div class="home-tour-card__price"><span>$150</span>/ngày</div>
-                <h3 class="home-tour-card__title"><a href="#">Du lịch Cairns</a></h3>
-                <ul class="home-tour-card__meta">
-                    <li class="home-tour-card__meta-item">📍 Cairns QLD, Úc</li>
-                    <li class="home-tour-card__meta-item">⏱ 6 ngày</li>
-                </ul>
-                <a href="#tour-details" class="home-tour-card__btn">Đặt ngay</a>
-            </div>
-        </article>
-
-        <article class="home-tour-card">
-            <a href="#tour-details" class="home-tour-card__media">
-                <img data-src="../assets/images/home/tour.svg" alt="Du lịch Cairns" class="lazy-image" />
-            </a>
-            <div class="home-tour-card__body">
-                <div class="home-tour-card__price"><span>$150</span>/ngày</div>
-                <h3 class="home-tour-card__title"><a href="#">Du lịch Cairns</a></h3>
-                <ul class="home-tour-card__meta">
-                    <li class="home-tour-card__meta-item">📍 Cairns QLD, Úc</li>
-                    <li class="home-tour-card__meta-item">⏱ 6 ngày</li>
-                </ul>
-                <a href="#tour-details" class="home-tour-card__btn">Đặt ngay</a>
-            </div>
-        </article>
-
-        <article class="home-tour-card">
-            <a href="#tour-details" class="home-tour-card__media">
-                <img data-src="../assets/images/home/tour.svg" alt="Du lịch Orlando" class="lazy-image" />
-            </a>
-            <div class="home-tour-card__body">
-                <div class="home-tour-card__price"><span>$110</span>/ngày</div>
-                <h3 class="home-tour-card__title"><a href="#">Du lịch Orlando</a></h3>
-                <ul class="home-tour-card__meta">
-                    <li class="home-tour-card__meta-item">📍 Orlando, Hoa Kỳ</li>
-                    <li class="home-tour-card__meta-item">⏱ 3 ngày</li>
-                </ul>
-                <a href="#tour-details" class="home-tour-card__btn">Đặt ngay</a>
-            </div>
-        </article>
-
-        <article class="home-tour-card">
-            <a href="#tour-details" class="home-tour-card__media">
-                <img data-src="../assets/images/home/tour.svg" alt="Du lịch Malaysia" class="lazy-image" />
-            </a>
-            <div class="home-tour-card__body">
-                <div class="home-tour-card__price"><span>$136</span>/ngày</div>
-                <h3 class="home-tour-card__title"><a href="#">Du lịch Malaysia</a></h3>
-                <ul class="home-tour-card__meta">
-                    <li class="home-tour-card__meta-item">📍 Malaysia</li>
-                    <li class="home-tour-card__meta-item">⏱ 5 ngày</li>
-                </ul>
-                <a href="#tour-details" class="home-tour-card__btn">Đặt ngay</a>
-            </div>
-        </article>
-    </div>
+    <div class="home-tours__list" id="tours-container"></div>
 </section>
 
 <!-- Explore the world -->
@@ -307,107 +247,17 @@
 
 <!-- Top Destination Section -->
 <section class="home-destinations lazy-load">
-    <div class="home-destinations__head">
-        <div>
-            <h2 class="home-destinations__title">Điểm đến hàng đầu</h2>
-            <p class="home-destinations__desc">
-                Những lý do tuyệt vời nhất khiến Entrada là lựa chọn hoàn hảo cho bạn!
-            </p>
-        </div>
-        <a href="#destinations" class="home-destinations__btn">Xem tất cả</a>
+  <div class="home-destinations__head">
+    <div>
+      <h2 class="home-destinations__title">Điểm đến hàng đầu</h2>
+      <p class="home-destinations__desc">
+        Những lý do tuyệt vời nhất khiến Entrada là lựa chọn hoàn hảo cho bạn!
+      </p>
     </div>
+    <a href="#destinations" class="home-destinations__btn">Xem tất cả</a>
+  </div>
 
-    <div class="home-destinations__grid">
-        <article class="home-destination-card">
-            <a href="#destination-detail?id=vn001">
-                <div class="home-destination-card__rating">3.5</div>
-                <img
-                    data-src="../assets/images/home/dest-1.svg"
-                    alt="Thác nước Việt Nam"
-                    class="home-destination-card__img lazy-image"
-                />
-                <div class="home-destination-card__info">
-                    <h3 class="home-destination-card__name">Việt Nam</h3>
-                    <span class="home-destination-card__type">Thác nước</span>
-                </div>
-            </a>
-        </article>
-
-        <article class="home-destination-card home-destination-card--tall">
-            <a href="#destination-detail?id=vn001">
-                <div class="home-destination-card__rating">3.5</div>
-                <img
-                    data-src="../assets/images/home/dest-2.svg"
-                    alt="Hành trình đường bộ Việt Nam"
-                    class="home-destination-card__img lazy-image"
-                />
-                <div class="home-destination-card__info">
-                    <h3 class="home-destination-card__name">Việt Nam</h3>
-                    <span class="home-destination-card__type">Hành trình</span>
-                </div>
-            </a>
-        </article>
-
-        <article class="home-destination-card home-destination-card--wide">
-            <a href="#destination-detail?id=vn001">
-                <div class="home-destination-card__rating">3.5</div>
-                <img
-                    data-src="../assets/images/home/dest-3.svg"
-                    alt="Bãi biển Việt Nam"
-                    class="home-destination-card__img lazy-image"
-                />
-                <div class="home-destination-card__info">
-                    <h3 class="home-destination-card__name">Việt Nam</h3>
-                    <span class="home-destination-card__type">Bãi biển</span>
-                </div>
-            </a>
-        </article>
-
-        <article class="home-destination-card">
-            <a href="#destination-detail?id=vn001">
-                <div class="home-destination-card__rating">3.5</div>
-                <img
-                    data-src="../assets/images/home/dest-4.svg"
-                    alt="Bầu trời Việt Nam"
-                    class="home-destination-card__img lazy-image"
-                />
-                <div class="home-destination-card__info">
-                    <h3 class="home-destination-card__name">Việt Nam</h3>
-                    <span class="home-destination-card__type">Bầu trời</span>
-                </div>
-            </a>
-        </article>
-
-        <article class="home-destination-card">
-            <a href="#destination-detail?id=vn001">
-                <div class="home-destination-card__rating">3.5</div>
-                <img
-                    data-src="../assets/images/home/dest-5.svg"
-                    alt="Thành phố Việt Nam"
-                    class="home-destination-card__img lazy-image"
-                />
-                <div class="home-destination-card__info">
-                    <h3 class="home-destination-card__name">Việt Nam</h3>
-                    <span class="home-destination-card__type">Thành phố</span>
-                </div>
-            </a>
-        </article>
-
-        <article class="home-destination-card">
-            <a href="#destination-detail?id=vn001">
-                <div class="home-destination-card__rating">3.5</div>
-                <img
-                    data-src="../assets/images/home/dest-6.svg"
-                    alt="Sa mạc Việt Nam"
-                    class="home-destination-card__img lazy-image"
-                />
-                <div class="home-destination-card__info">
-                    <h3 class="home-destination-card__name">Việt Nam</h3>
-                    <span class="home-destination-card__type">Sa mạc</span>
-                </div>
-            </a>
-        </article>
-    </div>
+  <div class="home-destinations__grid" id="destinationsGrid"></div>
 </section>
 
 <!-- Tour Type Section -->

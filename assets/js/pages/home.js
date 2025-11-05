@@ -1,3 +1,6 @@
+(function () {
+    "use strict";
+
     // ============================================
     // LAZY LOADING CHO ẢNH VÀ VIDEO - FIXED
     // ============================================
@@ -20,6 +23,7 @@
         setupObservers() {
             // Kiểm tra hỗ trợ IntersectionObserver
             if (!("IntersectionObserver" in window)) {
+                console.warn("IntersectionObserver not supported, loading all media immediately");
                 this.loadAllMedia();
                 return;
             }
@@ -53,8 +57,9 @@
         handleImageIntersection(entries) {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    this.loadImage(entry.target);
-                    this.imageObserver.unobserve(entry.target);
+                    const img = entry.target;
+                    this.loadImage(img);
+                    this.imageObserver.unobserve(img);
                 }
             });
         }
@@ -74,8 +79,8 @@
 
             tempImg.onerror = () => {
                 console.error("Failed to load image:", src);
-                img.alt = "Không thể tải ảnh";
                 img.classList.add("error");
+                img.alt = "Không thể tải ảnh";
             };
 
             tempImg.src = src;
@@ -94,8 +99,9 @@
         handleVideoIntersection(entries) {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    this.loadVideo(entry.target);
-                    this.videoObserver.unobserve(entry.target);
+                    const video = entry.target;
+                    this.loadVideo(video);
+                    this.videoObserver.unobserve(video);
                 }
             });
         }
@@ -111,7 +117,6 @@
 
             source.onerror = () => {
                 console.error("Failed to load video:", src);
-                video.classList.add("error");
             };
 
             // Append source vào video
@@ -126,12 +131,6 @@
                 "loadeddata",
                 () => {
                     video.classList.add("loaded");
-                    // Auto play nếu trong viewport
-                    if (video.hasAttribute("autoplay") || video.loop) {
-                        video.play().catch((err) => {
-                            console.log("Video autoplay prevented:", err);
-                        });
-                    }
                 },
                 { once: true }
             );
@@ -150,15 +149,15 @@
                 source.src = video.dataset.src;
                 source.type = "video/mp4";
                 video.appendChild(source);
-                video.classList.add("loaded");
                 video.removeAttribute("data-src");
                 video.load();
+                video.classList.add("loaded");
             });
         }
     }
 
     // Khởi tạo lazy loader
-    new MediaLazyLoader();
+    const mediaLoader = new MediaLazyLoader();
 
     // ============================================
     // LAZY LOADING CHO SECTIONS
@@ -197,6 +196,165 @@
     }
 
     // ============================================
+    // LOAD TOURS FROM JSON - FIXED
+    // ============================================
+    function loadTours() {
+        fetch("../tours.json")
+            .then((response) => response.json())
+            .then((data) => {
+                const container = document.getElementById("tours-container");
+                if (!container) return;
+
+                container.innerHTML = "";
+
+                const topTours = data.tours.slice(0, 4);
+
+                topTours.forEach((tour) => {
+                    const discountedPrice = tour.price * (1 - tour.discount_percent / 100);
+
+                    const card = `
+                        <article class="home-tour-card">
+                            <a href="#tour-details?id=${tour.id}" class="home-tour-card__media">
+                                <img 
+                                    data-src="${tour.main_image}" 
+                                    alt="${tour.title}" 
+                                    class="home-tour-card__img lazy-image"
+                                />
+                            </a>
+                            <div class="home-tour-card__body">
+                                <div class="home-tour-card__price">
+                                    <span>${discountedPrice.toLocaleString("vi-VN")}đ</span> / tour
+                                </div>
+                                <h3 class="home-tour-card__title">
+                                    <a href="#tour-details?id=${tour.id}">${tour.title}</a>
+                                </h3>
+                                <ul class="home-tour-card__meta">
+                                    <li class="home-tour-card__meta-item">⭐ ${tour.rating} / 5</li>
+                                    <li class="home-tour-card__meta-item">⏱ ${tour.duration_days} ngày</li>
+                                </ul>
+                                <a href="#tour-details?id=${tour.id}" class="home-tour-card__btn">Đặt ngay</a>
+                            </div>
+                        </article>
+                    `;
+
+                    container.insertAdjacentHTML("beforeend", card);
+                });
+
+                // Setup lazy loading cho ảnh mới thêm vào
+                setupDynamicLazyImages();
+            })
+            .catch((error) => console.error("Lỗi tải dữ liệu JSON:", error));
+    }
+
+    function loadDestinations() {
+        const grid = document.querySelector(".home-destinations__grid");
+        if (!grid) return;
+
+        fetch("/data.json")
+            .then(res => res.json())
+            .then(json => {
+                const indices = [0, 2, 7, 4, 6, 5];
+                const destinations = json.data.filter((_, i) => indices.includes(i));
+
+                destinations.forEach((item, index) => {
+                    const country = item.country;
+                    const rating = item.rating;
+                    const firstPlace = item.places[0];
+                    const image = firstPlace.famous_locations[0].image_url;
+                    const type = firstPlace.city;
+
+                    const extraClass = index === 1
+                        ? "home-destination-card--tall"
+                        : index === 2
+                        ? "home-destination-card--wide"
+                        : "";
+
+                    const card = document.createElement("article");
+                    card.className = `home-destination-card ${extraClass}`;
+                    card.innerHTML = `
+                        <a href="#destination-detail?id=${item.id}">
+                            <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
+                            <img
+                                data-src="${image}"
+                                alt="${type} ${country}"
+                                class="home-destination-card__img lazy-image"
+                            />
+                            <div class="home-destination-card__info">
+                                <h3 class="home-destination-card__name">${country}</h3>
+                                <span class="home-destination-card__type">${type}</span>
+                            </div>
+                        </a>
+                    `;
+
+                    grid.appendChild(card);
+                });
+
+                // Setup lazy loading cho ảnh mới thêm vào
+                setupDynamicLazyImages();
+            })
+            .catch(err => console.error("Lỗi khi load dữ liệu:", err));
+    }
+
+    // Setup lazy loading cho ảnh được thêm động
+    function setupDynamicLazyImages() {
+        const lazyImages = document.querySelectorAll("#tours-container img.lazy-image[data-src]");
+        const lazyimage = document.querySelectorAll("#destinationsGrid img.lazy-image[data-src]")
+        if (!("IntersectionObserver" in window)) {
+            lazyImages.forEach((img) => {
+                img.src = img.dataset.src;
+                img.classList.add("loaded");
+            });
+
+            lazyimage.forEach((img) => {
+                img.src = img.dataset.src;
+                img.classList.add("loaded");
+            });
+            return;
+        }
+
+        const imageObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.dataset.src;
+
+                        const tempImg = new Image();
+                        tempImg.onload = () => {
+                            img.src = src;
+                            img.classList.add("loaded");
+                            img.removeAttribute("data-src");
+                        };
+                        tempImg.onerror = () => {
+                            console.error("Failed to load image:", src);
+                            img.classList.add("error");
+                        };
+                        tempImg.src = src;
+
+                        imageObserver.unobserve(img);
+                    }
+                });
+            },
+            {
+                rootMargin: "100px",
+                threshold: 0.01,
+            }
+        );
+
+        lazyImages.forEach((img) => imageObserver.observe(img));
+        lazyimage.forEach((img) => imageObserver.observe(img));
+    }
+
+    // Load tours khi DOM ready
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", loadTours);
+        document.addEventListener("DOMContentLoaded", loadDestinations);
+    } else {
+        loadTours();
+        loadDestinations();
+    }
+
+    // ============================================
     // VLOG SLIDER
     // ============================================
     function initVlogSlider() {
@@ -223,24 +381,16 @@
             const totalItems = items.length;
             const maxScroll = (totalItems - visibleCount) * itemWidth;
 
-            // Disable buttons khi đang transition
             function updateButtonStates() {
                 prevBtn.disabled = currentPosition >= 0;
-                nextBtn.disabled = Math.abs(currentPosition) >= maxScroll;
+                nextBtn.disabled = currentPosition <= -maxScroll;
             }
 
             nextBtn.onclick = () => {
-                if (isTransitioning || Math.abs(currentPosition) >= maxScroll) return;
-
+                if (isTransitioning || currentPosition <= -maxScroll) return;
                 isTransitioning = true;
                 currentPosition -= itemWidth;
-
-                if (Math.abs(currentPosition) > maxScroll) {
-                    currentPosition = -maxScroll;
-                }
-
                 track.style.transform = `translateX(${currentPosition}px)`;
-
                 setTimeout(() => {
                     isTransitioning = false;
                     updateButtonStates();
@@ -249,16 +399,9 @@
 
             prevBtn.onclick = () => {
                 if (isTransitioning || currentPosition >= 0) return;
-
                 isTransitioning = true;
                 currentPosition += itemWidth;
-
-                if (currentPosition > 0) {
-                    currentPosition = 0;
-                }
-
                 track.style.transform = `translateX(${currentPosition}px)`;
-
                 setTimeout(() => {
                     isTransitioning = false;
                     updateButtonStates();
@@ -270,23 +413,17 @@
 
         updateVlogSlider();
 
-        // Update on resize với debounce
         let resizeTimer;
         window.addEventListener("resize", () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
                 currentPosition = 0;
-                track.style.transition = "none";
-                track.style.transform = "translateX(0)";
-                setTimeout(() => {
-                    track.style.transition = "";
-                    updateVlogSlider();
-                }, 50);
+                track.style.transform = `translateX(0)`;
+                updateVlogSlider();
             }, 250);
         });
     }
 
-    // Khởi tạo vlog slider
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", initVlogSlider);
     } else {
@@ -305,45 +442,33 @@
             (entries) => {
                 entries.forEach((entry) => {
                     const video = entry.target;
-
                     if (entry.isIntersecting) {
-                        // Play video khi vào viewport
-                        if (video.paused && video.readyState >= 2) {
-                            video.play().catch((err) => {
-                                console.log("Video autoplay prevented:", err);
-                            });
-                        }
+                        video.play().catch((e) => console.log("Video autoplay prevented:", e));
                     } else {
-                        // Pause video khi ra khỏi viewport
-                        if (!video.paused) {
-                            video.pause();
-                        }
+                        video.pause();
                     }
                 });
             },
             {
-                threshold: 0.5, // 50% video hiển thị
+                threshold: 0.5,
             }
         );
 
         videos.forEach((video) => {
             videoObserver.observe(video);
 
-            // Play khi video đã loaded và trong viewport
             video.addEventListener("loadeddata", () => {
                 const rect = video.getBoundingClientRect();
-                const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+                const isInViewport =
+                    rect.top < window.innerHeight && rect.bottom > 0 && rect.left < window.innerWidth && rect.right > 0;
 
-                if (isInViewport && video.paused) {
-                    video.play().catch((err) => {
-                        console.log("Video autoplay prevented:", err);
-                    });
+                if (isInViewport) {
+                    video.play().catch((e) => console.log("Video autoplay prevented:", e));
                 }
             });
         });
     }
 
-    // Khởi tạo video autoplay
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", initVideoAutoPlay);
     } else {
@@ -365,25 +490,23 @@
             const email = input.value.trim();
 
             if (!email) {
-                alert("Vui lòng nhập địa chỉ email");
+                alert("Vui lòng nhập email!");
                 return;
             }
 
-            // Validate email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert("Vui lòng nhập địa chỉ email hợp lệ");
+                alert("Email không hợp lệ!");
                 return;
             }
 
-            // Simulate submission
             const submitBtn = form.querySelector(".home-newsletter__submit");
             const originalHTML = submitBtn.innerHTML;
             submitBtn.innerHTML = "<span>✓</span>";
             submitBtn.disabled = true;
 
             setTimeout(() => {
-                alert("Đăng ký thành công! Cảm ơn bạn đã đăng ký nhận bản tin.");
+                alert("Đăng ký thành công!");
                 input.value = "";
                 submitBtn.innerHTML = originalHTML;
                 submitBtn.disabled = false;
@@ -391,7 +514,6 @@
         });
     }
 
-    // Khởi tạo newsletter form
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", initNewsletterForm);
     } else {
@@ -405,9 +527,7 @@
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
             anchor.addEventListener("click", function (e) {
                 const href = this.getAttribute("href");
-
-                // Bỏ qua các anchor không có target hoặc chỉ là #
-                if (!href || href === "#") return;
+                if (href === "#" || href === "#!") return;
 
                 const target = document.querySelector(href);
                 if (target) {
@@ -421,7 +541,6 @@
         });
     }
 
-    // Khởi tạo smooth scroll
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", initSmoothScroll);
     } else {
@@ -432,7 +551,6 @@
     // PERFORMANCE: PRELOAD CRITICAL IMAGES
     // ============================================
     function preloadCriticalImages() {
-        // Preload hero image
         const heroImg = document.querySelector(".home-hero__image[data-src]");
         if (heroImg && heroImg.dataset.src) {
             const link = document.createElement("link");
@@ -443,7 +561,6 @@
         }
     }
 
-    // Preload critical images
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", preloadCriticalImages);
     } else {
@@ -456,9 +573,8 @@
     window.addEventListener(
         "error",
         (e) => {
-            // Log errors cho debugging
             if (e.target.tagName === "IMG" || e.target.tagName === "VIDEO") {
-                console.error("Media failed to load:", e.target.src || e.target.currentSrc);
+                console.error("Media failed to load:", e.target.src || e.target.dataset.src);
             }
         },
         true
@@ -471,22 +587,21 @@
         const videos = document.querySelectorAll("video");
 
         if (document.hidden) {
-            // Pause all videos when tab is hidden
             videos.forEach((video) => {
                 if (!video.paused) {
-                    video.pause();
                     video.dataset.wasPlaying = "true";
+                    video.pause();
                 }
             });
         } else {
-            // Resume videos that were playing
             videos.forEach((video) => {
                 if (video.dataset.wasPlaying === "true") {
-                    video.play().catch(() => {});
+                    video.play().catch((e) => console.log("Video play failed:", e));
                     delete video.dataset.wasPlaying;
                 }
             });
         }
     });
 
-    console.log("Home page scripts loaded successfully!");
+    console.log("✅ Home page scripts loaded successfully!");
+})();
