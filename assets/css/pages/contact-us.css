@@ -173,7 +173,10 @@
         border-radius: 20px;
         text-align: center;
         box-shadow: var(--color-card-shadow);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* Speed up the hover lift effect and limit animated properties for better performance */
+        transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: transform, box-shadow;
         position: relative;
         overflow: hidden;
 }
@@ -187,7 +190,8 @@
         height: 4px;
         background: linear-gradient(90deg, var(--color-primary), var(--hero-gradient-end));
         transform-origin: left;
-        transition: transform 0.4s ease;
+        transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transform: scaleX(0);
 }
 
 .contact-card:hover::before {
@@ -537,6 +541,39 @@
         resize: vertical;
 }
 
+/* Error states (đồng bộ kiểu với tour-details) */
+.form-group:has(.form-input.error) .input-wrapper,
+.form-group:has(.form-textarea.error) .input-wrapper {
+        border-color: var(--color-error);
+        box-shadow: 0 0 0 3px var(--color-error-light);
+        background-color: #fff7f7;
+}
+
+.form-input.error,
+.form-textarea.error {
+        color: var(--color-error);
+}
+
+.form-group:has(.form-input.error) .input-icon,
+.form-group:has(.form-textarea.error) .input-icon {
+        opacity: 1;
+        transform: scale(1.05);
+}
+
+.form-error {
+        font-size: 0.82rem;
+        color: var(--color-error);
+        opacity: 0;
+        transform: translateY(-4px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        padding: 4px;
+}
+
+.form-error.active {
+        opacity: 1;
+        transform: translateY(0);
+}
+
 .checkbox-group {
         display: flex;
         flex-direction: row;
@@ -605,6 +642,62 @@
 
 .modern-submit-btn:hover:not(:disabled) i {
         transform: translateX(5px);
+}
+
+/* Success modal (copy từ tour-details, đổi prefix) */
+.contact-success-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(19, 39, 66, 0.55);
+        backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 1.5rem;
+}
+
+.contact-success-modal__content {
+        background: var(--color-card-bg);
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 420px;
+        text-align: center;
+        box-shadow: var(--color-card-shadow);
+        border: 1px solid var(--color-card-border);
+        animation: fadeInUp 0.5s ease;
+}
+
+.contact-success-modal__content h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.6rem;
+        color: var(--color-text-primary);
+        font-weight: var(--font-weight-bold);
+        font-family: var(--font-heading);
+}
+
+.contact-success-modal__content p {
+        color: var(--color-text-secondary);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        font-size: 0.95rem;
+}
+
+.contact-success-modal__close {
+        padding: 0.75rem 1.75rem;
+        border-radius: 999px;
+        border: none;
+        font-weight: var(--font-weight-semibold);
+        background: var(--color-secondary);
+        color: var(--color-text-inverse);
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 10px 20px var(--color-shadow-secondary);
+}
+
+.contact-success-modal__close:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px var(--color-shadow-secondary);
 }
 
 /* ================================
@@ -751,7 +844,7 @@
 @keyframes fadeInUp {
         from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(16px);
         }
         to {
                 opacity: 1;
@@ -762,7 +855,7 @@
 @keyframes fadeInLeft {
         from {
                 opacity: 0;
-                transform: translateX(-40px);
+                transform: translateX(-16px);
         }
         to {
                 opacity: 1;
@@ -773,7 +866,7 @@
 @keyframes fadeInRight {
         from {
                 opacity: 0;
-                transform: translateX(40px);
+                transform: translateX(16px);
         }
         to {
                 opacity: 1;
@@ -783,15 +876,15 @@
 
 /* AOS Animation Overrides */
 [data-aos="fade-up"] {
-        animation: fadeInUp 0.8s ease;
+        animation: fadeInUp 0.3s ease-out;
 }
 
 [data-aos="fade-left"] {
-        animation: fadeInLeft 0.8s ease;
+        animation: fadeInLeft 0.3s ease-out;
 }
 
 [data-aos="fade-right"] {
-        animation: fadeInRight 0.8s ease;
+        animation: fadeInRight 0.3s ease-out;
 }
 
 /* ================================

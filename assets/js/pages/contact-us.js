@@ -7,40 +7,107 @@ function initContactForm() {
     const form = document.querySelector('.modern-contact-form');
     if (!form) return;
 
-    // Validation khi submit
-    form.addEventListener('submit', async function(e) {
+    const submitBtn = form.querySelector('.modern-submit-btn');
+
+    function showError(input, message) {
+        const group = input.closest('.form-group');
+        if (!group) return;
+        let errorEl = group.querySelector('.form-error');
+        if (!errorEl) {
+            errorEl = document.createElement('small');
+            errorEl.className = 'form-error';
+            group.appendChild(errorEl);
+        }
+        errorEl.textContent = message;
+        errorEl.classList.add('active');
+        input.classList.add('error');
+    }
+
+    function clearError(input) {
+        const group = input.closest('.form-group');
+        if (!group) return;
+        const errorEl = group.querySelector('.form-error');
+        if (errorEl) {
+            errorEl.textContent = '';
+            errorEl.classList.remove('active');
+        }
+        input.classList.remove('error');
+    }
+
+    function validateField(input) {
+        const value = (input.value || '').trim();
+        clearError(input);
+
+        const id = input.id || input.name || '';
+
+        // Required fields
+        if (input.hasAttribute('required') && !value) {
+            return showError(input, 'Trường này là bắt buộc.');
+        }
+
+        // Field-specific rules
+        if (id === 'email' || input.type === 'email') {
+            if (value) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(value)) return showError(input, 'Email không hợp lệ.');
+            }
+        }
+
+        if (id === 'phone' || input.type === 'tel') {
+            if (value) {
+                // Cho phép 0xxxxxxxxx hoặc +84xxxxxxxxx, tối thiểu 9-10 số tùy đầu số
+                const phonePattern = /^(?:\+84|0)\d{9}$/;
+                if (!phonePattern.test(value)) return showError(input, 'Số điện thoại không hợp lệ.');
+            }
+        }
+
+        if (id === 'subject') {
+            if (value && value.length < 3) return showError(input, 'Chủ đề quá ngắn (>= 3 ký tự).');
+        }
+
+        if (id === 'message') {
+            if (value && value.length < 5) return showError(input, 'Tin nhắn quá ngắn (>= 5 ký tự).');
+        }
+    }
+
+    function validateForm() {
+        const inputs = form.querySelectorAll('.form-input');
+        let isValid = true;
+        inputs.forEach((input) => {
+            validateField(input);
+            if (input.classList.contains('error')) isValid = false;
+        });
+        return isValid;
+    }
+
+    // Submit handler
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        
         if (!validateForm()) {
             showNotification('error', 'Vui lòng kiểm tra lại thông tin!');
             return;
         }
 
-        const submitBtn = form.querySelector('.modern-submit-btn');
         const originalHTML = submitBtn.innerHTML;
-        
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span>Đang gửi...</span>';
-        
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 800));
-        
-        showNotification('success', 'Tin nhắn đã được gửi thành công! 🎉');
+
+        // Giả lập API call
+        await new Promise((resolve) => setTimeout(resolve, 800));
+
+        // Hiển thị modal thành công thay vì chỉ toast
+        showContactSuccessModal();
         form.reset();
-        
+
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalHTML;
     });
 
     // Real-time validation
     const inputs = form.querySelectorAll('.form-input');
-    inputs.forEach(input => {
+    inputs.forEach((input) => {
         input.addEventListener('blur', () => validateField(input));
-        input.addEventListener('input', () => {
-            if (input.classList.contains('error')) {
-                input.classList.remove('error');
-            }
-        });
+        input.addEventListener('input', () => clearError(input));
     });
 }
 
@@ -147,6 +214,11 @@ function initParallax() {
 // ============================================
 function initCardEffects() {
     document.querySelectorAll('.contact-card').forEach(card => {
+        // Nâng thẻ lên ngay khi hover để phản hồi tức thì
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+        });
+
         card.addEventListener('mousemove', function(e) {
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -169,21 +241,49 @@ function initCardEffects() {
 // 6. FADE-IN ANIMATIONS KHI SCROLL
 // ============================================
 function initScrollAnimations() {
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const elements = document.querySelectorAll('[data-aos], .contact-card, .faq-item, .contact-feature');
-    
+
+    if (prefersReducedMotion) {
+        elements.forEach((el) => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+        return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                const el = entry.target;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+
+                const cleanup = () => {
+                    el.style.transition = '';
+                    el.style.willChange = '';
+                    el.removeEventListener('transitionend', cleanup);
+                };
+                el.addEventListener('transitionend', cleanup);
+                setTimeout(cleanup, 300);
+
+                observer.unobserve(el);
             }
         });
-    }, { threshold: 0.1 });
-    
+    }, { threshold: 0.05, rootMargin: '0px 0px -10% 0px' });
+
     elements.forEach((el, index) => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `all 0.3s ease ${index * 0.05}s`;
+        el.style.transform = 'translateY(12px)';
+        el.style.willChange = 'opacity, transform';
+
+        // Stagger nhỏ và bỏ trễ cho các phần tử cần phản hồi nhanh
+        let delay = 0;
+        if (!el.classList.contains('contact-card')) {
+            delay = Math.min(index * 0.02, 0.12);
+        }
+
+        el.style.transition = `opacity 0.18s ease-out ${delay}s, transform 0.18s ease-out ${delay}s`;
         observer.observe(el);
     });
 }
@@ -221,6 +321,31 @@ function initInputAnimations() {
         input.addEventListener('blur', function() {
             this.parentElement.style.transform = 'scale(1)';
         });
+    });
+}
+
+// ============================================
+// 9b. SUCCESS MODAL (copy từ tour-details, tinh chỉnh cho contact)
+// ============================================
+function showContactSuccessModal() {
+    let modal = document.querySelector('.contact-success-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.className = 'contact-success-modal';
+        modal.innerHTML = `
+            <div class="contact-success-modal__content">
+                <h3>Gửi tin nhắn thành công!</h3>
+                <p>Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.</p>
+                <button class="contact-success-modal__close">Đóng</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    modal.style.display = 'flex';
+
+    const closeBtn = modal.querySelector('.contact-success-modal__close');
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
     });
 }
 
