@@ -1,94 +1,122 @@
 // =========================================================================
-// Fake data
+// Data fetching and transformation
 // =========================================================================
-const blogPosts = [
-        {
-                id: 1,
-                image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800",
-                category: "City Guide",
-                title: "A Backpacker's Guide to Venice's Hidden Alleys",
-                author: { name: "Marco Rossi", avatar: "https://i.pravatar.cc/32?u=marco" },
-                date: "Oct 15, 2025",
-                readingTime: "7 min read",
-                isFeatured: true, // This post is the editor's pick
-        },
-        {
-                id: 2,
-                image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800",
-                category: "Culture",
-                title: "The Ultimate Guide to Paris Fashion Week",
-                author: { name: "Chloé Dubois", avatar: "https://i.pravatar.cc/32?u=chloe" },
-                date: "Oct 12, 2025",
-                readingTime: "9 min read",
-        },
-        {
-                id: 3,
-                image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=800",
-                category: "Food",
-                title: "Tasting Tokyo: A Journey Through Japan's Culinary Capital",
-                author: { name: "Kenji Tanaka", avatar: "https://i.pravatar.cc/32?u=kenji" },
-                date: "Oct 10, 2025",
-                readingTime: "12 min read",
-        },
-        {
-                id: 4,
-                image: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?q=80&w=800",
-                category: "Adventure",
-                title: "Hiking the Inca Trail: What to Know Before You Go",
-                author: { name: "Alex Wanderlust", avatar: "https://i.pravatar.cc/32?u=alex" },
-                date: "Oct 08, 2025",
-                readingTime: "15 min read",
-        },
-        {
-                id: 5,
-                image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=800",
-                category: "Nature",
-                title: "Chasing the Northern Lights in Iceland: A Complete Guide",
-                author: { name: "Bjorn Sigurdsson", avatar: "https://i.pravatar.cc/32?u=bjorn" },
-                date: "Oct 05, 2025",
-                readingTime: "8 min read",
-        },
-        {
-                id: 6,
-                image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=800",
-                category: "Food",
-                title: "A Culinary Tour of Ho Chi Minh City's Street Food",
-                author: { name: "Linh Nguyen", avatar: "https://i.pravatar.cc/32?u=linh" },
-                date: "Oct 02, 2025",
-                readingTime: "10 min read",
-        },
-        {
-                id: 7,
-                image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=800",
-                category: "City Guide",
-                title: "48 Hours in Rome: How to See the Best of the Eternal City",
-                author: { name: "Jane Doe", avatar: "https://i.pravatar.cc/32?u=jane" },
-                date: "Sep 29, 2025",
-                readingTime: "11 min read",
-        },
-        {
-                id: 8,
-                image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=800",
-                category: "Adventure",
-                title: "Sunrise over the Sahara: A Camel Trekking Experience",
-                author: { name: "Aisha Bakar", avatar: "https://i.pravatar.cc/32?u=aisha" },
-                date: "Sep 25, 2025",
-                readingTime: "6 min read",
-        },
-        {
-                id: 9,
-                image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=800",
-                category: "Nature",
-                title: "The Untouched Beauty of New Zealand's Fiordland",
-                author: { name: "Alex Wanderlust", avatar: "https://i.pravatar.cc/32?u=alex" },
-                date: "Sep 22, 2025",
-                readingTime: "9 min read",
-        },
-];
-
+let blogPosts = [];
 let currentPage = 1;
-const postsPerPage = 6; // Tăng số bài viết mỗi trang
-let filteredPosts = [...blogPosts];
+const postsPerPage = 6;
+let filteredPosts = [];
+
+// Helper function to calculate reading time based on text length
+function calculateReadingTime(text) {
+        // Average reading speed: 200 words per minute
+        // Vietnamese text: approximately 1 character = 0.15 words (rough estimate)
+        const words = text.length * 0.15;
+        const minutes = Math.ceil(words / 200);
+        return `${minutes} min read`;
+}
+
+// Helper function to generate author name from country
+function generateAuthor(country) {
+        const authorMap = {
+                "Việt Nam": { name: "Nguyễn Văn", avatar: "https://i.pravatar.cc/32?u=vietnam" },
+                "Nhật Bản": { name: "Tanaka Kenji", avatar: "https://i.pravatar.cc/32?u=japan" },
+                Pháp: { name: "Pierre Dubois", avatar: "https://i.pravatar.cc/32?u=france" },
+                Ý: { name: "Marco Rossi", avatar: "https://i.pravatar.cc/32?u=italy" },
+                Mỹ: { name: "John Smith", avatar: "https://i.pravatar.cc/32?u=usa" },
+                "Thái Lan": { name: "Somsak Thai", avatar: "https://i.pravatar.cc/32?u=thailand" },
+                "Hàn Quốc": { name: "Kim Min-jun", avatar: "https://i.pravatar.cc/32?u=korea" },
+                Úc: { name: "James Wilson", avatar: "https://i.pravatar.cc/32?u=australia" },
+                "Ai Cập": { name: "Ahmed Hassan", avatar: "https://i.pravatar.cc/32?u=egypt" },
+                "Tây Ban Nha": { name: "Carlos Martinez", avatar: "https://i.pravatar.cc/32?u=spain" },
+                Canada: { name: "David Thompson", avatar: "https://i.pravatar.cc/32?u=canada" },
+                "Ấn Độ": { name: "Raj Patel", avatar: "https://i.pravatar.cc/32?u=india" },
+                Brazil: { name: "Pedro Silva", avatar: "https://i.pravatar.cc/32?u=brazil" },
+                "Thổ Nhĩ Kỳ": { name: "Mehmet Yilmaz", avatar: "https://i.pravatar.cc/32?u=turkey" },
+                "New Zealand": { name: "Mike Johnson", avatar: "https://i.pravatar.cc/32?u=newzealand" },
+                Anh: { name: "James Brown", avatar: "https://i.pravatar.cc/32?u=uk" },
+        };
+        return authorMap[country] || { name: "Travel Writer", avatar: "https://i.pravatar.cc/32?u=travel" };
+}
+
+// Helper function to generate date (days ago from now)
+function generateDate(daysAgo) {
+        const date = new Date();
+        date.setDate(date.getDate() - daysAgo);
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
+// Transform places data to blog posts
+function transformPlacesToBlogPosts(toursData) {
+        const posts = [];
+        let postId = 1;
+        let daysAgo = 0;
+
+        toursData.forEach((tour) => {
+                tour.places.forEach((place) => {
+                        // Get image from first famous location, or use a placeholder
+                        const image =
+                                place.famous_locations && place.famous_locations.length > 0
+                                        ? place.famous_locations[0].image_url
+                                        : "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800";
+
+                        // Create title from city name
+                        const title = `Khám phá ${place.city}: Hành trình đáng nhớ`;
+
+                        // Calculate reading time from blog text
+                        const readingTime = calculateReadingTime(place.blog);
+
+                        // Generate author based on country
+                        const author = generateAuthor(tour.country);
+
+                        // Generate date (stagger posts over time)
+                        const date = generateDate(daysAgo);
+                        daysAgo += 3; // Space posts 3 days apart
+
+                        const isFeatured = posts.length === 0; // Mark first post as featured
+
+                        posts.push({
+                                id: postId++,
+                                image: image,
+                                category: tour.country,
+                                title: title,
+                                description: place.blog, // Store full blog text for search
+                                author: author,
+                                date: date,
+                                readingTime: readingTime,
+                                city: place.city,
+                                country: tour.country,
+                                tourId: tour.id,
+                                lat: place.lat,
+                                lon: place.lon,
+                                famousLocations: place.famous_locations || [],
+                                isFeatured: isFeatured,
+                        });
+                });
+        });
+
+        return posts;
+}
+
+// Fetch data from data.json
+async function fetchBlogData() {
+        try {
+                const response = await fetch("/data.json");
+                if (!response.ok) {
+                        throw new Error("Failed to fetch data.json");
+                }
+                const data = await response.json();
+                blogPosts = transformPlacesToBlogPosts(data.data);
+                filteredPosts = [...blogPosts];
+                return blogPosts;
+        } catch (error) {
+                console.error("Error fetching blog data:", error);
+                // Fallback to empty array if fetch fails
+                blogPosts = [];
+                filteredPosts = [];
+                return [];
+        }
+}
 
 // =========================================================================
 // DOM ELEMENT VARIABLES
@@ -102,10 +130,8 @@ const recentPostsContainer = document.querySelector(".sidebar-widget__recent-pos
 
 const paginationContainer = document.querySelector(".pagination");
 const pageNumbersSpan = document.querySelector(".page-numbers");
-const firstBtn = document.querySelector(".pagination .first");
 const prevBtn = document.querySelector(".pagination .prev");
 const nextBtn = document.querySelector(".pagination .next");
-const lastBtn = document.querySelector(".pagination .last");
 
 // =========================================================================
 // RENDER FUNCTIONS (UPDATED)
@@ -126,18 +152,21 @@ function renderPosts() {
                 const postElement = document.createElement("article");
                 postElement.className = "blog-card";
                 postElement.style.animationDelay = `${index * 0.1}s`; // Stagger animation
+                const detailUrl = `#blog-detail?id=${post.id}`;
                 postElement.innerHTML = `
-                <a href="#blog-detail" class="blog-card__image-link">
-                    <img src="${post.image}" alt="${post.title}" class="blog-card__image">
+                <a href="${detailUrl}" class="blog-card__image-link">
+                    <img src="${post.image}" alt="${post.title}" class="blog-card__image" 
+                         onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800'">
                     <span class="blog-card__category">${post.category}</span>
                 </a>
                 <div class="blog-card__content">
                     <h3 class="blog-card__title">
-                        <a href="#blog-detail-${post.id}">${post.title}</a>
+                        <a href="${detailUrl}">${post.title}</a>
                     </h3>
                     <div class="blog-card__footer">
                         <div class="blog-card__author">
-                            <img src="${post.author.avatar}" alt="${post.author.name}" class="blog-card__author-avatar">
+                            <img src="${post.author.avatar}" alt="${post.author.name}" class="blog-card__author-avatar"
+                                 onerror="this.src='https://i.pravatar.cc/32?u=travel'">
                             <span>${post.author.name}</span>
                         </div>
                         <span class="blog-card__meta-info">${post.date} • ${post.readingTime}</span>
@@ -154,17 +183,37 @@ function renderPagination() {
 
         paginationContainer.style.display = totalPages <= 1 ? "none" : "flex";
 
-        // Update First/Prev buttons state
-        firstBtn.classList.toggle("disabled", currentPage === 1);
-        prevBtn.classList.toggle("disabled", currentPage === 1);
+        // Update Prev button state
+        if (prevBtn) prevBtn.classList.toggle("disabled", currentPage === 1);
 
-        // Update Next/Last buttons state
-        nextBtn.classList.toggle("disabled", currentPage === totalPages);
-        lastBtn.classList.toggle("disabled", currentPage === totalPages);
+        // Update Next button state
+        if (nextBtn) nextBtn.classList.toggle("disabled", currentPage === totalPages);
 
-        // Generate page number links
+        // Generate page number links - show only 3 page numbers at a time
+        if (!pageNumbersSpan) return;
         pageNumbersSpan.innerHTML = "";
-        for (let i = 1; i <= totalPages; i++) {
+
+        let startPage, endPage;
+
+        if (totalPages <= 3) {
+                // If 3 or fewer pages, show all
+                startPage = 1;
+                endPage = totalPages;
+        } else {
+                // Show 3 pages around current page
+                if (currentPage <= 2) {
+                        startPage = 1;
+                        endPage = 3;
+                } else if (currentPage >= totalPages - 1) {
+                        startPage = totalPages - 2;
+                        endPage = totalPages;
+                } else {
+                        startPage = currentPage - 1;
+                        endPage = currentPage + 1;
+                }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
                 pageNumbersSpan.innerHTML += `<a href="#" data-page="${i}" class="${
                         i === currentPage ? "active" : ""
                 }">${i}</a>`;
@@ -173,25 +222,31 @@ function renderPagination() {
 
 function renderCategories() {
         if (!categoryList) return;
+        if (blogPosts.length === 0) return;
+
         const categories = ["All", ...new Set(blogPosts.map((p) => p.category))];
         categoryList.innerHTML = categories
                 .map(
                         (cat) =>
-                                `<li><a href="#" data-category="${cat}" class="${cat === "All" ? "active" : ""}">${
+                                `<a href="#" data-category="${cat}" class="${cat === "All" ? "active" : ""}">${
                                         cat === "All" ? "All Categories" : cat
-                                }</a></li>`
+                                }</a>`
                 )
                 .join("");
 }
 
 function renderFeaturedPost() {
         if (!featuredPostContainer) return;
+        if (blogPosts.length === 0) return;
+
         const featured = blogPosts.find((p) => p.isFeatured) || blogPosts[0]; // Fallback to first post
         if (!featured) return;
 
+        const detailUrl = `pages/blog-detail.html?id=${featured.id}`;
         featuredPostContainer.innerHTML = `
-            <a href="#blog-detail-${featured.id}">
-                <img src="${featured.image}" alt="${featured.title}">
+            <a href="${detailUrl}">
+                <img src="${featured.image}" alt="${featured.title}" 
+                     onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800'">
                 <h4>${featured.title}</h4>
             </a>
         `;
@@ -200,18 +255,22 @@ function renderFeaturedPost() {
 // NEW: Render recent posts
 function renderRecentPosts() {
         if (!recentPostsContainer) return;
+        if (blogPosts.length === 0) return;
+
         const recent = blogPosts.slice(0, 3); // Get the first 3 posts
         recentPostsContainer.innerHTML = recent
-                .map(
-                        (post) => `
+                .map((post) => {
+                        const detailUrl = `/blog-detail.html?id=${post.id}`;
+                        return `
             <div class="sidebar-widget__recent-post-item">
-                <a href="#blog-detail-${post.id}">
-                    <img src="${post.image}" alt="${post.title}">
+                <a href="${detailUrl}">
+                    <img src="${post.image}" alt="${post.title}" 
+                         onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800'">
                     <h5>${post.title}</h5>
                 </a>
             </div>
-        `
-                )
+        `;
+                })
                 .join("");
 }
 
@@ -241,15 +300,20 @@ function renderSkeletonCards() {
 // =========================================================================
 
 function handleSearchAndFilter() {
+        if (blogPosts.length === 0) return; // Wait for data to load
+
         const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : "";
         const activeCategoryLink = categoryList ? categoryList.querySelector("a.active") : null;
         const activeCategory = activeCategoryLink ? activeCategoryLink.dataset.category : "All";
 
         filteredPosts = blogPosts.filter((post) => {
                 const matchesCategory = activeCategory === "All" || post.category === activeCategory;
+                const searchText = searchTerm ? searchTerm : "";
                 const matchesSearch =
-                        post.title.toLowerCase().includes(searchTerm) ||
-                        post.description.toLowerCase().includes(searchTerm);
+                        !searchText ||
+                        post.title.toLowerCase().includes(searchText) ||
+                        (post.description && post.description.toLowerCase().includes(searchText)) ||
+                        (post.city && post.city.toLowerCase().includes(searchText));
                 return matchesCategory && matchesSearch;
         });
 
@@ -314,39 +378,53 @@ function handlePageChange(newPage) {
 }
 
 if (paginationContainer) {
-        firstBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                handlePageChange(1);
-        });
-        prevBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                handlePageChange(currentPage - 1);
-        });
-        nextBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                handlePageChange(currentPage + 1);
-        });
-        lastBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-                handlePageChange(totalPages);
-        });
-        pageNumbersSpan.addEventListener("click", (e) => {
-                if (e.target.tagName === "A" && e.target.dataset.page) {
+        if (prevBtn) {
+                prevBtn.addEventListener("click", (e) => {
                         e.preventDefault();
-                        handlePageChange(parseInt(e.target.dataset.page, 10));
-                }
-        });
+                        if (currentPage > 1) {
+                                handlePageChange(currentPage - 1);
+                        }
+                });
+        }
+        if (nextBtn) {
+                nextBtn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+                        if (currentPage < totalPages) {
+                                handlePageChange(currentPage + 1);
+                        }
+                });
+        }
+        if (pageNumbersSpan) {
+                pageNumbersSpan.addEventListener("click", (e) => {
+                        if (e.target.tagName === "A" && e.target.dataset.page) {
+                                e.preventDefault();
+                                handlePageChange(parseInt(e.target.dataset.page, 10));
+                        }
+                });
+        }
 }
 
 // =========================================================================
 // INITIAL LOAD
 // =========================================================================
-function initialLoad() {
+async function initialLoad() {
+        // Show skeleton loading
+        renderSkeletonCards();
+
+        // Fetch data from data.json
+        await fetchBlogData();
+
+        // Render UI with fetched data
         renderCategories();
         renderFeaturedPost();
         renderRecentPosts();
         updateUI();
 }
 
-initialLoad();
+// Initialize when DOM is ready
+if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initialLoad);
+} else {
+        initialLoad();
+}
