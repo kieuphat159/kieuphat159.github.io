@@ -280,7 +280,7 @@ section {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 22px;
 }
 
 .filter-left {
@@ -310,7 +310,7 @@ section {
 .filter-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .filter-btn {
@@ -545,7 +545,7 @@ section {
 .top-item .bar {
     flex: 1;
     height: 12px;
-    background: var(--color-bg-tertiary); /* Thay thế --dest-secondary */
+    background: var(--color-bg-inverse);
     border-radius: 50px;
     overflow: hidden;
 }
@@ -677,12 +677,12 @@ section {
     font-size: 3.5rem;
     font-weight: var(--font-weight-bold);
     margin-bottom: 10px;
-    color: var(--color-text-inverse); /* Thay thế #fff */
+    color: #fff;
 }
 
 .trip-subtitle {
     font-size: 1.3rem;
-    color: var(--color-text-inverse); /* Thay thế #fff */
+    color: #fff;
     margin-bottom: 40px;
 }
 
@@ -730,15 +730,16 @@ section {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    color: var(--color-text-inverse); /* Thay thế white */
+    color: #fff;
 }
 
 .form-group select option {
-    color: var(--color-text-inverse); /* Thay thế white */
+    color: #fff;
     background: rgba(14, 13, 13, 0.523);
 }
 
 .form-group label {
+    color: #fff;
     font-weight: var(--font-weight-semibold);
 }
 
@@ -749,7 +750,7 @@ section {
     border-radius: 8px;
     font-size: 15px;
     background: rgba(255, 255, 255, 0.15);
-    color: var(--color-text-inverse); /* Thay thế white */
+    color: #fff;
     outline: none;
     transition: 0.3s;
 }
@@ -802,6 +803,11 @@ section {
     font-size: 1.5rem;
     margin: auto;
     font-weight: var(--font-weight-semibold);
+    color: #fff;
+}
+
+.trip-results p em {
+    color: #fff;
 }
 
 .trip-suggestion {
@@ -842,6 +848,7 @@ section {
 }
 
 .trip-info p {
+    font-size: 1rem;
     margin-bottom: 8px;
     color: var(--color-text-secondary); /* Thay thế --dest-text-gray */
 }
@@ -872,7 +879,7 @@ section {
     transform: translateY(-6px);
 }
 
-/* ✅ Dải 20% OFF dạng ribbon */
+/* Dải 20% OFF dạng ribbon */
 .offer-badge {
     position: absolute;
     top: 15px;

@@ -905,35 +905,35 @@
             "seasons": [
                 {
                     "icon": "❄️",
-                    "title": "Winter (Dec – Feb)",
+                    "title": "Mùa đông (Tháng 12 – Tháng 2)",
                     "suitability": "4.5/5",
-                    "crowd": "Low",
-                    "best": "Cool weather, tropical spots like Thailand.",
-                    "consider": "Some northern areas can be cold."
+                    "crowd": "Ít",
+                    "best": "Thời tiết mát mẻ, các điểm nhiệt đới như Thái Lan.",
+                    "consider": "Một số vùng phía Bắc có thể lạnh."
                 },
                 {
                     "icon": "🌸",
-                    "title": "Spring (Mar – May)",
+                    "title": "Mùa xuân (Tháng 3 – Tháng 5)",
                     "suitability": "5.0/5",
-                    "crowd": "Medium",
-                    "best": "Perfect weather, cherry blossom festivals.",
-                    "consider": "Prices rise in Japan & Korea."
+                    "crowd": "Trung bình",
+                    "best": "Thời tiết hoàn hảo, lễ hội hoa anh đào.",
+                    "consider": "Giá tăng ở Nhật Bản & Hàn Quốc."
                 },
                 {
                     "icon": "☀️",
-                    "title": "Summer (Jun – Aug)",
+                    "title": "Mùa hè (Tháng 6 – Tháng 8)",
                     "suitability": "3.5/5",
-                    "crowd": "High",
-                    "best": "Beach season, school holidays.",
-                    "consider": "Very hot & humid in many regions."
+                    "crowd": "Đông",
+                    "best": "Mùa biển, kỳ nghỉ hè của học sinh.",
+                    "consider": "Nhiều nơi rất nóng và ẩm."
                 },
                 {
                     "icon": "🍁",
-                    "title": "Autumn (Sep – Nov)",
+                    "title": "Mùa thu (Tháng 9 – Tháng 11)",
                     "suitability": "4.8/5",
-                    "crowd": "Medium-Low",
-                    "best": "Pleasant temps, colorful scenery.",
-                    "consider": "Typhoons possible in some regions."
+                    "crowd": "Ít – Trung bình",
+                    "best": "Thời tiết dễ chịu, cảnh sắc mùa thu nhiều màu.",
+                    "consider": "Có thể có bão ở một số vùng."
                 }
             ]
         },
@@ -942,35 +942,35 @@
             "seasons": [
                 {
                     "icon": "❄️",
-                    "title": "Winter (Dec – Feb)",
+                    "title": "Mùa đông (Tháng 12 – Tháng 2)",
                     "suitability": "3.8/5",
-                    "crowd": "Low",
-                    "best": "Christmas markets & snowy adventures.",
-                    "consider": "Cold weather limits some outdoor trips."
+                    "crowd": "Ít",
+                    "best": "Chợ Giáng Sinh và các hoạt động mùa đông.",
+                    "consider": "Thời tiết lạnh hạn chế một số chuyến đi ngoài trời."
                 },
                 {
                     "icon": "🌸",
-                    "title": "Spring (Mar – May)",
+                    "title": "Mùa xuân (Tháng 3 – Tháng 5)",
                     "suitability": "4.9/5",
-                    "crowd": "Medium",
-                    "best": "Mild weather & fewer crowds.",
-                    "consider": "Some northern areas still chilly."
+                    "crowd": "Trung bình",
+                    "best": "Thời tiết dễ chịu và ít đông đúc.",
+                    "consider": "Một số vùng phía Bắc vẫn còn lạnh."
                 },
                 {
                     "icon": "☀️",
-                    "title": "Summer (Jun – Aug)",
+                    "title": "Mùa hè (Tháng 6 – Tháng 8)",
                     "suitability": "4.2/5",
-                    "crowd": "High",
-                    "best": "Festivals & long sunny days.",
-                    "consider": "Tourist season, higher prices."
+                    "crowd": "Đông",
+                    "best": "Các lễ hội & những ngày dài nắng.",
+                    "consider": "Mùa du lịch, giá cao hơn."
                 },
                 {
                     "icon": "🍁",
-                    "title": "Autumn (Sep – Nov)",
+                    "title": "Mùa thu (Tháng 9 – Tháng 11)",
                     "suitability": "4.7/5",
-                    "crowd": "Medium-Low",
-                    "best": "Golden scenery & wine festivals.",
-                    "consider": "Shorter days approaching winter."
+                    "crowd": "Ít – Trung bình",
+                    "best": "Cảnh sắc vàng óng và lễ hội rượu vang.",
+                    "consider": "Ngày ngắn dần khi chuẩn bị vào mùa đông."
                 }
             ]
         },
@@ -979,35 +979,35 @@
             "seasons": [
                 {
                     "icon": "❄️",
-                    "title": "Winter (Dec – Feb)",
+                    "title": "Mùa đông (Tháng 12 – Tháng 2)",
                     "suitability": "4.0/5",
-                    "crowd": "Low",
-                    "best": "Warm destinations like Florida or Mexico.",
-                    "consider": "Snow in the north; avoid blizzards."
+                    "crowd": "Ít",
+                    "best": "Các điểm đến ấm áp như Florida hoặc Mexico.",
+                    "consider": "Tuyết ở phía Bắc; tránh bão tuyết."
                 },
                 {
                     "icon": "🌸",
-                    "title": "Spring (Mar – May)",
+                    "title": "Mùa xuân (Tháng 3 – Tháng 5)",
                     "suitability": "4.7/5",
-                    "crowd": "Medium",
-                    "best": "National parks & city blooms.",
-                    "consider": "Allergies during pollen season."
+                    "crowd": "Trung bình",
+                    "best": "Công viên quốc gia & cảnh quan thành phố mùa hoa nở.",
+                    "consider": "Dị ứng phấn hoa mùa xuân."
                 },
                 {
                     "icon": "☀️",
-                    "title": "Summer (Jun – Aug)",
+                    "title": "Mùa hè (Tháng 6 – Tháng 8)",
                     "suitability": "4.3/5",
-                    "crowd": "High",
-                    "best": "Road trips, beaches, festivals.",
-                    "consider": "Tourist crowds, high temps in deserts."
+                    "crowd": "Đông",
+                    "best": "Chuyến đi đường, bãi biển, lễ hội.",
+                    "consider": "Đông khách, nhiệt độ cao ở sa mạc."
                 },
                 {
                     "icon": "🍁",
-                    "title": "Autumn (Sep – Nov)",
+                    "title": "Mùa thu (Tháng 9 – Tháng 11)",
                     "suitability": "5.0/5",
-                    "crowd": "Medium-Low",
-                    "best": "Fall foliage & cozy weather.",
-                    "consider": "Hurricane season on east coast."
+                    "crowd": "Ít – Trung bình",
+                    "best": "Lá mùa thu & thời tiết dễ chịu.",
+                    "consider": "Mùa bão trên bờ Đông."
                 }
             ]
         },
@@ -1016,35 +1016,35 @@
             "seasons": [
                 {
                     "icon": "❄️",
-                    "title": "Winter (Jun – Aug)",
+                    "title": "Mùa đông (Tháng 6 – Tháng 8)",
                     "suitability": "4.6/5",
-                    "crowd": "Medium",
-                    "best": "Cooler weather for safaris in East Africa.",
-                    "consider": "Southern regions can be cold at night."
+                    "crowd": "Trung bình",
+                    "best": "Thời tiết mát hơn cho safari ở Đông Phi.",
+                    "consider": "Một số vùng phía Nam có thể lạnh về đêm."
                 },
                 {
                     "icon": "🌸",
-                    "title": "Spring (Sep – Nov)",
+                    "title": "Mùa xuân (Tháng 9 – Tháng 11)",
                     "suitability": "4.9/5",
-                    "crowd": "Low-Medium",
-                    "best": "Perfect for wildlife & coastal escapes.",
-                    "consider": "Some rains in tropical regions."
+                    "crowd": "Ít – Trung bình",
+                    "best": "Hoàn hảo cho tham quan động vật hoang dã & bờ biển.",
+                    "consider": "Một số nơi có mưa ở vùng nhiệt đới."
                 },
                 {
                     "icon": "☀️",
-                    "title": "Summer (Dec – Feb)",
+                    "title": "Mùa hè (Tháng 12 – Tháng 2)",
                     "suitability": "4.0/5",
-                    "crowd": "High",
-                    "best": "Beach holidays & Cape Town vineyards.",
-                    "consider": "Hot inland & safari lodges busy."
+                    "crowd": "Đông",
+                    "best": "Kỳ nghỉ biển & vườn nho ở Cape Town.",
+                    "consider": "Nhiệt độ cao ở nội địa và các khu safari đông khách."
                 },
                 {
                     "icon": "🍁",
-                    "title": "Autumn (Mar – May)",
+                    "title": "Mùa thu (Tháng 3 – Tháng 5)",
                     "suitability": "4.4/5",
-                    "crowd": "Medium",
-                    "best": "Dry season starts — great for safaris.",
-                    "consider": "Variable weather in north regions."
+                    "crowd": "Trung bình",
+                    "best": "Bắt đầu mùa khô — lý tưởng cho safari.",
+                    "consider": "Thời tiết biến đổi ở các vùng phía Bắc."
                 }
             ]
         },
@@ -1053,35 +1053,35 @@
             "seasons": [
                 {
                     "icon": "❄️",
-                    "title": "Winter (Jun – Aug)",
+                    "title": "Mùa đông (Tháng 6 – Tháng 8)",
                     "suitability": "4.3/5",
-                    "crowd": "Medium-Low",
-                    "best": "Mild temps, great surfing & whale watching.",
-                    "consider": "Snow in New Zealand's south."
+                    "crowd": "Ít – Trung bình",
+                    "best": "Thời tiết dễ chịu, lướt sóng & ngắm cá voi.",
+                    "consider": "Tuyết ở Nam New Zealand."
                 },
                 {
                     "icon": "🌸",
-                    "title": "Spring (Sep – Nov)",
+                    "title": "Mùa xuân (Tháng 9 – Tháng 11)",
                     "suitability": "5.0/5",
-                    "crowd": "Medium",
-                    "best": "Ideal for beaches, nature & road trips.",
-                    "consider": "Allergy season in some areas."
+                    "crowd": "Trung bình",
+                    "best": "Lý tưởng cho biển, thiên nhiên & du lịch bằng đường bộ.",
+                    "consider": "Mùa dị ứng ở một số khu vực."
                 },
                 {
                     "icon": "☀️",
-                    "title": "Summer (Dec – Feb)",
+                    "title": "Mùa hè (Tháng 12 – Tháng 2)",
                     "suitability": "4.6/5",
-                    "crowd": "High",
-                    "best": "Beach season, outdoor festivals.",
-                    "consider": "Can be very hot in inland Australia."
+                    "crowd": "Đông",
+                    "best": "Mùa biển, lễ hội ngoài trời.",
+                    "consider": "Có thể rất nóng ở nội địa Úc."
                 },
                 {
                     "icon": "🍁",
-                    "title": "Autumn (Mar – May)",
+                    "title": "Mùa thu (Tháng 3 – Tháng 5)",
                     "suitability": "4.8/5",
-                    "crowd": "Low-Medium",
-                    "best": "Comfortable temps & fewer tourists.",
-                    "consider": "Some rain in tropical areas."
+                    "crowd": "Ít – Trung bình",
+                    "best": "Thời tiết dễ chịu & ít khách du lịch.",
+                    "consider": "Một số nơi có mưa ở vùng nhiệt đới."
                 }
             ]
         }

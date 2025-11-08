@@ -130,7 +130,7 @@ async function fetchDestinationsData() {
                             tour.price && tour.days
                                 ? Math.floor(tour.price / tour.days / 23000)
                                 : Math.floor(Math.random() * 200) + 100,
-                        description: place.blog.substring(0, 200) + '...',
+                        description: place.shortdesc,
                         image:
                             place.famous_locations && place.famous_locations.length > 0
                                 ? place.famous_locations[0].image_url
