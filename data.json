@@ -898,5 +898,192 @@
                 }
             ]
         }
-    ]
+    ],
+    "bestTimeData": {
+        "Asia": {
+            "video": "../assets/images/destinations/1.mp4",
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (Dec – Feb)",
+                    "suitability": "4.5/5",
+                    "crowd": "Low",
+                    "best": "Cool weather, tropical spots like Thailand.",
+                    "consider": "Some northern areas can be cold."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (Mar – May)",
+                    "suitability": "5.0/5",
+                    "crowd": "Medium",
+                    "best": "Perfect weather, cherry blossom festivals.",
+                    "consider": "Prices rise in Japan & Korea."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (Jun – Aug)",
+                    "suitability": "3.5/5",
+                    "crowd": "High",
+                    "best": "Beach season, school holidays.",
+                    "consider": "Very hot & humid in many regions."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (Sep – Nov)",
+                    "suitability": "4.8/5",
+                    "crowd": "Medium-Low",
+                    "best": "Pleasant temps, colorful scenery.",
+                    "consider": "Typhoons possible in some regions."
+                }
+            ]
+        },
+        "Europe": {
+            "video": "../assets/images/destinations/2.mp4",
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (Dec – Feb)",
+                    "suitability": "3.8/5",
+                    "crowd": "Low",
+                    "best": "Christmas markets & snowy adventures.",
+                    "consider": "Cold weather limits some outdoor trips."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (Mar – May)",
+                    "suitability": "4.9/5",
+                    "crowd": "Medium",
+                    "best": "Mild weather & fewer crowds.",
+                    "consider": "Some northern areas still chilly."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (Jun – Aug)",
+                    "suitability": "4.2/5",
+                    "crowd": "High",
+                    "best": "Festivals & long sunny days.",
+                    "consider": "Tourist season, higher prices."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (Sep – Nov)",
+                    "suitability": "4.7/5",
+                    "crowd": "Medium-Low",
+                    "best": "Golden scenery & wine festivals.",
+                    "consider": "Shorter days approaching winter."
+                }
+            ]
+        },
+        "America": {
+            "video": "../assets/images/destinations/3.mp4",
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (Dec – Feb)",
+                    "suitability": "4.0/5",
+                    "crowd": "Low",
+                    "best": "Warm destinations like Florida or Mexico.",
+                    "consider": "Snow in the north; avoid blizzards."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (Mar – May)",
+                    "suitability": "4.7/5",
+                    "crowd": "Medium",
+                    "best": "National parks & city blooms.",
+                    "consider": "Allergies during pollen season."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (Jun – Aug)",
+                    "suitability": "4.3/5",
+                    "crowd": "High",
+                    "best": "Road trips, beaches, festivals.",
+                    "consider": "Tourist crowds, high temps in deserts."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (Sep – Nov)",
+                    "suitability": "5.0/5",
+                    "crowd": "Medium-Low",
+                    "best": "Fall foliage & cozy weather.",
+                    "consider": "Hurricane season on east coast."
+                }
+            ]
+        },
+        "Africa": {
+            "video": "../assets/images/destinations/4.mp4",
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (Jun – Aug)",
+                    "suitability": "4.6/5",
+                    "crowd": "Medium",
+                    "best": "Cooler weather for safaris in East Africa.",
+                    "consider": "Southern regions can be cold at night."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (Sep – Nov)",
+                    "suitability": "4.9/5",
+                    "crowd": "Low-Medium",
+                    "best": "Perfect for wildlife & coastal escapes.",
+                    "consider": "Some rains in tropical regions."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (Dec – Feb)",
+                    "suitability": "4.0/5",
+                    "crowd": "High",
+                    "best": "Beach holidays & Cape Town vineyards.",
+                    "consider": "Hot inland & safari lodges busy."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (Mar – May)",
+                    "suitability": "4.4/5",
+                    "crowd": "Medium",
+                    "best": "Dry season starts — great for safaris.",
+                    "consider": "Variable weather in north regions."
+                }
+            ]
+        },
+        "Oceania": {
+            "video": "../assets/images/destinations/5.mp4",
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (Jun – Aug)",
+                    "suitability": "4.3/5",
+                    "crowd": "Medium-Low",
+                    "best": "Mild temps, great surfing & whale watching.",
+                    "consider": "Snow in New Zealand's south."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (Sep – Nov)",
+                    "suitability": "5.0/5",
+                    "crowd": "Medium",
+                    "best": "Ideal for beaches, nature & road trips.",
+                    "consider": "Allergy season in some areas."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (Dec – Feb)",
+                    "suitability": "4.6/5",
+                    "crowd": "High",
+                    "best": "Beach season, outdoor festivals.",
+                    "consider": "Can be very hot in inland Australia."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (Mar – May)",
+                    "suitability": "4.8/5",
+                    "crowd": "Low-Medium",
+                    "best": "Comfortable temps & fewer tourists.",
+                    "consider": "Some rain in tropical areas."
+                }
+            ]
+        }
+    }
 }

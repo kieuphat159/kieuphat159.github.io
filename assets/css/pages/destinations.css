@@ -177,6 +177,7 @@ section {
     align-items: center;
     justify-content: center;
     padding: 0 40px;
+    overflow: hidden; /* Ngăn tràn ngang */
 }
 
 .topdest-window {
@@ -194,7 +195,9 @@ section {
 
 /* === CARD === */
 .topdest-card {
-    flex: 0 0 calc((100% - 4 * 25px) / 3);
+    flex: 0 0 calc((100% - 2 * 25px) / 3); /* Hiển thị 3 card cùng lúc */
+    min-width: 280px; /* Đảm bảo card không bị quá nhỏ */
+    max-width: 450px;
     border-radius: 24px;
     overflow: hidden;
     position: relative;
@@ -235,11 +238,11 @@ section {
     color: #fff;
 }
 
-/* .topdest-overlay p {
+.topdest-overlay p {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.4;
-} */
+}
 
 /* === SLIDE BUTTONS === */
 .slide-btn {
@@ -648,9 +651,7 @@ section {
     width: 100vw;
     height: 110vh;
     margin-left: calc(-50vw + 50%);
-    overflow: hidden;
     background: #000;
-    overflow: hidden;
     margin-bottom: 64px;
     margin-top: 64px;
 }
@@ -695,12 +696,32 @@ section {
 }
 
 .trip-card {
+    display: flex;
+    gap: 40px;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(14px);
     border-radius: 16px;
     padding: 40px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
     text-align: left;
+    width: 145%;
+    max-width: 1500px;
+    position: relative; /* cần cho transform */
+    left: 50%;
+    transform: translateX(-50%);
+    flex-wrap: nowrap;
+}
+
+.trip-card-left {
+    flex: 0 1 35%; /* bên trái chiếm ~35% card */
+    min-width: 250px; /* giới hạn nhỏ nhất */
+}
+
+.trip-card-right {
+    flex: 1 1 65%; /* bên phải chiếm ~65% card */
+    min-width: 300px;
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .trip-form {
@@ -768,11 +789,28 @@ section {
     transform: translateY(-2px);
 }
 
+.trip-results-container {
+    max-height: 400px; /* chiều cao tối đa vùng kết quả, có thể chỉnh */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+    margin-top: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+}
+
 .trip-results {
-    margin-top: 30px;
-    text-align: center;
+    display: flex;
+    flex-direction: column; /* xếp dọc */
+    gap: 20px;
     color: #fff;
-    font-size: 1.1rem;
+}
+
+.trip-results p {
+    /* color: red; */
+    font-size: 1.5rem;
+    margin: auto;
+    font-weight: 600;
 }
 
 .trip-suggestion {
@@ -789,39 +827,18 @@ section {
     transition: transform 0.3s ease;
 }
 
-.trip-results .trip-suggestion {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(10px);
-    text-align: left;
-}
-
 .trip-suggestion:hover {
     transform: scale(1.02);
 }
 
-/* Grid cha chứa nhiều card */
-.trip-results {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-    justify-content: center;
-}
-
-/* Ảnh trong card */
 .trip-suggestion img,
 .trip-suggestion video {
-    width: 100%;
-    height: 220px;
+    width: 40%;
+    height: 200px;
     object-fit: cover;
-    border-radius: 12px 12px 0 0;
+    border-radius: 12px;
 }
+
 .trip-info {
     text-align: left;
     flex: 1;

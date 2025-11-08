@@ -75,7 +75,7 @@ async function fetchDestinationsData() {
         // Load bestTimeData from JSON
         if (jsonData.bestTimeData) {
             bestTimeData = jsonData.bestTimeData;
-            console.log('✅ Best time data loaded');
+            console.log('Best time data loaded');
         }
 
         if (jsonData.data && jsonData.data.length > 0) {
@@ -97,7 +97,7 @@ async function fetchDestinationsData() {
                             place.famous_locations && place.famous_locations.length > 0
                                 ? place.famous_locations[0].image_url
                                 : `../assets/images/destinations/${country}.png`,
-                        short: place.blog.substring(0, 150) + '...',
+                        short: place.shortdesc,
                         long: place.blog,
                         lat: place.lat,
                         lon: place.lon,
@@ -143,19 +143,19 @@ async function fetchDestinationsData() {
                 });
             });
 
-            console.log(`✅ Loaded ${destinations.length} destinations from ${jsonData.data.length} tours`);
+            console.log(`Loaded ${destinations.length} destinations from ${jsonData.data.length} tours`);
             isDataLoaded = true;
             return true;
         }
     } catch (error) {
-        console.error('❌ Error loading data from JSON:', error);
+        console.error('Error loading data from JSON:', error);
         loadFallbackData();
         return false;
     }
 }
 
 function loadFallbackData() {
-    console.warn('⚠️ Using fallback data');
+    console.warn('Using fallback data');
 
     // Fallback bestTimeData
     bestTimeData = {
@@ -375,6 +375,7 @@ function renderTopDestinations() {
       <img data-src="${dest.img}" alt="${dest.name}" class="lazy-image" style="background:#f0f0f0;">
       <div class="topdest-overlay">
         <h3>${dest.name}, ${dest.country}</h3>
+        <p>${dest.short}</p>
       </div>
     `;
         topdestTrack.appendChild(card);
@@ -753,7 +754,7 @@ regionCards.forEach((card) => {
 
 /* ========== INITIALIZATION ========== */
 async function initializeApp() {
-    console.log('🚀 Initializing Travel Destinations App...');
+    console.log('Initializing Travel Destinations App...');
 
     if (wrapper) {
         wrapper.innerHTML = `
@@ -770,9 +771,9 @@ async function initializeApp() {
     const dataLoaded = await fetchDestinationsData();
 
     if (dataLoaded) {
-        console.log('✅ Data loaded successfully!');
+        console.log('Data loaded successfully!');
     } else {
-        console.warn('⚠️ Using fallback data');
+        console.warn('Using fallback data');
     }
 
     initializeVisitsStore();
@@ -782,14 +783,14 @@ async function initializeApp() {
     renderTopDestinations();
     persistVisits();
 
-    const defaultRegion = 'Asia';
-    renderBestTime(defaultRegion);
+    const defaultRegion = 'All';
+    renderBestTime('Asia');
     const defaultCard = document.querySelector(`[data-region="${defaultRegion}"]`);
     if (defaultCard) defaultCard.classList.add('active');
 
-    console.log('✨ App initialized successfully!');
-    console.log(`📍 Total destinations: ${destinations.length}`);
-    console.log(`🎯 Trip options: ${tripData.length}`);
+    console.log('App initialized successfully!');
+    console.log(`Total destinations: ${destinations.length}`);
+    console.log(`Trip options: ${tripData.length}`);
 }
 
 if (document.readyState === 'loading') {
