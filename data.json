@@ -17,6 +17,7 @@
           "lat": 21.0285,
           "lon": 105.8542,
           "interest": "culture",
+          "shortdesc": "Khám phá Hà Nội, một bản giao hưởng của các giác quan, từ phở nóng đến đền cổ.",
           "famous_locations": [
             {
               "name": "Hồ Gươm",
@@ -38,6 +39,7 @@
           "lat": 16.0545,
           "lon": 108.2022,
           "interest": "beach",
+          "shortdesc": "Trải nghiệm Đà Nẵng, thành phố của tương lai với bãi biển và Cầu Rồng biểu tượng.",
           "famous_locations": [
             {
               "name": "Bãi biển Mỹ Khê",
@@ -59,6 +61,7 @@
           "lat": 15.8801,
           "lon": 108.3380,
           "interest": "culture",
+          "shortdesc": "Lạc vào Hội An, một câu chuyện cổ tích với phố cổ đèn lồng và dòng sông Hoài.",
           "famous_locations": [
             {
               "name": "Phố cổ Hội An",
@@ -76,6 +79,7 @@
           "lat": 10.7626,
           "lon": 106.6602,
           "interest": "city",
+          "shortdesc": "Đắm mình vào Sài Gòn, một cơn lốc năng lượng, lịch sử và ẩm thực đường phố.",
           "famous_locations": [
             {
               "name": "Dinh Độc Lập",
@@ -106,6 +110,7 @@
           "lat": 35.6895,
           "lon": 139.6917,
           "interest": "city",
+          "shortdesc": "Khám phá Tokyo, nơi giao thoa giữa sự hỗn loạn neon của Shibuya và sự tĩnh lặng của đền Meiji.",
           "famous_locations": [
             {
               "name": "Giao lộ Shibuya",
@@ -127,6 +132,7 @@
           "lat": 35.0116,
           "lon": 135.7681,
           "interest": "culture",
+          "shortdesc": "Tìm về Kyoto, linh hồn của Nhật Bản với rừng tre, chùa vàng và thế giới Geisha.",
           "famous_locations": [
             {
               "name": "Chùa Vàng Kinkaku-ji",
@@ -148,6 +154,7 @@
           "lat": 34.6937,
           "lon": 135.5023,
           "interest": "food",
+          "shortdesc": "Thưởng thức Osaka, trái tim ẩm thực 'kuidaore' với takoyaki và khu Dotonbori rực rỡ.",
           "famous_locations": [
             {
               "name": "Lâu đài Osaka",
@@ -178,6 +185,7 @@
           "lat": 48.8566,
           "lon": 2.3522,
           "interest": "culture",
+          "shortdesc": "Trải nghiệm Paris, kinh đô của sự lãng mạn, nghệ thuật và những kiệt tác như Tháp Eiffel.",
           "famous_locations": [
             {
               "name": "Tháp Eiffel",
@@ -199,6 +207,7 @@
           "lat": 43.7102,
           "lon": 7.2620,
           "interest": "beach",
+          "shortdesc": "Thư giãn tại Nice, thủ đô lộng lẫy của French Riviera với làn nước xanh biếc.",
           "famous_locations": [
             {
               "name": "Phố cổ Vieille Ville",
@@ -225,6 +234,7 @@
           "lat": 41.9028,
           "lon": 12.4964,
           "interest": "culture",
+          "shortdesc": "Khám phá Rome, thiên anh hùng ca sống động với Colosseum và trải nghiệm 'la dolce vita'.",
           "famous_locations": [
             {
               "name": "Đấu trường Colosseum",
@@ -246,6 +256,7 @@
           "lat": 43.7696,
           "lon": 11.2558,
           "interest": "culture",
+          "shortdesc": "Đắm chìm tại Florence, cái nôi của thời Phục hưng với nghệ thuật và kiến trúc tuyệt mỹ.",
           "famous_locations": [
             {
               "name": "Cầu Ponte Vecchio",
@@ -267,6 +278,7 @@
           "lat": 45.4408,
           "lon": 12.3155,
           "interest": "city",
+          "shortdesc": "Lãng mạn ở Venice, thành phố ma thuật của những con kênh và chuyến đi gondola.",
           "famous_locations": [
             {
               "name": "Quảng trường St. Mark",
@@ -297,6 +309,7 @@
           "lat": 34.0522,
           "lon": -118.2437,
           "interest": "beach",
+          "shortdesc": "Trải nghiệm LA, thành phố của những giấc mơ, từ Đại lộ Danh vọng đến bãi biển Venice.",
           "famous_locations": [
             {
               "name": "Bến tàu Santa Monica",
@@ -310,6 +323,7 @@
           "lat": 36.1699,
           "lon": -115.1398,
           "interest": "city",
+          "shortdesc": "Khám phá Las Vegas, sân chơi tối thượng với đài phun nước Bellagio và các show diễn.",
           "famous_locations": [
             {
               "name": "Đài phun nước Bellagio",
@@ -340,6 +354,7 @@
           "lat": 13.7563,
           "lon": 100.5018,
           "interest": "food",
+          "shortdesc": "Khám phá Bangkok, nơi đền đài cổ kính tương phản với ẩm thực đường phố sôi động.",
           "famous_locations": [
             {
               "name": "Chùa Phật Nằm (Wat Pho)",
@@ -357,6 +372,7 @@
           "lat": 7.8804,
           "lon": 98.3923,
           "interest": "beach",
+          "shortdesc": "Thư giãn tại Phuket, thiên đường đảo với làn nước ngọc lam và quần đảo Phi Phi.",
           "famous_locations": [
             {
               "name": "Quần đảo Phi Phi",
@@ -391,6 +407,7 @@
           "lat": 37.5665,
           "lon": 126.9780,
           "interest": "city",
+          "shortdesc": "Trải nghiệm Seoul, đô thị K-Pop hiện đại với các cung điện cổ kính và chợ Myeongdong.",
           "famous_locations": [
             {
               "name": "Cung điện Gyeongbokgung",
@@ -412,6 +429,7 @@
           "lat": 35.1796,
           "lon": 129.0756,
           "interest": "beach",
+          "shortdesc": "Khám phá Busan, thành phố cảng thoải mái với bãi biển Haeundae và Làng Gamcheon.",
           "famous_locations": [
             {
               "name": "Bãi biển Haeundae",
@@ -442,6 +460,7 @@
           "lat": -33.8688,
           "lon": 151.2093,
           "interest": "city",
+          "shortdesc": "Chiêm ngưỡng Sydney, thành phố cảng biểu tượng với Nhà hát Opera và bãi biển Bondi.",
           "famous_locations": [
             {
               "name": "Nhà hát Opera Sydney",
@@ -463,6 +482,7 @@
           "lat": -37.8136,
           "lon": 144.9631,
           "interest": "culture",
+          "shortdesc": "Khám phá Melbourne, thủ đô văn hóa của Úc với cà phê, nghệ thuật và những con hẻm.",
           "famous_locations": [
             {
               "name": "Quảng trường Federation",
@@ -493,6 +513,7 @@
           "lat": 30.0444,
           "lon": 31.2357,
           "interest": "culture",
+          "shortdesc": "Khám phá Cairo, cổng vào thế giới cổ đại với Kim tự tháp Giza và Tượng Nhân sư.",
           "famous_locations": [
             {
               "name": "Quần thể Kim tự tháp Giza",
@@ -514,6 +535,7 @@
           "lat": 25.6872,
           "lon": 32.6396,
           "interest": "culture",
+          "shortdesc": "Trải nghiệm Luxor, bảo tàng ngoài trời lớn nhất thế giới với Thung lũng các vị Vua.",
           "famous_locations": [
             {
               "name": "Thung lũng các vị Vua",
@@ -548,6 +570,7 @@
           "lat": 40.4168,
           "lon": -3.7038,
           "interest": "culture",
+          "shortdesc": "Trải nghiệm Madrid, thủ đô hoàng gia với nghệ thuật, tapas và những đêm flamenco.",
           "famous_locations": [
             {
               "name": "Cung điện Hoàng gia Madrid",
@@ -565,6 +588,7 @@
           "lat": 41.3851,
           "lon": 2.1734,
           "interest": "culture",
+          "shortdesc": "Khám phá Barcelona, thành phố siêu thực của Gaudí với nhà thờ Sagrada Família.",
           "famous_locations": [
             {
               "name": "Nhà thờ Sagrada Família",
@@ -599,6 +623,7 @@
           "lat": 49.2827,
           "lon": -123.1207,
           "interest": "city",
+          "shortdesc": "Khám phá Vancouver, nơi giao thoa hài hòa giữa đại dương, núi non và thành phố.",
           "famous_locations": [
             {
               "name": "Cầu treo Capilano",
@@ -612,6 +637,7 @@
           "lat": 51.1784,
           "lon": -115.5708,
           "interest": "mountain",
+          "shortdesc": "Trải nghiệm Banff, viên ngọc của dãy Rocky với Hồ Louise và Hồ Moraine.",
           "famous_locations": [
             {
               "name": "Vườn quốc gia Banff",
@@ -646,6 +672,7 @@
           "lat": 28.7041,
           "lon": 77.1025,
           "interest": "culture",
+          "shortdesc": "Khám phá Delhi, sự tương phản giữa Old Delhi hỗn loạn và New Delhi tráng lệ.",
           "famous_locations": [
             {
               "name": "Cổng Ấn Độ",
@@ -663,6 +690,7 @@
           "lat": 27.1767,
           "lon": 78.0081,
           "interest": "culture",
+          "shortdesc": "Chiêm ngưỡng Agra, quê hương của Taj Mahal, biểu tượng tình yêu vĩnh cửu.",
           "famous_locations": [
             {
               "name": "Đền Taj Mahal",
@@ -680,6 +708,7 @@
           "lat": 26.9124,
           "lon": 75.7873,
           "interest": "culture",
+          "shortdesc": "Trải nghiệm Jaipur, 'Thành phố Hồng' rực rỡ với Pháo đài Amber và Hawa Mahal.",
           "famous_locations": [
             {
               "name": "Pháo đài Amber",
@@ -706,6 +735,7 @@
           "lat": -22.9068,
           "lon": -43.1729,
           "interest": "beach",
+          "shortdesc": "Khám phá Rio de Janeiro, 'Thành phố Kỳ diệu' với Tượng Chúa Cứu thế và biển Ipanema.",
           "famous_locations": [
             {
               "name": "Tượng Chúa Cứu thế",
@@ -740,6 +770,7 @@
           "lat": 41.0082,
           "lon": 28.9784,
           "interest": "culture",
+          "shortdesc": "Khám phá Istanbul, thành phố giao thoa hai lục địa với Hagia Sophia và Chợ Grand Bazaar.",
           "famous_locations": [
             {
               "name": "Nhà thờ Hagia Sophia",
@@ -761,6 +792,7 @@
           "lat": 38.6431,
           "lon": 34.8282,
           "interest": "culture",
+          "shortdesc": "Trải nghiệm Cappadocia, bay khinh khí cầu ngắm 'ống khói cổ tích' lúc bình minh.",
           "famous_locations": [
             {
               "name": "Bay khinh khí cầu ngắm bình minh",
@@ -791,6 +823,7 @@
           "lat": -45.4146,
           "lon": 167.7180,
           "interest": "mountain",
+          "shortdesc": "Khám phá Te Anau, cửa ngõ vào Fiordland với Vịnh Milford Sound và hang đom đóm.",
           "famous_locations": [
             {
               "name": "Vịnh hẹp Milford Sound",
@@ -825,6 +858,7 @@
           "lat": 51.5074,
           "lon": -0.1278,
           "interest": "culture",
+          "shortdesc": "Trải nghiệm London, thành phố lịch sử với Tháp London, Cung điện Buckingham.",
           "famous_locations": [
             {
               "name": "Tháp London",
@@ -846,6 +880,7 @@
           "lat": 55.9533,
           "lon": -3.1883,
           "interest": "culture",
+          "shortdesc": "Khám phá Edinburgh, thành phố gothic với Lâu đài Edinburgh và Phố Royal Mile.",
           "famous_locations": [
             {
               "name": "Lâu đài Edinburgh",
