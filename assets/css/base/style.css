@@ -29,7 +29,7 @@
     /* Background Colors */
     --color-bg-primary: #faf8ed;
     --color-bg-secondary: #ffffff;
-    --color-bg-tertiary: #f9f9f9;
+    --color-bg-tertiary: rgba(225, 225, 225, 0.61);
     --color-bg-inverse: #2d3134;
     --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
@@ -79,8 +79,8 @@
     /* ============================================
        TYPOGRAPHY SYSTEM
        ============================================ */
-    --font-primary: "Inter", system-ui, sans-serif;
-    --font-heading: "Poppins", "Segoe UI", Arial, sans-serif;
+    --font-primary: 'Inter', system-ui, sans-serif;
+    --font-heading: 'Poppins', 'Segoe UI', Arial, sans-serif;
 
     --font-weight-light: 300;
     --font-weight-normal: 400;
@@ -402,7 +402,7 @@ h3,
 h4,
 h5,
 h6,
-[class*="__title"] {
+[class*='__title'] {
     font-family: var(--font-heading);
     color: var(--color-text-primary);
     margin: 0;
