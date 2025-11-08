@@ -147,6 +147,12 @@
 .footer__social-icon:hover img {
         opacity: 1;
 }
+.footer__social-icon svg {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+}
 
 .footer__divider {
         border: none;

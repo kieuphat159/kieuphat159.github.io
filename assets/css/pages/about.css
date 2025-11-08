@@ -400,6 +400,12 @@ h3 {
         color: var(--color-primary);
         transform: scale(1.1);
 }
+.about-tour-guide__item-socials svg {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+}
 
 /* Testimonials Section */
 .about-testimonials {
