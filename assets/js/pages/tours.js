@@ -86,6 +86,9 @@ const resultCount = document.querySelector(".result-controls__count");
 const gridViewBtn = document.getElementById("grid-view-btn");
 const listViewBtn = document.getElementById("list-view-btn");
 const paginationContainer = document.getElementById("pagination-container");
+const pageNumbersSpan = document.querySelector(".page-numbers");
+const prevBtn = document.querySelector(".pagination .prev");
+const nextBtn = document.querySelector(".pagination .next");
 const resetFiltersBtn = document.getElementById("reset-filters-btn");
 
 // --- RENDER FUNCTIONS ---
@@ -225,24 +228,45 @@ function renderTours() {
 }
 
 function renderPagination() {
-        if (!paginationContainer) return;
-        paginationContainer.innerHTML = "";
         const totalPages = Math.ceil(filteredTours.length / toursPerPage);
+        if (!paginationContainer) return;
 
-        if (totalPages <= 1) return;
+        paginationContainer.style.display = totalPages <= 1 ? "none" : "flex";
 
-        for (let i = 1; i <= totalPages; i++) {
-                const button = document.createElement("button");
-                button.innerText = i;
-                if (i === currentPage) {
-                        button.classList.add("active");
+        // Update Prev button state
+        if (prevBtn) prevBtn.classList.toggle("disabled", currentPage === 1);
+
+        // Update Next button state
+        if (nextBtn) nextBtn.classList.toggle("disabled", currentPage === totalPages);
+
+        // Generate page number links - show only 3 page numbers at a time
+        if (!pageNumbersSpan) return;
+        pageNumbersSpan.innerHTML = "";
+
+        let startPage, endPage;
+
+        if (totalPages <= 3) {
+                // If 3 or fewer pages, show all
+                startPage = 1;
+                endPage = totalPages;
+        } else {
+                // Show 3 pages around current page
+                if (currentPage <= 2) {
+                        startPage = 1;
+                        endPage = 3;
+                } else if (currentPage >= totalPages - 1) {
+                        startPage = totalPages - 2;
+                        endPage = totalPages;
+                } else {
+                        startPage = currentPage - 1;
+                        endPage = currentPage + 1;
                 }
-                button.addEventListener("click", () => {
-                        currentPage = i;
-                        updateUI();
-                        window.scrollTo({ top: tourGrid.offsetTop - 100, behavior: "smooth" });
-                });
-                paginationContainer.appendChild(button);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+                pageNumbersSpan.innerHTML += `<a href="#" data-page="${i}" class="${
+                        i === currentPage ? "active" : ""
+                }">${i}</a>`;
         }
 }
 
@@ -484,6 +508,46 @@ listViewBtn.addEventListener("click", () => {
         listViewBtn.classList.add("active");
         gridViewBtn.classList.remove("active");
 });
+
+function handlePageChange(newPage) {
+        const totalPages = Math.ceil(filteredTours.length / toursPerPage);
+        if (newPage < 1 || newPage > totalPages || newPage === currentPage) return;
+
+        currentPage = newPage;
+        const tourListingSection = document.querySelector(".tour-listing-section");
+        if (tourListingSection) {
+                tourListingSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        updateUI();
+}
+
+if (paginationContainer) {
+        if (prevBtn) {
+                prevBtn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        if (currentPage > 1) {
+                                handlePageChange(currentPage - 1);
+                        }
+                });
+        }
+        if (nextBtn) {
+                nextBtn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        const totalPages = Math.ceil(filteredTours.length / toursPerPage);
+                        if (currentPage < totalPages) {
+                                handlePageChange(currentPage + 1);
+                        }
+                });
+        }
+        if (pageNumbersSpan) {
+                pageNumbersSpan.addEventListener("click", (e) => {
+                        if (e.target.tagName === "A" && e.target.dataset.page) {
+                                e.preventDefault();
+                                handlePageChange(parseInt(e.target.dataset.page, 10));
+                        }
+                });
+        }
+}
 
 // --- INITIAL LOAD ---
 async function initialLoad() {
