@@ -1,74 +1,120 @@
 // =========================================================================
-// Load data from data.json and normalize to blogPosts
+// Data fetching and transformation
 // =========================================================================
 let blogPosts = [];
 let currentPage = 1;
 const postsPerPage = 6;
 let filteredPosts = [];
 
-function minutesToRead(text) {
-        if (!text) return "5 min read";
-        const words = text.split(/\s+/).filter(Boolean).length;
-        const minutes = Math.max(3, Math.round(words / 200));
+// Helper function to calculate reading time based on text length
+function calculateReadingTime(text) {
+        // Average reading speed: 200 words per minute
+        // Vietnamese text: approximately 1 character = 0.15 words (rough estimate)
+        const words = text.length * 0.15;
+        const minutes = Math.ceil(words / 200);
         return `${minutes} min read`;
 }
 
-function buildPostsFromData(data) {
-        const items = data?.data || [];
+// Helper function to generate author name from country
+function generateAuthor(country) {
+        const authorMap = {
+                "Việt Nam": { name: "Nguyễn Văn", avatar: "https://i.pravatar.cc/32?u=vietnam" },
+                "Nhật Bản": { name: "Tanaka Kenji", avatar: "https://i.pravatar.cc/32?u=japan" },
+                Pháp: { name: "Pierre Dubois", avatar: "https://i.pravatar.cc/32?u=france" },
+                Ý: { name: "Marco Rossi", avatar: "https://i.pravatar.cc/32?u=italy" },
+                Mỹ: { name: "John Smith", avatar: "https://i.pravatar.cc/32?u=usa" },
+                "Thái Lan": { name: "Somsak Thai", avatar: "https://i.pravatar.cc/32?u=thailand" },
+                "Hàn Quốc": { name: "Kim Min-jun", avatar: "https://i.pravatar.cc/32?u=korea" },
+                Úc: { name: "James Wilson", avatar: "https://i.pravatar.cc/32?u=australia" },
+                "Ai Cập": { name: "Ahmed Hassan", avatar: "https://i.pravatar.cc/32?u=egypt" },
+                "Tây Ban Nha": { name: "Carlos Martinez", avatar: "https://i.pravatar.cc/32?u=spain" },
+                Canada: { name: "David Thompson", avatar: "https://i.pravatar.cc/32?u=canada" },
+                "Ấn Độ": { name: "Raj Patel", avatar: "https://i.pravatar.cc/32?u=india" },
+                Brazil: { name: "Pedro Silva", avatar: "https://i.pravatar.cc/32?u=brazil" },
+                "Thổ Nhĩ Kỳ": { name: "Mehmet Yilmaz", avatar: "https://i.pravatar.cc/32?u=turkey" },
+                "New Zealand": { name: "Mike Johnson", avatar: "https://i.pravatar.cc/32?u=newzealand" },
+                Anh: { name: "James Brown", avatar: "https://i.pravatar.cc/32?u=uk" },
+        };
+        return authorMap[country] || { name: "Travel Writer", avatar: "https://i.pravatar.cc/32?u=travel" };
+}
+
+// Helper function to generate date (days ago from now)
+function generateDate(daysAgo) {
+        const date = new Date();
+        date.setDate(date.getDate() - daysAgo);
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
+// Transform places data to blog posts
+function transformPlacesToBlogPosts(toursData) {
         const posts = [];
-        let idCounter = 1;
-        items.forEach((tour) => {
-                const country = tour.country;
-                const tourId = tour.id;
-                const places = tour.places || [];
-                places.forEach((place, idx) => {
-                        const firstImage =
-                                place.famous_locations?.[0]?.image_url ||
-                                "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800";
-                        const title = `${place.city}, ${country}: ${tour.title || "Travel Guide"}`;
-                        const description =
-                                place.blog || tour.description || "Discover highlights, tips, and must-see places.";
+        let postId = 1;
+        let daysAgo = 0;
+
+        toursData.forEach((tour) => {
+                tour.places.forEach((place) => {
+                        // Get image from first famous location, or use a placeholder
+                        const image =
+                                place.famous_locations && place.famous_locations.length > 0
+                                        ? place.famous_locations[0].image_url
+                                        : "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800";
+
+                        // Create title from city name
+                        const title = `Khám phá ${place.city}: Hành trình đáng nhớ`;
+
+                        // Calculate reading time from blog text
+                        const readingTime = calculateReadingTime(place.blog);
+
+                        // Generate author based on country
+                        const author = generateAuthor(tour.country);
+
+                        // Generate date (stagger posts over time)
+                        const date = generateDate(daysAgo);
+                        daysAgo += 3; // Space posts 3 days apart
+
+                        const isFeatured = posts.length === 0; // Mark first post as featured
+
                         posts.push({
-                                id: idCounter++,
-                                country,
-                                tourId,
-                                placeIndex: idx,
+                                id: postId++,
+                                image: image,
+                                category: tour.country,
+                                title: title,
+                                description: place.blog, // Store full blog text for search
+                                author: author,
+                                date: date,
+                                readingTime: readingTime,
                                 city: place.city,
-                                title,
-                                description,
-                                image: firstImage,
-                                category: "City Guide",
-                                author: {
-                                        name: "Travel Team",
-                                        avatar: `https://i.pravatar.cc/32?u=${encodeURIComponent(place.city)}`,
-                                },
-                                date: new Date().toLocaleDateString(undefined, {
-                                        month: "short",
-                                        day: "2-digit",
-                                        year: "numeric",
-                                }),
-                                readingTime: minutesToRead(description),
-                                isFeatured: false,
+                                country: tour.country,
+                                tourId: tour.id,
+                                lat: place.lat,
+                                lon: place.lon,
+                                famousLocations: place.famous_locations || [],
+                                isFeatured: isFeatured,
                         });
                 });
         });
-        if (posts.length > 0) posts[0].isFeatured = true;
+
         return posts;
 }
 
-async function loadData() {
+// Fetch data from data.json
+async function fetchBlogData() {
         try {
-                const res = await fetch("/data.json");
-                const json = await res.json();
-                blogPosts = buildPostsFromData(json);
+                const response = await fetch("/data.json");
+                if (!response.ok) {
+                        throw new Error("Failed to fetch data.json");
+                }
+                const data = await response.json();
+                blogPosts = transformPlacesToBlogPosts(data.data);
                 filteredPosts = [...blogPosts];
-                initialLoad();
-        } catch (e) {
-                console.error("Failed to load data.json", e);
-                // Fallback to empty state
+                return blogPosts;
+        } catch (error) {
+                console.error("Error fetching blog data:", error);
+                // Fallback to empty array if fetch fails
                 blogPosts = [];
                 filteredPosts = [];
-                initialLoad();
+                return [];
         }
 }
 
@@ -84,10 +130,8 @@ const recentPostsContainer = document.querySelector(".sidebar-widget__recent-pos
 
 const paginationContainer = document.querySelector(".pagination");
 const pageNumbersSpan = document.querySelector(".page-numbers");
-const firstBtn = document.querySelector(".pagination .first");
 const prevBtn = document.querySelector(".pagination .prev");
 const nextBtn = document.querySelector(".pagination .next");
-const lastBtn = document.querySelector(".pagination .last");
 
 // =========================================================================
 // RENDER FUNCTIONS (UPDATED)
@@ -108,18 +152,21 @@ function renderPosts() {
                 const postElement = document.createElement("article");
                 postElement.className = "blog-card";
                 postElement.style.animationDelay = `${index * 0.1}s`; // Stagger animation
+                const detailUrl = `#blog-detail?id=${post.id}`;
                 postElement.innerHTML = `
-                <a href="/index.html#blog-detail?id=${post.id}" class="blog-card__image-link">
-                    <img src="${post.image}" alt="${post.title}" class="blog-card__image">
+                <a href="${detailUrl}" class="blog-card__image-link">
+                    <img src="${post.image}" alt="${post.title}" class="blog-card__image" 
+                         onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800'">
                     <span class="blog-card__category">${post.category}</span>
                 </a>
                 <div class="blog-card__content">
                     <h3 class="blog-card__title">
-                        <a href="/index.html#blog-detail?id=${post.id}">${post.title}</a>
+                        <a href="${detailUrl}">${post.title}</a>
                     </h3>
                     <div class="blog-card__footer">
                         <div class="blog-card__author">
-                            <img src="${post.author.avatar}" alt="${post.author.name}" class="blog-card__author-avatar">
+                            <img src="${post.author.avatar}" alt="${post.author.name}" class="blog-card__author-avatar"
+                                 onerror="this.src='https://i.pravatar.cc/32?u=travel'">
                             <span>${post.author.name}</span>
                         </div>
                         <span class="blog-card__meta-info">${post.date} • ${post.readingTime}</span>
@@ -136,23 +183,37 @@ function renderPagination() {
 
         paginationContainer.style.display = totalPages <= 1 ? "none" : "flex";
 
-        // Update First/Prev buttons state
-        firstBtn.classList.toggle("disabled", currentPage === 1);
-        prevBtn.classList.toggle("disabled", currentPage === 1);
+        // Update Prev button state
+        if (prevBtn) prevBtn.classList.toggle("disabled", currentPage === 1);
 
-        // Update Next/Last buttons state
-        nextBtn.classList.toggle("disabled", currentPage === totalPages);
-        lastBtn.classList.toggle("disabled", currentPage === totalPages);
+        // Update Next button state
+        if (nextBtn) nextBtn.classList.toggle("disabled", currentPage === totalPages);
 
-        // Generate page number links (window size = 3)
+        // Generate page number links - show only 3 page numbers at a time
+        if (!pageNumbersSpan) return;
         pageNumbersSpan.innerHTML = "";
-        const windowSize = 3;
-        let start = Math.max(1, currentPage - Math.floor(windowSize / 2));
-        let end = Math.min(totalPages, start + windowSize - 1);
-        if (end - start + 1 < windowSize) {
-                start = Math.max(1, end - windowSize + 1);
+
+        let startPage, endPage;
+
+        if (totalPages <= 3) {
+                // If 3 or fewer pages, show all
+                startPage = 1;
+                endPage = totalPages;
+        } else {
+                // Show 3 pages around current page
+                if (currentPage <= 2) {
+                        startPage = 1;
+                        endPage = 3;
+                } else if (currentPage >= totalPages - 1) {
+                        startPage = totalPages - 2;
+                        endPage = totalPages;
+                } else {
+                        startPage = currentPage - 1;
+                        endPage = currentPage + 1;
+                }
         }
-        for (let i = start; i <= end; i++) {
+
+        for (let i = startPage; i <= endPage; i++) {
                 pageNumbersSpan.innerHTML += `<a href="#" data-page="${i}" class="${
                         i === currentPage ? "active" : ""
                 }">${i}</a>`;
@@ -161,25 +222,31 @@ function renderPagination() {
 
 function renderCategories() {
         if (!categoryList) return;
-        const categories = ["All", ...new Set(blogPosts.map((p) => p.country))];
+        if (blogPosts.length === 0) return;
+
+        const categories = ["All", ...new Set(blogPosts.map((p) => p.category))];
         categoryList.innerHTML = categories
                 .map(
                         (cat) =>
-                                `<li><a href="#" data-category="${cat}" class="${cat === "All" ? "active" : ""}">${
-                                        cat === "All" ? "All Countries" : cat
-                                }</a></li>`
+                                `<a href="#" data-category="${cat}" class="${cat === "All" ? "active" : ""}">${
+                                        cat === "All" ? "All Categories" : cat
+                                }</a>`
                 )
                 .join("");
 }
 
 function renderFeaturedPost() {
         if (!featuredPostContainer) return;
-        const featured = blogPosts.find((p) => p.isFeatured) || blogPosts[0];
+        if (blogPosts.length === 0) return;
+
+        const featured = blogPosts.find((p) => p.isFeatured) || blogPosts[0]; // Fallback to first post
         if (!featured) return;
 
+        const detailUrl = `pages/blog-detail.html?id=${featured.id}`;
         featuredPostContainer.innerHTML = `
-            <a href="/index.html#blog-detail?id=${featured.id}">
-                <img src="${featured.image}" alt="${featured.title}">
+            <a href="${detailUrl}">
+                <img src="${featured.image}" alt="${featured.title}" 
+                     onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800'">
                 <h4>${featured.title}</h4>
             </a>
         `;
@@ -188,18 +255,22 @@ function renderFeaturedPost() {
 // NEW: Render recent posts
 function renderRecentPosts() {
         if (!recentPostsContainer) return;
-        const recent = blogPosts.slice(0, 3);
+        if (blogPosts.length === 0) return;
+
+        const recent = blogPosts.slice(0, 3); // Get the first 3 posts
         recentPostsContainer.innerHTML = recent
-                .map(
-                        (post) => `
+                .map((post) => {
+                        const detailUrl = `/blog-detail.html?id=${post.id}`;
+                        return `
             <div class="sidebar-widget__recent-post-item">
-                <a href="/index.html#blog-detail?id=${post.id}">
-                    <img src="${post.image}" alt="${post.title}">
+                <a href="${detailUrl}">
+                    <img src="${post.image}" alt="${post.title}" 
+                         onerror="this.src='https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800'">
                     <h5>${post.title}</h5>
                 </a>
             </div>
-        `
-                )
+        `;
+                })
                 .join("");
 }
 
@@ -229,17 +300,20 @@ function renderSkeletonCards() {
 // =========================================================================
 
 function handleSearchAndFilter() {
+        if (blogPosts.length === 0) return; // Wait for data to load
+
         const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : "";
         const activeCategoryLink = categoryList ? categoryList.querySelector("a.active") : null;
         const activeCategory = activeCategoryLink ? activeCategoryLink.dataset.category : "All";
 
         filteredPosts = blogPosts.filter((post) => {
-                const matchesCategory = activeCategory === "All" || post.country === activeCategory;
+                const matchesCategory = activeCategory === "All" || post.category === activeCategory;
+                const searchText = searchTerm ? searchTerm : "";
                 const matchesSearch =
-                        post.title.toLowerCase().includes(searchTerm) ||
-                        (post.description || "").toLowerCase().includes(searchTerm) ||
-                        (post.city || "").toLowerCase().includes(searchTerm) ||
-                        (post.country || "").toLowerCase().includes(searchTerm);
+                        !searchText ||
+                        post.title.toLowerCase().includes(searchText) ||
+                        (post.description && post.description.toLowerCase().includes(searchText)) ||
+                        (post.city && post.city.toLowerCase().includes(searchText));
                 return matchesCategory && matchesSearch;
         });
 
@@ -304,39 +378,53 @@ function handlePageChange(newPage) {
 }
 
 if (paginationContainer) {
-        firstBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                handlePageChange(1);
-        });
-        prevBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                handlePageChange(currentPage - 1);
-        });
-        nextBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                handlePageChange(currentPage + 1);
-        });
-        lastBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-                handlePageChange(totalPages);
-        });
-        pageNumbersSpan.addEventListener("click", (e) => {
-                if (e.target.tagName === "A" && e.target.dataset.page) {
+        if (prevBtn) {
+                prevBtn.addEventListener("click", (e) => {
                         e.preventDefault();
-                        handlePageChange(parseInt(e.target.dataset.page, 10));
-                }
-        });
+                        if (currentPage > 1) {
+                                handlePageChange(currentPage - 1);
+                        }
+                });
+        }
+        if (nextBtn) {
+                nextBtn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+                        if (currentPage < totalPages) {
+                                handlePageChange(currentPage + 1);
+                        }
+                });
+        }
+        if (pageNumbersSpan) {
+                pageNumbersSpan.addEventListener("click", (e) => {
+                        if (e.target.tagName === "A" && e.target.dataset.page) {
+                                e.preventDefault();
+                                handlePageChange(parseInt(e.target.dataset.page, 10));
+                        }
+                });
+        }
 }
 
 // =========================================================================
 // INITIAL LOAD
 // =========================================================================
-function initialLoad() {
+async function initialLoad() {
+        // Show skeleton loading
+        renderSkeletonCards();
+
+        // Fetch data from data.json
+        await fetchBlogData();
+
+        // Render UI with fetched data
         renderCategories();
         renderFeaturedPost();
         renderRecentPosts();
         updateUI();
 }
 
-loadData();
+// Initialize when DOM is ready
+if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initialLoad);
+} else {
+        initialLoad();
+}

@@ -153,14 +153,14 @@ function showNotification(type, message) {
         const notification = document.createElement("div");
         notification.className = `notification-toast ${type}`;
         notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas ${type === "success" ? "fa-check-circle" : "fa-exclamation-circle"}"></i>
-            <span>${message}</span>
-        </div>
-        <button class="notification-close" onclick="this.parentElement.remove()">
-            <i class="fas fa-times"></i>
-        </button>
-    `;
+      <div class="notification-content">
+          <i class="fas ${type === "success" ? "fa-check-circle" : "fa-exclamation-circle"}"></i>
+          <span>${message}</span>
+      </div>
+      <button class="notification-close" onclick="this.parentElement.remove()">
+          <i class="fas fa-times"></i>
+      </button>
+  `;
 
         document.body.appendChild(notification);
         setTimeout(() => notification.classList.add("show"), 10);
@@ -336,12 +336,12 @@ function showContactSuccessModal() {
                 modal = document.createElement("div");
                 modal.className = "contact-success-modal";
                 modal.innerHTML = `
-            <div class="contact-success-modal__content">
-                <h3>Gửi tin nhắn thành công!</h3>
-                <p>Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.</p>
-                <button class="contact-success-modal__close">Đóng</button>
-            </div>
-        `;
+          <div class="contact-success-modal__content">
+              <h3>Gửi tin nhắn thành công!</h3>
+              <p>Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.</p>
+              <button class="contact-success-modal__close">Đóng</button>
+          </div>
+      `;
                 document.body.appendChild(modal);
         }
         modal.style.display = "flex";

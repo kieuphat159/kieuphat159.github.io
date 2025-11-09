@@ -247,12 +247,13 @@
     }
 
     function loadDestinations() {
-        const grid = document.querySelector(".home-destinations__grid");
-        if (!grid) return;
-
         fetch("/data.json")
             .then(res => res.json())
             .then(json => {
+                const grid = document.querySelector(".home-destinations__grid");
+                if (!grid) return;
+
+                grid.innerHTML = ""
                 const indices = [0, 2, 7, 4, 6, 5];
                 const destinations = json.data.filter((_, i) => indices.includes(i));
 
