@@ -807,6 +807,7 @@ section {
 }
 
 .trip-results p em {
+    font-size: 1rem;
     color: #fff;
 }
 

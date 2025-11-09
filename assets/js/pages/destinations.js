@@ -8,22 +8,22 @@ let isDataLoaded = false;
 
 // Map quốc gia sang region
 const countryToRegion = {
-    'Việt Nam': 'Asia',
-    'Nhật Bản': 'Asia',
-    Pháp: 'Europe',
-    Ý: 'Europe',
-    Mỹ: 'America',
-    'Thái Lan': 'Asia',
-    'Hàn Quốc': 'Asia',
-    Úc: 'Oceania',
-    'Ai Cập': 'Africa',
-    'Tây Ban Nha': 'Europe',
-    Canada: 'America',
-    'Ấn Độ': 'Asia',
-    Brazil: 'America',
-    'Thổ Nhĩ Kỳ': 'Europe',
-    'New Zealand': 'Oceania',
-    Anh: 'Europe',
+    'Việt Nam': 'Châu Á',
+    'Nhật Bản': 'Châu Á',
+    Pháp: 'Châu Âu',
+    Ý: 'Châu Âu',
+    Mỹ: 'Châu Mỹ',
+    'Thái Lan': 'Châu Á',
+    'Hàn Quốc': 'Châu Á',
+    Úc: 'Châu Đại Dương',
+    'Ai Cập': 'Châu Phi',
+    'Tây Ban Nha': 'Châu Âu',
+    Canada: 'Châu Mỹ',
+    'Ấn Độ': 'Châu Á',
+    Brazil: 'Châu Mỹ',
+    'Thổ Nhĩ Kỳ': 'Châu Âu',
+    'New Zealand': 'Châu Đại Dương',
+    Anh: 'Châu Âu',
 };
 
 /* ========= LAZY LOADING SETUP ========= */
@@ -82,50 +82,42 @@ async function fetchDestinationsData() {
             destinations = [];
             tripData = [];
 
+            // Nhóm các tour theo quốc gia
+            const countryMap = {};
+
             jsonData.data.forEach((tour) => {
                 const country = tour.country;
-                const region = countryToRegion[country] || 'Asia';
-                const baseVisits = tour.visits || Math.floor(Math.random() * 200) + 50;
-                const baseTours = tour.tours || Math.floor(Math.random() * 50) + 5;
+                const region = countryToRegion[country] || 'Châu Á';
 
-                tour.places.forEach((place) => {
-                    const destination = {
-                        name: place.city,
-                        region: region,
+                if (!countryMap[country]) {
+                    countryMap[country] = {
                         country: country,
-                        img:
-                            place.famous_locations && place.famous_locations.length > 0
-                                ? place.famous_locations[0].image_url
-                                : `../assets/images/destinations/${country}.png`,
-                        short: place.shortdesc,
-                        long: place.blog,
-                        lat: place.lat,
-                        lon: place.lon,
-                        tours: baseTours
-                            ? Math.floor(baseTours / tour.places.length)
-                            : Math.floor(Math.random() * 20) + 5,
-                        rating: tour.rating || 4.5,
-                        gallery:
-                            place.famous_locations && place.famous_locations.length > 0
-                                ? place.famous_locations.map((loc) => loc.image_url)
-                                : [`../assets/images/destinations/${country}.png`],
-                        visits: baseVisits
-                            ? Math.floor(baseVisits / tour.places.length) + Math.floor(Math.random() * 50)
-                            : Math.floor(Math.random() * 100) + 20,
-                        interest: place.interest || 'city',
-                        famous_locations: place.famous_locations || [],
-                        tourId: tour.id,
-                        tourTitle: tour.title,
-                        tourDays: tour.days,
-                        tourPrice: tour.price,
+                        region: region,
+                        tours: [],
+                        allImages: [],
+                        allFamousLocations: [],
+                        allPlaces: [],
+                        totalVisits: 0,
+                        totalTours: 0,
+                        ratings: [],
                     };
+                }
 
-                    destinations.push(destination);
+                // Thêm tour vào quốc gia
+                countryMap[country].tours.push(tour);
+                countryMap[country].totalVisits += tour.visits || 0;
+                countryMap[country].totalTours += tour.tours || 0;
+                countryMap[country].ratings.push(tour.rating || 4.5);
 
-                    if (!visitsStore[destination.name]) {
-                        visitsStore[destination.name] = destination.visits || 0;
+                // Lấy tất cả places và images
+                tour.places.forEach((place) => {
+                    countryMap[country].allPlaces.push(place);
+                    if (place.famous_locations && place.famous_locations.length > 0) {
+                        countryMap[country].allImages.push(...place.famous_locations.map((loc) => loc.image_url));
+                        countryMap[country].allFamousLocations.push(...place.famous_locations);
                     }
 
+                    // Tạo tripData cho trip planner
                     const trip = {
                         name: `${place.city}, ${country}`,
                         interest: place.interest || 'city',
@@ -142,9 +134,54 @@ async function fetchDestinationsData() {
                         days: tour.days || 7,
                         price: tour.price || 0,
                     };
-
                     tripData.push(trip);
                 });
+            });
+
+            // Tạo destinations từ countryMap
+            Object.values(countryMap).forEach((countryData) => {
+                const country = countryData.country;
+                const firstPlace = countryData.allPlaces[0];
+                const avgRating = countryData.ratings.reduce((a, b) => a + b, 0) / countryData.ratings.length;
+
+                // Lấy description từ tour đầu tiên
+                const firstTour = countryData.tours[0];
+
+                const destination = {
+                    name: country,
+                    region: countryData.region,
+                    country: country,
+                    img:
+                        countryData.allImages.length > 0
+                            ? countryData.allImages[0]
+                            : `../assets/images/destinations/${country}.png`,
+                    short: firstTour.title || `Khám phá vẻ đẹp tuyệt vời của ${country}`,
+                    long:
+                        firstTour.description ||
+                        `${country} là một điểm đến tuyệt vời với nhiều địa danh và trải nghiệm độc đáo.`,
+                    lat: firstPlace ? firstPlace.lat : 0,
+                    lon: firstPlace ? firstPlace.lon : 0,
+                    tours: countryData.totalTours || countryData.tours.length,
+                    rating: Math.round(avgRating * 10) / 10,
+                    gallery:
+                        countryData.allImages.length > 0
+                            ? countryData.allImages
+                            : [`../assets/images/destinations/${country}.png`],
+                    visits: countryData.totalVisits || Math.floor(Math.random() * 100) + 20,
+                    interest: firstPlace?.interest || 'city',
+                    famous_locations: countryData.allFamousLocations,
+                    places: countryData.allPlaces,
+                    tourId: firstTour.id,
+                    tourTitle: firstTour.title,
+                    tourDays: firstTour.days,
+                    tourPrice: firstTour.price,
+                };
+
+                destinations.push(destination);
+
+                if (!visitsStore[destination.name]) {
+                    visitsStore[destination.name] = destination.visits || 0;
+                }
             });
 
             console.log(`Loaded ${destinations.length} destinations from ${jsonData.data.length} tours`);
@@ -168,11 +205,11 @@ function loadFallbackData() {
             seasons: [
                 {
                     icon: '❄️',
-                    title: 'Winter (Dec – Feb)',
+                    title: 'Mùa đông (Tháng 12 – Tháng 2)',
                     suitability: '4.5/5',
-                    crowd: 'Low',
-                    best: 'Cool weather, tropical spots like Thailand.',
-                    consider: 'Some northern areas can be cold.',
+                    crowd: 'Ít',
+                    best: 'Thời tiết mát mẻ, các điểm nhiệt đới như Thái Lan.',
+                    consider: 'Một số vùng phía Bắc có thể lạnh.',
                 },
             ],
         },
@@ -193,6 +230,8 @@ function loadFallbackData() {
             gallery: ['../assets/images/destinations/Switzerland.png'],
             visits: 120,
             interest: 'mountain',
+            places: [],
+            famous_locations: [],
         },
     ];
 
@@ -214,7 +253,7 @@ function loadFallbackData() {
 let visibleCount = 6;
 let activeRegion = 'All';
 let searchQuery = '';
-let sortMode = 'visited-desc'; // Đặt mặc định là "Most visited"
+let sortMode = 'visited-desc';
 
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 let visitsStore = JSON.parse(localStorage.getItem('visits')) || {};
@@ -378,7 +417,7 @@ function renderTopDestinations() {
         card.innerHTML = `
       <img data-src="${dest.img}" alt="${dest.name}" class="lazy-image" style="background:#f0f0f0;">
       <div class="topdest-overlay">
-        <h3>${dest.name}, ${dest.country}</h3>
+        <h3>${dest.name}</h3>
         <p>${dest.short}</p>
       </div>
     `;
@@ -465,7 +504,6 @@ filterBtns.forEach((btn) => {
 });
 
 if (sortSelect) {
-    // Set giá trị mặc định của dropdown
     sortSelect.value = 'visited-desc';
 
     sortSelect.addEventListener('change', (e) => {
@@ -563,6 +601,24 @@ function openDetailModal(name) {
     currentSlide = 0;
     detailModal.classList.add('open');
 
+    // Add "View Full Details" button
+    const modalDesc = document.querySelector('.modal-desc');
+    let detailBtn = modalDesc.querySelector('.btn-view-detail');
+    if (!detailBtn) {
+        detailBtn = document.createElement('button');
+        detailBtn.className = 'btn-view-detail btn-primary';
+        detailBtn.style.marginTop = '15px';
+        detailBtn.innerHTML = 'Xem chi tiết đầy đủ';
+        modalDesc.appendChild(detailBtn);
+    }
+
+    // Update button click handler with tourId
+    detailBtn.onclick = () => {
+        if (item.tourId) {
+            window.location.href = `index.html#destination-detail?id=${item.tourId}`;
+        }
+    };
+
     fetchWeather(item);
     setTimeout(() => initMap(item.lat, item.lon, item.name), 100);
 }
@@ -645,7 +701,6 @@ if (tripForm && tripResults) {
             return;
         }
 
-        // Giới hạn chỉ hiển thị 3 kết quả
         const limitedMatches = matches.slice(0, 3);
 
         limitedMatches.forEach((trip) => {
@@ -755,6 +810,27 @@ regionCards.forEach((card) => {
         renderBestTime(region);
     });
 });
+
+/* ========== SPECIAL OFFERS HANDLER ========== */
+const offerToTourMap = {
+    0: 'ca011', // Mont Blanc -> Canada Banff
+    1: 'br013', // Ecuador -> Brazil
+    2: 'th006', // Maldives -> Thailand
+    3: 'it004', // Switzerland -> Italy
+};
+
+function setupSpecialOffers() {
+    const offerButtons = document.querySelectorAll('.offer-card .btn-primary');
+    offerButtons.forEach((btn, index) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const tourId = offerToTourMap[index];
+            if (tourId) {
+                window.location.href = `tour-detail.html?id=${tourId}`;
+            }
+        });
+    });
+}
 
 /* ========== INITIALIZATION ========== */
 async function initializeApp() {
