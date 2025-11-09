@@ -645,8 +645,23 @@ body:has(
                 .contact-banner,
                 .tour-details-banner
         )
+        header
         .header-logo__text {
         color: var(--color-text-inverse);
+}
+
+body:has(
+                .onl-banner,
+                .des-banner,
+                .about-des-banner,
+                .destination-detail-hero,
+                .tours-banner,
+                .contact-banner,
+                .tour-details-banner
+        )
+        header.scrolled
+        .header-logo__text {
+        color: var(--color-text-primary);
 }
 
 /* Loading overlay */

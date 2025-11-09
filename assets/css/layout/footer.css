@@ -48,10 +48,10 @@
         font-size: 1rem;
 }
 
-.header-logo__text {
+.footer__logo .header-logo__text {
         font-size: 1.2rem;
         font-weight: 700;
-        color: var(--footer-text);
+        color: var(--footer-text) !important;
 }
 
 .header-logo__dot {
@@ -234,7 +234,7 @@
                 font-size: 0.95rem;
         }
 
-        .header-logo__text {
+        .footer__logo .header-logo__text {
                 font-size: 1.1rem;
         }
 
