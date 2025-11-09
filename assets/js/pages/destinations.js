@@ -122,6 +122,10 @@ async function fetchDestinationsData() {
 
                     destinations.push(destination);
 
+                    if (!visitsStore[destination.name]) {
+                        visitsStore[destination.name] = destination.visits || 0;
+                    }
+
                     const trip = {
                         name: `${place.city}, ${country}`,
                         interest: place.interest || 'city',
