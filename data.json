@@ -3,6 +3,8 @@
     {
       "id": "vn001",
       "country": "Việt Nam",
+      "region": "Châu Á",
+      "desc": "Việt Nam là một dải đất hình chữ S tuyệt đẹp ở Đông Nam Á, nổi tiếng với lịch sử hào hùng, văn hóa phong phú, ẩm thực đường phố đặc sắc và cảnh quan thiên nhiên đa dạng, từ những ruộng bậc thang hùng vĩ ở phía Bắc đến đồng bằng sông Cửu Long trù phú ở phía Nam.",
       "title": "Hành trình Xuyên Việt: Từ Hà Nội đến Đồng bằng sông Cửu Long",
       "description": "Khám phá vẻ đẹp đa dạng của Việt Nam...",
       "price": 25000000,
@@ -96,6 +98,8 @@
     {
       "id": "jp002",
       "country": "Nhật Bản",
+      "region": "Châu Á",
+      "desc": "Nhật Bản, hay 'Đất nước Mặt trời mọc', là một quốc đảo ở Đông Á, nơi giao thoa hoàn hảo giữa truyền thống ngàn năm và công nghệ tương lai. Đất nước này quyến rũ du khách bằng những ngôi đền thanh tịnh, các thành phố neon rực rỡ, vẻ đẹp của hoa anh đào và một nền ẩm thực tinh tế.",
       "title": "Khám phá Đất nước Mặt trời mọc: Tokyo & Kyoto",
       "description": "Trải nghiệm sự giao thoa giữa truyền thống và hiện đại tại Nhật Bản...",
       "price": 45000000,
@@ -171,6 +175,8 @@
     {
       "id": "fr003",
       "country": "Pháp",
+      "region": "Châu Âu",
+      "desc": "Pháp, nằm ở Tây Âu, là trung tâm toàn cầu về nghệ thuật, thời trang, ẩm thực và văn hóa. Nơi đây không chỉ có kinh đô ánh sáng Paris lãng mạn, mà còn có những vùng nông thôn đẹp như tranh vẽ, những bãi biển xanh ngắt của vùng Riviera và di sản rượu vang lừng danh thế giới.",
       "title": "Vẻ đẹp Lãng mạn của Pháp: Paris và Nice",
       "description": "Đắm mình trong kinh đô ánh sáng Paris...",
       "price": 65000000,
@@ -220,6 +226,8 @@
     {
       "id": "it004",
       "country": "Ý",
+      "region": "Châu Âu",
+      "desc": "Ý là một quốc gia Nam Âu với di sản văn hóa và lịch sử vô cùng to lớn, là cái nôi của Đế chế La Mã và thời kỳ Phục hưng. Từ những tàn tích cổ đại ở Rome đến các kênh đào ở Venice và nghệ thuật ở Florence, Ý là một bảo tàng sống động, kết hợp với ẩm thực tuyệt vời.",
       "title": "Vẻ đẹp Vĩnh cửu: Rome, Florence và Venice",
       "description": "Hành trình khám phá di sản của Đế chế La Mã tại Rome...",
       "price": 70000000,
@@ -295,6 +303,8 @@
     {
       "id": "us005",
       "country": "Mỹ",
+      "region": "Bắc Mỹ",
+      "desc": "Hoa Kỳ là một quốc gia rộng lớn ở Bắc Mỹ, trải dài từ Đại Tây Dương đến Thái Bình Dương. Đây là một 'nồi lẩu' văn hóa, nổi tiếng với các thành phố mang tính biểu tượng, những công viên quốc gia hùng vĩ, sự đổi mới công nghệ và ảnh hưởng toàn cầu về âm nhạc, điện ảnh.",
       "title": "Hành trình Bờ Tây Nước Mỹ: Los Angeles, Las Vegas & Grand Canyon",
       "description": "Trải nghiệm sự hào nhoáng của kinh đô điện ảnh Hollywood...",
       "price": 90000000,
@@ -340,6 +350,8 @@
     {
       "id": "th006",
       "country": "Thái Lan",
+      "region": "Châu Á",
+      "desc": "Thái Lan, 'Xứ sở của những nụ cười' ở Đông Nam Á, là thiên đường du lịch với những bãi biển nhiệt đới, các cung điện hoàng gia lộng lẫy, tàn tích cổ xưa và những ngôi đền Phật giáo trang nghiêm. Ẩm thực đường phố sôi động và lòng hiếu khách nồng hậu là điểm nhấn không thể quên.",
       "title": "Thiên đường Nhiệt đới: Bangkok và Phuket",
       "description": "Khám phá sự kết hợp giữa nét cổ kính của những ngôi chùa vàng...",
       "price": 12000000,
@@ -393,6 +405,8 @@
     {
       "id": "kr007",
       "country": "Hàn Quốc",
+      "region": "Châu Á",
+      "desc": "Hàn Quốc là một quốc gia Đông Á đầy năng động, nơi văn hóa K-Pop và công nghệ hiện đại song hành cùng các cung điện hoàng gia và truyền thống lâu đời. Từ đô thị không ngủ Seoul đến thành phố cảng Busan, Hàn Quốc mang đến sự pha trộn hấp dẫn giữa cũ và mới.",
       "title": "Sức hút Seoul và Nét đẹp Busan",
       "description": "Trải nghiệm văn hóa K-Pop sôi động...",
       "price": 18000000,
@@ -446,6 +460,8 @@
     {
       "id": "au008",
       "country": "Úc",
+      "region": "Châu Đại Dương",
+      "desc": "Úc là một quốc gia-lục địa độc đáo, nổi tiếng với các thành phố ven biển sôi động, vùng 'outback' rộng lớn và hệ động vật hoang dã độc nhất vô nhị. Từ Nhà hát Opera Sydney đến Rạn san hô Great Barrier Reef, đây là điểm đến của nắng, biển và những cuộc phiêu lưu.",
       "title": "Khám phá Sydney và Melbourne Năng động",
       "description": "Chiêm ngưỡng các biểu tượng kiến trúc của Sydney...",
       "price": 55000000,
@@ -499,6 +515,8 @@
     {
       "id": "eg009",
       "country": "Ai Cập",
+      "region": "Châu Phi",
+      "desc": "Ai Cập là một quốc gia xuyên lục địa, cầu nối giữa Đông Bắc Phi và Trung Đông, và là cái nôi của một trong những nền văn minh vĩ đại nhất. Du khách đến đây để chiêm ngưỡng các Kim tự tháp Giza, Tượng Nhân sư và những ngôi đền cổ kính dọc theo dòng sông Nile hùng vĩ.",
       "title": "Hành trình Huyền bí Theo dòng Sông Nile",
       "description": "Quay ngược thời gian về với nền văn minh Ai Cập cổ đại...",
       "price": 85000000,
@@ -556,6 +574,8 @@
     {
       "id": "es010",
       "country": "Tây Ban Nha",
+      "region": "Châu Âu",
+      "desc": "Tây Ban Nha, một quốc gia ở Tây Nam Âu, là sự hòa quyện của niềm đam mê, lịch sử và kiến trúc độc đáo. Từ vũ điệu flamenco ở Madrid, các kiệt tác của Gaudí ở Barcelona đến những bãi biển Địa Trung Hải, Tây Ban Nha sống động với văn hóa và lễ hội.",
       "title": "Sôi động Madrid và Kiến trúc Barcelona",
       "description": "Đắm mình trong nhịp sống sôi động và văn hóa hoàng gia của Madrid...",
       "price": 68000000,
@@ -609,6 +629,8 @@
     {
       "id": "ca011",
       "country": "Canada",
+      "region": "Bắc Mỹ",
+      "desc": "Canada là quốc gia lớn thứ hai thế giới, nổi tiếng với sự đa dạng văn hóa, các thành phố thân thiện và trên hết là cảnh quan thiên nhiên bao la, hùng vĩ. Từ dãy núi Rocky hùng vĩ ở phía Tây đến sự quyến rũ của các thành phố phía Đông, Canada là một sân chơi phiêu lưu.",
       "title": "Kỳ quan Thiên nhiên Miền Tây: Vancouver & Dãy núi Rocky",
       "description": "Khám phá thành phố cảng Vancouver xinh đẹp...",
       "price": 95000000,
@@ -658,6 +680,8 @@
     {
       "id": "in012",
       "country": "Ấn Độ",
+      "region": "Châu Á",
+      "desc": "Ấn Độ là một quốc gia Nam Á rộng lớn, một vùng đất của sự đa dạng đáng kinh ngạc về văn hóa, tôn giáo và cảnh quan. Từ 'Tam giác vàng' lịch sử với đền Taj Mahal, đến các bãi biển ở Goa và vùng nước đọng ở Kerala, Ấn Độ là một trải nghiệm mãnh liệt và đầy màu sắc.",
       "title": "Hành trình Tam giác Vàng: Delhi, Agra và Jaipur",
       "description": "Đây là hành trình kinh điển nhất để khám phá Ấn Độ...",
       "price": 35000000,
@@ -721,6 +745,8 @@
     {
       "id": "br013",
       "country": "Brazil",
+      "region": "Nam Mỹ",
+      "desc": "Brazil là quốc gia lớn nhất Nam Mỹ, quê hương của rừng nhiệt đới Amazon và lễ hội Carnival sôi động. Đất nước này rung động với nhịp điệu samba, những bãi biển huyền thoại như Ipanema và các kỳ quan thiên nhiên hùng vĩ như Thác Iguazu.",
       "title": "Vũ điệu Rio và Thác nước Iguazu Hùng vĩ",
       "description": "Cảm nhận vũ điệu Samba sôi động tại Rio de Janeiro...",
       "price": 110000000,
@@ -756,6 +782,8 @@
     {
       "id": "tr014",
       "country": "Thổ Nhĩ Kỳ",
+      "region": "Châu Âu/Châu Á",
+      "desc": "Thổ Nhĩ Kỳ là một quốc gia xuyên lục địa, nằm giữa Đông Âu và Tây Á, mang trong mình di sản của các đế chế vĩ đại. Từ thành phố Istanbul huyền diệu, nơi hai lục địa gặp nhau, đến cảnh quan siêu thực ở Cappadocia, Thổ Nhĩ Kỳ là một cây cầu nối liền lịch sử.",
       "title": "Di sản Istanbul và Cảnh quan Cappadocia",
       "description": "Du hành qua hai châu lục tại Istanbul...",
       "price": 58000000,
@@ -809,6 +837,8 @@
     {
       "id": "nz015",
       "country": "New Zealand",
+      "region": "Châu Đại Dương",
+      "desc": "New Zealand, quốc đảo ở Tây Nam Thái Bình Dương, là một thiên đường cho những người yêu thiên nhiên và mạo hiểm. Nơi đây nổi tiếng với cảnh quan ngoạn mục, từ những ngọn núi phủ tuyết, vịnh hẹp (fiord) ấn tượng đến các bãi biển hoang sơ và văn hóa Maori độc đáo.",
       "title": "Phiêu lưu tại Đảo Nam: Queenstown & Milford Sound",
       "description": "Một chuyến đi dành cho những người yêu thiên nhiên và mạo hiểm...",
       "price": 88000000,
@@ -844,6 +874,8 @@
     {
       "id": "uk016",
       "country": "Anh",
+      "region": "Châu Âu",
+      "desc": "Vương quốc Anh, hay còn gọi là Anh, là một quốc đảo ở Tây Bắc Âu, bao gồm Anh, Scotland, Wales và Bắc Ireland. Đây là vùng đất của hoàng gia, lịch sử hàng ngàn năm, văn học kinh điển và các thành phố đa văn hóa như London, cùng với những vùng nông thôn duyên dáng.",
       "title": "Dấu ấn Lịch sử: London và Edinburgh",
       "description": "Khám phá các biểu tượng hoàng gia và lịch sử tại London...",
       "price": 75000000,
