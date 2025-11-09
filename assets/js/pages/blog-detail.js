@@ -309,6 +309,85 @@ function renderRecentPosts(posts) {
         });
 }
 
+// --- DATA LOAD & TRANSFORM ---
+
+function minutesToRead(text) {
+        if (!text) return "5 min read";
+        const words = text.split(/\s+/).filter(Boolean).length;
+        const minutes = Math.max(3, Math.round(words / 200));
+        return `${minutes} min read`;
+}
+
+function buildBlogDataFromJson(json) {
+        const out = [];
+        const items = json?.data || [];
+        let idCounter = 1;
+        items.forEach((tour) => {
+                const country = tour.country;
+                const places = tour.places || [];
+                places.forEach((place) => {
+                        const img =
+                                place.famous_locations?.[0]?.image_url ||
+                                "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=800";
+                        const title = `${place.city}, ${country}: ${tour.title || "Travel Guide"}`;
+                        const intro =
+                                place.blog || tour.description || "Discover highlights, tips, and must-see places.";
+                        const locationsDetailed = (place.famous_locations || []).map((l) => ({
+                                name: l.name,
+                                image_url: l.image_url,
+                                description: l.description || "",
+                        }));
+                        const post = {
+                                id: idCounter++,
+                                title,
+                                author: {
+                                        name: "Travel Team",
+                                        avatar: `https://i.pravatar.cc/40?u=${encodeURIComponent(place.city)}`,
+                                },
+                                publishDate: new Date().toLocaleDateString(undefined, {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "2-digit",
+                                }),
+                                tags: [country, place.city, "City Guide"],
+                                recentImage: img,
+                                content: [
+                                        { type: "intro", text: intro },
+                                        { type: "image", src: img, alt: `${place.city} in ${country}` },
+                                        { type: "subheading", text: "Famous Locations" },
+                                        { type: "locations", items: locationsDetailed },
+                                        { type: "subheading", text: "Traveler Tips" },
+                                        {
+                                                type: "paragraph",
+                                                text: "Consider visiting during shoulder seasons for fewer crowds. Book popular attractions in advance and sample local specialties for an authentic experience.",
+                                        },
+                                ],
+                                comments: [],
+                                meta: {
+                                        country,
+                                        city: place.city,
+                                        readingTime: minutesToRead(intro),
+                                },
+                        };
+                        out.push(post);
+                });
+        });
+        return out;
+}
+
+async function loadData() {
+        try {
+                const res = await fetch("/data.json");
+                const json = await res.json();
+                blogData = buildBlogDataFromJson(json);
+                initializeFromData();
+        } catch (e) {
+                console.error("Failed to load data.json", e);
+                blogData = [];
+                initializeFromData();
+        }
+}
+
 // --- INITIALIZATION LOGIC ---
 
 // Get post ID from hash URL

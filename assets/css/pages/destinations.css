@@ -1,1433 +1,1458 @@
 body {
-        font-family: var(--font-primary);
-        color: var(--color-text-primary);
-        background: var(--color-bg-primary);
-        line-height: 1.6;
+    font-family: var(--font-primary);
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
+    line-height: 1.6;
 }
 
 section {
-        padding: 80px 0;
+    padding: 60px 0;
 }
 
 .des-container {
-        width: 90%;
-        max-width: 1240px;
-        margin: 0 auto;
+    width: 90%;
+    max-width: 1240px;
+    margin: 0 auto;
 }
 
 .section-title {
-        font-size: clamp(2.5rem, 4vw, 3.5rem); /* Tự động co giãn theo viewport */
-        font-weight: 700;
-        margin-bottom: 40px;
-        text-align: center;
-        color: var(--color-text-primary);
+    font-size: clamp(2.5rem, 4vw, 3.5rem); /* Tự động co giãn theo viewport */
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--color-text-primary);
 }
 
 /* === 2. REUSABLE COMPONENTS === */
 .btn-primary {
-        background: var(--color-primary);
-        color: white;
-        border: none;
-        padding: 12px 28px;
-        border-radius: var(--dest-radius-sm);
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 15px;
-        transition: var(--dest-transition-fast);
-        text-align: center;
-        display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-text-inverse);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px; /* Sử dụng giá trị hardcode 8px hoặc dùng biến nếu có */
+    cursor: pointer;
+    font-weight: var(--font-weight-semibold);
+    font-size: 15px;
+    transition: all 0.3s ease; /* Thay thế --dest-transition-fast */
+    text-align: center;
+    display: inline-block;
 }
 
 .btn-primary:hover {
-        background: var(--color-primary-dark);
-        transform: translateY(-2px);
-        box-shadow: var(--dest-shadow-md);
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--color-card-shadow-hover); /* Thay thế --dest-shadow-md */
 }
 
 .card {
-        background: var(--dest-card-bg);
-        padding: 24px;
-        border-radius: var(--dest-radius-lg);
-        box-shadow: var(--dest-shadow-sm);
-        border: 1px solid var(--dest-border-color);
+    background: var(--color-card-bg); /* Thay thế --dest-card-bg */
+    padding: 24px;
+    border-radius: 12px; /* Sử dụng giá trị hardcode 12px hoặc dùng biến nếu có */
+    box-shadow: var(--color-card-shadow); /* Thay thế --dest-shadow-sm */
+    border: 1px solid var(--color-card-border); /* Thay thế --dest-border-color */
 }
 
 .card h4 {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 20px;
-        color: var(--text-dark);
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 20px;
+    color: var(--color-text-primary); /* Thay thế --text-dark */
 }
 
 /* === 3. HERO BANNER === */
 .des-banner {
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 0;
-        min-height: 100vh;
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
+    position: relative;
+    min-height: 100vh; /* Giảm chiều cao */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('/assets/images/destinations/Banner.png') center/cover no-repeat;
+    background-attachment: fixed;
 }
-
-.des-banner__video {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 1;
-}
-
-.des-banner__overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(8, 2, 0, 0.701), rgba(0, 0, 0, 0.064));
-        z-index: 2;
+.des-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
 }
 
 .des-banner__content {
-        text-align: center;
-        z-index: 2;
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 2rem;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .des-banner__title {
-        font-family: "Poppins", sans-serif;
-        font-size: clamp(3.5rem, 8vw, 7rem);
-        font-weight: 700;
-        color: #ff6b35;
-        margin-bottom: 1.5rem;
-        text-transform: uppercase;
-        letter-spacing: -0.02em;
-        line-height: 1.1;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        animation: fadeInUp 1s ease-out;
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
 }
 
 .des-banner__subtitle {
-        font-family: "Poppins", sans-serif;
-        font-size: clamp(1.25rem, 3vw, 1.75rem);
-        font-weight: 400;
-        color: #ffffff;
-        margin: 0;
-        letter-spacing: 0.02em;
-        line-height: 1.4;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        animation: fadeInUp 1s ease-out 0.3s both;
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: var(--font-weight-normal);
+    color: #fff;
+    margin: 0;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out 0.3s both;
 }
 
 .des-banner__cta button {
-        background: white;
-        color: var(--color-primary);
-        border: none;
-        padding: 14px 32px;
-        border-radius: 50px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        transition: var(--transition-fast);
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-        margin-top: 20px;
+    background: var(--color-text-inverse); /* Thay thế white */
+    color: var(--color-primary);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: var(--font-weight-semibold);
+    transition: all 0.3s ease; /* Thay thế --transition-fast */
+    box-shadow: var(--color-shadow-medium); /* Sử dụng biến bóng đổ */
+    margin-top: 20px;
 }
 
 .des-banner__cta button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+    box-shadow: var(--color-shadow-heavy);
 }
 
 /* Animations */
 @keyframes fadeInUp {
-        from {
-                opacity: 0;
-                transform: translateY(30px);
-        }
-        to {
-                opacity: 1;
-                transform: translateY(0);
-        }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* === TOP DESTINATIONS SECTION === */
 .topdest-section {
-        margin: 60px auto;
-        padding: 40px 0;
-        text-align: center;
-        background: var(--color-bg-primary);
+    margin: 60px auto;
+    padding: 40px 0;
+    text-align: center;
+    background: var(--color-bg-primary);
 }
 
 .topdest-section .section-title {
-        font-size: 2.4rem;
-        margin-bottom: 60px;
-        font-weight: 700;
-        color: var(--color-text-primary);
-        letter-spacing: 0.5px;
+    font-size: 2.4rem;
+    margin-bottom: 60px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    letter-spacing: 0.5px;
 }
 
 /* === SLIDER === */
 .topdest-slider {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    overflow: hidden; /* Ngăn tràn ngang */
 }
 
 .topdest-window {
-        overflow: hidden;
-        width: 95%;
-        max-width: 1600px;
-        margin: 0 auto;
+    overflow: hidden;
+    width: 95%;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .topdest-track {
-        display: flex;
-        gap: 25px;
-        transition: transform 0.6s ease;
+    display: flex;
+    gap: 25px;
+    transition: transform 0.6s ease;
 }
 
 /* === CARD === */
 .topdest-card {
-        flex: 0 0 calc((100% - 4 * 25px) / 3);
-        border-radius: 24px;
-        overflow: hidden;
-        position: relative;
-        cursor: pointer;
-        background: #fff;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
+    flex: 0 0 calc((100% - 2 * 25px) / 3);
+    min-width: 280px;
+    max-width: 450px;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: var(--color-card-bg); /* Thay thế #fff */
+    box-shadow: 0 10px 25px var(--color-shadow-medium); /* Sử dụng biến bóng đổ */
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .topdest-card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px var(--color-shadow-heavy); /* Sử dụng biến bóng đổ */
 }
 
 .topdest-card img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
 }
 
 .topdest-overlay {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 25px 20px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-        color: #fff;
-        text-align: left;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px 20px;
+    /* Giữ nguyên gradient */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    color: var(--color-text-inverse); /* Thay thế #fff */
+    text-align: left;
 }
 
 .topdest-overlay h3 {
-        font-size: 1.6rem;
-        font-weight: 600;
-        margin-bottom: 5px;
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 5px;
+    color: #fff;
 }
 
 .topdest-overlay p {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.9);
-        line-height: 1.4;
+    font-size: var(--font-size-base);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
 }
 
 /* === SLIDE BUTTONS === */
 .slide-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.6);
-        color: #fff;
-        border: none;
-        padding: 12px 18px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 20px;
-        transition: background 0.3s ease;
-        z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background 0.3s ease;
+    z-index: 2;
 }
 
 .slide-btn:hover {
-        background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .slide-btn.prev {
-        left: 5px;
+    left: 5px;
 }
 
 .slide-btn.next {
-        right: 5px;
+    right: 5px;
 }
 
 /* === 5. FILTER SECTION === */
 .filter-section {
-        background: var(--dest-secondary);
-        padding: 24px 0;
-        box-shadow: var(--dest-shadow-sm);
-        position: sticky;
-        /* top: 0; */
-        z-index: 100;
-        border: 1px solid var(--dest-border-color);
-        border-radius: 16px;
+    background: var(--color-bg-secondary); /* Thay thế --dest-secondary (giả sử là nền trắng) */
+    padding: 24px 0;
+    box-shadow: var(--color-card-shadow); /* Thay thế --dest-shadow-sm */
+    position: sticky;
+    /* top: 0; */
+    z-index: 100;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 16px;
 }
 
 .filter-section .des-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 22px;
 }
 
 .filter-left {
-        display: flex;
-        align-items: center;
-        flex: 1;
-        flex-wrap: wrap;
-        gap: 16px;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 #searchInput {
-        width: 100%;
-        max-width: 320px;
-        padding: 12px 20px;
-        border-radius: 50px;
-        border: 2px solid var(--dest-border-color);
-        font-size: 15px;
-        transition: var(--transition-fast);
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: 2px solid var(--color-border-primary);
+    font-size: 15px;
+    transition: all 0.3s ease; /* Thay thế --transition-fast */
 }
 
 #searchInput:focus {
-        outline: none;
-        border-color: var(--color-primary);
-        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    outline: none;
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 3px var(--color-shadow-primary); /* Thay đổi rgba(255, 107, 53, 0.1) thành biến bóng đổ */
 }
 
 .filter-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .filter-btn {
-        padding: 10px 24px;
-        border-radius: 50px;
-        background: var(--dest-secondary);
-        border: 2px solid transparent;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--dest-text-gray);
-        transition: var(--transition-fast);
+    padding: 10px 24px;
+    border-radius: 50px;
+    background: var(--color-bg-tertiary); /* Thay thế --dest-secondary */
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary); /* Thay thế --dest-text-gray */
+    transition: all 0.3s ease; /* Thay thế --transition-fast */
 }
 
 .filter-btn:hover:not(.active) {
-        background: #e9e9e9;
-        transform: translateY(-2px);
+    background: var(--color-border-muted); /* Thay thế #e9e9e9 */
+    transform: translateY(-2px);
 }
 
 .filter-btn.active {
-        background: var(--color-primary);
-        color: white;
-        border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-text-inverse); /* Thay thế white */
+    border-color: var(--color-primary);
 }
 
 .filter-right {
-        display: flex;
-        align-items: center;
-        gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .filter-right label {
-        font-weight: 600;
+    font-weight: var(--font-weight-semibold);
 }
 
 #sortSelect {
-        padding: 10px 16px;
-        border-radius: var(--dest-radius-sm);
-        border: 2px solid var(--dest-border-color);
-        font-size: 14px;
-        cursor: pointer;
-        background: white;
-        min-width: 180px;
+    padding: 10px 16px;
+    border-radius: 8px; /* Sử dụng giá trị hardcode 8px hoặc dùng biến nếu có */
+    border: 2px solid var(--color-card-border);
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 180px;
 }
 
 #sortSelect:focus {
-        outline: none;
-        border-color: var(--color-primary);
+    outline: none;
+    border-color: var(--color-border-focus);
 }
 
 /* === 6. DESTINATIONS GRID & SIDEBAR === */
 .destinations-grid {
-        padding: 60px 0;
+    padding: 60px 0;
 }
 
 .grid-with-sidebar {
-        display: grid;
-        grid-template-columns: 1fr 340px;
-        gap: 40px;
-        align-items: start;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 40px;
+    align-items: start;
 }
 
 .destinations-grid__wrapper {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
 }
 
 /* ======== Destination Card ======== */
 .destination-card {
-        background: var(--dest-card-bg);
-        border-radius: var(--dest-radius-md);
-        overflow: hidden;
-        position: relative;
-        box-shadow: var(--dest-shadow-sm);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid var(--dest-border-color);
+    background: var(--color-card-bg); /* Thay thế --dest-card-bg */
+    border-radius: 12px; /* Sử dụng giá trị hardcode 12px hoặc dùng biến nếu có */
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--color-card-shadow); /* Thay thế --dest-shadow-sm */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--color-card-border); /* Thay thế --dest-border-color */
 }
 
 .destination-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+    box-shadow: var(--color-card-shadow-hover); /* Thay thế --shadow-lg */
 }
 
 .destination-card__desc {
-        font-size: 0.9rem;
-        color: #555;
-        margin: 6px 0 10px;
-        line-height: 1.4;
-        max-height: 40px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary); /* Thay thế #555 */
+    margin: 6px 0 10px;
+    line-height: 1.4;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ======== Image ======== */
 .destination-card__image {
-        position: relative;
-        overflow: hidden;
-        height: 220px;
+    position: relative;
+    overflow: hidden;
+    height: 220px;
 }
 
 .destination-card__image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .destination-card:hover .destination-card__image img {
-        transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 /* ======== Wishlist Button ======== */
 .wishlist-btn {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        background: var(--color-bg-primary);
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        z-index: 5;
-        transition: var(--transition-fast);
-        border: none;
-        box-shadow: var(--dest-shadow-md);
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--color-bg-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.3s ease; /* Thay thế --transition-fast */
+    border: none;
+    box-shadow: var(--color-card-shadow-hover); /* Thay thế --dest-shadow-md */
 }
 
 .wishlist-btn:hover {
-        background: var(--color-primary);
-        color: white;
-        transform: scale(1.1);
+    background: var(--color-primary);
+    color: var(--color-text-inverse); /* Thay thế white */
+    transform: scale(1.1);
 }
 
 .wishlist-btn.active {
-        background: var(--color-primary);
-        color: white;
+    background: var(--color-primary);
+    color: var(--color-text-inverse); /* Thay thế white */
 }
 
 /* ======== Card Body ======== */
 .destination-card__body {
-        padding: 16px 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .card-body-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .destination-card__title {
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--text-dark);
-        margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary); /* Thay thế --text-dark */
+    margin-bottom: 8px;
 }
 
 /* ======== Meta Info ======== */
 .meta-small {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-        flex-wrap: wrap;
-        font-size: 14px;
-        color: var(--dest-text-gray);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: var(--color-text-secondary); /* Thay thế --dest-text-gray */
 }
 
 .pill {
-        display: inline-flex;
-        align-items: center; /* căn giữa dọc */
-        justify-content: center; /* căn giữa ngang */
-        background: #fff4f0;
-        border-radius: 50px;
-        padding: 6px 14px;
-        min-height: 28px;
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--color-primary);
-        text-align: center;
-        line-height: 0.6; /* giúp cân giữa chuẩn hơn */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff4f0; /* Giữ nguyên, có thể thay bằng color-primary-light với độ opacity thấp */
+    border-radius: 50px;
+    padding: 6px 14px;
+    min-height: 28px;
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    text-align: center;
+    line-height: 0.6;
 }
 
 /* ======== View Details Button ======== */
 .view-details {
-        background: var(--color-primary);
-        border: none;
-        color: white;
-        padding: 8px 14px;
-        border-radius: 8px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.3s;
+    background: var(--color-primary);
+    border: none;
+    color: var(--color-text-inverse); /* Thay thế white */
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .view-details:hover {
-        background: #d35400;
+    background: var(--color-primary-dark); /* Thay thế #d35400 */
 }
 
 /* Sidebar */
 .sidebar {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        position: sticky;
-        top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 120px;
 }
 
 .top-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
 .top-item:last-child {
-        margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .top-item .name {
-        flex: 0 0 100px;
-        font-weight: 600;
-        font-size: 14px;
-        color: var(--color-text-primary);
+    flex: 0 0 100px;
+    font-weight: var(--font-weight-semibold);
+    font-size: 14px;
+    color: var(--color-text-primary);
 }
 
 .top-item .bar {
-        flex: 1;
-        height: 12px;
-        background: var(--dest-secondary);
-        border-radius: 50px;
-        overflow: hidden;
+    flex: 1;
+    height: 12px;
+    background: var(--color-bg-inverse);
+    border-radius: 50px;
+    overflow: hidden;
 }
 
 .top-item .num {
-        color: var(--color-text-primary);
+    color: var(--color-text-primary);
 }
 
 .top-item .bar i {
-        display: block;
-        height: 8px;
-        border-radius: 4px;
-        background: linear-gradient(90deg, #4caf50, #81c784);
-        transition: width 0.5s ease;
+    display: block;
+    height: 8px;
+    border-radius: 4px;
+    /* Giữ nguyên gradient do nó là giá trị màu cố định/hiệu ứng */
+    background: linear-gradient(90deg, #4caf50, #81c784);
+    transition: width 0.5s ease;
 }
 
 .top-item .bar > i {
-        display: block;
-        height: 100%;
-        background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
-        border-radius: 50px;
-        transition: width 0.5s ease;
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+    border-radius: 50px;
+    transition: width 0.5s ease;
 }
 
 /* Subscribe widget */
 .subscribe input {
-        width: 100%;
-        padding: 12px 16px;
-        border: 2px solid var(--dest-border-color, #ddd);
-        border-radius: var(--radius-sm, 8px);
-        margin-bottom: 12px;
-        font-size: 14px;
-        color: var(--text-dark, #222);
-        transition: border-color 0.3s ease;
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--color-border-primary); /* Thay thế --dest-border-color, #ff7b29 */
+    border-radius: 8px; /* Thay thế --radius-sm, 8px */
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--color-text-primary); /* Thay thế --text-dark, #222 */
+    transition: border-color 0.3s ease;
 }
 
 .subscribe input:focus {
-        outline: none;
-        border-color: var(--dest-primary, #4f46e5);
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    outline: none;
+    border-color: var(--color-primary); /* Thay thế --dest-primary, #ffb366 */
+    box-shadow: 0 0 0 3px var(--color-shadow-medium); /* Thay thế rgba(79, 70, 229, 0.2) */
 }
 
 .subscribe button {
-        width: 100%;
-        background: var(--dest-primary, #4f46e5);
-        color: #fff;
-        padding: 12px 0;
-        border: none;
-        border-radius: var(--radius-sm, 8px);
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    background: var(--color-primary); /* Thay thế --dest-primary, #ff7b29 */
+    color: var(--color-text-inverse); /* Thay thế #fff */
+    padding: 12px 0;
+    border: none;
+    border-radius: 8px; /* Thay thế --radius-md, 8px */
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .subscribe button:hover {
-        background: var(--dest-primary-dark, #4338ca);
-        transform: translateY(-1px);
+    background: var(--color-primary-hover); /* Thay thế --dest-primary-dark, #ff8a3d */
+    transform: translateY(-1px);
 }
 
 /* Load More */
 .load-more-container {
-        text-align: center;
-        padding: 40px 0 20px;
+    text-align: center;
+    padding: 40px 0 20px;
 }
 
 #loadMoreBtn {
-        background: transparent;
-        color: var(--color-primary);
-        border: 2px solid var(--color-primary);
-        padding: 12px 38px;
-        border-radius: 50px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 15px;
-        transition: var(--dest-transition-fast);
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 12px 38px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: var(--font-weight-semibold);
+    font-size: 15px;
+    transition: all 0.3s ease; /* Thay thế --dest-transition-fast */
 }
 
 #loadMoreBtn:hover {
-        background: var(--color-primary);
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
+    background: var(--color-primary);
+    color: var(--color-text-inverse); /* Thay thế white */
+    transform: translateY(-2px);
+    box-shadow: var(--color-card-shadow-hover); /* Thay thế --shadow-md */
 }
 
 /* === 7. TRIP PLANNER === */
 /* === PLAN YOUR TRIP (Video Background) === */
 .trip-planner {
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
-        height: 110vh;
-        margin-left: calc(-50vw + 50%);
-        overflow: hidden;
-        background: #000;
-        overflow: hidden;
-        margin-bottom: 64px;
-        margin-top: 64px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 110vh;
+    margin-left: calc(-50vw + 50%);
+    background: var(--color-bg-inverse); /* Thay thế #000 */
+    margin-bottom: 64px;
+    margin-top: 64px;
 }
 
 .trip-video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 0;
-        filter: brightness(70%);
-        transition: transform 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(70%);
+    transition: transform 0.5s ease-in-out;
 }
 
 .trip-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.1);
-        z-index: 1;
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
 
 .trip-content {
-        position: relative;
-        z-index: 2;
-        max-width: 900px;
-        margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .trip-title {
-        font-size: 3.5rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-        color: #fff;
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 10px;
+    color: #fff;
 }
 
 .trip-subtitle {
-        font-size: 1.3rem;
-        color: #fff;
-        margin-bottom: 40px;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 40px;
 }
 
 .trip-card {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(14px);
-        border-radius: 16px;
-        padding: 40px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
-        text-align: left;
+    display: flex;
+    gap: 40px;
+    /* Giữ nguyên blur effect */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+    text-align: left;
+    width: 145%;
+    max-width: 1500px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-wrap: nowrap;
+}
+
+.trip-card-left {
+    flex: 0 1 35%;
+    min-width: 250px;
+}
+
+.trip-card-right {
+    flex: 1 1 65%;
+    min-width: 300px;
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 .trip-form {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 30px;
-        align-items: flex-end;
-        margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-end;
+    margin-bottom: 30px;
 }
 
 .form-group {
-        flex: 1;
-        min-width: 200px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        color: white;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #fff;
 }
 
 .form-group select option {
-        color: white;
-        background: rgba(14, 13, 13, 0.523);
+    color: #fff;
+    background: rgba(14, 13, 13, 0.523);
 }
 
 .form-group label {
-        font-weight: 600;
+    color: #fff;
+    font-weight: var(--font-weight-semibold);
 }
 
 .form-group input,
 .form-group select {
-        padding: 12px 16px;
-        border: 1.5px solid rgba(255, 255, 255, 0.3);
-        border-radius: 8px;
-        font-size: 15px;
-        background: rgba(255, 255, 255, 0.15);
-        color: white;
-        outline: none;
-        transition: 0.3s;
+    padding: 12px 16px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
 }
 
 .form-group input::placeholder {
-        color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .form-group input:focus,
 .form-group select:focus {
-        border-color: var(--dest-primary, #ff6b3d);
-        background: rgba(255, 255, 255, 0.25);
+    border-color: var(--color-primary); /* Thay thế --dest-primary, #ff6b3d */
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .btn-primary {
-        background: var(--dest-primary, #ff6b3d);
-        border: none;
-        color: white;
-        font-weight: 600;
-        border-radius: 8px;
-        padding: 14px 24px;
-        cursor: pointer;
-        transition: 0.3s;
-        height: fit-content;
+    background: var(--color-primary); /* Thay thế --dest-primary, #ff6b3d */
+    border: none;
+    color: var(--color-text-inverse); /* Thay thế white */
+    font-weight: var(--font-weight-semibold);
+    border-radius: 8px;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: 0.3s;
+    height: fit-content;
 }
 
 .btn-primary:hover {
-        background: #ff845c;
-        transform: translateY(-2px);
+    background: var(--color-primary-hover); /* Thay thế #ff845c */
+    transform: translateY(-2px);
+}
+
+.trip-results-container {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+    margin-top: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
 }
 
 .trip-results {
-        margin-top: 30px;
-        text-align: center;
-        color: #fff;
-        font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: var(--color-text-inverse); /* Thay thế #fff */
+}
+
+.trip-results p {
+    font-size: 1.5rem;
+    margin: auto;
+    font-weight: var(--font-weight-semibold);
+    color: #fff;
+}
+
+.trip-results p em {
+    color: #fff;
 }
 
 .trip-suggestion {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        background: var(--color-bg-primary);
-        border-radius: 16px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        padding: 20px;
-        margin-top: 20px;
-        transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: var(--color-card-bg); /* Thay thế --color-bg-primary */
+    border-radius: 16px;
+    box-shadow: var(--color-card-shadow);
+    overflow: hidden;
+    padding: 20px;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
 }
 
 .trip-suggestion:hover {
-        transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 .trip-suggestion img,
 .trip-suggestion video {
-        width: 40%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 12px;
+    width: 40%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
 .trip-info {
-        text-align: left;
-        flex: 1;
+    text-align: left;
+    flex: 1;
 }
 
 .trip-info h3 {
-        font-size: 1.5rem;
-        color: var(--dest-text-dark);
-        margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: var(--color-text-primary); /* Thay thế --dest-text-dark */
+    margin-bottom: 10px;
 }
 
 .trip-info p {
-        margin-bottom: 8px;
-        color: var(--dest-text-gray);
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--color-text-secondary); /* Thay thế --dest-text-gray */
 }
 
 .trip-info .price {
-        font-weight: 600;
-        color: #ff6b35;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary-hover); /* Thay thế #ff6b35 */
 }
 
 /* === 8. SPECIAL OFFERS === */
 .offers-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px;
-        max-width: 900px;
-        margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .offer-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--dest-radius-md);
-        box-shadow: var(--shadow-md);
-        transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px; /* Thay thế --dest-radius-md */
+    box-shadow: var(--color-card-shadow); /* Thay thế --shadow-md */
+    transition: transform 0.3s ease;
 }
 
 .offer-card:hover {
-        transform: translateY(-6px);
+    transform: translateY(-6px);
 }
 
-/* ✅ Dải 20% OFF dạng ribbon */
+/* Dải 20% OFF dạng ribbon */
 .offer-badge {
-        position: absolute;
-        top: 15px;
-        left: 0;
-        background-color: #c64b45; /* đỏ cam */
-        color: #fff;
-        font-weight: 700;
-        font-size: 14px;
-        padding: 6px 22px 6px 16px;
-        z-index: 3;
-        line-height: 1.2;
-        clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    top: 15px;
+    left: 0;
+    background-color: var(--color-error); /* Thay thế #c64b45 bằng màu đỏ lỗi */
+    color: var(--color-text-inverse); /* Thay thế #fff */
+    font-weight: var(--font-weight-bold);
+    font-size: 14px;
+    padding: 6px 22px 6px 16px;
+    z-index: 3;
+    line-height: 1.2;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 /* Ảnh nền */
 .offer-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
 .offer-card:hover img {
-        transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 /* Overlay nội dung */
 .offer-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        color: white;
-        padding: 24px;
-        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.85));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    padding: 24px;
+    /* Giữ nguyên gradient */
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.85));
 }
 
 .offer-content h3 {
-        font-size: 20px;
-        margin-bottom: 8px;
-        font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: var(--font-weight-bold);
+    color: #fff;
 }
 
 .offer-content p {
-        font-size: 14px;
-        opacity: 0.9;
-        margin-bottom: 12px;
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 12px;
 }
 
-/* Nút view all */
-/* .view-all-container {
-  text-align: center;
-  padding: 40px 0 20px;
-}
-
-.view-all-btn {
-  background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-  padding: 12px 38px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 15px;
-  transition: var(--transition-fast);
-}
-
-.view-all-btn:hover {
-  background: var(--color-primary);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-} */
-
-/* 8. BEST TIME TO VISIT  */
+/* 8. BEST TIME TO VISIT  */
 .best-time {
-        position: relative;
-        color: #fff;
-        font-family: "Inter", sans-serif;
-        overflow: hidden;
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-        padding-bottom: 40px;
+    position: relative;
+    color: var(--color-text-inverse); /* Thay thế #fff */
+    font-family: var(--font-primary);
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-bottom: 40px;
 }
 
 /* Video background */
 .best-time-video-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
 }
 
 .best-time-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.1);
-        z-index: 2;
-        backdrop-filter: blur(2px);
+    position: absolute;
+    inset: 0;
+    background: var(--color-bg-overlay); /* Thay thế rgba(0, 0, 0, 0.1) */
+    z-index: 2;
+    backdrop-filter: blur(2px);
 }
 
 /* Hero */
 .best-time-hero {
-        position: relative;
-        z-index: 3;
-        text-align: center;
-        padding: 0px 20px;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 0px 20px;
 }
 
 .best-time-hero-content {
-        max-width: 800px;
-        margin: 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .best-time-hero-content h2 {
-        font-size: 3rem;
-        font-weight: 800;
-        margin-bottom: 15px;
+    font-size: 3rem;
+    font-weight: var(--font-weight-extrabold);
+    margin-bottom: 15px;
+    color: #fff;
 }
 
 .best-time-hero-content span {
-        color: #90e0ef;
+    color: var(--color-secondary); /* Thay thế #90e0ef */
 }
 
 .best-time-hero-content p {
-        font-size: 1.1rem;
-        opacity: 0.9;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    color: #fff;
 }
 
 /* Container */
 .best-time-container {
-        position: relative;
-        z-index: 3;
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        gap: 80px;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 30px;
-        text-align: center;
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    text-align: center;
 }
 
 /* Region list */
 .region-list h3 {
-        font-size: 1.7rem;
-        font-weight: 700;
-        margin-bottom: 15px;
-        /* margin-top: 30px; */
-        padding: 5px;
-        text-align: center;
+    font-size: 1.7rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 15px;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
 }
 
 .region-card {
-        position: relative;
-        width: 330px;
-        height: 100px;
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin-top: 20px;
-        /* padding: 20px; */
-        color: #fff;
-        cursor: pointer;
-        transition: 0.3s;
-        margin-bottom: 30px;
+    position: relative;
+    width: 330px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 30px;
 }
 
 .region-card.active {
-        transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 /* Ảnh làm nền */
 .region-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.4s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
 }
 
 /* Overlay mờ đen trên ảnh */
 .region-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: #fff;
-        text-align: center;
-        padding: 15px;
-        transition: background 0.3s ease;
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-inverse); /* Thay thế #fff */
+    text-align: center;
+    padding: 15px;
+    transition: background 0.3s ease;
 }
 
 /* Text */
 .region-overlay h4 {
-        font-size: 1.3rem;
-        margin-bottom: 5px;
-        font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    font-weight: var(--font-weight-bold);
+    color: #fff;
 }
 
 .region-overlay p {
-        font-size: 0.95rem;
-        color: #e0e0e0;
+    font-size: 0.95rem;
+    color: var(--color-text-muted); /* Thay thế #e0e0e0 */
 }
 
 /* Hiệu ứng hover */
 .region-card:hover img {
-        transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .region-card:hover .region-overlay {
-        background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.55);
 }
 
 /* Seasons */
 /* ========== SEASON CONTAINER ========== */
 .season-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        justify-items: center;
-        margin-top: 60px;
-        padding: 30px;
-        animation: fadeInUp 0.6s ease-in-out;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    justify-items: center;
+    margin-top: 40px;
+    padding: 30px;
+    animation: fadeInUp 0.6s ease-in-out;
 }
 
 .season-container p {
-        font-size: 1.1rem;
+    font-size: 1.1rem;
 }
 
 /* ========== SEASON CARD ========== */
 .season-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 24px;
-        padding: 28px 24px;
-        width: 100%;
-        max-width: 420px;
-        backdrop-filter: blur(16px) saturate(180%);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-        transition: all 0.35s ease;
-        transform: translateY(0);
-        opacity: 0;
-        animation: slideUp 0.5s forwards;
+    /* Giữ nguyên blur effect */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
+    padding: 28px 24px;
+    width: 100%;
+    max-width: 420px;
+    backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transition: all 0.35s ease;
+    transform: translateY(0);
+    opacity: 0;
+    animation: slideUp 0.5s forwards;
 }
 
 .season-card:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
 }
 
 /* ========== ICON + HEADER ========== */
 .season-card .icon {
-        font-size: 2.4rem;
-        margin-bottom: 12px;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
 .season-card h3 {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-        color: #ffffff;
-        letter-spacing: 0.5px;
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 10px;
+    color: #fff;
+    letter-spacing: 0.5px;
 }
 
 /* ========== TEXT ========== */
 .season-card p {
-        font-size: 0.95rem;
-        color: #f0f0f0;
-        margin: 5px 0;
-        line-height: 1.5;
+    font-size: 0.95rem;
+    color: var(--color-text-muted); /* Thay thế #f0f0f0 */
+    margin: 5px 0;
+    line-height: 1.5;
 }
 
 .season-card strong {
-        color: #fff;
+    color: #fff;
 }
 
 .season-card em {
-        color: #d1d5db;
-        font-style: italic;
+    color: var(--color-text-muted); /* Thay thế #d1d5db */
+    font-style: italic;
 }
 
 /* ========== COLOR VARIANTS ========== */
 .winter {
-        border-left: 5px solid #60a5fa;
-        box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+    border-left: 5px solid var(--color-info); /* Thay thế #60a5fa */
+    box-shadow: 0 0 15px rgba(33, 150, 243, 0.4); /* Dựa trên --color-info */
 }
 
 .spring {
-        border-left: 5px solid #f472b6;
-        box-shadow: 0 0 15px rgba(244, 114, 182, 0.4);
+    border-left: 5px solid var(--color-error); /* Thay thế #f472b6 (hoặc chọn màu khác nếu có) */
+    box-shadow: 0 0 15px rgba(244, 67, 54, 0.4); /* Dựa trên --color-error */
 }
 
 .summer {
-        border-left: 5px solid #facc15;
-        box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
+    border-left: 5px solid var(--color-warning); /* Thay thế #facc15 */
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); /* Dựa trên --color-warning */
 }
 
 .autumn {
-        border-left: 5px solid #fb923c;
-        box-shadow: 0 0 15px rgba(251, 146, 60, 0.4);
+    border-left: 5px solid var(--color-primary-light); /* Thay thế #fb923c */
+    box-shadow: 0 0 15px rgba(255, 179, 102, 0.4); /* Dựa trên --color-primary-light */
 }
 
 /* ========== ANIMATIONS ========== */
 @keyframes fadeInUp {
-        0% {
-                opacity: 0;
-                transform: translateY(15px);
-        }
-        100% {
-                opacity: 1;
-                transform: translateY(0);
-        }
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideUp {
-        to {
-                opacity: 1;
-                transform: translateY(0);
-        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Animation */
 .fade-in {
-        opacity: 0;
-        transform: translateY(25px);
-        transition: all 0.8s ease;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.8s ease;
 }
 .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ===== MODAL OVERLAY ===== */
 .modal {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(4px);
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        color: var(--color-text-primary);
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--color-bg-overlay); /* Thay thế rgba(0, 0, 0, 0.6) */
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: var(--color-text-primary);
 }
 
 .modal.open {
-        display: flex;
-        animation: fadeIn 0.3s ease;
+    display: flex;
+    animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-        from {
-                opacity: 0;
-        }
-        to {
-                opacity: 1;
-        }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .modal-content {
-        background: var(--color-bg-primary);
-        border-radius: 16px;
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 20px;
-        padding: 24px;
-        max-width: 1000px;
-        width: 90%;
-        position: relative;
-        animation: slideUp 0.3s ease;
-        max-height: 85vh; /* giới hạn chiều cao modal */
-        overflow-y: auto; /* bật cuộn dọc */
+    background: var(--color-bg-primary);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+    padding: 24px;
+    max-width: 1000px;
+    width: 90%;
+    position: relative;
+    animation: slideUp 0.3s ease;
+    max-height: 85vh;
+    overflow-y: auto;
 }
 
 @keyframes slideUp {
-        from {
-                transform: translateY(40px);
-                opacity: 0;
-        }
-        to {
-                transform: translateY(0);
-                opacity: 1;
-        }
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* ===== NÚT ĐÓNG ===== */
 .modal-close {
-        position: absolute;
-        top: 14px;
-        right: 18px;
-        color: var(--primary-color, #0077cc);
-        background: none;
-        border: none;
-        font-size: 1.8rem;
-        cursor: pointer;
-        transition: transform 0.2s ease, color 0.2s ease;
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    color: var(--color-primary); /* Thay thế --primary-color, #0077cc */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .modal-close:hover {
-        color: #ff4b4b;
-        transform: rotate(90deg);
+    color: var(--color-error); /* Thay thế #ff4b4b */
+    transform: rotate(90deg);
 }
 
 /* ===== BÊN TRÁI ===== */
 .modal-gallery img {
-        width: 100%;
-        height: 360px;
-        object-fit: cover;
-        border-radius: 12px;
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
 .modal-desc {
-        margin-top: 16px;
+    margin-top: 16px;
 }
 
 .modal-desc h2 {
-        margin-bottom: 8px;
-        font-size: 1.7rem;
-        font-weight: 700;
-        color: var(--color-text-primary);
+    margin-bottom: 8px;
+    font-size: 1.7rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
 }
 
 .modal-desc p {
-        line-height: 1.5;
-        color: var(--color-text-primary);
+    line-height: 1.5;
+    color: var(--color-text-primary);
 }
 
 /* ===== BÊN PHẢI ===== */
 .detail-stats {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 10px;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
 }
 
 .detail-stats span {
-        background: var(--dest-secondary);
-        padding: 2px;
-        border-radius: 10px;
-        color: var(--color-text-primary);
-        font-size: 16px;
-        /* margin-top: 12px; */
+    background: var(--color-bg-tertiary); /* Thay thế --dest-secondary */
+    padding: 4px;
+    border-radius: 10px;
+    color: var(--color-text-primary);
+    font-size: 16px;
 }
 
 .weather-box,
 .map-box,
 .blog-box {
-        background: var(--dest-secondary);
-        padding: 12px;
-        border-radius: 10px;
-        margin-top: 12px;
+    background: var(--color-bg-tertiary); /* Thay thế --dest-secondary */
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 12px;
 }
 
 .map-box {
-        text-align: center;
-        color: var(--color-text-primary);
+    text-align: center;
+    color: var(--color-text-primary);
 }
 
 .blog-box h3 {
-        margin-bottom: 6px;
-        font-size: 1rem;
-        color: var(--color-text-primary);
+    margin-bottom: 6px;
+    font-size: 1rem;
+    color: var(--color-text-primary);
 }
 
 /* Ẩn thanh cuộn mặc định của toàn modal */
 .modal-content::-webkit-scrollbar {
-        width: 8px;
+    width: 8px;
 }
 .modal-content::-webkit-scrollbar-thumb {
-        background: #bbb;
-        border-radius: 10px;
+    background: var(--color-text-tertiary); /* Thay thế #bbb */
+    border-radius: 10px;
 }
 .modal-content::-webkit-scrollbar-thumb:hover {
-        background: #999;
+    background: var(--color-text-secondary); /* Thay thế #999 */
 }
 
-/* ===================== RESPONSIVE ===================== */
+img.lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img.lazy-image.loaded {
+    opacity: 1;
+}
+
+/* ===================== RESPONSIVE (Không cần thay đổi biến trong phần này) ===================== */
 
 /* Large desktops / laptops */
 @media (max-width: 1399.98px) {
-        .topdest-card {
-                flex: 0 0 calc((100% - 3 * 20px) / 3);
-        }
-        .season-card {
-                max-width: 380px;
-        }
+    .topdest-card {
+        flex: 0 0 calc((100% - 3 * 20px) / 3);
+    }
+    .season-card {
+        max-width: 380px;
+    }
 }
 
 /* Desktops / medium devices */
 @media (max-width: 1199.98px) {
-        .topdest-card {
-                flex: 0 0 calc((100% - 3 * 20px) / 2.5);
-        }
-        .season-card {
-                max-width: 360px;
-        }
+    .topdest-card {
+        flex: 0 0 calc((100% - 3 * 20px) / 2.5);
+    }
+    .season-card {
+        max-width: 360px;
+    }
 }
 
 /* Tablets / small devices */
 @media (max-width: 991.98px) {
-        .grid-with-sidebar {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 30px;
-        }
+    .grid-with-sidebar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 
-        .topdest-card {
-                flex: 0 0 calc((100% - 2 * 15px) / 2);
-        }
-        .season-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 20px;
-        }
-        .trip-card {
-                padding: 30px;
-        }
+    .topdest-card {
+        flex: 0 0 calc((100% - 2 * 15px) / 2);
+    }
+    .season-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px;
+    }
+    .trip-card {
+        padding: 30px;
+    }
 }
 
 /* Landscape phones / md */
 @media (max-width: 767.98px) {
-        .topdest-card {
-                flex: 0 0 100%;
-        }
-        .season-container {
-                gap: 20px;
-                padding: 15px;
-        }
-        .grid-with-sidebar {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 20px;
-        }
-        .trip-card {
-                padding: 20px;
-        }
-        .filter-section .container {
-                flex-direction: column;
-                align-items: stretch;
-        }
+    .topdest-card {
+        flex: 0 0 100%;
+    }
+    .season-container {
+        gap: 20px;
+        padding: 15px;
+    }
+    .grid-with-sidebar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .trip-card {
+        padding: 20px;
+    }
+    .filter-section .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
 
 /* Portrait phones / sm */
 @media (max-width: 575.98px) {
-        .season-card {
-                padding: 20px;
-                border-radius: 12px;
-        }
-        .trip-card {
-                padding: 15px;
-        }
-        .topdest-slider {
-                padding: 0 10px;
-        }
-        .filter-left,
-        .filter-right {
-                width: 100%;
-                flex-direction: column;
-                gap: 10px;
-        }
-        .region-card {
-                width: 100%;
-                height: 90px;
-        }
-        .best-time-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                text-align: center;
-        }
-        .destination-card__image {
-                height: 180px;
-        }
-        .grid-with-sidebar {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 15px;
-        }
+    .season-card {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    .trip-card {
+        padding: 15px;
+    }
+    .topdest-slider {
+        padding: 0 10px;
+    }
+    .filter-left,
+    .filter-right {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .region-card {
+        width: 100%;
+        height: 90px;
+    }
+    .best-time-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    .destination-card__image {
+        height: 180px;
+    }
+    .grid-with-sidebar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 }
