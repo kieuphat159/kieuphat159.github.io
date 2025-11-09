@@ -26,12 +26,12 @@
         --color-text-inverse: #ffffff;
         --color-text-muted: #b3bcc5;
 
-    /* Background Colors */
-    --color-bg-primary: #faf8ed;
-    --color-bg-secondary: #ffffff;
-    --color-bg-tertiary: rgba(225, 225, 225, 0.61);
-    --color-bg-inverse: #2d3134;
-    --color-bg-overlay: rgba(0, 0, 0, 0.5);
+        /* Background Colors */
+        --color-bg-primary: #f9f9f9;
+        --color-bg-secondary: #ffffff;
+        --color-bg-tertiary: #f9f9f9;
+        --color-bg-inverse: #2d3134;
+        --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
         /* Card & Surface Colors */
         --color-card-bg: #ffffff;
@@ -79,8 +79,8 @@
         /* ============================================
        TYPOGRAPHY SYSTEM
        ============================================ */
-    --font-primary: 'Inter', system-ui, sans-serif;
-    --font-heading: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        --font-primary: "Inter", system-ui, sans-serif;
+        --font-heading: "Poppins", "Segoe UI", Arial, sans-serif;
 
         --font-weight-light: 300;
         --font-weight-normal: 400;
@@ -407,10 +407,10 @@ h3,
 h4,
 h5,
 h6,
-[class*='__title'] {
-    font-family: var(--font-heading);
-    color: var(--color-text-primary);
-    margin: 0;
+[class*="__title"] {
+        font-family: var(--font-heading);
+        color: var(--color-text-primary);
+        margin: 0;
 }
 
 h1 {
@@ -563,6 +563,7 @@ body:has(
         z-index: 950;
         background: transparent;
         box-shadow: none;
+        -webkit-backdrop-filter: none;
         backdrop-filter: none;
         transition: all 0.3s ease;
 }
@@ -635,6 +636,34 @@ body:has(
         color: var(--color-text-primary);
 }
 
+body:has(
+                .onl-banner,
+                .des-banner,
+                .about-des-banner,
+                .destination-detail-hero,
+                .tours-banner,
+                .contact-banner,
+                .tour-details-banner
+        )
+        header
+        .header-logo__text {
+        color: var(--color-text-inverse);
+}
+
+body:has(
+                .onl-banner,
+                .des-banner,
+                .about-des-banner,
+                .destination-detail-hero,
+                .tours-banner,
+                .contact-banner,
+                .tour-details-banner
+        )
+        header.scrolled
+        .header-logo__text {
+        color: var(--color-text-primary);
+}
+
 /* Loading overlay */
 .spinner {
         width: 40px;
@@ -656,13 +685,17 @@ body:has(
 
 #page-loading {
         position: fixed;
-        inset: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         background: var(--loading-bg);
+        -webkit-backdrop-filter: blur(2px);
         backdrop-filter: blur(2px);
-        z-index: 9999;
+        z-index: 10000;
         flex-direction: column;
         gap: var(--spacing-lg);
 }
@@ -673,19 +706,26 @@ body:has(
         font-weight: var(--font-weight-medium);
 }
 
-body:not(.page-ready) #header,
-body:not(.page-ready) .container,
-body:not(.page-ready) #footer {
+body:not(.page-ready) .container {
         visibility: hidden;
         opacity: 0;
 }
 
-body.page-ready #header,
-body.page-ready .container,
-body.page-ready #footer {
+body:not(.page-ready) header {
+        visibility: hidden;
+        opacity: 0;
+}
+
+body.page-ready .container {
         visibility: visible;
         opacity: 1;
         transition: opacity 0.3s ease;
+}
+
+body.page-ready header {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 body.page-ready #page-loading {

@@ -354,6 +354,12 @@ ul {
         background-color: var(--color-primary);
         color: var(--color-text-inverse);
 }
+.sidebar-widget__social-links svg {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+}
 
 /* --- Pagination --- */
 .pagination {

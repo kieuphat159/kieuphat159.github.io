@@ -286,7 +286,13 @@ blockquote cite {
         background-color: #1877f2;
 }
 .share-btn.twitter {
-        background-color: #1da1f2;
+        background-color: #000000;
+}
+.share-btn svg {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
 }
 .share-btn.linkedin {
         background-color: #0a66c2;

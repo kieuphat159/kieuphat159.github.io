@@ -407,9 +407,14 @@
         opacity: 1;
 }
 
-.social-link i {
+.social-link i,
+.social-link svg {
         position: relative;
         z-index: 1;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
 }
 
 .social-link:hover {

@@ -242,7 +242,7 @@ function renderFeaturedPost() {
         const featured = blogPosts.find((p) => p.isFeatured) || blogPosts[0]; // Fallback to first post
         if (!featured) return;
 
-        const detailUrl = `pages/blog-detail.html?id=${featured.id}`;
+        const detailUrl = `#blog-detail?id=${featured.id}`;
         featuredPostContainer.innerHTML = `
             <a href="${detailUrl}">
                 <img src="${featured.image}" alt="${featured.title}" 
@@ -260,7 +260,7 @@ function renderRecentPosts() {
         const recent = blogPosts.slice(0, 3); // Get the first 3 posts
         recentPostsContainer.innerHTML = recent
                 .map((post) => {
-                        const detailUrl = `/blog-detail.html?id=${post.id}`;
+                        const detailUrl = `#blog-detail?id=${post.id}`;
                         return `
             <div class="sidebar-widget__recent-post-item">
                 <a href="${detailUrl}">
