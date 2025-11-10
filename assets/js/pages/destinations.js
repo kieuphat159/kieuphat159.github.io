@@ -4,27 +4,10 @@ const OPENWEATHER_API_KEY = '1a9ed9c72e3e2b12073d5915c0d80536';
 let destinations = [];
 let tripData = [];
 let bestTimeData = {};
+let discountedTours = [];
+let currentOfferPage = 1;
+const offersPerPage = 4;
 let isDataLoaded = false;
-
-// Map quốc gia sang region
-const countryToRegion = {
-    'Việt Nam': 'Châu Á',
-    'Nhật Bản': 'Châu Á',
-    Pháp: 'Châu Âu',
-    Ý: 'Châu Âu',
-    Mỹ: 'Châu Mỹ',
-    'Thái Lan': 'Châu Á',
-    'Hàn Quốc': 'Châu Á',
-    Úc: 'Châu Đại Dương',
-    'Ai Cập': 'Châu Phi',
-    'Tây Ban Nha': 'Châu Âu',
-    Canada: 'Châu Mỹ',
-    'Ấn Độ': 'Châu Á',
-    Brazil: 'Châu Mỹ',
-    'Thổ Nhĩ Kỳ': 'Châu Âu',
-    'New Zealand': 'Châu Đại Dương',
-    Anh: 'Châu Âu',
-};
 
 /* ========= LAZY LOADING SETUP ========= */
 let imageObserver = null;
@@ -87,12 +70,13 @@ async function fetchDestinationsData() {
 
             jsonData.data.forEach((tour) => {
                 const country = tour.country;
-                const region = countryToRegion[country] || 'Châu Á';
+                const region = tour.region || 'Châu Á';
 
                 if (!countryMap[country]) {
                     countryMap[country] = {
                         country: country,
                         region: region,
+                        description: tour.description,
                         tours: [],
                         allImages: [],
                         allFamousLocations: [],
@@ -151,13 +135,14 @@ async function fetchDestinationsData() {
                     name: country,
                     region: countryData.region,
                     country: country,
+                    description: firstTour.description,
                     img:
                         countryData.allImages.length > 0
                             ? countryData.allImages[0]
                             : `../assets/images/destinations/${country}.png`,
                     short: firstTour.title || `Khám phá vẻ đẹp tuyệt vời của ${country}`,
                     long:
-                        firstTour.description ||
+                        firstTour.desc ||
                         `${country} là một điểm đến tuyệt vời với nhiều địa danh và trải nghiệm độc đáo.`,
                     lat: firstPlace ? firstPlace.lat : 0,
                     lon: firstPlace ? firstPlace.lon : 0,
@@ -191,6 +176,24 @@ async function fetchDestinationsData() {
     } catch (error) {
         console.error('Error loading data from JSON:', error);
         loadFallbackData();
+        return false;
+    }
+}
+
+async function fetchDiscountedTours() {
+    try {
+        const response = await fetch('/tours.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+        const tourData = await response.json();
+        // Kiểm tra tên trường đúng với JSON
+        discountedTours = (tourData.tours || []).filter((tour) => tour.discount_percent && tour.discount_percent > 0);
+
+        console.log(`Loaded ${discountedTours.length} discounted tours`);
+        return true;
+    } catch (error) {
+        console.error('Error loading discounted tours:', error);
+        discountedTours = [];
         return false;
     }
 }
@@ -281,6 +284,7 @@ const detailShort = document.getElementById('detailShort');
 const detailLong = document.getElementById('detailLong');
 const detailRating = document.getElementById('detailRating');
 const detailTours = document.getElementById('detailTours');
+const blogText = document.getElementById('blogText');
 
 let currentSlide = 0;
 
@@ -381,7 +385,7 @@ function renderDestinations() {
               <span>⭐ ${item.rating}</span>
             </div>
           </div>
-          <button class="view-details" data-name="${item.name}">View details</button>
+          <button class="view-details" data-name="${item.name}">Khám phá</button>
         </div>
         <div class="meta-small">${item.region}</div>
       </div>
@@ -587,6 +591,7 @@ function openDetailModal(name) {
     detailLong.textContent = item.long;
     detailRating.textContent = `⭐ ${item.rating}`;
     detailTours.textContent = `${item.tours} tours`;
+    blogText.textContent = `${item.description}`;
 
     const images = item.gallery && item.gallery.length ? item.gallery : [item.img];
     swiperWrapper.innerHTML = images
@@ -602,15 +607,7 @@ function openDetailModal(name) {
     detailModal.classList.add('open');
 
     // Add "View Full Details" button
-    const modalDesc = document.querySelector('.modal-desc');
-    let detailBtn = modalDesc.querySelector('.btn-view-detail');
-    if (!detailBtn) {
-        detailBtn = document.createElement('button');
-        detailBtn.className = 'btn-view-detail btn-primary';
-        detailBtn.style.marginTop = '15px';
-        detailBtn.innerHTML = 'Xem chi tiết đầy đủ';
-        modalDesc.appendChild(detailBtn);
-    }
+    const detailBtn = document.getElementById('btnViewDetail');
 
     // Update button click handler with tourId
     detailBtn.onclick = () => {
@@ -812,25 +809,97 @@ regionCards.forEach((card) => {
 });
 
 /* ========== SPECIAL OFFERS HANDLER ========== */
-const offerToTourMap = {
-    0: 'ca011', // Mont Blanc -> Canada Banff
-    1: 'br013', // Ecuador -> Brazil
-    2: 'th006', // Maldives -> Thailand
-    3: 'it004', // Switzerland -> Italy
-};
+function renderSpecialOffers(page = 1) {
+    const offersGrid = document.getElementById('offersGrid');
+    const offersPagination = document.getElementById('offersPagination');
+    if (!offersGrid || !offersPagination) return;
 
-function setupSpecialOffers() {
-    const offerButtons = document.querySelectorAll('.offer-card .btn-primary');
-    offerButtons.forEach((btn, index) => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const tourId = offerToTourMap[index];
-            if (tourId) {
-                window.location.href = `tour-detail.html?id=${tourId}`;
-            }
-        });
+    if (!discountedTours || discountedTours.length === 0) {
+        offersGrid.innerHTML = `<p>Không có ưu đãi nào hiện tại.</p>`;
+        offersPagination.innerHTML = '';
+        return;
+    }
+
+    const start = (page - 1) * offersPerPage;
+    const paginatedOffers = discountedTours.slice(start, start + offersPerPage);
+
+    offersGrid.innerHTML = '';
+    paginatedOffers.forEach((offer) => {
+        const card = document.createElement('div');
+        card.className = 'offer-card';
+        card.innerHTML = `
+            <div class="offer-badge">Giảm ${offer.discount_percent}%</div>
+            <img data-src="${offer.main_image || '../assets/images/destinations/default.png'}" 
+                 alt="${offer.title}" class="lazy-image" />
+            <div class="offer-content">
+                <h3>${offer.title}</h3>
+                <p>${offer.description || 'Khám phá chuyến đi hấp dẫn!'}</p>
+                <button class="btn-primary">Xem ưu đãi</button>
+            </div>
+        `;
+        offersGrid.appendChild(card);
     });
+
+    // Lazy load
+    observeImages();
+
+    // Pagination với dấu "..."
+    const totalPages = Math.ceil(discountedTours.length / offersPerPage);
+    const visiblePages = 5; // số trang hiển thị xung quanh trang hiện tại
+    offersPagination.innerHTML = '';
+
+    const createButton = (p, text = p) => {
+        const btn = document.createElement('button');
+        btn.textContent = text;
+        btn.className = p === page ? 'active' : '';
+        btn.addEventListener('click', () => {
+            currentOfferPage = p;
+            renderSpecialOffers(p);
+        });
+        offersPagination.appendChild(btn);
+    };
+
+    if (totalPages <= 4) {
+        // nếu tổng trang nhỏ, hiển thị tất cả
+        for (let i = 1; i <= totalPages; i++) createButton(i);
+    } else {
+        // luôn hiển thị trang đầu
+        createButton(1);
+
+        if (page > 3) {
+            const dots = document.createElement('span');
+            dots.textContent = '...';
+            offersPagination.appendChild(dots);
+        }
+
+        const startPage = Math.max(2, page - 1);
+        const endPage = Math.min(totalPages - 1, page + 1);
+
+        for (let i = startPage; i <= endPage; i++) createButton(i);
+
+        if (page < totalPages - 2) {
+            const dots = document.createElement('span');
+            dots.textContent = '...';
+            offersPagination.appendChild(dots);
+        }
+
+        // luôn hiển thị trang cuối
+        createButton(totalPages);
+    }
 }
+
+// Click handler cho button "Xem ưu đãi"
+document.getElementById('offersGrid')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-primary');
+    if (btn) {
+        const card = btn.closest('.offer-card');
+        const offerName = card.querySelector('h3').textContent;
+        const offer = discountedTours.find((o) => o.title === offerName);
+        if (offer) {
+            window.location.href = `index.html#tour-details?id=${offer.id}`;
+        }
+    }
+});
 
 /* ========== INITIALIZATION ========== */
 async function initializeApp() {
@@ -848,9 +917,10 @@ async function initializeApp() {
 
     setupLazyLoading();
 
-    const dataLoaded = await fetchDestinationsData();
+    const dataLoadedDes = await fetchDestinationsData();
+    const dataLoadedTour = await fetchDiscountedTours();
 
-    if (dataLoaded) {
+    if (dataLoadedDes && dataLoadedTour) {
         console.log('Data loaded successfully!');
     } else {
         console.warn('Using fallback data');
@@ -862,6 +932,7 @@ async function initializeApp() {
     renderTop5();
     renderTopDestinations();
     persistVisits();
+    renderSpecialOffers(currentOfferPage);
 
     const defaultRegion = 'All';
     renderBestTime('Asia');

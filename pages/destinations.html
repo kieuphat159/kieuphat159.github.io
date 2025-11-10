@@ -141,43 +141,11 @@
 <section class="special-offers">
     <div class="des-container">
         <h2 class="section-title">Ưu đãi đặc biệt</h2>
-        <div class="offers-grid">
-            <div class="offer-card">
-                <div class="offer-badge">Giảm 20%</div>
-                <img src="../assets/images/destinations/Agentina.png" alt="Argentina" />
-                <div class="offer-content">
-                    <h3>Tour Mont Blanc Camping Trek</h3>
-                    <p>Khám phá những đỉnh núi tuyệt đẹp và cắm trại giữa thiên nhiên hùng vĩ.</p>
-                    <button class="btn-primary">Xem ưu đãi</button>
-                </div>
-            </div>
-            <div class="offer-card">
-                <div class="offer-badge">Giảm 15%</div>
-                <img src="../assets/images/destinations/Ecuador.png" alt="Ecuador" />
-                <div class="offer-content">
-                    <h3>Khám phá Ecuador</h3>
-                    <p>Tham quan các đảo Galapagos và trải nghiệm văn hóa bản địa độc đáo.</p>
-                    <button class="btn-primary">Xem ưu đãi</button>
-                </div>
-            </div>
-            <div class="offer-card">
-                <div class="offer-badge">Giảm 25%</div>
-                <img src="../assets/images/destinations/Maldives.png" alt="Maldives" />
-                <div class="offer-content">
-                    <h3>Trải nghiệm Maldives</h3>
-                    <p>Nghỉ dưỡng trên các bãi biển cát trắng và khám phá đại dương xanh thẳm.</p>
-                    <button class="btn-primary">Xem ưu đãi</button>
-                </div>
-            </div>
-            <div class="offer-card">
-                <div class="offer-badge">Giảm 30%</div>
-                <img src="../assets/images/destinations/Switzerland.png" alt="Switzerland" />
-                <div class="offer-content">
-                    <h3>Khám phá Thụy Sĩ</h3>
-                    <p>Chinh phục những ngọn núi Alps, tham quan các hồ nước trong xanh và lâu đài cổ kính.</p>
-                    <button class="btn-primary">Xem ưu đãi</button>
-                </div>
-            </div>
+        <div id="offersGrid" class="offers-grid">
+            <!-- Sẽ được render bằng JS -->
+        </div>
+        <div id="offersPagination" class="offers-pagination">
+            <!-- Sẽ được render bằng JS -->
         </div>
     </div>
 </section>
@@ -260,6 +228,7 @@
                 <p id="detailShort"></p>
                 <p id="detailLong"></p>
             </div>
+            <button id="btnViewDetail" class="btn-primary">Xem chi tiết</button>
         </div>
 
         <div class="modal-right">
@@ -272,7 +241,7 @@
             <div id="map" class="map-box">🗺 Xem bản đồ...</div>
 
             <div id="blogContent" class="blog-box">
-                <h3>Blog Du lịch</h3>
+                <h3>Trải nghiệm độc đáo</h3>
                 <p id="blogText">
                     Khám phá nét quyến rũ ẩn giấu của điểm đến — từ văn hóa địa phương đến kỳ quan thiên nhiên, mỗi góc
                     đều mang lại trải nghiệm khó quên.
