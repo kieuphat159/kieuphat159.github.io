@@ -24,6 +24,14 @@ function normalizeText(value) {
 		.toLowerCase();
 }
 
+function resolveImagePath(path) {
+	if (!path || typeof path !== "string") return "";
+	if (/^(https?:)?\/\//i.test(path)) return path;
+	if (path.startsWith("../") || path.startsWith("./")) return path;
+	if (path.startsWith("/")) return `..${path}`;
+	return `../${path.replace(/^\/+/, "")}`;
+}
+
 const state = {
 	destination: null,
 	tours: [],
@@ -244,7 +252,7 @@ function buildInsightsData(destination) {
 		locations.forEach((location) => {
 			insights.push({
 				title: location.name || place.city || destination.country,
-				image: location.image_url || FALLBACKS.cardImage,
+				image: resolveImagePath(location.image_url || FALLBACKS.cardImage),
 				city: place.city || destination.country,
 			});
 		});
@@ -318,8 +326,8 @@ function renderHero(destination) {
 
 	const heroSection = document.querySelector(".destination-detail-hero");
 	if (heroSection) {
-		const heroImage = getPrimaryImage(destination);
-		heroSection.style.backgroundImage = `linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 40%), url(${heroImage})`;
+		const heroImage = resolveImagePath(getPrimaryImage(destination));
+		heroSection.style.backgroundImage = `linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 40%), url("${heroImage}")`;
 	}
 }
 
@@ -345,7 +353,9 @@ function renderPopularPlaces(destination) {
 				? place.famous_locations[0]
 				: null;
 
-		const imageUrl = firstLocation && firstLocation.image_url ? firstLocation.image_url : FALLBACKS.cardImage;
+		const imageUrl = resolveImagePath(
+			firstLocation && firstLocation.image_url ? firstLocation.image_url : FALLBACKS.cardImage
+		);
 		const matchingTour = findTourForCity(place.city, state.tours);
 
 		const card = document.createElement("div");
@@ -416,7 +426,7 @@ function renderPopularPlaces(destination) {
 function renderMission(destination) {
 	const missionImage = document.querySelector(".destination-detail-mission__img");
 	if (missionImage) {
-		missionImage.dataset.src = getPrimaryImage(destination) || FALLBACKS.missionImage;
+		missionImage.dataset.src = resolveImagePath(getPrimaryImage(destination) || FALLBACKS.missionImage);
 		missionImage.alt = `${destination.country || "Điểm đến"} - Hình ảnh nổi bật`;
 		if (missionImage.getAttribute("src")) {
 			missionImage.removeAttribute("src");
@@ -501,7 +511,9 @@ function renderPilgrimages(destination, tours) {
 
 		const img = document.createElement("img");
 		img.className = "destination-detail-pilgrimages__image";
-		img.dataset.src = tour.main_image || getPrimaryImage(destination) || FALLBACKS.cardImage;
+		img.dataset.src = resolveImagePath(
+			tour.main_image || getPrimaryImage(destination) || FALLBACKS.cardImage
+		);
 		img.alt = tour.title || `Tour khám phá ${destination.country || "đặc sắc"}`;
 		img.setAttribute("loading", "lazy");
 
@@ -834,12 +846,12 @@ function getPrimaryImage(destination) {
 		if (Array.isArray(place.famous_locations) && place.famous_locations.length) {
 			const candidate = place.famous_locations[0];
 			if (candidate && candidate.image_url) {
-				return candidate.image_url;
+				return resolveImagePath(candidate.image_url);
 			}
 		}
 	}
 
-	return FALLBACKS.hero;
+	return resolveImagePath(FALLBACKS.hero);
 }
 
 function getExcerpt(text, maxLength) {

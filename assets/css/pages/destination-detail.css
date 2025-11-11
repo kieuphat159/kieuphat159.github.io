@@ -175,16 +175,16 @@ html {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url("../../images/destination-detail/background.jpg") center/cover no-repeat;
+        /* background: url("../../images/destination-detail/background.jpg") center/cover no-repeat; */
         background-attachment: fixed;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         display: flex;
-        flex-direction: column; /* 👈 đổi từ row sang column */
-        justify-content: flex-start; /* 👈 bắt đầu từ trên xuống */
-        align-items: center; /* 👈 căn giữa ngang */
-        padding-top: 200px; /* tạo khoảng trống trên cho tiêu đề */
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center; 
+        padding-top: 200px;
         padding-bottom: 200px;
         animation: fadeIn 1.5s ease-out;
 }
