@@ -426,8 +426,14 @@ function renderTopDestinations() {
       </div>
     `;
         topdestTrack.appendChild(card);
-    });
 
+        card.onclick = () => {
+            if (dest.tourId) {
+                window.location.href = `index.html#destination-detail?id=${dest.tourId}`;
+            }
+        };
+    });
+    ('');
     setTimeout(() => observeImages(), 100);
     setupTopDestSlider();
 }
@@ -709,8 +715,8 @@ if (tripForm && tripResults) {
         <div class="trip-info">
           <h3>${trip.name}</h3>
           <p>${trip.description}</p>
-          <p>Estimated cost: <span class="price">${totalCost.toLocaleString()}</span></p>
-          <p>Best for: ${trip.interest}</p>
+          <p>Chi phí ước tính: <span class="price">${totalCost.toLocaleString()}</span></p>
+          <p>Tốt nhất cho: ${trip.interest}</p>
         </div>
       `;
             tripResults.appendChild(suggestion);
@@ -788,11 +794,11 @@ function renderBestTime(region) {
                 (s) => `
         <div class="season-card">
           <div class="icon">${s.icon}</div>
-          <h3>${s.title}</h3>
-          <p>Suitability: <span>${s.suitability}</span></p>
-          <p>Crowd Level: ${s.crowd}</p>
-          <p><strong>Best for:</strong> ${s.best}</p>
-          <p><strong>Consider:</strong> ${s.consider}</p>
+            <h3>${s.title}</h3>
+            <p>Mức độ phù hợp: <span>${s.suitability}</span></p>
+            <p>Lượng khách: ${s.crowd}</p>
+            <p><strong>Phù hợp nhất cho:</strong> ${s.best}</p>
+            <p><strong>Lưu ý:</strong> ${s.consider}</p>
         </div>`,
             )
             .join('');
