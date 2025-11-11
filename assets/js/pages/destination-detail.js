@@ -326,7 +326,7 @@ function renderHero(destination) {
 
 	const heroSection = document.querySelector(".destination-detail-hero");
 	if (heroSection) {
-		const heroImage = resolveImagePath(getPrimaryImage(destination));
+		const heroImage = getPrimaryImage(destination);
 		heroSection.style.backgroundImage = `linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 40%), url("${heroImage}")`;
 	}
 }

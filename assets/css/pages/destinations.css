@@ -807,6 +807,7 @@ section {
 }
 
 .trip-results p em {
+    font-size: 1rem;
     color: #fff;
 }
 
@@ -873,6 +874,7 @@ section {
     border-radius: 12px; /* Thay thế --dest-radius-md */
     box-shadow: var(--color-card-shadow); /* Thay thế --shadow-md */
     transition: transform 0.3s ease;
+    height: 300px;
 }
 
 .offer-card:hover {
@@ -931,6 +933,50 @@ section {
     font-size: 14px;
     opacity: 0.9;
     margin-bottom: 12px;
+}
+
+/* ========= PAGINATION ========= */
+/* Container pagination */
+#offersPagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-family: var(--font-family, sans-serif);
+}
+
+/* Các nút trang */
+#offersPagination button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+#offersPagination button:hover {
+    background-color: var(--color-primary, #4f46e5);
+    color: #fff;
+    border-color: var(--color-primary, #4f46e5);
+}
+
+#offersPagination button.active {
+    background-color: var(--color-primary, #4f46e5);
+    color: #fff;
+    border-color: var(--color-primary, #4f46e5);
+    font-weight: bold;
+    cursor: default;
+}
+
+/* Dấu ... */
+#offersPagination span {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #666;
 }
 
 /* 8. BEST TIME TO VISIT  */
@@ -1298,6 +1344,25 @@ section {
     color: var(--color-text-primary);
 }
 
+#btnViewDetail {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--btn-primary-bg);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#btnViewDetail:hover {
+    background-color: var(--btn-primary-hover);
+}
+
 /* ===== BÊN PHẢI ===== */
 .detail-stats {
     display: flex;
@@ -1329,8 +1394,9 @@ section {
 
 .blog-box h3 {
     margin-bottom: 6px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--color-text-primary);
+    font-weight: 600;
 }
 
 /* Ẩn thanh cuộn mặc định của toàn modal */
