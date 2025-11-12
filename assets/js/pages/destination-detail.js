@@ -51,7 +51,10 @@ class SkeletonLazyLoader {
 			rootMargin: "50px",
 			threshold: 0.1,
 		});
-
+		
+		this.isSetupInProgress = false;
+		this.lastSetupTime = 0;
+		
 		this.init();
 	}
 
@@ -62,11 +65,50 @@ class SkeletonLazyLoader {
 	}
 
 	setupLazy() {
+		// Prevent multiple rapid calls (debounce)
+		const now = Date.now();
+		if (this.isSetupInProgress || (now - this.lastSetupTime) < 500) {
+			return;
+		}
+		
+		this.isSetupInProgress = true;
+		this.lastSetupTime = now;
+		
+		// Disconnect all previous observations to avoid stale references
+		this.observer.disconnect();
+		
 		const lazyImages = document.querySelectorAll("img[data-src]");
+		// console.log(`[SkeletonLazyLoader] Found ${lazyImages.length} images with data-src`);
+		
 		lazyImages.forEach((img) => {
+			const dataSrc = img.getAttribute('data-src');
+			if (!dataSrc) {
+				// console.warn(`[SkeletonLazyLoader] Image has data-src attribute but value is empty:`, img);
+				return;
+			}
+			
+			// console.log(`[SkeletonLazyLoader] Processing: ${dataSrc.substring(0, 50)}...`);
 			this.wrapImageWithSkeleton(img);
-			this.observer.observe(img);
+			
+			// Check if image is already in viewport - if so, load immediately
+			const rect = img.getBoundingClientRect();
+			const isInViewport = (
+				rect.top >= -50 &&
+				rect.left >= -50 &&
+				rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 50 &&
+				rect.right <= (window.innerWidth || document.documentElement.clientWidth) + 50
+			);
+			
+			if (isInViewport) {
+				// console.log(`[SkeletonLazyLoader] Image already in viewport, loading immediately`);
+				this.loadImage(img);
+			} else {
+				this.observer.observe(img);
+			}
 		});
+		
+		// console.log(`[SkeletonLazyLoader] Observation setup complete`);
+		this.isSetupInProgress = false;
 	}
 
 	wrapImageWithSkeleton(img) {
@@ -108,8 +150,16 @@ class SkeletonLazyLoader {
 	}
 
 	handleIntersection(entries) {
+		// console.log(`[SkeletonLazyLoader] Intersection callback with ${entries.length} entries`);
+		
 		entries.forEach((entry) => {
+			const dataSrc = entry.target.getAttribute('data-src');
+			// console.log(`[SkeletonLazyLoader] Entry intersecting: ${entry.isIntersecting}, target data-src: ${dataSrc?.substring(0, 50) || 'NONE'}...`);
+			
 			if (entry.isIntersecting) {
+				if (!dataSrc) {
+					console.error(`[SkeletonLazyLoader] Image intersecting but has no data-src!`, entry.target);
+				}
 				this.loadImage(entry.target);
 				this.observer.unobserve(entry.target);
 			}
@@ -118,7 +168,12 @@ class SkeletonLazyLoader {
 
 	loadImage(img) {
 		const src = img.dataset.src;
-		if (!src) return;
+		// console.log(`[SkeletonLazyLoader] loadImage called with src:`, src);
+		
+		if (!src) {
+			console.error('[SkeletonLazyLoader] No src found for image:', img);
+			return;
+		}
 
 		const wrapper = img.closest(".skeleton-wrapper");
 		const imageLoader = new Image();
@@ -199,17 +254,24 @@ async function loadDestinationData() {
 	const destinationId = window.currentPageParams?.id;
 
 	try {
+		// Get current language from i18n or default to 'vi'
+		const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'vi';
+		
+		// Determine which data files to load based on language
+		const dataFile = currentLang === 'en' ? './data-en.json' : './data-vi.json';
+		const toursFile = currentLang === 'en' ? './tours-en.json' : './tours-vi.json';
+		
 		const [destinationsResponse, toursResponse] = await Promise.all([
-			fetch("./data.json"),
-			fetch("./tours.json"),
+			fetch(dataFile),
+			fetch(toursFile),
 		]);
 
 		if (!destinationsResponse.ok) {
-			throw new Error(`Failed to load data.json (${destinationsResponse.status})`);
+			throw new Error(`Failed to load ${dataFile} (${destinationsResponse.status})`);
 		}
 
 		if (!toursResponse.ok) {
-			throw new Error(`Failed to load tours.json (${toursResponse.status})`);
+			throw new Error(`Failed to load ${toursFile} (${toursResponse.status})`);
 		}
 
 		const destinationsJson = await destinationsResponse.json();
@@ -297,6 +359,8 @@ function findTourForCity(city, tours) {
 }
 
 function renderDestinationPage(destination, tours) {
+	// console.log('[renderDestinationPage] START rendering with destination:', destination.country);
+	
 	renderHero(destination);
 	renderPopularPlaces(destination);
 	renderMission(destination);
@@ -305,23 +369,39 @@ function renderDestinationPage(destination, tours) {
 	renderCTA(destination);
 	renderInsights();
 	renderTestimonials(destination);
+	
+	// console.log('[renderDestinationPage] All sections rendered');
+	
+	// Re-setup lazy loading ONCE after all content is rendered
+	// Use setTimeout to ensure DOM has finished updating
+	setTimeout(() => {
+		if (skeletonLoaderInstance) {
+			// console.log('[renderDestinationPage] Calling setupLazy once');
+			skeletonLoaderInstance.setupLazy();
+		}
+	}, 200);
 }
 
 function renderHero(destination) {
 	const heroTitle = document.querySelector(".destination-detail-hero__title");
 	if (heroTitle) {
-			heroTitle.textContent = destination.title || `Khám phá ${destination.country || "điểm đến"}`;
+		const titleText = destination.title || (
+			window.i18n 
+				? window.i18n.t('destinationDetail.hero.exploreTemplate', { country: destination.country || window.i18n.t('destinationDetail.hero.defaultDestination') })
+				: `Khám phá ${destination.country || "điểm đến"}`
+		);
+		heroTitle.textContent = titleText;
 	}
 
 	const heroSubtitle = document.querySelector(".destination-detail-hero__subtitle");
 	if (heroSubtitle) {
 		const subtitleParts = [];
-		if (destination.days) subtitleParts.push(`${destination.days} ngày`);
-		if (destination.rating) subtitleParts.push(`Đánh giá ${destination.rating.toFixed(1)}/5`);
+		if (destination.days) subtitleParts.push(`${destination.days} ${window.i18n ? window.i18n.t('common.days') : 'ngày'}`);
+		if (destination.rating) subtitleParts.push(`${destination.rating.toFixed(1)}/5`);
 		if (destination.country) subtitleParts.push(destination.country);
 		heroSubtitle.textContent = subtitleParts.length
 			? subtitleParts.join(" • ")
-			: "Trải nghiệm đáng nhớ cùng chúng tôi";
+			: (window.i18n ? window.i18n.t('destinationDetail.hero.defaultSubtitle') : "Trải nghiệm đáng nhớ cùng chúng tôi");
 	}
 
 	const heroSection = document.querySelector(".destination-detail-hero");
@@ -342,7 +422,7 @@ function renderPopularPlaces(destination) {
 	if (!places.length) {
 		const empty = document.createElement("p");
 		empty.className = "destination-detail-empty";
-		empty.textContent = "Chúng tôi sẽ sớm cập nhật các địa điểm nổi bật.";
+		empty.textContent = window.i18n ? window.i18n.t('destinationDetail.popular.empty') : "Chúng tôi sẽ sớm cập nhật các địa điểm nổi bật.";
 		container.appendChild(empty);
 		return;
 	}
@@ -376,7 +456,7 @@ function renderPopularPlaces(destination) {
 
 		const nameEl = document.createElement("h3");
 		nameEl.className = "destination-detail-card__name";
-		nameEl.textContent = place.city || destination.country || "Điểm đến";
+		nameEl.textContent = place.city || destination.country || (window.i18n ? window.i18n.t('destinationDetail.popular.defaultDestination') : "Điểm đến");
 
 		const locationEl = document.createElement("p");
 		locationEl.className = "destination-detail-card__location";
@@ -420,7 +500,7 @@ function renderPopularPlaces(destination) {
 	});
 
 	refreshScrollReveal();
-	triggerLazyRefresh();
+	// Don't call triggerLazyRefresh here - it will be called once after all renders
 }
 
 function renderMission(destination) {
@@ -435,15 +515,16 @@ function renderMission(destination) {
 
 	const missionTitle = document.querySelector(".destination-detail-mission__title");
 	if (missionTitle) {
-		missionTitle.textContent = destination.country
-			? `Sứ mệnh của chúng tôi: đưa bạn đến gần ${destination.country} hơn`
-			: "Sứ mệnh của chúng tôi là tạo nên hành trình đáng nhớ";
+		const titleText = destination.country
+			? (window.i18n ? window.i18n.t('destinationDetail.mission.titleTemplate', { country: destination.country }) : `Sứ mệnh của chúng tôi: đưa bạn đến gần ${destination.country} hơn`)
+			: (window.i18n ? window.i18n.t('destinationDetail.mission.defaultTitle') : "Sứ mệnh của chúng tôi là tạo nên hành trình đáng nhớ");
+		missionTitle.textContent = titleText;
 	}
 
 	const missionDescriptions = document.querySelectorAll(".destination-detail-mission__desc");
 	if (missionDescriptions.length) {
-		missionDescriptions[0].textContent =
-			destination.description || "Chúng tôi luôn tìm kiếm những trải nghiệm chân thực và giàu cảm xúc nhất cho bạn.";
+		const defaultDesc = window.i18n ? window.i18n.t('destinationDetail.mission.defaultDescription') : "Chúng tôi luôn tìm kiếm những trải nghiệm chân thực và giàu cảm xúc nhất cho bạn.";
+		missionDescriptions[0].textContent = destination.description || defaultDesc;
 		if (missionDescriptions[1]) {
 			const placeBlogs = (destination.places || [])
 				.map((place) => place.blog)
@@ -456,8 +537,8 @@ function renderMission(destination) {
 	}
 
 	const stats = {
-		days: destination.days ? `${destination.days} ngày` : "--",
-		cities: Array.isArray(destination.places) ? `${destination.places.length} thành phố` : "--",
+		days: destination.days ? `${destination.days} ${window.i18n ? window.i18n.t('common.days') : 'ngày'}` : "--",
+		cities: Array.isArray(destination.places) ? `${destination.places.length} ${window.i18n ? (destination.places.length > 1 ? 'cities' : 'city') : 'thành phố'}` : "--",
 		rating: destination.rating ? `${destination.rating.toFixed(1)}/5` : "--",
 	};
 
@@ -472,17 +553,21 @@ function renderMission(destination) {
 	if (joinButton && destination.country) {
 		joinButton.dataset.country = destination.country;
 		joinButton.setAttribute("aria-label", `Xem tất cả tour ${destination.country}`);
+		// Update button text using i18n
+		const buttonText = window.i18n ? window.i18n.t('destinationDetail.mission.joinBtn') : 'Tham gia ngay';
+		joinButton.textContent = buttonText;
 	}
 
-	triggerLazyRefresh();
+	// Don't call triggerLazyRefresh here - it will be called once after all renders
 }
 
 function renderReadySection(destination) {
 	const readyText = document.querySelector(".destination-detail-ready__text");
 	if (readyText) {
-		readyText.textContent = destination.country
-			? `trải nghiệm ${destination.country} theo cách của riêng bạn`
-			: "trải nghiệm hành trình mới và trọn vẹn trong cuộc sống";
+		const text = destination.country
+			? (window.i18n ? window.i18n.t('destinationDetail.ready.textTemplate', { country: destination.country }) : `trải nghiệm ${destination.country} theo cách của riêng bạn`)
+			: (window.i18n ? window.i18n.t('destinationDetail.ready.defaultText') : "trải nghiệm hành trình mới và trọn vẹn trong cuộc sống");
+		readyText.textContent = text;
 	}
 }
 
@@ -495,7 +580,8 @@ function renderPilgrimages(destination, tours) {
 	if (!tours.length) {
 		const empty = document.createElement("p");
 		empty.className = "destination-detail-pilgrimages__empty";
-		empty.textContent = `Hiện chưa có tour khả dụng cho ${destination.country || "điểm đến này"}.`;
+		const country = destination.country || (window.i18n ? window.i18n.t('destinationDetail.pilgrimages.emptyDefault') : "điểm đến này");
+		empty.textContent = window.i18n ? window.i18n.t('destinationDetail.pilgrimages.emptyTemplate', { country }) : `Hiện chưa có tour khả dụng cho ${country}.`;
 		container.appendChild(empty);
 		return;
 	}
@@ -519,7 +605,7 @@ function renderPilgrimages(destination, tours) {
 
 		const date = document.createElement("span");
 		date.className = "destination-detail-pilgrimages__date";
-		date.textContent = tour.next_departure || "Khởi hành linh hoạt";
+		date.textContent = tour.next_departure || (window.i18n ? window.i18n.t('destinationDetail.pilgrimages.flexibleDeparture') : "Khởi hành linh hoạt");
 
 		imageWrapper.appendChild(img);
 		imageWrapper.appendChild(date);
@@ -533,28 +619,37 @@ function renderPilgrimages(destination, tours) {
 		const badge = document.createElement("span");
 		const badgeModifier = tour.discount_percent > 0 ? "pink" : "blue";
 		badge.className = `destination-detail-pilgrimages__badge destination-detail-pilgrimages__badge--${badgeModifier}`;
-		badge.textContent =
-			tour.discount_percent > 0 ? `Giảm ${tour.discount_percent}%` : "Còn chỗ";
+		badge.textContent = tour.discount_percent > 0 
+			? (window.i18n ? window.i18n.t('destinationDetail.pilgrimages.discount', { percent: tour.discount_percent }) : `Giảm ${tour.discount_percent}%`)
+			: (window.i18n ? window.i18n.t('destinationDetail.pilgrimages.available') : "Còn chỗ");
 
 		const days = document.createElement("span");
 		days.className = "destination-detail-pilgrimages__days";
-		days.textContent = tour.duration_days ? `${tour.duration_days} ngày` : "Linh hoạt";
+		days.textContent = tour.duration_days 
+			? (window.i18n ? window.i18n.t('destinationDetail.pilgrimages.daysTemplate', { days: tour.duration_days }) : `${tour.duration_days} ngày`)
+			: (window.i18n ? window.i18n.t('destinationDetail.pilgrimages.flexible') : "Linh hoạt");
 
 		status.appendChild(badge);
 		status.appendChild(days);
 
 		const title = document.createElement("h3");
 		title.className = "destination-detail-pilgrimages__card-title";
-		title.textContent = tour.title || `Hành trình ${destination.country || "đáng nhớ"}`;
+		const titleText = tour.title || (
+			window.i18n 
+				? window.i18n.t('destinationDetail.pilgrimages.journeyTemplate', { country: destination.country || window.i18n.t('destinationDetail.pilgrimages.defaultJourney') })
+				: `Hành trình ${destination.country || "đáng nhớ"}`
+		);
+		title.textContent = titleText;
 
 		const desc = document.createElement("p");
 		desc.className = "destination-detail-pilgrimages__desc";
-		desc.textContent = tour.overview || "Trải nghiệm nổi bật đang chờ đón bạn.";
+		desc.textContent = tour.overview || (window.i18n ? window.i18n.t('destinationDetail.pilgrimages.defaultDescription') : "Trải nghiệm nổi bật đang chờ đón bạn.");
 
 		const chaplain = document.createElement("p");
 		chaplain.className = "destination-detail-pilgrimages__chaplain";
 		const highlightCities = (destination.places || []).map((place) => place.city).filter(Boolean).slice(0, 3);
-		chaplain.innerHTML = `Điểm đến nổi bật<br /><strong>${highlightCities.join(", ")}</strong>`;
+		const highlightText = window.i18n ? window.i18n.t('destinationDetail.pilgrimages.highlightDestinations') : "Điểm đến nổi bật";
+		chaplain.innerHTML = `${highlightText}<br /><strong>${highlightCities.join(", ")}</strong>`;
 
 		const footer = document.createElement("div");
 		footer.className = "destination-detail-pilgrimages__footer";
@@ -562,13 +657,14 @@ function renderPilgrimages(destination, tours) {
 		const price = document.createElement("span");
 		price.className = "destination-detail-pilgrimages__price";
 		const priceValue = formatPriceVND(tour.price);
-		price.innerHTML = `${priceValue}<small>/Khách</small>`;
+		const perGuest = window.i18n ? window.i18n.t('destinationDetail.pilgrimages.perGuest') : "/Khách";
+		price.innerHTML = `${priceValue}<small>${perGuest}</small>`;
 
 		const ctaButton = document.createElement("button");
 		ctaButton.type = "button";
 		ctaButton.className = "destination-detail-pilgrimages__btn";
 		ctaButton.setAttribute("aria-label", `Xem chi tiết ${tour.title || "tour"}`);
-		ctaButton.textContent = "Xem chi tiết";
+		ctaButton.textContent = window.i18n ? window.i18n.t('destinationDetail.pilgrimages.viewDetails') : "Xem chi tiết";
 
 		footer.appendChild(price);
 		footer.appendChild(ctaButton);
@@ -599,18 +695,22 @@ function renderPilgrimages(destination, tours) {
 	});
 
 	refreshScrollReveal();
-	triggerLazyRefresh();
+	// Don't call triggerLazyRefresh here - it will be called once after all renders
 }
 
 function renderCTA(destination) {
 	const ctaTitle = document.querySelector(".destination-detail-cta__title");
 	if (ctaTitle) {
-		const countryLabel = destination.country || "ngay hôm nay";
-		ctaTitle.innerHTML = `Đừng bỏ lỡ giảm 10% nếu<br>bạn đặt tour ${countryLabel}`;
+		const countryLabel = destination.country || (window.i18n ? window.i18n.t('destinationDetail.cta.defaultDate') : 'ngay hôm nay');
+		const ctaText = window.i18n ? window.i18n.t('destinationDetail.cta.textTemplate', { country: countryLabel }) : `Đừng bỏ lỡ giảm 10% nếu<br>bạn đặt tour ${countryLabel}`;
+		ctaTitle.innerHTML = ctaText;
 	}
 
 	const ctaButton = document.querySelector(".destination-detail-cta__btn");
 	if (ctaButton) {
+		const buttonText = window.i18n ? window.i18n.t('destinationDetail.cta.button') : 'Liên hệ';
+		ctaButton.textContent = buttonText;
+		
 		if (state.tours.length) {
 			const primaryTour = state.tours[0];
 			ctaButton.setAttribute("href", `#tour-details?id=${encodeURIComponent(primaryTour.id)}`);
@@ -640,7 +740,7 @@ function updateInsightsGrid() {
 	if (!state.insights.length) {
 		const empty = document.createElement("p");
 		empty.className = "destination-detail-empty";
-		empty.textContent = "Đang cập nhật bài viết nổi bật.";
+		empty.textContent = window.i18n ? window.i18n.t('destinationDetail.insights.empty') : "Đang cập nhật bài viết nổi bật.";
 		grid.appendChild(empty);
 		return;
 	}
@@ -691,7 +791,8 @@ function updateInsightsGrid() {
 
 		const readMore = document.createElement("span");
 		readMore.className = "destination-detail-insights__read-more";
-		readMore.innerHTML = 'Đọc bài viết <i class="fa fa-arrow-right" aria-hidden="true"></i>';
+		const readText = window.i18n ? window.i18n.t('destinationDetail.insights.readArticle') : "Đọc bài viết";
+		readMore.innerHTML = `${readText} <i class="fa fa-arrow-right" aria-hidden="true"></i>`;
 		content.appendChild(readMore);
 
 		link.appendChild(img);
@@ -701,7 +802,7 @@ function updateInsightsGrid() {
 	});
 
 	refreshScrollReveal();
-	triggerLazyRefresh();
+	// Don't call triggerLazyRefresh here - it will be called once after all renders
 }
 
 function setupInsightsLoadMoreButton() {
@@ -715,7 +816,8 @@ function setupInsightsLoadMoreButton() {
 
 	loadMoreBtn.style.display = "inline-flex";
 	loadMoreBtn.disabled = false;
-	loadMoreBtn.innerHTML = 'Tải thêm <i class="fa fa-chevron-down" aria-hidden="true"></i>';
+	const loadMoreText = window.i18n ? window.i18n.t('destinationDetail.insights.loadMore') : 'Tải thêm';
+	loadMoreBtn.innerHTML = `${loadMoreText} <i class="fa fa-chevron-down" aria-hidden="true"></i>`;
 
 	if (loadMoreBtn.dataset.bound === "true") return;
 
@@ -723,7 +825,8 @@ function setupInsightsLoadMoreButton() {
 	loadMoreBtn.addEventListener("click", () => {
 		state.visibleInsights = state.insights.length;
 		updateInsightsGrid();
-		loadMoreBtn.innerHTML = "Đã hiển thị tất cả";
+		const showAllText = window.i18n ? window.i18n.t('destinationDetail.insights.showAll') : "Đã hiển thị tất cả";
+		loadMoreBtn.innerHTML = showAllText;
 		loadMoreBtn.disabled = true;
 	});
 }
@@ -735,17 +838,19 @@ function renderTestimonials(destination) {
 	list.innerHTML = "";
 
 	const places = Array.isArray(destination.places) ? destination.places : [];
+	const defaultName = window.i18n ? window.i18n.t('destinationDetail.testimonials.defaultName') : "Hành khách";
+	const defaultRole = window.i18n ? window.i18n.t('destinationDetail.testimonials.defaultRole') : "Khách hành hương";
 	const testimonials = places.slice(0, 3).map((place, index) => ({
 		text: getExcerpt(place.blog, 180),
-		name: place.city || destination.country || "Hành khách",
-		role: destination.country || "Khách hành hương",
+		name: place.city || destination.country || defaultName,
+		role: destination.country || defaultRole,
 		avatar: FALLBACKS.avatars[index % FALLBACKS.avatars.length],
 	}));
 
 	if (!testimonials.length) {
 		const empty = document.createElement("p");
 		empty.className = "destination-detail-empty";
-		empty.textContent = "Chưa có đánh giá cho điểm đến này.";
+		empty.textContent = window.i18n ? window.i18n.t('destinationDetail.testimonials.empty') : "Chưa có đánh giá cho điểm đến này.";
 		list.appendChild(empty);
 		return;
 	}
@@ -806,7 +911,7 @@ function renderTestimonials(destination) {
 	});
 
 	refreshScrollReveal();
-	triggerLazyRefresh();
+	// Don't call triggerLazyRefresh here - it will be called once after all renders
 }
 
 function initTestimonialsNavigation() {
@@ -871,9 +976,19 @@ function navigateToTour(tourId) {
 
 function initializeEnhancements() {
 	if ("IntersectionObserver" in window) {
-		skeletonLoaderInstance = new SkeletonLazyLoader();
+		// Only create new instance if it doesn't exist
+		if (!skeletonLoaderInstance) {
+			skeletonLoaderInstance = new SkeletonLazyLoader();
+		} else {
+			// If instance exists, just refresh it
+			setTimeout(() => {
+				if (skeletonLoaderInstance) {
+					skeletonLoaderInstance.setupLazy();
+				}
+			}, 300);
+		}
 		refreshScrollReveal();
-		setTimeout(triggerLazyRefresh, 350);
+		// Don't call triggerLazyRefresh here - it's redundant
 	} else {
 		triggerLazyRefresh();
 	}
@@ -994,12 +1109,12 @@ function initFilterTabs() {
 function showDestinationError() {
 	const heroTitle = document.querySelector(".destination-detail-hero__title");
 	if (heroTitle) {
-		heroTitle.textContent = "Không thể tải thông tin điểm đến";
+		heroTitle.textContent = window.i18n ? window.i18n.t('destinationDetail.error.title') : "Không thể tải thông tin điểm đến";
 	}
 
 	const heroSubtitle = document.querySelector(".destination-detail-hero__subtitle");
 	if (heroSubtitle) {
-		heroSubtitle.textContent = "Vui lòng thử lại sau hoặc chọn một hành trình khác.";
+		heroSubtitle.textContent = window.i18n ? window.i18n.t('destinationDetail.error.subtitle') : "Vui lòng thử lại sau hoặc chọn một hành trình khác.";
 	}
 
 	const sections = document.querySelectorAll(
@@ -1022,3 +1137,102 @@ window.addEventListener("scroll", () => {
 	}
 });
 
+// ============================================
+// I18N SUPPORT
+// ============================================
+
+// Translate page when loaded
+if (window.i18n) {
+	window.i18n.translatePage();
+}
+
+// Handle language change events
+if (window.i18n && !window.destinationDetailLanguageHandlerRegistered) {
+	window.destinationDetailLanguageHandlerRegistered = true;
+	
+	// Track the current language to detect actual changes
+	let previousLang = window.i18n.getCurrentLanguage();
+	let isReloading = false;
+	
+	window.i18n.subscribe((newLang) => {
+		// Only reload if language actually changed (not initial call)
+		if (newLang === previousLang || isReloading) {
+			console.log('Language unchanged or already reloading, skipping...');
+			return;
+		}
+		
+		console.log('Language changed from', previousLang, 'to:', newLang);
+		previousLang = newLang;
+		isReloading = true;
+		
+		// Reload destination data with new language
+		const destinationId = window.currentPageParams?.id;
+		
+		if (destinationId) {
+			// Use async IIFE to handle promise without blocking
+			(async () => {
+				try {
+					// Determine which data files to load based on language
+					const dataFile = newLang === 'en' ? './data-en.json' : './data-vi.json';
+					const toursFile = newLang === 'en' ? './tours-en.json' : './tours-vi.json';
+					
+					const [destinationsResponse, toursResponse] = await Promise.all([
+						fetch(dataFile),
+						fetch(toursFile),
+					]);
+
+					if (destinationsResponse.ok && toursResponse.ok) {
+						const destinationsJson = await destinationsResponse.json();
+						const toursJson = await toursResponse.json();
+
+						// Get destinations array from the correct property
+						const destinations = Array.isArray(destinationsJson.data) ? destinationsJson.data : [];
+						const tours = Array.isArray(toursJson.tours) ? toursJson.tours : [];
+
+						const destination = destinations.find(
+							(d) => normalizeText(d.id) === normalizeText(destinationId)
+						);
+
+						if (destination) {
+							state.destination = destination;
+							state.tours = tours.filter((tour) => tour.destination_id === destination.id);
+							state.insights = buildInsightsData(destination);
+							
+							// Re-render all sections with new language data
+							renderHero(destination);
+							renderPopularPlaces(destination);
+							renderMission(destination);
+							renderPilgrimages(destination, state.tours);
+							renderCTA(destination);
+							renderInsights();
+							renderTestimonials(destination);
+							
+							// Refresh lazy loading ONCE after all renders complete
+							setTimeout(() => {
+								if (skeletonLoaderInstance) {
+									skeletonLoaderInstance.setupLazy();
+								}
+								isReloading = false;
+							}, 200);
+						} else {
+							isReloading = false;
+						}
+					} else {
+						isReloading = false;
+					}
+					
+					// Translate static UI elements
+					window.i18n.translatePage();
+					
+				} catch (error) {
+					console.error('Error reloading data for language change:', error);
+					isReloading = false;
+				}
+			})();
+		} else {
+			// Just translate static elements if no destination loaded yet
+			window.i18n.translatePage();
+			isReloading = false;
+		}
+	});
+}

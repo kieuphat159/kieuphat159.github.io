@@ -2,6 +2,15 @@
     "use strict";
 
     // ============================================
+    // PREVENT MULTIPLE EXECUTIONS
+    // ============================================
+    if (window.homePageInitialized) {
+        console.warn('⚠️ Home page already initialized, skipping...');
+        return;
+    }
+    window.homePageInitialized = true;
+
+    // ============================================
     // LAZY LOADING CHO ẢNH VÀ VIDEO - FIXED
     // ============================================
 
@@ -196,110 +205,137 @@
     }
 
     // ============================================
-    // LOAD TOURS FROM JSON - FIXED
+    // LOAD TOURS FROM JSON - UPDATED FOR I18N
     // ============================================
-    function loadTours() {
-        fetch("../tours.json")
-            .then((response) => response.json())
-            .then((data) => {
-                const container = document.getElementById("tours-container");
-                if (!container) return;
-
-                container.innerHTML = "";
-
-                const topTours = data.tours.slice(0, 4);
-
-                topTours.forEach((tour) => {
-                    const discountedPrice = tour.price * (1 - tour.discount_percent / 100);
-
-                    const card = `
-                        <article class="home-tour-card">
-                            <a href="#tour-details?id=${tour.id}" class="home-tour-card__media">
-                                <img 
-                                    data-src="${tour.main_image}" 
-                                    alt="${tour.title}" 
-                                    class="home-tour-card__img lazy-image"
-                                />
-                            </a>
-                            <div class="home-tour-card__body">
-                                <div class="home-tour-card__price">
-                                    <span>${discountedPrice.toLocaleString("vi-VN")}đ</span> / tour
-                                </div>
-                                <h3 class="home-tour-card__title">
-                                    <a href="#tour-details?id=${tour.id}">${tour.title}</a>
-                                </h3>
-                                <ul class="home-tour-card__meta">
-                                    <li class="home-tour-card__meta-item">⭐ ${tour.rating} / 5</li>
-                                    <li class="home-tour-card__meta-item">⏱ ${tour.duration_days} ngày</li>
-                                </ul>
-                                <a href="#tour-details?id=${tour.id}" class="home-tour-card__btn">Đặt ngay</a>
-                            </div>
-                        </article>
-                    `;
-
-                    container.insertAdjacentHTML("beforeend", card);
-                });
-
-                // Setup lazy loading cho ảnh mới thêm vào
-                setupDynamicLazyImages();
-            })
-            .catch((error) => console.error("Lỗi tải dữ liệu JSON:", error));
+    async function loadTours() {
+        try {
+            // Sử dụng DataLoader để load tours theo ngôn ngữ hiện tại
+            const data = await window.dataLoader.loadTours();
+            renderTours(data.tours);
+        } catch (error) {
+            console.error("Lỗi tải dữ liệu tours:", error);
+        }
     }
 
-    function loadDestinations() {
-        fetch("/data.json")
-            .then(res => res.json())
-            .then(json => {
-                const grid = document.querySelector(".home-destinations__grid");
-                if (!grid) return;
+    function renderTours(tours) {
+        const container = document.getElementById("tours-container");
+        if (!container) return;
 
-                grid.innerHTML = ""
-                const indices = [0, 2, 7, 4, 6, 5];
-                const destinations = json.data.filter((_, i) => indices.includes(i));
+        container.innerHTML = "";
 
-                destinations.forEach((item, index) => {
-                    const country = item.country;
-                    const rating = item.rating;
-                    const firstPlace = item.places[0];
-                    const image = firstPlace.famous_locations[0].image_url;
-                    const type = firstPlace.city;
+        const topTours = tours.slice(0, 4);
 
-                    const extraClass = index === 1
-                        ? "home-destination-card--tall"
-                        : index === 2
-                        ? "home-destination-card--wide"
-                        : "";
+        // Lấy ngôn ngữ hiện tại để format đúng
+        const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'vi';
+        const isVietnamese = currentLang === 'vi';
+        
+        // Get translated texts
+        const bookNowText = window.i18n ? window.i18n.t('common.bookNow') : 'Đặt ngay';
+        const dayText = window.i18n ? window.i18n.t('common.day') : 'ngày';
+        const tourText = window.i18n ? window.i18n.t('home.tourTypes.tours').toLowerCase() : 'tour';
 
-                    const card = document.createElement("article");
-                    card.className = `home-destination-card ${extraClass}`;
-                    card.innerHTML = `
-                        <a href="#destination-detail?id=${item.id}">
-                            <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
-                            <img
-                                data-src="${image}"
-                                alt="${type} ${country}"
-                                class="home-destination-card__img lazy-image"
-                            />
-                            <div class="home-destination-card__info">
-                                <h3 class="home-destination-card__name">${country}</h3>
-                                <span class="home-destination-card__type">${type}</span>
-                            </div>
-                        </a>
-                    `;
+        topTours.forEach((tour) => {
+            const discountedPrice = tour.price * (1 - tour.discount_percent / 100);
+            
+            // Format giá theo ngôn ngữ
+            const formattedPrice = isVietnamese 
+                ? `${discountedPrice.toLocaleString("vi-VN")}đ`
+                : `$${Math.round(discountedPrice / 25000).toLocaleString("en-US")}`;
 
-                    grid.appendChild(card);
-                });
+            const card = `
+                <article class="home-tour-card">
+                    <a href="#tour-details?id=${tour.id}" class="home-tour-card__media">
+                        <img 
+                            data-src="${tour.main_image}" 
+                            alt="${tour.title}" 
+                            class="home-tour-card__img lazy-image"
+                        />
+                    </a>
+                    <div class="home-tour-card__body">
+                        <div class="home-tour-card__price">
+                            <span>${formattedPrice}</span> / ${tourText}
+                        </div>
+                        <h3 class="home-tour-card__title">
+                            <a href="#tour-details?id=${tour.id}">${tour.title}</a>
+                        </h3>
+                        <ul class="home-tour-card__meta">
+                            <li class="home-tour-card__meta-item">⭐ ${tour.rating} / 5</li>
+                            <li class="home-tour-card__meta-item">⏱ ${tour.duration_days} ${dayText}</li>
+                        </ul>
+                        <a href="#tour-details?id=${tour.id}" class="home-tour-card__btn">${bookNowText}</a>
+                    </div>
+                </article>
+            `;
 
-                // Setup lazy loading cho ảnh mới thêm vào
-                setupDynamicLazyImages();
-            })
-            .catch(err => console.error("Lỗi khi load dữ liệu:", err));
+            container.insertAdjacentHTML("beforeend", card);
+        });
+
+        // Setup lazy loading cho ảnh mới thêm vào
+        setupDynamicLazyImages();
+    }
+
+    // ============================================
+    // LOAD DESTINATIONS - UPDATED FOR I18N
+    // ============================================
+    async function loadDestinations() {
+        try {
+            // Sử dụng DataLoader để load destinations theo ngôn ngữ hiện tại
+            const json = await window.dataLoader.loadDestinations();
+            renderDestinations(json.data);
+        } catch (error) {
+            console.error("Lỗi khi load dữ liệu destinations:", error);
+        }
+    }
+
+    function renderDestinations(data) {
+        const grid = document.querySelector(".home-destinations__grid");
+        if (!grid) return;
+
+        grid.innerHTML = "";
+        const indices = [0, 2, 7, 4, 6, 5];
+        const destinations = data.filter((_, i) => indices.includes(i));
+
+        destinations.forEach((item, index) => {
+            const country = item.country;
+            const rating = item.rating;
+            const firstPlace = item.places[0];
+            const image = firstPlace.famous_locations[0].image_url;
+            const type = firstPlace.city;
+
+            const extraClass = index === 1
+                ? "home-destination-card--tall"
+                : index === 2
+                ? "home-destination-card--wide"
+                : "";
+
+            const card = document.createElement("article");
+            card.className = `home-destination-card ${extraClass}`;
+            card.innerHTML = `
+                <a href="#destination-detail?id=${item.id}">
+                    <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
+                    <img
+                        data-src="${image}"
+                        alt="${type} ${country}"
+                        class="home-destination-card__img lazy-image"
+                    />
+                    <div class="home-destination-card__info">
+                        <h3 class="home-destination-card__name">${country}</h3>
+                        <span class="home-destination-card__type">${type}</span>
+                    </div>
+                </a>
+            `;
+
+            grid.appendChild(card);
+        });
+
+        // Setup lazy loading cho ảnh mới thêm vào
+        setupDynamicLazyImages();
     }
 
     // Setup lazy loading cho ảnh được thêm động
     function setupDynamicLazyImages() {
         const lazyImages = document.querySelectorAll("#tours-container img.lazy-image[data-src]");
-        const lazyimage = document.querySelectorAll("#destinationsGrid img.lazy-image[data-src]")
+        const lazyimage = document.querySelectorAll(".home-destinations__grid img.lazy-image[data-src]")
         if (!("IntersectionObserver" in window)) {
             lazyImages.forEach((img) => {
                 img.src = img.dataset.src;
@@ -603,6 +639,54 @@
             });
         }
     });
+
+    // ============================================
+    // DỊCH TRANG SAU KHI LOAD XONG
+    // ============================================
+    if (window.i18n) {
+        window.i18n.translatePage();
+    }
+
+    // ============================================
+    // SUBSCRIBE TO LANGUAGE CHANGES - RELOAD DATA
+    // ============================================
+    if (window.i18n && !window.homeLanguageHandlerRegistered) {
+        window.homeLanguageHandlerRegistered = true;
+        
+        let isReloading = false; // Prevent concurrent reloads
+        
+        window.i18n.subscribe(async (newLang) => {
+            // Only reload if we're on home page
+            if (!window.homePageInitialized) {
+                return;
+            }
+            
+            if (isReloading) {
+                console.log('⏳ Already reloading, skipping...');
+                return;
+            }
+            
+            isReloading = true;
+            console.log('🌍 Language changed to:', newLang);
+            
+            try {
+                // Reload tours và destinations với ngôn ngữ mới
+                await Promise.all([
+                    loadTours(),
+                    loadDestinations()
+                ]);
+                
+                // Dịch lại page
+                window.i18n.translatePage();
+            } catch (error) {
+                console.error('Error reloading data:', error);
+            } finally {
+                setTimeout(() => {
+                    isReloading = false;
+                }, 500); // Debounce 500ms
+            }
+        });
+    }
 
     console.log("✅ Home page scripts loaded successfully!");
 })();

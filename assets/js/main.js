@@ -20,7 +20,7 @@ const VALID_PAGES = [
 	'destination-detail',
 	'tours',
 	'tour-details',
-	'booking',
+	// 'booking',
 	'online-booking',
 	'blog',
 	'blog-detail',
@@ -155,6 +155,11 @@ function loadPage(page) {
                                 if ((jsLoaded || jsError) && (cssLoaded || cssError)) {
                                         hideLoading();
                                         isPageLoading = false;
+
+                                        // Dịch nội dung trang sau khi load xong
+                                        if (window.i18n) {
+                                                window.i18n.translatePage();
+                                        }
 
                                         if (jsError) {
                                                 console.warn(
@@ -293,7 +298,42 @@ function setupThemeToggle() {
 }
 
 // ============================================
-// 7. HÀM KÍCH HOẠT NAVIGATION LINKS
+// 7. CÁC HÀM XỬ LÝ NGÔN NGỮ (i18n)
+// ============================================
+
+function setupLanguageToggle() {
+	const btn = document.getElementById("languageToggle");
+	if (!btn) return;
+
+	const flagSpan = document.getElementById("currentLangFlag");
+	const textSpan = document.getElementById("currentLangText");
+
+	// Cập nhật UI theo ngôn ngữ hiện tại
+	function updateLanguageUI(lang) {
+		if (lang === 'vi') {
+			flagSpan.textContent = '🇻🇳';
+			textSpan.textContent = 'VI';
+		} else {
+			flagSpan.textContent = '🇬🇧';
+			textSpan.textContent = 'EN';
+		}
+	}
+
+	// Set ngôn ngữ ban đầu
+	updateLanguageUI(window.i18n.getCurrentLanguage());
+
+	// Xử lý click chuyển đổi ngôn ngữ
+	btn.addEventListener("click", async () => {
+		const currentLang = window.i18n.getCurrentLanguage();
+		const newLang = currentLang === 'vi' ? 'en' : 'vi';
+		
+		await window.i18n.changeLanguage(newLang);
+		updateLanguageUI(newLang);
+	});
+}
+
+// ============================================
+// 8. HÀM KÍCH HOẠT NAVIGATION LINKS
 // ============================================
 
 function activateNavLink() {
@@ -317,17 +357,25 @@ function activateNavLink() {
 // ============================================
 
 // Sự kiện chính khi DOM load xong
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+        // Khởi tạo i18n trước
+        await window.i18n.init();
+
         // Load header (chứa navigation)
         load("#header", "./templates/header.html", () => {
                 activateNavLink();
                 handleHashChange();
                 initialLoad = false;
                 setupThemeToggle();
+                setupLanguageToggle();
         });
 
         // Load footer
-        load("#footer", "./templates/footer.html");
+        load("#footer", "./templates/footer.html", () => {
+                // Dịch footer sau khi load xong
+                window.i18n.translatePage();
+        });
+        
         // Chỉ listen hashchange sau khi load xong
         window.addEventListener("hashchange", () => {
                 if (!initialLoad) {

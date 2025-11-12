@@ -1,8 +1,8 @@
 <section class="tours" id="tours">
         <section class="tours-banner">
                 <div class="tours-banner__content">
-                        <h1 class="tours-banner__title">Our Tours</h1>
-                        <p class="tours-banner__subtitle">Find Your Next Adventure</p>
+                        <h1 class="tours-banner__title" data-i18n="tours.banner.title">Our Tours</h1>
+                        <p class="tours-banner__subtitle" data-i18n="tours.banner.subtitle">Tìm kiếm cuộc phiêu lưu tiếp theo của bạn</p>
                 </div>
         </section>
 
@@ -13,11 +13,12 @@
                                         <form id="filter-form">
                                                 <div class="filter-widget">
                                                         <div class="filter-widget__header">
-                                                                <h3 class="filter-widget__title">Search & Filter</h3>
+                                                                <h3 class="filter-widget__title" data-i18n="tours.filter.title">Search & Filter</h3>
                                                                 <button
                                                                         type="button"
                                                                         class="filter-widget__reset-btn"
                                                                         id="reset-filters-btn"
+                                                                        data-i18n="tours.filter.reset"
                                                                 >
                                                                         Reset
                                                                 </button>
@@ -27,13 +28,14 @@
                                                                         type="text"
                                                                         id="keyword-search"
                                                                         placeholder="E.g., 'Paris', 'beach'..."
+                                                                        data-i18n-placeholder="tours.filter.searchPlaceholder"
                                                                 />
                                                                 <i class="fas fa-search"></i>
                                                         </div>
                                                 </div>
 
                                                 <div class="filter-widget">
-                                                        <h3 class="filter-widget__title">Price Range</h3>
+                                                        <h3 class="filter-widget__title" data-i18n="tours.filter.priceRange">Price Range</h3>
                                                         <div class="filter-widget__price-slider">
                                                                 <input
                                                                         title="Price Range"
@@ -52,7 +54,7 @@
                                                 </div>
 
                                                 <div class="filter-widget">
-                                                        <h3 class="filter-widget__title">Tour Type</h3>
+                                                        <h3 class="filter-widget__title" data-i18n="tours.filter.tourType">Tour Type</h3>
                                                         <div
                                                                 id="type-filter-group"
                                                                 class="filter-widget__checkbox-group"
@@ -60,7 +62,7 @@
                                                 </div>
 
                                                 <div class="filter-widget">
-                                                        <h3 class="filter-widget__title">Duration</h3>
+                                                        <h3 class="filter-widget__title" data-i18n="tours.filter.duration">Duration</h3>
                                                         <div
                                                                 id="duration-filter"
                                                                 class="filter-widget__radio-group"
@@ -90,16 +92,16 @@
                                                                 </button>
                                                         </div>
                                                         <div class="result-controls__sort">
-                                                                <label for="sort-by">Sort by:</label>
+                                                                <label for="sort-by" data-i18n="tours.results.sortBy">Sort by:</label>
                                                                 <select id="sort-by" name="sort-by">
-                                                                        <option value="default">Popularity</option>
-                                                                        <option value="price-asc">
+                                                                        <option value="default" data-i18n="tours.results.sortOptions.popularity">Popularity</option>
+                                                                        <option value="price-asc" data-i18n="tours.results.sortOptions.priceLowHigh">
                                                                                 Price: Low to High
                                                                         </option>
-                                                                        <option value="price-desc">
+                                                                        <option value="price-desc" data-i18n="tours.results.sortOptions.priceHighLow">
                                                                                 Price: High to Low
                                                                         </option>
-                                                                        <option value="rating-desc">
+                                                                        <option value="rating-desc" data-i18n="tours.results.sortOptions.ratingHighLow">
                                                                                 Rating: High to Low
                                                                         </option>
                                                                 </select>

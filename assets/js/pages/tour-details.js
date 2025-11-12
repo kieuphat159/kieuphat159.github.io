@@ -21,12 +21,12 @@
         async function loadTourData() {
                 try {
                         // Load tours data
-                        const toursResponse = await fetch("./tours.json");
+                        const toursResponse = await fetch("./tours-vi.json");
                         const toursJson = await toursResponse.json();
                         toursData = toursJson.tours;
 
                         // Load destinations data
-                        const dataResponse = await fetch("./data.json");
+                        const dataResponse = await fetch("./data-vi.json");
                         const dataJson = await dataResponse.json();
 
                         // Create destination map

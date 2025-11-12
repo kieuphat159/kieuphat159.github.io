@@ -12,25 +12,30 @@
         </a>
         <!-- Theme toggle button -->
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false"></button>
+        <!-- Language switcher button -->
+        <button id="languageToggle" class="language-toggle" aria-label="Change language" title="Change language">
+            <span class="language-toggle__flag" id="currentLangFlag">🇻🇳</span>
+            <span class="language-toggle__text" id="currentLangText">VI</span>
+        </button>
     </div>
 
     <!-- Desktop navbar -->
     <nav class="header-main-nav">
         <ul class="header-main-nav__list">
             <li class="header-main-nav__item active">
-                <a href="#" data-page="home" class="header-main-nav__link">Home</a>
+                <a href="#" data-page="home" class="header-main-nav__link" data-i18n="header.nav.home">Home</a>
             </li>
             <li class="header-main-nav__item">
-                <a href="#" data-page="about" class="header-main-nav__link">About</a>
+                <a href="#" data-page="about" class="header-main-nav__link" data-i18n="header.nav.about">About</a>
             </li>
             <li class="header-main-nav__item">
-                <a href="#" data-page="destinations" class="header-main-nav__link">Destinations</a>
+                <a href="#" data-page="destinations" class="header-main-nav__link" data-i18n="header.nav.destinations">Destinations</a>
             </li>
             <li class="header-main-nav__item">
-                <a href="#" data-page="blog" class="header-main-nav__link">Blog</a>
+                <a href="#" data-page="blog" class="header-main-nav__link" data-i18n="header.nav.blog">Blog</a>
             </li>
             <li class="header-main-nav__item">
-                <a href="#" data-page="tours" class="header-main-nav__link">Tours</a>
+                <a href="#" data-page="tours" class="header-main-nav__link" data-i18n="header.nav.tours">Tours</a>
             </li>
         </ul>
     </nav>
@@ -43,7 +48,7 @@
             <span class="header-menu-toggle__bar"></span>
         </button>
         <!-- Contact button -->
-        <a href="#" data-page="contact-us" class="header-contact-btn">Contact us</a>
+        <a href="#" data-page="contact-us" class="header-contact-btn" data-i18n="header.contactBtn">Contact us</a>
     </div>
     <!-- Side menu for mobile -->
     <div class="header-side-menu" id="sideMenu">
@@ -71,22 +76,22 @@
         </div>
         <ul class="header-side-menu__list">
             <li class="header-side-menu__item">
-                <a href="#" data-page="home" class="header-side-menu__link active">Home</a>
+                <a href="#" data-page="home" class="header-side-menu__link active" data-i18n="header.nav.home">Home</a>
             </li>
             <li class="header-side-menu__item">
-                <a href="#" data-page="about" class="header-side-menu__link">About</a>
+                <a href="#" data-page="about" class="header-side-menu__link" data-i18n="header.nav.about">About</a>
             </li>
             <li class="header-side-menu__item">
-                <a href="#" data-page="destinations" class="header-side-menu__link">Destinations</a>
+                <a href="#" data-page="destinations" class="header-side-menu__link" data-i18n="header.nav.destinations">Destinations</a>
             </li>
             <li class="header-side-menu__item">
-                <a href="#" data-page="blog" class="header-side-menu__link">Blog</a>
+                <a href="#" data-page="blog" class="header-side-menu__link" data-i18n="header.nav.blog">Blog</a>
             </li>
             <li class="header-side-menu__item">
-                <a href="#" data-page="tours" class="header-side-menu__link">Tours</a>
+                <a href="#" data-page="tours" class="header-side-menu__link" data-i18n="header.nav.tours">Tours</a>
             </li>
             <li class="header-side-menu__item">
-                <a href="#" data-page="contact-us" class="header-side-menu__link">Contact Us</a>
+                <a href="#" data-page="contact-us" class="header-side-menu__link" data-i18n="header.nav.contact">Contact Us</a>
             </li>
         </ul>
     </div>

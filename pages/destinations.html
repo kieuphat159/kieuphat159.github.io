@@ -1,10 +1,10 @@
 <!-- 1. Hero Banner -->
 <section class="des-banner">
     <div class="des-banner__content">
-        <h1 class="des-banner__title">Điểm đến</h1>
-        <p class="des-banner__subtitle">Khám phá các tour theo điểm đến</p>
+        <h1 class="des-banner__title" data-i18n="destinations.banner.title">Điểm đến</h1>
+        <p class="des-banner__subtitle" data-i18n="destinations.banner.subtitle">Khám phá các tour theo điểm đến</p>
         <div class="des-banner__cta">
-            <button id="ctaExplore">Khám phá ngay</button>
+            <button id="ctaExplore" data-i18n="destinations.banner.exploreBtn">Khám phá ngay</button>
         </div>
     </div>
 </section>
@@ -12,7 +12,7 @@
 <!-- 2. Top Destinations -->
 <section class="topdest-section">
     <div class="des-container">
-        <h2 class="section-title">Điểm đến hàng đầu</h2>
+        <h2 class="section-title" data-i18n="destinations.topDestinations.title">Điểm đến hàng đầu</h2>
 
         <div class="topdest-slider">
             <button class="slide-btn prev">&#10094;</button>
@@ -30,23 +30,23 @@
 <section class="filter-section">
     <div class="des-container">
         <div class="filter-left">
-            <input type="text" id="searchInput" placeholder="Tìm kiếm điểm đến..." />
+            <input type="text" id="searchInput" placeholder="Tìm kiếm điểm đến..." data-i18n-placeholder="destinations.filter.searchPlaceholder" />
             <div class="filter-buttons">
-                <button class="filter-btn" data-region="All">Tất cả</button>
-                <button class="filter-btn" data-region="Châu Á">Châu Á</button>
-                <button class="filter-btn" data-region="Châu Âu">Châu Âu</button>
-                <button class="filter-btn" data-region="Châu Mỹ">Châu Mỹ</button>
-                <button class="filter-btn" data-region="Châu Phi">Châu Phi</button>
-                <button class="filter-btn" data-region="Châu Đại Dương">Châu Đại Dương</button>
+                <button class="filter-btn" data-region="All" data-i18n="destinations.filter.all">Tất cả</button>
+                <button class="filter-btn" data-region="Châu Á" data-i18n="destinations.filter.asia">Châu Á</button>
+                <button class="filter-btn" data-region="Châu Âu" data-i18n="destinations.filter.europe">Châu Âu</button>
+                <button class="filter-btn" data-region="Châu Mỹ" data-i18n="destinations.filter.america">Châu Mỹ</button>
+                <button class="filter-btn" data-region="Châu Phi" data-i18n="destinations.filter.africa">Châu Phi</button>
+                <button class="filter-btn" data-region="Châu Đại Dương" data-i18n="destinations.filter.oceania">Châu Đại Dương</button>
             </div>
         </div>
         <div class="filter-right">
-            <label for="sortSelect">Sắp xếp:</label>
+            <label for="sortSelect" data-i18n="destinations.filter.sortLabel">Sắp xếp:</label>
             <select id="sortSelect">
-                <option value="visited-desc">Được xem nhiều nhất</option>
-                <option value="rating-desc">Đánh giá: Cao → Thấp</option>
-                <option value="rating-asc">Đánh giá: Thấp → Cao</option>
-                <option value="tours-desc">Số tour: Cao → Thấp</option>
+                <option value="visited-desc" data-i18n="destinations.filter.sortOptions.visitedDesc">Được xem nhiều nhất</option>
+                <option value="rating-desc" data-i18n="destinations.filter.sortOptions.ratingDesc">Đánh giá: Cao → Thấp</option>
+                <option value="rating-asc" data-i18n="destinations.filter.sortOptions.ratingAsc">Đánh giá: Thấp → Cao</option>
+                <option value="tours-desc" data-i18n="destinations.filter.sortOptions.toursDesc">Số tour: Cao → Thấp</option>
             </select>
         </div>
     </div>
@@ -58,18 +58,18 @@
         <div class="destinations-grid__wrapper"></div>
         <aside class="sidebar">
             <div class="top5-widget card">
-                <h4>Top 5 điểm đến nhiều lượt xem nhất (tháng này)</h4>
+                <h4 data-i18n="destinations.sidebar.top5Title">Top 5 điểm đến nhiều lượt xem nhất (tháng này)</h4>
                 <div id="top5List"></div>
             </div>
             <div class="subscribe card">
-                <h4>Đăng ký nhận tin</h4>
-                <input id="emailSub" placeholder="Nhập email của bạn" />
-                <button id="btnSub">Đăng ký</button>
+                <h4 data-i18n="destinations.sidebar.subscribe.title">Đăng ký nhận tin</h4>
+                <input id="emailSub" placeholder="Nhập email của bạn" data-i18n-placeholder="destinations.sidebar.subscribe.placeholder" />
+                <button id="btnSub" data-i18n="destinations.sidebar.subscribe.button">Đăng ký</button>
             </div>
         </aside>
     </div>
     <div class="load-more-container">
-        <button id="loadMoreBtn">Xem thêm</button>
+        <button id="loadMoreBtn" data-i18n="destinations.loadMore">Xem thêm</button>
     </div>
 </section>
 
@@ -81,8 +81,8 @@
     </video>
 
     <div class="des-container trip-content">
-        <h2 class="trip-title">Lên kế hoạch chuyến đi</h2>
-        <p class="trip-subtitle">
+        <h2 class="trip-title" data-i18n="destinations.tripPlanner.title">Lên kế hoạch chuyến đi</h2>
+        <p class="trip-subtitle" data-i18n="destinations.tripPlanner.subtitle">
             Cho chúng tôi biết ngân sách, thời gian và sở thích của bạn — chúng tôi sẽ gợi ý những điểm đến hoàn hảo!
         </p>
 
@@ -90,46 +90,46 @@
             <div class="trip-card-left">
                 <form id="tripForm" class="trip-form">
                     <div class="form-group">
-                        <label for="region">Khu vực</label>
+                        <label for="region" data-i18n="destinations.tripPlanner.form.region">Khu vực</label>
                         <select id="region" required>
-                            <option value="All">Tất cả</option>
-                            <option value="Châu Á">Châu Á</option>
-                            <option value="Châu Âu">Châu Âu</option>
-                            <option value="Châu Mỹ">Châu Mỹ</option>
-                            <option value="Châu Phi">Châu Phi</option>
-                            <option value="Châu Đại Dương">Châu Đại Dương</option>
+                            <option value="All" data-i18n="destinations.filter.all">Tất cả</option>
+                            <option value="Châu Á" data-i18n="destinations.filter.asia">Châu Á</option>
+                            <option value="Châu Âu" data-i18n="destinations.filter.europe">Châu Âu</option>
+                            <option value="Châu Mỹ" data-i18n="destinations.filter.america">Châu Mỹ</option>
+                            <option value="Châu Phi" data-i18n="destinations.filter.africa">Châu Phi</option>
+                            <option value="Châu Đại Dương" data-i18n="destinations.filter.oceania">Châu Đại Dương</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="budget">Ngân sách ($)</label>
-                        <input type="number" id="budget" placeholder="Nhập ngân sách" required />
+                        <label for="budget" data-i18n="destinations.tripPlanner.form.budget">Ngân sách ($)</label>
+                        <input type="number" id="budget" placeholder="Nhập ngân sách" data-i18n-placeholder="destinations.tripPlanner.form.budgetPlaceholder" required />
                     </div>
 
                     <div class="form-group">
-                        <label for="days">Số ngày</label>
-                        <input type="number" id="days" placeholder="Số ngày" required />
+                        <label for="days" data-i18n="destinations.tripPlanner.form.days">Số ngày</label>
+                        <input type="number" id="days" placeholder="Số ngày" data-i18n-placeholder="destinations.tripPlanner.form.daysPlaceholder" required />
                     </div>
 
                     <div class="form-group">
-                        <label for="interest">Sở thích</label>
+                        <label for="interest" data-i18n="destinations.tripPlanner.form.interest">Sở thích</label>
                         <select id="interest" required>
-                            <option value="beach">Biển</option>
-                            <option value="mountain">Núi</option>
-                            <option value="city">Thành phố</option>
-                            <option value="culture">Văn hóa</option>
-                            <option value="food">Ẩm thực</option>
+                            <option value="beach" data-i18n="destinations.tripPlanner.form.interests.beach">Biển</option>
+                            <option value="mountain" data-i18n="destinations.tripPlanner.form.interests.mountain">Núi</option>
+                            <option value="city" data-i18n="destinations.tripPlanner.form.interests.city">Thành phố</option>
+                            <option value="culture" data-i18n="destinations.tripPlanner.form.interests.culture">Văn hóa</option>
+                            <option value="food" data-i18n="destinations.tripPlanner.form.interests.food">Ẩm thực</option>
                         </select>
                     </div>
 
-                    <button type="submit" class="btn-primary">Tìm điểm đến</button>
+                    <button type="submit" class="btn-primary" data-i18n="destinations.tripPlanner.form.submitBtn">Tìm điểm đến</button>
                 </form>
             </div>
 
             <div class="trip-card-right">
                 <div class="trip-results-container">
                     <div id="tripResults" class="trip-results">
-                        <p>Bắt đầu lên kế hoạch chuyến đi của bạn</p>
+                        <p data-i18n="destinations.tripPlanner.resultsPlaceholder">Bắt đầu lên kế hoạch chuyến đi của bạn</p>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
 <!-- 6. Special Offers -->
 <section class="special-offers">
     <div class="des-container">
-        <h2 class="section-title">Ưu đãi đặc biệt</h2>
+        <h2 class="section-title" data-i18n="destinations.specialOffers.title">Ưu đãi đặc biệt</h2>
         <div id="offersGrid" class="offers-grid">
             <!-- Sẽ được render bằng JS -->
         </div>
@@ -159,8 +159,8 @@
 
     <div class="best-time-hero">
         <div class="best-time-hero-content">
-            <h2>Thời điểm lý tưởng để đi <span id="regionName">Châu Á</span></h2>
-            <p>
+            <h2><span data-i18n="destinations.bestTime.title">Thời điểm lý tưởng để đi</span> <span id="regionName">Châu Á</span></h2>
+            <p data-i18n="destinations.bestTime.subtitle">
                 Khám phá mùa lý tưởng cho chuyến phiêu lưu tiếp theo — được điều chỉnh theo mức độ đông đúc, thời tiết
                 và trải nghiệm đáng nhớ.
             </p>
@@ -169,46 +169,46 @@
 
     <div class="best-time-container">
         <div class="region-list">
-            <h3>Chọn khu vực</h3>
+            <h3 data-i18n="destinations.bestTime.selectRegion">Chọn khu vực</h3>
 
             <div class="region-card active" data-region="Asia">
                 <div class="region-overlay">
-                    <h4>Châu Á</h4>
-                    <p>Văn hóa sôi động, bãi biển & ẩm thực đường phố</p>
+                    <h4 data-i18n="destinations.bestTime.regions.asia.title">Châu Á</h4>
+                    <p data-i18n="destinations.bestTime.regions.asia.desc">Văn hóa sôi động, bãi biển & ẩm thực đường phố</p>
                 </div>
             </div>
 
             <div class="region-card" data-region="Europe">
                 <div class="region-overlay">
-                    <h4>Châu Âu</h4>
-                    <p>Thành phố lịch sử & kỳ nghỉ lãng mạn</p>
+                    <h4 data-i18n="destinations.bestTime.regions.europe.title">Châu Âu</h4>
+                    <p data-i18n="destinations.bestTime.regions.europe.desc">Thành phố lịch sử & kỳ nghỉ lãng mạn</p>
                 </div>
             </div>
 
             <div class="region-card" data-region="America">
                 <div class="region-overlay">
-                    <h4>Châu Mỹ</h4>
-                    <p>Cảnh quan rộng lớn & phiêu lưu đô thị</p>
+                    <h4 data-i18n="destinations.bestTime.regions.america.title">Châu Mỹ</h4>
+                    <p data-i18n="destinations.bestTime.regions.america.desc">Cảnh quan rộng lớn & phiêu lưu đô thị</p>
                 </div>
             </div>
 
             <div class="region-card" data-region="Africa">
                 <div class="region-overlay">
-                    <h4>Châu Phi</h4>
-                    <p>Safari & sa mạc kỳ thú</p>
+                    <h4 data-i18n="destinations.bestTime.regions.africa.title">Châu Phi</h4>
+                    <p data-i18n="destinations.bestTime.regions.africa.desc">Safari & sa mạc kỳ thú</p>
                 </div>
             </div>
 
             <div class="region-card" data-region="Oceania">
                 <div class="region-overlay">
-                    <h4>Châu Đại Dương</h4>
-                    <p>Đảo, rạn san hô & phong cách sống thư giãn</p>
+                    <h4 data-i18n="destinations.bestTime.regions.oceania.title">Châu Đại Dương</h4>
+                    <p data-i18n="destinations.bestTime.regions.oceania.desc">Đảo, rạn san hô & phong cách sống thư giãn</p>
                 </div>
             </div>
         </div>
 
         <div class="season-container" id="seasonContainer">
-            <p>Chọn một khu vực để khám phá mùa du lịch lý tưởng</p>
+            <p data-i18n="destinations.bestTime.selectRegionPlaceholder">Chọn một khu vực để khám phá mùa du lịch lý tưởng</p>
         </div>
     </div>
 </section>
@@ -228,7 +228,7 @@
                 <p id="detailShort"></p>
                 <p id="detailLong"></p>
             </div>
-            <button id="btnViewDetail" class="btn-primary">Xem chi tiết</button>
+            <button id="btnViewDetail" class="btn-primary" data-i18n="destinations.modal.viewDetail">Xem chi tiết</button>
         </div>
 
         <div class="modal-right">
@@ -238,11 +238,11 @@
             </div>
 
             <div id="weatherContent" class="weather-box"></div>
-            <div id="map" class="map-box">🗺 Xem bản đồ...</div>
+            <div id="map" class="map-box" data-i18n="destinations.modal.viewMap">🗺 Xem bản đồ...</div>
 
             <div id="blogContent" class="blog-box">
-                <h3>Trải nghiệm độc đáo</h3>
-                <p id="blogText">
+                <h3 data-i18n="destinations.modal.uniqueExperience.title">Trải nghiệm độc đáo</h3>
+                <p id="blogText" data-i18n="destinations.modal.uniqueExperience.description">
                     Khám phá nét quyến rũ ẩn giấu của điểm đến — từ văn hóa địa phương đến kỳ quan thiên nhiên, mỗi góc
                     đều mang lại trải nghiệm khó quên.
                 </p>

@@ -1,0 +1,588 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "destinations": "Destinations",
+      "blog": "Blog",
+      "tours": "Tours",
+      "contact": "Contact"
+    },
+    "logo": "Safe Tour",
+    "contactBtn": "Contact us"
+  },
+  "footer": {
+    "about": {
+      "title": "About us",
+      "description": "Explore the world with Safe Tour - your trusted travel partner"
+    },
+    "travellers": {
+      "title": "Travellers",
+      "why": "Why Travellers",
+      "enterprise": "Enterprise",
+      "stories": "Customer Stories",
+      "instagram": "Instagram post"
+    },
+    "company": {
+      "title": "Company",
+      "travelling": "Travelling",
+      "about": "About Locato",
+      "success": "Success",
+      "information": "Information"
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "description": "Feel free to get in touch with us via email",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "quickLinks": {
+      "title": "Quick links",
+      "home": "Home",
+      "about": "About",
+      "destinations": "Destinations",
+      "tours": "Tours",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Subscribe to receive the latest offers",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    },
+    "copyright": "© 2024 Safe Tour. All rights reserved.",
+    "followUs": "Follow us"
+  },
+  "common": {
+    "readMore": "Read more",
+    "bookNow": "Book now",
+    "viewMore": "View more",
+    "loading": "Loading...",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "price": "Price",
+    "duration": "Duration",
+    "from": "From",
+    "to": "To",
+    "day": "day",
+    "days": "days",
+    "night": "night",
+    "nights": "nights",
+    "person": "person",
+    "people": "people"
+  },
+  "home": {
+    "hero": {
+      "title": "Create Your Best Trip Ever",
+      "description": "Plan and book your perfect trip with expert advice, travel tips, destination information and inspiration from us.",
+      "exploreBtn": "Explore now",
+      "learnMoreBtn": "Learn more",
+      "services": "Services",
+      "tripsPerMonth": "Trips/Month",
+      "yearsExperience": "Years of experience",
+      "awardsWon": "Awards won",
+      "projectsCompleted": "Projects completed"
+    },
+    "search": {
+      "location": "Location",
+      "type": "Type",
+      "duration": "Duration",
+      "guests": "Guests",
+      "searchBtn": "Search",
+      "options": {
+        "locations": {
+          "bali": "Bali, Indonesia",
+          "hanoi": "Hanoi, Vietnam"
+        },
+        "types": {
+          "city": "City",
+          "adventure": "Adventure"
+        },
+        "durations": {
+          "short": "1 - 5 days",
+          "medium": "6 - 10 days"
+        },
+        "guests": {
+          "eight": "8 people",
+          "four": "4 people"
+        }
+      }
+    },
+    "tours": {
+      "heading": "Featured tours",
+      "description": "These are amazing destinations that will make you feel healthier, happier and more relaxed. Explore more exciting journeys in our global destination list.",
+      "seeAll": "See all"
+    },
+    "video": {
+      "title": "Explore the world with us",
+      "description": "Experience amazing places and wonderful journeys"
+    },
+    "vlogs": {
+      "title": "Vlogs & Reels",
+      "beach": {
+        "title": "Beautiful Beach Trip",
+        "description": "Explore pristine beaches and turquoise waters in this relaxing vlog."
+      },
+      "mountain": {
+        "title": "Mountain Conquest Journey",
+        "description": "Experience challenging mountain trails and majestic scenery."
+      },
+      "city": {
+        "title": "City Life Rhythm",
+        "description": "Discover bustling streets, iconic landmarks and colorful nightlife."
+      }
+    },
+    "destinations": {
+      "title": "Top destinations",
+      "description": "The best reasons why Entrada is the perfect choice for you!",
+      "seeAll": "See all"
+    },
+    "tourTypes": {
+      "heading": "Tour Types",
+      "city": "City Tour",
+      "beach": "Beach",
+      "museum": "Museum Tour",
+      "cruise": "Cruise",
+      "tours": "Tours"
+    },
+    "testimonial": {
+      "title": "What our customers say",
+      "quote": "\"Adding social proof directly is the #1 factor that helped increase revenue across all my tests at Airkey.\" And the brand must exist for at least 1 year.",
+      "role": "UI Designer"
+    },
+    "articles": {
+      "title": "Articles & Travel Guides",
+      "subtitle": "Travel helps us understand the meaning of life better and become better people. Every time we travel, we see the world with new eyes.",
+      "main": {
+        "title": "The real journey is not just about finding new places",
+        "description": "Excitement naturally leads him to see new opportunities. Hope is nurtured through each experience.",
+        "date": "June 01, 2021"
+      },
+      "item1": {
+        "title": "Mountains are always the ideal destination",
+        "description": "Further away, travel companions are still always a source of inspiration.",
+        "date": "June 01, 2021"
+      },
+      "item2": {
+        "title": "Life is a bold adventure",
+        "description": "One of those journeys is the journey to save yourself.",
+        "date": "June 01, 2021"
+      },
+      "item3": {
+        "title": "Life is either an adventure or nothing at all",
+        "description": "Each journey brings memorable experiences.",
+        "date": "June 01, 2021"
+      }
+    },
+    "newsletter": {
+      "title": "Subscribe to newsletter",
+      "description": "Get news, updates and more interesting information every week.",
+      "placeholder": "Enter your email address",
+      "submitBtn": "Subscribe"
+    }
+  },
+  "about": {
+    "title": "About us",
+    "subtitle": "Your trusted travel partner",
+    "ourStory": "Our story",
+    "ourMission": "Our mission",
+    "ourVision": "Our vision",
+    "banner": {
+      "title": "About Us",
+      "subtitle": "Discover our story, our passion, and our promise to you.",
+      "cta": "Explore Our Tours"
+    },
+    "whoWeAre": {
+      "subtitle": "Who We Are",
+      "title": "We Are The Best Tourist Operator",
+      "description": "We are a small family-owned, award-winning operation that specializes in providing highly personalized service to our discerning clientele. Our goal is to exceed your expectations and make your trip an unforgettable experience."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To create authentic and transformative travel experiences that connect people with the world's diverse cultures and natural wonders, while promoting sustainable and responsible tourism."
+    },
+    "stats": {
+      "experience": "Years of Experience",
+      "travelers": "Happy Travelers",
+      "tours": "Tours Operated"
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Us",
+      "description": "We handle all the details, so you can focus on making memories. Here's what makes us different.",
+      "features": {
+        "guides": {
+          "title": "Expert & Passionate Guides",
+          "description": "Our guides are local experts who bring destinations to life with their passion and knowledge."
+        },
+        "customized": {
+          "title": "Private & Customized Tours",
+          "description": "We craft personalized itineraries tailored to your unique interests, budget, and travel style."
+        },
+        "support": {
+          "title": "24/7 Dedicated Support",
+          "description": "From the moment you book until you return home, our team is here to support you around the clock."
+        }
+      }
+    },
+    "tourGuides": {
+      "title": "Meet Our Tour Guides",
+      "guides": {
+        "sarah": {
+          "name": "Sarah Jenkins",
+          "role": "Cultural Specialist",
+          "bio": "With 10 years of experience, Sarah is an expert in cultural history and loves sharing hidden gems with her groups."
+        },
+        "marco": {
+          "name": "Marco Bianchi",
+          "role": "Adventure Master",
+          "bio": "An adrenaline junkie at heart, Marco leads our most thrilling adventure tours, from mountain climbing to jungle trekking."
+        },
+        "elena": {
+          "name": "Elena Petrova",
+          "role": "Culinary Expert",
+          "bio": "Elena is our go-to expert for food and wine tours. She believes the best way to know a culture is through its cuisine."
+        }
+      }
+    },
+    "testimonials": {
+      "title": "What Our Travelers Say",
+      "testimonial1": {
+        "quote": "\"An absolutely unforgettable trip! The attention to detail was incredible. Our guide was knowledgeable and made the entire experience seamless. Highly recommended!\"",
+        "author": "- Alex Johnson, USA"
+      },
+      "testimonial2": {
+        "quote": "\"We booked a customized family tour, and it exceeded all our expectations. The team listened to our needs and crafted the perfect itinerary. We made memories that will last a lifetime.\"",
+        "author": "- The Chen Family, Canada"
+      },
+      "testimonial3": {
+        "quote": "\"As a solo traveler, safety and support were my top priorities. The 24/7 support was fantastic, and I felt completely at ease throughout my adventure. I can't wait to book my next trip!\"",
+        "author": "- Priya Patel, UK"
+      }
+    }
+  },
+  "destinations": {
+    "title": "Destinations",
+    "subtitle": "Explore tours by destination",
+    "allDestinations": "All destinations",
+    "popularDestinations": "Popular destinations",
+    "tours": "tours",
+    "banner": {
+      "title": "Destinations",
+      "subtitle": "Explore tours by destination",
+      "exploreBtn": "Explore now"
+    },
+    "topDestinations": {
+      "title": "Top destinations"
+    },
+    "filter": {
+      "searchPlaceholder": "Search destinations...",
+      "all": "All",
+      "asia": "Asia",
+      "europe": "Europe",
+      "america": "America",
+      "africa": "Africa",
+      "oceania": "Oceania",
+      "sortLabel": "Sort by:",
+      "sortOptions": {
+        "visitedDesc": "Most viewed",
+        "ratingDesc": "Rating: High → Low",
+        "ratingAsc": "Rating: Low → High",
+        "toursDesc": "Tours: High → Low"
+      }
+    },
+    "sidebar": {
+      "top5Title": "Top 5 most viewed destinations (this month)",
+      "subscribe": {
+        "title": "Subscribe to newsletter",
+        "placeholder": "Enter your email",
+        "button": "Subscribe"
+      }
+    },
+    "loadMore": "Load more",
+    "tripPlanner": {
+      "title": "Plan Your Trip",
+      "subtitle": "Tell us your budget, time and preferences — we'll suggest the perfect destinations!",
+      "form": {
+        "region": "Region",
+        "budget": "Budget ($)",
+        "budgetPlaceholder": "Enter budget",
+        "days": "Number of days",
+        "daysPlaceholder": "Number of days",
+        "interest": "Interest",
+        "interests": {
+          "beach": "Beach",
+          "mountain": "Mountain",
+          "city": "City",
+          "culture": "Culture",
+          "food": "Food"
+        },
+        "submitBtn": "Find destination"
+      },
+      "resultsPlaceholder": "Start planning your trip"
+    },
+    "specialOffers": {
+      "title": "Special Offers"
+    },
+    "bestTime": {
+      "title": "Best Time to Visit",
+      "subtitle": "Discover the ideal season for your next adventure — tailored to crowds, weather, and memorable experiences.",
+      "selectRegion": "Select region",
+      "selectRegionPlaceholder": "Choose a region to explore the ideal travel season",
+      "regions": {
+        "asia": {
+          "title": "Asia",
+          "desc": "Vibrant culture, beaches & street food"
+        },
+        "europe": {
+          "title": "Europe",
+          "desc": "Historic cities & romantic getaways"
+        },
+        "america": {
+          "title": "America",
+          "desc": "Vast landscapes & urban adventures"
+        },
+        "africa": {
+          "title": "Africa",
+          "desc": "Safari & exotic deserts"
+        },
+        "oceania": {
+          "title": "Oceania",
+          "desc": "Islands, coral reefs & laid-back lifestyle"
+        }
+      }
+    },
+    "modal": {
+      "viewDetail": "View details",
+      "rating": "⭐",
+      "tours": "tours",
+      "viewMap": "🗺 View map...",
+      "uniqueExperience": {
+        "title": "Unique Experience",
+        "description": "Discover the hidden charm of this destination — from local culture to natural wonders, every corner offers an unforgettable experience."
+      }
+    },
+    "card": {
+      "explore": "Explore",
+      "tours": "tours"
+    }
+  },
+  "tours": {
+    "title": "Travel tours",
+    "subtitle": "Find your perfect trip",
+    "searchPlaceholder": "Search tours...",
+    "allTours": "All tours",
+    "banner": {
+      "title": "Our Tours",
+      "subtitle": "Find Your Next Adventure"
+    },
+    "filter": {
+      "title": "Search & Filter",
+      "reset": "Reset",
+      "searchPlaceholder": "E.g., 'Paris', 'beach'...",
+      "priceRange": "Price Range",
+      "tourType": "Tour Type",
+      "duration": "Duration",
+      "category": "Category"
+    },
+    "results": {
+      "showing": "Showing",
+      "of": "of",
+      "tours": "tours",
+      "sortBy": "Sort by:",
+      "sortOptions": {
+        "popularity": "Popularity",
+        "priceLowHigh": "Price: Low to High",
+        "priceHighLow": "Price: High to Low",
+        "ratingHighLow": "Rating: High to Low"
+      }
+    },
+    "card": {
+      "days": "days",
+      "from": "From",
+      "perPerson": "/ person",
+      "viewDetails": "View Details",
+      "addToWishlist": "Add to wishlist"
+    },
+    "types": {
+      "Khám phá": "Discovery",
+      "Văn hóa": "Culture",
+      "Hiện đại": "Modern",
+      "Lãng mạn": "Romantic",
+      "Lịch sử": "History",
+      "Nghệ thuật": "Art",
+      "Giải trí": "Entertainment",
+      "Thiên nhiên": "Nature",
+      "Nghỉ dưỡng": "Relaxation",
+      "Thành phố": "City",
+      "Kiến trúc": "Architecture",
+      "Phiêu lưu": "Adventure",
+      "Mua sắm": "Shopping"
+    }
+  },
+  "blog": {
+    "title": "Travel blog",
+    "subtitle": "Travel guides and experiences",
+    "latestPosts": "Latest posts",
+    "categories": "Categories",
+    "tags": "Tags",
+    "author": "Author",
+    "date": "Date",
+    "relatedPosts": "Related posts",
+    "banner": {
+      "title": "Travel Blog",
+      "subtitle": "Inspiration, stories, and guides from the road."
+    },
+    "sidebar": {
+      "search": "Search",
+      "searchPlaceholder": "Search articles...",
+      "categories": "Categories",
+      "editorsPick": "Editor's Pick",
+      "recentPosts": "Recent Posts",
+      "followUs": "Follow Us"
+    },
+    "noPostsFound": {
+      "title": "No Posts Found",
+      "description": "Try adjusting your search or category filter."
+    },
+    "allCategories": "All Categories",
+    "readingTime": "min read"
+  },
+  "blogDetail": {
+    "share": {
+      "title": "Share this post:"
+    },
+    "comments": {
+      "title": "Comments",
+      "leaveComment": "Leave a Comment",
+      "placeholder": "Write your comment here...",
+      "submit": "Post Comment",
+      "reply": "Reply"
+    },
+    "search": {
+      "placeholder": "Search Blog",
+      "button": "Search"
+    },
+    "sidebar": {
+      "recentPosts": "Recent Posts",
+      "categories": "Categories"
+    },
+    "noPostsFound": "No matching posts found."
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "We're here to help you",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone number",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send message",
+      "namePlaceholder": "Enter your name",
+      "emailPlaceholder": "Enter your email",
+      "phonePlaceholder": "Enter your phone number",
+      "subjectPlaceholder": "Enter subject",
+      "messagePlaceholder": "Enter your message"
+    },
+    "info": {
+      "title": "Contact information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "workingHours": "Working hours"
+    }
+  },
+  "booking": {
+    "title": "Book tour",
+    "personalInfo": "Personal information",
+    "tourInfo": "Tour information",
+    "paymentInfo": "Payment information",
+    "summary": "Order summary",
+    "total": "Total",
+    "confirm": "Confirm booking",
+    "success": "Booking successful!",
+    "error": "An error occurred, please try again"
+  },
+  "error": {
+    "title": "Page not found",
+    "subtitle": "Sorry, the page you are looking for does not exist",
+    "backHome": "Back to home",
+    "404": "404"
+  },
+  "destinationDetail": {
+    "hero": {
+      "title": "Loading journey...",
+      "subtitle": "Please wait a moment.",
+      "exploreTemplate": "Explore {country}",
+      "defaultDestination": "destination",
+      "defaultSubtitle": "Memorable experiences with us"
+    },
+    "popular": {
+      "title": "Popular Tours",
+      "empty": "We will soon update the featured destinations.",
+      "defaultDestination": "Destination"
+    },
+    "mission": {
+      "stats": {
+        "days": "DAYS",
+        "cities": "CITIES",
+        "rating": "RATING"
+      },
+      "title": "Updating journey information",
+      "titleTemplate": "Our mission: bringing you closer to {country}",
+      "defaultTitle": "Our mission is to create memorable journeys",
+      "description1": "Please wait a moment while we load the details of your selected destination.",
+      "defaultDescription": "We always seek the most authentic and emotionally rich experiences for you.",
+      "description2": "Content will be displayed automatically as soon as the data is ready.",
+      "joinBtn": "Join now"
+    },
+    "ready": {
+      "textTemplate": "experience {country} in your own way",
+      "defaultText": "experience a new and complete journey in life"
+    },
+    "pilgrimages": {
+      "title": "Our Tours",
+      "emptyTemplate": "Currently no tours available for {country}.",
+      "emptyDefault": "this destination",
+      "flexibleDeparture": "Flexible departure",
+      "flexible": "Flexible",
+      "discount": "{percent}% off",
+      "available": "Available",
+      "daysTemplate": "{days} days",
+      "journeyTemplate": "{country} journey",
+      "defaultJourney": "memorable",
+      "defaultDescription": "Outstanding experiences await you.",
+      "highlightDestinations": "Highlight destinations",
+      "viewDetails": "View details",
+      "perGuest": "/Guest"
+    },
+    "cta": {
+      "title": "Don't miss 10% off if<br />you book today",
+      "textTemplate": "Don't miss 10% off if<br>you book {country} tour",
+      "defaultDate": "today",
+      "button": "Contact"
+    },
+    "insights": {
+      "title": "Featured Articles",
+      "subtitle": "Explore featured articles about journeys, culture, and travel tips to best prepare for your trip.",
+      "loadMore": "Load more",
+      "empty": "Updating featured articles.",
+      "readArticle": "Read article",
+      "showAll": "All displayed"
+    },
+    "testimonials": {
+      "title": "Customer Reviews",
+      "subtitle": "Sincere sharing from travelers after each journey helps you get closer to the real experience.",
+      "empty": "No reviews for this destination yet.",
+      "defaultName": "Traveler",
+      "defaultRole": "Pilgrim"
+    },
+    "error": {
+      "title": "Unable to load destination information",
+      "subtitle": "Please try again later or choose another journey."
+    }
+  }
+}

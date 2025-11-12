@@ -1,0 +1,588 @@
+{
+  "header": {
+    "nav": {
+      "home": "Trang chủ",
+      "about": "Giới thiệu",
+      "destinations": "Điểm đến",
+      "blog": "Blog",
+      "tours": "Tours",
+      "contact": "Liên hệ"
+    },
+    "logo": "Safe Tour",
+    "contactBtn": "Liên hệ với chúng tôi"
+  },
+  "footer": {
+    "about": {
+      "title": "Về chúng tôi",
+      "description": "Khám phá thế giới với Safe Tour - đối tác du lịch đáng tin cậy của bạn"
+    },
+    "travellers": {
+      "title": "Khách du lịch",
+      "why": "Tại sao chọn chúng tôi",
+      "enterprise": "Doanh nghiệp",
+      "stories": "Câu chuyện khách hàng",
+      "instagram": "Bài đăng Instagram"
+    },
+    "company": {
+      "title": "Công ty",
+      "travelling": "Du lịch",
+      "about": "Về Locato",
+      "success": "Thành công",
+      "information": "Thông tin"
+    },
+    "contact": {
+      "title": "Liên hệ",
+      "description": "Hãy liên hệ với chúng tôi qua email",
+      "address": "Địa chỉ",
+      "phone": "Điện thoại",
+      "email": "Email"
+    },
+    "quickLinks": {
+      "title": "Liên kết nhanh",
+      "home": "Trang chủ",
+      "about": "Giới thiệu",
+      "destinations": "Điểm đến",
+      "tours": "Tours",
+      "blog": "Blog",
+      "contact": "Liên hệ"
+    },
+    "newsletter": {
+      "title": "Nhận tin tức",
+      "description": "Đăng ký để nhận thông tin ưu đãi mới nhất",
+      "placeholder": "Nhập email của bạn",
+      "button": "Đăng ký"
+    },
+    "copyright": "© 2024 Safe Tour. Tất cả quyền được bảo lưu.",
+    "followUs": "Theo dõi chúng tôi"
+  },
+  "common": {
+    "readMore": "Đọc thêm",
+    "bookNow": "Đặt ngay",
+    "viewMore": "Xem thêm",
+    "loading": "Đang tải...",
+    "search": "Tìm kiếm",
+    "filter": "Lọc",
+    "sort": "Sắp xếp",
+    "price": "Giá",
+    "duration": "Thời gian",
+    "from": "Từ",
+    "to": "Đến",
+    "day": "ngày",
+    "days": "ngày",
+    "night": "đêm",
+    "nights": "đêm",
+    "person": "người",
+    "people": "người"
+  },
+  "home": {
+    "hero": {
+      "title": "Tạo nên chuyến đi tuyệt vời nhất của bạn",
+      "description": "Lên kế hoạch và đặt chuyến đi hoàn hảo của bạn với những lời khuyên, mẹo du lịch, thông tin điểm đến và cảm hứng từ chúng tôi.",
+      "exploreBtn": "Khám phá ngay",
+      "learnMoreBtn": "Tìm hiểu thêm",
+      "services": "Dịch vụ",
+      "tripsPerMonth": "Chuyến đi/Tháng",
+      "yearsExperience": "Năm kinh nghiệm",
+      "awardsWon": "Giải thưởng đạt được",
+      "projectsCompleted": "Dự án hoàn thành"
+    },
+    "search": {
+      "location": "Địa điểm",
+      "type": "Loại hình",
+      "duration": "Thời gian",
+      "guests": "Số khách",
+      "searchBtn": "Tìm kiếm",
+      "options": {
+        "locations": {
+          "bali": "Bali, Indonesia",
+          "hanoi": "Hà Nội, Việt Nam"
+        },
+        "types": {
+          "city": "Thành phố",
+          "adventure": "Phiêu lưu"
+        },
+        "durations": {
+          "short": "1 - 5 ngày",
+          "medium": "6 - 10 ngày"
+        },
+        "guests": {
+          "eight": "8 người",
+          "four": "4 người"
+        }
+      }
+    },
+    "tours": {
+      "heading": "Tour nổi bật",
+      "description": "Đây là những điểm đến tuyệt vời giúp bạn cảm thấy khỏe mạnh hơn, hạnh phúc hơn và thư giãn hơn. Khám phá thêm nhiều hành trình hấp dẫn trong danh sách điểm đến toàn cầu của chúng tôi.",
+      "seeAll": "Xem tất cả"
+    },
+    "video": {
+      "title": "Khám phá thế giới cùng chúng tôi",
+      "description": "Trải nghiệm những địa điểm và hành trình tuyệt vời"
+    },
+    "vlogs": {
+      "title": "Vlogs & Reels",
+      "beach": {
+        "title": "Chuyến đi biển tuyệt đẹp",
+        "description": "Khám phá những bãi biển hoang sơ và làn nước xanh ngọc trong vlog thư giãn này."
+      },
+      "mountain": {
+        "title": "Hành trình chinh phục núi",
+        "description": "Trải nghiệm những cung đường leo núi đầy thử thách và khung cảnh hùng vĩ."
+      },
+      "city": {
+        "title": "Nhịp sống thành phố",
+        "description": "Khám phá những con phố sầm uất, công trình biểu tượng và không khí về đêm đầy sắc màu."
+      }
+    },
+    "destinations": {
+      "title": "Điểm đến hàng đầu",
+      "description": "Những lý do tuyệt vời nhất khiến Entrada là lựa chọn hoàn hảo cho bạn!",
+      "seeAll": "Xem tất cả"
+    },
+    "tourTypes": {
+      "heading": "Loại Tour",
+      "city": "Tour Thành phố",
+      "beach": "Bãi biển",
+      "museum": "Tour Bảo tàng",
+      "cruise": "Du thuyền",
+      "tours": "Tour"
+    },
+    "testimonial": {
+      "title": "Khách hàng nói gì về chúng tôi",
+      "quote": "\"Việc thêm bằng chứng xã hội trực tiếp là yếu tố số 1 giúp tăng doanh thu trong tất cả các thử nghiệm của tôi tại Airkey.\" Và thương hiệu phải tồn tại ít nhất 1 năm.",
+      "role": "Nhà thiết kế giao diện (UI Designer)"
+    },
+    "articles": {
+      "title": "Bài viết & Hướng dẫn du lịch",
+      "subtitle": "Những chuyến đi giúp chúng ta hiểu hơn về ý nghĩa của cuộc sống và trở thành những con người tốt hơn. Mỗi lần du lịch, ta lại nhìn thế giới bằng một đôi mắt mới.",
+      "main": {
+        "title": "Chuyến hành trình thật sự không chỉ là tìm nơi mới",
+        "description": "Sự háo hức khiến anh ấy tự nhiên nhìn thấy những cơ hội mới. Niềm hy vọng được nuôi dưỡng qua từng trải nghiệm.",
+        "date": "01 Tháng 6, 2021"
+      },
+      "item1": {
+        "title": "Những ngọn núi luôn là điểm đến lý tưởng",
+        "description": "Xa hơn, những người bạn đồng hành vẫn luôn là nguồn cảm hứng.",
+        "date": "01 Tháng 6, 2021"
+      },
+      "item2": {
+        "title": "Cuộc sống là một chuyến phiêu lưu đầy táo bạo",
+        "description": "Một trong những hành trình ấy là hành trình cứu lấy chính bản thân mình.",
+        "date": "01 Tháng 6, 2021"
+      },
+      "item3": {
+        "title": "Cuộc sống là một chuyến phiêu lưu hoặc chẳng là gì cả",
+        "description": "Mỗi hành trình đều mang đến những trải nghiệm đáng nhớ.",
+        "date": "01 Tháng 6, 2021"
+      }
+    },
+    "newsletter": {
+      "title": "Đăng ký nhận bản tin",
+      "description": "Nhận tin tức, cập nhật và nhiều thông tin thú vị mỗi tuần.",
+      "placeholder": "Nhập địa chỉ email của bạn",
+      "submitBtn": "Đăng ký"
+    }
+  },
+  "about": {
+    "title": "Về chúng tôi",
+    "subtitle": "Đối tác du lịch đáng tin cậy của bạn",
+    "ourStory": "Câu chuyện của chúng tôi",
+    "ourMission": "Sứ mệnh của chúng tôi",
+    "ourVision": "Tầm nhìn của chúng tôi",
+    "banner": {
+      "title": "Về chúng tôi",
+      "subtitle": "Khám phá câu chuyện, niềm đam mê và lời hứa của chúng tôi dành cho bạn.",
+      "cta": "Khám phá Tours"
+    },
+    "whoWeAre": {
+      "subtitle": "Chúng tôi là ai",
+      "title": "Chúng tôi là Nhà điều hành du lịch tốt nhất",
+      "description": "Chúng tôi là một công ty gia đình nhỏ, đoạt nhiều giải thưởng, chuyên cung cấp dịch vụ cá nhân hóa cao cho khách hàng khó tính. Mục tiêu của chúng tôi là vượt quá mong đợi của bạn và biến chuyến đi của bạn thành một trải nghiệm khó quên."
+    },
+    "mission": {
+      "title": "Sứ mệnh của chúng tôi",
+      "description": "Tạo ra những trải nghiệm du lịch chân thực và đầy biến đổi, kết nối mọi người với các nền văn hóa đa dạng và kỳ quan thiên nhiên của thế giới, đồng thời thúc đẩy du lịch bền vững và có trách nhiệm."
+    },
+    "stats": {
+      "experience": "Năm kinh nghiệm",
+      "travelers": "Khách du lịch hài lòng",
+      "tours": "Tours đã vận hành"
+    },
+    "whyChooseUs": {
+      "title": "Tại sao chọn chúng tôi",
+      "description": "Chúng tôi xử lý mọi chi tiết để bạn có thể tập trung vào việc tạo ra những kỷ niệm. Đây là điều khiến chúng tôi khác biệt.",
+      "features": {
+        "guides": {
+          "title": "Hướng dẫn viên chuyên nghiệp & đầy đam mê",
+          "description": "Hướng dẫn viên của chúng tôi là những chuyên gia địa phương, mang đến điểm đến sống động với niềm đam mê và kiến thức của họ."
+        },
+        "customized": {
+          "title": "Tours riêng tư & tùy chỉnh",
+          "description": "Chúng tôi tạo ra lịch trình được cá nhân hóa phù hợp với sở thích độc đáo, ngân sách và phong cách du lịch của bạn."
+        },
+        "support": {
+          "title": "Hỗ trợ tận tâm 24/7",
+          "description": "Từ khi bạn đặt chỗ cho đến khi trở về nhà, đội ngũ của chúng tôi luôn sẵn sàng hỗ trợ bạn suốt ngày đêm."
+        }
+      }
+    },
+    "tourGuides": {
+      "title": "Gặp gỡ Hướng dẫn viên du lịch",
+      "guides": {
+        "sarah": {
+          "name": "Sarah Jenkins",
+          "role": "Chuyên gia văn hóa",
+          "bio": "Với 10 năm kinh nghiệm, Sarah là chuyên gia về lịch sử văn hóa và thích chia sẻ những viên ngọc ẩn giấu với các nhóm của mình."
+        },
+        "marco": {
+          "name": "Marco Bianchi",
+          "role": "Chuyên gia phiêu lưu",
+          "bio": "Là một người đam mê cảm giác mạnh, Marco dẫn dắt những tour phiêu lưu ly kỳ nhất của chúng tôi, từ leo núi đến đi bộ xuyên rừng."
+        },
+        "elena": {
+          "name": "Elena Petrova",
+          "role": "Chuyên gia ẩm thực",
+          "bio": "Elena là chuyên gia về các tour ẩm thực và rượu vang. Cô tin rằng cách tốt nhất để hiểu một nền văn hóa là thông qua ẩm thực của họ."
+        }
+      }
+    },
+    "testimonials": {
+      "title": "Khách du lịch nói gì về chúng tôi",
+      "testimonial1": {
+        "quote": "\"Một chuyến đi thực sự khó quên! Sự chú ý đến chi tiết thật đáng kinh ngạc. Hướng dẫn viên của chúng tôi rất hiểu biết và khiến toàn bộ trải nghiệm trở nên liền mạch. Đáng giới thiệu cao!\"",
+        "author": "- Alex Johnson, Mỹ"
+      },
+      "testimonial2": {
+        "quote": "\"Chúng tôi đã đặt một tour gia đình tùy chỉnh, và nó vượt quá tất cả mong đợi của chúng tôi. Đội ngũ đã lắng nghe nhu cầu của chúng tôi và tạo ra lịch trình hoàn hảo. Chúng tôi đã tạo ra những kỷ niệm sẽ tồn tại suốt đời.\"",
+        "author": "- Gia đình Chen, Canada"
+      },
+      "testimonial3": {
+        "quote": "\"Là một du khách đi một mình, sự an toàn và hỗ trợ là ưu tiên hàng đầu của tôi. Hỗ trợ 24/7 thật tuyệt vời, và tôi cảm thấy hoàn toàn thoải mái trong suốt cuộc phiêu lưu của mình. Tôi không thể chờ đợi để đặt chuyến đi tiếp theo!\"",
+        "author": "- Priya Patel, Anh"
+      }
+    }
+  },
+  "destinations": {
+    "title": "Điểm đến",
+    "subtitle": "Khám phá các tour theo điểm đến",
+    "allDestinations": "Tất cả điểm đến",
+    "popularDestinations": "Điểm đến phổ biến",
+    "tours": "tours",
+    "banner": {
+      "title": "Điểm đến",
+      "subtitle": "Khám phá các tour theo điểm đến",
+      "exploreBtn": "Khám phá ngay"
+    },
+    "topDestinations": {
+      "title": "Điểm đến hàng đầu"
+    },
+    "filter": {
+      "searchPlaceholder": "Tìm kiếm điểm đến...",
+      "all": "Tất cả",
+      "asia": "Châu Á",
+      "europe": "Châu Âu",
+      "america": "Châu Mỹ",
+      "africa": "Châu Phi",
+      "oceania": "Châu Đại Dương",
+      "sortLabel": "Sắp xếp:",
+      "sortOptions": {
+        "visitedDesc": "Được xem nhiều nhất",
+        "ratingDesc": "Đánh giá: Cao → Thấp",
+        "ratingAsc": "Đánh giá: Thấp → Cao",
+        "toursDesc": "Số tour: Cao → Thấp"
+      }
+    },
+    "sidebar": {
+      "top5Title": "Top 5 điểm đến nhiều lượt xem nhất (tháng này)",
+      "subscribe": {
+        "title": "Đăng ký nhận tin",
+        "placeholder": "Nhập email của bạn",
+        "button": "Đăng ký"
+      }
+    },
+    "loadMore": "Xem thêm",
+    "tripPlanner": {
+      "title": "Lên kế hoạch chuyến đi",
+      "subtitle": "Cho chúng tôi biết ngân sách, thời gian và sở thích của bạn — chúng tôi sẽ gợi ý những điểm đến hoàn hảo!",
+      "form": {
+        "region": "Khu vực",
+        "budget": "Ngân sách ($)",
+        "budgetPlaceholder": "Nhập ngân sách",
+        "days": "Số ngày",
+        "daysPlaceholder": "Số ngày",
+        "interest": "Sở thích",
+        "interests": {
+          "beach": "Biển",
+          "mountain": "Núi",
+          "city": "Thành phố",
+          "culture": "Văn hóa",
+          "food": "Ẩm thực"
+        },
+        "submitBtn": "Tìm điểm đến"
+      },
+      "resultsPlaceholder": "Bắt đầu lên kế hoạch chuyến đi của bạn"
+    },
+    "specialOffers": {
+      "title": "Ưu đãi đặc biệt"
+    },
+    "bestTime": {
+      "title": "Thời điểm lý tưởng để đi",
+      "subtitle": "Khám phá mùa lý tưởng cho chuyến phiêu lưu tiếp theo — được điều chỉnh theo mức độ đông đúc, thời tiết và trải nghiệm đáng nhớ.",
+      "selectRegion": "Chọn khu vực",
+      "selectRegionPlaceholder": "Chọn một khu vực để khám phá mùa du lịch lý tưởng",
+      "regions": {
+        "asia": {
+          "title": "Châu Á",
+          "desc": "Văn hóa sôi động, bãi biển & ẩm thực đường phố"
+        },
+        "europe": {
+          "title": "Châu Âu",
+          "desc": "Thành phố lịch sử & kỳ nghỉ lãng mạn"
+        },
+        "america": {
+          "title": "Châu Mỹ",
+          "desc": "Cảnh quan rộng lớn & phiêu lưu đô thị"
+        },
+        "africa": {
+          "title": "Châu Phi",
+          "desc": "Safari & sa mạc kỳ thú"
+        },
+        "oceania": {
+          "title": "Châu Đại Dương",
+          "desc": "Đảo, rạn san hô & phong cách sống thư giãn"
+        }
+      }
+    },
+    "modal": {
+      "viewDetail": "Xem chi tiết",
+      "rating": "⭐",
+      "tours": "tour",
+      "viewMap": "🗺 Xem bản đồ...",
+      "uniqueExperience": {
+        "title": "Trải nghiệm độc đáo",
+        "description": "Khám phá nét quyến rũ ẩn giấu của điểm đến — từ văn hóa địa phương đến kỳ quan thiên nhiên, mỗi góc đều mang lại trải nghiệm khó quên."
+      }
+    },
+    "card": {
+      "explore": "Khám phá",
+      "tours": "tours"
+    }
+  },
+  "tours": {
+    "title": "Tours du lịch",
+    "subtitle": "Tìm kiếm chuyến đi hoàn hảo của bạn",
+    "searchPlaceholder": "Tìm kiếm tour...",
+    "allTours": "Tất cả tours",
+    "banner": {
+      "title": "Các Tour",
+      "subtitle": "Tìm kiếm cuộc phiêu lưu tiếp theo của bạn"
+    },
+    "filter": {
+      "title": "Tìm kiếm & Lọc",
+      "reset": "Đặt lại",
+      "searchPlaceholder": "VD: 'Paris', 'bãi biển'...",
+      "priceRange": "Khoảng giá",
+      "tourType": "Loại tour",
+      "duration": "Thời gian",
+      "category": "Danh mục"
+    },
+    "results": {
+      "showing": "Hiển thị",
+      "of": "của",
+      "tours": "tours",
+      "sortBy": "Sắp xếp:",
+      "sortOptions": {
+        "popularity": "Phổ biến",
+        "priceLowHigh": "Giá: Thấp đến Cao",
+        "priceHighLow": "Giá: Cao đến Thấp",
+        "ratingHighLow": "Đánh giá: Cao đến Thấp"
+      }
+    },
+    "card": {
+      "days": "ngày",
+      "from": "Từ",
+      "perPerson": "/ người",
+      "viewDetails": "Xem chi tiết",
+      "addToWishlist": "Thêm vào danh sách yêu thích"
+    },
+    "types": {
+      "Khám phá": "Khám phá",
+      "Văn hóa": "Văn hóa",
+      "Hiện đại": "Hiện đại",
+      "Lãng mạn": "Lãng mạn",
+      "Lịch sử": "Lịch sử",
+      "Nghệ thuật": "Nghệ thuật",
+      "Giải trí": "Giải trí",
+      "Thiên nhiên": "Thiên nhiên",
+      "Nghỉ dưỡng": "Nghỉ dưỡng",
+      "Thành phố": "Thành phố",
+      "Kiến trúc": "Kiến trúc",
+      "Phiêu lưu": "Phiêu lưu",
+      "Mua sắm": "Mua sắm"
+    }
+  },
+  "blog": {
+    "title": "Blog du lịch",
+    "subtitle": "Cẩm nang và kinh nghiệm du lịch",
+    "latestPosts": "Bài viết mới nhất",
+    "categories": "Danh mục",
+    "tags": "Thẻ",
+    "author": "Tác giả",
+    "date": "Ngày đăng",
+    "relatedPosts": "Bài viết liên quan",
+    "banner": {
+      "title": "Blog du lịch",
+      "subtitle": "Cảm hứng, câu chuyện và hướng dẫn từ chuyến đi."
+    },
+    "sidebar": {
+      "search": "Tìm kiếm",
+      "searchPlaceholder": "Tìm kiếm bài viết...",
+      "categories": "Danh mục",
+      "editorsPick": "Lựa chọn của biên tập viên",
+      "recentPosts": "Bài viết gần đây",
+      "followUs": "Theo dõi chúng tôi"
+    },
+    "noPostsFound": {
+      "title": "Không tìm thấy bài viết",
+      "description": "Thử điều chỉnh tìm kiếm hoặc bộ lọc danh mục của bạn."
+    },
+    "allCategories": "Tất cả danh mục",
+    "readingTime": "phút đọc"
+  },
+  "blogDetail": {
+    "share": {
+      "title": "Chia sẻ bài viết này:"
+    },
+    "comments": {
+      "title": "Bình luận",
+      "leaveComment": "Để lại bình luận",
+      "placeholder": "Viết bình luận của bạn tại đây...",
+      "submit": "Đăng bình luận",
+      "reply": "Trả lời"
+    },
+    "search": {
+      "placeholder": "Tìm kiếm Blog",
+      "button": "Tìm kiếm"
+    },
+    "sidebar": {
+      "recentPosts": "Bài viết gần đây",
+      "categories": "Danh mục"
+    },
+    "noPostsFound": "Không tìm thấy bài viết phù hợp."
+  },
+  "contact": {
+    "title": "Liên hệ với chúng tôi",
+    "subtitle": "Chúng tôi sẵn sàng hỗ trợ bạn",
+    "form": {
+      "name": "Họ và tên",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "subject": "Tiêu đề",
+      "message": "Tin nhắn",
+      "submit": "Gửi tin nhắn",
+      "namePlaceholder": "Nhập họ và tên của bạn",
+      "emailPlaceholder": "Nhập email của bạn",
+      "phonePlaceholder": "Nhập số điện thoại của bạn",
+      "subjectPlaceholder": "Nhập tiêu đề",
+      "messagePlaceholder": "Nhập tin nhắn của bạn"
+    },
+    "info": {
+      "title": "Thông tin liên hệ",
+      "address": "Địa chỉ",
+      "phone": "Điện thoại",
+      "email": "Email",
+      "workingHours": "Giờ làm việc"
+    }
+  },
+  "booking": {
+    "title": "Đặt tour",
+    "personalInfo": "Thông tin cá nhân",
+    "tourInfo": "Thông tin tour",
+    "paymentInfo": "Thông tin thanh toán",
+    "summary": "Tóm tắt đơn hàng",
+    "total": "Tổng cộng",
+    "confirm": "Xác nhận đặt tour",
+    "success": "Đặt tour thành công!",
+    "error": "Có lỗi xảy ra, vui lòng thử lại"
+  },
+  "error": {
+    "title": "Trang không tìm thấy",
+    "subtitle": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại",
+    "backHome": "Về trang chủ",
+    "404": "404"
+  },
+  "destinationDetail": {
+    "hero": {
+      "title": "Đang tải hành trình...",
+      "subtitle": "Vui lòng chờ trong giây lát.",
+      "exploreTemplate": "Khám phá {country}",
+      "defaultDestination": "điểm đến",
+      "defaultSubtitle": "Trải nghiệm đáng nhớ cùng chúng tôi"
+    },
+    "popular": {
+      "title": "Các Tour Phổ Biến",
+      "empty": "Chúng tôi sẽ sớm cập nhật các địa điểm nổi bật.",
+      "defaultDestination": "Điểm đến"
+    },
+    "mission": {
+      "stats": {
+        "days": "SỐ NGÀY",
+        "cities": "THÀNH PHỐ",
+        "rating": "ĐIỂM SỐ"
+      },
+      "title": "Đang cập nhật thông tin hành trình",
+      "titleTemplate": "Sứ mệnh của chúng tôi: đưa bạn đến gần {country} hơn",
+      "defaultTitle": "Sứ mệnh của chúng tôi là tạo nên hành trình đáng nhớ",
+      "description1": "Vui lòng chờ trong giây lát để chúng tôi tải chi tiết điểm đến bạn đã chọn.",
+      "defaultDescription": "Chúng tôi luôn tìm kiếm những trải nghiệm chân thực và giàu cảm xúc nhất cho bạn.",
+      "description2": "Nội dung sẽ được hiển thị tự động ngay sau khi dữ liệu sẵn sàng.",
+      "joinBtn": "Tham gia ngay"
+    },
+    "ready": {
+      "textTemplate": "trải nghiệm {country} theo cách của riêng bạn",
+      "defaultText": "trải nghiệm hành trình mới và trọn vẹn trong cuộc sống"
+    },
+    "pilgrimages": {
+      "title": "Các Chuyến Đi Của Chúng Tôi",
+      "emptyTemplate": "Hiện chưa có tour khả dụng cho {country}.",
+      "emptyDefault": "điểm đến này",
+      "flexibleDeparture": "Khởi hành linh hoạt",
+      "flexible": "Linh hoạt",
+      "discount": "Giảm {percent}%",
+      "available": "Còn chỗ",
+      "daysTemplate": "{days} ngày",
+      "journeyTemplate": "Hành trình {country}",
+      "defaultJourney": "đáng nhớ",
+      "defaultDescription": "Trải nghiệm nổi bật đang chờ đón bạn.",
+      "highlightDestinations": "Điểm đến nổi bật",
+      "viewDetails": "Xem chi tiết",
+      "perGuest": "/Khách"
+    },
+    "cta": {
+      "title": "Đừng bỏ lỡ giảm 10% nếu<br />bạn đặt ngay hôm nay",
+      "textTemplate": "Đừng bỏ lỡ giảm 10% nếu<br>bạn đặt tour {country}",
+      "defaultDate": "ngay hôm nay",
+      "button": "Liên hệ"
+    },
+    "insights": {
+      "title": "Bài Viết Nổi Bật",
+      "subtitle": "Khám phá những bài viết nổi bật về hành trình, văn hóa và mẹo du lịch để chuẩn bị tốt nhất cho chuyến đi của bạn.",
+      "loadMore": "Tải thêm",
+      "empty": "Đang cập nhật bài viết nổi bật.",
+      "readArticle": "Đọc bài viết",
+      "showAll": "Đã hiển thị tất cả"
+    },
+    "testimonials": {
+      "title": "Đánh giá của Khách Hàng",
+      "subtitle": "Những chia sẻ chân thành từ các hành khách sau mỗi hành trình giúp bạn thấy gần hơn trải nghiệm thực tế.",
+      "empty": "Chưa có đánh giá cho điểm đến này.",
+      "defaultName": "Hành khách",
+      "defaultRole": "Khách hành hương"
+    },
+    "error": {
+      "title": "Không thể tải thông tin điểm đến",
+      "subtitle": "Vui lòng thử lại sau hoặc chọn một hành trình khác."
+    }
+  }
+}
