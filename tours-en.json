@@ -1,4 +1,4 @@
-{
+﻿{
   "tours": [
     {
       "id": "tour_vn_01",
@@ -47,10 +47,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
-        "meals": "3 bữa/ngày",
-        "guide": "Hướng dẫn viên địa phương chuyên nghiệp",
-        "insurance": "Bảo hiểm du lịch toàn tour"
+        "hotel": "4-star hotel",
+        "meals": "3 meals/day",
+        "guide": "Professional local guide",
+        "insurance": "Full tour travel insurance"
       }
     },
     {
@@ -90,10 +90,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 3-4 sao",
-        "meals": "Ăn sáng + 1 bữa chính/ngày",
-        "guide": "Hướng dẫn viên tiếng Việt",
-        "insurance": "Bảo hiểm du lịch quốc tế"
+        "hotel": "3-4 star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "International travel insurance"
       }
     },
     {
@@ -133,10 +133,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
-        "meals": "Ăn sáng + 1 bữa chính/ngày",
-        "guide": "Hướng dẫn viên tiếng Việt",
-        "insurance": "Bảo hiểm du lịch châu Âu"
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "European travel insurance"
       }
     },
     {
@@ -175,10 +175,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 3-4 sao",
-        "meals": "Ăn sáng + 1 bữa chính/ngày",
-        "guide": "Hướng dẫn viên địa phương",
-        "insurance": "Bảo hiểm du lịch"
+        "hotel": "3-4 star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Local guide",
+        "insurance": "Travel insurance"
       }
     },
     {
@@ -216,9 +216,9 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 3-4 sao",
-        "meals": "Ăn sáng + 1 bữa chính/ngày",
-        "guide": "Hướng dẫn viên tiếng Việt",
+        "hotel": "3-4 star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
         "insurance": "Bảo hiểm quốc tế"
       }
     },
@@ -258,10 +258,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
-        "meals": "3 bữa/ngày",
-        "guide": "Hướng dẫn viên tiếng Việt",
-        "insurance": "Bảo hiểm du lịch quốc tế"
+        "hotel": "4-star hotel",
+        "meals": "3 meals/day",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "International travel insurance"
       }
     },
     {
@@ -300,10 +300,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 3-4 sao",
+        "hotel": "3-4 star hotel",
         "meals": "Ăn sáng + 1 bữa chính",
-        "guide": "Hướng dẫn viên tiếng Việt",
-        "insurance": "Bảo hiểm du lịch"
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Travel insurance"
       }
     },
     {
@@ -341,9 +341,9 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
-        "meals": "Ăn sáng + 1 bữa chính/ngày",
-        "guide": "Hướng dẫn viên tiếng Việt",
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
         "insurance": "Bảo hiểm quốc tế"
       }
     },
@@ -382,10 +382,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
-        "meals": "Ăn sáng + 2 bữa chính/ngày",
-        "guide": "Hướng dẫn viên tiếng Việt/Anh",
-        "insurance": "Bảo hiểm du lịch"
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 2 main meals/day",
+        "guide": "Vietnamese-speaking guide/Anh",
+        "insurance": "Travel insurance"
       }
     },
     {
@@ -422,9 +422,9 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
-        "meals": "Ăn sáng + 1 bữa chính/ngày",
-        "guide": "Hướng dẫn viên tiếng Việt",
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
         "insurance": "Bảo hiểm quốc tế"
       }
     },
@@ -462,10 +462,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
+        "hotel": "4-star hotel",
         "meals": "Ăn sáng + 1 bữa chính",
-        "guide": "Hướng dẫn viên địa phương",
-        "insurance": "Bảo hiểm du lịch toàn diện"
+        "guide": "Local guide",
+        "insurance": "Travel insurance toàn diện"
       }
     },
     {
@@ -503,10 +503,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 3-4 sao",
-        "meals": "Ăn sáng + 1 bữa chính/ngày",
-        "guide": "Hướng dẫn viên tiếng Việt/Anh",
-        "insurance": "Bảo hiểm du lịch"
+        "hotel": "3-4 star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide/Anh",
+        "insurance": "Travel insurance"
       }
     },
     {
@@ -544,10 +544,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
-        "meals": "Ăn sáng + 1 bữa chính/ngày",
-        "guide": "Hướng dẫn viên địa phương",
-        "insurance": "Bảo hiểm du lịch"
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Local guide",
+        "insurance": "Travel insurance"
       }
     },
     {
@@ -585,10 +585,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
+        "hotel": "4-star hotel",
         "meals": "Ăn sáng + 2 bữa chính",
-        "guide": "Hướng dẫn viên tiếng Việt/Anh",
-        "insurance": "Bảo hiểm du lịch"
+        "guide": "Vietnamese-speaking guide/Anh",
+        "insurance": "Travel insurance"
       }
     },
     {
@@ -626,10 +626,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 3-4 sao",
+        "hotel": "3-4 star hotel",
         "meals": "Ăn sáng + 1 bữa chính",
         "guide": "Hướng dẫn viên tiếng Anh/VN",
-        "insurance": "Bảo hiểm du lịch phiêu lưu"
+        "insurance": "Travel insurance phiêu lưu"
       }
     },
     {
@@ -667,10 +667,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 4 sao",
+        "hotel": "4-star hotel",
         "meals": "Ăn sáng + 1 bữa chính",
-        "guide": "Hướng dẫn viên tiếng Việt/Anh",
-        "insurance": "Bảo hiểm du lịch châu Âu"
+        "guide": "Vietnamese-speaking guide/Anh",
+        "insurance": "European travel insurance"
       }
     },
     {
@@ -710,8 +710,8 @@
       "services": {
         "hotel": "Khách sạn 3 sao",
         "meals": "Ăn sáng",
-        "guide": "Hướng dẫn viên tiếng Việt",
-        "insurance": "Bảo hiểm du lịch"
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Travel insurance"
       }
     },
     {
@@ -749,10 +749,10 @@
         }
       ],
       "services": {
-        "hotel": "Lodge & khách sạn 3-4 sao",
+        "hotel": "Lodge & 3-4 star hotel",
         "meals": "Ăn sáng + 1 bữa/ngày",
         "guide": "Hướng dẫn viên thiên nhiên",
-        "insurance": "Bảo hiểm du lịch phiêu lưu"
+        "insurance": "Travel insurance phiêu lưu"
       }
     },
     {
@@ -790,10 +790,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 3-4 sao",
+        "hotel": "3-4 star hotel",
         "meals": "Ăn sáng + 1 bữa chính",
-        "guide": "Hướng dẫn viên tiếng Việt",
-        "insurance": "Bảo hiểm du lịch"
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Travel insurance"
       }
     },
     {
@@ -822,10 +822,10 @@
         }
       ],
       "services": {
-        "hotel": "Khách sạn 3-4 sao",
+        "hotel": "3-4 star hotel",
         "meals": "Ăn sáng",
-        "guide": "Hướng dẫn viên tiếng Việt",
-        "insurance": "Bảo hiểm du lịch"
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Travel insurance"
       }
     }
   ]

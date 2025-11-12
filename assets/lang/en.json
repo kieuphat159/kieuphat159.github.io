@@ -584,5 +584,181 @@
       "title": "Unable to load destination information",
       "subtitle": "Please try again later or choose another journey."
     }
+  },
+  "tourDetails": {
+    "tabs": {
+      "information": "Information",
+      "tourPlan": "Tour Plan",
+      "location": "Location",
+      "gallery": "Gallery"
+    },
+    "priceUnit": "/ Per Couple",
+    "reviews": "reviews",
+    "details": {
+      "destination": "Destination",
+      "departure": "Departure Point",
+      "departureTime": "Departure Time",
+      "returnTime": "Return Time",
+      "dressCode": "Dress Code",
+      "airportMeeting": "Meeting at airport",
+      "casualComfortable": "Casual, comfortable",
+      "departureTimeValue": "Approx. 08:10 AM",
+      "returnTimeValue": "Approx. 07:20 PM"
+    },
+    "features": {
+      "included": "Included",
+      "excluded": "Excluded",
+      "guide": "Tour Guide",
+      "insurance": "Insurance",
+      "personalExpenses": "Personal Expenses",
+      "drinks": "Drinks"
+    },
+    "gallery": {
+      "title": "Our Photo Gallery",
+      "description": "Explore beautiful images from previous trips."
+    },
+    "tourPlan": {
+      "title": "Tour Itinerary",
+      "day": "Day"
+    },
+    "location": {
+      "title": "Geographic Location"
+    },
+    "booking": {
+      "title": "Book This Tour",
+      "subtitle": "Fill in your information in the form below to book the tour. We will contact you as soon as possible to confirm the information and help you complete the tour booking.",
+      "form": {
+        "name": "Full Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "date": "Departure Date",
+        "tickets": "Number of Tickets",
+        "message": "Message",
+        "submit": "Book Now"
+      }
+    }
+  },
+  "contactUs": {
+    "hero": {
+      "subtitle": "Get in Touch",
+      "title": "Contact Us",
+      "description": "Have questions or want to collaborate? We'd love to hear from you."
+    },
+    "cards": {
+      "visit": {
+        "title": "Visit Us",
+        "link": "Get Directions"
+      },
+      "call": {
+        "title": "Call Us",
+        "schedule": "Monday–Friday 9:00 AM - 6:00 PM"
+      },
+      "email": {
+        "title": "Email Us",
+        "response": "We'll respond within 24 hours"
+      }
+    },
+    "info": {
+      "tag": "Contact Information",
+      "title": "Let's Start a Conversation",
+      "description": "Whether you have questions about tours, pricing, or anything else, our team is ready to answer.",
+      "features": {
+        "quickResponse": {
+          "title": "Quick Response",
+          "description": "We respond to all requests within 24 hours"
+        },
+        "support247": {
+          "title": "24/7 Support",
+          "description": "Our support team is always ready to help"
+        },
+        "security": {
+          "title": "Security & Privacy",
+          "description": "Your information is secure and confidential"
+        }
+      },
+      "socialConnect": "Connect with Us"
+    },
+    "form": {
+      "header": {
+        "title": "Send Us a Message",
+        "subtitle": "Fill out the form below and we'll respond soon"
+      },
+      "fields": {
+        "firstName": {
+          "label": "First Name *",
+          "placeholder": "Enter first name"
+        },
+        "lastName": {
+          "label": "Last Name *",
+          "placeholder": "Enter last name"
+        },
+        "email": {
+          "label": "Email Address *",
+          "placeholder": "Enter email"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "placeholder": "Enter phone number"
+        },
+        "subject": {
+          "label": "Subject *",
+          "placeholder": "Enter subject"
+        },
+        "message": {
+          "label": "Your Message *",
+          "placeholder": "Enter your message"
+        }
+      },
+      "newsletter": "I want to receive travel tips and exclusive offers",
+      "submit": "Send Message"
+    },
+    "map": {
+      "title": "Find Us Here",
+      "description": "Visit our office or chat with us over a cup of coffee"
+    },
+    "faq": {
+      "tag": "FAQ",
+      "title": "Frequently Asked Questions",
+      "description": "Quick answers to common questions",
+      "items": {
+        "hours": {
+          "question": "What are your business hours?",
+          "answer": "We're open Monday to Friday, 9:00 AM - 6:00 PM. Weekend support via email."
+        },
+        "response": {
+          "question": "How soon will I receive a response?",
+          "answer": "We strive to respond to all inquiries within 24 hours on business days."
+        },
+        "international": {
+          "question": "Do you provide international support?",
+          "answer": "Yes, we support travelers worldwide in multiple languages."
+        },
+        "phoneSupport": {
+          "question": "Is phone support available?",
+          "answer": "Absolutely! Phone lines are open during business hours for immediate assistance."
+        }
+      }
+    }
+  },
+  "onlineBooking": {
+    "title": "Booking Tour",
+    "subtitle": "Book your tour in just a few minutes.",
+    "form": {
+      "name": "Your name",
+      "phone": "Phone number",
+      "email": "Email address",
+      "guests": {
+        "label": "Guests",
+        "options": {
+          "1": "1 Person",
+          "2": "2 Persons",
+          "3": "3 Persons",
+          "4": "4+ Persons"
+        }
+      },
+      "date": "Date",
+      "time": "Time",
+      "submit": "Booking Now"
+    }
   }
 }

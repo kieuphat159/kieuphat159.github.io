@@ -116,6 +116,13 @@ class I18n {
 			}
 		});
 
+		// Dịch các phần tử có data-i18n-placeholder
+		document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+			const key = element.getAttribute('data-i18n-placeholder');
+			const translation = this.t(key);
+			element.placeholder = translation;
+		});
+
 		// Thông báo cho các observers
 		this.notifyObservers();
 		

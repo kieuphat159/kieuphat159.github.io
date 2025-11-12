@@ -305,17 +305,17 @@ function setupLanguageToggle() {
 	const btn = document.getElementById("languageToggle");
 	if (!btn) return;
 
-	const flagSpan = document.getElementById("currentLangFlag");
-	const textSpan = document.getElementById("currentLangText");
+	const vnFlag = document.getElementById("vnFlag");
+	const usFlag = document.getElementById("usFlag");
 
 	// Cập nhật UI theo ngôn ngữ hiện tại
 	function updateLanguageUI(lang) {
 		if (lang === 'vi') {
-			flagSpan.textContent = '🇻🇳';
-			textSpan.textContent = 'VI';
+			vnFlag.style.display = 'inline-block';
+			usFlag.style.display = 'none';
 		} else {
-			flagSpan.textContent = '🇬🇧';
-			textSpan.textContent = 'EN';
+			vnFlag.style.display = 'none';
+			usFlag.style.display = 'inline-block';
 		}
 	}
 

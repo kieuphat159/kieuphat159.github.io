@@ -584,5 +584,181 @@
       "title": "Không thể tải thông tin điểm đến",
       "subtitle": "Vui lòng thử lại sau hoặc chọn một hành trình khác."
     }
+  },
+  "tourDetails": {
+    "tabs": {
+      "information": "Thông tin",
+      "tourPlan": "Lịch trình",
+      "location": "Địa điểm",
+      "gallery": "Thư viện ảnh"
+    },
+    "priceUnit": "/ Mỗi cặp",
+    "reviews": "đánh giá",
+    "details": {
+      "destination": "Điểm đến",
+      "departure": "Điểm khởi hành",
+      "departureTime": "Thời gian khởi hành",
+      "returnTime": "Thời gian trở về",
+      "dressCode": "Trang phục",
+      "airportMeeting": "Tập trung tại sân bay",
+      "casualComfortable": "Thoải mái, nhẹ nhàng",
+      "departureTimeValue": "Khoảng 08:10 AM",
+      "returnTimeValue": "Khoảng 07:20 PM"
+    },
+    "features": {
+      "included": "Bao gồm",
+      "excluded": "Không bao gồm",
+      "guide": "Hướng dẫn viên",
+      "insurance": "Bảo hiểm",
+      "personalExpenses": "Chi phí cá nhân",
+      "drinks": "Đồ uống"
+    },
+    "gallery": {
+      "title": "Thư viện ảnh của chúng tôi",
+      "description": "Khám phá những hình ảnh tuyệt đẹp từ các chuyến du lịch trước đây."
+    },
+    "tourPlan": {
+      "title": "Lịch trình tour",
+      "day": "Ngày"
+    },
+    "location": {
+      "title": "Vị trí địa lý"
+    },
+    "booking": {
+      "title": "Đặt tour này",
+      "subtitle": "Hãy điền thông tin của bạn vào form bên dưới để đặt tour. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất để xác nhận thông tin và hỗ trợ bạn hoàn tất việc đặt tour.",
+      "form": {
+        "name": "Họ và tên",
+        "email": "Email",
+        "phone": "Số điện thoại",
+        "date": "Ngày khởi hành",
+        "tickets": "Số lượng vé",
+        "message": "Lời nhắn",
+        "submit": "Đặt ngay"
+      }
+    }
+  },
+  "contactUs": {
+    "hero": {
+      "subtitle": "Kết nối cùng chúng tôi",
+      "title": "Liên hệ với chúng tôi",
+      "description": "Bạn có câu hỏi hoặc muốn hợp tác? Chúng tôi rất mong được lắng nghe từ bạn."
+    },
+    "cards": {
+      "visit": {
+        "title": "Đến thăm chúng tôi",
+        "link": "Xem chỉ đường"
+      },
+      "call": {
+        "title": "Gọi cho chúng tôi",
+        "schedule": "Thứ Hai–Thứ Sáu 9:00 - 18:00"
+      },
+      "email": {
+        "title": "Gửi email cho chúng tôi",
+        "response": "Chúng tôi sẽ phản hồi trong 24 giờ"
+      }
+    },
+    "info": {
+      "tag": "Thông tin liên hệ",
+      "title": "Hãy bắt đầu trò chuyện",
+      "description": "Dù bạn có câu hỏi về tour, giá cả hay bất kỳ điều gì khác, đội ngũ của chúng tôi luôn sẵn sàng giải đáp.",
+      "features": {
+        "quickResponse": {
+          "title": "Phản hồi nhanh",
+          "description": "Chúng tôi phản hồi mọi yêu cầu trong vòng 24 giờ"
+        },
+        "support247": {
+          "title": "Hỗ trợ 24/7",
+          "description": "Đội ngũ hỗ trợ luôn sẵn sàng giúp đỡ"
+        },
+        "security": {
+          "title": "Bảo mật & Riêng tư",
+          "description": "Thông tin của bạn được bảo mật và giữ kín"
+        }
+      },
+      "socialConnect": "Kết nối với chúng tôi"
+    },
+    "form": {
+      "header": {
+        "title": "Gửi tin nhắn cho chúng tôi",
+        "subtitle": "Điền vào biểu mẫu bên dưới, chúng tôi sẽ phản hồi sớm"
+      },
+      "fields": {
+        "firstName": {
+          "label": "Tên *",
+          "placeholder": "Nhập tên"
+        },
+        "lastName": {
+          "label": "Họ *",
+          "placeholder": "Nhập họ"
+        },
+        "email": {
+          "label": "Địa chỉ email *",
+          "placeholder": "Nhập email"
+        },
+        "phone": {
+          "label": "Số điện thoại",
+          "placeholder": "Nhập số điện thoại"
+        },
+        "subject": {
+          "label": "Chủ đề *",
+          "placeholder": "Nhập chủ đề"
+        },
+        "message": {
+          "label": "Tin nhắn của bạn *",
+          "placeholder": "Nhập tin nhắn của bạn"
+        }
+      },
+      "newsletter": "Tôi muốn nhận mẹo du lịch và ưu đãi độc quyền",
+      "submit": "Gửi tin nhắn"
+    },
+    "map": {
+      "title": "Tìm chúng tôi tại đây",
+      "description": "Ghé thăm văn phòng hoặc trò chuyện cùng chúng tôi bên tách cà phê"
+    },
+    "faq": {
+      "tag": "Hỏi đáp",
+      "title": "Câu hỏi thường gặp",
+      "description": "Giải đáp nhanh những câu hỏi thường gặp",
+      "items": {
+        "hours": {
+          "question": "Giờ làm việc như thế nào?",
+          "answer": "Chúng tôi làm việc từ Thứ Hai đến Thứ Sáu, 9:00 - 18:00. Hỗ trợ cuối tuần qua email."
+        },
+        "response": {
+          "question": "Trong bao lâu tôi sẽ nhận được phản hồi?",
+          "answer": "Chúng tôi cố gắng phản hồi mọi yêu cầu trong vòng 24 giờ vào ngày làm việc."
+        },
+        "international": {
+          "question": "Bạn có hỗ trợ quốc tế không?",
+          "answer": "Có, chúng tôi hỗ trợ khách du lịch trên toàn thế giới với nhiều ngôn ngữ."
+        },
+        "phoneSupport": {
+          "question": "Có hỗ trợ qua điện thoại không?",
+          "answer": "Chắc chắn! Đường dây điện thoại mở trong giờ làm việc để hỗ trợ ngay lập tức."
+        }
+      }
+    }
+  },
+  "onlineBooking": {
+    "title": "Đặt Tour",
+    "subtitle": "Đặt tour của bạn chỉ trong vài phút.",
+    "form": {
+      "name": "Tên của bạn",
+      "phone": "Số điện thoại",
+      "email": "Địa chỉ email",
+      "guests": {
+        "label": "Số khách",
+        "options": {
+          "1": "1 Người",
+          "2": "2 Người",
+          "3": "3 Người",
+          "4": "4+ Người"
+        }
+      },
+      "date": "Ngày",
+      "time": "Giờ",
+      "submit": "Đặt Ngay"
+    }
   }
 }
