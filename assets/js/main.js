@@ -12,6 +12,22 @@ let initialLoad = true;
 let isPageLoading = false;
 let currentPage1 = null;
 
+// Danh sách các trang hợp lệ
+const VALID_PAGES = [
+	'home',
+	'about',
+	'destinations',
+	'destination-detail',
+	'tours',
+	'tour-details',
+	'booking',
+	'online-booking',
+	'blog',
+	'blog-detail',
+	'contact-us',
+        'error'
+];
+
 // ============================================
 // 2. CÁC HÀM TIỆN ÍCH (UTILITY FUNCTIONS)
 // ============================================
@@ -207,6 +223,13 @@ function handleHashChange() {
                         const [key, value] = param.split("=");
                         if (key && value) params[key] = decodeURIComponent(value);
                 });
+        }
+
+        // Kiểm tra xem trang có hợp lệ không
+        if (!VALID_PAGES.includes(page)) {
+                console.warn(`Page "${page}" not found. Redirecting to error page...`);
+                window.location.href = "error.html";
+                return;
         }
 
         // Store params in a global location accessible to page scripts
