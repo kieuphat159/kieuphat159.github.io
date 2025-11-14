@@ -1,3 +1,9 @@
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: var(--font-primary);
     color: var(--color-text-primary);
@@ -21,6 +27,14 @@ section {
     margin-bottom: 40px;
     text-align: center;
     color: var(--color-text-primary);
+}
+
+.des-banner,
+.trip-planner,
+.best-time {
+    width: 100%;
+    margin-left: 0;
+    position: relative;
 }
 
 /* === 2. REUSABLE COMPONENTS === */
@@ -158,6 +172,17 @@ section {
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
     letter-spacing: 0.5px;
+}
+
+.topdest-slider,
+.topdest-window {
+    overflow: hidden;
+}
+
+.topdest-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease;
 }
 
 /* === SLIDER === */
@@ -688,7 +713,7 @@ section {
 
 .trip-card {
     display: flex;
-    gap: 40px;
+    gap: 20px;
     /* Giữ nguyên blur effect */
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(14px);
@@ -696,12 +721,12 @@ section {
     padding: 40px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
     text-align: left;
-    width: 145%;
+    width: 100%;
     max-width: 1500px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     flex-wrap: nowrap;
+    box-sizing: border-box;
 }
 
 .trip-card-left {
@@ -714,6 +739,11 @@ section {
     min-width: 300px;
     max-height: 500px;
     overflow-y: auto;
+}
+
+.trip-card-left,
+.trip-card-right {
+    width: 100%;
 }
 
 .trip-form {
@@ -1861,256 +1891,308 @@ img.lazy-image.loaded {
     }
 }
 
-/* Extra Small Devices (< 400px) */
-@media (max-width: 399.98px) {
-    .des-banner__title {
-        font-size: 2rem;
-    }
-
-    .section-title {
-        font-size: 1.5rem;
-    }
-
-    .trip-title {
-        font-size: 1.5rem;
-    }
-
-    .best-time-hero-content h2 {
-        font-size: 1.4rem;
-    }
-
-    .topdest-card {
-        min-width: 200px;
-    }
-
-    .filter-btn {
-        font-size: 11px;
-        padding: 6px 10px;
-    }
-
-    .destinations-grid__wrapper {
-        gap: 16px;
-    }
-
-    .destination-card__image {
-        height: 200px;
-    }
-
-    .trip-card {
-        padding: 20px 12px;
-    }
-
-    .form-group input,
-    .form-group select {
-        padding: 8px 12px;
-        font-size: 13px;
-    }
-
-    .modal-content {
-        padding: 12px;
-    }
-
-    .modal-gallery img {
-        height: 180px;
-    }
-}
-
 /* SM - Portrait Phones (< 576px) */
 @media (max-width: 575.98px) {
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         overflow-x: hidden;
+        margin: 0;
+        padding: 0;
     }
 
     .des-container {
         width: 100%;
         padding: 0 12px;
+        margin: 0 auto;
     }
 
     section {
-        padding: 35px 0;
+        padding: 40px 0;
     }
 
     .section-title {
-        font-size: 1.6rem;
-        margin-bottom: 20px;
+        font-size: 2rem;
+        margin-bottom: 24px;
     }
 
     /* Hero Banner */
     .des-banner {
-        min-height: 90vh;
-        padding-top: 100px;
+        min-height: 80vh;
+        padding-top: 80px;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-attachment: scroll;
     }
 
     .des-banner__content {
         width: 100%;
-        padding: 0 1rem;
-        text-align: center;
+        padding: 0;
     }
 
     .des-banner__title {
-        font-size: clamp(1.8rem, 10vw, 2.5rem);
-        margin-bottom: 0.8rem;
+        font-size: clamp(1.8rem, 10vw, 3rem);
         line-height: 1.2;
+        text-align: center;
     }
 
     .des-banner__subtitle {
-        font-size: clamp(0.8rem, 4vw, 0.95rem);
-        margin-bottom: 1.2rem;
+        font-size: clamp(0.85rem, 4vw, 1.1rem);
+        text-align: center;
+        margin-bottom: 1.5rem;
     }
 
     .des-banner__cta button {
-        padding: 10px 20px;
-        font-size: 13px;
-    }
-
-    /* Filter Section */
-    .filter-section .des-container {
-        gap: 12px;
-    }
-
-    .filter-left,
-    .filter-right {
+        padding: 10px 16px;
+        font-size: 14px;
         width: 100%;
-        flex-direction: column;
-        gap: 10px;
+        max-width: 240px;
+    }
+
+    /* Filter Buttons */
+    .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
     }
 
     .filter-btn {
-        flex: 0 1 48%;
-        padding: 6px 10px;
-        font-size: 12px;
+        flex: 1 1 100%;
+        padding: 8px 12px;
+        font-size: 13px;
         text-align: center;
     }
 
     #searchInput,
     #sortSelect {
         width: 100%;
-        padding: 8px 12px;
-        font-size: 13px;
+        padding: 10px 12px;
+        font-size: 14px;
     }
 
     /* Destinations Grid */
     .destinations-grid__wrapper {
+        display: grid;
         grid-template-columns: 1fr;
         gap: 16px;
     }
 
+    .destination-card {
+        width: 100%;
+    }
+
     .destination-card__image {
-        height: 180px;
+        width: 100%;
+        height: auto;
     }
 
-    .destination-card__title {
-        font-size: 16px;
-    }
-
-    .destination-card__body {
-        padding: 12px;
+    .view-details {
+        width: 100%;
     }
 
     /* Trip Planner */
     .trip-card {
-        flex-direction: column;
         width: 100%;
-        padding: 16px;
-        gap: 16px;
+        padding: 16px 12px;
     }
 
     .trip-card-left,
     .trip-card-right {
         width: 100%;
-        max-width: 100%;
-    }
-
-    .trip-title {
-        font-size: 1.5rem;
-    }
-
-    .trip-subtitle {
-        font-size: 0.9rem;
+        flex: 1 1 100%;
     }
 
     .form-group input,
-    .form-group select {
-        font-size: 13px;
-        padding: 8px 12px;
-    }
-
+    .form-group select,
     .btn-primary {
         width: 100%;
-        font-size: 13px;
-        padding: 10px 16px;
+        padding: 8px 12px;
+        font-size: 14px;
     }
 
-    /* Top Destinations */
+    /* Top Destinations Slider */
     .topdest-card {
-        min-width: 220px;
+        width: 100%;
+        min-width: 100%;
         max-width: 100%;
+        border-radius: 12px;
     }
 
     .topdest-card img {
-        height: 180px;
-    }
-
-    .topdest-overlay h3 {
-        font-size: 1rem;
-    }
-
-    .topdest-overlay p {
-        font-size: 0.85rem;
-    }
-
-    /* Best Time Section */
-    .region-card {
-        height: 80px;
-    }
-
-    .region-overlay h4 {
-        font-size: 0.95rem;
-    }
-
-    .region-overlay p {
-        font-size: 0.8rem;
-    }
-
-    .season-card {
-        padding: 16px;
-    }
-
-    .season-card h3 {
-        font-size: 1rem;
+        width: 100%;
+        height: auto;
     }
 
     /* Modal */
     .modal-content {
-        width: 95%;
+        width: 100%;
         padding: 12px;
-        max-height: 90vh;
+        max-height: 100vh;
+        overflow-y: auto;
     }
 
     .modal-gallery img {
-        height: 160px;
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* XS - Extra Small Devices (< 400px) */
+@media (max-width: 399.98px) {
+    body {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
     }
 
-    /* Special Offers */
-    .offer-card {
-        height: 220px;
+    .des-container {
+        width: 100%;
+        padding: 0 8px;
+        max-width: 100%;
+        margin: 0 auto;
     }
 
-    .offer-content h3 {
-        font-size: 16px;
+    section {
+        padding: 30px 0;
     }
 
-    .offer-content p {
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Hero Banner */
+    .des-banner {
+        min-height: 60vh;
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .des-banner__title {
+        font-size: 1.8rem !important;
+        width: 100%;
+        line-height: 1.2;
+    }
+
+    .des-banner__subtitle {
+        font-size: 0.9rem !important;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .des-banner__cta button {
+        width: 100%;
+        max-width: 180px;
+        padding: 6px 10px;
         font-size: 12px;
     }
 
-    .offer-content .btn-primary {
+    /* Filter Buttons */
+    .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        width: 100%;
+    }
+
+    .filter-btn {
+        flex: 1 1 100% !important;
+        padding: 6px 8px;
+        font-size: 11px;
+        text-align: center;
+        white-space: normal;
+        min-width: 0;
+    }
+
+    #searchInput,
+    #sortSelect {
+        width: 100%;
+        padding: 6px 8px;
         font-size: 12px;
-        padding: 6px 12px;
+    }
+
+    /* Destinations Grid */
+    .destinations-grid__wrapper {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .destination-card {
+        width: 100%;
+    }
+
+    .destination-card__image {
+        width: 100%;
+        height: auto;
+    }
+
+    .view-details {
+        width: 100%;
+    }
+
+    /* Trip Planner */
+    .trip-card {
+        width: 100%;
+        padding: 12px 8px;
+    }
+
+    .trip-card-left,
+    .trip-card-right {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .form-group input,
+    .form-group select,
+    .btn-primary {
+        width: 100%;
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    /* Top Destinations Slider */
+    .topdest-card {
+        flex: 1 1 100% !important;
+        min-width: 0 !important;
+        max-width: 100%;
+        border-radius: 12px;
+    }
+
+    .topdest-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 100%;
+        padding: 6px;
+        max-height: 100vh;
+        overflow-y: auto;
+        border-radius: 8px;
+    }
+
+    .modal-gallery img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Text sizes nhỏ hơn */
+    .trip-title {
+        font-size: 1.4rem;
+    }
+
+    .best-time-hero-content h2 {
+        font-size: 1.3rem;
     }
 }
 
