@@ -464,10 +464,10 @@ function populateFilters() {
         });
 
         const durations = [
-                { label: "Any", value: "all" },
-                { label: "1-5 Days", value: "1-5" },
-                { label: "6-10 Days", value: "6-10" },
-                { label: "11+ Days", value: "11" },
+                { label: window.i18n ? window.i18n.t('tours.duration.any') : 'Any', value: "all" },
+                { label: window.i18n ? window.i18n.t('tours.duration.1-5Days') : '1-5 Days', value: "1-5" },
+                { label: window.i18n ? window.i18n.t('tours.duration.6-10Days') : '6-10 Days', value: "6-10" },
+                { label: window.i18n ? window.i18n.t('tours.duration.11+Days') : '11+ Days', value: "11" },
         ];
         durationFilterContainer.innerHTML = durations
                 .map(

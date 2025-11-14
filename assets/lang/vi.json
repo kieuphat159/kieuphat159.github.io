@@ -419,7 +419,15 @@
       "Thành phố": "Thành phố",
       "Kiến trúc": "Kiến trúc",
       "Phiêu lưu": "Phiêu lưu",
-      "Mua sắm": "Mua sắm"
+      "Mua sắm": "Mua sắm",
+      "Short": "Ngắn",
+      "Culture": "Văn hóa"
+    },
+    "duration": {
+      "any": "Tất cả",
+      "1-5Days": "1-5 Ngày",
+      "6-10Days": "6-10 Ngày",
+      "11+Days": "11+ Ngày"
     }
   },
   "blog": {
