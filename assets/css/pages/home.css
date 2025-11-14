@@ -1,27 +1,3 @@
-:root {
-    --hero-gradient-start: #ff8a3d;
-    --hero-gradient-end: #ff7129;
-    --color-shadow-primary: rgba(255, 123, 41, 0.24);
-    --color-shadow-secondary: rgba(49, 195, 224, 0.2);
-    --color-shadow-light: rgba(20, 45, 80, 0.08);
-    --color-shadow-medium: rgba(20, 45, 80, 0.18);
-    --hero-card-shadow: 0 22px 40px rgba(19, 39, 66, 0.12);
-    --hero-search-bg: rgba(255, 255, 255, 0.78);
-    --hero-search-shadow: 0 14px 40px rgba(19, 39, 66, 0.12);
-    --tour-card-bg: #ffffff;
-    --tour-card-shadow: 0 8px 24px rgba(19, 39, 66, 0.1);
-    --tour-card-shadow-hover: 0 14px 34px rgba(19, 39, 66, 0.16);
-    --dest-radius-lg: 24px;
-    --dest-card-overlay: linear-gradient(180deg, rgba(19, 39, 66, 0) 35%, rgba(19, 39, 66, 0.65) 100%);
-    --dest-rating-bg: rgba(255, 255, 255, 0.88);
-    --dest-rating-color: #0f2237;
-    --dest-shadow-sm: 0 8px 18px rgba(19, 39, 66, 0.18);
-    --color-newsletter-bg: linear-gradient(135deg, rgba(255, 123, 41, 0.25), rgba(49, 195, 224, 0.25));
-    --color-newsletter-shape: rgba(255, 255, 255, 0.25);
-    --color-newsletter-text: #0f2237;
-    --color-star: #f5c043;
-}
-
 /* ============================================
    LAZY LOADING STYLES - FIXED
    ============================================ */
@@ -182,7 +158,7 @@ video.lazy-video.loaded {
 }
 
 .home-hero__btn--primary {
-    background: linear-gradient(180deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+    background: linear-gradient(180deg, var(--color-primary-hover) 0%, var(--color-primary) 100%);
     color: var(--color-text-inverse);
     box-shadow: 0 20px 42px var(--color-shadow-primary);
 }
@@ -255,7 +231,7 @@ video.lazy-video.loaded {
     border-radius: 24px;
     background: var(--color-card-bg);
     border: 1px solid var(--color-card-border);
-    box-shadow: 0 22px 40px rgba(19, 39, 66, 0.12);
+    box-shadow: var(--hero-card-shadow);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -307,7 +283,7 @@ video.lazy-video.loaded {
 .home-hero__stat-number {
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--color-accent);
+    color: var(--color-text-primary);
     line-height: 1;
 }
 
@@ -329,7 +305,7 @@ video.lazy-video.loaded {
 .home-hero__stat-total-number {
     font-size: 2.1rem;
     font-weight: 800;
-    color: var(--color-accent);
+    color: var(--color-text-primary);
     line-height: 1;
 }
 
@@ -357,7 +333,7 @@ video.lazy-video.loaded {
     border-radius: 16px;
     min-width: 180px;
     transition: transform 0.2s ease;
-    background: rgba(255, 255, 255, 0.85);
+    background: var(--hero-search-bg);
     box-shadow: 0 14px 32px var(--color-shadow-light);
     opacity: 0; /* Để animation chạy */
 }
@@ -549,7 +525,7 @@ video.lazy-video.loaded {
     display: block;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background: #eaeef1;
+    background: var(--color-bg-tertiary);
 }
 
 /* ✅ FIXED: Image styling với object-fit cover */
@@ -583,7 +559,7 @@ video.lazy-video.loaded {
 /* ✅ FIXED: Error state */
 .home-tour-card__img.error {
     opacity: 0.3;
-    background: #f0f0f0;
+    background: var(--color-border-muted);
     position: relative;
 }
 
@@ -594,7 +570,7 @@ video.lazy-video.loaded {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 0.8rem;
-    color: #999;
+    color: var(--color-text-tertiary);
     text-align: center;
     white-space: nowrap;
 }
@@ -688,7 +664,7 @@ video.lazy-video.loaded {
     height: 70vh;
     margin: 64px 0;
     margin-left: calc(-50vw + 50%);
-    background: #000;
+    background: var(--color-bg-inverse);
     overflow: hidden;
 }
 
