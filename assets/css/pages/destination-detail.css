@@ -376,7 +376,7 @@ html {
 }
 
 .destination-detail-insights__card {
-        background: #fff;
+        background: var(--color-bg-tertiary);
         overflow: hidden;
         border-radius: 8px;
         display: block;
@@ -1249,7 +1249,7 @@ img[data-src] {
         border-radius: 16px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        background: #fff;
+        background: var(--color-bg-tertiary);
         display: flex;
         flex-direction: column;
         border: 1px solid rgba(0, 0, 0, 0.06);
@@ -1318,13 +1318,13 @@ img[data-src] {
         flex-direction: column;
         gap: 0.75rem;
         flex: 1;
-        background: #fff;
+        background: var(--color-bg-tertiary);
 }
 
 .destination-detail-insights__title {
         font-size: 1.2rem;
         font-weight: 600;
-        color: #1a1a1a;
+        color: var(--color-text-secondary);
         line-height: 1.5;
         margin: 0;
         display: -webkit-box;
@@ -1346,7 +1346,7 @@ img[data-src] {
         align-items: center;
         gap: 0.5rem;
         font-size: 0.95rem;
-        color: #666;
+        color: var(--color-text-primary);
         margin: 0;
         font-weight: 400;
         padding-top: 0.5rem;

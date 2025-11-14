@@ -52,63 +52,89 @@ class SkeletonLazyLoader {
 			threshold: 0.1,
 		});
 		
-		this.isSetupInProgress = false;
-		this.lastSetupTime = 0;
-		
 		this.init();
 	}
 
 	init() {
+		// Initial setup with delay - only for first page load
 		setTimeout(() => {
 			this.setupLazy();
 		}, 300);
 	}
 
 	setupLazy() {
-		// Prevent multiple rapid calls (debounce)
-		const now = Date.now();
-		if (this.isSetupInProgress || (now - this.lastSetupTime) < 500) {
-			return;
-		}
-		
-		this.isSetupInProgress = true;
-		this.lastSetupTime = now;
-		
 		// Disconnect all previous observations to avoid stale references
 		this.observer.disconnect();
 		
-		const lazyImages = document.querySelectorAll("img[data-src]");
-		// console.log(`[SkeletonLazyLoader] Found ${lazyImages.length} images with data-src`);
-		
-		lazyImages.forEach((img) => {
-			const dataSrc = img.getAttribute('data-src');
-			if (!dataSrc) {
-				// console.warn(`[SkeletonLazyLoader] Image has data-src attribute but value is empty:`, img);
-				return;
-			}
-			
-			// console.log(`[SkeletonLazyLoader] Processing: ${dataSrc.substring(0, 50)}...`);
-			this.wrapImageWithSkeleton(img);
-			
-			// Check if image is already in viewport - if so, load immediately
-			const rect = img.getBoundingClientRect();
-			const isInViewport = (
-				rect.top >= -50 &&
-				rect.left >= -50 &&
-				rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 50 &&
-				rect.right <= (window.innerWidth || document.documentElement.clientWidth) + 50
-			);
-			
-			if (isInViewport) {
-				// console.log(`[SkeletonLazyLoader] Image already in viewport, loading immediately`);
-				this.loadImage(img);
-			} else {
-				this.observer.observe(img);
-			}
+		// Double requestAnimationFrame to ensure DOM is fully ready
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				const lazyImages = document.querySelectorAll("img[data-src]");
+				console.log(`[SkeletonLazyLoader] Found ${lazyImages.length} images with data-src`);
+				
+				if (lazyImages.length === 0) {
+					console.warn('[SkeletonLazyLoader] No images found with data-src attribute!');
+					return;
+				}
+				
+				lazyImages.forEach((img) => {
+					const dataSrc = img.getAttribute('data-src');
+					if (!dataSrc) {
+						console.warn(`[SkeletonLazyLoader] Image has data-src attribute but value is empty:`, img);
+						return;
+					}
+					
+					console.log(`[SkeletonLazyLoader] Processing: ${dataSrc.substring(0, 50)}...`);
+					
+					// Clean up any existing wrapper first
+					this.cleanupWrapper(img);
+					
+					// Wrap with new skeleton
+					this.wrapImageWithSkeleton(img);
+					
+					// Check if image is already in viewport - if so, load immediately
+					const rect = img.getBoundingClientRect();
+					const isInViewport = (
+						rect.top >= -50 &&
+						rect.left >= -50 &&
+						rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + 50 &&
+						rect.right <= (window.innerWidth || document.documentElement.clientWidth) + 50
+					);
+					
+					if (isInViewport) {
+						console.log(`[SkeletonLazyLoader] Image in viewport, loading immediately: ${dataSrc.substring(0, 50)}...`);
+						// Load immediately without delay for viewport images
+						this.loadImage(img);
+					} else {
+						this.observer.observe(img);
+						
+						// Fallback: Force load after 2 seconds if still not loaded
+						setTimeout(() => {
+							if (img.dataset.src && !img.src) {
+								console.warn('[SkeletonLazyLoader] Fallback: Force loading image that was not observed:', dataSrc.substring(0, 50));
+								this.loadImage(img);
+							}
+						}, 2000);
+					}
+				});
+				
+				console.log(`[SkeletonLazyLoader] Observation setup complete`);
+			});
 		});
+	}
+	
+	cleanupWrapper(img) {
+		if (!img || !img.parentElement) return;
 		
-		// console.log(`[SkeletonLazyLoader] Observation setup complete`);
-		this.isSetupInProgress = false;
+		const parent = img.parentElement;
+		if (parent.classList.contains('skeleton-wrapper')) {
+			// Move img out of wrapper
+			const grandParent = parent.parentElement;
+			if (grandParent) {
+				grandParent.insertBefore(img, parent);
+				parent.remove();
+			}
+		}
 	}
 
 	wrapImageWithSkeleton(img) {
@@ -150,15 +176,16 @@ class SkeletonLazyLoader {
 	}
 
 	handleIntersection(entries) {
-		// console.log(`[SkeletonLazyLoader] Intersection callback with ${entries.length} entries`);
+		console.log(`[SkeletonLazyLoader] Intersection callback with ${entries.length} entries`);
 		
 		entries.forEach((entry) => {
 			const dataSrc = entry.target.getAttribute('data-src');
-			// console.log(`[SkeletonLazyLoader] Entry intersecting: ${entry.isIntersecting}, target data-src: ${dataSrc?.substring(0, 50) || 'NONE'}...`);
+			console.log(`[SkeletonLazyLoader] Entry intersecting: ${entry.isIntersecting}, target data-src: ${dataSrc?.substring(0, 50) || 'NONE'}...`);
 			
 			if (entry.isIntersecting) {
 				if (!dataSrc) {
 					console.error(`[SkeletonLazyLoader] Image intersecting but has no data-src!`, entry.target);
+					return;
 				}
 				this.loadImage(entry.target);
 				this.observer.unobserve(entry.target);
@@ -168,10 +195,22 @@ class SkeletonLazyLoader {
 
 	loadImage(img) {
 		const src = img.dataset.src;
-		// console.log(`[SkeletonLazyLoader] loadImage called with src:`, src);
+		console.log(`[SkeletonLazyLoader] loadImage called with src:`, src);
 		
 		if (!src) {
 			console.error('[SkeletonLazyLoader] No src found for image:', img);
+			return;
+		}
+		
+		// If image already has src and is loaded, just update wrapper
+		if (img.src && img.complete && img.naturalHeight !== 0) {
+			console.log('[SkeletonLazyLoader] Image already loaded, updating wrapper only');
+			const wrapper = img.closest(".skeleton-wrapper");
+			if (wrapper) {
+				wrapper.classList.remove("skeleton-loading");
+				wrapper.classList.add("skeleton-loaded");
+			}
+			img.classList.add("loaded");
 			return;
 		}
 
@@ -179,6 +218,7 @@ class SkeletonLazyLoader {
 		const imageLoader = new Image();
 
 		imageLoader.onload = () => {
+			console.log('[SkeletonLazyLoader] Image loaded successfully:', src.substring(0, 50));
 			img.src = src;
 			img.classList.add("loaded");
 
@@ -189,6 +229,7 @@ class SkeletonLazyLoader {
 		};
 
 		imageLoader.onerror = () => {
+			console.error('[SkeletonLazyLoader] Image failed to load:', src);
 			img.alt = img.alt || "Image not available";
 			if (wrapper) {
 				wrapper.classList.remove("skeleton-loading");
@@ -359,7 +400,7 @@ function findTourForCity(city, tours) {
 }
 
 function renderDestinationPage(destination, tours) {
-	// console.log('[renderDestinationPage] START rendering with destination:', destination.country);
+	console.log('[renderDestinationPage] START rendering with destination:', destination.country);
 	
 	renderHero(destination);
 	renderPopularPlaces(destination);
@@ -370,16 +411,20 @@ function renderDestinationPage(destination, tours) {
 	renderInsights();
 	renderTestimonials(destination);
 	
-	// console.log('[renderDestinationPage] All sections rendered');
+	console.log('[renderDestinationPage] All sections rendered');
 	
-	// Re-setup lazy loading ONCE after all content is rendered
-	// Use setTimeout to ensure DOM has finished updating
-	setTimeout(() => {
-		if (skeletonLoaderInstance) {
-			// console.log('[renderDestinationPage] Calling setupLazy once');
-			skeletonLoaderInstance.setupLazy();
-		}
-	}, 200);
+	// Re-setup lazy loading after DOM updates are complete
+	// Use triple requestAnimationFrame to ensure ALL DOM operations are truly complete
+	requestAnimationFrame(() => {
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				if (skeletonLoaderInstance) {
+					console.log('[renderDestinationPage] Calling setupLazy after render');
+					skeletonLoaderInstance.setupLazy();
+				}
+			});
+		});
+	});
 }
 
 function renderHero(destination) {
@@ -979,16 +1024,9 @@ function initializeEnhancements() {
 		// Only create new instance if it doesn't exist
 		if (!skeletonLoaderInstance) {
 			skeletonLoaderInstance = new SkeletonLazyLoader();
-		} else {
-			// If instance exists, just refresh it
-			setTimeout(() => {
-				if (skeletonLoaderInstance) {
-					skeletonLoaderInstance.setupLazy();
-				}
-			}, 300);
 		}
+		// Note: setupLazy is called from renderDestinationPage, not here
 		refreshScrollReveal();
-		// Don't call triggerLazyRefresh here - it's redundant
 	} else {
 		triggerLazyRefresh();
 	}
@@ -1207,13 +1245,13 @@ if (window.i18n && !window.destinationDetailLanguageHandlerRegistered) {
 							renderInsights();
 							renderTestimonials(destination);
 							
-							// Refresh lazy loading ONCE after all renders complete
-							setTimeout(() => {
+							// Refresh lazy loading after all renders complete
+							requestAnimationFrame(() => {
 								if (skeletonLoaderInstance) {
 									skeletonLoaderInstance.setupLazy();
 								}
 								isReloading = false;
-							}, 200);
+							});
 						} else {
 							isReloading = false;
 						}
