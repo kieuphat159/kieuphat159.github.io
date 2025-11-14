@@ -1420,105 +1420,753 @@ img.lazy-image.loaded {
     opacity: 1;
 }
 
-/* ===================== RESPONSIVE (Không cần thay đổi biến trong phần này) ===================== */
+/* ============================================
+   RESPONSIVE DESIGN - DESTINATIONS PAGE
+   ============================================ */
 
-/* Large desktops / laptops */
+/* XXL - Large Desktops (< 1400px) */
 @media (max-width: 1399.98px) {
-    .topdest-card {
-        flex: 0 0 calc((100% - 3 * 20px) / 3);
+    .des-container {
+        max-width: 1140px;
     }
-    .season-card {
-        max-width: 380px;
+
+    .section-title {
+        font-size: 3rem;
+    }
+
+    .trip-card {
+        width: 130%;
+        padding: 35px;
     }
 }
 
-/* Desktops / medium devices */
+/* XL - Desktops (< 1200px) */
 @media (max-width: 1199.98px) {
-    .topdest-card {
-        flex: 0 0 calc((100% - 3 * 20px) / 2.5);
+    .des-container {
+        max-width: 960px;
     }
-    .season-card {
-        max-width: 360px;
-    }
-}
 
-/* Tablets / small devices */
-@media (max-width: 991.98px) {
+    .section-title {
+        font-size: 2.8rem;
+    }
+
     .grid-with-sidebar {
-        display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 300px;
         gap: 30px;
     }
 
-    .topdest-card {
-        flex: 0 0 calc((100% - 2 * 15px) / 2);
+    .destinations-grid__wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
     }
-    .season-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 20px;
-    }
+
     .trip-card {
+        width: 120%;
         padding: 30px;
+        gap: 30px;
+    }
+
+    .trip-title {
+        font-size: 3rem;
+    }
+
+    .topdest-card {
+        flex: 0 0 calc((100% - 25px) / 2);
+    }
+
+    .best-time-container {
+        grid-template-columns: 280px 1fr;
+        gap: 60px;
+    }
+
+    .region-card {
+        width: 280px;
     }
 }
 
-/* Landscape phones / md */
-@media (max-width: 767.98px) {
-    .topdest-card {
-        flex: 0 0 100%;
+/* LG - Tablets (< 992px) */
+@media (max-width: 991.98px) {
+    .des-container {
+        max-width: 720px;
     }
-    .season-container {
-        gap: 20px;
-        padding: 15px;
+
+    .section-title {
+        font-size: 2.5rem;
     }
-    .grid-with-sidebar {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
+
+    /* Hero Banner */
+    .des-banner {
+        min-height: 70vh;
     }
-    .trip-card {
-        padding: 20px;
+
+    .des-banner__title {
+        font-size: clamp(3rem, 8vw, 5rem);
     }
-    .filter-section .container {
+
+    .des-banner__subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
+    }
+
+    /* Filter Section */
+    .filter-section .des-container {
         flex-direction: column;
         align-items: stretch;
+        gap: 16px;
+    }
+
+    .filter-left {
+        width: 100%;
+    }
+
+    .filter-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #searchInput {
+        max-width: 100%;
+    }
+
+    .filter-buttons {
+        width: 100%;
+    }
+
+    .filter-btn {
+        flex: 1 1 auto;
+        min-width: fit-content;
+    }
+
+    /* Grid với sidebar */
+    .grid-with-sidebar {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .destinations-grid__wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    /* Trip Planner */
+    .trip-planner {
+        height: auto;
+        min-height: 100vh;
+        padding: 60px 0;
+    }
+
+    .trip-card {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 25px;
+    }
+
+    .trip-card-left,
+    .trip-card-right {
+        flex: 1 1 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .trip-title {
+        font-size: 2.5rem;
+    }
+
+    .trip-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .trip-form {
+        flex-direction: column;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    /* Top Destinations */
+    .topdest-card {
+        flex: 0 0 calc(100% - 25px);
+        max-width: 400px;
+    }
+
+    /* Best Time Section */
+    .best-time-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    .region-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .region-list h3 {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .region-card {
+        width: 100%;
+        height: 120px;
+        margin: 0;
+    }
+
+    .best-time-hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .season-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        padding: 20px;
+    }
+
+    /* Modal */
+    .modal-content {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        width: 90%;
+    }
+
+    .modal-gallery img {
+        height: 280px;
+    }
+
+    /* Special Offers */
+    .offers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
     }
 }
 
-/* Portrait phones / sm */
-@media (max-width: 575.98px) {
-    .season-card {
-        padding: 20px;
-        border-radius: 12px;
+/* MD - Small Tablets & Landscape Phones (< 768px) */
+@media (max-width: 767.98px) {
+    .des-container {
+        max-width: 540px;
+        width: 95%;
     }
-    .trip-card {
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* Hero Banner */
+    .des-banner {
+        min-height: 70vh;
+        padding-top: 100px;
+    }
+
+    .des-banner__title {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+    }
+
+    .des-banner__subtitle {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+
+    .des-banner__cta button {
+        padding: 12px 28px;
+        font-size: 15px;
+    }
+
+    /* Filter Section */
+    .filter-buttons {
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+        flex: 1 1 calc(50% - 4px);
+    }
+
+    #sortSelect {
+        width: 100%;
+        min-width: auto;
+    }
+
+    /* Destinations Grid */
+    .destinations-grid__wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    .destination-card__image {
+        height: 180px;
+    }
+
+    .destination-card__title {
+        font-size: 16px;
+    }
+
+    .destination-card__body {
+        padding: 14px 16px;
+    }
+
+    .card-body-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .view-details {
+        width: 100%;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .top-item .name {
+        flex: 0 0 100px;
+        font-size: 13px;
+    }
+
+    /* Trip Planner */
+    .trip-title {
+        font-size: 2rem;
+    }
+
+    .trip-subtitle {
+        font-size: 1rem;
+    }
+
+    .trip-form {
+        gap: 16px;
+    }
+
+    .form-group {
+        min-width: 100%;
+    }
+
+    .trip-suggestion {
+        flex-direction: column;
         padding: 15px;
     }
-    .topdest-slider {
-        padding: 0 10px;
+
+    .trip-suggestion img {
+        width: 100%;
+        height: 180px;
     }
+
+    /* Top Destinations Slider */
+    .topdest-slider {
+        padding: 0 30px;
+    }
+
+    .topdest-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .topdest-card {
+        min-width: 240px;
+    }
+
+    .topdest-overlay h3 {
+        font-size: 1.1rem;
+    }
+
+    .topdest-overlay p {
+        font-size: 0.9rem;
+    }
+
+    .slide-btn {
+        padding: 10px 14px;
+        font-size: 16px;
+    }
+
+    /* Best Time Section */
+    .best-time-hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .best-time-hero-content p {
+        font-size: 1rem;
+    }
+
+    .region-list {
+        grid-template-columns: 1fr;
+    }
+
+    .region-card {
+        height: 100px;
+    }
+
+    .season-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 15px;
+    }
+
+    .season-card {
+        max-width: 100%;
+        padding: 22px 18px;
+    }
+
+    .season-card h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        max-height: 95vh;
+    }
+
+    .modal-gallery img {
+        height: 240px;
+    }
+
+    .modal-close {
+        font-size: 1.5rem;
+        top: 10px;
+        right: 12px;
+    }
+
+    .detail-stats {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .detail-stats span {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    /* Special Offers */
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .offer-card {
+        height: 280px;
+    }
+
+    #offersPagination button {
+        padding: 5px 10px;
+        font-size: 13px;
+    }
+}
+
+/* Extra Small Devices (< 400px) */
+@media (max-width: 399.98px) {
+    .des-banner__title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .trip-title {
+        font-size: 1.5rem;
+    }
+
+    .best-time-hero-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .topdest-card {
+        min-width: 200px;
+    }
+
+    .filter-btn {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    .destinations-grid__wrapper {
+        gap: 16px;
+    }
+
+    .destination-card__image {
+        height: 200px;
+    }
+
+    .trip-card {
+        padding: 20px 12px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .modal-content {
+        padding: 12px;
+    }
+
+    .modal-gallery img {
+        height: 180px;
+    }
+}
+
+/* SM - Portrait Phones (< 576px) */
+@media (max-width: 575.98px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .des-container {
+        width: 100%;
+        padding: 0 12px;
+    }
+
+    section {
+        padding: 35px 0;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    /* Hero Banner */
+    .des-banner {
+        min-height: 90vh;
+        padding-top: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-attachment: scroll;
+    }
+
+    .des-banner__content {
+        width: 100%;
+        padding: 0 1rem;
+        text-align: center;
+    }
+
+    .des-banner__title {
+        font-size: clamp(1.8rem, 10vw, 2.5rem);
+        margin-bottom: 0.8rem;
+        line-height: 1.2;
+    }
+
+    .des-banner__subtitle {
+        font-size: clamp(0.8rem, 4vw, 0.95rem);
+        margin-bottom: 1.2rem;
+    }
+
+    .des-banner__cta button {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+
+    /* Filter Section */
+    .filter-section .des-container {
+        gap: 12px;
+    }
+
     .filter-left,
     .filter-right {
         width: 100%;
         flex-direction: column;
         gap: 10px;
     }
-    .region-card {
-        width: 100%;
-        height: 90px;
-    }
-    .best-time-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
+
+    .filter-btn {
+        flex: 0 1 48%;
+        padding: 6px 10px;
+        font-size: 12px;
         text-align: center;
     }
+
+    #searchInput,
+    #sortSelect {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    /* Destinations Grid */
+    .destinations-grid__wrapper {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
     .destination-card__image {
         height: 180px;
     }
-    .grid-with-sidebar {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 15px;
+
+    .destination-card__title {
+        font-size: 16px;
+    }
+
+    .destination-card__body {
+        padding: 12px;
+    }
+
+    /* Trip Planner */
+    .trip-card {
+        flex-direction: column;
+        width: 100%;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .trip-card-left,
+    .trip-card-right {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .trip-title {
+        font-size: 1.5rem;
+    }
+
+    .trip-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+
+    /* Top Destinations */
+    .topdest-card {
+        min-width: 220px;
+        max-width: 100%;
+    }
+
+    .topdest-card img {
+        height: 180px;
+    }
+
+    .topdest-overlay h3 {
+        font-size: 1rem;
+    }
+
+    .topdest-overlay p {
+        font-size: 0.85rem;
+    }
+
+    /* Best Time Section */
+    .region-card {
+        height: 80px;
+    }
+
+    .region-overlay h4 {
+        font-size: 0.95rem;
+    }
+
+    .region-overlay p {
+        font-size: 0.8rem;
+    }
+
+    .season-card {
+        padding: 16px;
+    }
+
+    .season-card h3 {
+        font-size: 1rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        padding: 12px;
+        max-height: 90vh;
+    }
+
+    .modal-gallery img {
+        height: 160px;
+    }
+
+    /* Special Offers */
+    .offer-card {
+        height: 220px;
+    }
+
+    .offer-content h3 {
+        font-size: 16px;
+    }
+
+    .offer-content p {
+        font-size: 12px;
+    }
+
+    .offer-content .btn-primary {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+/* Landscape Orientation Fixes */
+@media (max-height: 600px) and (orientation: landscape) {
+    .des-banner {
+        min-height: 100vh;
+        padding-top: 80px;
+    }
+
+    .trip-planner {
+        height: auto;
+        min-height: auto;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+
+    .best-time-hero {
+        padding: 40px 20px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .filter-section,
+    .sidebar,
+    .wishlist-btn,
+    .view-details,
+    #loadMoreBtn,
+    .slide-btn,
+    .modal-close,
+    .des-banner__cta,
+    #offersPagination,
+    .trip-video,
+    .best-time-video-bg {
+        display: none !important;
+    }
+
+    .des-banner {
+        min-height: 40vh;
+        background-attachment: scroll;
+        page-break-after: always;
+    }
+
+    .destinations-grid__wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-content {
+        max-height: none;
+    }
+
+    section {
+        page-break-inside: avoid;
     }
 }
