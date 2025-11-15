@@ -11,12 +11,13 @@
     window.homePageInitialized = true;
 
     // ============================================
-    // LAZY LOADING CHO ẢNH - FIXED
+    // LAZY LOADING CHO ẢNH VÀ VIDEO - FIXED
     // ============================================
 
     class MediaLazyLoader {
         constructor() {
             this.imageObserver = null;
+            this.videoObserver = null;
             this.init();
         }
 
@@ -29,38 +30,36 @@
         }
 
         setupObservers() {
-            // Kiểm tra hỗ trợ IntersectionObserver
             if (!("IntersectionObserver" in window)) {
                 console.warn("IntersectionObserver not supported, loading all media immediately");
                 this.loadAllMedia();
                 return;
             }
 
-            // Observer cho ảnh
             this.imageObserver = new IntersectionObserver((entries) => this.handleImageIntersection(entries), {
                 rootMargin: "100px",
                 threshold: 0.01,
             });
 
+            this.videoObserver = new IntersectionObserver((entries) => this.handleVideoIntersection(entries), {
+                rootMargin: "200px",
+                threshold: 0.01,
+            });
+
             this.setupLazyImages();
+            this.setupLazyVideos();
         }
 
-        // ============================================
-        // LAZY LOADING CHO ẢNH - FIXED
-        // ============================================
         setupLazyImages() {
             const lazyImages = document.querySelectorAll("img.lazy-image");
 
             lazyImages.forEach((img) => {
-                // ✅ FIX: Nếu ảnh đã có src (từ cache/previous load)
                 if (img.src && !img.dataset.src) {
                     if (!img.classList.contains("loaded")) {
-                        // Kiểm tra ảnh đã load xong chưa
                         if (img.complete && img.naturalHeight !== 0) {
                             img.classList.add("loaded");
                             console.log("✅ Fixed cached image:", img.src);
                         } else {
-                            // Đợi ảnh load xong
                             img.addEventListener(
                                 "load",
                                 () => {
@@ -71,10 +70,9 @@
                             );
                         }
                     }
-                    return; // ✅ Không observe ảnh đã có src
+                    return;
                 }
 
-                // Nếu có data-src → observe để lazy load
                 if (img.dataset.src) {
                     this.imageObserver.observe(img);
                 }
@@ -94,7 +92,6 @@
         loadImage(img) {
             const src = img.dataset.src;
 
-            // ✅ FIX: Nếu ảnh đã có src nhưng chưa có class loaded
             if (!src && img.src) {
                 if (img.complete && img.naturalHeight !== 0) {
                     img.classList.add("loaded");
@@ -112,7 +109,6 @@
 
             if (!src) return;
 
-            // Load ảnh
             const tempImg = new Image();
 
             tempImg.onload = () => {
@@ -130,7 +126,48 @@
             tempImg.src = src;
         }
 
-        // Fallback cho trình duyệt cũ
+        setupLazyVideos() {
+            const lazyVideos = document.querySelectorAll("video.lazy-video[data-src]");
+            lazyVideos.forEach((video) => {
+                this.videoObserver.observe(video);
+            });
+        }
+
+        handleVideoIntersection(entries) {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    this.loadVideo(video);
+                    this.videoObserver.unobserve(video);
+                }
+            });
+        }
+
+        loadVideo(video) {
+            const src = video.dataset.src;
+            if (!src) return;
+
+            const source = document.createElement("source");
+            source.src = src;
+            source.type = "video/mp4";
+
+            source.onerror = () => {
+                console.error("Failed to load video:", src);
+            };
+
+            video.appendChild(source);
+            video.removeAttribute("data-src");
+            video.load();
+
+            video.addEventListener(
+                "loadeddata",
+                () => {
+                    video.classList.add("loaded");
+                },
+                { once: true }
+            );
+        }
+
         loadAllMedia() {
             document.querySelectorAll("img.lazy-image[data-src]").forEach((img) => {
                 img.src = img.dataset.src;
@@ -138,7 +175,6 @@
                 img.removeAttribute("data-src");
             });
 
-            // ✅ FIX: Thêm class loaded cho ảnh đã có src
             document.querySelectorAll("img.lazy-image:not([data-src])").forEach((img) => {
                 if (img.src && !img.classList.contains("loaded")) {
                     if (img.complete && img.naturalHeight !== 0) {
@@ -154,10 +190,19 @@
                     }
                 }
             });
+
+            document.querySelectorAll("video.lazy-video[data-src]").forEach((video) => {
+                const source = document.createElement("source");
+                source.src = video.dataset.src;
+                source.type = "video/mp4";
+                video.appendChild(source);
+                video.removeAttribute("data-src");
+                video.load();
+                video.classList.add("loaded");
+            });
         }
     }
 
-    // Khởi tạo lazy loader
     const mediaLoader = new MediaLazyLoader();
 
     // ============================================
@@ -189,7 +234,6 @@
         }
     }
 
-    // Khởi tạo lazy loading cho sections
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", lazyLoadSections);
     } else {
@@ -201,8 +245,16 @@
     // ============================================
     async function loadTours() {
         try {
-            // Sử dụng DataLoader để load tours theo ngôn ngữ hiện tại
-            const data = await window.dataLoader.loadTours();
+            const hasI18n = window.dataLoader && window.i18n;
+            let data;
+
+            if (hasI18n) {
+                data = await window.dataLoader.loadTours();
+            } else {
+                const response = await fetch("../tours.json");
+                data = await response.json();
+            }
+
             renderTours(data.tours);
         } catch (error) {
             console.error("Lỗi tải dữ liệu tours:", error);
@@ -217,19 +269,17 @@
 
         const topTours = tours.slice(0, 4);
 
-        // Lấy ngôn ngữ hiện tại để format đúng
-        const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : "vi";
+        const hasI18n = window.i18n;
+        const currentLang = hasI18n ? window.i18n.getCurrentLanguage() : "vi";
         const isVietnamese = currentLang === "vi";
 
-        // Get translated texts
-        const bookNowText = window.i18n ? window.i18n.t("common.bookNow") : "Đặt ngay";
-        const dayText = window.i18n ? window.i18n.t("common.day") : "ngày";
-        const tourText = window.i18n ? window.i18n.t("home.tourTypes.tours").toLowerCase() : "tour";
+        const bookNowText = hasI18n ? window.i18n.t("common.bookNow") : "Đặt ngay";
+        const dayText = hasI18n ? window.i18n.t("common.day") : "ngày";
+        const tourText = hasI18n ? window.i18n.t("home.tourTypes.tours").toLowerCase() : "tour";
 
         topTours.forEach((tour) => {
             const discountedPrice = tour.price * (1 - tour.discount_percent / 100);
 
-            // Format giá theo ngôn ngữ
             const formattedPrice = isVietnamese
                 ? `${discountedPrice.toLocaleString("vi-VN")}đ`
                 : `$${Math.round(discountedPrice / 25000).toLocaleString("en-US")}`;
@@ -262,116 +312,135 @@
             container.insertAdjacentHTML("beforeend", card);
         });
 
-        // Setup lazy loading cho ảnh mới thêm vào
         setupDynamicLazyImages();
     }
 
+    // ============================================
+    // LOAD DESTINATIONS - UPDATED FOR I18N + ARTICLES
+    // ============================================
     function truncateText(text, maxLength = 150) {
         if (text.length <= maxLength) return text;
         return text.slice(0, maxLength) + "...";
     }
 
-    function loadDestinations() {
-        fetch("/data.json")
-            .then(res => res.json())
-            .then(json => {
-                const grid = document.querySelector(".home-destinations__grid");
-                if (!grid) return;
+    async function loadDestinations() {
+        try {
+            const hasI18n = window.dataLoader && window.i18n;
+            let json;
 
-                grid.innerHTML = ""
-                const indices = [0, 2, 7, 4, 6, 5];
-                const destinations = json.data.filter((_, i) => indices.includes(i));
+            if (hasI18n) {
+                json = await window.dataLoader.loadDestinations();
+            } else {
+                const response = await fetch("/data.json");
+                json = await response.json();
+            }
 
-                destinations.forEach((item, index) => {
-                    const country = item.country;
-                    const rating = item.rating;
-                    const firstPlace = item.places[0];
-                    const image = firstPlace.famous_locations[0].image_url;
-                    const type = firstPlace.city;
+            renderDestinations(json.data);
+            renderArticles(json.data);
+        } catch (error) {
+            console.error("Lỗi khi load dữ liệu destinations:", error);
+        }
+    }
 
-                    const extraClass = index === 1
-                        ? "home-destination-card--tall"
-                        : index === 2
-                        ? "home-destination-card--wide"
-                        : "";
+    function renderDestinations(data) {
+        const grid = document.querySelector(".home-destinations__grid");
+        if (!grid) return;
 
-                    const card = document.createElement("article");
-                    card.className = `home-destination-card ${extraClass}`;
-                    card.innerHTML = `
-                        <a href="#destination-detail?id=${item.id}">
-                            <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
-                            <img
-                                data-src="${image}"
-                                alt="${type} ${country}"
-                                class="home-destination-card__img lazy-image"
-                            />
-                            <div class="home-destination-card__info">
-                                <h3 class="home-destination-card__name">${country}</h3>
-                                <span class="home-destination-card__type">${type}</span>
-                            </div>
-                        </a>
-                    `;
+        grid.innerHTML = "";
+        const indices = [0, 2, 7, 4, 6, 5];
+        const destinations = data.filter((_, i) => indices.includes(i));
 
-                    grid.appendChild(card);
+        destinations.forEach((item, index) => {
+            const country = item.country;
+            const rating = item.rating;
+            const firstPlace = item.places[0];
+            const image = firstPlace.famous_locations[0].image_url;
+            const type = firstPlace.city;
 
-                    const vn = json.data.find(item => item.id === "vn001");
-                    const places = vn.places;
+            const extraClass =
+                index === 1 ? "home-destination-card--tall" : index === 2 ? "home-destination-card--wide" : "";
 
-                    // Lấy 4 city đầu tiên
-                    const mainCity = places[0];
-                    const otherCities = places.slice(1, 4);
+            const card = document.createElement("article");
+            card.className = `home-destination-card ${extraClass}`;
+            card.innerHTML = `
+            <a href="#destination-detail?id=${item.id}" class="home-destination-card__link">
+                <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
+                <img
+                    data-src="${image}"
+                    alt="${type} ${country}"
+                    class="home-destination-card__img lazy-image"
+                />
+                <div class="home-destination-card__info">
+                    <h3 class="home-destination-card__name">${country}</h3>
+                    <span class="home-destination-card__type">${type}</span>
+                </div>
+            </a>
+        `;
 
-                    const container = document.getElementById("articles-container");
+            grid.appendChild(card);
+        });
 
-                    container.innerHTML = `
-                    <a href="#blog-detail?id=1" class="home-articles__main">
-                        <img
-                            data-src="${mainCity.famous_locations[0].image_url}"
-                            alt="${mainCity.city}"
-                            class="home-articles__main-img lazy-image"
-                        />
-                        <div class="home-articles__main-text">
-                            <div class="home-articles__main-info">
-                                <h3 class="home-articles__main-title">${mainCity.shortdesc}</h3>
-                                <p class="home-articles__main-desc">
-                                    ${truncateText(mainCity.blog, 80)}
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <div class="home-articles__list">
-                        ${otherCities
-                            .map((city, idx) => {
-                                const realIndex = idx + 2; // index thật trong places
-                                return `
-                                    <a href="#blog-detail?id=${realIndex}" class="home-articles__item">
-                                        <img
-                                            data-src="${city.famous_locations[0].image_url}"
-                                            alt="${city.city}"
-                                            class="home-articles__item-img lazy-image"
-                                        />
-                                        <div class="home-articles__item-content">
-                                            <h4 class="home-articles__item-title">${city.shortdesc}</h4>
-                                            <p class="home-articles__item-desc">${truncateText(city.blog, 50)}</p>
-                                        </div>
-                                    </a>
-                                `;
-                            })
-                            .join("")}
-                    </div>
-                    `;
-                });
-
-        // Setup lazy loading cho ảnh mới thêm vào
         setupDynamicLazyImages();
     }
 
-    // Setup lazy loading cho ảnh được thêm động
+    function renderArticles(data) {
+        const container = document.getElementById("articles-container");
+        if (!container) return;
+
+        const vn = data.find((item) => item.id === "vn001");
+        if (!vn || !vn.places) return;
+
+        const places = vn.places;
+        const mainCity = places[0];
+        const otherCities = places.slice(1, 4);
+
+        container.innerHTML = `
+            <a href="#blog-detail?id=1" class="home-articles__main">
+                <img
+                    data-src="${mainCity.famous_locations[0].image_url}"
+                    alt="${mainCity.city}"
+                    class="home-articles__main-img lazy-image"
+                />
+                <div class="home-articles__main-text">
+                    <div class="home-articles__main-info">
+                        <h3 class="home-articles__main-title">${mainCity.shortdesc}</h3>
+                        <p class="home-articles__main-desc">
+                            ${truncateText(mainCity.blog, 80)}
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <div class="home-articles__list">
+                ${otherCities
+                    .map((city, idx) => {
+                        const realIndex = idx + 2;
+                        return `
+                        <a href="#blog-detail?id=${realIndex}" class="home-articles__item">
+                            <img
+                                data-src="${city.famous_locations[0].image_url}"
+                                alt="${city.city}"
+                                class="home-articles__item-img lazy-image"
+                            />
+                            <div class="home-articles__item-content">
+                                <h4 class="home-articles__item-title">${city.shortdesc}</h4>
+                                <p class="home-articles__item-desc">${truncateText(city.blog, 50)}</p>
+                            </div>
+                        </a>
+                    `;
+                    })
+                    .join("")}
+            </div>
+        `;
+
+        setupDynamicLazyImages();
+    }
+
     function setupDynamicLazyImages() {
-        const lazyImages = document.querySelectorAll("#tours-container img.lazy-image[data-src]");
-        const lazyimage = document.querySelectorAll("#destinationsGrid img.lazy-image[data-src]");
-        const lazyimg = document.querySelectorAll("#articles-container img.lazy-image[data-src]")
+        const lazyImages = document.querySelectorAll(
+            "#tours-container img.lazy-image[data-src], .home-destinations__grid img.lazy-image[data-src], #articles-container img.lazy-image[data-src]"
+        );
+
         if (!("IntersectionObserver" in window)) {
             lazyImages.forEach((img) => {
                 img.src = img.dataset.src;
@@ -412,7 +481,6 @@
         lazyImages.forEach((img) => imageObserver.observe(img));
     }
 
-    // Load tours khi DOM ready
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", () => {
             loadTours();
@@ -424,16 +492,135 @@
     }
 
     // ============================================
-    // TOAST NOTIFICATION - THÊM MỚI
+    // VLOG SLIDER
+    // ============================================
+    function initVlogSlider() {
+        const track = document.querySelector(".vlog-track");
+        const prevBtn = document.querySelector(".vlog-slider .prev");
+        const nextBtn = document.querySelector(".vlog-slider .next");
+
+        if (!track || !prevBtn || !nextBtn) return;
+
+        let currentPosition = 0;
+        let isTransitioning = false;
+
+        function updateVlogSlider() {
+            const items = track.querySelectorAll(".vlog-item");
+            if (items.length === 0) return;
+
+            const item = items[0];
+            const itemStyle = window.getComputedStyle(item);
+            const gap = parseInt(itemStyle.marginRight) || 24;
+            const itemWidth = item.offsetWidth + gap;
+
+            const windowWidth = document.querySelector(".vlog-window").offsetWidth;
+            const visibleCount = Math.floor(windowWidth / itemWidth);
+            const totalItems = items.length;
+            const maxScroll = (totalItems - visibleCount) * itemWidth;
+
+            function updateButtonStates() {
+                prevBtn.disabled = currentPosition >= 0;
+                nextBtn.disabled = currentPosition <= -maxScroll;
+            }
+
+            nextBtn.onclick = () => {
+                if (isTransitioning || currentPosition <= -maxScroll) return;
+                isTransitioning = true;
+                currentPosition -= itemWidth;
+                track.style.transform = `translateX(${currentPosition}px)`;
+                setTimeout(() => {
+                    isTransitioning = false;
+                    updateButtonStates();
+                }, 500);
+            };
+
+            prevBtn.onclick = () => {
+                if (isTransitioning || currentPosition >= 0) return;
+                isTransitioning = true;
+                currentPosition += itemWidth;
+                track.style.transform = `translateX(${currentPosition}px)`;
+                setTimeout(() => {
+                    isTransitioning = false;
+                    updateButtonStates();
+                }, 500);
+            };
+
+            updateButtonStates();
+        }
+
+        updateVlogSlider();
+
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                currentPosition = 0;
+                track.style.transform = `translateX(0)`;
+                updateVlogSlider();
+            }, 250);
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initVlogSlider);
+    } else {
+        initVlogSlider();
+    }
+
+    // ============================================
+    // AUTO PLAY VIDEO KHI TRONG VIEWPORT
+    // ============================================
+    function initVideoAutoPlay() {
+        const videos = document.querySelectorAll("video[loop]");
+
+        if (!("IntersectionObserver" in window)) return;
+
+        const videoObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const video = entry.target;
+                    if (entry.isIntersecting) {
+                        video.play().catch((e) => console.log("Video autoplay prevented:", e));
+                    } else {
+                        video.pause();
+                    }
+                });
+            },
+            {
+                threshold: 0.5,
+            }
+        );
+
+        videos.forEach((video) => {
+            videoObserver.observe(video);
+
+            video.addEventListener("loadeddata", () => {
+                const rect = video.getBoundingClientRect();
+                const isInViewport =
+                    rect.top < window.innerHeight && rect.bottom > 0 && rect.left < window.innerWidth && rect.right > 0;
+
+                if (isInViewport) {
+                    video.play().catch((e) => console.log("Video autoplay prevented:", e));
+                }
+            });
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initVideoAutoPlay);
+    } else {
+        initVideoAutoPlay();
+    }
+
+    // ============================================
+    // TOAST NOTIFICATION
     // ============================================
     function showToast(message, type = "success") {
-        // Xóa toast cũ nếu có
         const existingToast = document.querySelector(".newsletter-toast");
         if (existingToast) {
             existingToast.remove();
         }
 
-        // Tạo toast mới
         const toast = document.createElement("div");
         toast.className = `newsletter-toast newsletter-toast--${type}`;
         toast.innerHTML = `
@@ -443,10 +630,8 @@
 
         document.body.appendChild(toast);
 
-        // Trigger animation
         setTimeout(() => toast.classList.add("newsletter-toast--show"), 10);
 
-        // Auto remove sau 4s
         setTimeout(() => {
             toast.classList.remove("newsletter-toast--show");
             setTimeout(() => toast.remove(), 300);
@@ -454,7 +639,7 @@
     }
 
     // ============================================
-    // NEWSLETTER FORM - CẬP NHẬT
+    // NEWSLETTER FORM
     // ============================================
     function initNewsletterForm() {
         const form = document.querySelector(".home-newsletter__form");
@@ -482,9 +667,8 @@
 
             const submitBtn = form.querySelector(".home-newsletter__submit");
 
-            // Show loading spinner - Giữ nguyên structure
             const icon = submitBtn.querySelector(".home-newsletter__submit-icon");
-            const originalIcon = "✈";
+            const originalIcon = icon ? icon.textContent : "✈";
 
             if (icon) {
                 icon.innerHTML = '<span class="spinner"></span>';
@@ -495,12 +679,10 @@
             submitBtn.disabled = true;
             input.disabled = true;
 
-            // Giả lập API call
             setTimeout(() => {
                 showToast("🎉 Đăng ký thành công! Cảm ơn bạn đã đăng ký nhận bản tin.", "success");
                 input.value = "";
 
-                // Restore original button content
                 if (icon) {
                     icon.textContent = originalIcon;
                 } else {
@@ -511,12 +693,6 @@
                 input.disabled = false;
             }, 1200);
         });
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initNewsletterForm);
-    } else {
-        initNewsletterForm();
     }
 
     if (document.readyState === "loading") {
@@ -580,13 +756,10 @@
         const lazyImages = document.querySelectorAll("img.lazy-image:not(.loaded)");
 
         lazyImages.forEach((img) => {
-            // TH1: Ảnh đã có src và đã load xong
             if (img.complete && img.naturalHeight !== 0 && img.src) {
                 img.classList.add("loaded");
                 console.log("✅ Fixed:", img.alt || img.src);
-            }
-            // TH2: Ảnh có src nhưng chưa load xong
-            else if (img.src && img.src !== window.location.href) {
+            } else if (img.src && img.src !== window.location.href) {
                 img.addEventListener(
                     "load",
                     () => {
@@ -595,9 +768,7 @@
                     },
                     { once: true }
                 );
-            }
-            // TH3: Ảnh chỉ có data-src
-            else if (img.dataset.src) {
+            } else if (img.dataset.src) {
                 const src = img.dataset.src;
                 img.src = src;
                 img.addEventListener(
@@ -613,7 +784,6 @@
         });
     }
 
-    // Chạy fix khi trang load xong
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(fixCachedImages, 100);
@@ -622,11 +792,33 @@
         setTimeout(fixCachedImages, 100);
     }
 
-    // ✅ FIX: Chạy lại khi user quay lại trang (bfcache)
     window.addEventListener("pageshow", (event) => {
         if (event.persisted || (performance && performance.navigation && performance.navigation.type === 2)) {
             console.log("🔄 Page restored from cache, fixing images...");
             setTimeout(fixCachedImages, 100);
+        }
+    });
+
+    // ============================================
+    // PAGE VISIBILITY API - PAUSE VIDEOS WHEN TAB HIDDEN
+    // ============================================
+    document.addEventListener("visibilitychange", () => {
+        const videos = document.querySelectorAll("video");
+
+        if (document.hidden) {
+            videos.forEach((video) => {
+                if (!video.paused) {
+                    video.dataset.wasPlaying = "true";
+                    video.pause();
+                }
+            });
+        } else {
+            videos.forEach((video) => {
+                if (video.dataset.wasPlaying === "true") {
+                    video.play().catch((e) => console.log("Video play failed:", e));
+                    delete video.dataset.wasPlaying;
+                }
+            });
         }
     });
 
@@ -636,15 +828,15 @@
     window.addEventListener(
         "error",
         (e) => {
-            if (e.target.tagName === "IMG") {
-                console.error("Image failed to load:", e.target.src || e.target.dataset.src);
+            if (e.target.tagName === "IMG" || e.target.tagName === "VIDEO") {
+                console.error("Media failed to load:", e.target.src || e.target.dataset.src);
             }
         },
         true
     );
 
     // ============================================
-    // DỊCH TRANG SAU KHI LOAD XONG
+    // DỊCH TRANG SAU KHI LOAD XONG (I18N)
     // ============================================
     if (window.i18n) {
         window.i18n.translatePage();
