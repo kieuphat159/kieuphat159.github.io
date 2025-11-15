@@ -5,12 +5,17 @@ let destinationsMap = {};
 // Load tours and destinations data
 async function loadToursData() {
         try {
+                // Lấy ngôn ngữ hiện tại từ i18n
+                const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'vi';
+                const toursFile = currentLang === 'en' ? './tours-en.json' : './tours-vi.json';
+                const dataFile = currentLang === 'en' ? './data-en.json' : './data-vi.json';
+                
                 // Load tours data
-                const toursResponse = await fetch("./tours.json");
+                const toursResponse = await fetch(toursFile);
                 const toursJson = await toursResponse.json();
 
                 // Load destinations data for country mapping
-                const dataResponse = await fetch("./data.json");
+                const dataResponse = await fetch(dataFile);
                 const dataJson = await dataResponse.json();
 
                 // Create destination map for quick lookup
@@ -147,6 +152,11 @@ function renderTours() {
                 tourGrid.innerHTML = `<div class="no-tours-found"><i class="fas fa-search"></i><h3>No Tours Found</h3><p>Try adjusting your search filters or resetting them.</p></div>`;
                 return;
         }
+        
+        // Lấy text từ i18n
+        const daysText = window.i18n ? window.i18n.t('tours.card.days') : 'days';
+        const fromText = window.i18n ? window.i18n.t('tours.card.from') : 'From';
+        const viewDetailsText = window.i18n ? window.i18n.t('tours.card.viewDetails') : 'View Details';
 
         toursToRender.forEach((tour) => {
                 const tourCard = document.createElement("div");
@@ -203,9 +213,7 @@ function renderTours() {
                            <span class="tour-card__location"><i class="fas fa-map-marker-alt"></i> ${
                                    tour.location
                            }</span>
-                           <span class="tour-card__duration"><i class="fas fa-clock"></i> ${tour.duration} Day${
-                        tour.duration > 1 ? "s" : ""
-                }</span>
+                           <span class="tour-card__duration"><i class="fas fa-clock"></i> ${tour.duration} ${daysText}</span>
                         </div>
                         <a href="#tour-details?id=${
                                 tour.id
@@ -216,10 +224,10 @@ function renderTours() {
                         <div class="tour-card__inclusions">${inclusionsHTML}</div>
                         <div class="tour-card__footer">
                             <div>
-                                <p class="tour-card__price-from">From</p>
+                                <p class="tour-card__price-from">${fromText}</p>
                                 <p class="tour-card__price-value">$${tour.price.toLocaleString()}</p>
                             </div>
-                            <a href="#tour-details?id=${tour.id}" class="tour-card__details-btn">View Details</a>
+                            <a href="#tour-details?id=${tour.id}" class="tour-card__details-btn">${viewDetailsText}</a>
                         </div>
                     </div>
                 `;
@@ -276,10 +284,16 @@ function updateUI() {
 
         const startIndex = (currentPage - 1) * toursPerPage + 1;
         const endIndex = Math.min(startIndex + toursPerPage - 1, filteredTours.length);
+        
+        // Sử dụng i18n cho text
+        const showingText = window.i18n ? window.i18n.t('tours.results.showing') : 'Showing';
+        const ofText = window.i18n ? window.i18n.t('tours.results.of') : 'of';
+        const toursText = window.i18n ? window.i18n.t('tours.results.tours') : 'tours';
+        
         if (filteredTours.length > 0) {
-                resultCount.textContent = `Showing ${startIndex}-${endIndex} of ${filteredTours.length} tours`;
+                resultCount.textContent = `${showingText} ${startIndex}-${endIndex} ${ofText} ${filteredTours.length} ${toursText}`;
         } else {
-                resultCount.textContent = `Showing 0 tours`;
+                resultCount.textContent = `${showingText} 0 ${toursText}`;
         }
 }
 
@@ -376,13 +390,22 @@ function populateFilters() {
                 }
         });
 
+        // Hàm helper để dịch tour type
+        const translateType = (type) => {
+                if (window.i18n) {
+                        return window.i18n.t(`tours.types.${type}`) || type;
+                }
+                return type;
+        };
+
         // Populate type filters with nested structure
         typeFilterGroup.innerHTML = "";
 
         Object.keys(typeGroups).forEach((mainType) => {
+                const translatedMainType = translateType(mainType);
                 const mainLabel = document.createElement("label");
                 mainLabel.innerHTML = `
-                        <input type="checkbox" name="type-filter" value="${mainType}"> ${mainType}
+                        <input type="checkbox" name="type-filter" value="${mainType}"> ${translatedMainType}
                 `;
                 typeFilterGroup.appendChild(mainLabel);
 
@@ -400,9 +423,10 @@ function populateFilters() {
                                 if (fullType.includes(" - ")) {
                                         const parts = fullType.split(" - ");
                                         const subcategory = parts.slice(1).join(" - ");
+                                        const translatedSubcategory = parts.slice(1).map(p => translateType(p)).join(" - ");
                                         const subtypeLabel = document.createElement("label");
                                         subtypeLabel.innerHTML = `
-                                                <input type="checkbox" name="type-filter" value="${fullType}"> ${subcategory}
+                                                <input type="checkbox" name="type-filter" value="${fullType}"> ${translatedSubcategory}
                                         `;
                                         subtypeContainer.appendChild(subtypeLabel);
 
@@ -440,10 +464,10 @@ function populateFilters() {
         });
 
         const durations = [
-                { label: "Any", value: "all" },
-                { label: "1-5 Days", value: "1-5" },
-                { label: "6-10 Days", value: "6-10" },
-                { label: "11+ Days", value: "11" },
+                { label: window.i18n ? window.i18n.t('tours.duration.any') : 'Any', value: "all" },
+                { label: window.i18n ? window.i18n.t('tours.duration.1-5Days') : '1-5 Days', value: "1-5" },
+                { label: window.i18n ? window.i18n.t('tours.duration.6-10Days') : '6-10 Days', value: "6-10" },
+                { label: window.i18n ? window.i18n.t('tours.duration.11+Days') : '11+ Days', value: "11" },
         ];
         durationFilterContainer.innerHTML = durations
                 .map(
@@ -558,3 +582,18 @@ async function initialLoad() {
 }
 
 initialLoad();
+
+// Lắng nghe sự kiện thay đổi ngôn ngữ để reload data
+window.addEventListener('languageChanged', async () => {
+        console.log('Language changed, reloading tours data...');
+        
+        // Reload data theo ngôn ngữ mới
+        await loadToursData();
+        filteredTours = [...toursData];
+        
+        // Re-populate filters và re-render
+        populateFilters();
+        applyFiltersAndSort();
+        
+        console.log('Tours data reloaded successfully!');
+});

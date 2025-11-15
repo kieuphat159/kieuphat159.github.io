@@ -16,20 +16,23 @@
         let destinationData = null;
         let toursData = [];
         let destinationsMap = {};
+        let currentLang = localStorage.getItem('language') || 'vi';
 
         // Load tour and destination data
-        async function loadTourData() {
+        async function loadTourData(lang = null) {
+                const language = lang || currentLang;
                 try {
-                        // Load tours data
-                        const toursResponse = await fetch("./tours.json");
+                        // Load tours data based on language
+                        const toursResponse = await fetch(`./tours-${language}.json`);
                         const toursJson = await toursResponse.json();
                         toursData = toursJson.tours;
 
-                        // Load destinations data
-                        const dataResponse = await fetch("./data.json");
+                        // Load destinations data based on language
+                        const dataResponse = await fetch(`./data-${language}.json`);
                         const dataJson = await dataResponse.json();
 
                         // Create destination map
+                        destinationsMap = {};
                         dataJson.data.forEach((dest) => {
                                 destinationsMap[dest.id] = dest;
                         });
@@ -55,6 +58,12 @@
                                 '<div class="container"><h1>Error</h1><p>Failed to load tour data.</p></div>';
                 }
         }
+
+        // Listen for language changes
+        window.addEventListener('languageChanged', (event) => {
+                currentLang = event.detail.language;
+                loadTourData(currentLang);
+        });
 
         function renderTourDetails() {
                 if (!tourData || !destinationData) return;
@@ -122,8 +131,20 @@
                         const destinationText = destinationData.places.map((p) => p.city).join(", ");
                         listItems[0].querySelector(".value").textContent =
                                 destinationText + ", " + destinationData.country;
-                        listItems[1].querySelector(".value").textContent = "Tập trung tại sân bay";
-                        listItems[2].querySelector(".value").textContent = "08:00 AM";
+                        
+                        const airportText = window.i18n ? window.i18n.t('tourDetails.details.airportMeeting') : 'Tập trung tại sân bay';
+                        listItems[1].querySelector(".value").textContent = airportText;
+                        
+                        const departureTimeText = window.i18n ? window.i18n.t('tourDetails.details.departureTimeValue') : 'Khoảng 08:10 AM';
+                        listItems[2].querySelector(".value").textContent = departureTimeText;
+                }
+                
+                if (listItems.length >= 5) {
+                        const returnTimeText = window.i18n ? window.i18n.t('tourDetails.details.returnTimeValue') : 'Khoảng 07:20 PM';
+                        listItems[3].querySelector(".value").textContent = returnTimeText;
+                        
+                        const dressCodeText = window.i18n ? window.i18n.t('tourDetails.details.casualComfortable') : 'Thoải mái, nhẹ nhàng';
+                        listItems[4].querySelector(".value").textContent = dressCodeText;
                 }
 
                 // Features (includes/excludes)
@@ -136,21 +157,27 @@
 
                 if (includedList) {
                         let includedHTML = "";
+                        const guideText = window.i18n ? window.i18n.t('tourDetails.features.guide') : 'Hướng dẫn viên';
+                        const insuranceText = window.i18n ? window.i18n.t('tourDetails.features.insurance') : 'Bảo hiểm';
+                        
                         if (tourData.services.hotel)
                                 includedHTML += `<div class="features-list__item"><i class="far fa-check-circle"></i><span>${tourData.services.hotel}</span></div>`;
                         if (tourData.services.meals)
                                 includedHTML += `<div class="features-list__item"><i class="far fa-check-circle"></i><span>${tourData.services.meals}</span></div>`;
                         if (tourData.services.guide)
-                                includedHTML += `<div class="features-list__item"><i class="far fa-check-circle"></i><span>Hướng dẫn viên</span></div>`;
+                                includedHTML += `<div class="features-list__item"><i class="far fa-check-circle"></i><span>${guideText}</span></div>`;
                         if (tourData.services.insurance)
-                                includedHTML += `<div class="features-list__item"><i class="far fa-check-circle"></i><span>Bảo hiểm</span></div>`;
+                                includedHTML += `<div class="features-list__item"><i class="far fa-check-circle"></i><span>${insuranceText}</span></div>`;
                         includedList.innerHTML = includedHTML;
                 }
 
                 if (excludedList) {
+                        const personalExpensesText = window.i18n ? window.i18n.t('tourDetails.features.personalExpenses') : 'Chi phí cá nhân';
+                        const drinksText = window.i18n ? window.i18n.t('tourDetails.features.drinks') : 'Đồ uống';
+                        
                         excludedList.innerHTML = `
-                <div class="features-list__item"><i class="far fa-times-circle"></i><span>Chi phí cá nhân</span></div>
-                <div class="features-list__item"><i class="far fa-times-circle"></i><span>Đồ uống</span></div>
+                <div class="features-list__item"><i class="far fa-times-circle"></i><span>${personalExpensesText}</span></div>
+                <div class="features-list__item"><i class="far fa-times-circle"></i><span>${drinksText}</span></div>
             `;
                 }
 
@@ -210,9 +237,15 @@
                 }
 
                 const infoParagraphs = document.querySelectorAll(".tour-location__info p");
-                if (infoParagraphs.length >= 2) {
-                        infoParagraphs[0].textContent = `${destinationData.country} là một trong những điểm đến du lịch đáng mơ ước với cảnh quan tuyệt đẹp, văn hóa phong phú và ẩm thực đặc sắc.`;
-                        infoParagraphs[1].textContent = `Hãy để chúng tôi đưa bạn đến khám phá những địa điểm nổi tiếng và trải nghiệm văn hóa độc đáo tại ${destinationData.country}.`;
+                if (infoParagraphs.length >= 2 && destinationData) {
+                        const country = destinationData.country;
+                        if (currentLang === 'en') {
+                                infoParagraphs[0].textContent = `${country} is one of the most desirable tourist destinations with stunning scenery, rich culture and distinctive cuisine.`;
+                                infoParagraphs[1].textContent = `Let us take you to explore famous places and experience unique culture in ${country}.`;
+                        } else {
+                                infoParagraphs[0].textContent = `${country} là một trong những điểm đến du lịch đáng mơ ước với cảnh quan tuyệt đẹp, văn hóa phong phú và ẩm thực đặc sắc.`;
+                                infoParagraphs[1].textContent = `Hãy để chúng tôi đưa bạn đến khám phá những địa điểm nổi tiếng và trải nghiệm văn hóa độc đáo tại ${country}.`;
+                        }
                 }
         }
 
@@ -332,44 +365,68 @@
 
                         clearError(input);
 
-                        if (input.type === "text" && placeholder.includes("Họ và tên")) {
-                                if (!value) return showError(input, "Vui lòng nhập họ tên.");
+                        // Get error messages based on current language
+                        const errorMessages = currentLang === 'en' ? {
+                                nameRequired: "Please enter your name.",
+                                emailRequired: "Please enter your email.",
+                                emailInvalid: "Invalid email.",
+                                phoneRequired: "Please enter your phone number.",
+                                phoneInvalid: "Invalid phone number (0xxxxxxxxx or +84xxxxxxxxx).",
+                                dateRequired: "Please select a date.",
+                                dateInvalid: "Invalid date or date has passed.",
+                                ticketsRequired: "Please enter number of tickets.",
+                                ticketsInvalid: "Number of tickets must be a positive integer.",
+                                ticketsMax: `Maximum ${tourData.max_people} people.`,
+                                messageShort: "Message too short (at least 5 characters)."
+                        } : {
+                                nameRequired: "Vui lòng nhập họ tên.",
+                                emailRequired: "Vui lòng nhập email.",
+                                emailInvalid: "Email không hợp lệ.",
+                                phoneRequired: "Vui lòng nhập số điện thoại.",
+                                phoneInvalid: "Số điện thoại không hợp lệ (0xxxxxxxxx hoặc +84xxxxxxxxx).",
+                                dateRequired: "Vui lòng chọn ngày.",
+                                dateInvalid: "Ngày không hợp lệ hoặc đã qua.",
+                                ticketsRequired: "Vui lòng nhập số vé.",
+                                ticketsInvalid: "Số vé phải là số nguyên dương.",
+                                ticketsMax: `Tối đa ${tourData.max_people} người.`,
+                                messageShort: "Tin nhắn quá ngắn (ít nhất 5 ký tự)."
+                        };
+
+                        if (input.type === "text" && (placeholder.includes("Họ và tên") || placeholder.includes("Full Name"))) {
+                                if (!value) return showError(input, errorMessages.nameRequired);
                         }
 
                         if (input.type === "email") {
                                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                                if (!value) return showError(input, "Vui lòng nhập email.");
-                                if (!emailPattern.test(value)) return showError(input, "Email không hợp lệ.");
+                                if (!value) return showError(input, errorMessages.emailRequired);
+                                if (!emailPattern.test(value)) return showError(input, errorMessages.emailInvalid);
                         }
 
                         if (input.type === "tel") {
                                 const phonePattern = /^(?:\+84|0)\d{9}$/;
-                                if (!value) return showError(input, "Vui lòng nhập số điện thoại.");
+                                if (!value) return showError(input, errorMessages.phoneRequired);
                                 if (!phonePattern.test(value))
-                                        return showError(
-                                                input,
-                                                "Số điện thoại không hợp lệ (0xxxxxxxxx hoặc +84xxxxxxxxx)."
-                                        );
+                                        return showError(input, errorMessages.phoneInvalid);
                         }
 
                         if (input.type === "date") {
-                                if (!value) return showError(input, "Vui lòng chọn ngày.");
+                                if (!value) return showError(input, errorMessages.dateRequired);
                                 const selected = new Date(value);
                                 const today = new Date();
                                 today.setHours(0, 0, 0, 0);
-                                if (selected < today) return showError(input, "Ngày không hợp lệ hoặc đã qua.");
+                                if (selected < today) return showError(input, errorMessages.dateInvalid);
                         }
 
                         if (input.type === "number") {
                                 const num = parseInt(value, 10);
-                                if (!value) return showError(input, "Vui lòng nhập số vé.");
-                                if (isNaN(num) || num <= 0) return showError(input, "Số vé phải là số nguyên dương.");
+                                if (!value) return showError(input, errorMessages.ticketsRequired);
+                                if (isNaN(num) || num <= 0) return showError(input, errorMessages.ticketsInvalid);
                                 if (num > tourData.max_people)
-                                        return showError(input, `Tối đa ${tourData.max_people} người.`);
+                                        return showError(input, errorMessages.ticketsMax);
                         }
 
                         if (input.tagName === "TEXTAREA") {
-                                if (value.length < 5) return showError(input, "Tin nhắn quá ngắn (ít nhất 5 ký tự).");
+                                if (value.length < 5) return showError(input, errorMessages.messageShort);
                         }
                 }
 
@@ -390,12 +447,15 @@
                         if (!isValid) return;
 
                         const submitBtn = bookingForm.querySelector(".booking-form__submit-btn");
+                        const processingText = currentLang === 'en' ? 'Processing...' : 'Đang xử lý...';
+                        const submitText = currentLang === 'en' ? 'Book Now' : 'Đặt ngay';
+                        
                         submitBtn.disabled = true;
-                        submitBtn.textContent = "Đang xử lý...";
+                        submitBtn.textContent = processingText;
 
                         setTimeout(() => {
                                 submitBtn.disabled = false;
-                                submitBtn.textContent = "Đặt ngay";
+                                submitBtn.textContent = submitText;
                                 bookingForm.reset();
                                 showSuccessModal();
                         }, 1500);
@@ -404,18 +464,29 @@
 
         function showSuccessModal() {
                 let modal = document.querySelector(".booking-success-modal");
+                
+                const successTitle = currentLang === 'en' ? 'Booking Successful!' : 'Đặt tour thành công!';
+                const successMessage = currentLang === 'en' ? 'Thank you for your trust. We will contact you as soon as possible.' : 'Cảm ơn bạn đã tin tưởng. Chúng tôi sẽ liên hệ sớm nhất có thể.';
+                const closeText = currentLang === 'en' ? 'Close' : 'Đóng';
+                
                 if (!modal) {
                         modal = document.createElement("div");
                         modal.className = "booking-success-modal";
                         modal.innerHTML = `
                 <div class="booking-success-modal__content">
-                    <h3>Đặt tour thành công!</h3>
-                    <p>Cảm ơn bạn đã tin tưởng. Chúng tôi sẽ liên hệ sớm nhất có thể.</p>
-                    <button class="booking-success-modal__close">Đóng</button>
+                    <h3>${successTitle}</h3>
+                    <p>${successMessage}</p>
+                    <button class="booking-success-modal__close">${closeText}</button>
                 </div>
             `;
                         document.body.appendChild(modal);
+                } else {
+                        // Update modal content with current language
+                        modal.querySelector('h3').textContent = successTitle;
+                        modal.querySelector('p').textContent = successMessage;
+                        modal.querySelector('.booking-success-modal__close').textContent = closeText;
                 }
+                
                 modal.style.display = "flex";
 
                 const closeBtn = modal.querySelector(".booking-success-modal__close");

@@ -376,7 +376,7 @@ html {
 }
 
 .destination-detail-insights__card {
-        background: #fff;
+        background: var(--color-bg-tertiary);
         overflow: hidden;
         border-radius: 8px;
         display: block;
@@ -932,6 +932,7 @@ img[data-src] {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+        text-align: left;
 }
 
 .destination-detail-pilgrimages__status {
@@ -939,7 +940,9 @@ img[data-src] {
         align-items: center;
         gap: 10px;
         font-size: 13px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .destination-detail-pilgrimages__badge {
@@ -968,19 +971,30 @@ img[data-src] {
 
 .destination-detail-pilgrimages__card-title {
         font-weight: 700;
-        margin-bottom: 8px;
+        margin-bottom: 9px;
+        font-size: 18px;
+        color: var(--color-text-primary);
+        line-height: 1.4;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .destination-detail-pilgrimages__desc {
         color: var(--color-text-secondary);
         font-size: 14px;
         margin-bottom: 10px;
+        line-height: 1.6;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .destination-detail-pilgrimages__chaplain {
         font-size: 13px;
         color: var(--color-text-secondary);
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        line-height: 1.5;
+        padding-bottom: 9px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .destination-detail-pilgrimages__footer {
@@ -1174,6 +1188,7 @@ img[data-src] {
 }
 
 .destination-detail-cta__title {
+        color: #fff !important;
         font-size: 2rem;
         font-weight: 700;
         margin-bottom: 1.5rem;
@@ -1249,7 +1264,7 @@ img[data-src] {
         border-radius: 16px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        background: #fff;
+        background: var(--color-bg-tertiary);
         display: flex;
         flex-direction: column;
         border: 1px solid rgba(0, 0, 0, 0.06);
@@ -1318,13 +1333,13 @@ img[data-src] {
         flex-direction: column;
         gap: 0.75rem;
         flex: 1;
-        background: #fff;
+        background: var(--color-bg-tertiary);
 }
 
 .destination-detail-insights__title {
         font-size: 1.2rem;
         font-weight: 600;
-        color: #1a1a1a;
+        color: var(--color-text-secondary);
         line-height: 1.5;
         margin: 0;
         display: -webkit-box;
@@ -1346,7 +1361,7 @@ img[data-src] {
         align-items: center;
         gap: 0.5rem;
         font-size: 0.95rem;
-        color: #666;
+        color: var(--color-text-primary);
         margin: 0;
         font-weight: 400;
         padding-top: 0.5rem;
@@ -1393,8 +1408,10 @@ img[data-src] {
 /* ========== DESTINATION DETAIL TESTIMONIALS ========== */
 .destination-detail-testimonials {
         text-align: center;
-        padding: 80px 10%;
+        padding: 80px 0;
         background-color: var(--bg-primary);
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
 }
 
 /* Scroll-triggered animation for testimonials section */
@@ -1427,15 +1444,15 @@ img[data-src] {
 .destination-detail-testimonials__list {
         display: flex;
         justify-content: center;
-        gap: 40px;
+        gap: 30px;
         flex-wrap: wrap;
 }
 
 .destination-detail-testimonials__item {
         position: relative;
         background: var(--color-bg-tertiary);
-        width: 300px;
-        padding: 50px 30px 40px;
+        width: 280px;
+        padding: 50px 25px 40px;
         display: flex;
         flex-direction: column;
         align-items: center;

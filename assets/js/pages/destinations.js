@@ -47,7 +47,11 @@ function observeImages() {
 /* ========= FETCH DATA ========= */
 async function fetchDestinationsData() {
     try {
-        const response = await fetch('/data.json');
+        // Lấy ngôn ngữ hiện tại từ i18n
+        const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'vi';
+        const dataFile = currentLang === 'en' ? '/data-en.json' : '/data-vi.json';
+        
+        const response = await fetch(dataFile);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -182,7 +186,11 @@ async function fetchDestinationsData() {
 
 async function fetchDiscountedTours() {
     try {
-        const response = await fetch('/tours.json');
+        // Lấy ngôn ngữ hiện tại từ i18n
+        const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'vi';
+        const toursFile = currentLang === 'en' ? '/tours-en.json' : '/tours-vi.json';
+        
+        const response = await fetch(toursFile);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const tourData = await response.json();
@@ -366,6 +374,10 @@ function renderDestinations() {
         const isWish = wishlist.includes(item.name);
         const card = document.createElement('div');
         card.className = 'destination-card';
+        
+        // Lấy text từ i18n
+        const toursText = window.i18n ? window.i18n.t('destinations.card.tours') : 'tours';
+        const exploreText = window.i18n ? window.i18n.t('destinations.card.explore') : 'Khám phá';
 
         card.innerHTML = `
       <div class="wishlist-btn ${isWish ? 'active' : ''}" data-name="${item.name}" title="Add to wishlist">
@@ -381,11 +393,11 @@ function renderDestinations() {
           <div>
             <div class="destination-card__title">${item.name}</div>
             <div class="meta-small">
-              <span class="pill">${item.tours} tours</span>
+              <span class="pill">${item.tours} ${toursText}</span>
               <span>⭐ ${item.rating}</span>
             </div>
           </div>
-          <button class="view-details" data-name="${item.name}">Khám phá</button>
+          <button class="view-details" data-name="${item.name}">${exploreText}</button>
         </div>
         <div class="meta-small">${item.region}</div>
       </div>
@@ -596,7 +608,10 @@ function openDetailModal(name) {
     detailShort.textContent = item.short;
     detailLong.textContent = item.long;
     detailRating.textContent = `⭐ ${item.rating}`;
-    detailTours.textContent = `${item.tours} tours`;
+    
+    // Sử dụng i18n cho text "tours"
+    const toursText = window.i18n ? window.i18n.t('destinations.modal.tours') : 'tour';
+    detailTours.textContent = `${item.tours} ${toursText}`;
     blogText.textContent = `${item.description}`;
 
     const images = item.gallery && item.gallery.length ? item.gallery : [item.img];
@@ -955,3 +970,22 @@ if (document.readyState === 'loading') {
 } else {
     initializeApp();
 }
+
+// Lắng nghe sự kiện thay đổi ngôn ngữ để reload data
+window.addEventListener('languageChanged', async () => {
+    console.log('Language changed, reloading destinations data...');
+    
+    // Reload data theo ngôn ngữ mới
+    const dataLoadedDes = await fetchDestinationsData();
+    const dataLoadedTour = await fetchDiscountedTours();
+
+    if (dataLoadedDes && dataLoadedTour) {
+        console.log('Data reloaded successfully!');
+        
+        // Re-render tất cả các phần đã hiển thị
+        renderDestinations();
+        renderTop5();
+        renderTopDestinations();
+        renderSpecialOffers(currentOfferPage);
+    }
+});

@@ -1,9 +1,9 @@
 <section class="tour-details-content">
     <div class="tour-details-tabs">
-        <button class="tour-details-tabs__item" data-tab="information">Thông tin</button>
-        <button class="tour-details-tabs__item" data-tab="tour-plan">Lịch trình</button>
-        <button class="tour-details-tabs__item" data-tab="location">Địa điểm</button>
-        <button class="tour-details-tabs__item" data-tab="gallery">Thư viện ảnh</button>
+        <button class="tour-details-tabs__item" data-tab="information" data-i18n="tourDetails.tabs.information">Thông tin</button>
+        <button class="tour-details-tabs__item" data-tab="tour-plan" data-i18n="tourDetails.tabs.tourPlan">Lịch trình</button>
+        <button class="tour-details-tabs__item" data-tab="location" data-i18n="tourDetails.tabs.location">Địa điểm</button>
+        <button class="tour-details-tabs__item" data-tab="gallery" data-i18n="tourDetails.tabs.gallery">Thư viện ảnh</button>
     </div>
 
     <div class="tour-details-main">
@@ -14,7 +14,7 @@
                     <h2 class="tour-details-info__title">Thụy Sĩ</h2>
                     <div class="tour-details-info__price">
                         <span class="price-amount">1,000 $</span>
-                        <span class="price-unit">/ Mỗi cặp</span>
+                        <span class="price-unit" data-i18n="tourDetails.priceUnit">/ Mỗi cặp</span>
                     </div>
                 </div>
                 <div class="tour-details-info__rating">
@@ -38,30 +38,30 @@
 
                 <div class="tour-details-list">
                     <div class="tour-details-list__item">
-                        <span class="label">Điểm đến</span>
+                        <span class="label" data-i18n="tourDetails.details.destination">Điểm đến</span>
                         <span class="value">Zurich, Thụy Sĩ</span>
                     </div>
                     <div class="tour-details-list__item">
-                        <span class="label">Điểm khởi hành</span>
+                        <span class="label" data-i18n="tourDetails.details.departure">Điểm khởi hành</span>
                         <span class="value">Quảng trường chính, Thành phố mới</span>
                     </div>
                     <div class="tour-details-list__item">
-                        <span class="label">Thời gian khởi hành</span>
+                        <span class="label" data-i18n="tourDetails.details.departureTime">Thời gian khởi hành</span>
                         <span class="value">Khoảng 08:10 AM</span>
                     </div>
                     <div class="tour-details-list__item">
-                        <span class="label">Thời gian trở về</span>
+                        <span class="label" data-i18n="tourDetails.details.returnTime">Thời gian trở về</span>
                         <span class="value">Khoảng 07:20 PM</span>
                     </div>
                     <div class="tour-details-list__item">
-                        <span class="label">Trang phục</span>
+                        <span class="label" data-i18n="tourDetails.details.dressCode">Trang phục</span>
                         <span class="value">Thoải mái, nhẹ nhàng</span>
                     </div>
                 </div>
 
                 <div class="tour-details-features">
                     <div class="tour-details-features__column">
-                        <h3 class="features-title">Không bao gồm</h3>
+                        <h3 class="features-title" data-i18n="tourDetails.features.excluded">Không bao gồm</h3>
                         <div class="features-list">
                             <div class="features-list__item">
                                 <i class="far fa-times-circle"></i>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="tour-details-features__column">
-                        <h3 class="features-title">Bao gồm</h3>
+                        <h3 class="features-title" data-i18n="tourDetails.features.included">Bao gồm</h3>
                         <div class="features-list">
                             <div class="features-list__item">
                                 <i class="far fa-check-circle"></i>
@@ -97,8 +97,8 @@
                 </div>
 
                 <div class="tour-details-gallery">
-                    <h2 class="tour-details-gallery__title">Thư viện ảnh của chúng tôi</h2>
-                    <p class="tour-details-gallery__description">
+                    <h2 class="tour-details-gallery__title" data-i18n="tourDetails.gallery.title">Thư viện ảnh của chúng tôi</h2>
+                    <p class="tour-details-gallery__description" data-i18n="tourDetails.gallery.description">
                         Khám phá những hình ảnh tuyệt đẹp từ các chuyến du lịch trước đây. Những bức ảnh này sẽ cho bạn
                         cái nhìn tổng quan về những trải nghiệm tuyệt vời đang chờ đợi bạn ở Thụy Sĩ.
                     </p>
@@ -117,7 +117,7 @@
         <!-- Tour Plan Tab Content -->
         <div class="tour-details-tab-content" data-content="tour-plan" style="display: none">
             <div class="tour-plan">
-                <h2 class="tour-plan__title">Lịch trình tour</h2>
+                <h2 class="tour-plan__title" data-i18n="tourDetails.tourPlan.title">Lịch trình tour</h2>
 
                 <div class="tour-plan__item">
                     <div class="tour-plan__day">
@@ -214,7 +214,7 @@
         <!-- Location Tab Content -->
         <div class="tour-details-tab-content" data-content="location" style="display: none">
             <div class="tour-location">
-                <h2 class="tour-location__title">Vị trí địa lý</h2>
+                <h2 class="tour-location__title" data-i18n="tourDetails.location.title">Vị trí địa lý</h2>
                 <p class="tour-location__description">
                     Thụy Sĩ nằm ở trung tâm châu Âu, được bao quanh bởi Pháp, Đức, Áo, Ý và Liechtenstein. Đất nước này
                     nổi tiếng với vẻ đẹp thiên nhiên tuyệt vời, đặc biệt là dãy núi Alps hùng vĩ. Các thành phố như
@@ -301,8 +301,8 @@
         <!-- Booking Card - Always visible -->
         <div class="tour-details-booking">
             <div class="tour-details-booking__card">
-                <h3 class="booking-title">Đặt tour này</h3>
-                <p class="booking-subtitle">
+                <h3 class="booking-title" data-i18n="tourDetails.booking.title">Đặt tour này</h3>
+                <p class="booking-subtitle" data-i18n="tourDetails.booking.subtitle">
                     Hãy điền thông tin của bạn vào form bên dưới để đặt tour. Chúng tôi sẽ liên hệ với bạn trong thời
                     gian sớm nhất để xác nhận thông tin và hỗ trợ bạn hoàn tất việc đặt tour.
                 </p>
@@ -311,7 +311,7 @@
                     <div class="booking-form__group">
                         <div class="booking-form__field">
                             <img src="../assets/icons/user.svg" alt="Người dùng" class="booking-form__icon" />
-                            <input type="text" placeholder="Họ và tên" class="booking-form__input" />
+                            <input type="text" data-i18n-placeholder="tourDetails.booking.form.name" placeholder="Họ và tên" class="booking-form__input" />
                         </div>
                         <small class="booking-form__error"></small>
                     </div>
@@ -319,7 +319,7 @@
                     <div class="booking-form__group">
                         <div class="booking-form__field">
                             <img src="../assets/icons/email.svg" alt="Email" class="booking-form__icon" />
-                            <input type="email" placeholder="Email" class="booking-form__input" />
+                            <input type="email" data-i18n-placeholder="tourDetails.booking.form.email" placeholder="Email" class="booking-form__input" />
                         </div>
                         <small class="booking-form__error"></small>
                     </div>
@@ -327,7 +327,7 @@
                     <div class="booking-form__group">
                         <div class="booking-form__field">
                             <img src="../assets/icons/phone.svg" alt="Điện thoại" class="booking-form__icon" />
-                            <input type="tel" placeholder="Số điện thoại" class="booking-form__input" />
+                            <input type="tel" data-i18n-placeholder="tourDetails.booking.form.phone" placeholder="Số điện thoại" class="booking-form__input" />
                         </div>
                         <small class="booking-form__error"></small>
                     </div>
@@ -343,7 +343,7 @@
                     <div class="booking-form__group">
                         <div class="booking-form__field">
                             <img src="../assets/icons/ticket.svg" alt="Vé" class="booking-form__icon" />
-                            <input type="number" placeholder="Số lượng vé" class="booking-form__input" />
+                            <input type="number" data-i18n-placeholder="tourDetails.booking.form.tickets" placeholder="Số lượng vé" class="booking-form__input" />
                         </div>
                         <small class="booking-form__error"></small>
                     </div>
@@ -351,12 +351,12 @@
                     <div class="booking-form__group">
                         <div class="booking-form__field booking-form__field--textarea">
                             <img src="../assets/icons/message.svg" alt="Tin nhắn" class="booking-form__icon" />
-                            <textarea placeholder="Lời nhắn" class="booking-form__textarea"></textarea>
+                            <textarea data-i18n-placeholder="tourDetails.booking.form.message" placeholder="Lời nhắn" class="booking-form__textarea"></textarea>
                         </div>
                         <small class="booking-form__error"></small>
                     </div>
 
-                    <button type="submit" class="booking-form__submit-btn">Đặt ngay</button>
+                    <button type="submit" class="booking-form__submit-btn" data-i18n="tourDetails.booking.form.submit">Đặt ngay</button>
                 </form>
             </div>
         </div>
