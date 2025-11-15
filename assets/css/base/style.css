@@ -57,7 +57,7 @@
 
     /* Special Colors */
     --color-star: #ffc107;
-    --color-rating: #ffb766;
+    --color-rating: var(--color-primary);
     --color-highlight: #cfe66c;
 
     /* Newsletter Colors */
