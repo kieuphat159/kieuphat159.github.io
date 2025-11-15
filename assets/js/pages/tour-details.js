@@ -96,28 +96,44 @@
                 const priceContainer = document.querySelector(".tour-details-info__price");
                 if (priceContainer) {
                         const hasDiscount = tourData.discount_percent && tourData.discount_percent > 0;
+
+                        // Convert price based on language: VND for vi, USD for en
+                        const isVietnamese = currentLang === "vi";
+                        const displayPrice = isVietnamese ? tourData.price : Math.round(tourData.price / 25000); // Convert VND to USD
+
                         const discountedPrice = hasDiscount
-                                ? Math.round(tourData.price * (1 - tourData.discount_percent / 100))
-                                : tourData.price;
+                                ? Math.round(displayPrice * (1 - tourData.discount_percent / 100))
+                                : displayPrice;
+
+                        // Format price based on language
+                        const formatPrice = (price) => {
+                                if (isVietnamese) {
+                                        return `${price.toLocaleString("vi-VN")}đ`;
+                                } else {
+                                        return `$${price.toLocaleString("en-US")}`;
+                                }
+                        };
+
+                        const discountText = isVietnamese ? "Giảm" : "Discount";
 
                         if (hasDiscount) {
                                 priceContainer.innerHTML = `
                                         <div style="display: flex; flex-direction: column; gap: 4px;">
-                                                <span class="price-original" style="font-size: 1rem; color: var(--color-text-secondary); text-decoration: line-through;">${tourData.price.toLocaleString(
-                                                        "vi-VN"
-                                                )}đ</span>
-                                                <span class="price-amount" style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">${discountedPrice.toLocaleString(
-                                                        "vi-VN"
-                                                )}đ</span>
+                                                <span class="price-original" style="font-size: 1rem; color: var(--color-text-secondary); text-decoration: line-through;">${formatPrice(
+                                                        displayPrice
+                                                )}</span>
+                                                <span class="price-amount" style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">${formatPrice(
+                                                        discountedPrice
+                                                )}</span>
                                         </div>
-                                        <span class="price-discount-badge" style="background-color: #e74c3c; color: #fff; padding: 4px 12px; border-radius: 6px; font-size: 0.875rem; font-weight: 700; margin-left: 10px;">Giảm ${
-                                                tourData.discount_percent
-                                        }%</span>
+                                        <span class="price-discount-badge" style="background-color: #e74c3c; color: #fff; padding: 4px 12px; border-radius: 6px; font-size: 0.875rem; font-weight: 700; margin-left: 10px;">${discountText} ${
+                                        tourData.discount_percent
+                                }%</span>
                                 `;
                         } else {
                                 const priceAmount = priceContainer.querySelector(".price-amount");
                                 if (priceAmount) {
-                                        priceAmount.textContent = `${tourData.price.toLocaleString("vi-VN")}đ`;
+                                        priceAmount.textContent = formatPrice(displayPrice);
                                 }
                         }
                 }
