@@ -460,6 +460,6 @@ html.dark .header-side-menu__link.active {
     .header-side-menu__link.active::after {
         width: 55px;
         height: 3px;
-        bottom: 10px;
+        bottom: 6px;
     }
 }
