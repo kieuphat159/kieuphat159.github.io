@@ -13,7 +13,6 @@ const FALLBACKS = {
 		"../assets/images/destination-detail/ava2.jpg",
 		"../assets/images/destination-detail/ava3.jpg",
 	],
-	quote: "../assets/images/destination-detail/quote.png",
 };
 
 function normalizeText(value) {
@@ -91,6 +90,34 @@ class SkeletonLazyLoader {
 					
 					// Wrap with new skeleton
 					this.wrapImageWithSkeleton(img);
+
+					// Bind load/error handlers on the actual <img> to ensure skeleton removal
+					if (!img.dataset.skeletonBound) {
+						img.dataset.skeletonBound = 'true';
+						img.addEventListener('load', () => {
+							const wrapper = img.closest('.skeleton-wrapper');
+							if (wrapper) {
+								wrapper.classList.remove('skeleton-loading');
+								wrapper.classList.add('skeleton-loaded');
+							}
+							img.classList.add('loaded');
+							// Stop observing once loaded
+							try { this.observer.unobserve(img); } catch (_) {}
+						});
+
+						img.addEventListener('error', () => {
+							const wrapper = img.closest('.skeleton-wrapper');
+							if (wrapper) {
+								wrapper.classList.remove('skeleton-loading');
+								wrapper.classList.add('skeleton-error');
+							}
+							// Fallback to default image to avoid permanent skeleton
+							if (!img.src) {
+								img.src = (typeof FALLBACKS !== 'undefined' && FALLBACKS.cardImage) || '../assets/images/destination-detail/background.jpg';
+							}
+							try { this.observer.unobserve(img); } catch (_) {}
+						});
+					}
 					
 					// Check if image is already in viewport - if so, load immediately
 					const rect = img.getBoundingClientRect();
@@ -196,48 +223,41 @@ class SkeletonLazyLoader {
 	loadImage(img) {
 		const src = img.dataset.src;
 		console.log(`[SkeletonLazyLoader] loadImage called with src:`, src);
-		
+
 		if (!src) {
 			console.error('[SkeletonLazyLoader] No src found for image:', img);
 			return;
 		}
-		
+
 		// If image already has src and is loaded, just update wrapper
 		if (img.src && img.complete && img.naturalHeight !== 0) {
 			console.log('[SkeletonLazyLoader] Image already loaded, updating wrapper only');
-			const wrapper = img.closest(".skeleton-wrapper");
+			const wrapper = img.closest('.skeleton-wrapper');
 			if (wrapper) {
-				wrapper.classList.remove("skeleton-loading");
-				wrapper.classList.add("skeleton-loaded");
+				wrapper.classList.remove('skeleton-loading');
+				wrapper.classList.add('skeleton-loaded');
 			}
-			img.classList.add("loaded");
+			img.classList.add('loaded');
+			try { this.observer.unobserve(img); } catch (_) {}
 			return;
 		}
 
-		const wrapper = img.closest(".skeleton-wrapper");
-		const imageLoader = new Image();
+		// Assign src directly and rely on the <img> load/error handlers
+		img.src = src;
 
-		imageLoader.onload = () => {
-			console.log('[SkeletonLazyLoader] Image loaded successfully:', src.substring(0, 50));
-			img.src = src;
-			img.classList.add("loaded");
-
-			if (wrapper) {
-				wrapper.classList.remove("skeleton-loading");
-				wrapper.classList.add("skeleton-loaded");
+		// Safety timeout: ensure skeleton does not persist forever
+		setTimeout(() => {
+			const wrapper = img.closest('.skeleton-wrapper');
+			if (!img.classList.contains('loaded') && wrapper && !wrapper.classList.contains('skeleton-error')) {
+				console.warn('[SkeletonLazyLoader] Safety timeout reached, marking as error to remove skeleton');
+				wrapper.classList.remove('skeleton-loading');
+				wrapper.classList.add('skeleton-error');
+				if (!img.src) {
+					img.src = (typeof FALLBACKS !== 'undefined' && FALLBACKS.cardImage) || '../assets/images/destination-detail/background.jpg';
+				}
+				try { this.observer.unobserve(img); } catch (_) {}
 			}
-		};
-
-		imageLoader.onerror = () => {
-			console.error('[SkeletonLazyLoader] Image failed to load:', src);
-			img.alt = img.alt || "Image not available";
-			if (wrapper) {
-				wrapper.classList.remove("skeleton-loading");
-				wrapper.classList.add("skeleton-error");
-			}
-		};
-
-		imageLoader.src = src;
+		}, 5000);
 	}
 }
 
@@ -904,12 +924,6 @@ function renderTestimonials(destination) {
 		const wrapper = document.createElement("div");
 		wrapper.className = "destination-detail-testimonials__item";
 
-		const quote = document.createElement("img");
-		quote.className = "destination-detail-testimonial__quote";
-		quote.dataset.src = FALLBACKS.quote;
-		quote.alt = "";
-		quote.setAttribute("loading", "lazy");
-
 		const textEl = document.createElement("p");
 		textEl.className = "destination-detail-testimonials__text";
 		textEl.textContent = item.text;
@@ -945,7 +959,6 @@ function renderTestimonials(destination) {
 		avatar.alt = `Chân dung ${item.name}`;
 		avatar.setAttribute("loading", "lazy");
 
-		wrapper.appendChild(quote);
 		wrapper.appendChild(textEl);
 		wrapper.appendChild(nameEl);
 		wrapper.appendChild(roleEl);
