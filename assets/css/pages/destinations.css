@@ -1532,9 +1532,9 @@ img.lazy-image.loaded {
     }
 
     /* Hero Banner */
-    .des-banner {
+    /* .des-banner {
         min-height: 70vh;
-    }
+    } */
 
     .des-banner__title {
         font-size: clamp(3rem, 8vw, 5rem);
@@ -1698,10 +1698,10 @@ img.lazy-image.loaded {
     }
 
     /* Hero Banner */
-    .des-banner {
+    /* .des-banner {
         min-height: 70vh;
         padding-top: 100px;
-    }
+    } */
 
     .des-banner__title {
         font-size: clamp(2.5rem, 10vw, 3.5rem);
@@ -1936,14 +1936,14 @@ img.lazy-image.loaded {
     }
 
     /* Hero Banner */
-    .des-banner {
+    /* .des-banner {
         min-height: 80vh;
         padding-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    }
+    } */
 
     .des-banner__content {
         width: 100%;
@@ -2094,7 +2094,7 @@ img.lazy-image.loaded {
     }
 
     /* Hero Banner */
-    .des-banner {
+    /* .des-banner {
         min-height: 60vh;
         padding-top: 50px;
         display: flex;
@@ -2102,7 +2102,7 @@ img.lazy-image.loaded {
         align-items: center;
         justify-content: center;
         text-align: center;
-    }
+    } */
 
     .des-banner__title {
         font-size: 1.8rem !important;
