@@ -19,7 +19,7 @@
 
     <div class="home-hero__image-group">
         <img src="../assets/images/home/Shapes.svg" alt="" class="home-hero__brush" loading="lazy" aria-hidden="true" />
-        <img data-src="../assets/images/home/Girl.png" alt="Cô gái du lịch" class="home-hero__image lazy-image" />
+        <img src="../assets/images/home/Girl.png" alt="Cô gái du lịch" class="home-hero__image" loading="lazy" />
 
         <div class="home-hero__stat-card">
             <div class="home-hero__stat-circle" style="--progress: 39">
@@ -68,41 +68,6 @@
     </div>
 </section>
 
-<!-- Search Box -->
-<section class="home-search lazy-load">
-    <form class="home-search__form">
-        <div class="home-search__group">
-            <label data-i18n="home.search.location">Địa điểm</label>
-            <select title="Địa điểm">
-                <option data-i18n="home.search.options.locations.bali">Bali, Indonesia</option>
-                <option data-i18n="home.search.options.locations.hanoi">Hà Nội, Việt Nam</option>
-            </select>
-        </div>
-        <div class="home-search__group">
-            <label data-i18n="home.search.type">Loại hình</label>
-            <select title="Loại hình">
-                <option data-i18n="home.search.options.types.city">Thành phố</option>
-                <option data-i18n="home.search.options.types.adventure">Phiêu lưu</option>
-            </select>
-        </div>
-        <div class="home-search__group">
-            <label data-i18n="home.search.duration">Thời gian</label>
-            <select title="Thời gian">
-                <option data-i18n="home.search.options.durations.short">1 - 5 ngày</option>
-                <option data-i18n="home.search.options.durations.medium">6 - 10 ngày</option>
-            </select>
-        </div>
-        <div class="home-search__group">
-            <label data-i18n="home.search.guests">Số khách</label>
-            <select title="Số khách">
-                <option data-i18n="home.search.options.guests.eight">8 người</option>
-                <option data-i18n="home.search.options.guests.four">4 người</option>
-            </select>
-        </div>
-        <a href="#tours" class="home-search__btn" type="submit" data-i18n="home.search.searchBtn">Tìm kiếm</a>
-    </form>
-</section>
-
 <!-- Tour Section -->
 <section class="home-tours lazy-load">
     <div class="home-tours__header">
@@ -134,68 +99,10 @@
     <div class="home-destinations__grid" id="destinationsGrid"></div>
 </section>
 
-<!-- Tour Type Section -->
-<section class="home-tour-types lazy-load">
-    <h2 class="home-tour-types__heading" data-i18n="home.tourTypes.heading">Loại Tour</h2>
-    <div class="home-tour-types__grid">
-        <article class="home-tour-type-card">
-            <a href="#tours">
-                <div class="home-tour-type-card__icon">
-                    <img src="../assets/images/home/Icon1.svg" alt="Biểu tượng Tour Thành phố" />
-                </div>
-                <h3 class="home-tour-type-card__title" data-i18n="home.tourTypes.city">Tour Thành phố</h3>
-                <p class="home-tour-type-card__meta">
-                    <span>5 <span data-i18n="home.tourTypes.tours">Tour</span></span> ·
-                    <span data-i18n="common.from">Từ</span> <span class="home-tour-type-card__price">$505</span>
-                </p>
-            </a>
-        </article>
-
-        <article class="home-tour-type-card">
-            <a href="#tours">
-                <div class="home-tour-type-card__icon">
-                    <img src="../assets/images/home/Icon2.svg" alt="Biểu tượng Bãi biển" />
-                </div>
-                <h3 class="home-tour-type-card__title" data-i18n="home.tourTypes.beach">Bãi biển</h3>
-                <p class="home-tour-type-card__meta">
-                    <span>10 <span data-i18n="home.tourTypes.tours">Tour</span></span> ·
-                    <span data-i18n="common.from">Từ</span> <span class="home-tour-type-card__price">$265</span>
-                </p>
-            </a>
-        </article>
-
-        <article class="home-tour-type-card">
-            <a href="#tours">
-                <div class="home-tour-type-card__icon">
-                    <img src="../assets/images/home/Icon3.svg" alt="Biểu tượng Tour Bảo tàng" />
-                </div>
-                <h3 class="home-tour-type-card__title" data-i18n="home.tourTypes.museum">Tour Bảo tàng</h3>
-                <p class="home-tour-type-card__meta">
-                    <span>5 <span data-i18n="home.tourTypes.tours">Tour</span></span> ·
-                    <span data-i18n="common.from">Từ</span> <span class="home-tour-type-card__price">$395</span>
-                </p>
-            </a>
-        </article>
-
-        <article class="home-tour-type-card">
-            <a href="#tours">
-                <div class="home-tour-type-card__icon">
-                    <img src="../assets/images/home/Icon4.svg" alt="Biểu tượng Du thuyền" />
-                </div>
-                <h3 class="home-tour-type-card__title" data-i18n="home.tourTypes.cruise">Du thuyền</h3>
-                <p class="home-tour-type-card__meta">
-                    <span>8 <span data-i18n="home.tourTypes.tours">Tour</span></span> ·
-                    <span data-i18n="common.from">Từ</span> <span class="home-tour-type-card__price">$805</span>
-                </p>
-            </a>
-        </article>
-    </div>
-</section>
-
 <section class="home-testimonial lazy-load">
     <div class="home-testimonial__container">
         <div class="home-testimonial__image">
-            <img data-src="../assets/images/home/Girl Images.png" alt="Khách du lịch hạnh phúc" class="lazy-image" />
+            <img src="../assets/images/home/Girl Images.png" alt="Khách du lịch hạnh phúc" loading="lazy" />
         </div>
 
         <div class="home-testimonial__content">
@@ -207,9 +114,10 @@
 
             <div class="home-testimonial__author">
                 <img
-                    data-src="../assets/images/home/raul van.png"
+                    src="../assets/images/home/raul van.png"
                     alt="Ảnh đại diện người dùng"
-                    class="home-testimonial__avatar lazy-image"
+                    class="home-testimonial__avatar"
+                    loading="lazy"
                 />
                 <div>
                     <h4 class="home-testimonial__name">Raul van Sutoyo</h4>
@@ -226,87 +134,15 @@
 <!-- Articles section -->
 <section class="home-articles lazy-load">
     <div class="home-articles__header">
-        <h2 class="home-articles__title" data-i18n="home.articles.title">Bài viết & Hướng dẫn du lịch</h2>
-        <p class="home-articles__subtitle" data-i18n="home.articles.subtitle">
-            Những chuyến đi giúp chúng ta hiểu hơn về ý nghĩa của cuộc sống và trở thành những con người tốt hơn. Mỗi
-            lần du lịch, ta lại nhìn thế giới bằng một đôi mắt mới.
+        <h2 class="home-articles__title">Bài viết & Hướng dẫn du lịch</h2>
+        <p class="home-articles__subtitle">
+            Những chuyến đi giúp chúng ta hiểu hơn về ý nghĩa của cuộc sống và trở thành những con người tốt hơn.
         </p>
         <div class="home-articles__divider"></div>
     </div>
 
-    <div class="home-articles__content">
-        <div class="home-articles__main">
-            <img
-                data-src="../assets/images/home/main_pic.jpg"
-                alt="Khinh khí cầu"
-                class="home-articles__main-img lazy-image"
-            />
-            <div class="home-articles__main-text">
-                <div class="home-articles__main-info">
-                    <h3 class="home-articles__main-title" data-i18n="home.articles.main.title">
-                        Chuyến hành trình thật sự không chỉ là tìm nơi mới
-                    </h3>
-                    <p class="home-articles__main-desc" data-i18n="home.articles.main.description">
-                        Sự háo hức khiến anh ấy tự nhiên nhìn thấy những cơ hội mới. Niềm hy vọng được nuôi dưỡng qua
-                        từng trải nghiệm.
-                    </p>
-                </div>
-                <span class="home-articles__date" data-i18n="home.articles.main.date">01 Tháng 6, 2021</span>
-            </div>
-        </div>
-
-        <div class="home-articles__list">
-            <article class="home-articles__item">
-                <img
-                    data-src="../assets/images/home/first_pic.jpg"
-                    alt="Đồi cát sa mạc"
-                    class="home-articles__item-img lazy-image"
-                />
-                <div class="home-articles__item-content">
-                    <h4 class="home-articles__item-title" data-i18n="home.articles.item1.title">
-                        Những ngọn núi luôn là điểm đến lý tưởng
-                    </h4>
-                    <p class="home-articles__item-desc" data-i18n="home.articles.item1.description">
-                        Xa hơn, những người bạn đồng hành vẫn luôn là nguồn cảm hứng.
-                    </p>
-                    <span class="home-articles__date" data-i18n="home.articles.item1.date">01 Tháng 6, 2021</span>
-                </div>
-            </article>
-
-            <article class="home-articles__item">
-                <img
-                    data-src="../assets/images/home/second_pic.png"
-                    alt="Lều trại giữa núi"
-                    class="home-articles__item-img lazy-image"
-                />
-                <div class="home-articles__item-content">
-                    <h4 class="home-articles__item-title" data-i18n="home.articles.item2.title">
-                        Cuộc sống là một chuyến phiêu lưu đầy táo bạo
-                    </h4>
-                    <p class="home-articles__item-desc" data-i18n="home.articles.item2.description">
-                        Một trong những hành trình ấy là hành trình cứu lấy chính bản thân mình.
-                    </p>
-                    <span class="home-articles__date" data-i18n="home.articles.item2.date">01 Tháng 6, 2021</span>
-                </div>
-            </article>
-
-            <article class="home-articles__item">
-                <img
-                    data-src="../assets/images/home/third_pic.png"
-                    alt="Phiêu lưu trên xe máy"
-                    class="home-articles__item-img lazy-image"
-                />
-                <div class="home-articles__item-content">
-                    <h4 class="home-articles__item-title" data-i18n="home.articles.item3.title">
-                        Cuộc sống là một chuyến phiêu lưu hoặc chẳng là gì cả
-                    </h4>
-                    <p class="home-articles__item-desc" data-i18n="home.articles.item3.description">
-                        Mỗi hành trình đều mang đến những trải nghiệm đáng nhớ.
-                    </p>
-                    <span class="home-articles__date" data-i18n="home.articles.item3.date">01 Tháng 6, 2021</span>
-                </div>
-            </article>
-        </div>
+    <div class="home-articles__content" id="articles-container">
+        <!-- JS sẽ render vào đây -->
     </div>
 </section>
 
