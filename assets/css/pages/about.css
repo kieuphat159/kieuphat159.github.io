@@ -534,6 +534,9 @@ h3 {
 
 /* Portrait Phones, < 576px */
 @media (max-width: 575.98px) {
+        .about-des-banner {
+                margin-left: -20px;
+        }
         .about-content,
         .about-why-choose-us,
         .about-tour-guide,
