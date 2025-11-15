@@ -266,56 +266,102 @@
         setupDynamicLazyImages();
     }
 
-    // ============================================
-    // LOAD DESTINATIONS - UPDATED FOR I18N
-    // ============================================
-    async function loadDestinations() {
-        try {
-            // Sử dụng DataLoader để load destinations theo ngôn ngữ hiện tại
-            const json = await window.dataLoader.loadDestinations();
-            renderDestinations(json.data);
-        } catch (error) {
-            console.error("Lỗi khi load dữ liệu destinations:", error);
-        }
+    function truncateText(text, maxLength = 150) {
+        if (text.length <= maxLength) return text;
+        return text.slice(0, maxLength) + "...";
     }
 
-    function renderDestinations(data) {
-        const grid = document.querySelector(".home-destinations__grid");
-        if (!grid) return;
+    function loadDestinations() {
+        fetch("/data.json")
+            .then(res => res.json())
+            .then(json => {
+                const grid = document.querySelector(".home-destinations__grid");
+                if (!grid) return;
 
-        grid.innerHTML = "";
-        const indices = [0, 2, 7, 4, 6, 5];
-        const destinations = data.filter((_, i) => indices.includes(i));
+                grid.innerHTML = ""
+                const indices = [0, 2, 7, 4, 6, 5];
+                const destinations = json.data.filter((_, i) => indices.includes(i));
 
-        destinations.forEach((item, index) => {
-            const country = item.country;
-            const rating = item.rating;
-            const firstPlace = item.places[0];
-            const image = firstPlace.famous_locations[0].image_url;
-            const type = firstPlace.city;
+                destinations.forEach((item, index) => {
+                    const country = item.country;
+                    const rating = item.rating;
+                    const firstPlace = item.places[0];
+                    const image = firstPlace.famous_locations[0].image_url;
+                    const type = firstPlace.city;
 
-            const extraClass =
-                index === 1 ? "home-destination-card--tall" : index === 2 ? "home-destination-card--wide" : "";
+                    const extraClass = index === 1
+                        ? "home-destination-card--tall"
+                        : index === 2
+                        ? "home-destination-card--wide"
+                        : "";
 
-            const card = document.createElement("article");
-            card.className = `home-destination-card ${extraClass}`;
-            card.innerHTML = `
-            <a href="#destination-detail?id=${item.id}" class="home-destination-card__link">
-                <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
-                <img
-                    data-src="${image}"
-                    alt="${type} ${country}"
-                    class="home-destination-card__img lazy-image"
-                />
-                <div class="home-destination-card__info">
-                    <h3 class="home-destination-card__name">${country}</h3>
-                    <span class="home-destination-card__type">${type}</span>
-                </div>
-            </a>
-        `;
+                    const card = document.createElement("article");
+                    card.className = `home-destination-card ${extraClass}`;
+                    card.innerHTML = `
+                        <a href="#destination-detail?id=${item.id}">
+                            <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
+                            <img
+                                data-src="${image}"
+                                alt="${type} ${country}"
+                                class="home-destination-card__img lazy-image"
+                            />
+                            <div class="home-destination-card__info">
+                                <h3 class="home-destination-card__name">${country}</h3>
+                                <span class="home-destination-card__type">${type}</span>
+                            </div>
+                        </a>
+                    `;
 
-            grid.appendChild(card);
-        });
+                    grid.appendChild(card);
+
+                    const vn = json.data.find(item => item.id === "vn001");
+                    const places = vn.places;
+
+                    // Lấy 4 city đầu tiên
+                    const mainCity = places[0];
+                    const otherCities = places.slice(1, 4);
+
+                    const container = document.getElementById("articles-container");
+
+                    container.innerHTML = `
+                    <a href="#blog-detail?id=1" class="home-articles__main">
+                        <img
+                            data-src="${mainCity.famous_locations[0].image_url}"
+                            alt="${mainCity.city}"
+                            class="home-articles__main-img lazy-image"
+                        />
+                        <div class="home-articles__main-text">
+                            <div class="home-articles__main-info">
+                                <h3 class="home-articles__main-title">${mainCity.shortdesc}</h3>
+                                <p class="home-articles__main-desc">
+                                    ${truncateText(mainCity.blog, 80)}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="home-articles__list">
+                        ${otherCities
+                            .map((city, idx) => {
+                                const realIndex = idx + 2; // index thật trong places
+                                return `
+                                    <a href="#blog-detail?id=${realIndex}" class="home-articles__item">
+                                        <img
+                                            data-src="${city.famous_locations[0].image_url}"
+                                            alt="${city.city}"
+                                            class="home-articles__item-img lazy-image"
+                                        />
+                                        <div class="home-articles__item-content">
+                                            <h4 class="home-articles__item-title">${city.shortdesc}</h4>
+                                            <p class="home-articles__item-desc">${truncateText(city.blog, 50)}</p>
+                                        </div>
+                                    </a>
+                                `;
+                            })
+                            .join("")}
+                    </div>
+                    `;
+                });
 
         // Setup lazy loading cho ảnh mới thêm vào
         setupDynamicLazyImages();
@@ -323,10 +369,9 @@
 
     // Setup lazy loading cho ảnh được thêm động
     function setupDynamicLazyImages() {
-        const lazyImages = document.querySelectorAll(
-            "#tours-container img.lazy-image[data-src], .home-destinations__grid img.lazy-image[data-src]"
-        );
-
+        const lazyImages = document.querySelectorAll("#tours-container img.lazy-image[data-src]");
+        const lazyimage = document.querySelectorAll("#destinationsGrid img.lazy-image[data-src]");
+        const lazyimg = document.querySelectorAll("#articles-container img.lazy-image[data-src]")
         if (!("IntersectionObserver" in window)) {
             lazyImages.forEach((img) => {
                 img.src = img.dataset.src;
