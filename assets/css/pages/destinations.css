@@ -830,7 +830,7 @@ section {
 }
 
 .trip-results p {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: auto;
     font-weight: var(--font-weight-semibold);
     color: #fff;
@@ -2120,6 +2120,12 @@ img.lazy-image.loaded {
         font-size: 12px;
     }
 
+    .filter-right label {
+        font-size: 13px;
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
     /* Destinations Grid */
     .destinations-grid__wrapper {
         grid-template-columns: 1fr;
@@ -2161,15 +2167,18 @@ img.lazy-image.loaded {
 
     /* Top Destinations Slider */
     .topdest-card {
-        flex: 1 1 100% !important;
-        min-width: 0 !important;
+        flex: 0 0 100% !important; /* Mỗi slide chiếm đúng 100% */
+        min-width: 100% !important; /* Bắt buộc để ngăn bị co lại */
         max-width: 100%;
         border-radius: 12px;
+        overflow: hidden; /* Ngăn ảnh tràn */
     }
 
     .topdest-card img {
         width: 100%;
-        height: auto;
+        height: 180px; /* Giúp layout ổn định trên mobile */
+        object-fit: cover; /* Giữ ảnh không bị méo */
+        border-radius: 12px;
     }
 
     /* Modal */
