@@ -830,7 +830,7 @@ section {
 }
 
 .trip-results p {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin: auto;
     font-weight: var(--font-weight-semibold);
     color: #fff;
@@ -1725,6 +1725,12 @@ img.lazy-image.loaded {
         min-width: auto;
     }
 
+    .filter-right label {
+        font-size: 17px;
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
     /* Destinations Grid */
     .destinations-grid__wrapper {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -1972,6 +1978,12 @@ img.lazy-image.loaded {
         width: 100%;
         padding: 10px 12px;
         font-size: 14px;
+    }
+
+    .filter-right label {
+        font-size: 15px;
+        flex-shrink: 0;
+        white-space: nowrap;
     }
 
     /* Destinations Grid */
