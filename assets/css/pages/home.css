@@ -1693,6 +1693,9 @@ video.lazy-video.loaded {
     .vlog-slider {
         padding: 0 10px;
     }
+    .home-articles__item-desc {
+        display: none;
+    }
 }
 
 /* ============================================
