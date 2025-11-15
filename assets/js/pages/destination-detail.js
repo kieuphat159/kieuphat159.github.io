@@ -13,7 +13,6 @@ const FALLBACKS = {
 		"../assets/images/destination-detail/ava2.jpg",
 		"../assets/images/destination-detail/ava3.jpg",
 	],
-	quote: "../assets/images/destination-detail/quote.png",
 };
 
 function normalizeText(value) {
@@ -904,12 +903,6 @@ function renderTestimonials(destination) {
 		const wrapper = document.createElement("div");
 		wrapper.className = "destination-detail-testimonials__item";
 
-		const quote = document.createElement("img");
-		quote.className = "destination-detail-testimonial__quote";
-		quote.dataset.src = FALLBACKS.quote;
-		quote.alt = "";
-		quote.setAttribute("loading", "lazy");
-
 		const textEl = document.createElement("p");
 		textEl.className = "destination-detail-testimonials__text";
 		textEl.textContent = item.text;
@@ -945,7 +938,6 @@ function renderTestimonials(destination) {
 		avatar.alt = `Chân dung ${item.name}`;
 		avatar.setAttribute("loading", "lazy");
 
-		wrapper.appendChild(quote);
 		wrapper.appendChild(textEl);
 		wrapper.appendChild(nameEl);
 		wrapper.appendChild(roleEl);
