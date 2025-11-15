@@ -27,9 +27,9 @@
     --color-text-muted: #b3bcc5;
 
     /* Background Colors */
-    --color-bg-primary: #faf8ed;
+    --color-bg-primary: #f9f9f9;
     --color-bg-secondary: #ffffff;
-    --color-bg-tertiary: rgba(225, 225, 225, 0.61);
+    --color-bg-tertiary: #f9f9f9;
     --color-bg-inverse: #2d3134;
     --color-bg-overlay: rgba(0, 0, 0, 0.5);
 
@@ -79,8 +79,8 @@
     /* ============================================
        TYPOGRAPHY SYSTEM
        ============================================ */
-    --font-primary: 'Inter', system-ui, sans-serif;
-    --font-heading: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    --font-primary: "Inter", system-ui, sans-serif;
+    --font-heading: "Poppins", "Segoe UI", Arial, sans-serif;
 
     --font-weight-light: 300;
     --font-weight-normal: 400;
@@ -242,99 +242,104 @@
 }
 
 .dark {
-    /* Core colors */
-    --color-primary: #ff7b29;
-    --color-primary-hover: #ff8a3d;
-    --color-primary-dark: #e55a28;
-    --color-primary-light: #ffb366;
+    /* Core colors - Sunset & Lagoon */
+    --color-primary: #ff9b6b;
+    --color-primary-hover: #ffb083;
+    --color-primary-dark: #ff8554;
+    --color-primary-light: #ffd1b5;
 
-    --color-secondary: #31c3e0;
-    --color-secondary-hover: #22b8d9;
-    --color-secondary-dark: #1a9bb8;
+    --color-secondary: #6fd5ff;
+    --color-secondary-hover: #8ae2ff;
+    --color-secondary-dark: #3db7e3;
 
-    --color-accent: #132742;
-    --color-accent-hover: #1a3452;
-    --color-accent-light: #2a4a6b;
+    --color-accent: #4b5d73;
+    --color-accent-hover: #62748c;
+    --color-accent-light: #8191a6;
 
-    /* Text */
-    --color-text-primary: #ececec;
-    --color-text-secondary: #d9d9d9;
-    --color-text-tertiary: #b3bcc5;
-    --color-text-inverse: #2d3134;
-    --color-text-muted: #9aa3ad;
+    /* Text - Soft Contrast */
+    --color-text-primary: #f5f7fb;
+    --color-text-secondary: #cfd6e6;
+    --color-text-tertiary: #a9b2c6;
+    --color-text-inverse: #fff;
+    --color-text-muted: #8c94a8;
 
-    /* Background */
-    --color-bg-primary: #373434;
-    --color-bg-secondary: #484848;
-    --color-bg-tertiary: #2c2f32;
+    /* Background - Misty Twilight */
+    --color-bg-primary: #222733;
+    --color-bg-secondary: #2d3342;
+    --color-bg-tertiary: #383f4f;
     --color-bg-inverse: #ffffff;
-    --color-bg-overlay: rgba(0, 0, 0, 0.7);
+    --color-bg-overlay: rgba(13, 16, 26, 0.72);
 
-    /* Card */
-    --color-card-bg: #2c2f32;
-    --color-card-border: #414446;
-    --color-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
-    --color-card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.65);
+    /* Card - Gentle Depth */
+    --color-card-bg: #2d3342;
+    --color-card-border: #3d4354;
+    --color-card-shadow: 0 4px 16px rgba(6, 9, 20, 0.35);
+    --color-card-shadow-hover: 0 18px 35px rgba(8, 10, 24, 0.45);
 
-    /* Border */
-    --color-border-primary: #414446;
-    --color-border-secondary: #4d5154;
+    /* Border - Airy Definition */
+    --color-border-primary: #3d4354;
+    --color-border-secondary: #4a5163;
     --color-border-focus: var(--color-primary);
-    --color-border-muted: #3d4248;
+    --color-border-muted: #2a2f3b;
 
-    /* Status */
-    --color-success: #4caf50;
-    --color-success-light: #2e4a2e;
-    --color-error: #f44336;
-    --color-error-light: #4a2e2e;
-    --color-warning: #ffc107;
-    --color-warning-light: #4a3e2e;
-    --color-info: #2196f3;
-    --color-info-light: #2e3a4a;
+    /* Status - Harmonized */
+    --color-success: #63c68b;
+    --color-success-light: #253f33;
+    --color-error: #ff7a7f;
+    --color-error-light: #3f262a;
+    --color-warning: #ffd27a;
+    --color-warning-light: #423528;
+    --color-info: #7bc1ff;
+    --color-info-light: #253548;
 
-    --color-star: #ffc107;
-    --color-rating: #ffb766;
-    --color-highlight: #cfe66c;
+    --color-star: #ffd27a;
+    --color-rating: #ffc596;
+    --color-highlight: #d7f29c;
 
-    --color-newsletter-bg: #f4bda0;
-    --color-newsletter-text: #ffffff;
-    --color-newsletter-shape: rgba(0, 0, 0, 0.35);
+    --color-newsletter-bg: #f0a274;
+    --color-newsletter-text: #1f2431;
+    --color-newsletter-shape: rgba(12, 15, 24, 0.22);
 
-    --color-shadow-light: rgba(0, 0, 0, 0.2);
-    --color-shadow-medium: rgba(0, 0, 0, 0.4);
-    --color-shadow-heavy: rgba(0, 0, 0, 0.6);
-    --color-shadow-primary: rgba(255, 123, 41, 0.4);
-    --color-shadow-secondary: rgba(49, 195, 224, 0.4);
+    --color-shadow-light: rgba(5, 8, 18, 0.2);
+    --color-shadow-medium: rgba(5, 8, 18, 0.35);
+    --color-shadow-heavy: rgba(5, 8, 18, 0.55);
+    --color-shadow-primary: rgba(255, 155, 107, 0.35);
+    --color-shadow-secondary: rgba(111, 213, 255, 0.35);
 
-    --header-bg: #414446;
+    --header-bg: #222733;
     --header-text: var(--color-text-primary);
     --header-border: var(--color-border-primary);
 
-    --footer-bg: var(--color-bg-primary);
+    --footer-bg: #1f2430;
     --footer-text: var(--color-text-secondary);
-    --footer-divider: #575551;
-    --footer-social-border: #ececec;
+    --footer-divider: #3c4354;
+    --footer-social-border: #cfd6e6;
 
     --hero-bg: var(--color-bg-primary);
     --hero-text: var(--color-text-primary);
-    --hero-card-bg: #272a2d;
-    --hero-card-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
-    --hero-search-bg: #2c2f32;
-    --hero-search-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+    --hero-card-bg: #32394a;
+    --hero-card-shadow: 0 24px 45px rgba(6, 9, 20, 0.5);
+    --hero-search-bg: #2a3040;
+    --hero-search-shadow: 0 12px 38px rgba(6, 9, 20, 0.4);
 
     --tour-card-shadow: var(--color-card-shadow);
     --tour-card-shadow-hover: var(--color-card-shadow-hover);
     --tour-price: var(--color-primary);
     --tour-meta: var(--color-text-tertiary);
 
-    --dest-card-bg: #403d39;
-    --dest-card-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 65%, rgba(0, 0, 0, 0) 100%);
-    --dest-rating-bg: #2e2c2a;
+    --dest-card-bg: #32394a;
+    --dest-card-overlay: linear-gradient(
+        180deg,
+        rgba(5, 7, 16, 0.65) 0%,
+        rgba(5, 7, 16, 0.15) 65%,
+        rgba(5, 7, 16, 0) 100%
+    );
+    --dest-rating-bg: #242a38;
     --dest-rating-color: var(--color-rating);
 
-    --review-bar-bg: #414446;
-    --review-form-bg: #232426;
-    --review-form-border: #414446;
+    --review-bar-bg: #40485b;
+    --review-form-bg: #242a38;
+    --review-form-border: #40485b;
     --review-form-text: var(--color-text-primary);
     --review-form-placeholder: var(--color-text-muted);
 
@@ -350,10 +355,10 @@
     --pagination-bg-active: var(--color-primary);
     --pagination-text-active: var(--color-text-inverse);
 
-    --loading-bg: rgba(0, 0, 0, 0.95);
-    --loading-text: #ccc;
-    --loading-spinner-border: #333;
-    --loading-spinner-active: #3498db;
+    --loading-bg: rgba(6, 9, 20, 0.92);
+    --loading-text: #dde3f3;
+    --loading-spinner-border: #343a49;
+    --loading-spinner-active: #7bc1ff;
 }
 
 /* Base reset */
@@ -402,7 +407,7 @@ h3,
 h4,
 h5,
 h6,
-[class*='__title'] {
+[class*="__title"] {
     font-family: var(--font-heading);
     color: var(--color-text-primary);
     margin: 0;
@@ -640,8 +645,23 @@ body:has(
         .contact-banner,
         .tour-details-banner
     )
+    header
     .header-logo__text {
     color: var(--color-text-inverse);
+}
+
+body:has(
+        .onl-banner,
+        .des-banner,
+        .about-des-banner,
+        .destination-detail-hero,
+        .tours-banner,
+        .contact-banner,
+        .tour-details-banner
+    )
+    header.scrolled
+    .header-logo__text {
+    color: var(--color-text-primary);
 }
 
 /* Loading overlay */
@@ -665,7 +685,7 @@ body:has(
 
 #page-loading {
     position: fixed;
-    top: 76px;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
@@ -675,7 +695,7 @@ body:has(
     background: var(--loading-bg);
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
-    z-index: 850;
+    z-index: 10000;
     flex-direction: column;
     gap: var(--spacing-lg);
 }
@@ -691,27 +711,21 @@ body:not(.page-ready) .container {
     opacity: 0;
 }
 
-/* Keep header visible during loading */
-body:not(.page-ready) header .container {
-    visibility: visible;
-    opacity: 1;
-}
-
 body:not(.page-ready) header {
-    background-color: rgba(252, 252, 252, 0.9) !important;
-    backdrop-filter: blur(10px) !important;
-    transition: none !important;
-}
-
-/* Make header nav links black during loading */
-body:not(.page-ready) .header-main-nav__link {
-    color: var(--nav-text) !important;
+    visibility: hidden;
+    opacity: 0;
 }
 
 body.page-ready .container {
     visibility: visible;
     opacity: 1;
     transition: opacity 0.3s ease;
+}
+
+body.page-ready header {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 body.page-ready #page-loading {

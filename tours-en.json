@@ -1,0 +1,832 @@
+﻿{
+  "tours": [
+    {
+      "id": "tour_vn_01",
+      "destination_id": "vn001",
+      "title": "12-Day Vietnam Cross-Country Tour: Hanoi - Hue - Saigon",
+      "duration_days": 12,
+      "price": 25900000,
+      "discount_percent": 5,
+      "rating": 4.8,
+      "max_people": 25,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Khám phá",
+      "main_image": "/assets/images/data/Việt Nam/Hà Nội/Hồ Gươm.jpeg",
+      "overview": "A journey spanning from North to South, admiring Vietnam's stunning landscapes and distinctive culture.",
+      "highlights": [
+        "Visit Hoan Kiem Lake, Ho Chi Minh Mausoleum, Hanoi Old Quarter",
+        "Explore the enchanting Hoi An Ancient Town at night",
+        "Swim at My Khe Beach, visit Marble Mountains",
+        "Admire the Independence Palace and Notre Dame Cathedral in Ho Chi Minh City"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Hanoi – Exploring the Capital",
+          "activities": [
+            "Pick up at Noi Bai Airport",
+            "Visit Hoan Kiem Lake, Temple of Literature – Quoc Tu Giam",
+            "Enjoy Hanoi specialty dinner"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Hue – Imperial Heritage",
+          "activities": [
+            "Visit Hue Imperial City",
+            "Listen to Hue royal music on the Perfume River"
+          ]
+        },
+        {
+          "day": 12,
+          "title": "Hoi An – Da Nang",
+          "activities": [
+            "Visit Hoi An Ancient Town",
+            "Swim at My Khe Beach, Marble Mountains"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "3 meals/day",
+        "guide": "Professional local guide",
+        "insurance": "Full tour travel insurance"
+      }
+    },
+    {
+      "id": "tour_jp_01",
+      "destination_id": "jp002",
+      "title": "7-Day Japan Tour: Tokyo - Kyoto - Osaka",
+      "duration_days": 7,
+      "price": 46900000,
+      "discount_percent": 10,
+      "rating": 4.9,
+      "max_people": 20,
+      "transport": ["Máy bay", "Tàu cao tốc Shinkansen"],
+      "type": "Văn hóa - Hiện đại",
+      "main_image": "/assets/images/data/Nhật Bản/Tokyo/Tháp Tokyo Skytree.jpg",
+      "overview": "Discover the blend of modernity and tradition in Tokyo, Kyoto, and Osaka.",
+      "highlights": [
+        "Shibuya Crossing, Tokyo Skytree",
+        "Kinkaku-ji Temple and Arashiyama Bamboo Grove",
+        "Vibrant Dotonbori area in Osaka"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Tokyo – Arrival & Exploration",
+          "activities": [
+            "Arrive in Tokyo, check in",
+            "Visit Shibuya Crossing and Tokyo Skytree"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Tokyo → Kyoto by Shinkansen",
+          "activities": [
+            "Experience the bullet train",
+            "Visit Kinkaku-ji, Arashiyama Bamboo Grove"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "3-4 star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "International travel insurance"
+      }
+    },
+    {
+      "id": "tour_fr_01",
+      "destination_id": "fr003",
+      "title": "8-Day France Tour: Paris - Nice - Lyon",
+      "duration_days": 8,
+      "price": 68900000,
+      "discount_percent": 10,
+      "rating": 4.9,
+      "max_people": 18,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Lãng mạn - Văn hóa",
+      "main_image": "/assets/images/data/Pháp/Paris/Tháp Eiffel.jpg",
+      "overview": "Immerse yourself in the City of Light, savor French cuisine and the Mediterranean Sea.",
+      "highlights": [
+        "Eiffel Tower, Louvre",
+        "Seine River cruise",
+        "Nice Riviera and the old town Vieille Ville"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Paris – Capital Highlights",
+          "activities": [
+            "Visit Eiffel Tower, Champs-Élysées",
+            "Stroll along the Seine River"
+          ]
+        },
+        {
+          "day": 6,
+          "title": "Paris → Nice",
+          "activities": [
+            "Travel to Nice",
+            "Walk through Vieille Ville and the beach"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "European travel insurance"
+      }
+    },
+    {
+      "id": "tour_it_01",
+      "destination_id": "it004",
+      "title": "10-Day Italy Tour: Rome - Florence - Venice",
+      "duration_days": 10,
+      "price": 71900000,
+      "discount_percent": 8,
+      "rating": 4.8,
+      "max_people": 20,
+      "transport": ["Máy bay", "Xe du lịch", "Tàu"],
+      "type": "Lịch sử - Nghệ thuật",
+      "main_image": "/assets/images/data/Ý/Venice/Quảng trường St. Mark.jpeg",
+      "overview": "Explore Roman heritage, Renaissance art in Florence, and romance in Venice.",
+      "highlights": [
+        "Colosseum, Trevi Fountain",
+        "Uffizi Gallery, Ponte Vecchio",
+        "St. Mark’s Square and gondola ride in Venice"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Rome – Roman Antiquity",
+          "activities": [
+            "Visit Colosseum, Pantheon, Trevi Fountain"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Florence – Art and Cuisine",
+          "activities": [
+            "Visit Uffizi Gallery, Ponte Vecchio",
+            "Experience Tuscan cuisine"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "3-4 star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Local guide",
+        "insurance": "Travel insurance"
+      }
+    },
+    {
+      "id": "tour_us_01",
+      "destination_id": "us005",
+      "title": "9-Day West Coast USA Tour: Los Angeles - Las Vegas - Grand Canyon",
+      "duration_days": 9,
+      "price": 89900000,
+      "discount_percent": 7,
+      "rating": 4.7,
+      "max_people": 22,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Giải trí - Thiên nhiên",
+      "main_image": "/assets/images/data/Mỹ/Las Vegas/Đài phun nước Bellagio.jpg",
+      "overview": "From Hollywood to the Grand Canyon — enjoy entertainment, shows, and natural wonders.",
+      "highlights": [
+        "Santa Monica Pier, Hollywood",
+        "Las Vegas Strip and entertainment shows",
+        "Grand Canyon – a natural wonder"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Los Angeles – Arrival",
+          "activities": [
+            "Visit Hollywood, Santa Monica Pier"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Las Vegas – Entertainment Night",
+          "activities": [
+            "Explore Bellagio, Fremont Street, evening show"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "3-4 star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Bảo hiểm quốc tế"
+      }
+    },
+    {
+      "id": "tour_th_01",
+      "destination_id": "th006",
+      "title": "5-Day Thailand Tour: Bangkok & Phuket (Beach & Culture)",
+      "duration_days": 5,
+      "price": 11900000,
+      "discount_percent": 12,
+      "rating": 4.6,
+      "max_people": 30,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Nghỉ dưỡng - Văn hóa",
+      "main_image": "/assets/images/data/Thái Lan/Bangkok/Du thuyền trên sông Chao Phraya.jpg",
+      "overview": "Combine temple visits in Bangkok with turquoise waters in Phuket.",
+      "highlights": [
+        "Wat Pho, Chao Phraya River cruise",
+        "Damnoen Saduak Floating Market",
+        "Patong Beach and Phi Phi Islands"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Bangkok – Temples and Cuisine",
+          "activities": [
+            "Visit Wat Pho, Grand Palace",
+            "Evening street food tour"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Phuket – Islands and Beaches",
+          "activities": [
+            "Visit Phi Phi Islands, swim at Patong Beach"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "3 meals/day",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "International travel insurance"
+      }
+    },
+    {
+      "id": "tour_kr_01",
+      "destination_id": "kr007",
+      "title": "6-Day Korea Tour: Seoul & Busan (K-Experience)",
+      "duration_days": 6,
+      "price": 17900000,
+      "discount_percent": 6,
+      "rating": 4.7,
+      "max_people": 28,
+      "transport": ["Máy bay", "Xe du lịch", "Tàu"],
+      "type": "Văn hóa - Giải trí",
+      "main_image": "/assets/images/data/Hàn Quốc/Seoul/Làng cổ Bukchon Hanok.jpg",
+      "overview": "Enjoy K-Pop culture, cuisine, and Busan beaches.",
+      "highlights": [
+        "Gyeongbokgung Palace, Bukchon Hanok Village",
+        "Shopping in Myeongdong",
+        "Haeundae Beach and Gwangandaegyo Bridge"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Seoul – Palace Exploration",
+          "activities": [
+            "Visit Gyeongbokgung, Bukchon Hanok Village",
+            "Shop in Myeongdong"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Busan – Beach and Seafood",
+          "activities": [
+            "Swim at Haeundae Beach, enjoy seafood"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "3-4 star hotel",
+        "meals": "Ăn sáng + 1 bữa chính",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Travel insurance"
+      }
+    },
+    {
+      "id": "tour_au_01",
+      "destination_id": "au008",
+      "title": "8-Day Australia Tour: Sydney & Melbourne (City Highlights)",
+      "duration_days": 8,
+      "price": 54900000,
+      "discount_percent": 9,
+      "rating": 4.8,
+      "max_people": 18,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Thành phố - Kiến trúc",
+      "main_image": "/assets/images/data/Úc/Sydney/Nhà hát Opera Sydney.jpeg",
+      "overview": "Explore Sydney Opera House, the harbor, and Melbourne’s artistic highlights.",
+      "highlights": [
+        "Sydney Opera House, Harbour Bridge",
+        "The Rocks, Federation Square",
+        "Experience local cuisine"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Sydney – City Icons",
+          "activities": [
+            "Visit Sydney Opera House and Harbour Bridge"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Melbourne – Art & Coffee",
+          "activities": [
+            "Visit Federation Square, Flinders Street"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Bảo hiểm quốc tế"
+      }
+    },
+    {
+      "id": "tour_eg_01",
+      "destination_id": "eg009",
+      "title": "10-Day Egypt Tour: Cairo & Luxor (Nile Mysteries)",
+      "duration_days": 10,
+      "price": 84900000,
+      "discount_percent": 6,
+      "rating": 4.9,
+      "max_people": 16,
+      "transport": ["Máy bay", "Xe du lịch", "Tàu"],
+      "type": "Lịch sử - Khám phá",
+      "main_image": "/assets/images/data/Ai Cập/Cairo/Quần thể Kim tự tháp Giza.jpg",
+      "overview": "Discover the Giza Pyramids, Valley of the Kings, and life along the Nile.",
+      "highlights": [
+        "Giza Pyramids, Sphinx",
+        "Egyptian Museum",
+        "Valley of the Kings, Karnak Temple"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Cairo – Ancient Heritage",
+          "activities": [
+            "Visit Giza Pyramids and Egyptian Museum"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Luxor – Valley of the Kings",
+          "activities": [
+            "Visit Valley of the Kings, Karnak Temple"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 2 main meals/day",
+        "guide": "Vietnamese-speaking guide/Anh",
+        "insurance": "Travel insurance"
+      }
+    },
+    {
+      "id": "tour_es_01",
+      "destination_id": "es010",
+      "title": "8-Day Spain Tour: Madrid & Barcelona (Art & Life)",
+      "duration_days": 8,
+      "price": 67900000,
+      "discount_percent": 8,
+      "rating": 4.7,
+      "max_people": 20,
+      "transport": ["Máy bay", "Xe du lịch", "Tàu"],
+      "type": "Văn hóa - Kiến trúc",
+      "main_image": "/assets/images/data/Tây Ban Nha/Madrid/Cung điện Hoàng gia Madrid.jpg",
+      "overview": "Savor art, architecture, and the vibrant lifestyle of Spain.",
+      "highlights": [
+        "Royal Palace of Madrid, Plaza Mayor",
+        "Sagrada Família, Park Güell, La Rambla"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Madrid – Royal Culture",
+          "activities": [
+            "Visit Royal Palace, Plaza Mayor"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Barcelona – Gaudí Architecture",
+          "activities": [
+            "Visit Sagrada Família and Park Güell"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Bảo hiểm quốc tế"
+      }
+    },
+    {
+      "id": "tour_ca_01",
+      "destination_id": "ca011",
+      "title": "10-Day Canada Tour: Vancouver & Banff (Nature Escape)",
+      "duration_days": 10,
+      "price": 94900000,
+      "discount_percent": 9,
+      "rating": 4.9,
+      "max_people": 16,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Thiên nhiên - Phiêu lưu",
+      "main_image": "/assets/images/data/Canada/Vancouver/Cầu treo Capilano.jpg",
+      "overview": "Explore peaceful Vancouver harbor and the majestic Rocky Mountains in Banff.",
+      "highlights": [
+        "Capilano Suspension Bridge",
+        "Banff National Park, Moraine Lake, Gondola"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Vancouver – Harbor & Mountains",
+          "activities": [
+            "Visit Capilano Suspension Bridge"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Banff – Moraine Lake",
+          "activities": [
+            "Visit Banff National Park, Moraine Lake, gondola"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "Ăn sáng + 1 bữa chính",
+        "guide": "Local guide",
+        "insurance": "Travel insurance toàn diện"
+      }
+    },
+    {
+      "id": "tour_in_01",
+      "destination_id": "in012",
+      "title": "7-Day India Tour: Delhi - Agra - Jaipur",
+      "duration_days": 7,
+      "price": 34900000,
+      "discount_percent": 7,
+      "rating": 4.8,
+      "max_people": 24,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Văn hóa - Lịch sử",
+      "main_image": "/assets/images/data/Ấn Độ/Delhi/Cổng Ấn Độ.jpg",
+      "overview": "Classic journey exploring Delhi, the Taj Mahal, and colorful Jaipur.",
+      "highlights": [
+        "India Gate, Humayun’s Tomb",
+        "Taj Mahal, Agra Fort",
+        "Amber Fort in Jaipur"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Delhi – Historic Capital",
+          "activities": [
+            "Visit India Gate, Humayun's Tomb"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Agra – Taj Mahal",
+          "activities": [
+            "Sunrise at Taj Mahal, visit Agra Fort"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "3-4 star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Vietnamese-speaking guide/Anh",
+        "insurance": "Travel insurance"
+      }
+    },
+    {
+      "id": "tour_br_01",
+      "destination_id": "br013",
+      "title": "9-Day Brazil Tour: Rio & Iguazu",
+      "duration_days": 9,
+      "price": 109000000,
+      "discount_percent": 6,
+      "rating": 4.8,
+      "max_people": 20,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Văn hóa - Thiên nhiên",
+      "main_image": "/assets/images/data/Brazil/Rio de Janeiro/Tượng Chúa Cứu thế.jpg",
+      "overview": "Enjoy samba, Copacabana Beach, and the majestic Iguazu Falls.",
+      "highlights": [
+        "Christ the Redeemer, Sugarloaf Mountain",
+        "Copacabana and Ipanema Beaches",
+        "Majestic Iguazu Falls"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Rio de Janeiro – Samba & Beach",
+          "activities": [
+            "Visit Christ the Redeemer, Sugarloaf"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Iguazu – Waterfall Wonder",
+          "activities": [
+            "Visit Iguazu Falls from both sides"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "Breakfast + 1 main meal/day",
+        "guide": "Local guide",
+        "insurance": "Travel insurance"
+      }
+    },
+    {
+      "id": "tour_tr_01",
+      "destination_id": "tr014",
+      "title": "8-Day Turkey Tour: Istanbul & Cappadocia (Two Continents)",
+      "duration_days": 8,
+      "price": 57900000,
+      "discount_percent": 8,
+      "rating": 4.9,
+      "max_people": 18,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Văn hóa - Phiêu lưu",
+      "main_image": "/assets/images/data/Thổ Nhĩ Kỳ/Istanbul/Nhà thờ Hagia Sophia.jpg",
+      "overview": "Explore Hagia Sophia, Grand Bazaar, and hot air ballooning in Cappadocia.",
+      "highlights": [
+        "Hagia Sophia, Topkapi Palace",
+        "Grand Bazaar shopping",
+        "Hot air balloon sunrise in Cappadocia"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Istanbul – Heritage of Two Continents",
+          "activities": [
+            "Visit Hagia Sophia, Topkapi"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Cappadocia – Hot Air Balloon",
+          "activities": [
+            "Hot air balloon sunrise, visit Göreme"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "Ăn sáng + 2 bữa chính",
+        "guide": "Vietnamese-speaking guide/Anh",
+        "insurance": "Travel insurance"
+      }
+    },
+    {
+      "id": "tour_nz_01",
+      "destination_id": "nz015",
+      "title": "9-Day New Zealand Tour: Queenstown & Milford Sound",
+      "duration_days": 9,
+      "price": 87900000,
+      "discount_percent": 7,
+      "rating": 4.9,
+      "max_people": 14,
+      "transport": ["Máy bay", "Xe du lịch", "Tàu"],
+      "type": "Phiêu lưu - Thiên nhiên",
+      "main_image": "/assets/images/data/New Zealand/Te Anau/Vịnh hẹp Milford Sound.jpg",
+      "overview": "For nature lovers: mountains, fjords, and Te Anau glowworm caves.",
+      "highlights": [
+        "Milford Sound cruise",
+        "Doubtful Sound, Te Anau glowworm caves",
+        "Adventure activities in Queenstown"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Queenstown – Adventure Hub",
+          "activities": [
+            "Free exploration of Queenstown, optional adventure activities"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Milford Sound – Cruise",
+          "activities": [
+            "Cruise to admire fjords and waterfalls"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "3-4 star hotel",
+        "meals": "Ăn sáng + 1 bữa chính",
+        "guide": "Hướng dẫn viên tiếng Anh/VN",
+        "insurance": "Travel insurance phiêu lưu"
+      }
+    },
+    {
+      "id": "tour_uk_01",
+      "destination_id": "uk016",
+      "title": "8-Day UK Tour: London & Edinburgh (Historical Highlights)",
+      "duration_days": 8,
+      "price": 74900000,
+      "discount_percent": 8,
+      "rating": 4.7,
+      "max_people": 20,
+      "transport": ["Máy bay", "Xe du lịch", "Tàu"],
+      "type": "Lịch sử - Văn hóa",
+      "main_image": "/assets/images/data/Anh/London/Tháp London.jpg",
+      "overview": "Learn about royal history in London and explore ancient castles in Edinburgh.",
+      "highlights": [
+        "Tower of London, Buckingham Palace",
+        "London Eye",
+        "Edinburgh Castle and Royal Mile"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "London – Royal Icons",
+          "activities": [
+            "Visit Buckingham Palace, Tower of London, London Eye"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Edinburgh – Scottish History",
+          "activities": [
+            "Visit Edinburgh Castle, Royal Mile"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "4-star hotel",
+        "meals": "Ăn sáng + 1 bữa chính",
+        "guide": "Vietnamese-speaking guide/Anh",
+        "insurance": "European travel insurance"
+      }
+    },
+    {
+      "id": "tour_jp_02",
+      "destination_id": "jp002",
+      "title": "5-Day Japan Tour: Tokyo",
+      "duration_days": 5,
+      "price": 28900000,
+      "discount_percent": 5,
+      "rating": 4.8,
+      "max_people": 20,
+      "transport": ["Máy bay", "Tàu"],
+      "type": "Thành phố - Mua sắm",
+      "main_image": "/assets/images/data/Nhật Bản/Tokyo/Hoàng cung Nhật Bản.jpg",
+      "overview": "Focused tour exploring Tokyo in detail: technology, cuisine, and shopping districts.",
+      "highlights": [
+        "Shibuya, Shinjuku, Akihabara",
+        "Tokyo Skytree",
+        "Street food experience"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Tokyo – Shibuya & Shinjuku",
+          "activities": [
+            "Explore Shibuya Crossing, Shinjuku entertainment district"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Akihabara – Otaku Culture",
+          "activities": [
+            "Shop for electronics, anime, manga"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "Khách sạn 3 sao",
+        "meals": "Ăn sáng",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Travel insurance"
+      }
+    },
+    {
+      "id": "tour_us_02",
+      "destination_id": "us005",
+      "title": "10-Day USA Tour: National Parks (Grand Canyon & Yosemite)",
+      "duration_days": 10,
+      "price": 119000000,
+      "discount_percent": 5,
+      "rating": 4.8,
+      "max_people": 16,
+      "transport": ["Máy bay", "Xe du lịch"],
+      "type": "Thiên nhiên - Phiêu lưu",
+      "main_image": "/assets/images/data/Mỹ/Las Vegas/Show diễn đường phố Fremont.jpeg",
+      "overview": "Journey to famous national parks: Grand Canyon, Yosemite, and stunning natural sites.",
+      "highlights": [
+        "Grand Canyon",
+        "Yosemite National Park",
+        "Viewpoints and light hiking"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Grand Canyon – Viewpoints",
+          "activities": [
+            "Visit main viewpoints, sunset photography"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Yosemite – Flora & Waterfalls",
+          "activities": [
+            "Explore Yosemite Valley, Bridalveil Fall"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "Lodge & 3-4 star hotel",
+        "meals": "Ăn sáng + 1 bữa/ngày",
+        "guide": "Hướng dẫn viên thiên nhiên",
+        "insurance": "Travel insurance phiêu lưu"
+      }
+    },
+    {
+      "id": "tour_fr_02",
+      "destination_id": "fr003",
+      "title": "5-Day France Tour: Paris Highlights (Short Break)",
+      "duration_days": 5,
+      "price": 45900000,
+      "discount_percent": 12,
+      "rating": 4.7,
+      "max_people": 22,
+      "transport": ["Máy bay", "Xe công cộng"],
+      "type": "Thành phố - Văn hóa",
+      "main_image": "/assets/images/data/Pháp/Paris/Nhà thờ Đức Bà Paris.jpg",
+      "overview": "Short option for travelers wanting a quick Paris experience: Eiffel, Louvre, and cuisine.",
+      "highlights": [
+        "Eiffel Tower, Louvre",
+        "Seine cruise",
+        "French cuisine"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Paris – Icons & Art",
+          "activities": [
+            "Visit Eiffel Tower, Louvre"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Paris – Culinary Enjoyment",
+          "activities": [
+            "Explore cafés, local markets"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "3-4 star hotel",
+        "meals": "Ăn sáng + 1 bữa chính",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Travel insurance"
+      }
+    },
+    {
+      "id": "tour_tr_02",
+      "destination_id": "tr014",
+      "title": "4-Day Turkey Tour: Istanbul Express",
+      "duration_days": 4,
+      "price": 25900000,
+      "discount_percent": 5,
+      "rating": 4.6,
+      "max_people": 30,
+      "transport": ["Máy bay", "Tàu/xe"],
+      "type": "Short - Culture",
+      "main_image": "/assets/images/data/Thổ Nhĩ Kỳ/Istanbul/Chợ Grand Bazaar.jpg",
+      "overview": "Short trip covering Istanbul’s main attractions for those with limited time.",
+      "highlights": [
+        "Hagia Sophia, Grand Bazaar, Topkapi"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Istanbul – Ancient Exploration",
+          "activities": [
+            "Visit Hagia Sophia, Blue Mosque, Grand Bazaar"
+          ]
+        }
+      ],
+      "services": {
+        "hotel": "3-4 star hotel",
+        "meals": "Ăn sáng",
+        "guide": "Vietnamese-speaking guide",
+        "insurance": "Travel insurance"
+      }
+    }
+  ]
+}

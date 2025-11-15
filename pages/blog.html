@@ -1,8 +1,8 @@
 <section id="blog" class="blog">
         <section class="des-banner">
                 <div class="des-banner__content">
-                        <h1 class="des-banner__title">Travel Blog</h1>
-                        <p class="des-banner__subtitle">Inspiration, stories, and guides from the road.</p>
+                        <h1 class="des-banner__title" data-i18n="blog.banner.title">Travel Blog</h1>
+                        <p class="des-banner__subtitle" data-i18n="blog.banner.subtitle">Inspiration, stories, and guides from the road.</p>
                 </div>
         </section>
 
@@ -24,12 +24,13 @@
 
                         <aside class="blog-sidebar">
                                 <div class="sidebar-widget">
-                                        <h3 class="sidebar-widget__title">Search</h3>
+                                        <h3 class="sidebar-widget__title" data-i18n="blog.sidebar.search">Search</h3>
                                         <form class="sidebar-widget__search-form">
                                                 <input
                                                         type="text"
                                                         placeholder="Search articles..."
                                                         class="sidebar-widget__search-input"
+                                                        data-i18n="[placeholder]blog.sidebar.searchPlaceholder"
                                                 />
                                                 <button type="submit" aria-label="Search">
                                                         <i class="fas fa-search"></i>
@@ -38,26 +39,38 @@
                                 </div>
 
                                 <div class="sidebar-widget">
-                                        <h3 class="sidebar-widget__title">Categories</h3>
+                                        <h3 class="sidebar-widget__title" data-i18n="blog.sidebar.categories">Categories</h3>
                                         <div class="sidebar-widget__tag-list"></div>
                                 </div>
 
                                 <div class="sidebar-widget">
-                                        <h3 class="sidebar-widget__title">Editor's Pick</h3>
+                                        <h3 class="sidebar-widget__title" data-i18n="blog.sidebar.editorsPick">Editor's Pick</h3>
                                         <div class="sidebar-widget__featured-post"></div>
                                 </div>
 
                                 <div class="sidebar-widget">
-                                        <h3 class="sidebar-widget__title">Recent Posts</h3>
+                                        <h3 class="sidebar-widget__title" data-i18n="blog.sidebar.recentPosts">Recent Posts</h3>
                                         <div class="sidebar-widget__recent-posts"></div>
                                 </div>
 
                                 <div class="sidebar-widget">
-                                        <h3 class="sidebar-widget__title">Follow Us</h3>
+                                        <h3 class="sidebar-widget__title" data-i18n="blog.sidebar.followUs">Follow Us</h3>
                                         <div class="sidebar-widget__social-links">
                                                 <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                                                 <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                                <a href="#" aria-label="X"
+                                                        ><svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                width="16"
+                                                                height="16"
+                                                                fill="currentColor"
+                                                                viewBox="0 0 16 16"
+                                                                style="display: inline-block; width: 1em; height: 1em"
+                                                        >
+                                                                <path
+                                                                        d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"
+                                                                /></svg
+                                                ></a>
                                                 <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
                                         </div>
                                 </div>
