@@ -300,19 +300,19 @@
             const card = document.createElement("article");
             card.className = `home-destination-card ${extraClass}`;
             card.innerHTML = `
-                <a href="#destination-detail?id=${item.id}">
-                    <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
-                    <img
-                        data-src="${image}"
-                        alt="${type} ${country}"
-                        class="home-destination-card__img lazy-image"
-                    />
-                    <div class="home-destination-card__info">
-                        <h3 class="home-destination-card__name">${country}</h3>
-                        <span class="home-destination-card__type">${type}</span>
-                    </div>
-                </a>
-            `;
+            <a href="#destination-detail?id=${item.id}" class="home-destination-card__link">
+                <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
+                <img
+                    data-src="${image}"
+                    alt="${type} ${country}"
+                    class="home-destination-card__img lazy-image"
+                />
+                <div class="home-destination-card__info">
+                    <h3 class="home-destination-card__name">${country}</h3>
+                    <span class="home-destination-card__type">${type}</span>
+                </div>
+            </a>
+        `;
 
             grid.appendChild(card);
         });
@@ -379,7 +379,37 @@
     }
 
     // ============================================
-    // NEWSLETTER FORM
+    // TOAST NOTIFICATION - THÊM MỚI
+    // ============================================
+    function showToast(message, type = "success") {
+        // Xóa toast cũ nếu có
+        const existingToast = document.querySelector(".newsletter-toast");
+        if (existingToast) {
+            existingToast.remove();
+        }
+
+        // Tạo toast mới
+        const toast = document.createElement("div");
+        toast.className = `newsletter-toast newsletter-toast--${type}`;
+        toast.innerHTML = `
+        <div class="newsletter-toast__icon">${type === "success" ? "✓" : type === "error" ? "✕" : "⚠"}</div>
+        <div class="newsletter-toast__message">${message}</div>
+    `;
+
+        document.body.appendChild(toast);
+
+        // Trigger animation
+        setTimeout(() => toast.classList.add("newsletter-toast--show"), 10);
+
+        // Auto remove sau 4s
+        setTimeout(() => {
+            toast.classList.remove("newsletter-toast--show");
+            setTimeout(() => toast.remove(), 300);
+        }, 4000);
+    }
+
+    // ============================================
+    // NEWSLETTER FORM - CẬP NHẬT
     // ============================================
     function initNewsletterForm() {
         const form = document.querySelector(".home-newsletter__form");
@@ -393,28 +423,55 @@
             const email = input.value.trim();
 
             if (!email) {
-                alert("Vui lòng nhập email!");
+                showToast("Vui lòng nhập email!", "error");
+                input.focus();
                 return;
             }
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert("Email không hợp lệ!");
+                showToast("Email không hợp lệ!", "error");
+                input.focus();
                 return;
             }
 
             const submitBtn = form.querySelector(".home-newsletter__submit");
-            const originalHTML = submitBtn.innerHTML;
-            submitBtn.innerHTML = "<span>✓</span>";
-            submitBtn.disabled = true;
 
+            // Show loading spinner - Giữ nguyên structure
+            const icon = submitBtn.querySelector(".home-newsletter__submit-icon");
+            const originalIcon = "✈";
+
+            if (icon) {
+                icon.innerHTML = '<span class="spinner"></span>';
+            } else {
+                submitBtn.innerHTML = '<span class="spinner"></span>';
+            }
+
+            submitBtn.disabled = true;
+            input.disabled = true;
+
+            // Giả lập API call
             setTimeout(() => {
-                alert("Đăng ký thành công!");
+                showToast("🎉 Đăng ký thành công! Cảm ơn bạn đã đăng ký nhận bản tin.", "success");
                 input.value = "";
-                submitBtn.innerHTML = originalHTML;
+
+                // Restore original button content
+                if (icon) {
+                    icon.textContent = originalIcon;
+                } else {
+                    submitBtn.innerHTML = `<span class="home-newsletter__submit-icon">${originalIcon}</span>`;
+                }
+
                 submitBtn.disabled = false;
-            }, 1000);
+                input.disabled = false;
+            }, 1200);
         });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initNewsletterForm);
+    } else {
+        initNewsletterForm();
     }
 
     if (document.readyState === "loading") {
@@ -474,26 +531,39 @@
     // FIX: XỬ LÝ ẢNH KHI QUAY LẠI TRANG
     // ============================================
     function fixCachedImages() {
-        const lazyImages = document.querySelectorAll("img.lazy-image");
+        console.log("🔄 Fixing cached images...");
+        const lazyImages = document.querySelectorAll("img.lazy-image:not(.loaded)");
 
         lazyImages.forEach((img) => {
-            // Nếu ảnh đã có src nhưng chưa có class loaded
-            if (img.src && !img.classList.contains("loaded")) {
-                // Kiểm tra ảnh đã load xong chưa
-                if (img.complete && img.naturalHeight !== 0) {
-                    img.classList.add("loaded");
-                    console.log("✅ Fixed cached image:", img.src);
-                } else {
-                    // Đợi ảnh load xong
-                    img.addEventListener(
-                        "load",
-                        () => {
-                            img.classList.add("loaded");
-                            console.log("✅ Fixed loading image:", img.src);
-                        },
-                        { once: true }
-                    );
-                }
+            // TH1: Ảnh đã có src và đã load xong
+            if (img.complete && img.naturalHeight !== 0 && img.src) {
+                img.classList.add("loaded");
+                console.log("✅ Fixed:", img.alt || img.src);
+            }
+            // TH2: Ảnh có src nhưng chưa load xong
+            else if (img.src && img.src !== window.location.href) {
+                img.addEventListener(
+                    "load",
+                    () => {
+                        img.classList.add("loaded");
+                        console.log("✅ Loaded:", img.alt || img.src);
+                    },
+                    { once: true }
+                );
+            }
+            // TH3: Ảnh chỉ có data-src
+            else if (img.dataset.src) {
+                const src = img.dataset.src;
+                img.src = src;
+                img.addEventListener(
+                    "load",
+                    () => {
+                        img.classList.add("loaded");
+                        img.removeAttribute("data-src");
+                        console.log("✅ Loaded from data-src:", img.alt || src);
+                    },
+                    { once: true }
+                );
             }
         });
     }
