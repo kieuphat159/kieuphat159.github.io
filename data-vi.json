@@ -933,7 +933,7 @@
     ],
     "bestTimeData": {
         "Asia": {
-            "video": "../assets/images/destinations/1.mp4",
+            "img": "../assets/images/destinations/spring.png",
             "seasons": [
                 {
                     "icon": "❄️",
@@ -970,7 +970,7 @@
             ]
         },
         "Europe": {
-            "video": "../assets/images/destinations/2.mp4",
+            "img": "../assets/images/destinations/winter.jpg",
             "seasons": [
                 {
                     "icon": "❄️",
@@ -1007,7 +1007,7 @@
             ]
         },
         "America": {
-            "video": "../assets/images/destinations/3.mp4",
+            "img": "../assets/images/destinations/muahe.jpg",
             "seasons": [
                 {
                     "icon": "❄️",
@@ -1044,7 +1044,7 @@
             ]
         },
         "Africa": {
-            "video": "../assets/images/destinations/4.mp4",
+            "img": "../assets/images/destinations/autumn.jpg",
             "seasons": [
                 {
                     "icon": "❄️",
@@ -1081,7 +1081,7 @@
             ]
         },
         "Oceania": {
-            "video": "../assets/images/destinations/5.mp4",
+            "video": "../assets/images/destinations/summer.png",
             "seasons": [
                 {
                     "icon": "❄️",
