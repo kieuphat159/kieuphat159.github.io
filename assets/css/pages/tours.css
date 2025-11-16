@@ -373,6 +373,21 @@ button {
 .tour-card:hover .tour-card__image {
         transform: scale(1.05);
 }
+.tour-card__discount-badge {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        background-color: #e74c3c;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.875rem;
+        padding: 6px 22px 6px 16px;
+        z-index: 3;
+        line-height: 1.2;
+        clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
 .tour-card__tags {
         position: absolute;
         top: 15px;
@@ -497,6 +512,14 @@ button {
         color: var(--color-text-secondary);
         font-weight: 500;
 }
+.tour-card__price-original {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        text-decoration: line-through;
+        margin-bottom: 4px;
+}
+
 .tour-card__price-value {
         font-size: 1.4rem;
         font-weight: 700;

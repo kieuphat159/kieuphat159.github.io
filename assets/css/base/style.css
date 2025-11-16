@@ -57,7 +57,7 @@
 
     /* Special Colors */
     --color-star: #ffc107;
-    --color-rating: #ffb766;
+    --color-rating: var(--color-primary);
     --color-highlight: #cfe66c;
 
     /* Newsletter Colors */
@@ -79,8 +79,13 @@
     /* ============================================
        TYPOGRAPHY SYSTEM
        ============================================ */
+<<<<<<< HEAD
     --font-primary: 'Inter', system-ui, sans-serif;
     --font-heading: 'Poppins', 'Segoe UI', Arial, sans-serif;
+=======
+    --font-primary: "Montserrat", system-ui, sans-serif;
+    --font-heading: "Montserrat", "Segoe UI", Arial, sans-serif;
+>>>>>>> 3056f03054caf8fc061eef7b466f92e055ab84e0
 
     --font-weight-light: 300;
     --font-weight-normal: 400;

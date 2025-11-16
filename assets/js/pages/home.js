@@ -11,9 +11,8 @@
     window.homePageInitialized = true;
 
     // ============================================
-    // LAZY LOADING CHO ẢNH - FIXED
+    // LAZY LOADING FOR IMAGES
     // ============================================
-
     class MediaLazyLoader {
         constructor() {
             this.imageObserver = null;
@@ -29,14 +28,11 @@
         }
 
         setupObservers() {
-            // Kiểm tra hỗ trợ IntersectionObserver
             if (!("IntersectionObserver" in window)) {
-                console.warn("IntersectionObserver not supported, loading all media immediately");
                 this.loadAllMedia();
                 return;
             }
 
-            // Observer cho ảnh
             this.imageObserver = new IntersectionObserver((entries) => this.handleImageIntersection(entries), {
                 rootMargin: "100px",
                 threshold: 0.01,
@@ -45,36 +41,21 @@
             this.setupLazyImages();
         }
 
-        // ============================================
-        // LAZY LOADING CHO ẢNH - FIXED
-        // ============================================
         setupLazyImages() {
             const lazyImages = document.querySelectorAll("img.lazy-image");
 
             lazyImages.forEach((img) => {
-                // ✅ FIX: Nếu ảnh đã có src (từ cache/previous load)
                 if (img.src && !img.dataset.src) {
                     if (!img.classList.contains("loaded")) {
-                        // Kiểm tra ảnh đã load xong chưa
                         if (img.complete && img.naturalHeight !== 0) {
                             img.classList.add("loaded");
-                            console.log("✅ Fixed cached image:", img.src);
                         } else {
-                            // Đợi ảnh load xong
-                            img.addEventListener(
-                                "load",
-                                () => {
-                                    img.classList.add("loaded");
-                                    console.log("✅ Fixed loading image:", img.src);
-                                },
-                                { once: true }
-                            );
+                            img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
                         }
                     }
-                    return; // ✅ Không observe ảnh đã có src
+                    return;
                 }
 
-                // Nếu có data-src → observe để lazy load
                 if (img.dataset.src) {
                     this.imageObserver.observe(img);
                 }
@@ -94,43 +75,31 @@
         loadImage(img) {
             const src = img.dataset.src;
 
-            // ✅ FIX: Nếu ảnh đã có src nhưng chưa có class loaded
             if (!src && img.src) {
                 if (img.complete && img.naturalHeight !== 0) {
                     img.classList.add("loaded");
                 } else {
-                    img.addEventListener(
-                        "load",
-                        () => {
-                            img.classList.add("loaded");
-                        },
-                        { once: true }
-                    );
+                    img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
                 }
                 return;
             }
 
             if (!src) return;
 
-            // Load ảnh
             const tempImg = new Image();
-
             tempImg.onload = () => {
                 img.src = src;
                 img.classList.add("loaded");
                 img.removeAttribute("data-src");
             };
-
             tempImg.onerror = () => {
                 console.error("Failed to load image:", src);
                 img.classList.add("error");
                 img.alt = "Không thể tải ảnh";
             };
-
             tempImg.src = src;
         }
 
-        // Fallback cho trình duyệt cũ
         loadAllMedia() {
             document.querySelectorAll("img.lazy-image[data-src]").forEach((img) => {
                 img.src = img.dataset.src;
@@ -138,58 +107,44 @@
                 img.removeAttribute("data-src");
             });
 
-            // ✅ FIX: Thêm class loaded cho ảnh đã có src
             document.querySelectorAll("img.lazy-image:not([data-src])").forEach((img) => {
                 if (img.src && !img.classList.contains("loaded")) {
                     if (img.complete && img.naturalHeight !== 0) {
                         img.classList.add("loaded");
                     } else {
-                        img.addEventListener(
-                            "load",
-                            () => {
-                                img.classList.add("loaded");
-                            },
-                            { once: true }
-                        );
+                        img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
                     }
                 }
             });
         }
     }
 
-    // Khởi tạo lazy loader
     const mediaLoader = new MediaLazyLoader();
 
     // ============================================
-    // LAZY LOADING CHO SECTIONS
+    // LAZY LOADING FOR SECTIONS
     // ============================================
     function lazyLoadSections() {
         const lazyElements = document.querySelectorAll(".lazy-load");
 
         if ("IntersectionObserver" in window) {
-            const observerOptions = {
-                root: null,
-                rootMargin: "0px",
-                threshold: 0.1,
-            };
-
-            const observerCallback = (entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            };
-
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { root: null, rootMargin: "0px", threshold: 0.1 }
+            );
             lazyElements.forEach((el) => observer.observe(el));
         } else {
             lazyElements.forEach((el) => el.classList.add("visible"));
         }
     }
 
-    // Khởi tạo lazy loading cho sections
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", lazyLoadSections);
     } else {
@@ -197,12 +152,20 @@
     }
 
     // ============================================
-    // LOAD TOURS FROM JSON - UPDATED FOR I18N
+    // LOAD TOURS FROM JSON
     // ============================================
     async function loadTours() {
         try {
-            // Sử dụng DataLoader để load tours theo ngôn ngữ hiện tại
-            const data = await window.dataLoader.loadTours();
+            const hasI18n = window.dataLoader && window.i18n;
+            let data;
+
+            if (hasI18n) {
+                data = await window.dataLoader.loadTours();
+            } else {
+                const response = await fetch("../tours.json");
+                data = await response.json();
+            }
+
             renderTours(data.tours);
         } catch (error) {
             console.error("Lỗi tải dữ liệu tours:", error);
@@ -214,22 +177,18 @@
         if (!container) return;
 
         container.innerHTML = "";
-
         const topTours = tours.slice(0, 4);
 
-        // Lấy ngôn ngữ hiện tại để format đúng
-        const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : "vi";
+        const hasI18n = window.i18n;
+        const currentLang = hasI18n ? window.i18n.getCurrentLanguage() : "vi";
         const isVietnamese = currentLang === "vi";
 
-        // Get translated texts
-        const bookNowText = window.i18n ? window.i18n.t("common.bookNow") : "Đặt ngay";
-        const dayText = window.i18n ? window.i18n.t("common.day") : "ngày";
-        const tourText = window.i18n ? window.i18n.t("home.tourTypes.tours").toLowerCase() : "tour";
+        const bookNowText = hasI18n ? window.i18n.t("common.bookNow") : "Đặt ngay";
+        const dayText = hasI18n ? window.i18n.t("common.day") : "ngày";
+        const tourText = hasI18n ? window.i18n.t("home.tourTypes.tours").toLowerCase() : "tour";
 
         topTours.forEach((tour) => {
             const discountedPrice = tour.price * (1 - tour.discount_percent / 100);
-
-            // Format giá theo ngôn ngữ
             const formattedPrice = isVietnamese
                 ? `${discountedPrice.toLocaleString("vi-VN")}đ`
                 : `$${Math.round(discountedPrice / 25000).toLocaleString("en-US")}`;
@@ -262,18 +221,31 @@
             container.insertAdjacentHTML("beforeend", card);
         });
 
-        // Setup lazy loading cho ảnh mới thêm vào
         setupDynamicLazyImages();
     }
 
     // ============================================
-    // LOAD DESTINATIONS - UPDATED FOR I18N
+    // LOAD DESTINATIONS + ARTICLES
     // ============================================
+    function truncateText(text, maxLength = 150) {
+        if (text.length <= maxLength) return text;
+        return text.slice(0, maxLength) + "...";
+    }
+
     async function loadDestinations() {
         try {
-            // Sử dụng DataLoader để load destinations theo ngôn ngữ hiện tại
-            const json = await window.dataLoader.loadDestinations();
+            const hasI18n = window.dataLoader && window.i18n;
+            let json;
+
+            if (hasI18n) {
+                json = await window.dataLoader.loadDestinations();
+            } else {
+                const response = await fetch("/data.json");
+                json = await response.json();
+            }
+
             renderDestinations(json.data);
+            renderArticles(json.data);
         } catch (error) {
             console.error("Lỗi khi load dữ liệu destinations:", error);
         }
@@ -300,31 +272,82 @@
             const card = document.createElement("article");
             card.className = `home-destination-card ${extraClass}`;
             card.innerHTML = `
-                <a href="#destination-detail?id=${item.id}">
-                    <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
-                    <img
-                        data-src="${image}"
-                        alt="${type} ${country}"
-                        class="home-destination-card__img lazy-image"
-                    />
-                    <div class="home-destination-card__info">
-                        <h3 class="home-destination-card__name">${country}</h3>
-                        <span class="home-destination-card__type">${type}</span>
-                    </div>
-                </a>
-            `;
+            <a href="#destination-detail?id=${item.id}" class="home-destination-card__link">
+                <div class="home-destination-card__rating">${rating.toFixed(1)}</div>
+                <img
+                    data-src="${image}"
+                    alt="${type} ${country}"
+                    class="home-destination-card__img lazy-image"
+                />
+                <div class="home-destination-card__info">
+                    <h3 class="home-destination-card__name">${country}</h3>
+                    <span class="home-destination-card__type">${type}</span>
+                </div>
+            </a>
+        `;
 
             grid.appendChild(card);
         });
 
-        // Setup lazy loading cho ảnh mới thêm vào
         setupDynamicLazyImages();
     }
 
-    // Setup lazy loading cho ảnh được thêm động
+    function renderArticles(data) {
+        const container = document.getElementById("articles-container");
+        if (!container) return;
+
+        const vn = data.find((item) => item.id === "vn001");
+        if (!vn || !vn.places) return;
+
+        const places = vn.places;
+        const mainCity = places[0];
+        const otherCities = places.slice(1, 4);
+
+        container.innerHTML = `
+            <a href="#blog-detail?id=1" class="home-articles__main">
+                <img
+                    data-src="${mainCity.famous_locations[0].image_url}"
+                    alt="${mainCity.city}"
+                    class="home-articles__main-img lazy-image"
+                />
+                <div class="home-articles__main-text">
+                    <div class="home-articles__main-info">
+                        <h3 class="home-articles__main-title">${mainCity.shortdesc}</h3>
+                        <p class="home-articles__main-desc">
+                            ${truncateText(mainCity.blog, 80)}
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <div class="home-articles__list">
+                ${otherCities
+                    .map((city, idx) => {
+                        const realIndex = idx + 2;
+                        return `
+                        <a href="#blog-detail?id=${realIndex}" class="home-articles__item">
+                            <img
+                                data-src="${city.famous_locations[0].image_url}"
+                                alt="${city.city}"
+                                class="home-articles__item-img lazy-image"
+                            />
+                            <div class="home-articles__item-content">
+                                <h4 class="home-articles__item-title">${city.shortdesc}</h4>
+                                <p class="home-articles__item-desc">${truncateText(city.blog, 50)}</p>
+                            </div>
+                        </a>
+                    `;
+                    })
+                    .join("")}
+            </div>
+        `;
+
+        setupDynamicLazyImages();
+    }
+
     function setupDynamicLazyImages() {
         const lazyImages = document.querySelectorAll(
-            "#tours-container img.lazy-image[data-src], .home-destinations__grid img.lazy-image[data-src]"
+            "#tours-container img.lazy-image[data-src], .home-destinations__grid img.lazy-image[data-src], #articles-container img.lazy-image[data-src]"
         );
 
         if (!("IntersectionObserver" in window)) {
@@ -358,16 +381,12 @@
                     }
                 });
             },
-            {
-                rootMargin: "100px",
-                threshold: 0.01,
-            }
+            { rootMargin: "100px", threshold: 0.01 }
         );
 
         lazyImages.forEach((img) => imageObserver.observe(img));
     }
 
-    // Load tours khi DOM ready
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", () => {
             loadTours();
@@ -379,41 +398,94 @@
     }
 
     // ============================================
-    // NEWSLETTER FORM
+    // TOAST NOTIFICATION
+    // ============================================
+    function showToast(message, type = "success") {
+        const existingToast = document.querySelector(".newsletter-toast");
+        if (existingToast) {
+            existingToast.remove();
+        }
+
+        const toast = document.createElement("div");
+        toast.className = `newsletter-toast newsletter-toast--${type}`;
+        toast.innerHTML = `
+        <div class="newsletter-toast__icon">${type === "success" ? "✓" : type === "error" ? "✕" : "⚠"}</div>
+        <div class="newsletter-toast__message">${message}</div>
+    `;
+
+        document.body.appendChild(toast);
+        setTimeout(() => toast.classList.add("newsletter-toast--show"), 10);
+
+        setTimeout(() => {
+            toast.classList.remove("newsletter-toast--show");
+            setTimeout(() => toast.remove(), 300);
+        }, 4000);
+    }
+
+    // ============================================
+    // NEWSLETTER FORM - CUSTOM VALIDATION
     // ============================================
     function initNewsletterForm() {
         const form = document.querySelector(".home-newsletter__form");
-
         if (!form) return;
+
+        const input = form.querySelector(".home-newsletter__input");
+        const submitBtn = form.querySelector(".home-newsletter__submit");
+
+        // Tắt validation mặc định của HTML5
+        form.setAttribute("novalidate", "");
+
+        // Xóa thông báo lỗi khi người dùng bắt đầu nhập
+        input.addEventListener("input", () => {
+            input.classList.remove("error");
+        });
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            const input = form.querySelector(".home-newsletter__input");
             const email = input.value.trim();
 
+            // Validate empty
             if (!email) {
-                alert("Vui lòng nhập email!");
+                input.classList.add("error");
+                showToast("Vui lòng nhập email!", "error");
+                input.focus();
                 return;
             }
 
+            // Validate email format
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert("Email không hợp lệ!");
+                input.classList.add("error");
+                showToast("Email không hợp lệ!", "error");
+                input.focus();
                 return;
             }
 
-            const submitBtn = form.querySelector(".home-newsletter__submit");
-            const originalHTML = submitBtn.innerHTML;
-            submitBtn.innerHTML = "<span>✓</span>";
-            submitBtn.disabled = true;
+            // Success - Show loading
+            const icon = submitBtn.querySelector(".home-newsletter__submit-icon");
+            const originalIcon = icon ? icon.textContent : "✈";
 
+            if (icon) {
+                icon.innerHTML = '<span class="spinner"></span>';
+            }
+
+            submitBtn.disabled = true;
+            input.disabled = true;
+
+            // Simulate API call
             setTimeout(() => {
-                alert("Đăng ký thành công!");
+                showToast("🎉 Đăng ký thành công! Cảm ơn bạn đã đăng ký nhận bản tin.", "success");
                 input.value = "";
-                submitBtn.innerHTML = originalHTML;
+                input.classList.remove("error");
+
+                if (icon) {
+                    icon.textContent = originalIcon;
+                }
+
                 submitBtn.disabled = false;
-            }, 1000);
+                input.disabled = false;
+            }, 1200);
         });
     }
 
@@ -435,10 +507,7 @@
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start",
-                    });
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
             });
         });
@@ -451,120 +520,65 @@
     }
 
     // ============================================
-    // PERFORMANCE: PRELOAD CRITICAL IMAGES
-    // ============================================
-    function preloadCriticalImages() {
-        const heroImg = document.querySelector(".home-hero__image[data-src]");
-        if (heroImg && heroImg.dataset.src) {
-            const link = document.createElement("link");
-            link.rel = "preload";
-            link.as = "image";
-            link.href = heroImg.dataset.src;
-            document.head.appendChild(link);
-        }
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", preloadCriticalImages);
-    } else {
-        preloadCriticalImages();
-    }
-
-    // ============================================
-    // FIX: XỬ LÝ ẢNH KHI QUAY LẠI TRANG
+    // FIX CACHED IMAGES
     // ============================================
     function fixCachedImages() {
-        const lazyImages = document.querySelectorAll("img.lazy-image");
+        const lazyImages = document.querySelectorAll("img.lazy-image:not(.loaded)");
 
         lazyImages.forEach((img) => {
-            // Nếu ảnh đã có src nhưng chưa có class loaded
-            if (img.src && !img.classList.contains("loaded")) {
-                // Kiểm tra ảnh đã load xong chưa
-                if (img.complete && img.naturalHeight !== 0) {
-                    img.classList.add("loaded");
-                    console.log("✅ Fixed cached image:", img.src);
-                } else {
-                    // Đợi ảnh load xong
-                    img.addEventListener(
-                        "load",
-                        () => {
-                            img.classList.add("loaded");
-                            console.log("✅ Fixed loading image:", img.src);
-                        },
-                        { once: true }
-                    );
-                }
+            if (img.complete && img.naturalHeight !== 0 && img.src) {
+                img.classList.add("loaded");
+            } else if (img.src && img.src !== window.location.href) {
+                img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
+            } else if (img.dataset.src) {
+                const src = img.dataset.src;
+                img.src = src;
+                img.addEventListener(
+                    "load",
+                    () => {
+                        img.classList.add("loaded");
+                        img.removeAttribute("data-src");
+                    },
+                    { once: true }
+                );
             }
         });
     }
 
-    // Chạy fix khi trang load xong
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-            setTimeout(fixCachedImages, 100);
-        });
+        document.addEventListener("DOMContentLoaded", () => setTimeout(fixCachedImages, 100));
     } else {
         setTimeout(fixCachedImages, 100);
     }
 
-    // ✅ FIX: Chạy lại khi user quay lại trang (bfcache)
     window.addEventListener("pageshow", (event) => {
         if (event.persisted || (performance && performance.navigation && performance.navigation.type === 2)) {
-            console.log("🔄 Page restored from cache, fixing images...");
             setTimeout(fixCachedImages, 100);
         }
     });
 
     // ============================================
-    // ERROR HANDLING
-    // ============================================
-    window.addEventListener(
-        "error",
-        (e) => {
-            if (e.target.tagName === "IMG") {
-                console.error("Image failed to load:", e.target.src || e.target.dataset.src);
-            }
-        },
-        true
-    );
-
-    // ============================================
-    // DỊCH TRANG SAU KHI LOAD XONG
+    // I18N SUPPORT
     // ============================================
     if (window.i18n) {
         window.i18n.translatePage();
     }
 
-    // ============================================
-    // SUBSCRIBE TO LANGUAGE CHANGES - RELOAD DATA
-    // ============================================
     if (window.i18n && !window.homeLanguageHandlerRegistered) {
         window.homeLanguageHandlerRegistered = true;
-
         let isReloading = false;
 
         window.i18n.subscribe(async (newLang) => {
-            if (!window.homePageInitialized) {
-                return;
-            }
-
-            if (isReloading) {
-                console.log("⏳ Already reloading, skipping...");
-                return;
-            }
+            if (!window.homePageInitialized || isReloading) return;
 
             isReloading = true;
-            console.log("🌍 Language changed to:", newLang);
-
             try {
                 await Promise.all([loadTours(), loadDestinations()]);
                 window.i18n.translatePage();
             } catch (error) {
                 console.error("Error reloading data:", error);
             } finally {
-                setTimeout(() => {
-                    isReloading = false;
-                }, 500);
+                setTimeout(() => (isReloading = false), 500);
             }
         });
     }

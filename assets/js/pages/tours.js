@@ -1,15 +1,16 @@
 // --- DATA LOADING ---
 let toursData = [];
 let destinationsMap = {};
+let currentLanguage = "vi"; // Track current language
 
 // Load tours and destinations data
 async function loadToursData() {
         try {
                 // Lấy ngôn ngữ hiện tại từ i18n
-                const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'vi';
-                const toursFile = currentLang === 'en' ? './tours-en.json' : './tours-vi.json';
-                const dataFile = currentLang === 'en' ? './data-en.json' : './data-vi.json';
-                
+                currentLanguage = window.i18n ? window.i18n.getCurrentLanguage() : "vi";
+                const toursFile = currentLanguage === "en" ? "./tours-en.json" : "./tours-vi.json";
+                const dataFile = currentLanguage === "en" ? "./data-en.json" : "./data-vi.json";
+
                 // Load tours data
                 const toursResponse = await fetch(toursFile);
                 const toursJson = await toursResponse.json();
@@ -50,13 +51,22 @@ async function loadToursData() {
                         // Calculate popularity (dummy based on rating and duration)
                         const popularity = Math.round(tour.rating * 50 + tour.duration_days * 10);
 
+                        // Convert price based on language: VND for vi, USD for en
+                        // tours-en.json has prices in VND, convert to USD (approx 25000 VND = 1 USD)
+                        // tours-vi.json has prices in VND, keep as is
+                        const price =
+                                currentLanguage === "en"
+                                        ? Math.round(tour.price / 25000) // Convert VND to USD
+                                        : tour.price; // Keep VND for Vietnamese
+
                         return {
                                 id: tour.id,
                                 name: tour.title,
                                 location: location,
                                 type: tour.type,
                                 duration: tour.duration_days,
-                                price: Math.round(tour.price / 25000), // Convert VND to USD (approx rate)
+                                price: price,
+                                discount_percent: tour.discount_percent || 0, // Add discount_percent
                                 rating: tour.rating,
                                 reviewsCount: popularity, // Use popularity as reviews count
                                 image: tour.main_image,
@@ -152,11 +162,11 @@ function renderTours() {
                 tourGrid.innerHTML = `<div class="no-tours-found"><i class="fas fa-search"></i><h3>No Tours Found</h3><p>Try adjusting your search filters or resetting them.</p></div>`;
                 return;
         }
-        
+
         // Lấy text từ i18n
-        const daysText = window.i18n ? window.i18n.t('tours.card.days') : 'days';
-        const fromText = window.i18n ? window.i18n.t('tours.card.from') : 'From';
-        const viewDetailsText = window.i18n ? window.i18n.t('tours.card.viewDetails') : 'View Details';
+        const daysText = window.i18n ? window.i18n.t("tours.card.days") : "days";
+        const fromText = window.i18n ? window.i18n.t("tours.card.from") : "From";
+        const viewDetailsText = window.i18n ? window.i18n.t("tours.card.viewDetails") : "View Details";
 
         toursToRender.forEach((tour) => {
                 const tourCard = document.createElement("div");
@@ -198,8 +208,31 @@ function renderTours() {
                         )
                         .join("");
 
+                // Calculate discounted price if discount exists
+                const hasDiscount = tour.discount_percent && tour.discount_percent > 0;
+                const discountedPrice = hasDiscount
+                        ? Math.round(tour.price * (1 - tour.discount_percent / 100))
+                        : tour.price;
+
+                // Format price based on language
+                const isVietnamese = currentLanguage === "vi";
+                const formatPrice = (price) => {
+                        if (isVietnamese) {
+                                return `${price.toLocaleString("vi-VN")}đ`;
+                        } else {
+                                return `$${price.toLocaleString("en-US")}`;
+                        }
+                };
+
+                // Discount badge HTML
+                const discountText = isVietnamese ? "Giảm" : "Discount";
+                const discountBadgeHTML = hasDiscount
+                        ? `<div class="tour-card__discount-badge">${discountText} ${tour.discount_percent}%</div>`
+                        : "";
+
                 tourCard.innerHTML = `
                     <div class="tour-card__image-wrapper">
+                        ${discountBadgeHTML}
                         <img src="${tour.image}" alt="${tour.name}" class="tour-card__image" loading="lazy">
                         <div class="tour-card__tags">${tagsHTML}</div>
                         <button class="tour-card__wishlist-btn ${
@@ -213,7 +246,9 @@ function renderTours() {
                            <span class="tour-card__location"><i class="fas fa-map-marker-alt"></i> ${
                                    tour.location
                            }</span>
-                           <span class="tour-card__duration"><i class="fas fa-clock"></i> ${tour.duration} ${daysText}</span>
+                           <span class="tour-card__duration"><i class="fas fa-clock"></i> ${
+                                   tour.duration
+                           } ${daysText}</span>
                         </div>
                         <a href="#tour-details?id=${
                                 tour.id
@@ -225,7 +260,12 @@ function renderTours() {
                         <div class="tour-card__footer">
                             <div>
                                 <p class="tour-card__price-from">${fromText}</p>
-                                <p class="tour-card__price-value">$${tour.price.toLocaleString()}</p>
+                                ${
+                                        hasDiscount
+                                                ? `<p class="tour-card__price-original">${formatPrice(tour.price)}</p>
+                                           <p class="tour-card__price-value">${formatPrice(discountedPrice)}</p>`
+                                                : `<p class="tour-card__price-value">${formatPrice(tour.price)}</p>`
+                                }
                             </div>
                             <a href="#tour-details?id=${tour.id}" class="tour-card__details-btn">${viewDetailsText}</a>
                         </div>
@@ -284,12 +324,12 @@ function updateUI() {
 
         const startIndex = (currentPage - 1) * toursPerPage + 1;
         const endIndex = Math.min(startIndex + toursPerPage - 1, filteredTours.length);
-        
+
         // Sử dụng i18n cho text
-        const showingText = window.i18n ? window.i18n.t('tours.results.showing') : 'Showing';
-        const ofText = window.i18n ? window.i18n.t('tours.results.of') : 'of';
-        const toursText = window.i18n ? window.i18n.t('tours.results.tours') : 'tours';
-        
+        const showingText = window.i18n ? window.i18n.t("tours.results.showing") : "Showing";
+        const ofText = window.i18n ? window.i18n.t("tours.results.of") : "of";
+        const toursText = window.i18n ? window.i18n.t("tours.results.tours") : "tours";
+
         if (filteredTours.length > 0) {
                 resultCount.textContent = `${showingText} ${startIndex}-${endIndex} ${ofText} ${filteredTours.length} ${toursText}`;
         } else {
@@ -316,8 +356,10 @@ function applyFiltersAndSort() {
                 }
 
                 // Price filter
-                const maxPrice = parseInt(priceRange.value);
-                tempTours = tempTours.filter((tour) => tour.price <= maxPrice);
+                if (priceRange && priceRange.value) {
+                        const maxPrice = parseInt(priceRange.value);
+                        tempTours = tempTours.filter((tour) => tour.price <= maxPrice);
+                }
 
                 // Type filter - check all checked inputs
                 const allCheckedInputs = [...typeFilterGroup.querySelectorAll("input:checked")];
@@ -423,7 +465,10 @@ function populateFilters() {
                                 if (fullType.includes(" - ")) {
                                         const parts = fullType.split(" - ");
                                         const subcategory = parts.slice(1).join(" - ");
-                                        const translatedSubcategory = parts.slice(1).map(p => translateType(p)).join(" - ");
+                                        const translatedSubcategory = parts
+                                                .slice(1)
+                                                .map((p) => translateType(p))
+                                                .join(" - ");
                                         const subtypeLabel = document.createElement("label");
                                         subtypeLabel.innerHTML = `
                                                 <input type="checkbox" name="type-filter" value="${fullType}"> ${translatedSubcategory}
@@ -464,10 +509,10 @@ function populateFilters() {
         });
 
         const durations = [
-                { label: window.i18n ? window.i18n.t('tours.duration.any') : 'Any', value: "all" },
-                { label: window.i18n ? window.i18n.t('tours.duration.1-5Days') : '1-5 Days', value: "1-5" },
-                { label: window.i18n ? window.i18n.t('tours.duration.6-10Days') : '6-10 Days', value: "6-10" },
-                { label: window.i18n ? window.i18n.t('tours.duration.11+Days') : '11+ Days', value: "11" },
+                { label: window.i18n ? window.i18n.t("tours.duration.any") : "Any", value: "all" },
+                { label: window.i18n ? window.i18n.t("tours.duration.1-5Days") : "1-5 Days", value: "1-5" },
+                { label: window.i18n ? window.i18n.t("tours.duration.6-10Days") : "6-10 Days", value: "6-10" },
+                { label: window.i18n ? window.i18n.t("tours.duration.11+Days") : "11+ Days", value: "11" },
         ];
         durationFilterContainer.innerHTML = durations
                 .map(
@@ -490,7 +535,12 @@ function debounce(func, delay) {
 
 filterForm.addEventListener("input", (e) => {
         if (e.target.id === "price-range") {
-                priceValue.textContent = `$${e.target.value}`;
+                const isVietnamese = currentLanguage === "vi";
+                if (isVietnamese) {
+                        priceValue.textContent = `${parseInt(e.target.value).toLocaleString("vi-VN")}đ`;
+                } else {
+                        priceValue.textContent = `$${parseInt(e.target.value).toLocaleString("en-US")}`;
+                }
         }
         debounce(applyFiltersAndSort, 400);
 });
@@ -499,7 +549,12 @@ sortSelect.addEventListener("change", applyFiltersAndSort);
 
 resetFiltersBtn.addEventListener("click", () => {
         filterForm.reset();
-        priceValue.textContent = `$${priceRange.max}`; // Reset price label
+        const isVietnamese = currentLanguage === "vi";
+        if (isVietnamese) {
+                priceValue.textContent = `${parseInt(priceRange.max).toLocaleString("vi-VN")}đ`;
+        } else {
+                priceValue.textContent = `$${parseInt(priceRange.max).toLocaleString("en-US")}`;
+        }
         // Hide all subtype containers
         document.querySelectorAll(".filter-widget__subtype").forEach((subtypeContainer) => {
                 subtypeContainer.style.display = "none";
@@ -577,6 +632,44 @@ if (paginationContainer) {
 async function initialLoad() {
         await loadToursData(); // Load data first
         filteredTours = [...toursData]; // Initialize filtered tours
+
+        // Set price range max based on actual tour prices
+        if (toursData.length > 0 && priceRange) {
+                const maxPrice = Math.max(...toursData.map((tour) => tour.price));
+                const minPrice = Math.min(...toursData.map((tour) => tour.price));
+                const isVietnamese = currentLanguage === "vi";
+
+                if (isVietnamese) {
+                        // Round up to nearest million for max, round down for min
+                        priceRange.max = Math.ceil(maxPrice / 1000000) * 1000000;
+                        priceRange.min = Math.floor(minPrice / 1000000) * 1000000;
+                        priceRange.step = 1000000;
+                        priceRange.value = priceRange.max;
+                        if (priceValue) {
+                                priceValue.textContent = `${priceRange.max.toLocaleString("vi-VN")}đ`;
+                        }
+                        // Update min label
+                        const minLabel = document.querySelector(".price-label span:first-child");
+                        if (minLabel) {
+                                minLabel.textContent = `${priceRange.min.toLocaleString("vi-VN")}đ`;
+                        }
+                } else {
+                        // For USD, round up to nearest 100
+                        priceRange.max = Math.ceil(maxPrice / 100) * 100;
+                        priceRange.min = Math.floor(minPrice / 100) * 100;
+                        priceRange.step = 100;
+                        priceRange.value = priceRange.max;
+                        if (priceValue) {
+                                priceValue.textContent = `$${priceRange.max.toLocaleString("en-US")}`;
+                        }
+                        // Update min label
+                        const minLabel = document.querySelector(".price-label span:first-child");
+                        if (minLabel) {
+                                minLabel.textContent = `$${priceRange.min.toLocaleString("en-US")}`;
+                        }
+                }
+        }
+
         populateFilters();
         applyFiltersAndSort(); // Use the main function for initial render
 }
@@ -584,16 +677,55 @@ async function initialLoad() {
 initialLoad();
 
 // Lắng nghe sự kiện thay đổi ngôn ngữ để reload data
-window.addEventListener('languageChanged', async () => {
-        console.log('Language changed, reloading tours data...');
-        
+window.addEventListener("languageChanged", async () => {
+        console.log("Language changed, reloading tours data...");
+
         // Reload data theo ngôn ngữ mới
         await loadToursData();
         filteredTours = [...toursData];
-        
+
+        // Update price range based on new data
+        if (toursData.length > 0 && priceRange) {
+                const maxPrice = Math.max(...toursData.map((tour) => tour.price));
+                const minPrice = Math.min(...toursData.map((tour) => tour.price));
+                const isVietnamese = currentLanguage === "vi";
+
+                if (isVietnamese) {
+                        priceRange.max = Math.ceil(maxPrice / 1000000) * 1000000;
+                        priceRange.min = Math.floor(minPrice / 1000000) * 1000000;
+                        priceRange.step = 1000000;
+                        priceRange.value = priceRange.max;
+                        if (priceValue) {
+                                priceValue.textContent = `${priceRange.max.toLocaleString("vi-VN")}đ`;
+                        }
+                        // Update min label
+                        const minLabel = document.querySelector(".price-label span:first-child");
+                        if (minLabel) {
+                                minLabel.textContent = `${priceRange.min.toLocaleString("vi-VN")}đ`;
+                        }
+                } else {
+                        priceRange.max = Math.ceil(maxPrice / 100) * 100;
+                        priceRange.min = Math.floor(minPrice / 100) * 100;
+                        priceRange.step = 100;
+                        priceRange.value = priceRange.max;
+                        if (priceValue) {
+                                priceValue.textContent = `$${priceRange.max.toLocaleString("en-US")}`;
+                        }
+                        // Update min label
+                        const minLabel = document.querySelector(".price-label span:first-child");
+                        if (minLabel) {
+                                minLabel.textContent = `$${priceRange.min.toLocaleString("en-US")}`;
+                        }
+                }
+        }
+
         // Re-populate filters và re-render
         populateFilters();
-        applyFiltersAndSort();
-        
-        console.log('Tours data reloaded successfully!');
+
+        // Wait a bit to ensure priceRange is set before filtering
+        setTimeout(() => {
+                applyFiltersAndSort();
+        }, 100);
+
+        console.log("Tours data reloaded successfully!");
 });
