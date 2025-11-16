@@ -64,7 +64,6 @@ button {
         font-size: clamp(3.5rem, 8vw, 7rem);
         font-weight: 700;
         color: var(--color-primary);
-        margin-bottom: 1.5rem;
         text-transform: uppercase;
         letter-spacing: -0.02em;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -351,6 +350,7 @@ button {
         flex-direction: column;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border: 1px solid var(--color-border-primary);
+        cursor: pointer;
 }
 .tour-card:hover {
         transform: translateY(-8px);
@@ -432,6 +432,7 @@ button {
         align-items: center;
         justify-content: center;
         transition: all 0.3s ease;
+        z-index: 10;
 }
 .tour-card__wishlist-btn:hover {
         background: #fff;

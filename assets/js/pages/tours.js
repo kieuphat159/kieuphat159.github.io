@@ -171,6 +171,7 @@ function renderTours() {
         toursToRender.forEach((tour) => {
                 const tourCard = document.createElement("div");
                 tourCard.className = "tour-card";
+                tourCard.setAttribute("data-tour-id", tour.id);
 
                 const fullStars = Math.floor(tour.rating);
                 const halfStar = tour.rating % 1 !== 0;
@@ -272,6 +273,20 @@ function renderTours() {
                     </div>
                 `;
                 tourGrid.appendChild(tourCard);
+
+                // Add click event to entire card (except wishlist button and existing links)
+                tourCard.addEventListener("click", (e) => {
+                        // Don't navigate if clicking on wishlist button or its children
+                        if (e.target.closest(".tour-card__wishlist-btn")) {
+                                return;
+                        }
+                        // Don't navigate if clicking on existing links (let them handle navigation)
+                        if (e.target.closest("a")) {
+                                return;
+                        }
+                        // Navigate to tour details
+                        window.location.href = `#tour-details?id=${tour.id}`;
+                });
         });
 }
 

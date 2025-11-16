@@ -459,6 +459,8 @@
     "readingTime": "phút đọc"
   },
   "blogDetail": {
+    "by": "Bởi",
+    "publishedOn": "Đăng vào",
     "share": {
       "title": "Chia sẻ bài viết này:"
     },
