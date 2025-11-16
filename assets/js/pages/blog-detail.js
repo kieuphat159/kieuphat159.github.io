@@ -251,11 +251,13 @@ function renderPostDetails(post) {
 
         // 1. Render Meta Info (Author, Date, Tags)
         if (blogMetaContainer) {
+                const byText = window.i18n ? window.i18n.t("blogDetail.by") : "By";
+                const publishedOnText = window.i18n ? window.i18n.t("blogDetail.publishedOn") : "Published on";
                 blogMetaContainer.innerHTML = `
                 <div class="blog-detail__author">
                     <img src="${post.author.avatar}" alt="${post.author.name}" class="blog-detail__author-avatar" 
                          onerror="this.src='https://i.pravatar.cc/32?u=travel'"/>
-                    <span>By ${post.author.name} • Published on ${post.publishDate}</span>
+                    <span>${byText} ${post.author.name} • ${publishedOnText} ${post.publishDate}</span>
                 </div>
                 <div class="blog-detail__tags">
                     ${(post.tags || []).map((tag) => `<a href="javascript:void(0)" class="tag">${tag}</a>`).join("")}

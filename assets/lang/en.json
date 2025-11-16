@@ -459,6 +459,8 @@
     "readingTime": "min read"
   },
   "blogDetail": {
+    "by": "By",
+    "publishedOn": "Published on",
     "share": {
       "title": "Share this post:"
     },

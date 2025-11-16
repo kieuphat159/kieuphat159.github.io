@@ -64,14 +64,14 @@ ul {
     padding: 0 2rem;
 }
 .des-banner__title {
-    font-family: var(--font-heading);
-    font-size: clamp(3rem, 7vw, 5rem);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out;
+        font-family: var(--font-heading);
+        font-size: clamp(3rem, 7vw, 5rem);
+        font-weight: var(--font-weight-bold);
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 1s ease-out;
 }
 .des-banner__subtitle {
     font-family: var(--font-heading);
