@@ -584,7 +584,7 @@
     width: 100%;
     border: none;
     background: transparent;
-    color: var(--color-text-primary);
+    color: var(--color-text-tertiary);
     font-size: 0.96rem;
     line-height: 1.5;
     outline: none;
