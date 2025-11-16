@@ -156,11 +156,11 @@
     --screen-max-width: 1170px;
 
     /* Components */
-    --header-bg: #ffd27a1f;
+    --header-bg: #ffd27a17;
     --header-text: var(--color-text-primary);
     --header-border: var(--color-border-primary);
 
-    --footer-bg: #ffd27a1f;
+    --footer-bg: #ffd27a17;
     --footer-text: var(--color-text-secondary);
     --footer-divider: rgba(210, 208, 192, 0.21);
     --footer-social-border: var(--color-text-primary);
