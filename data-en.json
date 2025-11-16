@@ -1,3 +1,938 @@
+<<<<<<< HEAD
+{
+    "data": [
+        {
+            "id": "vn001",
+            "country": "Vietnam",
+            "region": "Asia",
+            "desc": "Vietnam is a stunning S-shaped strip of land in Southeast Asia, renowned for its heroic history, rich culture, vibrant street food, and diverse natural landscapes—from the majestic terraced rice fields in the North to the fertile Mekong Delta in the South.",
+            "title": "Cross-Vietnam Journey: From Hanoi to the Mekong Delta",
+            "description": "Explore the diverse beauty of Vietnam...",
+            "price": 25000000,
+            "rating": 4.8,
+            "days": 12,
+            "visits": 3450,
+            "tours": 8,
+            "places": [
+                {
+                    "city": "Hanoi",
+                    "blog": "Hanoi is a symphony of the senses. It's the aroma of steaming pho blending with the ancient incense from temples, the endless hum of motorbikes weaving through the 36 ancient streets. This is not just a city—it's a living museum. Try a cup of thick egg coffee, gaze at the serene Hoan Kiem Lake at dawn, and feel the weight of a thousand years of history at the Temple of Literature. Hanoi will enchant you with its organized chaos and timeless classical beauty.",
+                    "lat": 21.0285,
+                    "lon": 105.8542,
+                    "interest": "culture",
+                    "shortdesc": "Discover Hanoi, a sensory symphony from steaming pho to ancient temples.",
+                    "famous_locations": [
+                        {
+                            "name": "Hoan Kiem Lake",
+                            "image_url": "/assets/images/data/Việt Nam/Hà Nội/Hồ Gươm.jpeg"
+                        },
+                        {
+                            "name": "Ho Chi Minh Mausoleum",
+                            "image_url": "/assets/images/data/Việt Nam/Hà Nội/Lăng Chủ tịch Hồ Chí Minh.jpg"
+                        },
+                        {
+                            "name": "Temple of Literature - Quoc Tu Giam",
+                            "image_url": "/assets/images/data/Việt Nam/Hà Nội/Văn Miếu - Quốc Tử Giám.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Da Nang",
+                    "blog": "Da Nang is a city of the future, where gleaming skyscrapers reflect off pristine white sands. By day, conquer the lush Son Tra Peninsula and find tranquility in the caves of the Marble Mountains. At night, marvel at the iconic Dragon Bridge spewing fire, illuminating the Han River. This is the perfect balance between urban energy and seaside serenity—a modern Vietnamese escape.",
+                    "lat": 16.0545,
+                    "lon": 108.2022,
+                    "interest": "beach",
+                    "shortdesc": "Experience Da Nang, the city of the future with beaches and the iconic Dragon Bridge.",
+                    "famous_locations": [
+                        {
+                            "name": "My Khe Beach",
+                            "image_url": "/assets/images/data/Việt Nam/Đà Nẵng/Bãi biển Mỹ Khê.jpg"
+                        },
+                        {
+                            "name": "Marble Mountains",
+                            "image_url": "/assets/images/data/Việt Nam/Đà Nẵng/Ngũ Hành Sơn.png"
+                        },
+                        {
+                            "name": "Son Tra Peninsula",
+                            "image_url": "/assets/images/data/Việt Nam/Đà Nẵng/Bán đảo Sơn Trà.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Hoi An",
+                    "blog": "Step into a fairytale. Hoi An is a time capsule of golden walls draped in bougainvillea and lit by thousands of silk lanterns. At dusk, the ancient town transforms into a magical spectacle. Glide gently down the Hoai River in a sampan, release a flower lantern for good luck. This is a place to slow down, savor legendary Cao Lau noodles, and let your soul be enchanted.",
+                    "lat": 15.8801,
+                    "lon": 108.338,
+                    "interest": "culture",
+                    "shortdesc": "Get lost in Hoi An, a fairytale with lantern-lit ancient streets and the Hoai River.",
+                    "famous_locations": [
+                        {
+                            "name": "Hoi An Ancient Town",
+                            "image_url": "/assets/images/data/Việt Nam/Hội An/Phố cổ Hội An.jpg"
+                        },
+                        {
+                            "name": "Thanh Ha Pottery Village",
+                            "image_url": "/assets/images/data/Việt Nam/Hội An/Làng gốm Thanh Hà.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Ho Chi Minh City",
+                    "blog": "Welcome to the relentless whirlwind called Saigon. This city doesn't just live—it pulses with infectious energy, from endless motorbike streams to sizzling street stalls on every corner. Immerse in history at the Independence Palace, then soar up the Bitexco Tower to see a modern metropolis rising. Saigon is a city of resilience, flavor, and constant motion.",
+                    "lat": 10.7626,
+                    "lon": 106.6602,
+                    "interest": "city",
+                    "shortdesc": "Dive into Saigon, a whirlwind of energy, history, and street food.",
+                    "famous_locations": [
+                        {
+                            "name": "Independence Palace",
+                            "image_url": "/assets/images/data/Việt Nam/Hồ Chí Minh/Dinh Độc Lập.jpg"
+                        },
+                        {
+                            "name": "Notre Dame Cathedral",
+                            "image_url": "/assets/images/data/Việt Nam/Hồ Chí Minh/Nhà thờ Đức Bà.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "jp002",
+            "country": "Japan",
+            "region": "Asia",
+            "desc": "Japan, the 'Land of the Rising Sun,' is an island nation in East Asia where millennia-old tradition perfectly intersects with futuristic technology. It captivates travelers with serene temples, dazzling neon cities, cherry blossom beauty, and refined cuisine.",
+            "title": "Discover the Land of the Rising Sun: Tokyo & Kyoto",
+            "description": "Experience the fusion of tradition and modernity in Japan...",
+            "price": 45000000,
+            "rating": 4.9,
+            "days": 7,
+            "visits": 4890,
+            "tours": 11,
+            "places": [
+                {
+                    "city": "Tokyo",
+                    "blog": "Tokyo is a spectacular paradox. One moment you're lost in futuristic chaos amid the neon of Shibuya Crossing, the next you're in absolute stillness beneath ancient trees at Meiji Shrine. This is where you can eat a 3-Michelin-star sushi meal in a hidden alley and then join a centuries-old tea ceremony. A thrilling, polite, and utterly fascinating experience.",
+                    "lat": 35.6895,
+                    "lon": 139.6917,
+                    "interest": "city",
+                    "shortdesc": "Explore Tokyo, where neon chaos of Shibuya meets the serenity of Meiji Shrine.",
+                    "famous_locations": [
+                        {
+                            "name": "Shibuya Crossing",
+                            "image_url": "/assets/images/data/Nhật Bản/Tokyo/Giao lộ Shibuya.jpg"
+                        },
+                        {
+                            "name": "Tokyo Skytree",
+                            "image_url": "/assets/images/data/Nhật Bản/Tokyo/Tháp Tokyo Skytree.jpg"
+                        },
+                        {
+                            "name": "Imperial Palace",
+                            "image_url": "/assets/images/data/Nhật Bản/Tokyo/Hoàng cung Nhật Bản.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Kyoto",
+                    "blog": "If Tokyo is the future, Kyoto is Japan's soul. This is a city of refined beauty where every street corner tells a story. Stroll the surreal path through Arashiyama Bamboo Grove, witness the shimmering reflection of the Golden Pavilion, and explore the sacred Fushimi Inari. In the evening, wander Gion, the mysterious world of geisha, and feel the essence of ancient Japan.",
+                    "lat": 35.0116,
+                    "lon": 135.7681,
+                    "interest": "culture",
+                    "shortdesc": "Return to Kyoto, Japan's soul with bamboo groves, golden temples, and geisha world.",
+                    "famous_locations": [
+                        {
+                            "name": "Kinkaku-ji (Golden Pavilion)",
+                            "image_url": "/assets/images/data/Nhật Bản/Kyoto/Chùa Vàng Kinkaku-ji.jpg"
+                        },
+                        {
+                            "name": "Arashiyama Bamboo Grove",
+                            "image_url": "/assets/images/data/Nhật Bản/Kyoto/Rừng tre Arashiyama.jpg"
+                        },
+                        {
+                            "name": "Gion Ancient District",
+                            "image_url": "/assets/images/data/Nhật Bản/Kyoto/Phố cổ Gion.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Osaka",
+                    "blog": "Osaka is Japan's vibrant, fun-loving, food-obsessed heart. The city's motto is 'kuidaore'—eat until you drop! Immerse in the dazzling sensory explosion of Dotonbori, taste piping-hot takoyaki, okonomiyaki, and kushikatsu. Beyond food, explore the majestic Osaka Castle and experience the loud, warm hospitality that sets this city apart.",
+                    "lat": 34.6937,
+                    "lon": 135.5023,
+                    "interest": "food",
+                    "shortdesc": "Savor Osaka, the 'kuidaore' food capital with takoyaki and vibrant Dotonbori.",
+                    "famous_locations": [
+                        {
+                            "name": "Osaka Castle",
+                            "image_url": "/assets/images/data/Nhật Bản/Osaka/Lâu đài Osaka.jpg"
+                        },
+                        {
+                            "name": "Dotonbori Area",
+                            "image_url": "/assets/images/data/Nhật Bản/Osaka/Khu Dotonbori.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fr003",
+            "country": "France",
+            "region": "Europe",
+            "desc": "France, located in Western Europe, is a global center for art, fashion, cuisine, and culture. Beyond the romantic City of Light, Paris, it offers picturesque countryside, azure Riviera beaches, and world-renowned wine heritage.",
+            "title": "The Romantic Beauty of France: Paris and Nice",
+            "description": "Immerse yourself in the City of Light, Paris...",
+            "price": 65000000,
+            "rating": 4.7,
+            "days": 8,
+            "visits": 4200,
+            "tours": 5,
+            "places": [
+                {
+                    "city": "Paris",
+                    "blog": "Paris is not just a city—it's a promise of romance, art, and refined moments. Let the scent of freshly baked croissants guide you through charming Montmartre. Stand in awe before masterpieces at the Louvre and feel the grandeur of Notre Dame. As dusk falls, watch the Eiffel Tower illuminate the sky. This is a city to fall in love with—and to be loved by.",
+                    "lat": 48.8566,
+                    "lon": 2.3522,
+                    "interest": "culture",
+                    "shortdesc": "Experience Paris, the capital of romance, art, and masterpieces like the Eiffel Tower.",
+                    "famous_locations": [
+                        {
+                            "name": "Eiffel Tower",
+                            "image_url": "/assets/images/data/Pháp/Paris/Tháp Eiffel.jpg"
+                        },
+                        {
+                            "name": "Notre Dame Cathedral",
+                            "image_url": "/assets/images/data/Pháp/Paris/Nhà thờ Đức Bà Paris.jpg"
+                        },
+                        {
+                            "name": "Arc de Triomphe",
+                            "image_url": "/assets/images/data/Pháp/Paris/Khải Hoàn Môn.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Nice",
+                    "blog": "Breathe in the salty Mediterranean air in Nice, the glamorous capital of the French Riviera. The city is a colorful canvas, from the turquoise waters of the Bay of Angels to the ochre buildings of the Old Town (Vieille Ville). Stroll the iconic Promenade des Anglais, get lost in the vibrant Cours Saleya flower market, and climb Castle Hill for a breathtaking panorama.",
+                    "lat": 43.7102,
+                    "lon": 7.262,
+                    "interest": "beach",
+                    "shortdesc": "Relax in Nice, the glamorous capital of the French Riviera with turquoise waters.",
+                    "famous_locations": [
+                        {
+                            "name": "Vieille Ville (Old Town)",
+                            "image_url": "/assets/images/data/Pháp/Nice/Phố cổ Vieille Ville.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "it004",
+            "country": "Italy",
+            "region": "Europe",
+            "desc": "Italy is a Southern European nation with immense cultural and historical heritage—the cradle of the Roman Empire and the Renaissance. From ancient ruins in Rome to Venice's canals and Florence's art, Italy is a living museum paired with exquisite cuisine.",
+            "title": "Eternal Beauty: Rome, Florence, and Venice",
+            "description": "Journey through the legacy of the Roman Empire in Rome...",
+            "price": 70000000,
+            "rating": 4.8,
+            "days": 10,
+            "visits": 4950,
+            "tours": 9,
+            "places": [
+                {
+                    "city": "Rome",
+                    "blog": "Rome is a living epic where 3,000 years of history are written on every street corner. Stand in the arena where gladiators fought at the Colosseum, feel sacred presence beneath the Pantheon's dome, and toss a coin into the Trevi Fountain to ensure your return. But Rome is also about 'la dolce vita'—savoring perfect cacio e pepe, eating gelato in a sunlit piazza, and letting the city's eternal beauty envelop you.",
+                    "lat": 41.9028,
+                    "lon": 12.4964,
+                    "interest": "culture",
+                    "shortdesc": "Explore Rome, a living epic with the Colosseum and the 'la dolce vita' experience.",
+                    "famous_locations": [
+                        {
+                            "name": "Colosseum",
+                            "image_url": "/assets/images/data/Ý/Rome/Đấu trường Colosseum.jpg"
+                        },
+                        {
+                            "name": "Trevi Fountain",
+                            "image_url": "/assets/images/data/Ý/Rome/Đài phun nước Trevi.jpg"
+                        },
+                        {
+                            "name": "Pantheon",
+                            "image_url": "/assets/images/data/Ý/Rome/Đền Pantheon.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Florence",
+                    "blog": "Welcome to the cradle of the Renaissance. Florence is an open-air museum, a city built to inspire. Feel humbled before Michelangelo's perfect 'David,' hold your breath at 'The Birth of Venus' in the Uffizi, and climb the magnificent Duomo dome to gaze over Tuscany's terracotta rooftops. This is a city of artisans, divine art, and overwhelming beauty.",
+                    "lat": 43.7696,
+                    "lon": 11.2558,
+                    "interest": "culture",
+                    "shortdesc": "Immerse in Florence, the cradle of the Renaissance with stunning art and architecture.",
+                    "famous_locations": [
+                        {
+                            "name": "Ponte Vecchio",
+                            "image_url": "/assets/images/data/Ý/Florence/Cầu Ponte Vecchio.jpg"
+                        },
+                        {
+                            "name": "Uffizi Gallery",
+                            "image_url": "/assets/images/data/Ý/Florence/Bảo tàng nghệ thuật Uffizi Gallery.jpg"
+                        },
+                        {
+                            "name": "Michelangelo Square",
+                            "image_url": "/assets/images/data/Ý/Florence/Quảng trường Michelangelo.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Venice",
+                    "blog": "A city built on dreams and water. It is utterly unique—a labyrinth of winding canals, hidden bridges, and opulent palaces seemingly floating on the lagoon. Get deliberately lost in narrow alleys, then emerge into the grandeur of St. Mark’s Square, and experience the quiet romance of a gondola ride. There is nowhere else on Earth like Venice; it is pure, fragile magic.",
+                    "lat": 45.4408,
+                    "lon": 12.3155,
+                    "interest": "city",
+                    "shortdesc": "Romance in Venice, the magical city of canals and gondola rides.",
+                    "famous_locations": [
+                        {
+                            "name": "St. Mark’s Square",
+                            "image_url": "/assets/images/data/Ý/Venice/Quảng trường St. Mark.jpeg"
+                        },
+                        {
+                            "name": "Rialto Bridge",
+                            "image_url": "/assets/images/data/Ý/Venice/Cầu Rialto.jpeg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "us005",
+            "country": "United States",
+            "region": "North America",
+            "desc": "The United States is a vast nation in North America, stretching from the Atlantic to the Pacific. It is a cultural melting pot famous for iconic cities, majestic national parks, technological innovation, and global influence in music and film.",
+            "title": "West Coast USA Journey: Los Angeles, Las Vegas & Grand Canyon",
+            "description": "Experience the glamour of Hollywood, the movie capital...",
+            "price": 90000000,
+            "rating": 4.7,
+            "days": 9,
+            "visits": 3120,
+            "tours": 7,
+            "places": [
+                {
+                    "city": "Los Angeles",
+                    "blog": "LA is a vast mosaic of dreams, ambition, and endless sunshine. This is where you can hunt for stars on the Hollywood Walk of Fame, feel the laid-back vibe of Venice Beach, and window-shop luxury on Rodeo Drive. From street art scenes to Malibu waves, LA constantly reinvents itself, offering a different story to everyone.",
+                    "lat": 34.0522,
+                    "lon": -118.2437,
+                    "interest": "beach",
+                    "shortdesc": "Experience LA, the city of dreams—from the Walk of Fame to Venice Beach.",
+                    "famous_locations": [
+                        {
+                            "name": "Santa Monica Pier",
+                            "image_url": "/assets/images/data/Mỹ/Los Angeles/Bến tàu Santa Monica.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Las Vegas",
+                    "blog": "Welcome to the ultimate playground—a city that defies the desert with glamour and illusion. Vegas is all about extravagance. Witness the mesmerizing dance of the Bellagio Fountains, get lost in a replica of Venice with indoor canals, and watch a world-class show that leaves you breathless. It’s a place built for unforgettable nights and sensory overload.",
+                    "lat": 36.1699,
+                    "lon": -115.1398,
+                    "interest": "city",
+                    "shortdesc": "Explore Las Vegas, the ultimate playground with Bellagio Fountains and world-class shows.",
+                    "famous_locations": [
+                        {
+                            "name": "Bellagio Fountains",
+                            "image_url": "/assets/images/data/Mỹ/Las Vegas/Đài phun nước Bellagio.jpg"
+                        },
+                        {
+                            "name": "Fremont Street Experience",
+                            "image_url": "/assets/images/data/Mỹ/Las Vegas/Show diễn đường phố Fremont.jpeg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "th006",
+            "country": "Thailand",
+            "region": "Asia",
+            "desc": "Thailand, the 'Land of Smiles' in Southeast Asia, is a travel paradise with tropical beaches, opulent royal palaces, ancient ruins, and ornate Buddhist temples. Vibrant street food and warm hospitality are unforgettable highlights.",
+            "title": "Tropical Paradise: Bangkok and Phuket",
+            "description": "Explore the blend of golden ancient temples...",
+            "price": 12000000,
+            "rating": 4.6,
+            "days": 5,
+            "visits": 2800,
+            "tours": 10,
+            "places": [
+                {
+                    "city": "Bangkok",
+                    "blog": "An exhilarating assault on the senses. Golden-roofed temples like the Grand Palace and Wat Pho stand in serene contrast to the bustling chaos of street markets and vibrant nightlife. Navigate the 'klongs' (canals) by long-tail boat, marvel at the giant Reclining Buddha, and most importantly—EAT. The street food here is a world-class culinary journey in itself.",
+                    "lat": 13.7563,
+                    "lon": 100.5018,
+                    "interest": "food",
+                    "shortdesc": "Explore Bangkok, where ancient temples contrast with vibrant street food.",
+                    "famous_locations": [
+                        {
+                            "name": "Wat Pho (Reclining Buddha)",
+                            "image_url": "/assets/images/data/Thái Lan/Bangkok/Chùa Phật Nằm (Wat Pho).jpg"
+                        },
+                        {
+                            "name": "Chao Phraya River Cruise",
+                            "image_url": "/assets/images/data/Thái Lan/Bangkok/Du thuyền trên sông Chao Phraya.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Phuket",
+                    "blog": "Thailand’s quintessential island paradise—a haven of turquoise waters, dramatic limestone cliffs, and powdery white-sand beaches. Boat to the stunning Phi Phi Islands, dive into the vibrant underwater world of the Andaman Sea, or simply relax on a sunbed with a fresh coconut. From party-central Patong to serene luxury in Bang Tao, Phuket has a beach for every mood.",
+                    "lat": 7.8804,
+                    "lon": 98.3923,
+                    "interest": "beach",
+                    "shortdesc": "Relax in Phuket, an island paradise with turquoise waters and Phi Phi Islands.",
+                    "famous_locations": [
+                        {
+                            "name": "Phi Phi Islands",
+                            "image_url": "/assets/images/data/Thái Lan/Phuket/Quần đảo Phi Phi.jpg"
+                        },
+                        {
+                            "name": "Patong Beach",
+                            "image_url": "/assets/images/data/Thái Lan/Phuket/Bãi biển Patong.jpg"
+                        },
+                        {
+                            "name": "Phuket Old Town",
+                            "image_url": "/assets/images/data/Thái Lan/Phuket/Phố cổ Phuket.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "kr007",
+            "country": "South Korea",
+            "region": "Asia",
+            "desc": "South Korea is a dynamic East Asian nation where K-Pop culture and cutting-edge technology coexist with royal palaces and ancient traditions. From the sleepless metropolis of Seoul to the port city of Busan, it offers a captivating blend of old and new.",
+            "title": "The Allure of Seoul and the Beauty of Busan",
+            "description": "Experience the vibrant K-Pop culture...",
+            "price": 18000000,
+            "rating": 4.7,
+            "days": 6,
+            "visits": 3300,
+            "tours": 6,
+            "places": [
+                {
+                    "city": "Seoul",
+                    "blog": "A hyper-modern metropolis buzzing with K-Pop energy and cutting-edge tech, yet never forgetting its ancient roots. One moment you're shopping at Dongdaemun Design Plaza, the next you're in hanbok wandering the majestic Gyeongbokgung Palace. Dive into bustling Myeongdong for cosmetics and street food, and feel the youthful pulse of a city that truly never sleeps.",
+                    "lat": 37.5665,
+                    "lon": 126.978,
+                    "interest": "city",
+                    "shortdesc": "Experience Seoul, a modern K-Pop metropolis with ancient palaces and Myeongdong.",
+                    "famous_locations": [
+                        {
+                            "name": "Gyeongbokgung Palace",
+                            "image_url": "/assets/images/data/Hàn Quốc/Seoul/Cung điện Gyeongbokgung.jpg"
+                        },
+                        {
+                            "name": "Bukchon Hanok Village",
+                            "image_url": "/assets/images/data/Hàn Quốc/Seoul/Làng cổ Bukchon Hanok.jpg"
+                        },
+                        {
+                            "name": "Myeongdong Shopping Street",
+                            "image_url": "/assets/images/data/Hàn Quốc/Seoul/Khu phố mua sắm Myeongdong.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Busan",
+                    "blog": "Busan is Seoul’s cooler, more laid-back coastal sibling. This port city charms with relaxed beach culture, fresh seafood, and surprising art scenes. Lounge on famous Haeundae Beach, explore the colorful kaleidoscope of Gamcheon Culture Village (Korea's Santorini), and find tranquility at the stunning seaside Haedong Yonggungsa Temple. It’s a refreshing sea breeze.",
+                    "lat": 35.1796,
+                    "lon": 129.0756,
+                    "interest": "beach",
+                    "shortdesc": "Explore Busan, a relaxed port city with Haeundae Beach and Gamcheon Village.",
+                    "famous_locations": [
+                        {
+                            "name": "Haeundae Beach",
+                            "image_url": "/assets/images/data/Hàn Quốc/Busan/Bãi biển Haeundae.jpg"
+                        },
+                        {
+                            "name": "Gwangandaegyo Bridge",
+                            "image_url": "/assets/images/data/Hàn Quốc/Busan/Cầu Gwangandaegyo.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "au008",
+            "country": "Australia",
+            "region": "Oceania",
+            "desc": "Australia is a unique continent-country famous for vibrant coastal cities, vast outback, and one-of-a-kind wildlife. From the Sydney Opera House to the Great Barrier Reef, it’s a destination of sun, sea, and adventure.",
+            "title": "Explore Dynamic Sydney and Melbourne",
+            "description": "Admire Sydney's architectural icons...",
+            "price": 55000000,
+            "rating": 4.8,
+            "days": 8,
+            "visits": 1900,
+            "tours": 4,
+            "places": [
+                {
+                    "city": "Sydney",
+                    "blog": "Sydney is a city defined by its spectacular harbor. The first glimpse of the iconic duo—the soaring 'sails' of the Opera House and the mighty Harbour Bridge arch—is a core memory. But Sydney is more than landmarks; it’s a lifestyle. Learn to surf at legendary Bondi Beach, explore the historic cobblestone lanes of The Rocks, and live like a local at a sunny 'brekkie' café.",
+                    "lat": -33.8688,
+                    "lon": 151.2093,
+                    "interest": "city",
+                    "shortdesc": "Admire Sydney, the harbor city with the Opera House and Bondi Beach.",
+                    "famous_locations": [
+                        {
+                            "name": "Sydney Opera House",
+                            "image_url": "/assets/images/data/Úc/Sydney/Nhà hát Opera Sydney.jpeg"
+                        },
+                        {
+                            "name": "Sydney Harbour Bridge",
+                            "image_url": "/assets/images/data/Úc/Sydney/Cầu cảng Sydney.jpg"
+                        },
+                        {
+                            "name": "The Rocks",
+                            "image_url": "/assets/images/data/Úc/Sydney/Khu The Rocks.png"
+                        }
+                    ]
+                },
+                {
+                    "city": "Melbourne",
+                    "blog": "If Sydney has glamour, Melbourne has soul. This is Australia’s cultural capital, a city obsessed with coffee, art, and sport. Melbourne is truly found in its hidden laneways, adorned with world-class graffiti and home to unique boutiques and hole-in-the-wall cafés serving the world’s best flat white. It’s a city you don’t just see—you explore.",
+                    "lat": -37.8136,
+                    "lon": 144.9631,
+                    "interest": "culture",
+                    "shortdesc": "Explore Melbourne, Australia’s cultural capital with coffee, art, and laneways.",
+                    "famous_locations": [
+                        {
+                            "name": "Federation Square",
+                            "image_url": "/assets/images/data/Úc/Melbourne/Quảng trường Federation.png"
+                        },
+                        {
+                            "name": "Flinders Street Station",
+                            "image_url": "/assets/images/data/Úc/Melbourne/Ga tàu Flinders Street.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "eg009",
+            "country": "Egypt",
+            "region": "Africa",
+            "desc": "Egypt is a transcontinental nation bridging Northeast Africa and the Middle East, the cradle of one of history’s greatest civilizations. Travelers come to marvel at the Giza Pyramids, the Sphinx, and ancient temples along the majestic Nile River.",
+            "title": "Mystical Journey Along the Nile",
+            "description": "Travel back in time to ancient Egyptian civilization...",
+            "price": 85000000,
+            "rating": 4.9,
+            "days": 10,
+            "visits": 1500,
+            "tours": 3,
+            "places": [
+                {
+                    "city": "Cairo",
+                    "blog": "Prepare to be overwhelmed. Cairo is the gateway to the ancient world, a sprawling chaotic city guarding the only remaining wonder of the ancient world. Stand before the Great Pyramids of Giza and the enigmatic Sphinx—a moment that redefines your sense of history. Then dive into the treasures of the Egyptian Museum, home to Tutankhamun’s golden mask, and haggle for treasures in the thousand-year-old Khan el-Khalili bazaar.",
+                    "lat": 30.0444,
+                    "lon": 31.2357,
+                    "interest": "culture",
+                    "shortdesc": "Explore Cairo, the gateway to the ancient world with Giza Pyramids and the Sphinx.",
+                    "famous_locations": [
+                        {
+                            "name": "Giza Pyramid Complex",
+                            "image_url": "/assets/images/data/Ai Cập/Cairo/Quần thể Kim tự tháp Giza.jpg"
+                        },
+                        {
+                            "name": "Great Sphinx",
+                            "image_url": "/assets/images/data/Ai Cập/Cairo/Tượng Nhân sư Lớn.jpg"
+                        },
+                        {
+                            "name": "Egyptian Museum",
+                            "image_url": "/assets/images/data/Ai Cập/Cairo/Bảo tàng Ai Cập.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Luxor",
+                    "blog": "Luxor is often called the world's greatest open-air museum—and it’s no exaggeration. This was Thebes, the capital of the Pharaohs at their peak. On the East Bank, explore the unimaginably vast Karnak Temple complex. On the West Bank, descend into the vividly painted tombs of the Valley of the Kings. This isn’t just history; it’s history on a monumental scale.",
+                    "lat": 25.6872,
+                    "lon": 32.6396,
+                    "interest": "culture",
+                    "shortdesc": "Experience Luxor, the world’s greatest open-air museum with the Valley of the Kings.",
+                    "famous_locations": [
+                        {
+                            "name": "Valley of the Kings",
+                            "image_url": "/assets/images/data/Ai Cập/Luxor/Thung lũng các vị Vua.jpg"
+                        },
+                        {
+                            "name": "Karnak Temple",
+                            "image_url": "/assets/images/data/Ai Cập/Luxor/Đền Karnak.jpg"
+                        },
+                        {
+                            "name": "Colossi of Memnon",
+                            "image_url": "/assets/images/data/Ai Cập/Luxor/Tượng đài Colossi of Memnon.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "es010",
+            "country": "Spain",
+            "region": "Europe",
+            "desc": "Spain, a nation in Southwestern Europe, is a fusion of passion, history, and unique architecture. From flamenco in Madrid to Gaudí’s masterpieces in Barcelona and Mediterranean beaches, Spain pulses with culture and festivals.",
+            "title": "Vibrant Madrid and Barcelona’s Architecture",
+            "description": "Immerse in the vibrant life and royal culture of Madrid...",
+            "price": 68000000,
+            "rating": 4.7,
+            "days": 8,
+            "visits": 2650,
+            "tours": 8,
+            "places": [
+                {
+                    "city": "Madrid",
+                    "blog": "Madrid is a city that lives with passion. It’s a royal capital where grand squares like Plaza Mayor buzz day and night. It’s an art lover’s dream, home to the 'Golden Triangle' of museums (Prado, Reina Sofía). And it’s a city that truly comes alive after dark. Embrace the 'Madrileño' lifestyle: late-night tapas, a flamenco show, and living fully.",
+                    "lat": 40.4168,
+                    "lon": -3.7038,
+                    "interest": "culture",
+                    "shortdesc": "Experience Madrid, the royal capital with art, tapas, and flamenco nights.",
+                    "famous_locations": [
+                        {
+                            "name": "Royal Palace of Madrid",
+                            "image_url": "/assets/images/data/Tây Ban Nha/Madrid/Cung điện Hoàng gia Madrid.jpg"
+                        },
+                        {
+                            "name": "Plaza Mayor",
+                            "image_url": "/assets/images/data/Tây Ban Nha/Madrid/Quảng trường Plaza Mayor.jpeg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Barcelona",
+                    "blog": "Barcelona is a city of surreal beauty, thanks to the quirky genius of Antoni Gaudí. Let your imagination soar at the unfinished masterpiece La Sagrada Família and the fairytale-like Park Güell. But it’s also a vibrant Mediterranean city. Stroll down bustling La Rambla, get lost in the medieval alleys of the Gothic Quarter, then hit the beach at Barceloneta. It’s art and life, perfectly blended.",
+                    "lat": 41.3851,
+                    "lon": 2.1734,
+                    "interest": "culture",
+                    "shortdesc": "Explore Barcelona, Gaudí’s surreal city with La Sagrada Família.",
+                    "famous_locations": [
+                        {
+                            "name": "Sagrada Família",
+                            "image_url": "/assets/images/data/Tây Ban Nha/Barcelona/Nhà thờ Sagrada Família.jpg"
+                        },
+                        {
+                            "name": "Park Güell",
+                            "image_url": "/assets/images/data/Tây BanNha/Barcelona/Công viên Güell.jpg"
+                        },
+                        {
+                            "name": "La Rambla",
+                            "image_url": "/assets/images/data/Tây Ban Nha/Barcelona/Phố đi bộ La Rambla.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ca011",
+            "country": "Canada",
+            "region": "North America",
+            "desc": "Canada is the world’s second-largest country, renowned for cultural diversity, friendly cities, and above all, vast, majestic natural landscapes. From the towering Rocky Mountains in the West to the charm of Eastern cities, Canada is an adventure playground.",
+            "title": "Western Natural Wonders: Vancouver & the Rocky Mountains",
+            "description": "Explore the beautiful port city of Vancouver...",
+            "price": 95000000,
+            "rating": 4.9,
+            "days": 10,
+            "visits": 2100,
+            "tours": 5,
+            "places": [
+                {
+                    "city": "Vancouver",
+                    "blog": "Vancouver is where ocean, mountains, and city coexist in stunning harmony. It’s one of the few places on Earth where you can ski in the morning and sail in the afternoon. Cycle the seawall in vast Stanley Park, a temperate rainforest in the city. Then cross the thrilling Capilano Suspension Bridge, swaying high above the forest floor. It’s an urban adventure in a natural paradise.",
+                    "lat": 49.2827,
+                    "lon": -123.1207,
+                    "interest": "city",
+                    "shortdesc": "Explore Vancouver, where ocean, mountains, and city harmonize beautifully.",
+                    "famous_locations": [
+                        {
+                            "name": "Capilano Suspension Bridge",
+                            "image_url": "/assets/images/data/Canada/Vancouver/Cầu treo Capilano.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Banff",
+                    "blog": "Prepare to be jaw-dropped. Banff is the crown jewel of Canada’s Rocky Mountains, a place so beautiful it feels unreal. The town is a charming mountain hub, but the real stars are the landscapes. Witness the unbelievable turquoise waters of Lake Louise and Moraine Lake, framed by snow-capped peaks. Ride the Banff Gondola for six mountain ranges from above. This is nature’s masterpiece.",
+                    "lat": 51.1784,
+                    "lon": -115.5708,
+                    "interest": "mountain",
+                    "shortdesc": "Experience Banff, the Rocky Mountains' jewel with Lake Louise and Moraine Lake.",
+                    "famous_locations": [
+                        {
+                            "name": "Banff National Park",
+                            "image_url": "/assets/images/data/Canada/Banff/Vườn quốc gia Banff.jpg"
+                        },
+                        {
+                            "name": "Moraine Lake",
+                            "image_url": "/assets/images/data/Canada/Banff/Hồ Moraine.jpg"
+                        },
+                        {
+                            "name": "Banff Gondola Ride",
+                            "image_url": "/assets/images/data/Canada/Banff/Đi cáp treo Banff Gondola.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "in012",
+            "country": "India",
+            "region": "Asia",
+            "desc": "India is a vast South Asian nation, a land of astonishing diversity in culture, religion, and landscapes. From the historic Golden Triangle with the Taj Mahal to Goa’s beaches and Kerala’s backwaters, India is an intense, colorful experience.",
+            "title": "Golden Triangle Journey: Delhi, Agra, and Jaipur",
+            "description": "The classic journey to explore India...",
+            "price": 35000000,
+            "rating": 4.8,
+            "days": 7,
+            "visits": 1750,
+            "tours": 7,
+            "places": [
+                {
+                    "city": "Delhi",
+                    "blog": "Delhi is an astonishing tapestry of history and humanity. It’s two cities in one: chaotic, intoxicating Old Delhi with spice markets and ancient mosques; and stately New Delhi with tree-lined boulevards built as an imperial capital. Explore the majestic Humayun’s Tomb (Taj precursor) and feel the nation’s pulse at India Gate. Intense, unforgettable, and utterly captivating.",
+                    "lat": 28.7041,
+                    "lon": 77.1025,
+                    "interest": "culture",
+                    "shortdesc": "Explore Delhi, the contrast between chaotic Old Delhi and grand New Delhi.",
+                    "famous_locations": [
+                        {
+                            "name": "India Gate",
+                            "image_url": "/assets/images/data/Ấn Độ/Delhi/Cổng Ấn Độ.jpg"
+                        },
+                        {
+                            "name": "Humayun’s Tomb",
+                            "image_url": "/assets/images/data/Ấn Độ/Delhi/Lăng mộ Humayun.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Agra",
+                    "blog": "Agra is home to the building that needs no introduction: the Taj Mahal. Seeing it in person, especially at dawn when the marble shifts from ruby pink to glowing white, is a moment beyond travel. It’s not just a building—it’s a poem in stone, a testament to eternal love. While here, don’t miss the red sandstone Agra Fort, a city within a city.",
+                    "lat": 27.1767,
+                    "lon": 78.0081,
+                    "interest": "culture",
+                    "shortdesc": "Admire Agra, home of the Taj Mahal, a symbol of eternal love.",
+                    "famous_locations": [
+                        {
+                            "name": "Taj Mahal",
+                            "image_url": "/assets/images/data/Ấn Độ/Agra/Đền Taj Mahal.jpg"
+                        },
+                        {
+                            "name": "Agra Fort",
+                            "image_url": "/assets/images/data/Ấn Độ/Agra/Pháo đài Agra.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Jaipur",
+                    "blog": "Welcome to the 'Pink City,' the vibrant capital of Rajasthan. Jaipur is a spectacular display of royalty and Rajput architecture. Ride an elephant up to the massive Amber Fort, a honey-colored fortress overlooking a lake. Photograph the intricate facade of Hawa Mahal (Palace of Winds), and explore the opulent halls of the City Palace. This is India at its most lavish and colorful.",
+                    "lat": 26.9124,
+                    "lon": 75.7873,
+                    "interest": "culture",
+                    "shortdesc": "Experience Jaipur, the vibrant 'Pink City' with Amber Fort and Hawa Mahal.",
+                    "famous_locations": [
+                        {
+                            "name": "Amber Fort",
+                            "image_url": "/assets/images/data/Ấn Độ/Jaipur/Pháo đài Amber.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "br013",
+            "country": "Brazil",
+            "region": "South America",
+            "desc": "Brazil is South America’s largest nation, home to the Amazon rainforest and the vibrant Carnival festival. The country pulses with samba rhythm, legendary beaches like Ipanema, and majestic natural wonders like Iguazu Falls.",
+            "title": "Rio’s Samba Dance and Majestic Iguazu Falls",
+            "description": "Feel the vibrant Samba dance in Rio de Janeiro...",
+            "price": 110000000,
+            "rating": 4.8,
+            "days": 9,
+            "visits": 1200,
+            "tours": 2,
+            "places": [
+                {
+                    "city": "Rio de Janeiro",
+                    "blog": "Rio is the 'Marvelous City,' and it earns the title with flamboyant flair. It’s blessed with one of the world’s most stunning natural settings, nestled between jungle-covered mountains and golden beaches. Stand with arms wide beneath the colossal Christ the Redeemer, ride the cable car to Sugarloaf Mountain for sunset, and feel the bossa nova rhythm on legendary Ipanema and Copacabana beaches.",
+                    "lat": -22.9068,
+                    "lon": -43.1729,
+                    "interest": "beach",
+                    "shortdesc": "Explore Rio de Janeiro, the 'Marvelous City' with Christ the Redeemer and Ipanema.",
+                    "famous_locations": [
+                        {
+                            "name": "Christ the Redeemer",
+                            "image_url": "/assets/images/data/Brazil/Rio de Janeiro/Tượng Chúa Cứu thế.jpg"
+                        },
+                        {
+                            "name": "Sugarloaf Mountain",
+                            "image_url": "/assets/images/data/Brazil/Rio de Janeiro/Núi Sugarloaf.jpg"
+                        },
+                        {
+                            "name": "Copacabana and Ipanema Beaches",
+                            "image_url": "/assets/images/data/Brazil/Rio de Janeiro/Bãi biển Copacabana và Ipanema.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "tr014",
+            "country": "Turkey",
+            "region": "Europe/Asia",
+            "desc": "Turkey is a transcontinental nation between Eastern Europe and Western Asia, bearing the legacy of great empires. From the enchanting city of Istanbul, where continents meet, to the surreal landscapes of Cappadocia, Turkey is a bridge through history.",
+            "title": "Istanbul’s Heritage and Cappadocia’s Landscapes",
+            "description": "Travel across two continents in Istanbul...",
+            "price": 58000000,
+            "rating": 4.9,
+            "days": 8,
+            "visits": 3800,
+            "tours": 6,
+            "places": [
+                {
+                    "city": "Istanbul",
+                    "blog": "Istanbul is the city where continents collide. With one foot in Europe and one in Asia, it’s a city of empires, spices, and breathtaking beauty. Be mesmerized by masterpieces: the ancient Hagia Sophia, filled with mosaics, and the elegant Blue Mosque. Get lost in the labyrinthine Grand Bazaar, and end your day with a magical ferry ride across the Bosphorus, gliding between two worlds.",
+                    "lat": 41.0082,
+                    "lon": 28.9784,
+                    "interest": "culture",
+                    "shortdesc": "Explore Istanbul, the city bridging two continents with Hagia Sophia and Grand Bazaar.",
+                    "famous_locations": [
+                        {
+                            "name": "Hagia Sophia",
+                            "image_url": "/assets/images/data/Thổ Nhĩ Kỳ/Istanbul/Nhà thờ Hagia Sophia.jpg"
+                        },
+                        {
+                            "name": "Topkapi Palace",
+                            "image_url": "/assets/images/data/Thổ Nhĩ Kỳ/Istanbul/Cung điện Topkapi.jpg"
+                        },
+                        {
+                            "name": "Grand Bazaar",
+                            "image_url": "/assets/images/data/Thổ Nhĩ Kỳ/Istanbul/Chợ Grand Bazaar.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Cappadocia",
+                    "blog": "Cappadocia is a landscape pulled from a dream. This surreal region is famous for 'fairy chimneys'—bizarre rock formations hiding entire underground cities and cave churches. The quintessential experience? Wake before dawn to float in a hot air balloon, watching the sun rise over this moon-like terrain alongside hundreds of other balloons. It’s pure, unforgettable magic.",
+                    "lat": 38.6431,
+                    "lon": 34.8282,
+                    "interest": "culture",
+                    "shortdesc": "Experience Cappadocia, hot air ballooning over 'fairy chimneys' at sunrise.",
+                    "famous_locations": [
+                        {
+                            "name": "Hot Air Balloon Sunrise",
+                            "image_url": "/assets/images/data/Thổ Nhĩ Kỳ/Cappadocia/Bay khinh khí cầu ngắm bình minh.jpg"
+                        },
+                        {
+                            "name": "Göreme Open-Air Museum",
+                            "image_url": "/assets/images/data/Thổ Nhĩ Kỳ/Cappadocia/Bảo tàng ngoài trời Göreme.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "nz015",
+            "country": "New Zealand",
+            "region": "Oceania",
+            "desc": "New Zealand, an island nation in the Southwestern Pacific, is a paradise for nature and adventure lovers. Renowned for stunning landscapes—from snow-capped mountains and dramatic fjords to pristine beaches—and unique Maori culture.",
+            "title": "South Island Adventure: Queenstown & Milford Sound",
+            "description": "A journey for nature and adventure enthusiasts...",
+            "price": 88000000,
+            "rating": 4.9,
+            "days": 9,
+            "visits": 2900,
+            "tours": 3,
+            "places": [
+                {
+                    "city": "Te Anau",
+                    "blog": "Te Anau is the peaceful gateway to one of Earth’s last great wildernesses: Fiordland National Park. This serene lakeside town is your base for awe-inspiring exploration. Cruise Milford Sound, a majestic fjord where waterfalls plunge hundreds of meters from sheer granite cliffs. Or, for a truly mystical experience, drift silently through the Te Anau Glowworm Caves in small boats.",
+                    "lat": -45.4146,
+                    "lon": 167.718,
+                    "interest": "mountain",
+                    "shortdesc": "Explore Te Anau, gateway to Fiordland with Milford Sound and glowworm caves.",
+                    "famous_locations": [
+                        {
+                            "name": "Milford Sound",
+                            "image_url": "/assets/images/data/New Zealand/Te Anau/Vịnh hẹp Milford Sound.jpg"
+                        },
+                        {
+                            "name": "Doubtful Sound",
+                            "image_url": "/assets/images/data/New Zealand/Te Anau/Vịnh hẹp Doubtful Sound.jpg"
+                        },
+                        {
+                            "name": "Te Anau Glowworm Caves",
+                            "image_url": "/assets/images/data/New Zealand/Te Anau/Hang đom đóm Te Anau.jpg"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "uk016",
+            "country": "United Kingdom",
+            "region": "Europe",
+            "desc": "The United Kingdom, or UK, is an island nation in Northwestern Europe comprising England, Scotland, Wales, and Northern Ireland. It’s a land of royalty, millennia of history, classic literature, and multicultural cities like London, alongside charming countryside.",
+            "title": "Historical Highlights: London and Edinburgh",
+            "description": "Explore royal icons and history in London...",
+            "price": 75000000,
+            "rating": 4.7,
+            "days": 8,
+            "visits": 4100,
+            "tours": 9,
+            "places": [
+                {
+                    "city": "London",
+                    "blog": "London is a grand stage where history and modernity perform on every street. Feel the weight of a thousand years at the Tower of London, home to the Crown Jewels. Witness the Changing of the Guard at Buckingham Palace. Then soar above it all on the London Eye for a panorama of a city seamlessly blending ancient landmarks with cutting-edge architecture. Timeless, yet always new.",
+                    "lat": 51.5074,
+                    "lon": -0.1278,
+                    "interest": "culture",
+                    "shortdesc": "Experience London, the historic city with the Tower, Buckingham Palace.",
+                    "famous_locations": [
+                        {
+                            "name": "Tower of London",
+                            "image_url": "/assets/images/data/Anh/London/Tháp London.jpg"
+                        },
+                        {
+                            "name": "Buckingham Palace",
+                            "image_url": "/assets/images/data/Anh/London/Cung điện Buckingham.jpg"
+                        },
+                        {
+                            "name": "London Eye",
+                            "image_url": "/assets/images/data/Anh/London/Vòng quay London Eye.jpg"
+                        }
+                    ]
+                },
+                {
+                    "city": "Edinburgh",
+                    "blog": "Edinburgh is a city of atmosphere, mystery, and moody beauty. Its skyline is dominated by the formidable Edinburgh Castle, perched on an extinct volcano. Wander the medieval alleys of the Old Town, especially the historic Royal Mile, echoing with tales of kings, queens, and ghosts. This is the city that inspired Harry Potter; its gothic charm, cozy pubs, and misty air will bewitch you.",
+                    "lat": 55.9533,
+                    "lon": -3.1883,
+                    "interest": "culture",
+                    "shortdesc": "Explore Edinburgh, the gothic city with Edinburgh Castle and Royal Mile.",
+                    "famous_locations": [
+                        {
+                            "name": "Edinburgh Castle",
+                            "image_url": "/assets/images/data/Anh/Edinburgh/Lâu đài Edinburgh.jpg"
+                        },
+                        {
+                            "name": "Royal Mile",
+                            "image_url": "/assets/images/data/Anh/Edinburgh/Phố Royal Mile.jpg"
+                        },
+                        {
+                            "name": "Holyroodhouse Palace",
+                            "image_url": "/assets/images/data/Anh/Edinburgh/Cung điện Holyroodhouse.jpg"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+=======
     {
         "data": [
             {
@@ -931,191 +1866,187 @@
                 ]
             }
         ],
-        "bestTimeData": {
-            "Asia": {
-                "video": "../assets/images/destinations/1.mp4",
-                "seasons": [
-                    {
-                        "icon": "❄️",
-                        "title": "Winter (December – February)",
-                        "suitability": "4.5/5",
-                        "crowd": "Low",
-                        "best": "Cool weather, tropical destinations like Thailand.",
-                        "consider": "Some northern areas may be cold."
-                    },
-                    {
-                        "icon": "🌸",
-                        "title": "Spring (March – May)",
-                        "suitability": "5.0/5",
-                        "crowd": "Moderate",
-                        "best": "Perfect weather, cherry blossom festivals.",
-                        "consider": "Prices rise in Japan & South Korea."
-                    },
-                    {
-                        "icon": "☀️",
-                        "title": "Summer (June – August)",
-                        "suitability": "3.5/5",
-                        "crowd": "High",
-                        "best": "Beach season, school summer holidays.",
-                        "consider": "Many places are very hot and humid."
-                    },
-                    {
-                        "icon": "🍁",
-                        "title": "Autumn (September – November)",
-                        "suitability": "4.8/5",
-                        "crowd": "Low – Moderate",
-                        "best": "Pleasant weather, colorful autumn scenery.",
-                        "consider": "Possible storms in some regions."
-                    }
-                ]
-            },
-            "Europe": {
-                "video": "../assets/images/destinations/2.mp4",
-                "seasons": [
-                    {
-                        "icon": "❄️",
-                        "title": "Winter (December – February)",
-                        "suitability": "3.8/5",
-                        "crowd": "Low",
-                        "best": "Christmas markets and winter activities.",
-                        "consider": "Cold weather limits some outdoor trips."
-                    },
-                    {
-                        "icon": "🌸",
-                        "title": "Spring (March – May)",
-                        "suitability": "4.9/5",
-                        "crowd": "Moderate",
-                        "best": "Pleasant weather and fewer crowds.",
-                        "consider": "Some northern areas still cold."
-                    },
-                    {
-                        "icon": "☀️",
-                        "title": "Summer (June – August)",
-                        "suitability": "4.2/5",
-                        "crowd": "High",
-                        "best": "Festivals & long sunny days.",
-                        "consider": "Peak tourist season, higher prices."
-                    },
-                    {
-                        "icon": "🍁",
-                        "title": "Autumn (September – November)",
-                        "suitability": "4.7/5",
-                        "crowd": "Low – Moderate",
-                        "best": "Golden scenery and wine harvest festivals.",
-                        "consider": "Days shorten as winter approaches."
-                    }
-                ]
-            },
-            "America": {
-                "video": "../assets/images/destinations/3.mp4",
-                "seasons": [
-                    {
-                        "icon": "❄️",
-                        "title": "Winter (December – February)",
-                        "suitability": "4.0/5",
-                        "crowd": "Low",
-                        "best": "Warm destinations like Florida or Mexico.",
-                        "consider": "Snow in the north; avoid blizzards."
-                    },
-                    {
-                        "icon": "🌸",
-                        "title": "Spring (March – May)",
-                        "suitability": "4.7/5",
-                        "crowd": "Moderate",
-                        "best": "National parks & blooming city landscapes.",
-                        "consider": "Spring pollen allergies."
-                    },
-                    {
-                        "icon": "☀️",
-                        "title": "Summer (June – August)",
-                        "suitability": "4.3/5",
-                        "crowd": "High",
-                        "best": "Road trips, beaches, festivals.",
-                        "consider": "High heat in deserts, crowded."
-                    },
-                    {
-                        "icon": "🍁",
-                        "title": "Autumn (September – November)",
-                        "suitability": "5.0/5",
-                        "crowd": "Low – Moderate",
-                        "best": "Fall foliage & pleasant weather.",
-                        "consider": "Hurricane season on the East Coast."
-                    }
-                ]
-            },
-            "Africa": {
-                "video": "../assets/images/destinations/4.mp4",
-                "seasons": [
-                    {
-                        "icon": "❄️",
-                        "title": "Winter (June – August)",
-                        "suitability": "4.6/5",
-                        "crowd": "Moderate",
-                        "best": "Cooler weather for East African safaris.",
-                        "consider": "Some southern areas cold at night."
-                    },
-                    {
-                        "icon": "🌸",
-                        "title": "Spring (September – November)",
-                        "suitability": "4.9/5",
-                        "crowd": "Low – Moderate",
-                        "best": "Perfect for wildlife viewing & beaches.",
-                        "consider": "Rain in some tropical areas."
-                    },
-                    {
-                        "icon": "☀️",
-                        "title": "Summer (December – February)",
-                        "suitability": "4.0/5",
-                        "crowd": "High",
-                        "best": "Beach holidays & vineyards in Cape Town.",
-                        "consider": "High inland heat and busy safari parks."
-                    },
-                    {
-                        "icon": "🍁",
-                        "title": "Autumn (March – May)",
-                        "suitability": "4.4/5",
-                        "crowd": "Moderate",
-                        "best": "Start of dry season — ideal for safaris.",
-                        "consider": "Variable weather in northern regions."
-                    }
-                ]
-            },
-            "Oceania": {
-                "video": "../assets/images/destinations/5.mp4",
-                "seasons": [
-                    {
-                        "icon": "❄️",
-                        "title": "Winter (June – August)",
-                        "suitability": "4.3/5",
-                        "crowd": "Low – Moderate",
-                        "best": "Pleasant weather, surfing & whale watching.",
-                        "consider": "Snow in southern New Zealand."
-                    },
-                    {
-                        "icon": "🌸",
-                        "title": "Spring (September – November)",
-                        "suitability": "5.0/5",
-                        "crowd": "Moderate",
-                        "best": "Ideal for beaches, nature & road trips.",
-                        "consider": "Allergy season in some areas."
-                    },
-                    {
-                        "icon": "☀️",
-                        "title": "Summer (December – February)",
-                        "suitability": "4.6/5",
-                        "crowd": "High",
-                        "best": "Beach season, outdoor festivals.",
-                        "consider": "Very hot in inland Australia."
-                    },
-                    {
-                        "icon": "🍁",
-                        "title": "Autumn (March – May)",
-                        "suitability": "4.8/5",
-                        "crowd": "Low – Moderate",
-                        "best": "Pleasant weather & fewer tourists.",
-                        "consider": "Rain in some tropical areas."
-                    }
-                ]
-            }
+>>>>>>> f1835f54565e05e438bf5ba16af78ce6fa236943
+    "bestTimeData": {
+        "Asia": {
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (December – February)",
+                    "suitability": "4.5/5",
+                    "crowd": "Low",
+                    "best": "Cool weather, tropical destinations like Thailand.",
+                    "consider": "Some northern areas may be cold."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (March – May)",
+                    "suitability": "5.0/5",
+                    "crowd": "Moderate",
+                    "best": "Perfect weather, cherry blossom festivals.",
+                    "consider": "Prices rise in Japan & South Korea."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (June – August)",
+                    "suitability": "3.5/5",
+                    "crowd": "High",
+                    "best": "Beach season, school summer holidays.",
+                    "consider": "Many places are very hot and humid."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (September – November)",
+                    "suitability": "4.8/5",
+                    "crowd": "Low – Moderate",
+                    "best": "Pleasant weather, colorful autumn scenery.",
+                    "consider": "Possible storms in some regions."
+                }
+            ]
+        },
+        "Europe": {
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (December – February)",
+                    "suitability": "3.8/5",
+                    "crowd": "Low",
+                    "best": "Christmas markets and winter activities.",
+                    "consider": "Cold weather limits some outdoor trips."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (March – May)",
+                    "suitability": "4.9/5",
+                    "crowd": "Moderate",
+                    "best": "Pleasant weather and fewer crowds.",
+                    "consider": "Some northern areas still cold."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (June – August)",
+                    "suitability": "4.2/5",
+                    "crowd": "High",
+                    "best": "Festivals & long sunny days.",
+                    "consider": "Peak tourist season, higher prices."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (September – November)",
+                    "suitability": "4.7/5",
+                    "crowd": "Low – Moderate",
+                    "best": "Golden scenery and wine harvest festivals.",
+                    "consider": "Days shorten as winter approaches."
+                }
+            ]
+        },
+        "America": {
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (December – February)",
+                    "suitability": "4.0/5",
+                    "crowd": "Low",
+                    "best": "Warm destinations like Florida or Mexico.",
+                    "consider": "Snow in the north; avoid blizzards."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (March – May)",
+                    "suitability": "4.7/5",
+                    "crowd": "Moderate",
+                    "best": "National parks & blooming city landscapes.",
+                    "consider": "Spring pollen allergies."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (June – August)",
+                    "suitability": "4.3/5",
+                    "crowd": "High",
+                    "best": "Road trips, beaches, festivals.",
+                    "consider": "High heat in deserts, crowded."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (September – November)",
+                    "suitability": "5.0/5",
+                    "crowd": "Low – Moderate",
+                    "best": "Fall foliage & pleasant weather.",
+                    "consider": "Hurricane season on the East Coast."
+                }
+            ]
+        },
+        "Africa": {
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (June – August)",
+                    "suitability": "4.6/5",
+                    "crowd": "Moderate",
+                    "best": "Cooler weather for East African safaris.",
+                    "consider": "Some southern areas cold at night."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (September – November)",
+                    "suitability": "4.9/5",
+                    "crowd": "Low – Moderate",
+                    "best": "Perfect for wildlife viewing & beaches.",
+                    "consider": "Rain in some tropical areas."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (December – February)",
+                    "suitability": "4.0/5",
+                    "crowd": "High",
+                    "best": "Beach holidays & vineyards in Cape Town.",
+                    "consider": "High inland heat and busy safari parks."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (March – May)",
+                    "suitability": "4.4/5",
+                    "crowd": "Moderate",
+                    "best": "Start of dry season — ideal for safaris.",
+                    "consider": "Variable weather in northern regions."
+                }
+            ]
+        },
+        "Oceania": {
+            "seasons": [
+                {
+                    "icon": "❄️",
+                    "title": "Winter (June – August)",
+                    "suitability": "4.3/5",
+                    "crowd": "Low – Moderate",
+                    "best": "Pleasant weather, surfing & whale watching.",
+                    "consider": "Snow in southern New Zealand."
+                },
+                {
+                    "icon": "🌸",
+                    "title": "Spring (September – November)",
+                    "suitability": "5.0/5",
+                    "crowd": "Moderate",
+                    "best": "Ideal for beaches, nature & road trips.",
+                    "consider": "Allergy season in some areas."
+                },
+                {
+                    "icon": "☀️",
+                    "title": "Summer (December – February)",
+                    "suitability": "4.6/5",
+                    "crowd": "High",
+                    "best": "Beach season, outdoor festivals.",
+                    "consider": "Very hot in inland Australia."
+                },
+                {
+                    "icon": "🍁",
+                    "title": "Autumn (March – May)",
+                    "suitability": "4.8/5",
+                    "crowd": "Low – Moderate",
+                    "best": "Pleasant weather & fewer tourists.",
+                    "consider": "Rain in some tropical areas."
+                }
+            ]
         }
     }
+}

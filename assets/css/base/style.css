@@ -4,7 +4,7 @@
        ============================================ */
 
     /* Primary Brand Colors */
-    --color-primary: #ff7b29;
+    --color-primary: #ff6a23;
     --color-primary-hover: #ff8a3d;
     --color-primary-dark: #e55a28;
     --color-primary-light: #ffb366;
@@ -79,8 +79,13 @@
     /* ============================================
        TYPOGRAPHY SYSTEM
        ============================================ */
+<<<<<<< HEAD
+    --font-primary: 'Montserrat', system-ui, sans-serif;
+    --font-heading: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+=======
     --font-primary: "Montserrat", system-ui, sans-serif;
     --font-heading: "Montserrat", "Segoe UI", Arial, sans-serif;
+>>>>>>> f1835f54565e05e438bf5ba16af78ce6fa236943
 
     --font-weight-light: 300;
     --font-weight-normal: 400;
@@ -243,10 +248,10 @@
 
 .dark {
     /* Core colors - Sunset & Lagoon */
-    --color-primary: #ff9b6b;
-    --color-primary-hover: #ffb083;
-    --color-primary-dark: #ff8554;
-    --color-primary-light: #ffd1b5;
+    --color-primary: #ff6a23;
+    --color-primary-hover: #ff7f3d;
+    --color-primary-dark: #e2551a;
+    --color-primary-light: #ff9a66;
 
     --color-secondary: #6fd5ff;
     --color-secondary-hover: #8ae2ff;
@@ -407,7 +412,7 @@ h3,
 h4,
 h5,
 h6,
-[class*="__title"] {
+[class*='__title'] {
     font-family: var(--font-heading);
     color: var(--color-text-primary);
     margin: 0;

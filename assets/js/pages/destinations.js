@@ -50,7 +50,7 @@ async function fetchDestinationsData() {
         // Lấy ngôn ngữ hiện tại từ i18n
         const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'vi';
         const dataFile = currentLang === 'en' ? '/data-en.json' : '/data-vi.json';
-        
+
         const response = await fetch(dataFile);
 
         if (!response.ok) {
@@ -189,7 +189,7 @@ async function fetchDiscountedTours() {
         // Lấy ngôn ngữ hiện tại từ i18n
         const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'vi';
         const toursFile = currentLang === 'en' ? '/tours-en.json' : '/tours-vi.json';
-        
+
         const response = await fetch(toursFile);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -206,59 +206,59 @@ async function fetchDiscountedTours() {
     }
 }
 
-function loadFallbackData() {
-    console.warn('Using fallback data');
+// function loadFallbackData() {
+//     console.warn('Using fallback data');
 
-    // Fallback bestTimeData
-    bestTimeData = {
-        Asia: {
-            video: '../assets/images/destinations/1.mp4',
-            seasons: [
-                {
-                    icon: '❄️',
-                    title: 'Mùa đông (Tháng 12 – Tháng 2)',
-                    suitability: '4.5/5',
-                    crowd: 'Ít',
-                    best: 'Thời tiết mát mẻ, các điểm nhiệt đới như Thái Lan.',
-                    consider: 'Một số vùng phía Bắc có thể lạnh.',
-                },
-            ],
-        },
-    };
+//     // Fallback bestTimeData
+//     bestTimeData = {
+//         Asia: {
+//             video: '../assets/images/destinations/1.mp4',
+//             seasons: [
+//                 {
+//                     icon: '❄️',
+//                     title: 'Mùa đông (Tháng 12 – Tháng 2)',
+//                     suitability: '4.5/5',
+//                     crowd: 'Ít',
+//                     best: 'Thời tiết mát mẻ, các điểm nhiệt đới như Thái Lan.',
+//                     consider: 'Một số vùng phía Bắc có thể lạnh.',
+//                 },
+//             ],
+//         },
+//     };
 
-    destinations = [
-        {
-            name: 'Switzerland',
-            region: 'Europe',
-            country: 'Switzerland',
-            img: '../assets/images/destinations/Switzerland.png',
-            short: 'A breathtaking land of snow-capped Alps.',
-            long: 'Switzerland captivates travelers.',
-            lat: 46.8182,
-            lon: 8.2275,
-            tours: 12,
-            rating: 4.8,
-            gallery: ['../assets/images/destinations/Switzerland.png'],
-            visits: 120,
-            interest: 'mountain',
-            places: [],
-            famous_locations: [],
-        },
-    ];
+//     destinations = [
+//         {
+//             name: 'Switzerland',
+//             region: 'Europe',
+//             country: 'Switzerland',
+//             img: '../assets/images/destinations/Switzerland.png',
+//             short: 'A breathtaking land of snow-capped Alps.',
+//             long: 'Switzerland captivates travelers.',
+//             lat: 46.8182,
+//             lon: 8.2275,
+//             tours: 12,
+//             rating: 4.8,
+//             gallery: ['../assets/images/destinations/Switzerland.png'],
+//             visits: 120,
+//             interest: 'mountain',
+//             places: [],
+//             famous_locations: [],
+//         },
+//     ];
 
-    tripData = [
-        {
-            name: 'Swiss Alps, Switzerland',
-            interest: 'mountain',
-            region: 'Europe',
-            costPerDay: 250,
-            description: 'Breathtaking peaks, skiing, and scenic mountain villages.',
-            image: '../assets/images/destinations/Switzerland.png',
-        },
-    ];
+//     tripData = [
+//         {
+//             name: 'Swiss Alps, Switzerland',
+//             interest: 'mountain',
+//             region: 'Europe',
+//             costPerDay: 250,
+//             description: 'Breathtaking peaks, skiing, and scenic mountain villages.',
+//             image: '../assets/images/destinations/Switzerland.png',
+//         },
+//     ];
 
-    isDataLoaded = true;
-}
+//     isDataLoaded = true;
+// }
 
 /* ========= STATE ========= */
 let visibleCount = 6;
@@ -334,8 +334,8 @@ function renderTop5(region = 'All') {
     if (filtered.length === 0) {
         top5List.innerHTML = `
       <div class="empty">
-        <p>No destinations found for this region yet.</p>
-        <small>Try exploring a different region!</small>
+        <p>Chưa có điểm đến nào cho khu vực này.</p>
+        <small>Hãy thử chọn một khu vực khác!</small>
       </div>`;
         return;
     }
@@ -374,7 +374,7 @@ function renderDestinations() {
         const isWish = wishlist.includes(item.name);
         const card = document.createElement('div');
         card.className = 'destination-card';
-        
+
         // Lấy text từ i18n
         const toursText = window.i18n ? window.i18n.t('destinations.card.tours') : 'tours';
         const exploreText = window.i18n ? window.i18n.t('destinations.card.explore') : 'Khám phá';
@@ -608,7 +608,7 @@ function openDetailModal(name) {
     detailShort.textContent = item.short;
     detailLong.textContent = item.long;
     detailRating.textContent = `⭐ ${item.rating}`;
-    
+
     // Sử dụng i18n cho text "tours"
     const toursText = window.i18n ? window.i18n.t('destinations.modal.tours') : 'tour';
     detailTours.textContent = `${item.tours} ${toursText}`;
@@ -715,7 +715,7 @@ if (tripForm && tripResults) {
         tripResults.innerHTML = '';
 
         if (matches.length === 0) {
-            tripResults.innerHTML = `<p>No matching destinations found — try increasing your budget or changing interest.</p>`;
+            tripResults.innerHTML = `<p>Không tìm thấy điểm đến phù hợp — hãy thử tăng ngân sách hoặc thay đổi sở thích của bạn.</p>`;
             return;
         }
 
@@ -786,7 +786,6 @@ function initMap(lat, lon, name) {
 /* ========== BEST TIME TO VISIT ========== */
 const regionCards = document.querySelectorAll('.region-card');
 const regionNameEl = document.getElementById('regionName');
-const bestTimeVideoBg = document.getElementById('bestTimeVideoBg');
 const seasonContainer = document.getElementById('seasonContainer');
 
 function renderBestTime(region) {
@@ -794,14 +793,6 @@ function renderBestTime(region) {
     if (!regionData) return;
 
     if (regionNameEl) regionNameEl.textContent = region;
-
-    if (bestTimeVideoBg) {
-        const source = bestTimeVideoBg.querySelector('source');
-        if (source) {
-            source.src = regionData.video;
-            bestTimeVideoBg.load();
-        }
-    }
 
     if (seasonContainer) {
         seasonContainer.innerHTML = regionData.seasons
@@ -974,14 +965,14 @@ if (document.readyState === 'loading') {
 // Lắng nghe sự kiện thay đổi ngôn ngữ để reload data
 window.addEventListener('languageChanged', async () => {
     console.log('Language changed, reloading destinations data...');
-    
+
     // Reload data theo ngôn ngữ mới
     const dataLoadedDes = await fetchDestinationsData();
     const dataLoadedTour = await fetchDiscountedTours();
 
     if (dataLoadedDes && dataLoadedTour) {
         console.log('Data reloaded successfully!');
-        
+
         // Re-render tất cả các phần đã hiển thị
         renderDestinations();
         renderTop5();

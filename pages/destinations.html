@@ -30,23 +30,42 @@
 <section class="filter-section">
     <div class="des-container">
         <div class="filter-left">
-            <input type="text" id="searchInput" placeholder="Tìm kiếm điểm đến..." data-i18n-placeholder="destinations.filter.searchPlaceholder" />
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Tìm kiếm điểm đến..."
+                data-i18n-placeholder="destinations.filter.searchPlaceholder"
+            />
             <div class="filter-buttons">
                 <button class="filter-btn" data-region="All" data-i18n="destinations.filter.all">Tất cả</button>
                 <button class="filter-btn" data-region="Châu Á" data-i18n="destinations.filter.asia">Châu Á</button>
                 <button class="filter-btn" data-region="Châu Âu" data-i18n="destinations.filter.europe">Châu Âu</button>
-                <button class="filter-btn" data-region="Châu Mỹ" data-i18n="destinations.filter.america">Châu Mỹ</button>
-                <button class="filter-btn" data-region="Châu Phi" data-i18n="destinations.filter.africa">Châu Phi</button>
-                <button class="filter-btn" data-region="Châu Đại Dương" data-i18n="destinations.filter.oceania">Châu Đại Dương</button>
+                <button class="filter-btn" data-region="Châu Mỹ" data-i18n="destinations.filter.america">
+                    Châu Mỹ
+                </button>
+                <button class="filter-btn" data-region="Châu Phi" data-i18n="destinations.filter.africa">
+                    Châu Phi
+                </button>
+                <button class="filter-btn" data-region="Châu Đại Dương" data-i18n="destinations.filter.oceania">
+                    Châu Đại Dương
+                </button>
             </div>
         </div>
         <div class="filter-right">
             <label for="sortSelect" data-i18n="destinations.filter.sortLabel">Sắp xếp:</label>
             <select id="sortSelect">
-                <option value="visited-desc" data-i18n="destinations.filter.sortOptions.visitedDesc">Được xem nhiều nhất</option>
-                <option value="rating-desc" data-i18n="destinations.filter.sortOptions.ratingDesc">Đánh giá: Cao → Thấp</option>
-                <option value="rating-asc" data-i18n="destinations.filter.sortOptions.ratingAsc">Đánh giá: Thấp → Cao</option>
-                <option value="tours-desc" data-i18n="destinations.filter.sortOptions.toursDesc">Số tour: Cao → Thấp</option>
+                <option value="visited-desc" data-i18n="destinations.filter.sortOptions.visitedDesc">
+                    Được xem nhiều nhất
+                </option>
+                <option value="rating-desc" data-i18n="destinations.filter.sortOptions.ratingDesc">
+                    Đánh giá: Cao → Thấp
+                </option>
+                <option value="rating-asc" data-i18n="destinations.filter.sortOptions.ratingAsc">
+                    Đánh giá: Thấp → Cao
+                </option>
+                <option value="tours-desc" data-i18n="destinations.filter.sortOptions.toursDesc">
+                    Số tour: Cao → Thấp
+                </option>
             </select>
         </div>
     </div>
@@ -63,7 +82,11 @@
             </div>
             <div class="subscribe card">
                 <h4 data-i18n="destinations.sidebar.subscribe.title">Đăng ký nhận tin</h4>
-                <input id="emailSub" placeholder="Nhập email của bạn" data-i18n-placeholder="destinations.sidebar.subscribe.placeholder" />
+                <input
+                    id="emailSub"
+                    placeholder="Nhập email của bạn"
+                    data-i18n-placeholder="destinations.sidebar.subscribe.placeholder"
+                />
                 <button id="btnSub" data-i18n="destinations.sidebar.subscribe.button">Đăng ký</button>
             </div>
         </aside>
@@ -77,10 +100,10 @@
 <section class="trip-planner">
     <video class="trip-video" autoplay muted loop playsinline>
         <source src="../assets/images/destinations/wave.mp4" type="video/mp4" />
-        <img src="../assets/images/travel-bg.jpg" alt="Nền du lịch" />
+        <!-- <img src="../assets/images/travel-bg.jpg" alt="Nền du lịch" /> -->
     </video>
 
-    <div class="des-container trip-content">
+    <div class="des-container trip-content trip-card-container">
         <h2 class="trip-title" data-i18n="destinations.tripPlanner.title">Lên kế hoạch chuyến đi</h2>
         <p class="trip-subtitle" data-i18n="destinations.tripPlanner.subtitle">
             Cho chúng tôi biết ngân sách, thời gian và sở thích của bạn — chúng tôi sẽ gợi ý những điểm đến hoàn hảo!
@@ -97,39 +120,67 @@
                             <option value="Châu Âu" data-i18n="destinations.filter.europe">Châu Âu</option>
                             <option value="Châu Mỹ" data-i18n="destinations.filter.america">Châu Mỹ</option>
                             <option value="Châu Phi" data-i18n="destinations.filter.africa">Châu Phi</option>
-                            <option value="Châu Đại Dương" data-i18n="destinations.filter.oceania">Châu Đại Dương</option>
+                            <option value="Châu Đại Dương" data-i18n="destinations.filter.oceania">
+                                Châu Đại Dương
+                            </option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="budget" data-i18n="destinations.tripPlanner.form.budget">Ngân sách ($)</label>
-                        <input type="number" id="budget" placeholder="Nhập ngân sách" data-i18n-placeholder="destinations.tripPlanner.form.budgetPlaceholder" required />
+                        <input
+                            type="number"
+                            id="budget"
+                            placeholder="Nhập ngân sách"
+                            data-i18n-placeholder="destinations.tripPlanner.form.budgetPlaceholder"
+                            required
+                        />
                     </div>
 
                     <div class="form-group">
                         <label for="days" data-i18n="destinations.tripPlanner.form.days">Số ngày</label>
-                        <input type="number" id="days" placeholder="Số ngày" data-i18n-placeholder="destinations.tripPlanner.form.daysPlaceholder" required />
+                        <input
+                            type="number"
+                            id="days"
+                            placeholder="Số ngày"
+                            data-i18n-placeholder="destinations.tripPlanner.form.daysPlaceholder"
+                            required
+                        />
                     </div>
 
                     <div class="form-group">
                         <label for="interest" data-i18n="destinations.tripPlanner.form.interest">Sở thích</label>
                         <select id="interest" required>
-                            <option value="beach" data-i18n="destinations.tripPlanner.form.interests.beach">Biển</option>
-                            <option value="mountain" data-i18n="destinations.tripPlanner.form.interests.mountain">Núi</option>
-                            <option value="city" data-i18n="destinations.tripPlanner.form.interests.city">Thành phố</option>
-                            <option value="culture" data-i18n="destinations.tripPlanner.form.interests.culture">Văn hóa</option>
-                            <option value="food" data-i18n="destinations.tripPlanner.form.interests.food">Ẩm thực</option>
+                            <option value="beach" data-i18n="destinations.tripPlanner.form.interests.beach">
+                                Biển
+                            </option>
+                            <option value="mountain" data-i18n="destinations.tripPlanner.form.interests.mountain">
+                                Núi
+                            </option>
+                            <option value="city" data-i18n="destinations.tripPlanner.form.interests.city">
+                                Thành phố
+                            </option>
+                            <option value="culture" data-i18n="destinations.tripPlanner.form.interests.culture">
+                                Văn hóa
+                            </option>
+                            <option value="food" data-i18n="destinations.tripPlanner.form.interests.food">
+                                Ẩm thực
+                            </option>
                         </select>
                     </div>
 
-                    <button type="submit" class="btn-primary" data-i18n="destinations.tripPlanner.form.submitBtn">Tìm điểm đến</button>
+                    <button type="submit" class="btn-primary" data-i18n="destinations.tripPlanner.form.submitBtn">
+                        Tìm điểm đến
+                    </button>
                 </form>
             </div>
 
             <div class="trip-card-right">
                 <div class="trip-results-container">
                     <div id="tripResults" class="trip-results">
-                        <p data-i18n="destinations.tripPlanner.resultsPlaceholder">Bắt đầu lên kế hoạch chuyến đi của bạn</p>
+                        <p data-i18n="destinations.tripPlanner.resultsPlaceholder">
+                            Bắt đầu lên kế hoạch chuyến đi của bạn
+                        </p>
                     </div>
                 </div>
             </div>
@@ -152,14 +203,15 @@
 
 <!-- 8. Best Time to Visit -->
 <section class="best-time">
-    <video class="best-time-video-bg" autoplay muted loop playsinline id="bestTimeVideoBg">
-        <source src="../assets/images/destinations/3.mp4" type="video/mp4" />
-    </video>
+    <img id="bestTimeBg" class="best-time-bg" src="../assets/images/destinations/muathu.jpg" alt="Hình nền khu vực" />
     <div class="best-time-overlay"></div>
 
     <div class="best-time-hero">
         <div class="best-time-hero-content">
-            <h2><span data-i18n="destinations.bestTime.title">Thời điểm lý tưởng để đi</span> <span id="regionName">Châu Á</span></h2>
+            <h2>
+                <span data-i18n="destinations.bestTime.title">Thời điểm lý tưởng để đi</span>
+                <span id="regionName">Châu Á</span>
+            </h2>
             <p data-i18n="destinations.bestTime.subtitle">
                 Khám phá mùa lý tưởng cho chuyến phiêu lưu tiếp theo — được điều chỉnh theo mức độ đông đúc, thời tiết
                 và trải nghiệm đáng nhớ.
@@ -174,7 +226,9 @@
             <div class="region-card active" data-region="Asia">
                 <div class="region-overlay">
                     <h4 data-i18n="destinations.bestTime.regions.asia.title">Châu Á</h4>
-                    <p data-i18n="destinations.bestTime.regions.asia.desc">Văn hóa sôi động, bãi biển & ẩm thực đường phố</p>
+                    <p data-i18n="destinations.bestTime.regions.asia.desc">
+                        Văn hóa sôi động, bãi biển & ẩm thực đường phố
+                    </p>
                 </div>
             </div>
 
@@ -202,13 +256,17 @@
             <div class="region-card" data-region="Oceania">
                 <div class="region-overlay">
                     <h4 data-i18n="destinations.bestTime.regions.oceania.title">Châu Đại Dương</h4>
-                    <p data-i18n="destinations.bestTime.regions.oceania.desc">Đảo, rạn san hô & phong cách sống thư giãn</p>
+                    <p data-i18n="destinations.bestTime.regions.oceania.desc">
+                        Đảo, rạn san hô & phong cách sống thư giãn
+                    </p>
                 </div>
             </div>
         </div>
 
         <div class="season-container" id="seasonContainer">
-            <p data-i18n="destinations.bestTime.selectRegionPlaceholder">Chọn một khu vực để khám phá mùa du lịch lý tưởng</p>
+            <p data-i18n="destinations.bestTime.selectRegionPlaceholder">
+                Chọn một khu vực để khám phá mùa du lịch lý tưởng
+            </p>
         </div>
     </div>
 </section>
@@ -228,7 +286,9 @@
                 <p id="detailShort"></p>
                 <p id="detailLong"></p>
             </div>
-            <button id="btnViewDetail" class="btn-primary" data-i18n="destinations.modal.viewDetail">Xem chi tiết</button>
+            <button id="btnViewDetail" class="btn-primary" data-i18n="destinations.modal.viewDetail">
+                Xem chi tiết
+            </button>
         </div>
 
         <div class="modal-right">
