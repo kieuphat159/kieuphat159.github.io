@@ -738,6 +738,7 @@ button {
         }
         .tour-listing-section {
                 margin-left: -20px;
+                padding: 15px;
         }
         .result-controls {
                 flex-direction: column;
