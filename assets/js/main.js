@@ -20,7 +20,6 @@ const VALID_PAGES = [
     "destination-detail",
     "tours",
     "tour-details",
-    // 'booking',
     "online-booking",
     "blog",
     "blog-detail",
@@ -136,6 +135,13 @@ function loadPage(page) {
     currentPage1 = page;
     showLoading();
 
+    // ✅ ẨN HEADER NGAY KHI BẮT ĐẦU CHUYỂN TRANG
+    const header = document.querySelector("header");
+    if (header) {
+        header.style.opacity = "0";
+        header.style.transition = "opacity 0.15s ease";
+    }
+
     load("#main", `./pages/${page}.html`, () => {
         // Xóa script và CSS cũ nếu có
         const oldScript = document.getElementById("page-script");
@@ -156,7 +162,7 @@ function loadPage(page) {
             const script = document.createElement("script");
             script.id = "page-script";
             script.src = `./assets/js/pages/${page}.js?v=${Date.now()}`;
-            script.type = "module"; // Quan trọng: tạo scope riêng
+            script.type = "module";
             script.async = true;
 
             // Biến theo dõi trạng thái loading
@@ -170,6 +176,15 @@ function loadPage(page) {
                 if ((jsLoaded || jsError) && (cssLoaded || cssError)) {
                     hideLoading();
                     isPageLoading = false;
+
+                    // ✅ HIỆN HEADER VỚI STYLE MỚI SAU KHI TRANG LOAD XONG
+                    setTimeout(() => {
+                        const header = document.querySelector("header");
+                        if (header) {
+                            header.style.opacity = "1";
+                            header.style.transition = "opacity 0.3s ease";
+                        }
+                    }, 50);
 
                     // Dịch nội dung trang sau khi load xong
                     if (window.i18n) {
@@ -219,13 +234,19 @@ function loadPage(page) {
                     console.warn("Loading timeout - hiding loading indicator");
                     hideLoading();
                     isPageLoading = false;
+
+                    // Hiện header dù có timeout
+                    const header = document.querySelector("header");
+                    if (header) {
+                        header.style.opacity = "1";
+                    }
                 }
             }, 10000);
 
             setTimeout(() => {
                 handleHeaderScroll();
             }, 200);
-        }, 100); // Delay 100ms để đảm bảo cleanup hoàn tất
+        }, 100);
     });
 }
 
