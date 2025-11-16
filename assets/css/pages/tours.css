@@ -733,6 +733,12 @@ button {
         }
 }
 @media (max-width: 575px) {
+        .tours-banner {
+                margin-left: -20px;
+        }
+        .tour-listing-section {
+                margin-left: -20px;
+        }
         .result-controls {
                 flex-direction: column;
                 align-items: stretch;
