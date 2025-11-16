@@ -834,7 +834,7 @@ section {
 }
 
 .trip-results p {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: auto;
     font-weight: var(--font-weight-semibold);
     color: #fff;
@@ -2038,7 +2038,7 @@ img.lazy-image.loaded {
     }
 
     .trip-results p {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     /* Top Destinations Slider */
@@ -2190,6 +2190,10 @@ img.lazy-image.loaded {
         width: 100%;
         padding: 6px 8px;
         font-size: 12px;
+    }
+
+    .trip-results p {
+        font-size: 1.2rem;
     }
 
     /* Top Destinations Slider */

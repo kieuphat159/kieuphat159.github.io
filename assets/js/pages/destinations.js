@@ -334,8 +334,8 @@ function renderTop5(region = 'All') {
     if (filtered.length === 0) {
         top5List.innerHTML = `
       <div class="empty">
-        <p>No destinations found for this region yet.</p>
-        <small>Try exploring a different region!</small>
+        <p>Chưa có điểm đến nào cho khu vực này.</p>
+        <small>Hãy thử chọn một khu vực khác!</small>
       </div>`;
         return;
     }
@@ -715,7 +715,7 @@ if (tripForm && tripResults) {
         tripResults.innerHTML = '';
 
         if (matches.length === 0) {
-            tripResults.innerHTML = `<p>No matching destinations found — try increasing your budget or changing interest.</p>`;
+            tripResults.innerHTML = `<p>Không tìm thấy điểm đến phù hợp — hãy thử tăng ngân sách hoặc thay đổi sở thích của bạn.</p>`;
             return;
         }
 

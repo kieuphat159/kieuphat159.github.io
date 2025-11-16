@@ -79,13 +79,8 @@
     /* ============================================
        TYPOGRAPHY SYSTEM
        ============================================ */
-<<<<<<< HEAD
-    --font-primary: 'Inter', system-ui, sans-serif;
-    --font-heading: 'Poppins', 'Segoe UI', Arial, sans-serif;
-=======
-    --font-primary: "Montserrat", system-ui, sans-serif;
-    --font-heading: "Montserrat", "Segoe UI", Arial, sans-serif;
->>>>>>> 3056f03054caf8fc061eef7b466f92e055ab84e0
+    --font-primary: 'Montserrat', system-ui, sans-serif;
+    --font-heading: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 
     --font-weight-light: 300;
     --font-weight-normal: 400;
