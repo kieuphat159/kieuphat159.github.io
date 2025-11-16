@@ -670,13 +670,16 @@ section {
         margin-top: 64px;
 }
 
-.trip-video {
+.trip-bg {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        background-image: url("../../images/destinations/anhnen.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         z-index: 0;
         filter: brightness(70%);
         transition: transform 0.5s ease-in-out;
@@ -2300,7 +2303,7 @@ img.lazy-image.loaded {
         .modal-close,
         .des-banner__cta,
         #offersPagination,
-        .trip-video,
+        .trip-bg,
         .best-time-video-bg {
                 display: none !important;
         }
