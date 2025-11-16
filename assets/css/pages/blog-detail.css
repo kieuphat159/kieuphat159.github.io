@@ -354,6 +354,7 @@ blockquote cite {
         margin-bottom: 15px;
         font-family: inherit;
         font-size: 1rem;
+        resize: none;
 }
 .comment-form button {
         padding: 12px 28px;

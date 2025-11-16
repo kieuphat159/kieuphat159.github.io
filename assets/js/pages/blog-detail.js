@@ -2,7 +2,7 @@
 // Data fetching and transformation
 // =========================================================================
 let blogPosts = [];
-let currentLanguage = 'vi'; // Track current language
+let currentLanguage = "vi"; // Track current language
 
 // Helper function to generate author name from country
 function generateAuthor(country) {
@@ -42,21 +42,46 @@ function generateAuthor(country) {
 }
 
 // Helper function to generate date (days ago from now)
-function generateDate(daysAgo, lang = 'vi') {
+function generateDate(daysAgo, lang = "vi") {
         const date = new Date();
         date.setDate(date.getDate() - daysAgo);
-        const months = lang === 'vi' 
-                ? ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", 
-                   "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"]
-                : ["January", "February", "March", "April", "May", "June", 
-                   "July", "August", "September", "October", "November", "December"];
-        return lang === 'vi'
+        const months =
+                lang === "vi"
+                        ? [
+                                  "Tháng 1",
+                                  "Tháng 2",
+                                  "Tháng 3",
+                                  "Tháng 4",
+                                  "Tháng 5",
+                                  "Tháng 6",
+                                  "Tháng 7",
+                                  "Tháng 8",
+                                  "Tháng 9",
+                                  "Tháng 10",
+                                  "Tháng 11",
+                                  "Tháng 12",
+                          ]
+                        : [
+                                  "January",
+                                  "February",
+                                  "March",
+                                  "April",
+                                  "May",
+                                  "June",
+                                  "July",
+                                  "August",
+                                  "September",
+                                  "October",
+                                  "November",
+                                  "December",
+                          ];
+        return lang === "vi"
                 ? `${date.getDate()} ${months[date.getMonth()]}, ${date.getFullYear()}`
                 : `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 }
 
 // Transform places data to blog posts (same as blog.js)
-function transformPlacesToBlogPosts(toursData, lang = 'vi') {
+function transformPlacesToBlogPosts(toursData, lang = "vi") {
         const posts = [];
         let postId = 1;
         let daysAgo = 0;
@@ -70,9 +95,10 @@ function transformPlacesToBlogPosts(toursData, lang = 'vi') {
                                         : "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800";
 
                         // Create title from city name based on language
-                        const title = lang === 'vi'
-                                ? `Khám phá ${place.city}: Hành trình đáng nhớ`
-                                : `Discover ${place.city}: A Memorable Journey`;
+                        const title =
+                                lang === "vi"
+                                        ? `Khám phá ${place.city}: Hành trình đáng nhớ`
+                                        : `Discover ${place.city}: A Memorable Journey`;
 
                         // Generate author based on country
                         const author = generateAuthor(tour.country);
@@ -85,15 +111,16 @@ function transformPlacesToBlogPosts(toursData, lang = 'vi') {
                         const content = transformBlogToContent(place.blog, place.famous_locations);
 
                         // Create stable ID based on tour.id and city (normalized)
-                        const normalizedCity = place.city.toLowerCase()
-                                .replace(/\s+/g, '-')
-                                .replace(/[àáạảãâầấậẩẫăằắặẳẵ]/g, 'a')
-                                .replace(/[èéẹẻẽêềếệểễ]/g, 'e')
-                                .replace(/[ìíịỉĩ]/g, 'i')
-                                .replace(/[òóọỏõôồốộổỗơờớợởỡ]/g, 'o')
-                                .replace(/[ùúụủũưừứựửữ]/g, 'u')
-                                .replace(/[ỳýỵỷỹ]/g, 'y')
-                                .replace(/đ/g, 'd');
+                        const normalizedCity = place.city
+                                .toLowerCase()
+                                .replace(/\s+/g, "-")
+                                .replace(/[àáạảãâầấậẩẫăằắặẳẵ]/g, "a")
+                                .replace(/[èéẹẻẽêềếệểễ]/g, "e")
+                                .replace(/[ìíịỉĩ]/g, "i")
+                                .replace(/[òóọỏõôồốộổỗơờớợởỡ]/g, "o")
+                                .replace(/[ùúụủũưừứựửữ]/g, "u")
+                                .replace(/[ỳýỵỷỹ]/g, "y")
+                                .replace(/đ/g, "d");
                         const stableId = `${tour.id}-${normalizedCity}`;
 
                         posts.push({
@@ -112,7 +139,7 @@ function transformPlacesToBlogPosts(toursData, lang = 'vi') {
                                 lat: place.lat,
                                 lon: place.lon,
                                 famousLocations: place.famous_locations || [],
-                                tags: [tour.country, place.city, lang === 'vi' ? 'Du lịch' : 'Travel'],
+                                tags: [tour.country, place.city, lang === "vi" ? "Du lịch" : "Travel"],
                                 content: content,
                                 comments: [],
                                 recentImage: image,
@@ -162,9 +189,9 @@ function transformBlogToContent(blogText, famousLocations) {
 }
 
 // Fetch data from data-vi.json or data-en.json
-async function fetchBlogData(lang = 'vi') {
+async function fetchBlogData(lang = "vi") {
         try {
-                const fileName = lang === 'vi' ? '/data-vi.json' : '/data-en.json';
+                const fileName = lang === "vi" ? "/data-vi.json" : "/data-en.json";
                 const response = await fetch(fileName);
                 if (!response.ok) {
                         throw new Error(`Failed to fetch ${fileName}`);
@@ -231,7 +258,7 @@ function renderPostDetails(post) {
                     <span>By ${post.author.name} • Published on ${post.publishDate}</span>
                 </div>
                 <div class="blog-detail__tags">
-                    ${(post.tags || []).map((tag) => `<a href="#blog" class="tag">${tag}</a>`).join("")}
+                    ${(post.tags || []).map((tag) => `<a href="javascript:void(0)" class="tag">${tag}</a>`).join("")}
                 </div>
             `;
         }
@@ -273,9 +300,10 @@ function renderPostDetails(post) {
                 const commentCount = (post.comments || []).length;
                 const commentHeading = commentsContainer.querySelector(".comments-heading");
                 if (commentHeading) {
-                        const commentText = currentLanguage === 'vi'
-                                ? `${commentCount} Bình luận`
-                                : `${commentCount} Comment${commentCount !== 1 ? "s" : ""}`;
+                        const commentText =
+                                currentLanguage === "vi"
+                                        ? `${commentCount} Bình luận`
+                                        : `${commentCount} Comment${commentCount !== 1 ? "s" : ""}`;
                         commentHeading.textContent = commentText;
                 }
 
@@ -284,7 +312,7 @@ function renderPostDetails(post) {
                 commentElements.forEach((el) => el.remove());
 
                 // Add new comments
-                const replyText = currentLanguage === 'vi' ? 'Trả lời' : 'Reply';
+                const replyText = currentLanguage === "vi" ? "Trả lời" : "Reply";
                 (post.comments || []).forEach((comment) => {
                         const commentDiv = document.createElement("div");
                         commentDiv.className = "comment";
@@ -314,9 +342,8 @@ function renderRecentPosts(posts) {
         recentPostsContainer.innerHTML = ""; // Clear existing recent posts
 
         if (posts.length === 0) {
-                const noPostsText = currentLanguage === 'vi' 
-                        ? 'Không tìm thấy bài viết phù hợp.'
-                        : 'No matching posts found.';
+                const noPostsText =
+                        currentLanguage === "vi" ? "Không tìm thấy bài viết phù hợp." : "No matching posts found.";
                 recentPostsContainer.innerHTML = `<p>${noPostsText}</p>`;
                 return;
         }
@@ -465,7 +492,7 @@ function renderBlogDetailContent() {
 
 async function initializeBlogDetail() {
         // Get current language from localStorage or default to 'vi'
-        const lang = localStorage.getItem('language') || 'vi';
+        const lang = localStorage.getItem("language") || "vi";
         currentLanguage = lang;
 
         // Fetch blog data only if not already loaded
@@ -508,7 +535,7 @@ async function initializeBlogDetail() {
 }
 
 // Listen for language change events
-window.addEventListener('languageChanged', async (e) => {
+window.addEventListener("languageChanged", async (e) => {
         const newLang = e.detail.language;
         if (newLang !== currentLanguage) {
                 await fetchBlogData(newLang);
