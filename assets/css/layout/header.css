@@ -452,7 +452,7 @@ html.dark .header-side-menu__link.active {
     }
 
     .header-side-menu__link {
-        font-size: 2rem;
+        font-size: 1.5rem;
         padding: 14px 0;
         letter-spacing: -0.8px;
     }

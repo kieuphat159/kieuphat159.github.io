@@ -11,13 +11,11 @@
     window.homePageInitialized = true;
 
     // ============================================
-    // LAZY LOADING CHO ẢNH VÀ VIDEO - FIXED
+    // LAZY LOADING FOR IMAGES
     // ============================================
-
     class MediaLazyLoader {
         constructor() {
             this.imageObserver = null;
-            this.videoObserver = null;
             this.init();
         }
 
@@ -31,7 +29,6 @@
 
         setupObservers() {
             if (!("IntersectionObserver" in window)) {
-                console.warn("IntersectionObserver not supported, loading all media immediately");
                 this.loadAllMedia();
                 return;
             }
@@ -41,13 +38,7 @@
                 threshold: 0.01,
             });
 
-            this.videoObserver = new IntersectionObserver((entries) => this.handleVideoIntersection(entries), {
-                rootMargin: "200px",
-                threshold: 0.01,
-            });
-
             this.setupLazyImages();
-            this.setupLazyVideos();
         }
 
         setupLazyImages() {
@@ -58,16 +49,8 @@
                     if (!img.classList.contains("loaded")) {
                         if (img.complete && img.naturalHeight !== 0) {
                             img.classList.add("loaded");
-                            console.log("✅ Fixed cached image:", img.src);
                         } else {
-                            img.addEventListener(
-                                "load",
-                                () => {
-                                    img.classList.add("loaded");
-                                    console.log("✅ Fixed loading image:", img.src);
-                                },
-                                { once: true }
-                            );
+                            img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
                         }
                     }
                     return;
@@ -96,13 +79,7 @@
                 if (img.complete && img.naturalHeight !== 0) {
                     img.classList.add("loaded");
                 } else {
-                    img.addEventListener(
-                        "load",
-                        () => {
-                            img.classList.add("loaded");
-                        },
-                        { once: true }
-                    );
+                    img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
                 }
                 return;
             }
@@ -110,62 +87,17 @@
             if (!src) return;
 
             const tempImg = new Image();
-
             tempImg.onload = () => {
                 img.src = src;
                 img.classList.add("loaded");
                 img.removeAttribute("data-src");
             };
-
             tempImg.onerror = () => {
                 console.error("Failed to load image:", src);
                 img.classList.add("error");
                 img.alt = "Không thể tải ảnh";
             };
-
             tempImg.src = src;
-        }
-
-        setupLazyVideos() {
-            const lazyVideos = document.querySelectorAll("video.lazy-video[data-src]");
-            lazyVideos.forEach((video) => {
-                this.videoObserver.observe(video);
-            });
-        }
-
-        handleVideoIntersection(entries) {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const video = entry.target;
-                    this.loadVideo(video);
-                    this.videoObserver.unobserve(video);
-                }
-            });
-        }
-
-        loadVideo(video) {
-            const src = video.dataset.src;
-            if (!src) return;
-
-            const source = document.createElement("source");
-            source.src = src;
-            source.type = "video/mp4";
-
-            source.onerror = () => {
-                console.error("Failed to load video:", src);
-            };
-
-            video.appendChild(source);
-            video.removeAttribute("data-src");
-            video.load();
-
-            video.addEventListener(
-                "loadeddata",
-                () => {
-                    video.classList.add("loaded");
-                },
-                { once: true }
-            );
         }
 
         loadAllMedia() {
@@ -180,25 +112,9 @@
                     if (img.complete && img.naturalHeight !== 0) {
                         img.classList.add("loaded");
                     } else {
-                        img.addEventListener(
-                            "load",
-                            () => {
-                                img.classList.add("loaded");
-                            },
-                            { once: true }
-                        );
+                        img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
                     }
                 }
-            });
-
-            document.querySelectorAll("video.lazy-video[data-src]").forEach((video) => {
-                const source = document.createElement("source");
-                source.src = video.dataset.src;
-                source.type = "video/mp4";
-                video.appendChild(source);
-                video.removeAttribute("data-src");
-                video.load();
-                video.classList.add("loaded");
             });
         }
     }
@@ -206,28 +122,23 @@
     const mediaLoader = new MediaLazyLoader();
 
     // ============================================
-    // LAZY LOADING CHO SECTIONS
+    // LAZY LOADING FOR SECTIONS
     // ============================================
     function lazyLoadSections() {
         const lazyElements = document.querySelectorAll(".lazy-load");
 
         if ("IntersectionObserver" in window) {
-            const observerOptions = {
-                root: null,
-                rootMargin: "0px",
-                threshold: 0.1,
-            };
-
-            const observerCallback = (entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            };
-
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { root: null, rootMargin: "0px", threshold: 0.1 }
+            );
             lazyElements.forEach((el) => observer.observe(el));
         } else {
             lazyElements.forEach((el) => el.classList.add("visible"));
@@ -241,7 +152,7 @@
     }
 
     // ============================================
-    // LOAD TOURS FROM JSON - UPDATED FOR I18N
+    // LOAD TOURS FROM JSON
     // ============================================
     async function loadTours() {
         try {
@@ -266,7 +177,6 @@
         if (!container) return;
 
         container.innerHTML = "";
-
         const topTours = tours.slice(0, 4);
 
         const hasI18n = window.i18n;
@@ -279,7 +189,6 @@
 
         topTours.forEach((tour) => {
             const discountedPrice = tour.price * (1 - tour.discount_percent / 100);
-
             const formattedPrice = isVietnamese
                 ? `${discountedPrice.toLocaleString("vi-VN")}đ`
                 : `$${Math.round(discountedPrice / 25000).toLocaleString("en-US")}`;
@@ -316,7 +225,7 @@
     }
 
     // ============================================
-    // LOAD DESTINATIONS - UPDATED FOR I18N + ARTICLES
+    // LOAD DESTINATIONS + ARTICLES
     // ============================================
     function truncateText(text, maxLength = 150) {
         if (text.length <= maxLength) return text;
@@ -472,10 +381,7 @@
                     }
                 });
             },
-            {
-                rootMargin: "100px",
-                threshold: 0.01,
-            }
+            { rootMargin: "100px", threshold: 0.01 }
         );
 
         lazyImages.forEach((img) => imageObserver.observe(img));
@@ -489,127 +395,6 @@
     } else {
         loadTours();
         loadDestinations();
-    }
-
-    // ============================================
-    // VLOG SLIDER
-    // ============================================
-    function initVlogSlider() {
-        const track = document.querySelector(".vlog-track");
-        const prevBtn = document.querySelector(".vlog-slider .prev");
-        const nextBtn = document.querySelector(".vlog-slider .next");
-
-        if (!track || !prevBtn || !nextBtn) return;
-
-        let currentPosition = 0;
-        let isTransitioning = false;
-
-        function updateVlogSlider() {
-            const items = track.querySelectorAll(".vlog-item");
-            if (items.length === 0) return;
-
-            const item = items[0];
-            const itemStyle = window.getComputedStyle(item);
-            const gap = parseInt(itemStyle.marginRight) || 24;
-            const itemWidth = item.offsetWidth + gap;
-
-            const windowWidth = document.querySelector(".vlog-window").offsetWidth;
-            const visibleCount = Math.floor(windowWidth / itemWidth);
-            const totalItems = items.length;
-            const maxScroll = (totalItems - visibleCount) * itemWidth;
-
-            function updateButtonStates() {
-                prevBtn.disabled = currentPosition >= 0;
-                nextBtn.disabled = currentPosition <= -maxScroll;
-            }
-
-            nextBtn.onclick = () => {
-                if (isTransitioning || currentPosition <= -maxScroll) return;
-                isTransitioning = true;
-                currentPosition -= itemWidth;
-                track.style.transform = `translateX(${currentPosition}px)`;
-                setTimeout(() => {
-                    isTransitioning = false;
-                    updateButtonStates();
-                }, 500);
-            };
-
-            prevBtn.onclick = () => {
-                if (isTransitioning || currentPosition >= 0) return;
-                isTransitioning = true;
-                currentPosition += itemWidth;
-                track.style.transform = `translateX(${currentPosition}px)`;
-                setTimeout(() => {
-                    isTransitioning = false;
-                    updateButtonStates();
-                }, 500);
-            };
-
-            updateButtonStates();
-        }
-
-        updateVlogSlider();
-
-        let resizeTimer;
-        window.addEventListener("resize", () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                currentPosition = 0;
-                track.style.transform = `translateX(0)`;
-                updateVlogSlider();
-            }, 250);
-        });
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initVlogSlider);
-    } else {
-        initVlogSlider();
-    }
-
-    // ============================================
-    // AUTO PLAY VIDEO KHI TRONG VIEWPORT
-    // ============================================
-    function initVideoAutoPlay() {
-        const videos = document.querySelectorAll("video[loop]");
-
-        if (!("IntersectionObserver" in window)) return;
-
-        const videoObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    const video = entry.target;
-                    if (entry.isIntersecting) {
-                        video.play().catch((e) => console.log("Video autoplay prevented:", e));
-                    } else {
-                        video.pause();
-                    }
-                });
-            },
-            {
-                threshold: 0.5,
-            }
-        );
-
-        videos.forEach((video) => {
-            videoObserver.observe(video);
-
-            video.addEventListener("loadeddata", () => {
-                const rect = video.getBoundingClientRect();
-                const isInViewport =
-                    rect.top < window.innerHeight && rect.bottom > 0 && rect.left < window.innerWidth && rect.right > 0;
-
-                if (isInViewport) {
-                    video.play().catch((e) => console.log("Video autoplay prevented:", e));
-                }
-            });
-        });
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initVideoAutoPlay);
-    } else {
-        initVideoAutoPlay();
     }
 
     // ============================================
@@ -629,7 +414,6 @@
     `;
 
         document.body.appendChild(toast);
-
         setTimeout(() => toast.classList.add("newsletter-toast--show"), 10);
 
         setTimeout(() => {
@@ -639,54 +423,64 @@
     }
 
     // ============================================
-    // NEWSLETTER FORM
+    // NEWSLETTER FORM - CUSTOM VALIDATION
     // ============================================
     function initNewsletterForm() {
         const form = document.querySelector(".home-newsletter__form");
-
         if (!form) return;
+
+        const input = form.querySelector(".home-newsletter__input");
+        const submitBtn = form.querySelector(".home-newsletter__submit");
+
+        // Tắt validation mặc định của HTML5
+        form.setAttribute("novalidate", "");
+
+        // Xóa thông báo lỗi khi người dùng bắt đầu nhập
+        input.addEventListener("input", () => {
+            input.classList.remove("error");
+        });
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            const input = form.querySelector(".home-newsletter__input");
             const email = input.value.trim();
 
+            // Validate empty
             if (!email) {
+                input.classList.add("error");
                 showToast("Vui lòng nhập email!", "error");
                 input.focus();
                 return;
             }
 
+            // Validate email format
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
+                input.classList.add("error");
                 showToast("Email không hợp lệ!", "error");
                 input.focus();
                 return;
             }
 
-            const submitBtn = form.querySelector(".home-newsletter__submit");
-
+            // Success - Show loading
             const icon = submitBtn.querySelector(".home-newsletter__submit-icon");
             const originalIcon = icon ? icon.textContent : "✈";
 
             if (icon) {
                 icon.innerHTML = '<span class="spinner"></span>';
-            } else {
-                submitBtn.innerHTML = '<span class="spinner"></span>';
             }
 
             submitBtn.disabled = true;
             input.disabled = true;
 
+            // Simulate API call
             setTimeout(() => {
                 showToast("🎉 Đăng ký thành công! Cảm ơn bạn đã đăng ký nhận bản tin.", "success");
                 input.value = "";
+                input.classList.remove("error");
 
                 if (icon) {
                     icon.textContent = originalIcon;
-                } else {
-                    submitBtn.innerHTML = `<span class="home-newsletter__submit-icon">${originalIcon}</span>`;
                 }
 
                 submitBtn.disabled = false;
@@ -713,10 +507,7 @@
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start",
-                    });
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
             });
         });
@@ -729,45 +520,16 @@
     }
 
     // ============================================
-    // PERFORMANCE: PRELOAD CRITICAL IMAGES
-    // ============================================
-    function preloadCriticalImages() {
-        const heroImg = document.querySelector(".home-hero__image[data-src]");
-        if (heroImg && heroImg.dataset.src) {
-            const link = document.createElement("link");
-            link.rel = "preload";
-            link.as = "image";
-            link.href = heroImg.dataset.src;
-            document.head.appendChild(link);
-        }
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", preloadCriticalImages);
-    } else {
-        preloadCriticalImages();
-    }
-
-    // ============================================
-    // FIX: XỬ LÝ ẢNH KHI QUAY LẠI TRANG
+    // FIX CACHED IMAGES
     // ============================================
     function fixCachedImages() {
-        console.log("🔄 Fixing cached images...");
         const lazyImages = document.querySelectorAll("img.lazy-image:not(.loaded)");
 
         lazyImages.forEach((img) => {
             if (img.complete && img.naturalHeight !== 0 && img.src) {
                 img.classList.add("loaded");
-                console.log("✅ Fixed:", img.alt || img.src);
             } else if (img.src && img.src !== window.location.href) {
-                img.addEventListener(
-                    "load",
-                    () => {
-                        img.classList.add("loaded");
-                        console.log("✅ Loaded:", img.alt || img.src);
-                    },
-                    { once: true }
-                );
+                img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
             } else if (img.dataset.src) {
                 const src = img.dataset.src;
                 img.src = src;
@@ -776,7 +538,6 @@
                     () => {
                         img.classList.add("loaded");
                         img.removeAttribute("data-src");
-                        console.log("✅ Loaded from data-src:", img.alt || src);
                     },
                     { once: true }
                 );
@@ -785,93 +546,39 @@
     }
 
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-            setTimeout(fixCachedImages, 100);
-        });
+        document.addEventListener("DOMContentLoaded", () => setTimeout(fixCachedImages, 100));
     } else {
         setTimeout(fixCachedImages, 100);
     }
 
     window.addEventListener("pageshow", (event) => {
         if (event.persisted || (performance && performance.navigation && performance.navigation.type === 2)) {
-            console.log("🔄 Page restored from cache, fixing images...");
             setTimeout(fixCachedImages, 100);
         }
     });
 
     // ============================================
-    // PAGE VISIBILITY API - PAUSE VIDEOS WHEN TAB HIDDEN
-    // ============================================
-    document.addEventListener("visibilitychange", () => {
-        const videos = document.querySelectorAll("video");
-
-        if (document.hidden) {
-            videos.forEach((video) => {
-                if (!video.paused) {
-                    video.dataset.wasPlaying = "true";
-                    video.pause();
-                }
-            });
-        } else {
-            videos.forEach((video) => {
-                if (video.dataset.wasPlaying === "true") {
-                    video.play().catch((e) => console.log("Video play failed:", e));
-                    delete video.dataset.wasPlaying;
-                }
-            });
-        }
-    });
-
-    // ============================================
-    // ERROR HANDLING
-    // ============================================
-    window.addEventListener(
-        "error",
-        (e) => {
-            if (e.target.tagName === "IMG" || e.target.tagName === "VIDEO") {
-                console.error("Media failed to load:", e.target.src || e.target.dataset.src);
-            }
-        },
-        true
-    );
-
-    // ============================================
-    // DỊCH TRANG SAU KHI LOAD XONG (I18N)
+    // I18N SUPPORT
     // ============================================
     if (window.i18n) {
         window.i18n.translatePage();
     }
 
-    // ============================================
-    // SUBSCRIBE TO LANGUAGE CHANGES - RELOAD DATA
-    // ============================================
     if (window.i18n && !window.homeLanguageHandlerRegistered) {
         window.homeLanguageHandlerRegistered = true;
-
         let isReloading = false;
 
         window.i18n.subscribe(async (newLang) => {
-            if (!window.homePageInitialized) {
-                return;
-            }
-
-            if (isReloading) {
-                console.log("⏳ Already reloading, skipping...");
-                return;
-            }
+            if (!window.homePageInitialized || isReloading) return;
 
             isReloading = true;
-            console.log("🌍 Language changed to:", newLang);
-
             try {
                 await Promise.all([loadTours(), loadDestinations()]);
                 window.i18n.translatePage();
             } catch (error) {
                 console.error("Error reloading data:", error);
             } finally {
-                setTimeout(() => {
-                    isReloading = false;
-                }, 500);
+                setTimeout(() => (isReloading = false), 500);
             }
         });
     }
