@@ -1,41 +1,61 @@
-<!-- Trang chủ -->
 <!DOCTYPE html>
 <html lang="vi">
-        <head>
-                <meta charset="UTF-8" >
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-                <title>Trang chủ - Travel Company</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trang chủ - Travel Company</title>
 
-                <!-- Import CSS files -->
-                <link rel="stylesheet" href="assets/css/base/reset.css" >
-                <link rel="stylesheet" href="assets/css/base/style.css" >
-                <link rel="stylesheet" href="assets/css/base/responsive.css" >
-                <link rel="stylesheet" href="assets/css/layout/header.css" >
-                <link rel="stylesheet" href="assets/css/layout/footer.css" >
-                <link
-                        rel="stylesheet"
-                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-                >
+        <!-- Import CSS files -->
+        <link rel="stylesheet" href="assets/css/base/reset.css" />
+        <link rel="stylesheet" href="assets/css/base/style.css" />
+        <link rel="stylesheet" href="assets/css/base/responsive.css" />
+        <link rel="stylesheet" href="assets/css/layout/header.css" />
+        <link rel="stylesheet" href="assets/css/layout/footer.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    </head>
+    <body>
+        <!-- Page loading indicator -->
+        <div id="page-loading">
+            <div class="loading-airplane">
+                <div class="cloud cloud1"></div>
+                <div class="airplane-icon">✈️</div>
+                <div class="cloud cloud2"></div>
+            </div>
+            <div class="loading-text" data-i18n="common.loading">
+                Đang tải
+                <span class="loading-dots">
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                </span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
 
-                <!-- Import JS files -->
-                <script src="assets/js/i18n.js"></script>
-                <script src="assets/js/data-loader.js"></script>
-                <script src="assets/js/main.js"></script>
-        </head>
-        <body>
-                <!-- Page loading indicator -->
-                <div id="page-loading">
-                        <div class="spinner"></div>
-                        <div class="loading-text" data-i18n="common.loading">Đang tải...</div>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+
+        <!-- Main content -->
+        <div class="container">
+            <main id="main">
+                <div class="demo-content">
+                    <h1>🌍 Travel Company</h1>
+                    <p>
+                        Chào mừng bạn đến với trang web du lịch của chúng tôi. Khám phá những điểm đến tuyệt vời trên
+                        khắp thế giới!
+                    </p>
                 </div>
+            </main>
+        </div>
 
-                <!-- Header -->
-                <header id="header" class="header"></header>
+        <!-- Footer -->
+        <footer id="footer" class="footer"></footer>
 
-                <!-- Main content -->
-                <div class="container"><main id="main"></main></div>
-
-                <!-- Footer -->
-                <footer id="footer" class="footer"></footer>
-        </body>
+        <!-- Import JS files -->
+        <script src="assets/js/i18n.js"></script>
+        <script src="assets/js/data-loader.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
 </html>
