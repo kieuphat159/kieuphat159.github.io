@@ -370,13 +370,22 @@ function buildInsightsData(destination) {
 	const insights = [];
 	const places = Array.isArray(destination.places) ? destination.places : [];
 
-	places.forEach((place) => {
+	places.forEach((place, placeIndex) => {
 		const locations = Array.isArray(place.famous_locations) ? place.famous_locations : [];
-		locations.forEach((location) => {
+		locations.forEach((location, locationIndex) => {
+			// Generate unique ID based on destination ID and city name
+			// Format: destinationId-cityName (e.g., "jp002-tokyo", "vn001-hanoi")
+			const citySlug = normalizeText(place.city || destination.country);
+			const insightId = `${destination.id}-${citySlug}`;
+			
 			insights.push({
+				id: insightId,
 				title: location.name || place.city || destination.country,
 				image: resolveImagePath(location.image_url || FALLBACKS.cardImage),
 				city: place.city || destination.country,
+				excerpt: location.description || (place.blog ? getExcerpt(place.blog, 100) : ''),
+				placeCity: place.city,
+				placeBlog: place.blog,
 			});
 		});
 	});
@@ -818,11 +827,12 @@ function updateInsightsGrid() {
 
 		const link = document.createElement("a");
 		link.className = "destination-detail-insights__link";
-		link.href = item.articleUrl || "#blog";
+		link.href = `#blog-detail?id=${encodeURIComponent(item.id)}`;
 		link.setAttribute("data-insight-id", item.id);
 		link.setAttribute("aria-label", `Đọc bài viết ${item.title}`);
 
-		link.addEventListener("click", () => {
+		link.addEventListener("click", (event) => {
+			event.preventDefault();
 			handleInsightNavigation(item);
 		});
 
@@ -1030,6 +1040,15 @@ function getExcerpt(text, maxLength) {
 function navigateToTour(tourId) {
 	if (!tourId) return;
 	window.location.hash = `tour-details?id=${encodeURIComponent(tourId)}`;
+}
+
+function handleInsightNavigation(insight) {
+	if (!insight || !insight.id) return;
+	
+	sessionStorage.setItem(INSIGHT_STORAGE_KEY, JSON.stringify(insight));
+	sessionStorage.setItem(INSIGHT_STORAGE_ID_KEY, insight.id);
+	
+	window.location.hash = `blog-detail?id=${encodeURIComponent(insight.id)}`;
 }
 
 function initializeEnhancements() {
