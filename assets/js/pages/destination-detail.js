@@ -1173,7 +1173,7 @@ function renderTestimonials(destination) {
                 rating.setAttribute("aria-label", `Đánh giá: ${ratingValue} trên 5 sao`);
 
                 const starIcon = document.createElement("i");
-                starIcon.className = "fa-solid fa-star";
+                starIcon.className = "fas fa-star";
                 starIcon.setAttribute("aria-hidden", "true");
 
                 const ratingText = document.createElement("span");
