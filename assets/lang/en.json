@@ -533,7 +533,9 @@
     "popular": {
       "title": "Popular Tours",
       "empty": "We will soon update the featured destinations.",
-      "defaultDestination": "Destination"
+      "defaultDestination": "Destination",
+      "description": "Discover an exciting trip!",
+      "viewOffer": "View offer"
     },
     "mission": {
       "stats": {

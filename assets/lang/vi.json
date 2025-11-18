@@ -533,7 +533,9 @@
     "popular": {
       "title": "Các Tour Phổ Biến",
       "empty": "Chúng tôi sẽ sớm cập nhật các địa điểm nổi bật.",
-      "defaultDestination": "Điểm đến"
+      "defaultDestination": "Điểm đến",
+      "description": "Khám phá chuyến đi hấp dẫn!",
+      "viewOffer": "Xem ưu đãi"
     },
     "mission": {
       "stats": {

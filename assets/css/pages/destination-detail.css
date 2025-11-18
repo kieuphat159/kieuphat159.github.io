@@ -183,7 +183,7 @@ html {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center; 
+        align-items: center;
         padding-top: 200px;
         padding-bottom: 200px;
         animation: fadeIn 1.5s ease-out;
@@ -246,6 +246,12 @@ html {
         margin-bottom: -201px;
 }
 
+.destination-detail-popular .des-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+}
+
 .destination-detail-popular.scroll-animate {
         transform: translateY(30px);
 }
@@ -262,22 +268,21 @@ html {
 }
 
 .destination-detail-popular__container {
-        display: flex;
-        flex-direction: row;
-        gap: 25px;
-        justify-content: center; /* center cards horizontally */
-        align-items: center; /* center cards vertically within the row */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 900px;
+        margin: 0 auto;
 }
 
 .destination-detail-card {
-        background: var(--color-bg-primary);
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        height: 290px;
-        width: 230px;
-        border-radius: 12px;
         position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        height: 300px;
+        cursor: pointer;
 }
 
 .destination-detail-card--interactive {
@@ -315,56 +320,152 @@ html {
         transition-delay: 0.4s;
 }
 
-.destination-detail-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, rgba(16, 85, 156, 0.05), transparent);
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        pointer-events: none;
-        border-radius: 12px;
-}
-
 .destination-detail-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 12px 28px rgba(16, 85, 156, 0.25);
+        transform: translateY(-6px);
 }
 
-.destination-detail-card:hover::before {
-        opacity: 1;
+/* Discount badge - giống special offers */
+.destination-detail-card__badge {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        background-color: var(--color-error);
+        color: var(--color-text-inverse);
+        font-weight: 700;
+        font-size: 14px;
+        padding: 6px 22px 6px 16px;
+        z-index: 3;
+        line-height: 1.2;
+        clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.destination-detail-tour-card .tour-card__discount-badge {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        background-color: #e74c3c;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 6px 22px 6px 16px;
+        z-index: 3;
+        line-height: 1.2;
+        clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.destination-detail-tour-card .tour-card__tags {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: flex;
+        gap: 6px;
+        z-index: 2;
+}
+
+.destination-detail-tour-card .tour-card__tag {
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 6px;
+        text-transform: uppercase;
+}
+
+.destination-detail-tour-card .tour-card__tag--Bestseller {
+        background: #ff7a18;
+}
+
+.destination-detail-tour-card .tour-card__tag--Luxury {
+        background: #8b5cf6;
+}
+
+.destination-detail-tour-card .tour-card__wishlist-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.9);
+        color: #f6513b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.destination-detail-tour-card .tour-card__wishlist-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.destination-detail-tour-card .tour-card__wishlist-btn i {
+        font-size: 1rem;
+}
+
+.destination-detail-tour-card .tour-card__wishlist-btn.active,
+.destination-detail-tour-card .tour-card__wishlist-btn.active i {
+        color: #e74c3c;
 }
 
 .destination-detail-card__img {
         width: 100%;
-        height: 212px;
+        height: 100%;
         object-fit: cover;
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: block;
+        transition: transform 0.5s ease;
 }
 
 .destination-detail-card:hover .destination-detail-card__img {
-        transform: scale(1.08);
+        transform: scale(1.05);
 }
 
 .destination-detail-card__content {
-        padding: 15px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        color: #fff;
+        padding: 24px;
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.85));
         text-align: left;
-        font-size: 0.7rem;
 }
 
 .destination-detail-card__name {
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin-bottom: 5px;
+        font-size: 20px;
+        margin-bottom: 8px;
+        font-weight: 700;
+        color: #fff;
 }
 
 .destination-detail-card__location {
-        font-size: 0.75rem;
-        color: var(--color-text-secondary);
-        line-height: 1.4;
+        font-size: 14px;
+        opacity: 0.9;
+        margin-bottom: 12px;
+        color: #fff;
+}
+
+.destination-detail-card__button {
+        display: inline-block;
+        background-color: #ff6b35;
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+}
+
+.destination-detail-card__button:hover {
+        background-color: #ff5722;
 }
 
 /* ========== INSIGHTS (fallbacks for data-src) ========== */
@@ -845,197 +946,293 @@ img[data-src] {
         margin-bottom: 30px;
 }
 .destination-detail-pilgrimages__cards {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
         justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
+        align-items: stretch;
+        max-width: 1200px;
+        margin: 0 auto;
 }
 
-.destination-detail-pilgrimages__card {
-        width: 300px;
+.destination-detail-tour-card {
         background: var(--color-bg-tertiary);
-        border-radius: 16px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
         overflow: hidden;
-        text-align: left;
-        position: relative;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
         display: flex;
         flex-direction: column;
+        height: 100%;
+        cursor: pointer;
 }
 
-/* Scroll-triggered animation for pilgrimage cards */
-.destination-detail-pilgrimages__card.scroll-animate {
-        transform: translateY(40px);
+.destination-detail-tour-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 55px rgba(62, 134, 245, 0.18);
 }
 
-.destination-detail-pilgrimages__card.scroll-animate.animate-in {
-        transform: translateY(0);
-}
-
-/* Staggered delays for cards */
-.destination-detail-pilgrimages__card.scroll-animate:nth-child(1) {
-        transition-delay: 0.1s;
-}
-
-.destination-detail-pilgrimages__card.scroll-animate:nth-child(2) {
-        transition-delay: 0.2s;
-}
-
-.destination-detail-pilgrimages__card.scroll-animate:nth-child(3) {
-        transition-delay: 0.3s;
-}
-
-.destination-detail-pilgrimages__card-title {
-        font-weight: 600;
-        font-size: 20;
-}
-
-.destination-detail-pilgrimages__card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 8px 24px rgba(62, 134, 245, 0.2);
-}
-
-.destination-detail-pilgrimages__image-wrapper {
+.tour-card__image-wrapper {
         position: relative;
+        aspect-ratio: 4 / 3;
         overflow: hidden;
-        border-radius: 12px 12px 0 0;
+        background: #e7ecff;
 }
 
-.destination-detail-pilgrimages__image {
+.tour-card__image {
         width: 100%;
-        height: 200px;
+        height: 100%;
         object-fit: cover;
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.4s ease;
         display: block;
 }
 
-/* Hover vẫn hoạt động dù có skeleton-wrapper hay không */
-.destination-detail-pilgrimages__card:hover .destination-detail-pilgrimages__image,
-.destination-detail-pilgrimages__card:hover .destination-detail-pilgrimages__image-wrapper img {
+.destination-detail-tour-card:hover .tour-card__image {
         transform: scale(1.05);
 }
 
-.destination-detail-pilgrimages__date {
+.destination-detail-tour-card .tour-card__vertical-label {
         position: absolute;
-        right: 10px;
-        top: 10px;
+        top: 0;
+        right: 15px;
         writing-mode: vertical-rl;
-        text-orientation: mixed;
-        font-size: 12px;
-        letter-spacing: 2px;
-        color: var(--color-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 }
 
-.destination-detail-pilgrimages__content {
-        padding: 20px;
+.destination-detail-tour-card .tour-card__content {
+        padding: 24px 26px 28px;
         display: flex;
         flex-direction: column;
-        flex-grow: 1;
-        text-align: left;
+        gap: 16px;
+        flex: 1;
 }
 
-.destination-detail-pilgrimages__status {
+.destination-detail-tour-card .tour-card__meta {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-size: 13px;
-        margin-bottom: 12px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.destination-detail-pilgrimages__badge {
-        background: var(--color-bg-tertiary);
-        color: var(--color-text-primary);
-        padding: 3px 8px;
-        border-radius: 10px;
-        font-size: 12px;
-        font-weight: 500;
-}
-
-.destination-detail-pilgrimages__badge--pink {
-        background: var(--color-warning-light);
-        color: var(--color-error);
-}
-
-.destination-detail-pilgrimages__badge--blue {
-        background: var(--color-info-light);
-        color: var(--color-info);
-}
-
-.destination-detail-pilgrimages__days {
-        color: var(--color-text-secondary);
-        font-size: 13px;
-}
-
-.destination-detail-pilgrimages__card-title {
-        font-weight: 700;
-        margin-bottom: 9px;
-        font-size: 18px;
-        color: var(--color-text-primary);
-        line-height: 1.4;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.destination-detail-pilgrimages__desc {
-        color: var(--color-text-secondary);
-        font-size: 14px;
-        margin-bottom: 10px;
-        line-height: 1.6;
-        padding-bottom: 12px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.destination-detail-pilgrimages__chaplain {
-        font-size: 13px;
-        color: var(--color-text-secondary);
-        margin-bottom: 10px;
-        line-height: 1.5;
-        padding-bottom: 9px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.destination-detail-pilgrimages__footer {
-        display: flex;
         justify-content: space-between;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: var(--color-text-secondary);
+}
+
+.destination-detail-tour-card .tour-card__meta span {
+        display: flex;
         align-items: center;
-        margin-top: auto;
-        padding-top: 10px;
-}
-
-.destination-detail-pilgrimages__price {
-        font-size: 18px;
+        gap: 6px;
         font-weight: 600;
-        color: var(--color-text-tertiary);
 }
 
-.destination-detail-pilgrimages__price small {
-        font-size: 13px;
-        color: var(--color-text-tertiary);
+.destination-detail-tour-card .tour-card__meta span i {
+        color: var(--color-primary);
 }
 
-.destination-detail-pilgrimages__btn {
-        background: #e0e7ff;
-        color: #3e86f5;
+.tour-card__meta span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+}
+
+.tour-card__meta span i {
+        color: var(--color-primary);
+}
+
+.destination-detail-tour-card .tour-card__discount {
+        background: rgba(246, 81, 59, 0.12);
+        color: #f6513b;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+}
+
+.destination-detail-tour-card .tour-card__duration {
+        color: var(--color-text-secondary);
+        font-weight: 600;
+}
+
+.destination-detail-tour-card .tour-card__title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--color-text-primary);
+        margin: 0;
+}
+
+.destination-detail-tour-card .tour-card__title-link {
+        text-decoration: none;
+        color: inherit;
+        display: inline-block;
+}
+
+.destination-detail-tour-card .tour-card__title-link:hover .tour-card__title {
+        color: var(--color-primary);
+}
+
+.destination-detail-tour-card .tour-card__description {
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        font-size: 0.95rem;
+        margin: 0;
+}
+
+.destination-detail-tour-card .tour-card__rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+        color: #f6c343;
+}
+
+.destination-detail-tour-card .tour-card__rating-count {
+        color: var(--color-text-tertiary);
+        font-weight: 600;
+}
+
+.destination-detail-tour-card .tour-card__inclusions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        color: var(--color-text-secondary);
+}
+
+.destination-detail-tour-card .tour-card__inclusions span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+}
+
+.tour-card__rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+}
+
+.tour-card__rating i {
+        color: #f6c343;
+}
+
+.tour-card__rating-count {
+        color: var(--color-text-tertiary);
+        font-weight: 600;
+}
+
+.tour-card__inclusions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        color: var(--color-text-secondary);
+}
+
+.tour-card__inclusions span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 600;
+}
+
+.destination-detail-tour-card .tour-card__highlights {
+        padding: 16px 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+}
+
+.destination-detail-tour-card .tour-card__highlights-label {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--color-text-tertiary);
+        font-weight: 600;
+}
+
+.destination-detail-tour-card .tour-card__highlights-text {
+        margin: 0;
+        font-weight: 600;
+        color: var(--color-text-primary);
+}
+
+.destination-detail-tour-card .tour-card__footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 15px;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        padding-top: 15px;
+}
+
+.destination-detail-tour-card .tour-card__price-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+}
+
+.destination-detail-tour-card .tour-card__price-original {
+        font-size: 0.9rem;
+        color: var(--color-text-secondary);
+        text-decoration: line-through;
+        margin: 0;
+}
+
+.destination-detail-tour-card .tour-card__price-value {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin: 0;
+}
+
+.destination-detail-tour-card .tour-card__price-note {
+        font-size: 0.85rem;
+        color: var(--color-text-tertiary);
+        display: block;
+        margin-top: 2px;
+}
+
+.destination-detail-tour-card .tour-card__details-btn {
+        padding: 10px 18px;
+        border-radius: 12px;
         border: none;
-        padding: 6px 12px;
-        border-radius: 6px;
-        font-weight: 500;
+        background: #eef2ff;
+        color: #3e86f5;
+        font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s ease;
 }
 
-.destination-detail-pilgrimages__btn:hover {
+.destination-detail-tour-card .tour-card__details-btn:hover {
         background: linear-gradient(135deg, #3e86f5, #5a9df7);
         color: #fff;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(62, 134, 245, 0.3);
+        box-shadow: 0 10px 20px rgba(62, 134, 245, 0.25);
 }
 
-.destination-detail-pilgrimages__btn:active {
-        transform: translateY(0);
+.destination-detail-tour-card .tour-card__price-value {
+        color: #ff6b35;
+}
+
+.destination-detail-tour-card .tour-card__details-btn {
+        background: #ff6b35;
+        color: #fff;
+        border-radius: 8px;
+        border: none;
+        text-decoration: none;
+}
+
+.destination-detail-tour-card .tour-card__details-btn:hover {
+        background: #ff5a1c;
+        box-shadow: 0 12px 20px rgba(255, 106, 53, 0.35);
 }
 
 .destination-detail-itinerary {
@@ -1658,7 +1855,7 @@ img[data-src] {
                 gap: 1.5rem;
         }
 
-        .destination-detail-pilgrimages__card {
+        .destination-detail-tour-card {
                 width: 260px;
         }
 
@@ -1714,7 +1911,7 @@ img[data-src] {
         }
 
         .destination-detail-popular__container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 gap: 20px;
                 padding: 0 5%;
         }
@@ -1723,30 +1920,30 @@ img[data-src] {
                 width: 100%;
                 max-width: 100%;
                 min-width: auto;
-                height: auto;
+                height: 300px;
         }
 
         .destination-detail-card__img {
-                height: 200px;
+                height: 100%;
                 width: 100%;
         }
 
         .destination-detail-card__content {
-                padding: 15px;
-                text-align: left;
+                padding: 20px;
         }
 
         .destination-detail-card__name {
                 white-space: normal;
-                font-size: 1.1rem;
-                font-weight: 600;
-                margin-bottom: 5px;
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 8px;
                 line-height: 1.3;
         }
 
         .destination-detail-card__location {
-                font-size: 0.9rem;
-                color: #666;
+                font-size: 13px;
+                color: #fff;
+                opacity: 0.9;
         }
 
         /* MISSION */
@@ -1833,13 +2030,16 @@ img[data-src] {
 
         /* PILGRIMAGES */
         .destination-detail-pilgrimages__cards {
-                flex-direction: column;
-                align-items: center;
+                grid-template-columns: 1fr;
+                gap: 20px;
         }
 
-        .destination-detail-pilgrimages__card {
-                width: 100%;
-                max-width: 320px;
+        .destination-detail-tour-card {
+                border-radius: 18px;
+        }
+
+        .destination-detail-tour-card .tour-card__content {
+                padding: 20px;
         }
 
         /* ITINERARY */
@@ -1965,7 +2165,7 @@ img[data-src] {
                 border-radius: 20px;
         }
 
-        .destination-detail-pilgrimages__card {
+        .destination-detail-tour-card {
                 width: 100%;
         }
 
@@ -2093,7 +2293,7 @@ img[data-src] {
                 gap: 2.5rem;
         }
 
-        .destination-detail-pilgrimages__card {
+        .destination-detail-tour-card {
                 width: 340px;
         }
 
@@ -2122,7 +2322,7 @@ img[data-src] {
                 width: 220px;
         }
 
-        .destination-detail-pilgrimages__card {
+        .destination-detail-tour-card {
                 width: 290px;
         }
 }
@@ -2207,7 +2407,7 @@ img[data-src] {
                 justify-content: center;
         }
 
-        .destination-detail-pilgrimages__card {
+        .destination-detail-tour-card {
                 width: 280px;
         }
 
@@ -2292,7 +2492,7 @@ img[data-src] {
                 padding: 70px 5%;
         }
 
-        .destination-detail-pilgrimages__card {
+        .destination-detail-tour-card {
                 width: 320px;
                 max-width: 100%;
         }
@@ -2395,7 +2595,7 @@ img[data-src] {
                 font-size: 1.6rem;
         }
 
-        .destination-detail-pilgrimages__card {
+        .destination-detail-tour-card {
                 width: 100%;
         }
 
@@ -2479,7 +2679,7 @@ img[data-src] {
         }
 
         .destination-detail-card__img,
-        .destination-detail-pilgrimages__image,
+        .tour-card__image,
         .destination-detail-insights__image {
                 image-rendering: -webkit-optimize-contrast;
                 image-rendering: crisp-edges;
@@ -2495,7 +2695,7 @@ img[data-src] {
                 min-height: auto;
         }
 
-        .destination-detail-pilgrimages__card,
+        .destination-detail-tour-card,
         .destination-detail-testimonials__item,
         .destination-detail-insights__card {
                 page-break-inside: avoid;
@@ -2653,16 +2853,16 @@ img[data-src] {
         height: auto;
 }
 
-/* Pilgrimage cards */
-.destination-detail-pilgrimages__image-wrapper .skeleton-wrapper {
-        aspect-ratio: 16 / 9;
-        border-radius: 12px;
+/* Pilgrimage/Tour cards */
+.tour-card__image-wrapper .skeleton-wrapper {
+        aspect-ratio: 4 / 3;
+        border-radius: 0;
         overflow: hidden;
         width: 100%;
         position: relative;
 }
 
-.destination-detail-pilgrimages__image-wrapper .skeleton-wrapper img {
+.tour-card__image-wrapper .skeleton-wrapper img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -2673,8 +2873,8 @@ img[data-src] {
 }
 
 /* Giữ hiệu ứng hover cho pilgrimage card images */
-.destination-detail-pilgrimages__card:hover .skeleton-wrapper img {
-        transform: scale(1.1);
+.destination-detail-tour-card:hover .skeleton-wrapper img {
+        transform: scale(1.05);
 }
 
 /* Insight cards */
