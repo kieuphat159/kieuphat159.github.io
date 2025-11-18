@@ -1113,6 +1113,7 @@ function setupInsightsLoadMoreButton() {
         loadMoreBtn.addEventListener("click", () => {
                 state.visibleInsights = state.insights.length;
                 updateInsightsGrid();
+                triggerLazyRefresh();
                 const showAllText = window.i18n
                         ? window.i18n.t("destinationDetail.insights.showAll")
                         : "Đã hiển thị tất cả";
